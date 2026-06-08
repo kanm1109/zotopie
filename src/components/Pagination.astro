@@ -1,0 +1,66 @@
+---
+interface Props {
+	currentPage: number;
+	totalPages: number;
+	basePath: string;
+}
+
+const { currentPage, totalPages, basePath } = Astro.props;
+
+function pageUrl(page: number) {
+	return page === 1 ? `${basePath}/` : `${basePath}/page/${page}/`;
+}
+
+const prev = currentPage > 1 ? currentPage - 1 : null;
+const next = currentPage < totalPages ? currentPage + 1 : null;
+---
+
+{totalPages > 1 && (
+	<nav aria-label="Pagination" class="pagination">
+		{prev !== null ? (
+			<a href={pageUrl(prev)} class="page-link" rel="prev">&larr; Previous</a>
+		) : (
+			<span class="page-link disabled">&larr; Previous</span>
+		)}
+		<span class="page-info">Page {currentPage} of {totalPages}</span>
+		{next !== null ? (
+			<a href={pageUrl(next)} class="page-link" rel="next">Next &rarr;</a>
+		) : (
+			<span class="page-link disabled">Next &rarr;</span>
+		)}
+	</nav>
+)}
+
+<style>
+	.pagination {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1.5rem;
+		margin: 3rem 0 1rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgb(var(--gray-light));
+	}
+	.page-link {
+		padding: 0.5rem 1rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 6px;
+		text-decoration: none;
+		color: var(--accent);
+		font-size: 0.9rem;
+		transition: all 0.2s;
+	}
+	.page-link:hover:not(.disabled) {
+		background: var(--accent);
+		color: white;
+		border-color: var(--accent);
+	}
+	.disabled {
+		color: rgb(var(--gray));
+		pointer-events: none;
+	}
+	.page-info {
+		font-size: 0.9rem;
+		color: rgb(var(--gray));
+	}
+</style>

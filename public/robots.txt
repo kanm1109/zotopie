@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://zotopie.com/sitemap-index.xml

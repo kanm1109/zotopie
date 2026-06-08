@@ -4,10 +4,16 @@ import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
 
-// https://astro.build/config
 export default defineConfig({
-	site: 'https://example.com',
-	integrations: [mdx(), sitemap()],
+	site: 'https://zotopie.com',
+	integrations: [
+		mdx(),
+		sitemap({
+			changefreq: 'weekly',
+			priority: 0.7,
+			lastmod: new Date(),
+		}),
+	],
 	fonts: [
 		{
 			provider: fontProviders.local(),

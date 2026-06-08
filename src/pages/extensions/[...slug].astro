@@ -4,17 +4,17 @@ import ArticleLayout from '../../layouts/ArticleLayout.astro';
 import { CATEGORIES } from '../../consts';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog', ({ data }) => !data.draft);
+	const posts = await getCollection('extensions', ({ data }) => !data.draft);
 	return posts.map((post) => ({
 		params: { slug: post.id },
 		props: post,
 	}));
 }
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<'extensions'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
-const cat = CATEGORIES.find((c) => c.slug === 'blog')!;
+const cat = CATEGORIES.find((c) => c.slug === 'extensions')!;
 ---
 
 <ArticleLayout
@@ -24,7 +24,7 @@ const cat = CATEGORIES.find((c) => c.slug === 'blog')!;
 	updatedDate={post.data.updatedDate}
 	author={post.data.author}
 	tags={post.data.tags}
-	category="blog"
+	category="extensions"
 	categoryName={cat.name}
 	featuredImage={post.data.featuredImage}
 >

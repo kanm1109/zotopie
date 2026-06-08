@@ -2,19 +2,50 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const blog = defineCollection({
-	// Load Markdown and MDX files in the `src/content/blog/` directory.
-	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
-	// Type-check frontmatter using a schema
-	schema: ({ image }) =>
-		z.object({
+const articleSchema = ({ image }: any) =>
+	z
+		.object({
 			title: z.string(),
 			description: z.string(),
-			// Transform string to Date object
-			pubDate: z.coerce.date(),
+			publishDate: z.coerce.date().optional(),
+			pubDate: z.coerce.date().optional(),
 			updatedDate: z.coerce.date().optional(),
+			author: z.string().default('Zotopie Team'),
+			tags: z.array(z.string()).default([]),
+			category: z.string().default('blog'),
+			featuredImage: z.optional(image()),
 			heroImage: z.optional(image()),
-		}),
+			draft: z.boolean().default(false),
+		})
+		.transform((data) => ({
+			...data,
+			publishDate: data.publishDate ?? data.pubDate ?? new Date(),
+			featuredImage: data.featuredImage ?? data.heroImage,
+		}));
+
+const blog = defineCollection({
+	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
+	schema: articleSchema,
 });
 
-export const collections = { blog };
+const reddit = defineCollection({
+	loader: glob({ base: './src/content/reddit', pattern: '**/*.{md,mdx}' }),
+	schema: articleSchema,
+});
+
+const threads = defineCollection({
+	loader: glob({ base: './src/content/threads', pattern: '**/*.{md,mdx}' }),
+	schema: articleSchema,
+});
+
+const extensions = defineCollection({
+	loader: glob({ base: './src/content/extensions', pattern: '**/*.{md,mdx}' }),
+	schema: articleSchema,
+});
+
+const marketing = defineCollection({
+	loader: glob({ base: './src/content/marketing', pattern: '**/*.{md,mdx}' }),
+	schema: articleSchema,
+});
+
+export const collections = { blog, reddit, threads, extensions, marketing };

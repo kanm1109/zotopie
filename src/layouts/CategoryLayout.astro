@@ -1,0 +1,113 @@
+---
+import type { ImageMetadata } from 'astro';
+import ArticleCard from '../components/ArticleCard.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import Pagination from '../components/Pagination.astro';
+
+interface Post {
+	id: string;
+	data: {
+		title: string;
+		description: string;
+		publishDate: Date;
+		tags: string[];
+		category: string;
+		featuredImage?: ImageMetadata;
+		draft: boolean;
+	};
+	collection: string;
+}
+
+interface Props {
+	title: string;
+	description: string;
+	categorySlug: string;
+	posts: Post[];
+	currentPage: number;
+	totalPages: number;
+}
+
+const { title, description, categorySlug, posts, currentPage, totalPages } =
+	Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<BaseHead
+			title={title}
+			description={description}
+			breadcrumbs={[{ name: title, url: `/${categorySlug}/` }]}
+		/>
+	</head>
+	<body>
+		<Header />
+		<main class="cat-main">
+			<div class="cat-header">
+				<Breadcrumb items={[{ name: title, url: `/${categorySlug}/` }]} />
+				<h1>{title}</h1>
+				<p class="cat-desc">{description}</p>
+			</div>
+			{posts.length > 0 ? (
+				<div class="posts-grid">
+					{posts.map((post, i) => (
+						<ArticleCard
+							title={post.data.title}
+							description={post.data.description}
+							publishDate={post.data.publishDate}
+							slug={post.id}
+							category={post.collection}
+							tags={post.data.tags}
+							featuredImage={post.data.featuredImage}
+							featured={i === 0 && currentPage === 1}
+						/>
+					))}
+				</div>
+			) : (
+				<p class="empty">No articles yet. Check back soon!</p>
+			)}
+			<Pagination
+				currentPage={currentPage}
+				totalPages={totalPages}
+				basePath={`/${categorySlug}`}
+			/>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.cat-main {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 2rem 1.5rem 4rem;
+	}
+	.cat-header { margin-bottom: 2.5rem; }
+	h1 {
+		font-size: 2.4rem;
+		margin: 0.25rem 0 0.75rem;
+		text-transform: capitalize;
+	}
+	.cat-desc {
+		font-size: 1.05rem;
+		color: rgb(var(--gray));
+		margin: 0;
+		max-width: 600px;
+	}
+	.posts-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+		gap: 2rem;
+	}
+	.posts-grid > :first-child { grid-column: 1 / -1; }
+	.empty {
+		text-align: center;
+		padding: 4rem;
+		color: rgb(var(--gray));
+	}
+	@media (max-width: 640px) {
+		.posts-grid { grid-template-columns: 1fr; }
+	}
+</style>

@@ -1,0 +1,148 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	publishDate: Date;
+	slug: string;
+	category: string;
+	tags?: string[];
+	featuredImage?: ImageMetadata;
+	featured?: boolean;
+}
+
+const {
+	title,
+	description,
+	publishDate,
+	slug,
+	category,
+	tags = [],
+	featuredImage,
+	featured = false,
+} = Astro.props;
+
+const articleUrl = `/${category}/${slug}/`;
+---
+
+<article class:list={['card', { featured }]}>
+	{featuredImage && (
+		<a href={articleUrl} class="card-image">
+			<Image
+				src={featuredImage}
+				alt={title}
+				width={featured ? 800 : 400}
+				height={featured ? 420 : 210}
+			/>
+		</a>
+	)}
+	<div class="card-body">
+		<div class="card-meta">
+			<a href={`/${category}/`} class="cat-tag">{category}</a>
+			<FormattedDate date={publishDate} />
+		</div>
+		<h2 class="card-title">
+			<a href={articleUrl}>{title}</a>
+		</h2>
+		<p class="card-desc">{description}</p>
+		{tags.length > 0 && (
+			<div class="card-tags">
+				{tags.slice(0, 3).map((tag) => (
+					<a href={`/tags/${tag}/`} class="tag">#{tag}</a>
+				))}
+			</div>
+		)}
+	</div>
+</article>
+
+<style>
+	.card {
+		background: white;
+		border-radius: 12px;
+		overflow: hidden;
+		box-shadow: var(--box-shadow);
+		transition: transform 0.2s, box-shadow 0.2s;
+		display: flex;
+		flex-direction: column;
+	}
+	.card:hover {
+		transform: translateY(-4px);
+		box-shadow:
+			0 4px 12px rgba(var(--gray), 30%),
+			0 16px 40px rgba(var(--gray), 20%);
+	}
+	.card-image {
+		display: block;
+		overflow: hidden;
+	}
+	.card-image img {
+		width: 100%;
+		height: auto;
+		border-radius: 0;
+		transition: transform 0.3s;
+	}
+	.card:hover .card-image img {
+		transform: scale(1.03);
+	}
+	.card-body {
+		padding: 1.25rem;
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+	}
+	.card-meta {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-bottom: 0.5rem;
+		font-size: 0.8rem;
+		color: rgb(var(--gray));
+	}
+	.cat-tag {
+		background: var(--accent);
+		color: white;
+		padding: 0.2rem 0.5rem;
+		border-radius: 4px;
+		text-decoration: none;
+		text-transform: capitalize;
+		font-weight: 600;
+		font-size: 0.75rem;
+	}
+	.card-title {
+		font-size: 1.15rem;
+		margin: 0.3rem 0 0.6rem;
+		line-height: 1.3;
+	}
+	.card-title a {
+		color: rgb(var(--black));
+		text-decoration: none;
+	}
+	.card-title a:hover { color: var(--accent); }
+	.card-desc {
+		font-size: 0.9rem;
+		color: rgb(var(--gray));
+		margin: 0 0 0.75rem;
+		line-height: 1.5;
+		flex: 1;
+		display: -webkit-box;
+		-webkit-line-clamp: 3;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.card-tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.4rem;
+		margin-top: auto;
+	}
+	.tag {
+		font-size: 0.8rem;
+		color: var(--accent);
+		text-decoration: none;
+	}
+	.tag:hover { text-decoration: underline; }
+	.featured .card-title { font-size: 1.5rem; }
+</style>
