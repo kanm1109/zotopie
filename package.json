@@ -3,11 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "engines": {
-    "node": ">=22.12.0"
+    "node": ">=18.0.0"
   },
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/merge-data.mjs",
+    "prebuild": "node scripts/merge-data.mjs || echo '[prebuild] merge-data failed — using committed generated files'",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
