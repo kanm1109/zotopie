@@ -1,0 +1,17 @@
+---
+import tools from "../data/generated/tools-enriched.json";
+---
+
+<html>
+  <body>
+    <h1>Tools Database</h1>
+
+    <ul>
+      {tools.map((tool) => (
+        <li>
+          {tool.name}
+        </li>
+      ))}
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,416 @@
+---
+import tools from "../../data/generated/tools-enriched.json";
+import taxonomies from "../../data/taxonomies.json";
+import iconData from "../../data/generated/icon-data.json";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const toolsData      = JSON.stringify(tools);
+const taxonomiesData = JSON.stringify(taxonomies);
+const iconDataStr    = JSON.stringify(iconData);
+---
+
+<MainLayout
+  title="All Tool Reviews | Zotopie"
+  description="Browse honest reviews of 100+ software tools — SEO, social media, automation, analytics, AI, and more."
+  canonical="https://zotopie.com/reviews/"
+>
+  <Fragment slot="head">
+    <!-- rel=next placeholder for page 1 (no rel=prev on first page); JS updates on navigation -->
+    <link rel="next" id="pg-next" href="https://zotopie.com/reviews/?page=2" />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="rv-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <span>Reviews</span>
+    </div>
+    <h1>All Tool Reviews</h1>
+    <p class="hero-desc"><span id="rv-total">{tools.length}</span> tools reviewed and counting.</p>
+  </section>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <select id="f-cat" class="f-select" aria-label="Filter by category">
+      <option value="">All Categories</option>
+      {taxonomies.map((cat) => (
+        <option value={cat.slug}>{cat.name}</option>
+      ))}
+    </select>
+
+    <select id="f-price" class="f-select" aria-label="Filter by pricing">
+      <option value="">All Pricing</option>
+      <option value="Free">Free</option>
+      <option value="Freemium">Freemium</option>
+      <option value="Paid">Paid</option>
+    </select>
+
+    <select id="f-rating" class="f-select" aria-label="Filter by rating">
+      <option value="">Any Rating</option>
+      <option value="4.8">4.8+ ★ Top Rated</option>
+      <option value="4.5">4.5+ ★</option>
+      <option value="4.0">4.0+ ★</option>
+    </select>
+
+    <button id="f-clear" class="f-clear-btn" style="display:none">Clear filters</button>
+
+    <span id="rv-count" class="rv-count"></span>
+  </div>
+
+  <!-- GRID -->
+  <div id="rv-grid" class="rv-grid"></div>
+
+  <!-- PAGINATION -->
+  <div id="rv-pagination" class="rv-pagination"></div>
+
+</MainLayout>
+
+<script define:vars={{ toolsData, taxonomiesData, iconDataStr }}>
+const TOOLS = JSON.parse(toolsData);
+const TAXONOMIES = JSON.parse(taxonomiesData);
+const ICON_DATA = JSON.parse(iconDataStr);
+const PER_PAGE = 12;
+
+const PALETTE = ['#2563eb','#7c3aed','#059669','#dc2626','#d97706','#0891b2','#be185d','#16a34a'];
+
+// State
+let state = { cat: '', pricing: '', rating: 0, page: 1 };
+
+// Elements
+const grid   = document.getElementById('rv-grid');
+const pgEl   = document.getElementById('rv-pagination');
+const countEl = document.getElementById('rv-count');
+const clearBtn = document.getElementById('f-clear');
+
+// Helpers
+function esc(s) {
+  return String(s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function catName(slug) {
+  const t = TAXONOMIES.find((x) => x.slug === slug);
+  return t ? t.name : slug;
+}
+
+function getInitials(name) {
+  return name.replace(/[^a-zA-Z0-9]/g, '').slice(0, 2).toUpperCase();
+}
+
+function logoHtml(tool, size) {
+  const bg  = PALETTE[tool.slug.charCodeAt(0) % PALETTE.length];
+  const fs  = Math.round(size * 0.38);
+  const ini = getInitials(tool.name);
+  const icon = tool.simple_icon ? ICON_DATA[tool.simple_icon] : null;
+  if (icon) {
+    return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" class="tc-logo-svg" style="fill:#${icon.hex}" aria-label="${esc(tool.name)} logo" role="img"><path d="${icon.path}"/></svg>`;
+  }
+  return `<span class="tc-logo-fb" style="width:${size}px;height:${size}px;background:${bg};font-size:${fs}px" aria-hidden="true">${ini}</span>`;
+}
+
+function renderCard(tool) {
+  const price = tool.startingPrice
+    ? `${esc(tool.pricing)} · from ${esc(tool.startingPrice)}`
+    : esc(tool.pricing);
+  return `
+<div class="tc-card">
+  <div class="tc-top">
+    <div class="tc-id">
+      ${logoHtml(tool, 32)}
+      <h3 class="tc-name"><a href="/reviews/${tool.slug}">${esc(tool.name)}</a></h3>
+    </div>
+    <span class="tc-rating">★ ${tool.rating}</span>
+  </div>
+  <p class="tc-desc">${esc(tool.description)}</p>
+  <div class="tc-footer">
+    <span class="tc-pricing">${price}</span>
+    <a href="/reviews/${tool.slug}" class="tc-link">View Review →</a>
+  </div>
+</div>`;
+}
+
+// Pagination range
+function pgRange(cur, total) {
+  if (total <= 7) return Array.from({ length: total }, (_, i) => i + 1);
+  const set = new Set([1, total, cur]);
+  if (cur > 1) set.add(cur - 1);
+  if (cur < total) set.add(cur + 1);
+  const sorted = [...set].sort((a, b) => a - b);
+  const result = [];
+  let prev = 0;
+  for (const p of sorted) {
+    if (p - prev > 1) result.push('…');
+    result.push(p);
+    prev = p;
+  }
+  return result;
+}
+
+function renderPagination(cur, total) {
+  if (total <= 1) return '';
+  const range = pgRange(cur, total);
+  const items = range.map((p) =>
+    p === '…'
+      ? `<span class="pg-dot">…</span>`
+      : `<button class="pg-btn${p === cur ? ' pg-active' : ''}" data-p="${p}">${p}</button>`
+  ).join('');
+  return `
+<div class="pg-bar">
+  <button class="pg-btn pg-prev" ${cur === 1 ? 'disabled' : ''} data-p="${cur - 1}">← Prev</button>
+  <div class="pg-nums">${items}</div>
+  <button class="pg-btn pg-next" ${cur === total ? 'disabled' : ''} data-p="${cur + 1}">Next →</button>
+</div>`;
+}
+
+// Filter + render
+function filtered() {
+  return TOOLS.filter((t) => {
+    if (state.cat    && !t.categories.includes(state.cat)) return false;
+    if (state.pricing && t.pricing !== state.pricing)      return false;
+    if (state.rating  && t.rating < state.rating)          return false;
+    return true;
+  });
+}
+
+function render() {
+  const hits = filtered();
+  const total = Math.ceil(hits.length / PER_PAGE) || 1;
+  const page  = Math.min(state.page, total);
+  const slice = hits.slice((page - 1) * PER_PAGE, page * PER_PAGE);
+
+  grid.innerHTML = slice.length
+    ? slice.map(renderCard).join('')
+    : `<div class="rv-empty">No tools match these filters. <button class="rv-empty-clear" onclick="clearFilters()">Clear filters</button></div>`;
+
+  pgEl.innerHTML  = renderPagination(page, total);
+  countEl.textContent = `${hits.length} tool${hits.length !== 1 ? 's' : ''}`;
+
+  const active = state.cat || state.pricing || state.rating;
+  clearBtn.style.display = active ? 'inline-flex' : 'none';
+
+  syncURL(page, total);
+  updatePaginationMeta(page, total);
+}
+
+function syncURL(page, total) {
+  const url = new URL(location.href);
+  state.cat     ? url.searchParams.set('cat',     state.cat)           : url.searchParams.delete('cat');
+  state.pricing ? url.searchParams.set('pricing', state.pricing)       : url.searchParams.delete('pricing');
+  state.rating  ? url.searchParams.set('rating',  String(state.rating)) : url.searchParams.delete('rating');
+  page > 1      ? url.searchParams.set('page',    String(page))        : url.searchParams.delete('page');
+  history.replaceState(null, '', url);
+}
+
+function updatePaginationMeta(page, total) {
+  const BASE    = 'https://zotopie.com/reviews/';
+  const hasFilter = state.cat || state.pricing || state.rating;
+
+  // Canonical: when filters active → base (no index params); else per-page URL
+  const canonical = hasFilter ? BASE : (page === 1 ? BASE : `${BASE}?page=${page}`);
+  const canonEl = document.querySelector('link[rel="canonical"]');
+  if (canonEl) canonEl.setAttribute('href', canonical);
+
+  // Remove existing prev/next (avoid duplicates)
+  document.querySelectorAll('link[rel="prev"], link[rel="next"]').forEach(el => el.remove());
+
+  // Only add prev/next when no filter is active (paginated series for crawlers)
+  if (!hasFilter) {
+    if (page > 1) {
+      const prev = document.createElement('link');
+      prev.rel = 'prev';
+      prev.href = page === 2 ? BASE : `${BASE}?page=${page - 1}`;
+      document.head.appendChild(prev);
+    }
+    if (page < total) {
+      const next = document.createElement('link');
+      next.rel = 'next';
+      next.href = `${BASE}?page=${page + 1}`;
+      document.head.appendChild(next);
+    }
+  }
+}
+
+function clearFilters() {
+  state = { cat: '', pricing: '', rating: 0, page: 1 };
+  document.getElementById('f-cat').value    = '';
+  document.getElementById('f-price').value  = '';
+  document.getElementById('f-rating').value = '';
+  render();
+}
+
+// Events
+document.getElementById('f-cat').addEventListener('change', (e) => {
+  state.cat = e.target.value; state.page = 1; render();
+});
+document.getElementById('f-price').addEventListener('change', (e) => {
+  state.pricing = e.target.value; state.page = 1; render();
+});
+document.getElementById('f-rating').addEventListener('change', (e) => {
+  state.rating = parseFloat(e.target.value) || 0; state.page = 1; render();
+});
+clearBtn.addEventListener('click', clearFilters);
+
+pgEl.addEventListener('click', (e) => {
+  const btn = e.target.closest('[data-p]');
+  if (!btn || btn.disabled) return;
+  state.page = parseInt(btn.dataset.p);
+  render();
+  grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+// Init from URL
+const sp = new URLSearchParams(location.search);
+if (sp.get('cat'))     { state.cat     = sp.get('cat');               document.getElementById('f-cat').value    = state.cat; }
+if (sp.get('pricing')) { state.pricing = sp.get('pricing');           document.getElementById('f-price').value  = state.pricing; }
+if (sp.get('rating'))  { state.rating  = parseFloat(sp.get('rating')); document.getElementById('f-rating').value = String(state.rating); }
+if (sp.get('page'))    { state.page    = parseInt(sp.get('page')) || 1; }
+
+render();
+</script>
+
+<style is:global>
+  /* Card */
+  .tc-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .tc-card:hover { border-color: #2563eb; box-shadow: 0 4px 16px rgba(37,99,235,0.08); }
+  .tc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .tc-id  { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .tc-logo-svg { border-radius: 6px; flex-shrink: 0; display: block; background: #f9fafb; padding: 2px; box-sizing: content-box; }
+  .tc-logo-fb  {
+    display: inline-flex; align-items: center; justify-content: center;
+    border-radius: 6px; color: #fff; font-weight: 700; flex-shrink: 0; line-height: 1;
+  }
+  .tc-name { font-size: 1.05rem; font-weight: 700; margin: 0; min-width: 0; }
+  .tc-name a { color: #111827; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
+  .tc-name a:hover { color: #2563eb; }
+  .tc-rating { font-size: 0.875rem; font-weight: 700; color: #d97706; background: #fef3c7; padding: 2px 8px; border-radius: 12px; white-space: nowrap; flex-shrink: 0; }
+  .tc-desc { font-size: 0.9rem; color: #6b7280; margin: 0; flex: 1; }
+  .tc-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
+  .tc-pricing { font-size: 0.8rem; font-weight: 600; color: #6b7280; background: #f3f4f6; padding: 3px 10px; border-radius: 12px; }
+  .tc-link { font-size: 0.85rem; font-weight: 600; color: #2563eb; text-decoration: none; }
+  .tc-link:hover { text-decoration: underline; }
+</style>
+
+<style>
+  /* HERO */
+  .rv-hero { padding: 48px 0 28px; border-bottom: 1px solid #e5e7eb; margin-bottom: 0; }
+  .breadcrumb { font-size: 0.875rem; color: #9ca3af; margin-bottom: 16px; }
+  .breadcrumb a { color: #6b7280; }
+  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  h1 { font-size: 2.25rem; font-weight: 800; color: #111827; margin: 0 0 8px; }
+  .hero-desc { font-size: 1rem; color: #6b7280; margin: 0; }
+
+  /* FILTER BAR */
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 28px;
+  }
+  .f-select {
+    padding: 8px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #374151;
+    background: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .f-select:focus { border-color: #2563eb; }
+  .f-clear-btn {
+    padding: 8px 14px;
+    border: 1.5px solid #fca5a5;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #b91c1c;
+    background: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+  }
+  .f-clear-btn:hover { background: #fee2e2; }
+  .rv-count {
+    margin-left: auto;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #9ca3af;
+    white-space: nowrap;
+  }
+
+  /* GRID */
+  .rv-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    min-height: 200px;
+    margin-bottom: 40px;
+  }
+
+  /* EMPTY */
+  .rv-empty {
+    grid-column: 1 / -1;
+    padding: 64px 0;
+    text-align: center;
+    color: #6b7280;
+    font-size: 1rem;
+  }
+  .rv-empty-clear {
+    margin-left: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2563eb;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+    text-decoration: underline;
+  }
+
+  /* PAGINATION */
+  .rv-pagination { padding-bottom: 48px; }
+  .pg-bar { display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; }
+  .pg-btn {
+    min-width: 36px;
+    height: 36px;
+    padding: 0 10px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    background: #fff;
+    color: #374151;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s, color 0.2s;
+  }
+  .pg-btn:hover:not(:disabled) { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+  .pg-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+  .pg-active { background: #2563eb; color: #fff; border-color: #2563eb; }
+  .pg-active:hover { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+  .pg-prev, .pg-next { padding: 0 14px; }
+  .pg-dot { font-size: 0.875rem; color: #9ca3af; padding: 0 4px; display: inline-flex; align-items: center; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 1.75rem; }
+    .rv-grid { grid-template-columns: 1fr; }
+    .filter-bar { gap: 8px; }
+    .f-select { font-size: 0.8rem; padding: 7px 10px; }
+    .rv-count { margin-left: 0; width: 100%; }
+  }
+</style>

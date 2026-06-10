@@ -1,0 +1,455 @@
+---
+import tools from "../data/generated/tools-enriched.json";
+import taxonomies from "../data/taxonomies.json";
+import iconData from "../data/generated/icon-data.json";
+import MainLayout from "../layouts/MainLayout.astro";
+
+const toolsData      = JSON.stringify(tools);
+const taxonomiesData = JSON.stringify(taxonomies);
+const iconDataStr    = JSON.stringify(iconData);
+
+// JSON-LD: WebSite (with SearchAction) + WebPage
+const SITE = "https://zotopie.com";
+const searchJsonLdStr = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": `${SITE}/#website`,
+      url: `${SITE}/`,
+      name: "Zotopie",
+      description: "Find reviews, comparisons and alternatives for the best software tools.",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: `${SITE}/search?q={search_term_string}`,
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${SITE}/search/#webpage`,
+      url: `${SITE}/search/`,
+      name: "Search Tools | Zotopie",
+      description: "Search across hundreds of software tool reviews by name, description, or category.",
+      isPartOf: { "@id": `${SITE}/#website` },
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home",   item: `${SITE}/` },
+          { "@type": "ListItem", position: 2, name: "Search" },
+        ],
+      },
+    },
+  ],
+});
+---
+
+<MainLayout
+  title="Search Tools | Zotopie"
+  description="Search across hundreds of software tool reviews by name, description, or category."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={searchJsonLdStr} />
+  </Fragment>
+
+  <section class="search-hero">
+    <h1>Search Tools</h1>
+    <p class="search-sub">Find the right tool by name, description, or category.</p>
+
+    <div class="search-box">
+      <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
+        stroke="#9ca3af" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input
+        id="q"
+        type="search"
+        placeholder="Try &quot;SEO&quot;, &quot;automation&quot;, &quot;scheduling&quot;…"
+        autocomplete="off"
+        spellcheck="false"
+        autofocus
+      />
+    </div>
+
+    <p id="count" class="result-count" aria-live="polite"></p>
+  </section>
+
+  <div id="results" class="results-grid"></div>
+
+</MainLayout>
+
+<script define:vars={{ toolsData, taxonomiesData, iconDataStr }}>
+const TOOLS = JSON.parse(toolsData);
+const TAXONOMIES = JSON.parse(taxonomiesData);
+const ICON_DATA = JSON.parse(iconDataStr);
+
+const PALETTE = [
+  '#2563eb','#7c3aed','#059669',
+  '#dc2626','#d97706','#0891b2',
+  '#be185d','#16a34a',
+];
+
+function catName(slug) {
+  const t = TAXONOMIES.find((x) => x.slug === slug);
+  return t ? t.name : slug;
+}
+
+function initials(name) {
+  return name.replace(/[^a-zA-Z0-9]/g, '').slice(0, 2).toUpperCase();
+}
+
+function logoHtml(tool) {
+  const bg   = PALETTE[tool.slug.charCodeAt(0) % PALETTE.length];
+  const fs   = Math.round(32 * 0.38);
+  const icon = tool.simple_icon ? ICON_DATA[tool.simple_icon] : null;
+  if (icon) {
+    return `<svg width="32" height="32" viewBox="0 0 24 24" class="rc-logo-svg" style="fill:#${icon.hex}" aria-label="${esc(tool.name)} logo" role="img"><path d="${icon.path}"/></svg>`;
+  }
+  return `<span class="rc-logo-fb" style="width:32px;height:32px;background:${bg};font-size:${fs}px" aria-hidden="true">${initials(tool.name)}</span>`;
+}
+
+function esc(s) {
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+function highlight(text, q) {
+  if (!q) return esc(text);
+  const re = new RegExp(`(${q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+  return esc(text).replace(re, '<mark>$1</mark>');
+}
+
+function renderCard(tool, q) {
+  const cats = tool.categories
+    .map((s) => `<a href="/category/${s}" class="rc-cat">${esc(catName(s))}</a>`)
+    .join('');
+  const price = tool.startingPrice
+    ? `${esc(tool.pricing)} · from ${esc(tool.startingPrice)}`
+    : esc(tool.pricing);
+  return `
+<div class="rc-card">
+  <div class="rc-top">
+    <div class="rc-id">
+      ${logoHtml(tool)}
+      <h3 class="rc-name"><a href="/reviews/${tool.slug}">${highlight(tool.name, q)}</a></h3>
+    </div>
+    <span class="rc-rating">★ ${tool.rating}</span>
+  </div>
+  <p class="rc-desc">${highlight(tool.description, q)}</p>
+  ${cats ? `<div class="rc-cats">${cats}</div>` : ''}
+  <div class="rc-footer">
+    <span class="rc-pricing">${price}</span>
+    <a href="/reviews/${tool.slug}" class="rc-link">View Review &rarr;</a>
+  </div>
+</div>`;
+}
+
+const POPULAR = ['SEO', 'Automation', 'AI Writing', 'Social Media'];
+const POPULAR_HTML = `<div class="popular-wrap">
+  <p class="popular-label">Popular Searches</p>
+  <div class="popular-chips">
+    ${POPULAR.map((t) => `<button class="popular-chip" onclick="fillSearch('${t}')">${t}</button>`).join('')}
+  </div>
+</div>`;
+
+function fillSearch(term) {
+  const input = document.getElementById('q');
+  input.value = term;
+  onInput();
+  input.focus();
+}
+
+function doSearch(raw) {
+  const q = raw.trim().toLowerCase();
+  const countEl = document.getElementById('count');
+  const resultsEl = document.getElementById('results');
+
+  if (!q) {
+    countEl.textContent = '';
+    resultsEl.innerHTML = POPULAR_HTML;
+    return;
+  }
+
+  const hits = TOOLS.filter((t) => {
+    if (t.name.toLowerCase().includes(q)) return true;
+    if (t.slug.toLowerCase().includes(q)) return true;
+    if (t.description.toLowerCase().includes(q)) return true;
+    if (t.overview && t.overview.toLowerCase().includes(q)) return true;
+    if (t.bestFor && t.bestFor.some((b) => b.toLowerCase().includes(q))) return true;
+    return t.categories.some((s) =>
+      s.toLowerCase().includes(q) || catName(s).toLowerCase().includes(q)
+    );
+  });
+
+  countEl.textContent = hits.length
+    ? `${hits.length} result${hits.length === 1 ? '' : 's'} for "${raw.trim()}"`
+    : `No results for "${raw.trim()}"`;
+
+  resultsEl.innerHTML = hits.length
+    ? hits.map((t) => renderCard(t, q)).join('')
+    : `<div class="no-results">Try a different keyword or <a href="/category">browse categories</a>.</div>`;
+}
+
+const input = document.getElementById('q');
+
+let timer;
+function onInput() {
+  const val = input.value;
+
+  const url = new URL(location.href);
+  val.trim() ? url.searchParams.set('q', val.trim()) : url.searchParams.delete('q');
+  history.replaceState(null, '', url);
+
+  clearTimeout(timer);
+  timer = setTimeout(() => doSearch(val), 180);
+}
+
+input.addEventListener('input', onInput);
+
+const init = new URLSearchParams(location.search).get('q') || '';
+if (init) { input.value = init; doSearch(init); }
+else { doSearch(''); }
+</script>
+
+<style>
+  .search-hero {
+    padding: 48px 0 32px;
+    text-align: center;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 40px;
+  }
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 10px;
+  }
+  .search-sub {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0 0 28px;
+  }
+
+  /* Search box */
+  .search-box {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .search-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  #q {
+    width: 100%;
+    padding: 14px 20px 14px 48px;
+    font-size: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 12px;
+    outline: none;
+    font-family: inherit;
+    color: #111827;
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  #q:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+  }
+  #q::placeholder { color: #9ca3af; }
+
+  .result-count {
+    margin: 16px 0 0;
+    font-size: 0.875rem;
+    color: #6b7280;
+    min-height: 20px;
+  }
+
+  /* Results grid */
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+  /* Result card */
+  .rc-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .rc-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+  }
+  .rc-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .rc-id {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .rc-logo-svg {
+    border-radius: 6px;
+    flex-shrink: 0;
+    display: block;
+    background: #f9fafb;
+    padding: 2px;
+    box-sizing: content-box;
+  }
+  .rc-logo-fb {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .rc-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    min-width: 0;
+  }
+  .rc-name a {
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+  .rc-name a:hover { color: #2563eb; }
+  .rc-rating {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #d97706;
+    background: #fef3c7;
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .rc-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    flex: 1;
+  }
+  .rc-cats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .rc-cat {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 10px;
+    padding: 2px 9px;
+    text-decoration: none;
+  }
+  .rc-cat:hover { background: #dbeafe; text-decoration: none; }
+  .rc-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+  .rc-pricing {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .rc-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+  }
+  .rc-link:hover { text-decoration: underline; }
+
+  /* Highlight */
+  :global(mark) {
+    background: #fef08a;
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  /* Popular searches */
+  .popular-wrap {
+    grid-column: 1 / -1;
+    padding: 8px 0 32px;
+  }
+  .popular-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
+    margin: 0 0 12px;
+  }
+  .popular-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .popular-chip {
+    padding: 8px 18px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 20px;
+    background: #fff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+  }
+  .popular-chip:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+  }
+
+  /* No results */
+  .no-results {
+    grid-column: 1 / -1;
+    padding: 48px 0;
+    text-align: center;
+    color: #6b7280;
+    font-size: 1rem;
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    h1 { font-size: 1.75rem; }
+    .results-grid { grid-template-columns: 1fr; }
+    #q { font-size: 0.95rem; }
+  }
+</style>

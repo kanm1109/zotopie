@@ -1,0 +1,47 @@
+---
+const { category, toolCount = 0 } = Astro.props;
+---
+
+<a href={`/category/${category.slug}`} class="cat-card">
+  <h3 class="cat-name">{category.name}</h3>
+  <p class="cat-desc">{category.description}</p>
+  <span class="cat-count">{toolCount} {toolCount === 1 ? "tool" : "tools"}</span>
+</a>
+
+<style>
+  .cat-card {
+    display: block;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .cat-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    text-decoration: none;
+  }
+  .cat-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px;
+  }
+  .cat-desc {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0 0 14px;
+    line-height: 1.5;
+  }
+  .cat-count {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #2563eb;
+    background: #eff6ff;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+</style>

@@ -1,0 +1,704 @@
+[
+{
+"slug": "ahrefs",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "semrush",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "moz",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "surfer-seo",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "rank-math",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "yoast-seo",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "screaming-frog",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "ubersuggest",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "clearscope",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "buffer",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "hootsuite",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "sprout-social",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "later",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "metricool",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "publer",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "agorapulse",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "sendible",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "tailwind",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "zapier",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "make",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "n8n",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "pabbly-connect",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "ifttt",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "tray-io",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "workato",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "integrately",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "celigo",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "chatgpt",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "claude",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "jasper",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "copy-ai",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "canva",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "midjourney",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "elevenlabs",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "grammarly",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "synthesia",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "skool",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "circle",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "discord",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "patreon",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "mighty-networks",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "bettermode",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "slack",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "discourse",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "ghost",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "convertkit",
+"verified": false,
+"issues": [
+"Brand recently updated name to Kit"
+],
+"correctedDescription": "Creator marketing platform built for email marketing and automations.",
+"correctedPricing": "Freemium"
+},
+{
+"slug": "activecampaign",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "hubspot",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "mailchimp",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "systeme-io",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "getresponse",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "brevo",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "beehiiv",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "clickfunnels",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "bitly",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "voluum",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "clickmagick",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "redtrack",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "rebrandly",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "tinyurl",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "blink",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "bemob",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "pretty-links",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "google-analytics",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "plausible",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "hotjar",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "mixpanel",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "amplitude",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "fathom",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "matomo",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "crazy-egg",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "microsoft-clarity",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "notion",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "clickup",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "monday",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "asana",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "trello",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "obsidian",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "airtable",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "todoist",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "coda",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "cloudflare",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "digitalocean",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "vultr",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "hostinger",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "siteground",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "bluehost",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "namecheap",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "wp-engine",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "kinsta",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "shopify",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "woocommerce",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "gumroad",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "lemon-squeezy",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "bigcommerce",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "wix",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "squarespace",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "sendowl",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "payhip",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+},
+{
+"slug": "samcart",
+"verified": true,
+"issues": [],
+"correctedDescription": "",
+"correctedPricing": ""
+}
+]

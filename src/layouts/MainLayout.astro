@@ -1,0 +1,126 @@
+---
+const {
+  title = "Zotopie",
+  description = "Find reviews, comparisons and alternatives for the best software tools.",
+  canonical,
+} = Astro.props;
+const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site ?? "https://zotopie.com").href;
+---
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonicalURL} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:site_name" content="Zotopie" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      color: #111827;
+      background: #fff;
+      line-height: 1.6;
+    }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* NAV */
+    .site-header {
+      border-bottom: 1px solid #e5e7eb;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #111827;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo:hover { text-decoration: none; }
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-links a { font-size: 0.95rem; color: #374151; font-weight: 500; }
+    .nav-links a:hover { color: #2563eb; text-decoration: none; }
+    .nav-search-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      font-size: 0.875rem;
+      color: #6b7280;
+      background: #f9fafb;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .nav-search-btn:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; }
+    .nav-search-btn svg { flex-shrink: 0; }
+
+    /* MAIN WRAPPER */
+    .page-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      border-top: 1px solid #e5e7eb;
+      background: #f9fafb;
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 0.875rem;
+      color: #6b7280;
+    }
+  </style>
+  <slot name="head" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Zotopie</a>
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="/category">Categories</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/search" class="nav-search-btn" aria-label="Search">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          Search
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+    <slot />
+  </div>
+
+  <footer class="site-footer">
+    <p>&copy; {new Date().getFullYear()} Zotopie &mdash; Find the best software tools</p>
+  </footer>
+</body>
+</html>

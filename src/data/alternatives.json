@@ -1,0 +1,902 @@
+[
+  {
+    "tool": "Ahrefs",
+    "alternatives": [
+      "semrush",
+      "moz",
+      "ubersuggest",
+      "surfer-seo"
+    ]
+  },
+  {
+    "tool": "Semrush",
+    "alternatives": [
+      "ahrefs",
+      "moz",
+      "ubersuggest",
+      "screaming-frog"
+    ]
+  },
+  {
+    "tool": "Moz",
+    "alternatives": [
+      "ahrefs",
+      "semrush",
+      "ubersuggest",
+      "rank-math"
+    ]
+  },
+  {
+    "tool": "Surfer SEO",
+    "alternatives": [
+      "clearscope",
+      "frase",
+      "ahrefs",
+      "semrush"
+    ]
+  },
+  {
+    "tool": "Rank Math",
+    "alternatives": [
+      "yoast-seo",
+      "all-in-one-seo",
+      "ahrefs",
+      "semrush"
+    ]
+  },
+  {
+    "tool": "Yoast SEO",
+    "alternatives": [
+      "rank-math",
+      "seopress",
+      "ahrefs",
+      "semrush"
+    ]
+  },
+  {
+    "tool": "Screaming Frog",
+    "alternatives": [
+      "sitebulb",
+      "deepcrawl",
+      "ahrefs",
+      "semrush"
+    ]
+  },
+  {
+    "tool": "Ubersuggest",
+    "alternatives": [
+      "ahrefs",
+      "semrush",
+      "moz",
+      "surfer-seo"
+    ]
+  },
+  {
+    "tool": "Clearscope",
+    "alternatives": [
+      "surfer-seo",
+      "marketmuse",
+      "ahrefs",
+      "semrush"
+    ]
+  },
+  {
+    "tool": "Buffer",
+    "alternatives": [
+      "hootsuite",
+      "later",
+      "sprout-social",
+      "metricool"
+    ]
+  },
+  {
+    "tool": "Hootsuite",
+    "alternatives": [
+      "sprout-social",
+      "buffer",
+      "later",
+      "agorapulse"
+    ]
+  },
+  {
+    "tool": "Sprout Social",
+    "alternatives": [
+      "hootsuite",
+      "sendible",
+      "buffer",
+      "agorapulse"
+    ]
+  },
+  {
+    "tool": "Later",
+    "alternatives": [
+      "buffer",
+      "planoly",
+      "hootsuite",
+      "tailwind"
+    ]
+  },
+  {
+    "tool": "Metricool",
+    "alternatives": [
+      "buffer",
+      "hootsuite",
+      "later",
+      "publer"
+    ]
+  },
+  {
+    "tool": "Publer",
+    "alternatives": [
+      "buffer",
+      "socialbee",
+      "hootsuite",
+      "metricool"
+    ]
+  },
+  {
+    "tool": "Agorapulse",
+    "alternatives": [
+      "sprout-social",
+      "hootsuite",
+      "buffer",
+      "sendible"
+    ]
+  },
+  {
+    "tool": "Sendible",
+    "alternatives": [
+      "agorapulse",
+      "sprout-social",
+      "hootsuite",
+      "buffer"
+    ]
+  },
+  {
+    "tool": "Tailwind",
+    "alternatives": [
+      "later",
+      "buffer",
+      "hootsuite",
+      "metricool"
+    ]
+  },
+  {
+    "tool": "Zapier",
+    "alternatives": [
+      "make",
+      "pabbly-connect",
+      "n8n",
+      "ifttt"
+    ]
+  },
+  {
+    "tool": "Make",
+    "alternatives": [
+      "zapier",
+      "n8n",
+      "pabbly-connect",
+      "tray-io"
+    ]
+  },
+  {
+    "tool": "n8n",
+    "alternatives": [
+      "make",
+      "zapier",
+      "pabbly-connect",
+      "workato"
+    ]
+  },
+  {
+    "tool": "Pabbly Connect",
+    "alternatives": [
+      "zapier",
+      "make",
+      "n8n",
+      "integrately"
+    ]
+  },
+  {
+    "tool": "IFTTT",
+    "alternatives": [
+      "zapier",
+      "make",
+      "n8n",
+      "pabbly-connect"
+    ]
+  },
+  {
+    "tool": "Tray.io",
+    "alternatives": [
+      "workato",
+      "zapier",
+      "make",
+      "celigo"
+    ]
+  },
+  {
+    "tool": "Workato",
+    "alternatives": [
+      "tray-io",
+      "mulesoft",
+      "zapier",
+      "celigo"
+    ]
+  },
+  {
+    "tool": "Integrately",
+    "alternatives": [
+      "zapier",
+      "make",
+      "pabbly-connect",
+      "n8n"
+    ]
+  },
+  {
+    "tool": "Celigo",
+    "alternatives": [
+      "workato",
+      "tray-io",
+      "zapier",
+      "make"
+    ]
+  },
+  {
+    "tool": "ChatGPT",
+    "alternatives": [
+      "claude",
+      "jasper",
+      "copy-ai",
+      "midjourney"
+    ]
+  },
+  {
+    "tool": "Claude",
+    "alternatives": [
+      "chatgpt",
+      "gemini",
+      "jasper",
+      "copy-ai"
+    ]
+  },
+  {
+    "tool": "Jasper",
+    "alternatives": [
+      "copy-ai",
+      "writesonic",
+      "chatgpt",
+      "claude"
+    ]
+  },
+  {
+    "tool": "Copy.ai",
+    "alternatives": [
+      "jasper",
+      "rytr",
+      "chatgpt",
+      "claude"
+    ]
+  },
+  {
+    "tool": "Canva",
+    "alternatives": [
+      "adobe-express",
+      "visme",
+      "midjourney",
+      "chatgpt"
+    ]
+  },
+  {
+    "tool": "Midjourney",
+    "alternatives": [
+      "dall-e",
+      "stable-diffusion",
+      "canva",
+      "chatgpt"
+    ]
+  },
+  {
+    "tool": "ElevenLabs",
+    "alternatives": [
+      "murf-ai",
+      "playht",
+      "synthesia",
+      "chatgpt"
+    ]
+  },
+  {
+    "tool": "Grammarly",
+    "alternatives": [
+      "prowritingaid",
+      "quillbot",
+      "chatgpt",
+      "claude"
+    ]
+  },
+  {
+    "tool": "Synthesia",
+    "alternatives": [
+      "heygen",
+      "d-id",
+      "elevenlabs",
+      "canva"
+    ]
+  },
+  {
+    "tool": "Skool",
+    "alternatives": [
+      "circle",
+      "mighty-networks",
+      "discord",
+      "patreon"
+    ]
+  },
+  {
+    "tool": "Circle",
+    "alternatives": [
+      "skool",
+      "mighty-networks",
+      "discord",
+      "bettermode"
+    ]
+  },
+  {
+    "tool": "Discord",
+    "alternatives": [
+      "slack",
+      "guilded",
+      "circle",
+      "skool"
+    ]
+  },
+  {
+    "tool": "Patreon",
+    "alternatives": [
+      "buy-me-a-coffee",
+      "kofi",
+      "skool",
+      "circle"
+    ]
+  },
+  {
+    "tool": "Mighty Networks",
+    "alternatives": [
+      "circle",
+      "skool",
+      "discord",
+      "patreon"
+    ]
+  },
+  {
+    "tool": "Bettermode",
+    "alternatives": [
+      "circle",
+      "discourse",
+      "skool",
+      "mighty-networks"
+    ]
+  },
+  {
+    "tool": "Slack",
+    "alternatives": [
+      "discord",
+      "microsoft-teams",
+      "circle",
+      "skool"
+    ]
+  },
+  {
+    "tool": "Discourse",
+    "alternatives": [
+      "xenforo",
+      "bettermode",
+      "circle",
+      "discord"
+    ]
+  },
+  {
+    "tool": "Ghost",
+    "alternatives": [
+      "substack",
+      "wordpress",
+      "patreon",
+      "skool"
+    ]
+  },
+  {
+    "tool": "ConvertKit",
+    "alternatives": [
+      "mailchimp",
+      "activecampaign",
+      "beehiiv",
+      "getresponse"
+    ]
+  },
+  {
+    "tool": "ActiveCampaign",
+    "alternatives": [
+      "hubspot",
+      "getresponse",
+      "convertkit",
+      "mailchimp"
+    ]
+  },
+  {
+    "tool": "HubSpot",
+    "alternatives": [
+      "activecampaign",
+      "salesforce",
+      "mailchimp",
+      "brevo"
+    ]
+  },
+  {
+    "tool": "Mailchimp",
+    "alternatives": [
+      "convertkit",
+      "mailerlite",
+      "activecampaign",
+      "brevo"
+    ]
+  },
+  {
+    "tool": "Systeme.io",
+    "alternatives": [
+      "clickfunnels",
+      "kartra",
+      "getresponse",
+      "convertkit"
+    ]
+  },
+  {
+    "tool": "GetResponse",
+    "alternatives": [
+      "activecampaign",
+      "aweber",
+      "mailchimp",
+      "convertkit"
+    ]
+  },
+  {
+    "tool": "Brevo",
+    "alternatives": [
+      "mailchimp",
+      "omnisend",
+      "activecampaign",
+      "getresponse"
+    ]
+  },
+  {
+    "tool": "Beehiiv",
+    "alternatives": [
+      "substack",
+      "convertkit",
+      "mailchimp",
+      "activecampaign"
+    ]
+  },
+  {
+    "tool": "ClickFunnels",
+    "alternatives": [
+      "systeme-io",
+      "kartra",
+      "getresponse",
+      "activecampaign"
+    ]
+  },
+  {
+    "tool": "Bitly",
+    "alternatives": [
+      "rebrandly",
+      "tinyurl",
+      "blink",
+      "pretty-links"
+    ]
+  },
+  {
+    "tool": "Voluum",
+    "alternatives": [
+      "redtrack",
+      "bemob",
+      "clickmagick",
+      "bitly"
+    ]
+  },
+  {
+    "tool": "ClickMagick",
+    "alternatives": [
+      "voluum",
+      "redtrack",
+      "bemob",
+      "bitly"
+    ]
+  },
+  {
+    "tool": "RedTrack",
+    "alternatives": [
+      "voluum",
+      "clickmagick",
+      "bemob",
+      "rebrandly"
+    ]
+  },
+  {
+    "tool": "Rebrandly",
+    "alternatives": [
+      "bitly",
+      "blink",
+      "tinyurl",
+      "clickmagick"
+    ]
+  },
+  {
+    "tool": "TinyURL",
+    "alternatives": [
+      "bitly",
+      "rebrandly",
+      "blink",
+      "pretty-links"
+    ]
+  },
+  {
+    "tool": "Blink",
+    "alternatives": [
+      "bitly",
+      "rebrandly",
+      "tinyurl",
+      "clickmagick"
+    ]
+  },
+  {
+    "tool": "Bemob",
+    "alternatives": [
+      "voluum",
+      "redtrack",
+      "clickmagick",
+      "bitly"
+    ]
+  },
+  {
+    "tool": "Pretty Links",
+    "alternatives": [
+      "thirsty-affiliates",
+      "bitly",
+      "rebrandly",
+      "tinyurl"
+    ]
+  },
+  {
+    "tool": "Google Analytics",
+    "alternatives": [
+      "plausible",
+      "matomo",
+      "fathom",
+      "mixpanel"
+    ]
+  },
+  {
+    "tool": "Plausible",
+    "alternatives": [
+      "google-analytics",
+      "fathom",
+      "matomo",
+      "mixpanel"
+    ]
+  },
+  {
+    "tool": "Hotjar",
+    "alternatives": [
+      "crazy-egg",
+      "microsoft-clarity",
+      "google-analytics",
+      "mixpanel"
+    ]
+  },
+  {
+    "tool": "Mixpanel",
+    "alternatives": [
+      "amplitude",
+      "heap",
+      "google-analytics",
+      "plausible"
+    ]
+  },
+  {
+    "tool": "Amplitude",
+    "alternatives": [
+      "mixpanel",
+      "heap",
+      "google-analytics",
+      "matomo"
+    ]
+  },
+  {
+    "tool": "Fathom",
+    "alternatives": [
+      "plausible",
+      "google-analytics",
+      "matomo",
+      "mixpanel"
+    ]
+  },
+  {
+    "tool": "Matomo",
+    "alternatives": [
+      "google-analytics",
+      "plausible",
+      "fathom",
+      "mixpanel"
+    ]
+  },
+  {
+    "tool": "Crazy Egg",
+    "alternatives": [
+      "hotjar",
+      "vwo",
+      "microsoft-clarity",
+      "google-analytics"
+    ]
+  },
+  {
+    "tool": "Microsoft Clarity",
+    "alternatives": [
+      "hotjar",
+      "crazy-egg",
+      "google-analytics",
+      "plausible"
+    ]
+  },
+  {
+    "tool": "Notion",
+    "alternatives": [
+      "obsidian",
+      "coda",
+      "clickup",
+      "asana"
+    ]
+  },
+  {
+    "tool": "ClickUp",
+    "alternatives": [
+      "monday",
+      "asana",
+      "trello",
+      "notion"
+    ]
+  },
+  {
+    "tool": "Monday.com",
+    "alternatives": [
+      "clickup",
+      "asana",
+      "trello",
+      "airtable"
+    ]
+  },
+  {
+    "tool": "Asana",
+    "alternatives": [
+      "trello",
+      "monday",
+      "clickup",
+      "notion"
+    ]
+  },
+  {
+    "tool": "Trello",
+    "alternatives": [
+      "asana",
+      "clickup",
+      "monday",
+      "todoist"
+    ]
+  },
+  {
+    "tool": "Obsidian",
+    "alternatives": [
+      "notion",
+      "roam-research",
+      "coda",
+      "todoist"
+    ]
+  },
+  {
+    "tool": "Airtable",
+    "alternatives": [
+      "smartsheet",
+      "notion",
+      "monday",
+      "clickup"
+    ]
+  },
+  {
+    "tool": "Todoist",
+    "alternatives": [
+      "ticktick",
+      "any-do",
+      "trello",
+      "asana"
+    ]
+  },
+  {
+    "tool": "Coda",
+    "alternatives": [
+      "notion",
+      "airtable",
+      "clickup",
+      "monday"
+    ]
+  },
+  {
+    "tool": "Cloudflare",
+    "alternatives": [
+      "fastly",
+      "aws-cloudfront",
+      "digitalocean",
+      "vultr"
+    ]
+  },
+  {
+    "tool": "DigitalOcean",
+    "alternatives": [
+      "vultr",
+      "linode",
+      "cloudflare",
+      "hostinger"
+    ]
+  },
+  {
+    "tool": "Vultr",
+    "alternatives": [
+      "digitalocean",
+      "hetzner",
+      "cloudflare",
+      "siteground"
+    ]
+  },
+  {
+    "tool": "Hostinger",
+    "alternatives": [
+      "siteground",
+      "bluehost",
+      "namecheap",
+      "digitalocean"
+    ]
+  },
+  {
+    "tool": "SiteGround",
+    "alternatives": [
+      "hostinger",
+      "wp-engine",
+      "bluehost",
+      "kinsta"
+    ]
+  },
+  {
+    "tool": "Bluehost",
+    "alternatives": [
+      "hostinger",
+      "siteground",
+      "namecheap",
+      "wp-engine"
+    ]
+  },
+  {
+    "tool": "Namecheap",
+    "alternatives": [
+      "godaddy",
+      "hostinger",
+      "bluehost",
+      "siteground"
+    ]
+  },
+  {
+    "tool": "WP Engine",
+    "alternatives": [
+      "kinsta",
+      "siteground",
+      "bluehost",
+      "hostinger"
+    ]
+  },
+  {
+    "tool": "Kinsta",
+    "alternatives": [
+      "wp-engine",
+      "flywheel",
+      "siteground",
+      "hostinger"
+    ]
+  },
+  {
+    "tool": "Shopify",
+    "alternatives": [
+      "woocommerce",
+      "bigcommerce",
+      "wix",
+      "squarespace"
+    ]
+  },
+  {
+    "tool": "WooCommerce",
+    "alternatives": [
+      "shopify",
+      "magento",
+      "bigcommerce",
+      "wix"
+    ]
+  },
+  {
+    "tool": "Gumroad",
+    "alternatives": [
+      "lemon-squeezy",
+      "payhip",
+      "sendowl",
+      "samcart"
+    ]
+  },
+  {
+    "tool": "Lemon Squeezy",
+    "alternatives": [
+      "paddle",
+      "gumroad",
+      "payhip",
+      "sendowl"
+    ]
+  },
+  {
+    "tool": "BigCommerce",
+    "alternatives": [
+      "shopify",
+      "magento",
+      "woocommerce",
+      "wix"
+    ]
+  },
+  {
+    "tool": "Wix",
+    "alternatives": [
+      "squarespace",
+      "shopify",
+      "woocommerce",
+      "bigcommerce"
+    ]
+  },
+  {
+    "tool": "Squarespace",
+    "alternatives": [
+      "wix",
+      "shopify",
+      "woocommerce",
+      "bigcommerce"
+    ]
+  },
+  {
+    "tool": "SendOwl",
+    "alternatives": [
+      "gumroad",
+      "payhip",
+      "lemon-squeezy",
+      "samcart"
+    ]
+  },
+  {
+    "tool": "Payhip",
+    "alternatives": [
+      "gumroad",
+      "sendowl",
+      "lemon-squeezy",
+      "samcart"
+    ]
+  },
+  {
+    "tool": "SamCart",
+    "alternatives": [
+      "clickfunnels",
+      "thrivecart",
+      "gumroad",
+      "lemon-squeezy"
+    ]
+  }
+]

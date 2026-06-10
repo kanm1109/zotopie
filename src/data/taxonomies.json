@@ -1,0 +1,57 @@
+[
+  {
+    "name": "Community Growth",
+    "slug": "community-growth",
+    "description": "Tools for growing and managing online communities across platforms"
+  },
+  {
+    "name": "Social Media Management",
+    "slug": "social-media-management",
+    "description": "Schedule, publish, and manage content across social channels"
+  },
+  {
+    "name": "Content & AI Creation",
+    "slug": "content-ai-creation",
+    "description": "AI-powered tools for writing, designing, and creating content at scale"
+  },
+  {
+    "name": "SEO & Search",
+    "slug": "seo-search",
+    "description": "Keyword research, backlink analysis, and search ranking tools"
+  },
+  {
+    "name": "Marketing & Lead Generation",
+    "slug": "marketing-lead-generation",
+    "description": "Tools for capturing leads, running campaigns, and growing your audience"
+  },
+  {
+    "name": "Link Tracking",
+    "slug": "link-tracking",
+    "description": "URL shorteners, link-in-bio pages, and click tracking tools"
+  },
+  {
+    "name": "Workflow Automation",
+    "slug": "workflow-automation",
+    "description": "Connect apps and automate repetitive workflows without code"
+  },
+  {
+    "name": "Data Analytics",
+    "slug": "data-analytics",
+    "description": "Track, measure, and analyze performance and business data"
+  },
+  {
+    "name": "Productivity & Knowledge Management",
+    "slug": "productivity-knowledge-management",
+    "description": "Organize knowledge, notes, tasks, and team workflows in one place"
+  },
+  {
+    "name": "Infrastructure & Hosting",
+    "slug": "infrastructure-hosting",
+    "description": "Hosting, cloud, and infrastructure tools for developers and businesses"
+  },
+  {
+    "name": "Ecommerce & Monetization",
+    "slug": "ecommerce-monetization",
+    "description": "Sell products, subscriptions, and monetize your audience online"
+  }
+]

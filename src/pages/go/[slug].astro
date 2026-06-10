@@ -1,0 +1,60 @@
+---
+import tools from "../../data/generated/tools-enriched.json";
+
+export async function getStaticPaths() {
+  return tools
+    .filter((t) => t.website)
+    .map((t) => ({
+      params: { slug: t.slug },
+      props: { tool: t },
+    }));
+}
+
+const { tool } = Astro.props;
+const dest = tool.website;
+const isAffiliate = tool.affiliate === true;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="refresh" content={`0;url=${dest}`} />
+    <title>Redirecting to {tool.name}…</title>
+    <!-- Tracking beacon fires before JS redirect -->
+    <script define:vars={{ slug: tool.slug, dest, isAffiliate }}>
+      // Record click in localStorage for analytics
+      try {
+        const key = "ztp_clicks";
+        const raw = localStorage.getItem(key);
+        const data = raw ? JSON.parse(raw) : {};
+        const now = Date.now();
+        data[slug] = data[slug] ?? { count: 0, first: now };
+        data[slug].count += 1;
+        data[slug].last = now;
+        if (isAffiliate) data[slug].affiliate = true;
+        localStorage.setItem(key, JSON.stringify(data));
+      } catch (_) {}
+      // Redirect immediately
+      window.location.replace(dest);
+    </script>
+  </head>
+  <body style="font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#f9fafb;">
+    <div style="text-align:center;max-width:400px;padding:32px;">
+      <div style="font-size:2rem;margin-bottom:16px;">↗</div>
+      <p style="color:#374151;font-size:1rem;margin-bottom:12px;">
+        Taking you to <strong>{tool.name}</strong>…
+      </p>
+      <a
+        href={dest}
+        style="display:inline-block;background:#2563eb;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-size:0.95rem;font-weight:600;"
+      >
+        Continue to {tool.name} →
+      </a>
+      <p style="margin-top:20px;font-size:0.78rem;color:#9ca3af;">
+        <a href="/" style="color:#6b7280;">Back to Zotopie</a>
+      </p>
+    </div>
+  </body>
+</html>

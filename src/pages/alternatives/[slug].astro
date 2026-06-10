@@ -1,0 +1,325 @@
+---
+import tools from "../../data/generated/tools-enriched.json";
+import taxonomies from "../../data/taxonomies.json";
+import MainLayout from "../../layouts/MainLayout.astro";
+import AltCard from "../../components/AltCard.astro";
+import ToolLogo from "../../components/ToolLogo.astro";
+
+export async function getStaticPaths() {
+  return tools
+    .filter((t) => t.alternatives && t.alternatives.length > 0)
+    .map((t) => ({ params: { slug: t.slug }, props: { tool: t } }));
+}
+
+const { tool } = Astro.props;
+const alternativeTools = tools.filter((t) => tool.alternatives.includes(t.slug));
+const primaryCategory = taxonomies.find((c) => c.slug === tool.primaryCategory);
+
+const SITE    = "https://zotopie.com";
+const pageUrl = `${SITE}/alternatives/${tool.slug}/`;
+const pageTitle = `Best ${tool.name} Alternatives 2026 | Zotopie`;
+const pageDesc  = `Looking for ${tool.name} alternatives? Compare the top ${alternativeTools.length} alternatives with pricing, ratings, and honest reviews.`;
+
+const jsonLdStr = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDesc,
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home",         item: `${SITE}/` },
+          { "@type": "ListItem", position: 2, name: "Alternatives", item: `${SITE}/alternatives/` },
+          { "@type": "ListItem", position: 3, name: `${tool.name} Alternatives` },
+        ],
+      },
+    },
+    {
+      "@type": "ItemList",
+      name: `Best ${tool.name} Alternatives`,
+      numberOfItems: alternativeTools.length,
+      itemListElement: alternativeTools.map((t, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "SoftwareApplication",
+          name: t.name,
+          url: `${SITE}/reviews/${t.slug}/`,
+          applicationCategory: primaryCategory?.name ?? "WebApplication",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: String(t.rating),
+            bestRating: "5",
+            worstRating: "1",
+            ratingCount: "1",
+          },
+        },
+      })),
+    },
+  ],
+});
+---
+
+<MainLayout title={pageTitle} description={pageDesc}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLdStr} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="alt-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo;
+      <a href="/reviews">Reviews</a> &rsaquo;
+      <a href={`/reviews/${tool.slug}`}>{tool.name}</a> &rsaquo;
+      <span>Alternatives</span>
+    </div>
+
+    <div class="hero-body">
+      <div class="hero-tool">
+        <ToolLogo tool={tool} size={52} />
+        <div>
+          <h1>Best {tool.name} Alternatives</h1>
+          <p class="hero-sub">
+            {alternativeTools.length} alternatives compared &mdash; ranked by rating &amp; value
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Current Tool Summary -->
+    <div class="current-card">
+      <div class="cc-label">You're replacing</div>
+      <div class="cc-body">
+        <ToolLogo tool={tool} size={36} />
+        <div class="cc-info">
+          <span class="cc-name">{tool.name}</span>
+          <span class="cc-desc">{tool.description}</span>
+        </div>
+        <div class="cc-meta">
+          <span class="cc-rating">★ {tool.rating}</span>
+          <span class="cc-price">{tool.startingPrice ? `from ${tool.startingPrice}` : tool.pricing}</span>
+        </div>
+        <a href={`/reviews/${tool.slug}`} class="cc-link">Full Review →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALTERNATIVES LIST -->
+  <section class="alts-section">
+    <div class="section-hd">
+      <h2>Top {tool.name} Alternatives</h2>
+      <p class="section-sub">Sorted by editorial rating</p>
+    </div>
+    <div class="alts-list">
+      {[...alternativeTools].sort((a, b) => b.rating - a.rating).map((t, i) => (
+        <div class="alt-row">
+          <span class="alt-rank">#{i + 1}</span>
+          <AltCard tool={t} />
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- WHY SWITCH -->
+  {tool.pros && tool.pros.length > 0 && (
+    <section class="why-section">
+      <h2>Why people look for {tool.name} alternatives</h2>
+      <p class="why-intro">
+        While {tool.name} is rated <strong>★ {tool.rating}/5</strong>, some users switch because of:
+      </p>
+      <ul class="why-list">
+        {tool.cons?.slice(0, 4).map((con) => (
+          <li>{con}</li>
+        ))}
+        {(!tool.cons || tool.cons.length === 0) && (
+          <li>Pricing or feature requirements don't match their workflow</li>
+        )}
+      </ul>
+    </section>
+  )}
+
+  <!-- ALSO SEE -->
+  {primaryCategory && (
+    <section class="also-section">
+      <h2>More {primaryCategory.name} tools</h2>
+      <p class="section-sub">Compare all options in this category</p>
+      <a href={`/category/${primaryCategory.slug}`} class="cat-link">
+        Browse {primaryCategory.name} Tools &rarr;
+      </a>
+    </section>
+  )}
+</MainLayout>
+
+<style>
+  /* HERO */
+  .alt-hero {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 40px;
+  }
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 20px;
+  }
+  .breadcrumb a { color: #6b7280; }
+  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  .hero-body { margin-bottom: 24px; }
+  .hero-tool {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 6px;
+  }
+  .hero-sub { font-size: 1rem; color: #6b7280; margin: 0; }
+
+  /* CURRENT TOOL CARD */
+  .current-card {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px 20px;
+  }
+  .cc-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #9ca3af;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+  .cc-body {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .cc-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cc-name { font-size: 1rem; font-weight: 700; color: #111827; }
+  .cc-desc { font-size: 0.875rem; color: #6b7280; }
+  .cc-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .cc-rating {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #d97706;
+    background: #fef3c7;
+    padding: 2px 8px;
+    border-radius: 10px;
+  }
+  .cc-price { font-size: 0.78rem; color: #9ca3af; }
+  .cc-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+    white-space: nowrap;
+    text-decoration: none;
+    flex-shrink: 0;
+  }
+  .cc-link:hover { text-decoration: underline; }
+
+  /* ALTERNATIVES */
+  .alts-section { margin-bottom: 48px; }
+  .section-hd { margin-bottom: 16px; }
+  .section-hd h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 4px;
+  }
+  .section-sub { font-size: 0.875rem; color: #9ca3af; margin: 0; }
+
+  .alts-list { display: flex; flex-direction: column; gap: 10px; }
+  .alt-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .alt-rank {
+    font-size: 1rem;
+    font-weight: 800;
+    color: #d1d5db;
+    width: 28px;
+    flex-shrink: 0;
+    text-align: center;
+  }
+  .alt-row:nth-child(1) .alt-rank { color: #f59e0b; }
+  .alt-row:nth-child(2) .alt-rank { color: #9ca3af; }
+  .alt-row:nth-child(3) .alt-rank { color: #d97706; }
+  .alt-row > :last-child { flex: 1; min-width: 0; }
+
+  /* WHY SWITCH */
+  .why-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 40px;
+    margin-bottom: 40px;
+  }
+  .why-section h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 10px;
+  }
+  .why-intro { font-size: 0.95rem; color: #6b7280; margin-bottom: 14px; }
+  .why-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .why-list li {
+    padding: 10px 14px;
+    background: #fef9ec;
+    border-left: 3px solid #f59e0b;
+    border-radius: 0 8px 8px 0;
+    font-size: 0.9rem;
+    color: #374151;
+  }
+
+  /* ALSO SEE */
+  .also-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 32px;
+    padding-bottom: 16px;
+  }
+  .also-section h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #111827;
+    margin-bottom: 4px;
+  }
+  .cat-link {
+    display: inline-block;
+    margin-top: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #2563eb;
+  }
+
+  @media (max-width: 560px) {
+    h1 { font-size: 1.6rem; }
+    .cc-meta { align-items: flex-start; }
+  }
+</style>

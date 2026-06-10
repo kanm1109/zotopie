@@ -1,0 +1,102 @@
+---
+import ToolLogo from "./ToolLogo.astro";
+const { tool } = Astro.props;
+---
+
+<div class="tool-card">
+  <div class="tool-top">
+    <div class="tool-id">
+      <ToolLogo tool={tool} size={32} />
+      <h3 class="tool-name">
+        <a href={`/reviews/${tool.slug}`}>{tool.name}</a>
+      </h3>
+    </div>
+    <span class="tool-rating">★ {tool.rating}</span>
+  </div>
+  <p class="tool-desc">{tool.description}</p>
+  <div class="tool-footer">
+    <span class="tool-pricing">{tool.pricing}</span>
+    <a href={`/reviews/${tool.slug}`} class="view-btn">View Review</a>
+  </div>
+</div>
+
+<style>
+  .tool-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .tool-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+  }
+  .tool-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .tool-id {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .tool-name {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    min-width: 0;
+  }
+  .tool-name a {
+    color: #111827;
+    text-decoration: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+  }
+  .tool-name a:hover { color: #2563eb; }
+  .tool-rating {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #d97706;
+    white-space: nowrap;
+    background: #fef3c7;
+    padding: 2px 8px;
+    border-radius: 12px;
+    flex-shrink: 0;
+  }
+  .tool-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    flex: 1;
+  }
+  .tool-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+  .tool-pricing {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .view-btn {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+  }
+  .view-btn:hover { text-decoration: underline; }
+</style>

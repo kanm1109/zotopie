@@ -1,0 +1,92 @@
+---
+import tools from "../../data/generated/tools-enriched.json";
+import taxonomies from "../../data/taxonomies.json";
+import MainLayout from "../../layouts/MainLayout.astro";
+import CategoryCard from "../../components/CategoryCard.astro";
+
+const categoriesWithCount = taxonomies.map((cat) => ({
+  ...cat,
+  toolCount: tools.filter((t) => t.categories.includes(cat.slug)).length,
+}));
+---
+
+<MainLayout
+  title="Browse Categories | Zotopie"
+  description="Explore all software tool categories — from social media management to SEO, automation, analytics, and more."
+>
+
+  <section class="page-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo;
+      <span>Categories</span>
+    </div>
+    <h1>All Categories</h1>
+    <p class="hero-desc">Browse tools by use case. Find exactly what you need.</p>
+  </section>
+
+  <section class="cats-section">
+    <div class="cats-grid">
+      {categoriesWithCount.map((cat) => (
+        <CategoryCard category={cat} toolCount={cat.toolCount} />
+      ))}
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <a href="/reviews" class="cta-btn">Browse All Reviews &rarr;</a>
+  </section>
+
+</MainLayout>
+
+<style>
+  .page-hero {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 40px;
+  }
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: #6b7280; }
+  .breadcrumb a:hover { color: #2563eb; }
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 12px;
+  }
+  .hero-desc {
+    font-size: 1.05rem;
+    color: #6b7280;
+    margin: 0;
+  }
+  .cats-section { margin-bottom: 56px; }
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .cta-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 40px;
+    text-align: center;
+  }
+  .cta-btn {
+    display: inline-block;
+    padding: 12px 28px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .cta-btn:hover { background: #1d4ed8; text-decoration: none; }
+  @media (max-width: 640px) {
+    h1 { font-size: 1.75rem; }
+    .cats-grid { grid-template-columns: 1fr; }
+  }
+</style>

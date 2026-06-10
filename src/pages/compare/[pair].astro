@@ -1,0 +1,551 @@
+---
+import tools from "../../data/generated/tools-enriched.json";
+import taxonomies from "../../data/taxonomies.json";
+import MainLayout from "../../layouts/MainLayout.astro";
+import ToolLogo from "../../components/ToolLogo.astro";
+
+export async function getStaticPaths() {
+  const pairs = new Set<string>();
+  for (const tool of tools) {
+    if (!tool.alternatives?.length) continue;
+    for (const altSlug of tool.alternatives) {
+      const key = [tool.slug, altSlug].sort().join("-vs-");
+      pairs.add(key);
+    }
+  }
+
+  return [...pairs].flatMap((pair) => {
+    const slugA = tools.find((t) => pair.startsWith(t.slug + "-vs-"))?.slug;
+    const slugB = tools.find((t) => pair.endsWith("-vs-" + t.slug))?.slug;
+    if (!slugA || !slugB) return [];
+    const toolA = tools.find((t) => t.slug === slugA)!;
+    const toolB = tools.find((t) => t.slug === slugB)!;
+    return [{ params: { pair }, props: { toolA, toolB } }];
+  });
+}
+
+const { toolA, toolB } = Astro.props;
+
+const catA = taxonomies.find((c) => c.slug === toolA.primaryCategory);
+const catB = taxonomies.find((c) => c.slug === toolB.primaryCategory);
+
+function formatPricing(tool: typeof toolA) {
+  if (tool.pricing === "Free") return "Free";
+  if (tool.pricing === "Freemium") return tool.startingPrice ? `Free + from ${tool.startingPrice}` : "Freemium";
+  return tool.startingPrice ? `From ${tool.startingPrice}` : tool.pricing;
+}
+
+function verdict(a: typeof toolA, b: typeof toolB) {
+  if (a.rating === b.rating) {
+    if (a.pricing === "Free" || a.pricing === "Freemium") return a.name;
+    if (b.pricing === "Free" || b.pricing === "Freemium") return b.name;
+    return a.name;
+  }
+  return a.rating > b.rating ? a.name : b.name;
+}
+
+const winner      = verdict(toolA, toolB);
+const isAWinner   = winner === toolA.name;
+const SITE        = "https://zotopie.com";
+const pageUrl     = `${SITE}/compare/${toolA.slug}-vs-${toolB.slug}/`;
+const pageTitle   = `${toolA.name} vs ${toolB.name} (2026): In-Depth Comparison | Zotopie`;
+const pageDesc    = `${toolA.name} vs ${toolB.name}: Compare pricing, features, pros & cons side-by-side. Find out which tool is right for you in 2026.`;
+
+const jsonLdStr = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: pageTitle,
+      description: pageDesc,
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home",    item: `${SITE}/` },
+          { "@type": "ListItem", position: 2, name: "Compare", item: `${SITE}/compare/` },
+          { "@type": "ListItem", position: 3, name: `${toolA.name} vs ${toolB.name}` },
+        ],
+      },
+    },
+    {
+      "@type": "ItemList",
+      name: `${toolA.name} vs ${toolB.name} Comparison`,
+      numberOfItems: 2,
+      itemListElement: [toolA, toolB].map((t, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "SoftwareApplication",
+          name: t.name,
+          url: `${SITE}/reviews/${t.slug}/`,
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: String(t.rating),
+            bestRating: "5",
+            worstRating: "1",
+            ratingCount: "1",
+          },
+        },
+      })),
+    },
+  ],
+});
+
+function starsOf(n: number) {
+  const full = Math.floor(n);
+  const half = n - full >= 0.5 ? 1 : 0;
+  const empty = 5 - full - half;
+  return "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
+}
+---
+
+<MainLayout title={pageTitle} description={pageDesc}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLdStr} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="cmp-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <a href="/compare">Compare</a> &rsaquo;
+      <span>{toolA.name} vs {toolB.name}</span>
+    </div>
+
+    <h1>{toolA.name} vs {toolB.name}</h1>
+    <p class="hero-sub">Detailed comparison &mdash; pricing, features, pros &amp; cons</p>
+
+    <div class="cmp-heads">
+      <!-- Tool A -->
+      <a href={`/reviews/${toolA.slug}`} class="cmp-head {isAWinner ? 'cmp-head--winner' : ''}">
+        {isAWinner && <span class="winner-badge">Winner</span>}
+        <ToolLogo tool={toolA} size={56} />
+        <div class="ch-name">{toolA.name}</div>
+        <div class="ch-rating">
+          <span class="rating-num">{toolA.rating}</span>
+          <span class="rating-stars">{starsOf(toolA.rating)}</span>
+        </div>
+        <div class="ch-price">{formatPricing(toolA)}</div>
+        <div class="ch-cat">{catA?.name ?? toolA.primaryCategory}</div>
+      </a>
+
+      <div class="vs-badge">VS</div>
+
+      <!-- Tool B -->
+      <a href={`/reviews/${toolB.slug}`} class="cmp-head {!isAWinner ? 'cmp-head--winner' : ''}">
+        {!isAWinner && <span class="winner-badge">Winner</span>}
+        <ToolLogo tool={toolB} size={56} />
+        <div class="ch-name">{toolB.name}</div>
+        <div class="ch-rating">
+          <span class="rating-num">{toolB.rating}</span>
+          <span class="rating-stars">{starsOf(toolB.rating)}</span>
+        </div>
+        <div class="ch-price">{formatPricing(toolB)}</div>
+        <div class="ch-cat">{catB?.name ?? toolB.primaryCategory}</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- QUICK COMPARISON TABLE -->
+  <section class="cmp-section">
+    <h2>Quick Comparison</h2>
+    <div class="cmp-table-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th class="col-label">Feature</th>
+            <th class={`col-a${isAWinner ? " col-winner" : ""}`}>{toolA.name}</th>
+            <th class={`col-b${!isAWinner ? " col-winner" : ""}`}>{toolB.name}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rating</td>
+            <td class={isAWinner ? "cell-better" : ""}>{toolA.rating} / 5</td>
+            <td class={!isAWinner ? "cell-better" : ""}>{toolB.rating} / 5</td>
+          </tr>
+          <tr>
+            <td>Pricing Model</td>
+            <td>{toolA.pricing}</td>
+            <td>{toolB.pricing}</td>
+          </tr>
+          <tr>
+            <td>Starting Price</td>
+            <td class={(!toolA.startingPrice || toolA.pricing === "Free") ? "cell-better" : ""}>
+              {toolA.pricing === "Free" ? "Free" : toolA.startingPrice || "Contact"}
+            </td>
+            <td class={(!toolB.startingPrice || toolB.pricing === "Free") ? "cell-better" : ""}>
+              {toolB.pricing === "Free" ? "Free" : toolB.startingPrice || "Contact"}
+            </td>
+          </tr>
+          <tr>
+            <td>Category</td>
+            <td>{catA?.name ?? toolA.primaryCategory}</td>
+            <td>{catB?.name ?? toolB.primaryCategory}</td>
+          </tr>
+          <tr>
+            <td>Free Plan</td>
+            <td class={(toolA.pricing === "Free" || toolA.pricing === "Freemium") ? "cell-better" : ""}>
+              {(toolA.pricing === "Free" || toolA.pricing === "Freemium") ? "✓ Yes" : "✗ No"}
+            </td>
+            <td class={(toolB.pricing === "Free" || toolB.pricing === "Freemium") ? "cell-better" : ""}>
+              {(toolB.pricing === "Free" || toolB.pricing === "Freemium") ? "✓ Yes" : "✗ No"}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- PROS & CONS -->
+  <section class="cmp-section pros-cons-section">
+    <h2>Pros &amp; Cons</h2>
+    <div class="pros-cons-grid">
+      <!-- Tool A Pros/Cons -->
+      <div class="pc-block">
+        <div class="pc-header">
+          <ToolLogo tool={toolA} size={24} />
+          <span>{toolA.name}</span>
+        </div>
+        {toolA.pros && toolA.pros.length > 0 && (
+          <div class="pc-group">
+            <div class="pc-label pros-label">Pros</div>
+            <ul class="pc-list pros-list">
+              {toolA.pros.slice(0, 4).map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        )}
+        {toolA.cons && toolA.cons.length > 0 && (
+          <div class="pc-group">
+            <div class="pc-label cons-label">Cons</div>
+            <ul class="pc-list cons-list">
+              {toolA.cons.slice(0, 3).map((c) => <li>{c}</li>)}
+            </ul>
+          </div>
+        )}
+      </div>
+
+      <!-- Tool B Pros/Cons -->
+      <div class="pc-block">
+        <div class="pc-header">
+          <ToolLogo tool={toolB} size={24} />
+          <span>{toolB.name}</span>
+        </div>
+        {toolB.pros && toolB.pros.length > 0 && (
+          <div class="pc-group">
+            <div class="pc-label pros-label">Pros</div>
+            <ul class="pc-list pros-list">
+              {toolB.pros.slice(0, 4).map((p) => <li>{p}</li>)}
+            </ul>
+          </div>
+        )}
+        {toolB.cons && toolB.cons.length > 0 && (
+          <div class="pc-group">
+            <div class="pc-label cons-label">Cons</div>
+            <ul class="pc-list cons-list">
+              {toolB.cons.slice(0, 3).map((c) => <li>{c}</li>)}
+            </ul>
+          </div>
+        )}
+      </div>
+    </div>
+  </section>
+
+  <!-- BEST FOR -->
+  <section class="cmp-section">
+    <h2>Who Is It For?</h2>
+    <div class="bestfor-grid">
+      <div class="bf-block">
+        <div class="bf-name">{toolA.name} is best for</div>
+        <ul class="bf-list">
+          {(toolA.bestFor ?? []).slice(0, 4).map((b) => <li>{b}</li>)}
+        </ul>
+        <a href={`/reviews/${toolA.slug}`} class="bf-link">Read full {toolA.name} review →</a>
+      </div>
+      <div class="bf-block">
+        <div class="bf-name">{toolB.name} is best for</div>
+        <ul class="bf-list">
+          {(toolB.bestFor ?? []).slice(0, 4).map((b) => <li>{b}</li>)}
+        </ul>
+        <a href={`/reviews/${toolB.slug}`} class="bf-link">Read full {toolB.name} review →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERDICT -->
+  <section class="cmp-section verdict-section">
+    <h2>Verdict</h2>
+    <div class="verdict-box">
+      <div class="verdict-winner">
+        <ToolLogo tool={isAWinner ? toolA : toolB} size={48} />
+        <div>
+          <div class="vw-label">Recommended choice</div>
+          <div class="vw-name">{winner}</div>
+        </div>
+      </div>
+      <p class="verdict-text">
+        Based on our editorial ratings, <strong>{winner}</strong> scores higher
+        ({isAWinner ? toolA.rating : toolB.rating}/5 vs {isAWinner ? toolB.rating : toolA.rating}/5)
+        {(() => {
+          const w = isAWinner ? toolA : toolB;
+          const l = isAWinner ? toolB : toolA;
+          if ((w.pricing === "Free" || w.pricing === "Freemium") && l.pricing === "Paid") {
+            return ` and offers a free plan, making it the better value.`;
+          }
+          return `.`;
+        })()}
+        That said, both tools have their strengths — read the full reviews to decide.
+      </p>
+      <div class="verdict-ctas">
+        <a href={`/reviews/${toolA.slug}`} class="vcta vcta-secondary">{toolA.name} Review</a>
+        <a href={`/reviews/${toolB.slug}`} class="vcta vcta-secondary">{toolB.name} Review</a>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  /* HERO */
+  .cmp-hero {
+    padding: 40px 0 32px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 40px;
+  }
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: #6b7280; }
+  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 6px;
+  }
+  .hero-sub { font-size: 1rem; color: #6b7280; margin: 0 0 28px; }
+
+  /* COMPARISON HEADS */
+  .cmp-heads {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr;
+    gap: 12px;
+    align-items: center;
+  }
+  .cmp-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    background: #f9fafb;
+    border: 2px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s;
+    position: relative;
+  }
+  .cmp-head:hover { border-color: #2563eb; }
+  .cmp-head--winner {
+    border-color: #2563eb;
+    background: #eff6ff;
+  }
+  .winner-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #2563eb;
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 3px 10px;
+    border-radius: 20px;
+  }
+  .ch-name { font-size: 1.15rem; font-weight: 700; color: #111827; text-align: center; }
+  .ch-rating { display: flex; align-items: center; gap: 6px; }
+  .rating-num { font-size: 1.4rem; font-weight: 800; color: #111827; }
+  .rating-stars { font-size: 0.9rem; color: #f59e0b; }
+  .ch-price { font-size: 0.875rem; color: #6b7280; }
+  .ch-cat { font-size: 0.78rem; color: #9ca3af; }
+  .vs-badge {
+    font-size: 1rem;
+    font-weight: 900;
+    color: #d1d5db;
+    text-align: center;
+  }
+
+  /* SECTIONS */
+  .cmp-section {
+    margin-bottom: 48px;
+  }
+  .cmp-section h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  /* COMPARISON TABLE */
+  .cmp-table-wrap { overflow-x: auto; }
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.925rem;
+  }
+  .cmp-table th, .cmp-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .cmp-table th {
+    background: #f9fafb;
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.875rem;
+  }
+  .cmp-table .col-winner { background: #eff6ff; color: #2563eb; }
+  .cmp-table .col-label { color: #9ca3af; width: 33%; }
+  .cmp-table td:first-child { color: #6b7280; }
+  .cmp-table .cell-better { color: #059669; font-weight: 700; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+
+  /* PROS & CONS */
+  .pros-cons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .pc-block {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .pc-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9fafb;
+    padding: 12px 16px;
+    font-weight: 700;
+    color: #111827;
+    font-size: 0.95rem;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .pc-group { padding: 12px 16px; }
+  .pc-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 8px;
+  }
+  .pros-label { color: #059669; }
+  .cons-label { color: #dc2626; }
+  .pc-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .pros-list li {
+    font-size: 0.875rem;
+    color: #374151;
+    padding-left: 18px;
+    position: relative;
+  }
+  .pros-list li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+  .cons-list li {
+    font-size: 0.875rem;
+    color: #374151;
+    padding-left: 18px;
+    position: relative;
+  }
+  .cons-list li::before { content: "✗"; position: absolute; left: 0; color: #dc2626; }
+
+  /* BEST FOR */
+  .bestfor-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .bf-block {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+  }
+  .bf-name {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #374151;
+    margin-bottom: 12px;
+  }
+  .bf-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .bf-list li {
+    font-size: 0.875rem;
+    color: #6b7280;
+    padding-left: 16px;
+    position: relative;
+  }
+  .bf-list li::before { content: "→"; position: absolute; left: 0; color: #2563eb; }
+  .bf-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+  }
+  .bf-link:hover { text-decoration: underline; }
+
+  /* VERDICT */
+  .verdict-box {
+    background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
+    border: 1px solid #bfdbfe;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .verdict-winner {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .vw-label { font-size: 0.78rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.06em; }
+  .vw-name { font-size: 1.3rem; font-weight: 800; color: #111827; }
+  .verdict-text { font-size: 0.95rem; color: #374151; margin-bottom: 20px; line-height: 1.6; }
+  .verdict-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+  .vcta {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .vcta-secondary {
+    background: #fff;
+    border: 1.5px solid #d1d5db;
+    color: #374151;
+  }
+  .vcta-secondary:hover { border-color: #2563eb; color: #2563eb; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 1.5rem; }
+    .cmp-heads { grid-template-columns: 1fr 32px 1fr; }
+    .pros-cons-grid, .bestfor-grid { grid-template-columns: 1fr; }
+    .cmp-table th, .cmp-table td { padding: 8px 10px; font-size: 0.82rem; }
+  }
+</style>
