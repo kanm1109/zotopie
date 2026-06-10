@@ -39,13 +39,15 @@ const [tools, overviews, prosCons, bestFor, alternatives, logoMapping] =
   ]);
 
 // ── Lookup maps (case-insensitive name → data) ────────────────────────────────
-const norm = (s) => s.toLowerCase().trim();
+// Guard against undefined keys — some source files use "name" instead of "tool"
+const norm = (s) => (s ?? "").toLowerCase().trim();
+const toolKey = (e) => norm(e.tool ?? e.name ?? e.tool_name ?? "");
 
-const overviewMap   = new Map(overviews.map   ((e) => [norm(e.tool),      e.overview]));
-const prosConsMap   = new Map(prosCons.map    ((e) => [norm(e.tool),      { pros: e.pros ?? [], cons: e.cons ?? [] }]));
-const bestForMap    = new Map(bestFor.map     ((e) => [norm(e.tool),      e.bestFor  ?? []]));
-const alternatesMap = new Map(alternatives.map((e) => [norm(e.tool),      e.alternatives ?? []]));
-const iconSlugMap   = new Map(logoMapping.map ((e) => [norm(e.tool_name), e.simple_icon ?? ""]));
+const overviewMap   = new Map(overviews.map   ((e) => [toolKey(e), e.overview]));
+const prosConsMap   = new Map(prosCons.map    ((e) => [toolKey(e), { pros: e.pros ?? [], cons: e.cons ?? [] }]));
+const bestForMap    = new Map(bestFor.map     ((e) => [toolKey(e), e.bestFor ?? []]));
+const alternatesMap = new Map(alternatives.map((e) => [toolKey(e), e.alternatives ?? []]));
+const iconSlugMap   = new Map(logoMapping.map ((e) => [norm(e.tool_name ?? e.tool ?? ""), e.simple_icon ?? ""]));
 
 // ── Resolve simple-icon slug → validate + extract path & hex ─────────────────
 const slugToKey = (s) => "si" + s.charAt(0).toUpperCase() + s.slice(1);
