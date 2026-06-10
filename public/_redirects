@@ -1,3 +1,10 @@
+# www → non-www (canonical: https://zotopie.com)
+https://www.zotopie.com/* https://zotopie.com/:splat 301
+
+# HTTP → HTTPS fallback
+http://zotopie.com/* https://zotopie.com/:splat 301
+http://www.zotopie.com/* https://zotopie.com/:splat 301
+
 # Redirect bare category paths to trailing-slash versions
 /reddit  /reddit/  301
 /threads  /threads/  301

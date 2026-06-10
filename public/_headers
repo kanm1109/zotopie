@@ -4,9 +4,28 @@
   Referrer-Policy: strict-origin-when-cross-origin
   X-XSS-Protection: 1; mode=block
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
+# HTML pages: short cache (10 min) — content updates frequently
+/*.html
+  Cache-Control: public, max-age=600, s-maxage=600, stale-while-revalidate=86400
+
+# Static assets (JS, CSS, fonts, images): long cache with immutable
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Sitemaps and RSS: medium cache
 /sitemap*.xml
+  Cache-Control: public, max-age=3600, s-maxage=3600
   Content-Type: application/xml; charset=utf-8
 
 /rss.xml
+  Cache-Control: public, max-age=3600, s-maxage=3600
   Content-Type: application/rss+xml; charset=utf-8
+
+# Redirect pages: no-cache (don't cache, they track clicks)
+/go/*
+  Cache-Control: no-store, no-cache, must-revalidate
