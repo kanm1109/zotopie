@@ -74,6 +74,8 @@ const searchJsonLdStr = JSON.stringify({
       />
     </div>
 
+    <div id="cat-filters" class="cat-filter-row" role="group" aria-label="Filter by category"></div>
+
     <p id="count" class="result-count" aria-live="polite"></p>
   </section>
 
@@ -161,31 +163,85 @@ function fillSearch(term) {
   input.focus();
 }
 
+// ── Relevance scoring ───────────────────────────────────────────────────
+function scoreMatch(tool, q) {
+  let score = 0;
+  const nameLo = tool.name.toLowerCase();
+  if (nameLo === q)                                        score += 30; // exact name
+  else if (nameLo.startsWith(q))                          score += 20; // name prefix
+  else if (nameLo.includes(q))                            score += 10; // name contains
+  if (tool.categories.some((s) =>
+    s.toLowerCase() === q || catName(s).toLowerCase() === q)) score += 9; // exact category
+  else if (tool.categories.some((s) =>
+    s.toLowerCase().includes(q) || catName(s).toLowerCase().includes(q))) score += 7; // partial category
+  if (tool.bestFor?.some((b) => b.toLowerCase().includes(q)))  score += 5; // bestFor
+  if (tool.overview?.toLowerCase().includes(q))                score += 3; // overview
+  if (tool.description.toLowerCase().includes(q))              score += 2; // description
+  if (tool.slug.toLowerCase().includes(q))                     score += 1; // slug
+  return score;
+}
+
+// ── Category filter state ────────────────────────────────────────────────
+let activeCat = '';
+
+const catCounts = {};
+TOOLS.forEach((t) => t.categories.forEach((c) => { catCounts[c] = (catCounts[c] || 0) + 1; }));
+const topCats = Object.entries(catCounts)
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 14)
+  .map(([slug]) => slug);
+
+function renderCatChips() {
+  const allActive = !activeCat ? ' cat-chip-active' : '';
+  const chips = topCats.map((slug) => {
+    const active = slug === activeCat ? ' cat-chip-active' : '';
+    return `<button class="cat-chip${active}" data-cat="${slug}">${esc(catName(slug))}</button>`;
+  });
+  return `<button class="cat-chip${allActive}" data-cat="">All</button>${chips.join('')}`;
+}
+
+function initCatChips() {
+  const el = document.getElementById('cat-filters');
+  el.innerHTML = renderCatChips();
+  el.addEventListener('click', (e) => {
+    const btn = e.target.closest('.cat-chip');
+    if (!btn) return;
+    activeCat = btn.dataset.cat || '';
+    el.innerHTML = renderCatChips();
+    doSearch(document.getElementById('q').value);
+  });
+}
+
+// ── Search ───────────────────────────────────────────────────────────────
 function doSearch(raw) {
   const q = raw.trim().toLowerCase();
   const countEl = document.getElementById('count');
   const resultsEl = document.getElementById('results');
 
-  if (!q) {
+  if (!q && !activeCat) {
     countEl.textContent = '';
     resultsEl.innerHTML = POPULAR_HTML;
     return;
   }
 
-  const hits = TOOLS.filter((t) => {
-    if (t.name.toLowerCase().includes(q)) return true;
-    if (t.slug.toLowerCase().includes(q)) return true;
-    if (t.description.toLowerCase().includes(q)) return true;
-    if (t.overview && t.overview.toLowerCase().includes(q)) return true;
-    if (t.bestFor && t.bestFor.some((b) => b.toLowerCase().includes(q))) return true;
-    return t.categories.some((s) =>
-      s.toLowerCase().includes(q) || catName(s).toLowerCase().includes(q)
-    );
-  });
+  let hits;
+  if (!q && activeCat) {
+    hits = TOOLS.filter((t) => t.categories.includes(activeCat));
+  } else {
+    hits = TOOLS
+      .map((t) => ({ tool: t, score: scoreMatch(t, q) }))
+      .filter((x) => x.score > 0 && (!activeCat || x.tool.categories.includes(activeCat)))
+      .sort((a, b) => b.score - a.score)
+      .map((x) => x.tool);
+  }
+
+  const label = activeCat
+    ? (q ? `"${raw.trim()}" in ${catName(activeCat)}` : catName(activeCat))
+    : `"${raw.trim()}"`;
 
   countEl.textContent = hits.length
-    ? `${hits.length} result${hits.length === 1 ? '' : 's'} for "${raw.trim()}"`
-    : `No results for "${raw.trim()}"`;
+    ? `${hits.length} result${hits.length === 1 ? '' : 's'} for ${label}`
+    : `No results for ${label}`;
 
   resultsEl.innerHTML = hits.length
     ? hits.map((t) => renderCard(t, q)).join('')
@@ -207,6 +263,7 @@ function onInput() {
 }
 
 input.addEventListener('input', onInput);
+initCatChips();
 
 const init = new URLSearchParams(location.search).get('q') || '';
 if (init) { input.value = init; doSearch(init); }
@@ -435,6 +492,42 @@ else { doSearch(''); }
     border-color: #2563eb;
     color: #2563eb;
     background: #eff6ff;
+  }
+
+  /* Category filter chips */
+  .cat-filter-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .cat-chip {
+    padding: 6px 15px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 20px;
+    background: #fff;
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: #374151;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .cat-chip:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+  }
+  .cat-chip-active {
+    border-color: #2563eb;
+    background: #2563eb;
+    color: #fff;
+  }
+  .cat-chip-active:hover {
+    background: #1d4ed8;
+    border-color: #1d4ed8;
+    color: #fff;
   }
 
   /* No results */

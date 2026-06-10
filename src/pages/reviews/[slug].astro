@@ -267,6 +267,24 @@ const jsonLdStr = JSON.stringify({
     </section>
   )}
 
+  <!-- RELATED TOOLS (C24) — same category, placed right after Best For -->
+  {relatedTools.length > 0 && (
+    <section class="detail-section">
+      <div class="section-hd">
+        <div>
+          <h2>Related Tools</h2>
+          <p class="section-sub">Other {primaryCategory?.name ?? "software"} tools you might like</p>
+        </div>
+        {primaryCategory && (
+          <a href={`/category/${primaryCategory.slug}`} class="see-all">See all {primaryCategory.name} &rarr;</a>
+        )}
+      </div>
+      <div class="tools-grid">
+        {relatedTools.map((t) => <ToolCard tool={t} />)}
+      </div>
+    </section>
+  )}
+
   <!-- KEY FEATURES -->
   {tool.keyFeatures?.length > 0 && (
     <section class="detail-section">
@@ -352,37 +370,20 @@ const jsonLdStr = JSON.stringify({
     </section>
   )}
 
-  <!-- ALTERNATIVES -->
+  <!-- ALTERNATIVES (C25) — "Best Alternatives to {tool}" -->
   {alternativeTools.length > 0 && (
     <section class="detail-section alt-section">
       <div class="section-hd">
         <div>
-          <h2>Alternatives to {tool.name}</h2>
+          <h2>Best Alternatives to {tool.name}</h2>
           <p class="section-sub">Compare {tool.name} with top alternatives</p>
         </div>
+        <a href={`/alternatives/${tool.slug}`} class="see-all">See all alternatives &rarr;</a>
       </div>
       <div class="alt-list">
         {alternativeTools.map((t) => (
           <AltCard tool={t} />
         ))}
-      </div>
-    </section>
-  )}
-
-  <!-- RELATED TOOLS -->
-  {relatedTools.length > 0 && (
-    <section class="detail-section">
-      <div class="section-hd">
-        <div>
-          <h2>{primaryCategory ? `More ${primaryCategory.name} Tools` : 'Related Tools'}</h2>
-          <p class="section-sub">Tools similar to {tool.name} in features and quality</p>
-        </div>
-        {primaryCategory && (
-          <a href={`/category/${primaryCategory.slug}`} class="see-all">See all &rarr;</a>
-        )}
-      </div>
-      <div class="tools-grid">
-        {relatedTools.map((t) => <ToolCard tool={t} />)}
       </div>
     </section>
   )}
