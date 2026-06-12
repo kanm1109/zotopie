@@ -1233,7 +1233,7 @@
     "website": "https://jasper.ai",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$39/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -1246,10 +1246,23 @@
       "copy-ai",
       "writesonic"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Jasper is an AI writing assistant built for marketing teams to produce blogs, ads, emails, and social content at scale. Its Brand Voice feature trains outputs on uploaded company guidelines, ensuring consistent tone across campaigns. Jasper uses multiple underlying LLMs (GPT-4, Claude, Gemini). Creator ($39/mo) is for individuals; Pro ($59/mo) adds team collaboration and campaigns features.",
+    "pros": [
+      "Brand Voice maintains consistent tone and style across all AI-generated content",
+      "50+ templates for specific content types including ads, product descriptions, and cold emails",
+      "Jasper Chat handles conversational content generation alongside template workflows",
+      "Multi-language support for 25+ languages serves international marketing teams",
+      "Native Surfer SEO integration for combined writing and on-page optimization"
+    ],
+    "cons": [
+      "$39-59/mo premium over general AI tools (ChatGPT, Claude) for specialized marketing features",
+      "AI outputs require human editing — drafts need refinement before publication",
+      "Quality depends on underlying LLM — results fluctuate with model updates"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Jasper is worth the premium over general AI tools specifically when Brand Voice consistency and marketing-template structure matter. Individual content creators rarely justify the $39/mo over ChatGPT Plus; marketing teams producing high-volume branded content get the clearest value."
+    }
   },
   {
     "name": "Copy.ai",
@@ -1258,7 +1271,7 @@
     "website": "https://copy.ai",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $36/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -1271,10 +1284,23 @@
       "jasper",
       "rytr"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Copy.ai is an AI writing tool focused on marketing copy — product descriptions, ad copy, email subject lines, and social posts. Its Workflows feature chains multiple AI prompts to automate multi-step content pipelines, such as inputting a product URL and generating descriptions, headlines, and ad variations in sequence. Free plan produces 2,000 words/mo; Starter ($36/mo) gives unlimited generations and Workflow access.",
+    "pros": [
+      "Marketing-specific templates for Facebook ads, Google ads, product pages, and email sequences",
+      "Workflow automation chains multiple AI steps — input a URL, get descriptions and ad copy in sequence",
+      "Infobase stores brand voice, product information, and audience details for consistent outputs",
+      "Supports 25+ languages for international marketing campaign content",
+      "Team collaboration features on Pro plan for shared Workflows and brand assets"
+    ],
+    "cons": [
+      "Free plan 2,000 word limit is exhausted quickly for any active marketing program",
+      "AI outputs require human editing — drafts serve as starting points, not finished copy",
+      "At $36/mo, competes with general-purpose AI tools (Claude, ChatGPT) with broader capabilities"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Copy.ai's Workflow automation feature is its strongest differentiator — teams that generate high-volume, multi-format marketing content (ads, descriptions, emails) from the same product input benefit most. For occasional marketing writing, general-purpose AI tools offer comparable output at lower cost."
+    }
   },
   {
     "name": "Canva",
@@ -1435,7 +1461,7 @@
     "website": "https://synthesia.io",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$29/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -1448,10 +1474,23 @@
       "heygen",
       "d-id"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Synthesia is an AI video generation platform that converts text scripts into video presentations using AI avatars and synthesized voices. Teams use it to produce training videos, product demos, and explainer content without cameras, studios, or video editors. Starter ($29/mo) includes 120 video minutes per year and 60+ AI avatars; Creator ($89/mo) raises limits for high-volume production teams.",
+    "pros": [
+      "Script-to-video pipeline is significantly faster than traditional video production requiring filming and editing",
+      "60+ AI avatars in 120+ languages with accurate lip-sync for international content production",
+      "Custom avatar creation from a recorded video maintains brand-consistent presenter identity",
+      "PowerPoint-like scene editor is familiar to non-video professionals without video editing experience",
+      "Automatic closed captioning ensures accessibility compliance without manual transcription"
+    ],
+    "cons": [
+      "AI avatars lack human expressiveness — not suitable for emotional or nuanced communication",
+      "Starter plan 120 minutes per year is easily exhausted with regular production schedules",
+      "Voice quality varies by language — non-English voices noticeably less natural than major language models"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Synthesia is the right tool for internal training videos, localized product demos, and explainer content where production speed matters more than emotional connection. The multilingual capability is a genuine differentiator for international teams. High-emotion content — testimonials, brand campaigns — still requires human presenters."
+    }
   },
   {
     "name": "Skool",
@@ -1536,7 +1575,7 @@
     "website": "https://discord.com",
     "logo": "/logos/discord.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $9.99/mo",
     "affiliate": false,
     "rating": 4.7,
     "featured": false,
@@ -1549,10 +1588,23 @@
       "slack",
       "guilded"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Discord is a communication platform originally built for gaming communities that expanded into a general-purpose hub for creators, developers, and brands. It combines text channels, voice rooms, video chat, threads, forums, and stage events in one free workspace. Communities scale from small private servers to public hubs with millions of members. Nitro ($9.99/mo) adds enhanced uploads, custom emojis, and server boosts for supporters.",
+    "pros": [
+      "Free for unlimited members and channels with no seat-based pricing",
+      "Voice, text, video, and threads unified in one server without separate tools",
+      "Bots and custom integrations via Discord API enable moderation, ticketing, and automation",
+      "Stage events support live audio broadcasts with speaker/audience separation",
+      "Rich media embeds with link previews, image galleries, and file sharing"
+    ],
+    "cons": [
+      "Moderation requires significant bot setup (MEE6, Carl-bot) to manage large communities",
+      "No native course or paid content-access control — requires third-party integrations",
+      "Member management lacks CRM-style tracking of member activity or purchase history"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Discord is the default platform for building engaged communities around games, dev tools, and creator brands. Its free tier is genuinely powerful, but serious community management requires significant bot configuration. Not a replacement for platforms like Circle or Skool that need native content monetization."
+    }
   },
   {
     "name": "Patreon",
@@ -1561,7 +1613,7 @@
     "website": "https://patreon.com",
     "logo": "/logos/patreon.svg",
     "pricing": "Free",
-    "startingPrice": "",
+    "startingPrice": "Free (8% platform fee)",
     "affiliate": false,
     "rating": 4.4,
     "featured": false,
@@ -1574,10 +1626,23 @@
       "buy-me-a-coffee",
       "kofi"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Patreon is a membership platform enabling creators — artists, podcasters, writers, and YouTubers — to receive recurring support from fans. Creators set up monthly tiers with perks, and Patreon handles payments, tier management, and payouts. Platform fee is 8% on Pro, 12% on Premium; Lite charges 5% with limited features. Additional 2.9% + $0.30 payment processing applies on all plans.",
+    "pros": [
+      "Built-in creator discovery exposes memberships to Patreon's existing audience of active patrons",
+      "Native Discord integration automatically assigns roles based on membership tier without manual management",
+      "Merchandise fulfillment partnerships with Printful and Squarespace available for physical rewards",
+      "Native iOS and Android apps provide a polished patron experience across devices",
+      "Established billing infrastructure handles failed payment recovery automatically"
+    ],
+    "cons": [
+      "8-12% platform fee plus 2.9% + $0.30 payment processing creates combined 11-15% total cost",
+      "Creator pages are heavily Patreon-branded — white-labeling is not available",
+      "Patreon controls the patron relationship — migrating subscribers to another platform risks significant churn"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Patreon is the right starting point for creators with an existing audience who want to monetize quickly without platform setup. Discovery is a real advantage for new membership launches. The combined fee rate and platform dependency become meaningful concerns as monthly revenue grows — creators over $5K/mo often evaluate Skool or Circle for better economics and ownership."
+    }
   },
   {
     "name": "Mighty Networks",
@@ -1586,7 +1651,7 @@
     "website": "https://mightynetworks.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$33/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -1599,10 +1664,23 @@
       "circle",
       "skool"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Mighty Networks is an all-in-one community, course, and membership platform that positions itself as the alternative to building a following on rented social media. It combines discussion spaces, courses, live events, member profiles, and paid membership tiers in one white-labeled environment. Courses plan ($33/mo) supports community and courses; Business ($99/mo) adds larger member capacity and more community features.",
+    "pros": [
+      "All content and community hosted on your platform — not subject to algorithm changes or social media policy",
+      "Native iOS and Android apps under your brand without requiring a separate app development project",
+      "Powerful course and community combination — discussions attached directly to each lesson",
+      "Member profiles with activity feeds create genuine network effects within the community",
+      "Host virtual events and live streaming without needing Zoom or external streaming tools"
+    ],
+    "cons": [
+      "$33/mo requires paying members to justify before audience monetization begins",
+      "100-member limit on Courses plan — growth requires Business plan at $99/mo",
+      "Custom branded apps require Mighty Pro plan at $360/mo, significantly above base pricing"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Mighty Networks is the best choice for creators building a community-first business around courses and live events on an owned platform. The branded app option is a genuine differentiator from Circle or Skool. Budget for the Business plan before launch — the 100-member Courses plan limit is hit quickly by any active community."
+    }
   },
   {
     "name": "Bettermode",
@@ -1611,7 +1689,7 @@
     "website": "https://bettermode.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$49/mo",
     "affiliate": true,
     "rating": 4.5,
     "featured": false,
@@ -1624,10 +1702,23 @@
       "circle",
       "discourse"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Bettermode (formerly Tribe) is a community platform for B2B SaaS companies and brands building customer communities, support forums, and product feedback hubs. It offers discussion forums, ideation boards, knowledge bases, and native integrations with Intercom, HubSpot, and Salesforce. Starter ($49/mo) supports up to 1,000 members; Pro ($99/mo) extends capacity to 5,000 members.",
+    "pros": [
+      "Deep CRM integration — sync member activity to HubSpot, Salesforce, and Intercom automatically",
+      "Customizable space types (discussion, ideation, knowledge base, Q&A) within one community",
+      "White-label with custom domain and brand colors included on all paid plans",
+      "SSO integration authenticates members through existing identity providers",
+      "API-first architecture enables embedding community widgets directly inside product interfaces"
+    ],
+    "cons": [
+      "$49/mo minimum with member limits creates cost pressure as community grows past 1,000 members",
+      "Setup and customization requires technical understanding of space type configuration",
+      "Limited template library — community structure requires manual design from scratch"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Bettermode is the strongest community platform for B2B SaaS products that need deep CRM integration and SSO. It is built for customer communities and support forums rather than creator monetization. Teams building a fan community rather than a customer community should evaluate Circle or Mighty Networks instead."
+    }
   },
   {
     "name": "Slack",
@@ -1636,7 +1727,7 @@
     "website": "https://slack.com",
     "logo": "/logos/slack.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $7.25/user/mo",
     "affiliate": false,
     "rating": 4.6,
     "featured": false,
@@ -1649,10 +1740,23 @@
       "discord",
       "microsoft-teams"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Slack is a team messaging platform that organizes conversations into channels by topic, project, or team. Direct messages, file sharing, huddles, and 2,600+ integrations make it the default communication layer for remote and hybrid teams. The free plan retains 90 days of message history; Pro ($7.25/user/mo) unlocks unlimited history and integrations; Business+ ($12.50/user/mo) adds SSO and compliance exports.",
+    "pros": [
+      "Channel-based organization keeps conversations separated by project, team, or topic",
+      "2,600+ integrations including GitHub, Jira, Salesforce, and PagerDuty",
+      "Huddles (quick audio with optional screen share) replace ad-hoc Zoom calls for short discussions",
+      "Workflow Builder automates routine notifications and approval workflows without code",
+      "Full-text search across all message history (Pro) finds past decisions in seconds"
+    ],
+    "cons": [
+      "Free plan caps message history at 90 days — older conversations become inaccessible",
+      "Notification volume creates distraction and context-switching for many users",
+      "Business+ ($12.50/user/mo) required for SSO and compliance retention policies"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Slack is the dominant team communication tool for good reason — its channel model and integration depth match any tech or marketing team's workflow. The 90-day free plan history limit is a real constraint; teams with compliance needs or large history requirements should budget for Business+."
+    }
   },
   {
     "name": "Discourse",
@@ -1661,7 +1765,7 @@
     "website": "https://discourse.org",
     "logo": "/logos/discourse.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free (self-hosted)",
     "affiliate": false,
     "rating": 4.5,
     "featured": false,
@@ -1674,10 +1778,23 @@
       "xenforo",
       "bettermode"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Discourse is an open-source discussion forum platform used by developer communities, support forums, and online communities. Its thread-based structure, category management, trust levels, and plugin ecosystem power communities ranging from Stack Overflow-style Q&A to product support portals. Self-hosting on any server is free; Discourse Basic hosted plan starts at $50/mo.",
+    "pros": [
+      "Open-source with full self-hosting option — no monthly fee for teams with server administration capacity",
+      "Thread-based discussions with rich formatting (code blocks, syntax highlighting, embeds) suit technical communities",
+      "Trust level system automatically moderates user permissions as reputation builds over time",
+      "Plugin ecosystem extends functionality for voting, polls, chat, and custom user fields",
+      "SEO-optimized forum threads index well on Google, generating organic traffic for technical queries"
+    ],
+    "cons": [
+      "Self-hosting requires server administration and regular platform update management",
+      "Hosted plans ($50/mo) are expensive relative to the community features provided",
+      "Real-time chat is secondary to asynchronous threads — not a Slack or Discord replacement"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Discourse is the strongest platform for technical communities that value asynchronous, searchable discussion over real-time chat. The self-hosted option makes it uniquely cost-effective for developer communities. Non-technical teams building creator or brand communities will find Circle, Skool, or Discord more approachable."
+    }
   },
   {
     "name": "Ghost",
@@ -1686,7 +1803,7 @@
     "website": "https://ghost.org",
     "logo": "/logos/ghost.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$9/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -1699,10 +1816,23 @@
       "substack",
       "wordpress"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Ghost is a headless CMS and publishing platform built specifically for professional bloggers, journalists, and membership publications. It combines content management, newsletter delivery, and paid membership tiers in one platform. Ghost(Pro) hosted plans start at $9/mo (Starter, 500 members); self-hosting on Node.js is free. Native newsletter delivery is included without requiring Mailchimp or ConvertKit.",
+    "pros": [
+      "Native membership and subscription tiers gate content for paid members without external tools",
+      "Built-in newsletter delivery sends directly from Ghost without a separate email platform",
+      "Clean Markdown-based editor removes formatting distractions for writing-focused workflows",
+      "SEO-optimized structured data (Article JSON-LD) generated automatically for all posts",
+      "Open-source — self-hosting on Node.js eliminates monthly platform fees entirely"
+    ],
+    "cons": [
+      "Self-hosted Ghost requires Node.js server knowledge — not suitable for non-technical publishers",
+      "Theme customization requires Handlebars.js knowledge beyond simple CSS changes",
+      "Ghost(Pro) pricing rises steeply with member count — 10K members costs $199/mo"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Ghost is the strongest focused alternative to WordPress for writers who want built-in memberships and newsletter delivery without managing plugins. The writing experience and native monetization justify the switch from WordPress for publication-first sites. Self-hosted Ghost requires technical comfort that most non-developers lack."
+    }
   },
   {
     "name": "ConvertKit",
@@ -1825,7 +1955,7 @@
     "website": "https://mailchimp.com",
     "logo": "/logos/mailchimp.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $13/mo",
     "affiliate": true,
     "rating": 4.3,
     "featured": false,
@@ -1838,10 +1968,23 @@
       "convertkit",
       "mailerlite"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Mailchimp is an email marketing platform used by small businesses and creators for newsletters, automated sequences, and audience management. It offers a drag-and-drop email builder, audience segmentation, A/B testing, and landing pages. Free plan covers up to 500 contacts; Essentials starts at $13/mo; Standard adds advanced automation; Premium at $350/mo unlocks multivariate testing and advanced segmentation.",
+    "pros": [
+      "Industry-leading deliverability reputation built over 20+ years with major ISPs",
+      "Drag-and-drop email builder with 100+ templates requires no HTML knowledge",
+      "Audience manager handles contacts, tags, segments, and purchase history in one view",
+      "Pre-built automation journeys for welcome, abandoned cart, and re-engagement campaigns",
+      "500+ third-party integrations via native connectors and Zapier"
+    ],
+    "cons": [
+      "Pricing jumps sharply with list growth — 10K contacts costs $110/mo on Standard",
+      "Automation logic is less powerful than ActiveCampaign or Klaviyo at comparable price",
+      "Landing page builder produces basic, template-constrained pages without custom code access"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Mailchimp is the sensible starting point for most small businesses and creators entering email marketing. Deliverability and ease of use are genuine strengths. As list size grows, the economics shift — users with complex automation needs or large lists often migrate to ActiveCampaign or Klaviyo."
+    }
   },
   {
     "name": "Systeme.io",
@@ -1850,7 +1993,7 @@
     "website": "https://systeme.io",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $27/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -1863,10 +2006,23 @@
       "clickfunnels",
       "kartra"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Systeme.io is an all-in-one marketing platform that combines funnel building, email marketing, course hosting, membership sites, affiliate management, and blogging in one subscription. Its free plan — supporting up to 2,000 contacts, 3 funnels, and 1 course — is the most generous free tier in its category. Startup plan ($27/mo) adds 5,000 contacts and unlimited funnels; Webinar ($47/mo) includes evergreen webinars.",
+    "pros": [
+      "Free plan supports 2,000 contacts and 3 funnels — functional for early-stage validation without cost",
+      "Combines 6+ marketing tools in one dashboard, eliminating integration complexity",
+      "Built-in affiliate program management handles commission tracking and payouts",
+      "Course and membership site features included without additional LMS subscription",
+      "No transaction fees on any plan including the free tier"
+    ],
+    "cons": [
+      "Email deliverability reputation less established than dedicated platforms like Mailchimp or ConvertKit",
+      "Template library less polished than ClickFunnels or Kartra design-wise",
+      "Limited third-party integrations — relies on native stack rather than connecting existing tools"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Systeme.io offers the most compelling free plan for creators and solo entrepreneurs testing a business model. The all-in-one stack eliminates the Zapier complexity of stitching separate tools together. Established businesses with existing email platforms may find the deliverability and integration limitations restrictive."
+    }
   },
   {
     "name": "GetResponse",
@@ -1875,7 +2031,7 @@
     "website": "https://getresponse.com",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "$15.58/mo",
     "affiliate": true,
     "rating": 4.5,
     "featured": false,
@@ -1888,10 +2044,23 @@
       "activecampaign",
       "aweber"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "GetResponse is an email marketing and automation platform with a particular strength in webinar hosting, landing pages, and ecommerce integrations. It combines email campaigns, autoresponders, automation workflows, webinar software, and conversion funnels. Email Marketing plan ($15.58/mo for 1,000 contacts) covers basic campaigns; Marketing Automation ($48.38/mo) adds behavioral triggers and lead scoring.",
+    "pros": [
+      "Built-in webinar hosting on paid plans replaces a separate Zoom or Demio subscription for up to 1,000 attendees",
+      "Conversion funnel builder covers opt-in, email nurture, webinar, and sales page in one workflow",
+      "Ecommerce integrations with Shopify, WooCommerce, and Magento enable abandoned cart email campaigns",
+      "Unlimited autoresponder follow-up sequences on all paid plans",
+      "AI email generator speeds up campaign creation from topic brief to draft"
+    ],
+    "cons": [
+      "Email Marketing plan lacks behavioral automation — most advanced features require Marketing Automation tier",
+      "Deliverability performance inconsistent at high volume compared to ActiveCampaign or Klaviyo",
+      "Landing page template library feels dated compared to dedicated builders like Unbounce"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "GetResponse is the strongest choice when webinar integration is a core part of the lead generation process. The all-in-one funnel builder is genuinely useful for course creators and consultants. Businesses focused purely on email automation get better results from ActiveCampaign at comparable price."
+    }
   },
   {
     "name": "Brevo",
@@ -1900,7 +2069,7 @@
     "website": "https://brevo.com",
     "logo": "/logos/brevo.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $25/mo",
     "affiliate": true,
     "rating": 4.4,
     "featured": false,
@@ -1913,10 +2082,23 @@
       "mailchimp",
       "omnisend"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Brevo (formerly Sendinblue) is a marketing platform offering email, SMS, WhatsApp, and transactional messaging with volume-based pricing rather than contact-based pricing. Unlike competitors charging by list size, Brevo charges by emails sent per month — making it cost-effective for large lists with low send frequency. Free plan allows unlimited contacts with 300 emails/day; Starter ($25/mo) removes daily limits.",
+    "pros": [
+      "Email volume pricing — a 100K contact list sending once monthly costs far less than Mailchimp",
+      "Multi-channel in one platform — email, SMS, WhatsApp, push notifications, and live chat",
+      "Transactional email via SMTP/API for developers integrating email into SaaS products",
+      "CRM included at no extra cost — tracks contacts, deals, and interaction history",
+      "Dedicated IP option on Business plan boosts deliverability for high-volume senders"
+    ],
+    "cons": [
+      "Automation workflows less visual and powerful than ActiveCampaign's multi-branch builder",
+      "Brevo branding appears on free and Starter plan emails without a paid upgrade",
+      "WhatsApp and SMS usage costs are variable — can spike unexpectedly with high send volumes"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Brevo's volume-based pricing is its core competitive advantage — businesses with large inactive lists or infrequent send schedules save significantly versus Mailchimp or ConvertKit. Multi-channel capabilities (SMS, WhatsApp) in one platform are valuable for international marketing. Automation depth lags dedicated tools like ActiveCampaign."
+    }
   },
   {
     "name": "Beehiiv",
@@ -1963,7 +2145,7 @@
     "website": "https://clickfunnels.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$97/mo",
     "affiliate": true,
     "rating": 4.5,
     "featured": false,
@@ -1976,10 +2158,23 @@
       "systeme-io",
       "kartra"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "ClickFunnels is a funnel-building platform designed to convert visitors into leads and customers through sequential landing pages, order forms, and upsell sequences. Its visual funnel builder, proven templates, and affiliate management make it the dominant tool in the online business and course creator market. Basic ($97/mo) supports 20 funnels; Pro ($297/mo) removes limits and adds Backpack affiliate management.",
+    "pros": [
+      "Step-by-step funnel sequences with one-click upsells and order bumps increase average order value",
+      "Template library built from converting funnels with documented revenue benchmarks",
+      "Built-in email marketing and A/B split testing at the funnel level",
+      "Membership site capability built into the platform for course delivery",
+      "Active community and FunnelFlix training library support implementation from day one"
+    ],
+    "cons": [
+      "$97/mo starting price is high for unproven businesses still finding product-market fit",
+      "Page builder and template designs feel visually dated compared to modern alternatives",
+      "Basic reporting tracks revenue but lacks attribution depth for multi-channel campaigns"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "ClickFunnels remains the default platform for coaches, consultants, and info-product creators who need proven funnel templates and built-in order bumps. The high entry price is only justified once the funnel concept is validated with some traffic. Systeme.io or Kartra offer comparable features at lower cost for early-stage creators."
+    }
   },
   {
     "name": "Bitly",
@@ -1988,7 +2183,7 @@
     "website": "https://bitly.com",
     "logo": "/logos/bitly.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $8/mo",
     "affiliate": false,
     "rating": 4.6,
     "featured": false,
@@ -2001,10 +2196,23 @@
       "rebrandly",
       "tinyurl"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Bitly is a link management platform that shortens URLs, adds custom branded domains, and tracks click analytics. Marketing teams and social media managers use it to create clean links, measure campaign performance, and manage links by campaign or group. Free plan allows 10 short links/mo; Core ($8/mo) enables a custom domain and 200 links/mo; Growth ($29/mo) scales to 1,500 links with QR codes.",
+    "pros": [
+      "Custom branded domain (yourco.link/slug) increases click-through rates versus generic bit.ly shortlinks",
+      "QR code generation tied to each short link serves print and offline campaign tracking",
+      "Click analytics by location, device, and referrer source built into the dashboard",
+      "API access for bulk link creation and analytics retrieval for development integrations",
+      "Bulk link shortening via CSV import for large campaign rollouts"
+    ],
+    "cons": [
+      "Free plan cap of 10 links per month is impractical for any active marketing program",
+      "Custom branded domain requires the $8/mo Core plan — not available on free tier",
+      "Advanced analytics and link expiration controls limited to Growth and higher plans"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Bitly is the most recognized link management platform for good reason — branded domains, QR codes, and click analytics in one clean interface. The free plan is too limited for real use; budget at minimum for Core at $8/mo. Performance marketers needing conversion tracking should evaluate ClickMagick or Voluum instead."
+    }
   },
   {
     "name": "Voluum",
@@ -2013,7 +2221,7 @@
     "website": "https://voluum.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$69/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -2026,10 +2234,23 @@
       "redtrack",
       "bemob"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Voluum is a performance marketing tracking platform built for affiliate marketers, media buyers, and performance agencies managing paid advertising campaigns across multiple traffic sources. It tracks clicks, conversions, and revenue with real-time attribution and ROI reporting. Starter ($69/mo) handles 3M events/mo; Pro ($149/mo) extends to 10M events for high-volume campaigns.",
+    "pros": [
+      "Real-time click and conversion tracking with sub-second latency for high-volume campaign monitoring",
+      "Traffic distribution automation enables A/B and multivariate testing across offers, landers, and paths",
+      "Anti-fraud detection filters bot and invalid traffic from campaign performance data",
+      "70+ traffic source integrations via S2S postback including Facebook, Google, TikTok, and Taboola",
+      "Custom conversion funnels track multi-step journeys from ad click to purchase completion"
+    ],
+    "cons": [
+      "$69/mo minimum is high for individual affiliates starting paid traffic campaigns",
+      "Steep learning curve — requires understanding S2S tracking, postback URLs, and campaign architecture",
+      "Event limits on lower plans require upgrade as campaign volume scales beyond 3M monthly events"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Voluum is the most feature-complete tracking platform for professional affiliate marketers and media buyers running multi-source paid campaigns. The $69/mo entry point requires active campaign volume to justify. Smaller affiliates get better value starting with ClickMagick or RedTrack before scaling to Voluum."
+    }
   },
   {
     "name": "ClickMagick",
@@ -2038,7 +2259,7 @@
     "website": "https://clickmagick.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$37/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -2051,10 +2272,23 @@
       "voluum",
       "redtrack"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "ClickMagick is a link tracking and conversion attribution platform for affiliate marketers, digital advertisers, and funnel builders. It tracks every click through a funnel, applies attribution rules, and syncs conversion data back to ad platforms via server-side tracking. Starter ($37/mo) tracks 10K clicks/mo; Standard ($77/mo) scales to 100K clicks; Pro ($197/mo) serves agencies.",
+    "pros": [
+      "Server-side tracking syncs clean conversion data to Facebook and Google Ads, bypassing browser privacy restrictions",
+      "Click fraud detection filters invalid traffic before it inflates ad platform costs",
+      "Full-funnel tracking from ad click through purchase across multiple pages and steps",
+      "TrueTrack technology provides accurate conversion attribution for iOS 14+ privacy-limited campaigns",
+      "Postback URL system integrates with any affiliate network for commission tracking"
+    ],
+    "cons": [
+      "10K click limit on Starter plan is restrictive for active paid traffic campaigns",
+      "Learning curve for server-side tracking setup requires technical comfort with pixels and postbacks",
+      "Pro plan ($197/mo) is expensive for individual affiliates running lower volume campaigns"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "ClickMagick is the strongest tool for funnel builders and affiliate marketers who need server-side conversion tracking to maintain Facebook and Google Ads performance post-iOS 14. The TrueTrack technology is a real differentiator. Media buyers running multi-source traffic at scale should evaluate Voluum for its broader integration set."
+    }
   },
   {
     "name": "RedTrack",
@@ -2063,7 +2297,7 @@
     "website": "https://redtrack.io",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$49/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -2076,10 +2310,23 @@
       "voluum",
       "clickmagick"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "RedTrack is a performance marketing analytics platform for affiliate marketers and media buyers tracking campaigns across multiple traffic sources and affiliate networks. It provides real-time reporting, automated campaign rules, and S2S conversion tracking. Solo plan ($49/mo) supports 1 domain and 3M events/mo; Team ($99/mo) adds collaboration features and multiple domains.",
+    "pros": [
+      "Automated rules stop campaigns or adjust bids based on performance thresholds without manual monitoring",
+      "Multi-touch attribution models (first click, last click, linear) assign revenue credit accurately",
+      "Publisher cost data pulled directly from traffic source APIs eliminates manual spend entry",
+      "Custom conversion events track any on-site action as a campaign goal",
+      "White-label reporting for agencies managing client campaign performance"
+    ],
+    "cons": [
+      "S2S tracking setup is technical — requires understanding of postback URLs and pixel placement",
+      "Limited ad platform integrations compared to Voluum's 70+ traffic source connections",
+      "Solo plan single domain limit requires upgrade for multi-brand or multi-client operations"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "RedTrack's automated campaign rules and white-label reporting make it a strong choice for performance agencies managing client campaigns. The automation layer that stops unprofitable campaigns is its clearest differentiator. Individual affiliates doing lower volume get better value from ClickMagick's server-side tracking capabilities."
+    }
   },
   {
     "name": "Rebrandly",
@@ -2088,7 +2335,7 @@
     "website": "https://rebrandly.com",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $13/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -2101,10 +2348,23 @@
       "bitly",
       "blink"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Rebrandly is a branded link management platform focused on custom short URLs for brand awareness and marketing campaigns. Marketing teams use it to create memorable branded links (brand.io/campaign) for email, social, and print. Free plan allows 5 custom domains and 25 links/mo; Starter ($13/mo) enables 25K tracked clicks/mo and up to 1,500 managed links.",
+    "pros": [
+      "Multiple custom branded domains manageable in one account — useful for agencies with multiple brands",
+      "UTM builder integrated into the link creation workflow for consistent campaign parameter tracking",
+      "Team collaboration with link ownership, editing permissions, and shared link libraries",
+      "REST API enables programmatic link creation and analytics retrieval for development teams",
+      "QR code generation included for each branded link for offline campaign use"
+    ],
+    "cons": [
+      "Free plan link and monthly click limits are very restrictive for active marketing programs",
+      "Analytics depth is less than performance trackers like Voluum or ClickMagick",
+      "No A/B testing or link rotation features for traffic distribution experiments"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Rebrandly is the right choice when branded link aesthetics and multi-domain management are priorities over deep conversion tracking. Its agency-friendly multiple domain support and API access make it useful for teams managing brand consistency across campaigns. Performance marketers needing conversion attribution should look at ClickMagick."
+    }
   },
   {
     "name": "TinyURL",
@@ -2113,7 +2373,7 @@
     "website": "https://tinyurl.com",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $9.99/mo",
     "affiliate": false,
     "rating": 4.2,
     "featured": false,
@@ -2126,10 +2386,23 @@
       "bitly",
       "rebrandly"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "TinyURL is one of the original URL shortening services, providing simple link shortening without registration for free. It supports custom aliases (tinyurl.com/your-alias) and a developer API. Pro plan ($9.99/mo) adds branded custom domains, advanced analytics, and a link management dashboard for teams needing more than occasional link shortening.",
+    "pros": [
+      "Free basic shortening without account registration — fastest option for one-off link sharing",
+      "Custom alias creation (tinyurl.com/your-term) available without a paid plan",
+      "Simple API for developers integrating link shortening into applications",
+      "20+ year operating history with reliable uptime and no link expiration",
+      "No expiration on created links — long-lived use cases remain stable"
+    ],
+    "cons": [
+      "No branded custom domain on free plan — links remain under tinyurl.com",
+      "Analytics (click counts, geographic data) require Pro plan at $9.99/mo",
+      "Pro plan offers less value than Bitly or Rebrandly at comparable pricing"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "TinyURL is best suited for occasional, simple link shortening where brand consistency and analytics are not requirements. The free custom alias feature is genuinely useful for one-off use cases. Marketing teams building campaigns should use Bitly or Rebrandly for branded domains and click analytics."
+    }
   },
   {
     "name": "Blink",
@@ -2138,7 +2411,7 @@
     "website": "https://bl.ink",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$12/mo",
     "affiliate": false,
     "rating": 4.5,
     "featured": false,
@@ -2151,10 +2424,23 @@
       "bitly",
       "rebrandly"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Blink is a branded link shortening and management tool for marketers managing branded short links at scale. It supports multiple custom domains, link rotation for A/B testing, and team collaboration. Pro plan ($12/mo) covers 1 custom domain and 10K tracked clicks/mo; Team ($32/mo) adds multiple domains and higher click limits for marketing teams.",
+    "pros": [
+      "Link rotation feature sends visitors to different destination URLs for A/B testing without changing the short link",
+      "Multiple custom branded domains manageable in one account for multi-brand teams",
+      "Team collaboration with shared link libraries and permission management",
+      "QR code generation included for each link for print and offline campaign use",
+      "Clean analytics dashboard with click breakdown by device and geographic location"
+    ],
+    "cons": [
+      "Smaller brand presence and track record than Bitly or Rebrandly for enterprise trust",
+      "Click limits on lower plans require upgrade for high-traffic campaign links",
+      "Integration ecosystem less developed than established competitors"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Blink's link rotation feature for A/B testing is its strongest differentiator over Bitly or Rebrandly. Teams that actively split-test different landing pages from a single campaign link get real value. For straightforward branded link management without A/B testing, Bitly or Rebrandly offer more established track records."
+    }
   },
   {
     "name": "Bemob",
@@ -2163,7 +2449,7 @@
     "website": "https://bemob.com",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "$25/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -2176,10 +2462,23 @@
       "voluum",
       "redtrack"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Bemob is a cloud-based tracking platform for affiliate marketers monitoring campaign performance across multiple traffic sources and affiliate networks. It provides real-time S2S tracking, automated optimization rules, and performance dashboards for paid advertising campaigns. Basic ($25/mo) covers 1M events/mo; Professional ($75/mo) scales to 10M events for higher-volume campaigns.",
+    "pros": [
+      "Competitive pricing relative to event volume — lower cost per event than Voluum at comparable features",
+      "Real-time reporting with automatic data refresh for active campaign monitoring",
+      "Traffic distribution rules automate offer and landing page rotation based on performance data",
+      "Postback URL system integrates with all major affiliate networks for conversion tracking",
+      "Automated bot filtering identifies and excludes non-human traffic from campaign reports"
+    ],
+    "cons": [
+      "Documentation less comprehensive than more established tracking platforms",
+      "40+ traffic source integrations compared to Voluum's 70+ for broader campaign coverage",
+      "Community and support resources limited compared to competitors with larger user bases"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Bemob is a cost-effective entry point into performance tracking for affiliate marketers who find Voluum's $69/mo too expensive for their current campaign volume. Real-time tracking and automation rules cover the essentials. Teams with large event volumes or needing broad traffic source integrations should evaluate Voluum or RedTrack."
+    }
   },
   {
     "name": "Pretty Links",
@@ -2188,7 +2487,7 @@
     "website": "https://prettylinks.com",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "$99/yr",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -2201,10 +2500,23 @@
       "thirsty-affiliates",
       "bitly"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Pretty Links is a WordPress plugin for link shortening, link management, and affiliate link cloaking within WordPress sites. Bloggers and affiliate marketers use it to create clean branded links (yoursite.com/go/product) that redirect to affiliate URLs, track clicks, and manage links from the WordPress dashboard. Beginner plan ($99/yr) covers 1 site with link cloaking and basic click tracking.",
+    "pros": [
+      "Works inside the WordPress dashboard — no external platform required for WordPress-native workflows",
+      "Affiliate link cloaking protects commission links from being stripped or bypassed by browsers",
+      "Click tracking per link identifies which affiliate links generate the most revenue",
+      "Automatic keyword linking creates affiliate links from specified keywords throughout content",
+      "Product Displays feature adds affiliate product boxes with images and buy buttons to posts"
+    ],
+    "cons": [
+      "WordPress-only — not suitable for non-WordPress sites or headless setups",
+      "Annual fee ($99/yr) is high relative to SaaS link management tools at comparable pricing",
+      "Link redirect speed depends on server response time rather than dedicated redirect infrastructure"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Pretty Links is the right choice for WordPress bloggers who want affiliate link cloaking and click tracking without leaving the WordPress dashboard. The automatic keyword linking is a genuine time-saver for content-heavy affiliate sites. Non-WordPress publishers and teams needing cloud-based analytics should use Bitly or Rebrandly instead."
+    }
   },
   {
     "name": "Google Analytics",
@@ -2289,7 +2601,7 @@
     "website": "https://hotjar.com",
     "logo": "/logos/hotjar.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "$32/mo",
     "affiliate": false,
     "rating": 4.7,
     "featured": false,
@@ -2302,10 +2614,23 @@
       "crazy-egg",
       "microsoft-clarity"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Hotjar is a behavioral analytics platform that records user sessions, generates heatmaps, and collects feedback through on-site surveys and polls. Product and UX teams use it to understand how visitors navigate pages and where they drop off before converting. Observe plan ($32/mo) includes session recordings and heatmaps; Ask plan ($80/mo) adds on-site surveys and user interviews.",
+    "pros": [
+      "Session recordings reveal real user behavior — where users click, scroll, and hesitate — beyond what quantitative data shows",
+      "Heatmaps aggregate thousands of sessions into visual click and scroll maps for quick UX diagnosis",
+      "On-site surveys and NPS polls collect qualitative feedback at scale without leaving the product",
+      "JavaScript snippet deploys in under 5 minutes with Google Tag Manager — no back-end changes required",
+      "Integrates with Google Analytics, Mixpanel, and Segment to combine quantitative and qualitative analysis"
+    ],
+    "cons": [
+      "Session recordings add JavaScript payload that slightly slows page load speed",
+      "GDPR compliance requires careful consent configuration and data retention settings",
+      "Free plan limits to 35 daily sessions — insufficient for meaningful analysis on any active site"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Hotjar fills the behavioral analytics gap that tools like Google Analytics cannot — it shows the 'why' behind traffic numbers through session recordings and heatmaps. It pairs best with GA4 rather than replacing it. The free plan is too limited for real use; budget for the $32/mo Observe plan as a minimum."
+    }
   },
   {
     "name": "Mixpanel",
@@ -2314,7 +2639,7 @@
     "website": "https://mixpanel.com",
     "logo": "/logos/mixpanel.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $28/mo",
     "affiliate": false,
     "rating": 4.6,
     "featured": false,
@@ -2327,10 +2652,23 @@
       "amplitude",
       "heap"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Mixpanel is a product analytics platform built around event tracking and user cohort analysis. Product teams use it to understand feature adoption, retention, and conversion funnels through user-level analytics rather than aggregate pageview counts. Free plan covers 20M events/mo; Growth ($28/mo) adds unlimited saved reports and cohort exports for larger teams.",
+    "pros": [
+      "User-level event tracking enables cohort analysis — compare behavior of users who performed specific actions",
+      "Funnel analysis with conversion rates at each step identifies exact drop-off points in user journeys",
+      "Retention analysis shows which product actions predict long-term user engagement",
+      "MTU-based pricing (monthly tracked users) rather than event volume is more predictable at scale",
+      "Real-time data with sub-second query response for active experiment monitoring"
+    ],
+    "cons": [
+      "Requires developer implementation — event taxonomy planning and tracking instrumentation are technical tasks",
+      "Analysis capabilities assume a clean, well-structured event schema built before implementation",
+      "Not suitable for content or marketing analytics — optimized for product and SaaS behavior tracking"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Mixpanel is the right tool when you need to understand user behavior at the individual level — funnels, retention, and cohort comparisons that session-aggregate tools cannot provide. The upfront implementation investment is significant; teams without a developer to build the event schema will not extract full value."
+    }
   },
   {
     "name": "Amplitude",
@@ -2339,7 +2677,7 @@
     "website": "https://amplitude.com",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $61/mo",
     "affiliate": false,
     "rating": 4.5,
     "featured": false,
@@ -2352,10 +2690,23 @@
       "mixpanel",
       "heap"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Amplitude is a product analytics platform used by growth and product teams to understand user behavior, run experiments, and optimize conversion funnels. It tracks events at the user level and connects behavior to business outcomes. The free plan includes 10M events/mo; Plus ($61/mo) adds predictive cohorts, advanced segmentation, and data warehouse sync.",
+    "pros": [
+      "Behavioral analysis charts — Funnels, Retention, Stickiness, Revenue — built into a unified UI",
+      "User paths reveal the most common sequences users take through a product without manual query writing",
+      "Charts Builder with drag-and-drop formulas is approachable for non-SQL analysts on growth teams",
+      "Integrates with Optimizely and LaunchDarkly for A/B test result analysis alongside behavioral data",
+      "Free plan is genuinely functional for early-stage products before requiring a paid tier"
+    ],
+    "cons": [
+      "Full analytical depth requires a dedicated analyst to extract value — not self-serve for business teams",
+      "Data warehouse sync (Snowflake, BigQuery) costs extra on lower plans",
+      "Complex queries on large datasets can be slow without proper sampling configuration"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Amplitude is the stronger product analytics platform for growth teams that run experiments and need predictive cohort analysis. The free plan is a genuine advantage over Mixpanel for early-stage products. Both tools require developer instrumentation investment; Amplitude edges ahead for teams that also run A/B tests."
+    }
   },
   {
     "name": "Fathom",
@@ -2364,7 +2715,7 @@
     "website": "https://usefathom.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$14/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -2377,10 +2728,23 @@
       "plausible",
       "google-analytics"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Fathom Analytics is a privacy-focused web analytics platform built as a GDPR-compliant alternative to Google Analytics. It tracks pageviews, unique visitors, referral sources, and event conversions without cookies or personal data collection. A single-page dashboard eliminates GA4's navigation complexity. Pricing is based on monthly pageviews (not seats): $14/mo for up to 100K pageviews; $24/mo for 200K.",
+    "pros": [
+      "GDPR, CCPA, and PECR compliant by design — no cookie consent banner required",
+      "Single-page dashboard shows all key metrics without multi-screen navigation",
+      "Cookieless tracking is unaffected by ITP and browser privacy changes",
+      "EU isolation routing bypasses most ad blockers for accurate traffic counts",
+      "Flat per-site pricing suits agencies managing multiple client sites"
+    ],
+    "cons": [
+      "Event tracking is simpler than GA4 — no funnel analysis, cohort analysis, or multi-touch attribution",
+      "No heatmaps or session recordings — requires pairing with Hotjar or Microsoft Clarity",
+      "No free plan — $14/mo minimum for 100K pageviews"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Fathom is the right choice when GDPR compliance, simplicity, and accurate traffic numbers matter more than deep funnel analysis. The single-dashboard approach is genuinely faster than GA4 for answering basic traffic questions. Teams needing behavioral analytics or conversion funnels need to add a second tool."
+    }
   },
   {
     "name": "Matomo",
@@ -2389,7 +2753,7 @@
     "website": "https://matomo.org",
     "logo": "/logos/matomo.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free (self-hosted)",
     "affiliate": false,
     "rating": 4.6,
     "featured": false,
@@ -2402,10 +2766,23 @@
       "google-analytics",
       "plausible"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Matomo (formerly Piwik) is an open-source web analytics platform offering a self-hosted alternative to Google Analytics with full data ownership. Teams requiring GDPR compliance without consent banners, privacy-sensitive data handling, or complete raw log access choose Matomo. Self-hosted version is free; Matomo Cloud starts at $23/mo for 50K pageviews/mo.",
+    "pros": [
+      "100% data ownership — raw data stored in your own database with no third-party data processing",
+      "GDPR-compliant without a consent banner when using cookieless tracking configuration",
+      "Feature parity with Google Analytics including goals, funnels, ecommerce, and custom dimensions",
+      "Heatmaps, session recordings, and A/B testing available as optional paid plugins",
+      "Import historical Google Analytics data during migration for continuity"
+    ],
+    "cons": [
+      "Self-hosted setup requires MySQL and PHP server administration — not suitable for non-technical teams",
+      "Cloud version ($23/mo) is less cost-effective than Plausible or Fathom for simple pageview tracking",
+      "UI feels dated compared to GA4 and modern analytics dashboards"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Matomo is the right choice when data sovereignty is non-negotiable — healthcare, government, or enterprise teams that cannot send visitor data to Google or Cloudflare. The self-hosted option is genuinely powerful and free. For teams that just want simple GDPR-compliant analytics without data ownership concerns, Fathom or Plausible are simpler."
+    }
   },
   {
     "name": "Crazy Egg",
@@ -2414,7 +2791,7 @@
     "website": "https://crazyegg.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$29/mo",
     "affiliate": false,
     "rating": 4.4,
     "featured": false,
@@ -2427,10 +2804,23 @@
       "hotjar",
       "vwo"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Crazy Egg is a web analytics tool focused on visual behavior data — heatmaps, scrollmaps, click confetti, A/B tests, and session recordings. Marketing and UX teams use it to optimize landing pages and product pages by understanding exactly where visitors click and how far they scroll. Basic ($29/mo) tracks up to 30K pageviews/mo; Standard ($49/mo) scales to 75K tracked pageviews.",
+    "pros": [
+      "Snapshots (heatmaps) generate from a JavaScript snippet with no back-end changes — data visible in 30 days",
+      "Confetti view segments individual clicks by traffic source, device, or user attribute for deeper analysis",
+      "A/B testing built into the platform without subscribing to a separate tool",
+      "Session recordings capture full user journeys from arrival to exit",
+      "Traffic Analysis shows which pages generate the most scroll depth and engagement"
+    ],
+    "cons": [
+      "Pageview limits on lower plans restrict tracking to key pages only — cannot track full site",
+      "A/B testing is page-level only — not suitable for multi-page funnel experiments",
+      "Data retention is 1 month on Basic — historical comparison requires plan upgrade"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Crazy Egg is a solid mid-tier behavioral analytics tool for teams that want heatmaps and A/B testing in one platform at a lower price than Optimizely or VWO. The pageview limits and short data retention on basic plans are the main friction points. Microsoft Clarity is a free alternative for pure heatmap and session recording needs."
+    }
   },
   {
     "name": "Microsoft Clarity",
@@ -2439,7 +2829,7 @@
     "website": "https://clarity.microsoft.com",
     "logo": "",
     "pricing": "Free",
-    "startingPrice": "",
+    "startingPrice": "Free",
     "affiliate": false,
     "rating": 4.7,
     "featured": false,
@@ -2452,10 +2842,23 @@
       "hotjar",
       "crazy-egg"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Microsoft Clarity is a free behavioral analytics tool offering session recordings, heatmaps, and frustration signal detection (rage clicks, dead clicks, excessive scrolling). It integrates natively with Google Analytics 4 to combine quantitative and qualitative data in one view. Clarity has no pageview limits, no session recording caps, and no paid tiers — making it the most cost-effective behavioral analytics option available.",
+    "pros": [
+      "Completely free — unlimited sessions, unlimited heatmaps, no paid tier or pageview cap",
+      "Native GA4 integration brings behavioral context to traffic data without additional setup",
+      "Frustration signals (rage clicks, dead clicks, excessive scrolling) automatically flagged without manual configuration",
+      "Copilot AI in Clarity summarizes session patterns in natural language for quick insights",
+      "Deploys in 5 minutes via Google Tag Manager with no back-end changes"
+    ],
+    "cons": [
+      "No A/B testing or user cohort segmentation — purely observational behavioral data",
+      "24-48 hour data processing delay — not suitable for real-time monitoring",
+      "Sending behavioral data to Microsoft servers may raise privacy concerns for some organizations"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Microsoft Clarity is the obvious first choice for any team that wants behavioral analytics without budget — the free tier is genuinely unlimited and the GA4 integration is seamless. The lack of A/B testing and real-time data mean it pairs with rather than replaces tools like Optimizely or Mixpanel for teams running active experiments."
+    }
   },
   {
     "name": "Notion",
@@ -2540,7 +2943,7 @@
     "website": "https://monday.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$9/seat/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -2553,10 +2956,23 @@
       "clickup",
       "asana"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Monday.com is a work management platform used by teams to plan, track, and collaborate on projects and processes. Its color-coded boards, multiple views, and no-code automation make it accessible to non-technical teams across marketing, HR, operations, and product. Plans start at $9/seat/mo (Basic) with a 3-seat minimum; Pro ($19/seat/mo) adds time tracking, automations, and Gantt views.",
+    "pros": [
+      "Visual board layout reduces onboarding friction — teams reach productive workflows in hours",
+      "200+ integrations including Slack, Jira, HubSpot, and Salesforce",
+      "Automations handle status changes, deadline alerts, and assignee rotation without code",
+      "Dashboards aggregate project data across multiple boards for executive reporting",
+      "Gantt and workload views support capacity planning and resource management"
+    ],
+    "cons": [
+      "Minimum 3-seat requirement makes it expensive for solo users or small pairs",
+      "Automation recipe limits on lower plans force upgrade pressure as usage grows",
+      "Reporting lacks depth compared to dedicated analytics tools for complex project metrics"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Monday.com offers the most visual and approachable work management experience for non-technical teams. The automation capabilities and integration depth are legitimate. The 3-seat minimum and upgrade pressure on automation limits are the main friction points for small teams."
+    }
   },
   {
     "name": "Asana",
@@ -2565,7 +2981,7 @@
     "website": "https://asana.com",
     "logo": "/logos/asana.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $10.99/user/mo",
     "affiliate": false,
     "rating": 4.5,
     "featured": false,
@@ -2578,10 +2994,23 @@
       "trello",
       "monday"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Asana is a project management platform used by teams to organize work into tasks, projects, and portfolios. Timeline, Kanban, list, and calendar views adapt to different team workflows — from engineering sprints to editorial calendars to cross-functional launches. Free plan works for teams up to 10 users; Premium ($10.99/user/mo) unlocks timelines, milestones, and advanced workflow rules.",
+    "pros": [
+      "Timeline view with task dependencies clearly visualizes complex project schedules",
+      "Goals feature connects team tasks to company-level OKRs for strategic alignment",
+      "Rules automate routine project actions — auto-assign, due date shifts, status changes — without code",
+      "300+ integrations including Slack, GitHub, Salesforce, and Microsoft 365",
+      "Work management templates cover product launches, marketing campaigns, and hiring pipelines"
+    ],
+    "cons": [
+      "Free plan lacks timeline and milestones — core planning features require paid upgrade",
+      "Task commenting is unthreaded, creating long conversation chains on complex projects",
+      "No native time tracking — requires Harvest, Clockify, or custom integration"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Asana is the most balanced project management platform for teams that need both flexibility and structure. The Goals and Timeline features in Premium are genuinely useful for cross-functional launches. Teams that need native time tracking or more custom fields may find ClickUp or Monday.com a better fit."
+    }
   },
   {
     "name": "Trello",
@@ -2590,7 +3019,7 @@
     "website": "https://trello.com",
     "logo": "/logos/trello.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $5/user/mo",
     "affiliate": false,
     "rating": 4.5,
     "featured": false,
@@ -2603,10 +3032,23 @@
       "asana",
       "clickup"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Trello is a Kanban-based project management tool organized around boards, lists, and cards. Its drag-and-drop interface makes it accessible to non-technical teams for task tracking, editorial calendars, and lightweight project management. Free plan includes unlimited cards and 10 boards; Standard ($5/user/mo) adds custom backgrounds, unlimited boards, and saved search filters.",
+    "pros": [
+      "Lowest onboarding friction of any PM tool — teams reach productive workflows in minutes",
+      "Power-Ups connect Trello cards to Google Drive, Slack, GitHub, and Jira without code",
+      "Card templates speed up recurring task creation for repetitive workflows",
+      "Free plan supports real projects for small teams without time limits",
+      "Butler automation rules handle repetitive card actions and board maintenance"
+    ],
+    "cons": [
+      "Kanban-only design lacks Gantt, timeline, or workload views without Power-Ups",
+      "Scales poorly for complex projects with many dependencies across teams",
+      "Reporting and analytics are minimal compared to Monday.com or ClickUp"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Trello is the right tool for teams that need visual task tracking without configuration overhead. Its simplicity is a genuine strength for editorial and personal workflows. Teams that outgrow basic Kanban or need timeline views and dependencies should graduate to Asana, ClickUp, or Monday.com."
+    }
   },
   {
     "name": "Obsidian",
@@ -2615,7 +3057,7 @@
     "website": "https://obsidian.md",
     "logo": "/logos/obsidian.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $8/mo",
     "affiliate": false,
     "rating": 4.8,
     "featured": false,
@@ -2628,10 +3070,23 @@
       "notion",
       "roam-research"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Obsidian is a local-first knowledge management and note-taking tool that stores all notes as plain Markdown files on your device. Its graph view, bidirectional links, and plugin ecosystem make it popular among researchers, writers, and developers who want full data control. The app is free for personal use; Sync ($8/mo) adds encrypted cross-device sync; Publish ($16/mo) hosts a public knowledge site.",
+    "pros": [
+      "All notes stored as plain Markdown files — portable to any tool and never locked to a proprietary format",
+      "Bidirectional links and graph view reveal connections between notes that linear documents miss",
+      "1,000+ community plugins for spaced repetition, task management, Kanban, and daily journaling",
+      "Local-first means full data privacy — notes never leave your device without explicit sync",
+      "Templating and Dataview plugin create dynamic note queries and database-style views"
+    ],
+    "cons": [
+      "Cross-device sync requires $8/mo Obsidian Sync or manual setup with iCloud or Dropbox",
+      "No real-time collaboration — not suitable for team knowledge bases with concurrent editing",
+      "Learning curve for graph-based note-taking is steeper than simpler tools like Notion or Apple Notes"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Obsidian is the right tool for individuals who want to build a lasting personal knowledge system with no vendor lock-in. The Markdown-native approach future-proofs notes across any tool changes. Teams needing real-time collaboration or a shared workspace should use Notion or Confluence instead."
+    }
   },
   {
     "name": "Airtable",
@@ -2640,7 +3095,7 @@
     "website": "https://airtable.com",
     "logo": "/logos/airtable.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $20/user/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -2653,10 +3108,23 @@
       "smartsheet",
       "notion"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Airtable is a cloud-based database and project management tool that combines spreadsheet familiarity with relational database power. Teams use it to track projects, manage content pipelines, build product roadmaps, and run CRM workflows in one customizable workspace. The free plan supports unlimited bases with limited rows; Plus ($20/user/mo) adds more rows, automations, and revision history.",
+    "pros": [
+      "Multiple views — Grid, Gallery, Kanban, Calendar, Gantt — without duplicating data",
+      "Linked records create relational database structure across tables without SQL knowledge",
+      "750+ integrations plus native Zapier and Make connectors for workflow automation",
+      "Automations trigger emails, Slack messages, and Jira tickets based on record changes",
+      "Template library covers marketing, product, HR, and CRM use cases with pre-built schemas"
+    ],
+    "cons": [
+      "Row limits on free and Plus plans restrict database size without expensive Pro upgrade",
+      "Complex relational models require careful schema planning before data entry begins",
+      "Performance degrades noticeably with tables exceeding 10,000 rows"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Airtable bridges the gap between simple spreadsheets and complex databases for teams that need relational data without writing SQL. The flexible view system and automation layer make it genuinely powerful. Row limits push high-volume use cases toward the expensive Pro plan or alternatives like Notion."
+    }
   },
   {
     "name": "Todoist",
@@ -2665,7 +3133,7 @@
     "website": "https://todoist.com",
     "logo": "/logos/todoist.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $4/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -2678,10 +3146,23 @@
       "ticktick",
       "any-do"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Todoist is a task management app used by individuals and teams to capture, organize, and prioritize tasks across projects. Natural language input converts plain text like 'every Tuesday at 9am' into scheduled recurring tasks. Free plan covers 5 active projects; Pro ($4/mo) adds unlimited projects, task reminders, and productivity trend analytics.",
+    "pros": [
+      "Natural language date parsing creates scheduled tasks from plain text without date pickers",
+      "Karma system gamifies task completion with productivity trends and streak tracking",
+      "Quick Capture via keyboard shortcut, mobile widget, or email forwarding captures tasks in seconds",
+      "Available natively on iOS, Android, Mac, Windows, and Chrome extension for full-platform coverage",
+      "500+ integration templates via Zapier, plus native Slack and Google Calendar connectors"
+    ],
+    "cons": [
+      "Project hierarchy limited to 5 levels — complex work breakdown structures require workarounds",
+      "Collaboration features require Pro plan at $4/mo per user for shared projects",
+      "No native time tracking or workload management for team capacity planning"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Todoist is the best personal task manager for individuals who want natural language input, cross-platform availability, and a simple productivity system. It excels at personal GTD workflows. Teams needing shared project management with multiple views, dependencies, or time tracking should use Asana, ClickUp, or Monday.com."
+    }
   },
   {
     "name": "Coda",
@@ -2690,7 +3171,7 @@
     "website": "https://coda.io",
     "logo": "/logos/coda.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $10/user/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -2703,10 +3184,23 @@
       "notion",
       "airtable"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Coda is a document platform that combines the flexibility of word processors, the power of spreadsheets, and the interactivity of lightweight apps in one document format. Teams use Coda for product roadmaps, OKR tracking, meeting notes, and internal wikis where linked tables and automations replace separate tools. Free plan is limited by doc size; Pro ($10/user/mo) removes limits and adds automations.",
+    "pros": [
+      "Tables connected across document sections eliminate copy-paste data silos between spreadsheets",
+      "Buttons and automations build lightweight workflow tools — approval forms, daily digests — without code",
+      "Sync from external sources (Jira, GitHub, Google Sheets) keeps data live inside the document",
+      "Formulas use familiar spreadsheet syntax with added relational capabilities for cross-table lookups",
+      "100+ starter templates for product, team, and project management use cases"
+    ],
+    "cons": [
+      "Doc size limits on free plan are hit quickly with large tables or embedded assets",
+      "Performance degrades with very large documents or deeply nested tables in complex workspaces",
+      "Integration Packs ecosystem smaller than Notion's integration library"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Coda is the strongest alternative when documents need to act like apps — buttons, automations, and linked tables that Notion lacks. It suits product and operations teams building internal tools within documents. Teams focused on knowledge management and wiki use cases get more from Notion's broader template library."
+    }
   },
   {
     "name": "Cloudflare",
@@ -2715,7 +3209,7 @@
     "website": "https://cloudflare.com",
     "logo": "/logos/cloudflare.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $20/mo",
     "affiliate": false,
     "rating": 4.8,
     "featured": false,
@@ -2728,10 +3222,23 @@
       "fastly",
       "aws-cloudfront"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Cloudflare is a network infrastructure platform providing CDN, DDoS protection, DNS management, and edge computing services. Its free plan covers CDN and DNS for unlimited sites, making it the default choice for adding performance and security to any web property. Pro ($20/mo) adds Web Application Firewall and image optimization; Business and Enterprise plans serve high-traffic and compliance workloads.",
+    "pros": [
+      "Free CDN with 200+ global PoPs reduces latency for international visitors on any plan",
+      "Zero-configuration DDoS protection handles attacks up to terabits per second on all tiers",
+      "Cloudflare Workers enables edge-computing functions with 100K free requests per day",
+      "Universal SSL certificate provisioned automatically for any domain in minutes",
+      "1.1.1.1 DNS resolver is the world's fastest public DNS, integrated with Cloudflare domain management"
+    ],
+    "cons": [
+      "Free plan WAF rules are limited — blocks common threats but lacks customizable rulesets",
+      "Workers debugging is harder than traditional server-side code with limited local tooling",
+      "Enterprise features (Advanced DDoS, custom certificates) require custom contract pricing"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Cloudflare's free plan is the easiest high-value addition to any web infrastructure — CDN, DDoS protection, and SSL for zero cost. Pro and Business tiers are worth it when WAF customization or analytics depth matter. Workers is a genuinely powerful edge computing platform for developers comfortable with the debugging tradeoffs."
+    }
   },
   {
     "name": "DigitalOcean",
@@ -2740,7 +3247,7 @@
     "website": "https://digitalocean.com",
     "logo": "/logos/digitalocean.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$4/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -2753,10 +3260,23 @@
       "vultr",
       "linode"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "DigitalOcean is a cloud infrastructure provider targeting developers and small-to-mid-size businesses with simplified VPS (Droplets), managed databases, Kubernetes, and object storage. Its focus on developer experience — clean API, clear pricing, and extensive tutorials — positions it between raw cloud providers (AWS/GCP) and managed hosting (Kinsta/WP Engine). Droplets start at $4/mo for 512MB RAM.",
+    "pros": [
+      "Transparent hourly billing with monthly cap — no surprise egress fees beyond documented limits",
+      "1-click Droplet images for popular stacks (LAMP, LEMP, WordPress, Docker) accelerate deployment",
+      "Managed databases (PostgreSQL, MySQL, Redis) eliminate database administration overhead",
+      "Spaces object storage is S3-compatible with cheaper egress pricing than AWS",
+      "Community tutorial library covers nearly every deployment scenario in depth"
+    ],
+    "cons": [
+      "No managed WordPress hosting — requires manual configuration unlike Kinsta or WP Engine",
+      "Support is slow on lower tiers — ticket-based response without live chat",
+      "Fewer global regions than AWS/GCP — 15 data centers versus 30+ for major cloud providers"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "DigitalOcean hits the best combination of developer-friendly UX, transparent pricing, and genuine infrastructure capability. It is the natural stepping stone between shared hosting and AWS complexity. Teams needing managed WordPress or without DevOps capacity should look at managed hosting alternatives."
+    }
   },
   {
     "name": "Vultr",
@@ -2765,7 +3285,7 @@
     "website": "https://vultr.com",
     "logo": "/logos/vultr.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$2.50/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -2778,10 +3298,23 @@
       "digitalocean",
       "hetzner"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Vultr is a cloud infrastructure provider offering VPS (Cloud Compute), bare metal servers, and object storage with global server locations and hourly billing. Its competitive pricing, 32 global regions, and NVMe-backed High Frequency plans make it a strong DigitalOcean alternative for developers and hosting providers. Cloud Compute starts at $2.50/mo for 512MB RAM.",
+    "pros": [
+      "32 global data centers — more than double DigitalOcean's 15 locations for regional proximity",
+      "Hourly billing with no minimum commitment — suitable for short-lived development environments",
+      "High Frequency plans with NVMe storage reduce latency for database-heavy workloads from $6/mo",
+      "Bare metal servers available for workloads requiring dedicated hardware without virtualization overhead",
+      "Block storage, object storage, load balancers, and DNS managed within the same platform"
+    ],
+    "cons": [
+      "Documentation and tutorials less comprehensive than DigitalOcean's industry-leading library",
+      "Support is a paid add-on — community forum is the default free support channel",
+      "No managed database service — database hosting requires full server self-management"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Vultr is the right choice when global region coverage or NVMe storage performance drives infrastructure decisions. Its pricing is competitive with DigitalOcean across most configurations. Teams new to cloud infrastructure benefit more from DigitalOcean's tutorial library and community resources."
+    }
   },
   {
     "name": "Hostinger",
@@ -2790,7 +3323,7 @@
     "website": "https://hostinger.com",
     "logo": "/logos/hostinger.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$2.99/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -2803,10 +3336,23 @@
       "siteground",
       "bluehost"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Hostinger is a web hosting provider known for aggressive pricing across shared, cloud, VPS, and WordPress hosting. Its custom hPanel control panel, free domain for the first year, and LiteSpeed server stack make it competitive for price-conscious users. Premium shared hosting starts at $2.99/mo intro (renews $8.99/mo); WordPress hosting from $2.99/mo; VPS from $4.99/mo for developers needing root access.",
+    "pros": [
+      "Among the lowest prices in shared hosting without sacrificing LiteSpeed server performance",
+      "Free domain name included for the first year on most hosting plans",
+      "hPanel is cleaner and faster than legacy cPanel with a more intuitive dashboard",
+      "LiteSpeed web server with built-in object caching outperforms Apache-based competitors",
+      "24/7 live chat support with short queue times for technical issues"
+    ],
+    "cons": [
+      "Introductory price ($2.99/mo) renews at $8.99/mo after the initial term — significant increase",
+      "Storage limits on entry-level plans are restrictive for media-heavy sites",
+      "VPS plans require Linux server knowledge — no managed service option available"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Hostinger is the best value entry point for new websites and WordPress blogs that prioritize low cost and reasonable performance. The LiteSpeed advantage is real. Renewal pricing transparency and storage limits are the main caveats — budget for the renewal rate, not the intro rate."
+    }
   },
   {
     "name": "SiteGround",
@@ -2853,7 +3399,7 @@
     "website": "https://bluehost.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$2.95/mo",
     "affiliate": true,
     "rating": 4.2,
     "featured": false,
@@ -2866,10 +3412,23 @@
       "hostinger",
       "siteground"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Bluehost is a web hosting provider that has been the official WordPress.org recommended host for over a decade. It offers shared, VPS, and managed WordPress hosting with a free domain on annual plans, one-click WordPress install, and cPanel control panel. Basic plan ($2.95/mo intro, renews $10.99/mo) is designed for single-site WordPress beginners building their first website.",
+    "pros": [
+      "Official WordPress.org recommendation provides community trust and compatibility assurance",
+      "One-click WordPress install with guided setup wizard reduces technical barriers for beginners",
+      "Free domain name for the first year reduces initial total cost of website launch",
+      "cPanel control panel is industry-standard — most WordPress tutorials assume cPanel familiarity",
+      "24/7 phone and live chat support serves non-technical users who need guided help"
+    ],
+    "cons": [
+      "Introductory rate ($2.95/mo) renews at $10.99/mo — a significant price increase after the first term",
+      "Performance benchmarks below SiteGround and Kinsta for WordPress sites under load",
+      "Upsell experience during checkout and inside the dashboard is aggressive and persistent"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Bluehost's WordPress.org endorsement and beginner-friendly setup make it a reasonable first hosting choice. Performance and renewal pricing transparency are the weaknesses — SiteGround offers better speed at comparable post-renewal pricing. Businesses with traffic that matters should budget for managed WordPress alternatives."
+    }
   },
   {
     "name": "Namecheap",
@@ -2878,7 +3437,7 @@
     "website": "https://namecheap.com",
     "logo": "/logos/namecheap.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$7.98/yr (.com)",
     "affiliate": true,
     "rating": 4.5,
     "featured": false,
@@ -2891,10 +3450,23 @@
       "godaddy",
       "hostinger"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Namecheap is a domain registrar and web hosting provider known for low domain prices and transparent renewal rates. It offers domain registration for 400+ TLDs, EasyWP managed WordPress hosting, private email, and SSL certificates. Popular primarily as a registrar — many users register domains at Namecheap while hosting elsewhere. .com domains from $7.98/yr; EasyWP WordPress hosting from $1.44/mo.",
+    "pros": [
+      "Domain renewal prices are among the lowest and most transparent — no hidden renewal fee inflation",
+      "Free WhoisGuard privacy protection included on most domain registrations",
+      "EasyWP provides managed WordPress hosting at a lower price point than Kinsta or WP Engine",
+      "Intuitive domain management dashboard for managing multiple domains across a portfolio",
+      "Free PositiveSSL certificate included with hosting plans"
+    ],
+    "cons": [
+      "Shared hosting performance is below average compared to SiteGround or Hostinger for WordPress sites",
+      "Primary support is chat and ticket-based — no phone support option",
+      "Advanced hosting features (staging, daily backups) require paid add-ons rather than base plan inclusion"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Namecheap is the go-to domain registrar for transparent pricing and free privacy protection — its registrar strengths clearly outpace its hosting quality. Most users benefit from registering domains at Namecheap and hosting elsewhere with a dedicated provider like SiteGround or Kinsta."
+    }
   },
   {
     "name": "WP Engine",
@@ -2903,7 +3475,7 @@
     "website": "https://wpengine.com",
     "logo": "/logos/wp-engine.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$20/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -2916,10 +3488,23 @@
       "kinsta",
       "siteground"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "WP Engine is a managed WordPress hosting platform built for businesses, agencies, and enterprises that require performance, security, and reliability without server management. It includes daily automated backups, one-click staging environments, proprietary EverCache caching, Cloudflare CDN, and 24/7 WordPress-expert support. Startup ($20/mo) hosts 1 site; Growth ($115/mo) scales to 25 sites for agencies.",
+    "pros": [
+      "EverCache performance engine consistently delivers fast page loads under traffic spikes",
+      "One-click staging environments enable risk-free development, testing, and client preview",
+      "24/7 WordPress-expert support resolves issues faster than generic hosting support teams",
+      "Genesis framework and 35+ premium themes included free with all plans",
+      "Automated daily backups with one-click point-in-time restore for disaster recovery"
+    ],
+    "cons": [
+      "$20/mo minimum for one site is expensive compared to SiteGround's $2.99/mo intro pricing",
+      "Monthly visit limits on lower plans trigger overage charges during unexpected traffic spikes",
+      "Certain plugins are incompatible with WP Engine's managed environment — restricted list applies"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "WP Engine is the right managed WordPress host when site performance has direct revenue impact and technical support quality matters. The EverCache technology and staging workflow are genuine advantages for agency and ecommerce use cases. Personal sites and low-traffic blogs rarely justify the $20/mo entry point."
+    }
   },
   {
     "name": "Kinsta",
@@ -3004,7 +3589,7 @@
     "website": "https://woocommerce.com",
     "logo": "/logos/woocommerce.svg",
     "pricing": "Free",
-    "startingPrice": "",
+    "startingPrice": "Free (hosting required)",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -3017,10 +3602,23 @@
       "shopify",
       "magento"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "WooCommerce is an open-source ecommerce plugin for WordPress that powers approximately 30% of all online stores globally. It converts any WordPress site into a fully functional store with product management, payment processing, shipping, and tax calculation. The plugin is free; costs come from hosting, themes, and premium extensions for subscriptions, memberships, advanced shipping, or additional payment gateways.",
+    "pros": [
+      "No monthly platform fee — costs scale with actual usage rather than a fixed subscription",
+      "Unlimited customization through 800+ official extensions and thousands of WordPress plugins",
+      "Full ownership of store data with no vendor lock-in — export everything at any time",
+      "Supports physical, digital, subscription, and variable products natively",
+      "Deep WordPress SEO integration with Rank Math and Yoast SEO for search visibility"
+    ],
+    "cons": [
+      "Requires WordPress hosting and ongoing technical maintenance — not hands-off like Shopify",
+      "Extension costs accumulate quickly — subscriptions plugin alone costs $199/yr",
+      "Performance requires caching configuration (WP Rocket, Cloudflare) to handle traffic spikes"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "WooCommerce is the right choice when you want full control, low platform fees, and the entire WordPress plugin ecosystem at your disposal. The trade-off is hands-on technical management. Merchants wanting a fully managed experience without server concerns are better served by Shopify or BigCommerce."
+    }
   },
   {
     "name": "Gumroad",
@@ -3029,7 +3627,7 @@
     "website": "https://gumroad.com",
     "logo": "/logos/gumroad.svg",
     "pricing": "Free",
-    "startingPrice": "",
+    "startingPrice": "Free (10% fee)",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -3042,10 +3640,23 @@
       "lemon-squeezy",
       "payhip"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Gumroad is a digital product marketplace and storefront builder for creators selling ebooks, courses, software, and memberships. It requires no monthly subscription — instead charging a 10% transaction fee. Creators get a hosted storefront, checkout, license key delivery, and built-in discovery through Gumroad's marketplace. Premium ($10/mo) reduces the fee to 7%.",
+    "pros": [
+      "Zero monthly cost — only pay 10% when you actually sell, reducing risk for new products",
+      "Setup in under 10 minutes — create a product, set a price, share the link immediately",
+      "Gumroad Discover marketplace provides organic buyer traffic from platform browsing",
+      "Handles EU VAT and US sales tax automatically for digital product sales",
+      "License key generation for software products built into checkout without configuration"
+    ],
+    "cons": [
+      "10% fee becomes expensive at volume — $10,000 MRR costs $1,000/mo in platform fees",
+      "Product page design customization is limited compared to Lemon Squeezy or Payhip",
+      "No subscription dunning or advanced payment retry logic for failed recurring payments"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Gumroad is the fastest path from idea to first sale for indie creators and developers. The fee model eliminates monthly cost risk before product-market fit is confirmed. At meaningful revenue volume ($3,000+/mo), the 10% fee economics shift in favor of Lemon Squeezy or direct Stripe integration."
+    }
   },
   {
     "name": "Lemon Squeezy",
@@ -3092,7 +3703,7 @@
     "website": "https://bigcommerce.com",
     "logo": "/logos/bigcommerce.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$29/mo",
     "affiliate": true,
     "rating": 4.5,
     "featured": false,
@@ -3105,10 +3716,23 @@
       "shopify",
       "magento"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "BigCommerce is a hosted ecommerce platform targeting mid-market and enterprise merchants who need more built-in functionality than Shopify without Magento's development overhead. Native features include multi-currency, faceted search, B2B pricing groups, and headless commerce support. Standard ($29/mo) has no transaction fees; Plus ($79/mo) adds abandoned cart recovery and customer groups.",
+    "pros": [
+      "No transaction fees on any plan — unlike Shopify's 0.5-2% fee on non-Shopify Payments",
+      "Headless commerce support connects BigCommerce backend to custom Next.js or Gatsby frontends",
+      "B2B features (price lists, purchase orders, net payment terms) included on Enterprise plan",
+      "Native multi-currency with local payment method support for international merchants",
+      "Open-source Stencil themes provide full front-end customization access without platform restrictions"
+    ],
+    "cons": [
+      "Revenue-based plan upgrades force tier change when annual GMV exceeds plan threshold",
+      "Fewer app integrations than Shopify — 1,500 vs 8,000+ available apps",
+      "Learning curve steeper than Shopify for merchants without prior ecommerce platform experience"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "BigCommerce is the strongest Shopify alternative when transaction fees or B2B complexity drive the evaluation. The no-fee pricing model and headless commerce support are genuine advantages for mid-market merchants. Shopify's app ecosystem and simpler onboarding make it a better fit for first-time ecommerce builders."
+    }
   },
   {
     "name": "Wix",
@@ -3117,7 +3741,7 @@
     "website": "https://wix.com",
     "logo": "/logos/wix.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "Free / $17/mo",
     "affiliate": true,
     "rating": 4.4,
     "featured": false,
@@ -3130,10 +3754,23 @@
       "squarespace",
       "shopify"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Wix is a cloud-based website builder with 900+ templates, AI site generation (Wix ADI), and an integrated app market. It targets small businesses, restaurants, and service providers needing a no-code website. Light plan ($17/mo) removes Wix branding; Core ($29/mo) adds ecommerce; Business ($36/mo) enables full online store with abandoned cart recovery.",
+    "pros": [
+      "Drag-and-drop editor with pixel-perfect control over element positioning on the canvas",
+      "900+ professional templates across industries with one-click demo content population",
+      "Wix App Market includes 300+ apps for booking, events, forms, and membership management",
+      "AI website builder (Wix ADI) generates a starter site from a brief in minutes",
+      "Free plan suitable for prototyping and portfolio projects before committing to paid"
+    ],
+    "cons": [
+      "Cannot switch templates after launch without rebuilding all page content from scratch",
+      "URL structure less clean than WordPress for SEO — subfolder paths and blog routes are limited",
+      "Once launched, migrating to a different platform requires complete rebuild"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Wix delivers the most design flexibility among no-code builders, making it strong for visual businesses like photographers, restaurants, and service providers. The template lock-in is a real long-term risk — choose the design direction before publishing. WordPress or Squarespace better serve content-heavy or ecommerce-first sites."
+    }
   },
   {
     "name": "Squarespace",
@@ -3142,7 +3779,7 @@
     "website": "https://squarespace.com",
     "logo": "/logos/squarespace.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$16/mo",
     "affiliate": true,
     "rating": 4.5,
     "featured": false,
@@ -3155,10 +3792,23 @@
       "wix",
       "shopify"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Squarespace is an all-in-one website builder combining hosting, templates, domain management, and basic ecommerce in one subscription. It targets creatives, freelancers, and small businesses needing a professional online presence without technical skills. Personal ($16/mo) covers portfolio and content sites; Business ($23/mo) and Commerce ($28-52/mo) add ecommerce with reduced transaction fees.",
+    "pros": [
+      "Award-winning template designs maintain visual quality without professional design skills",
+      "Built-in image optimization and CDN deliver media-heavy portfolio and product sites quickly",
+      "Integrated blogging, portfolio, scheduling, and ecommerce reduce the need for separate tools",
+      "All plans include SSL, hosting, and 24/7 customer support",
+      "Fluid Engine drag-and-drop editor provides layout flexibility beyond template constraints"
+    ],
+    "cons": [
+      "Template switching requires rebuilding page layouts — changing creative direction is disruptive",
+      "Custom code (CSS/JavaScript injection) requires Business plan or above",
+      "ecommerce transaction fees (0-3%) apply on non-Commerce plans, reducing margins"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Squarespace is the strongest all-in-one solution for creatives and service businesses who need a professional website without technical overhead. Design quality is its clearest differentiator from Wix. ecommerce merchants with meaningful sales volume should consider Commerce plans to avoid transaction fees."
+    }
   },
   {
     "name": "SendOwl",
@@ -3167,7 +3817,7 @@
     "website": "https://sendowl.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$18/mo",
     "affiliate": true,
     "rating": 4.5,
     "featured": false,
@@ -3180,10 +3830,23 @@
       "gumroad",
       "payhip"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "SendOwl is a digital product delivery and checkout platform for selling ebooks, software, courses, and memberships. It automates PDF stamping, license key delivery, drip content release, and affiliate management after purchase. Starter ($18/mo) supports unlimited products; Growth ($37/mo) adds subscription billing and higher bandwidth limits for larger file downloads.",
+    "pros": [
+      "Automatic PDF stamping with buyer name deters unauthorized sharing of digital files",
+      "License key generation and delivery for software products built into the checkout flow",
+      "Drip content unlocks course modules or files on a defined schedule after purchase",
+      "Affiliate management integrated without requiring third-party affiliate software",
+      "Integrates with Stripe, PayPal, and most email marketing platforms"
+    ],
+    "cons": [
+      "$18/mo for unlimited products is higher than Gumroad's free tier for low-volume sellers",
+      "No built-in marketplace — relies entirely on seller-generated traffic without discovery features",
+      "EU VAT handling is seller responsibility — not a merchant-of-record like Lemon Squeezy"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "SendOwl is a strong operational platform for digital product sellers who need PDF stamping, license keys, and drip delivery in one place. The affiliate integration adds significant value for creators with referral programs. Sellers who need EU VAT automation should evaluate Lemon Squeezy as a merchant-of-record alternative."
+    }
   },
   {
     "name": "Payhip",
@@ -3192,7 +3855,7 @@
     "website": "https://payhip.com",
     "logo": "",
     "pricing": "Free",
-    "startingPrice": "",
+    "startingPrice": "Free (5% fee)",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -3205,10 +3868,23 @@
       "gumroad",
       "sendowl"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Payhip is a digital product store builder for selling ebooks, courses, software, and coaching sessions. Like Gumroad, it uses a transaction-fee model — free plan charges 5%; Plus ($29/mo) reduces to 2%; Pro ($99/mo) eliminates fees entirely. It handles EU VAT automatically as a merchant of record and provides a hosted storefront with basic customization options.",
+    "pros": [
+      "Free plan with 5% fee validates product ideas before committing to monthly subscription costs",
+      "EU VAT handled automatically as merchant of record — no manual tax compliance required",
+      "Supports digital downloads, courses, coaching, memberships, and physical products in one platform",
+      "Affiliate program included on all plans including the free tier",
+      "Custom domain support on all plans including free — brand-consistent checkout experience"
+    ],
+    "cons": [
+      "5% fee on free plan becomes expensive at volume — $5,000 monthly revenue costs $250/mo in fees",
+      "Storefront design customization is minimal compared to dedicated store builders",
+      "Course builder is basic — less functional than Teachable or dedicated LMS platforms"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Payhip is the most complete free starting point for digital product sellers who need EU VAT handling without a merchant account. The free tier's custom domain support is a genuine advantage over Gumroad. Volume sellers should upgrade to Pro ($99/mo) to eliminate fees once monthly revenue exceeds $2,000."
+    }
   },
   {
     "name": "SamCart",
@@ -3217,7 +3893,7 @@
     "website": "https://samcart.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$79/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -3230,10 +3906,23 @@
       "clickfunnels",
       "thrivecart"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "SamCart is a checkout optimization platform focused on one-page checkout, order bumps, upsells, and subscription billing for digital products and courses. Built around increasing average order value through post-purchase sequences and A/B testing checkout pages. Launch ($79/mo) includes one-page checkout and order bumps; Grow ($159/mo) adds A/B testing and advanced analytics.",
+    "pros": [
+      "One-page checkout design reduces cart abandonment compared to multi-step checkout flows",
+      "Order bumps and one-click upsells increase average order value without additional traffic acquisition",
+      "A/B testing for checkout pages identifies the highest-converting layout and copy variations",
+      "Subscription billing with dunning logic handles failed payments and automatic retry sequences",
+      "Cart abandonment email sequences recover lost sales from incomplete checkouts"
+    ],
+    "cons": [
+      "$79/mo is expensive for early-stage creators without consistent monthly sales volume",
+      "No built-in digital file hosting — file delivery requires integration with third-party storage",
+      "Monthly subscription cost is higher than ThriveCart's one-time purchase model for lifetime value"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "SamCart is justified for established digital product and course businesses where checkout optimization directly increases revenue — order bumps and one-click upsells pay for themselves at meaningful sales volume. Early-stage creators without consistent traffic get more value starting with Gumroad or Payhip until conversion optimization becomes the limiting factor."
+    }
   },
   {
     "name": "Substack",
