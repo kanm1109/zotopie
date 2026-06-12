@@ -1195,7 +1195,7 @@
     "website": "https://anthropic.com/claude",
     "logo": "/logos/claude.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "$20/mo",
     "affiliate": false,
     "rating": 4.8,
     "featured": false,
@@ -1208,10 +1208,23 @@
       "chatgpt",
       "gemini"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Claude is Anthropic's conversational AI assistant, designed with a focus on safety, careful reasoning, and handling long, complex documents. Available through Claude.ai and the Anthropic API, it is used for document analysis, long-form writing, code review, research synthesis, and tasks requiring precise instruction following.\n\nClaude's standout capability is its large context window — Claude 3.5 Sonnet processes up to 200,000 tokens, enabling analysis of books, full codebases, or lengthy document sets in a single conversation. The model family includes Haiku (fast, economical), Sonnet (balanced), and Opus (most capable). Free access is available via Claude.ai; Pro (/mo) unlocks higher usage limits and priority access to the latest models.",
+    "pros": [
+      "200,000-token context window allows processing entire books, codebases, or long document sets in a single conversation — the largest of any major consumer AI tool",
+      "Follows complex, multi-step instructions reliably — strong at structured tasks requiring precise formatting, role adherence, and output consistency",
+      "Coding capabilities span reading, writing, debugging, and explaining code across multiple files simultaneously, with thoughtful reasoning about tradeoffs",
+      "Claude.ai Projects maintains memory and shared context across multiple conversations on a specific topic — useful for ongoing research or writing work",
+      "Safety-focused design means fewer unexpected refusals on legitimate professional tasks compared to more restrictive competing models"
+    ],
+    "cons": [
+      "No native image generation — Claude analyzes images but cannot produce them, requiring a separate tool for any visual creative work",
+      "Web browsing capability is less reliable than ChatGPT for real-time information retrieval — knowledge cutoff applies more strictly in practice",
+      "API pricing is higher per token than some competing providers for equivalent capability tiers, which affects cost at scale for developers"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Claude is the strongest AI assistant for long-document work — nothing matches its 200K context window for analyzing full reports, codebases, or book-length content. It is also the most reliable model for following nuanced, multi-step instructions precisely. The main gaps are real-time information and image generation, which still require ChatGPT or dedicated tools. For research-heavy, writing-intensive, and code-review workflows, Claude is often the better choice over ChatGPT."
+    }
   },
   {
     "name": "Jasper",
@@ -1308,7 +1321,7 @@
     "website": "https://midjourney.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$10/mo",
     "affiliate": false,
     "rating": 4.8,
     "featured": false,
@@ -1321,10 +1334,23 @@
       "dall-e",
       "stable-diffusion"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Midjourney is an AI image generation tool accessible through Discord, producing high-quality, artistically-styled images from text prompts. It is the most widely adopted generative image tool for professional creative work, used by designers, artists, marketers, and game developers who need concept art, editorial visuals, or rapid creative exploration.\n\nUsers submit /imagine prompts in Discord and receive four image variations to upscale, vary, or iterate on. Midjourney is known for its painterly aesthetics with exceptional coherence in lighting and composition. Version 6 and 7 added readable text rendering, character consistency across generations, and improved prompt adherence. Basic plan starts at /mo for ~200 images; Standard (/mo) adds unlimited relaxed generation.",
+    "pros": [
+      "Artistic quality is class-leading for stylized imagery — painterly textures, dramatic lighting, and compositional coherence that outperform most competitors",
+      "Iterative workflow (upscale, vary, blend, zoom) inside Discord enables fast visual exploration and refinement without leaving a chat interface",
+      "v6 and v7 models render readable text inside images — a long-standing limitation that is now largely resolved",
+      "Community feed lets users browse prompts and outputs from other creators, making prompt engineering a learnable skill",
+      "--sref (style reference) and seed parameters enable consistent character and visual style across multiple generations for brand work"
+    ],
+    "cons": [
+      "Discord-only interface creates friction for teams unfamiliar with Discord and makes integration into professional design workflows awkward",
+      "No in-image editing — you cannot select, mask, or modify specific areas within a generated image without exporting to another tool",
+      "All generated images are publicly visible on base plans — private generation requires the Pro plan at /mo"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Midjourney produces the highest-quality stylized AI imagery available and is the default choice for creative professionals who prioritize visual output over convenience. The Discord interface is a real workflow barrier, but the results justify the friction for concept art, editorial visuals, and creative direction work. Teams needing editable outputs or seamless integration will still need Photoshop or Figma alongside it."
+    }
   },
   {
     "name": "ElevenLabs",
@@ -1434,7 +1460,7 @@
     "website": "https://skool.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$99/mo",
     "affiliate": true,
     "rating": 4.9,
     "featured": true,
@@ -1447,10 +1473,23 @@
       "circle",
       "mighty-networks"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Skool is a community and course platform that combines a private social feed, course hosting, gamification, and calendar events in a deliberately simplified product. Founded in 2019 and popularized by Alex Hormozi's endorsement in 2023-2024, it has become the go-to platform for creators monetizing a knowledge community.\n\nMembers interact through a community feed, complete courses in the same space, earn points for contributions, and unlock access levels through gamification — all without leaving the platform. Skool charges a flat /mo with no transaction fees on membership or course revenue. There is no free plan but a 14-day trial is available.",
+    "pros": [
+      "Flat /mo with no transaction fees or revenue share — economics improve significantly at scale versus percentage-based competitors like Teachable or Kajabi",
+      "Community and courses exist in the same product — members access lessons from the same feed where they participate in discussions, reducing platform drop-off",
+      "Gamification (points, levels, leaderboards) rewards member engagement and drives participation without custom development or third-party integrations",
+      "Skool marketplace exposes communities to new members browsing the platform — built-in discovery that other white-label platforms lack",
+      "Fast setup — a functional community with courses can be live in under an hour with minimal configuration required"
+    ],
+    "cons": [
+      "/mo flat rate is expensive for early-stage communities with fewer than 50 paying members — there is no lower-cost entry tier",
+      "Course features are basic — no quiz branching, per-member drip scheduling, or advanced learner analytics compared to dedicated LMS platforms",
+      "No native email marketing or sales funnel tools — external providers are required for lead capture, email sequences, and membership sales pages"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Skool is the best-value community platform for creators who already have an audience and want to monetize it without giving up a revenue cut. The flat fee and no-commission model are genuinely different from competitors. The limitation is what it deliberately omits — advanced course features, email marketing, and complex funnels all need external tools. Creators who want a simple, unified community-first experience and have the audience to cover the /mo will find it the right choice."
+    }
   },
   {
     "name": "Circle",
@@ -1459,7 +1498,7 @@
     "website": "https://circle.so",
     "logo": "/logos/circle.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$89/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -1472,10 +1511,23 @@
       "skool",
       "mighty-networks"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Circle is a white-label community platform for creators, educators, and brands who want to own their community experience off social media. It combines discussion spaces, live streams, events, courses, and member management in a customizable environment under your own brand.\n\nMembers access Circle communities through web, iOS, or Android. Community owners set membership tiers, gate content by tier, run live video rooms, and create structured courses within the same community space. Pricing runs from Professional (/mo) to Enterprise (/mo), with no transaction fee taken on membership revenue. A 14-day free trial is available.",
+    "pros": [
+      "Full white-labeling — members experience your brand, not Circle's — including custom domains, branded app icons, and custom email sender names",
+      "Native live streaming and scheduled community events eliminate the need for Zoom or external video conferencing tools for most use cases",
+      "Spaces system organizes content by topic, course, event, or member tier with granular access control per membership level",
+      "Membership tiers with different pricing and content access allow layered monetization within a single community without separate products",
+      "Circle API and Zapier integration enable custom member workflows — automated onboarding, CRM sync, and course content delivery on enrollment"
+    ],
+    "cons": [
+      "Base Professional plan (/mo) limits the number of members — meaningful scale requires the Business or Enterprise tier at significantly higher cost",
+      "Course features are functional but less polished than dedicated LMS platforms like Teachable or Thinkific for complex curriculum delivery",
+      "Live streaming quality depends on host and participant bandwidth — large communities with simultaneous live events report occasional reliability issues"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Circle is the strongest white-label community platform for creators who want full brand ownership without social media dependency. The combination of discussion, courses, events, and live streaming in one space removes the need for multiple tools. The pricing is the main friction — /mo for a single community is a real commitment before reaching profitability. Creators with an existing audience can justify it; those still building will likely wait for traction before committing."
+    }
   },
   {
     "name": "Discord",
@@ -1697,7 +1749,7 @@
     "website": "https://activecampaign.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$15/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -1710,10 +1762,23 @@
       "hubspot",
       "getresponse"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "ActiveCampaign is an email marketing and CRM automation platform used by over 180,000 businesses for multi-channel marketing sequences, lead scoring, and sales automation. It is designed for businesses that need automation beyond basic email — connecting email, SMS, site tracking, and CRM data into coordinated customer journeys.\n\nThe platform's automation builder uses visual workflows with branching logic, conditional paths, and goal-tracking to move contacts through sequences based on behavior or CRM data. ActiveCampaign also includes a deal-based CRM with pipeline management, so sales teams can trigger automations from deal stage changes. Plans start at /mo (Starter, 1,000 contacts), scaling by contact count through Plus, Professional, and Enterprise tiers.",
+    "pros": [
+      "Automation builder supports complex, multi-branch sequences based on behavior, tags, CRM data, and external events — more capable than Mailchimp or ConvertKit for advanced workflows",
+      "Built-in CRM with deal pipeline management means sales and marketing automations share the same contact data with no syncing required",
+      "Site and event tracking connects web behavior to email sequences — trigger automations based on pages visited, products viewed, or specific actions taken",
+      "Lead scoring assigns points automatically based on contact behavior and profile data, allowing sales teams to prioritize outreach without manual review",
+      "900+ integrations including deep native connections with Shopify, WooCommerce, and Salesforce for ecommerce and enterprise use cases"
+    ],
+    "cons": [
+      "Interface complexity is a common complaint — new users frequently report a steep learning curve before getting first automations set up correctly",
+      "Pricing increases sharply with contact count — a 25,000-contact list starts at /mo, which is expensive for list builders with modest revenue per subscriber",
+      "Deliverability on high-volume sends has been reported as inconsistent compared to simpler tools with more rigorous sender reputation management"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "ActiveCampaign is the best choice for businesses that need serious marketing automation — behavioral triggers, lead scoring, CRM sync, and multi-branch sequences — without moving to an enterprise platform. It is meaningfully more powerful than Mailchimp or ConvertKit for complex B2B and ecommerce workflows. The trade-offs are complexity and cost at scale. Teams willing to invest in setup will get a platform that grows with them; teams wanting simple email broadcasting will find it over-engineered."
+    }
   },
   {
     "name": "HubSpot",
@@ -1722,7 +1787,7 @@
     "website": "https://hubspot.com",
     "logo": "/logos/hubspot.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "$20/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -1735,10 +1800,23 @@
       "activecampaign",
       "salesforce"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "HubSpot is a CRM platform that bundles marketing, sales, customer service, content management, and operations tools in one connected system. It is designed to help businesses attract visitors, convert leads, and retain customers — all tracked through a central contact database linking activity across every team.\n\nThe platform is organized into Hubs (Marketing, Sales, Service, CMS, Operations), each with a free tier and paid plans from Starter (/mo) to Enterprise (,600/mo). The free CRM is the entry point for most businesses, offering contact management, email tracking, meeting scheduling, and pipeline management at no cost. HubSpot is best suited for SMBs and mid-market companies building an inbound growth system.",
+    "pros": [
+      "Free CRM includes contact management, pipeline tracking, email scheduling, meeting links, and live chat — meaningful functionality at no cost",
+      "Unified contact database across all Hubs eliminates sync issues between marketing campaigns and sales follow-up activities",
+      "Workflows automate marketing sequences, internal notifications, deal stage updates, and CRM property changes without code",
+      "HubSpot Academy provides free inbound marketing, sales, and product certifications recognized by thousands of hiring managers",
+      "App marketplace with 1,500+ integrations covers major SaaS tools including Salesforce, Shopify, Slack, and Zoom natively"
+    ],
+    "cons": [
+      "Pricing escalates sharply at professional and enterprise tiers — meaningful automation and reporting require -3,600/mo plans",
+      "Marketing Hub contact-based pricing means costs grow with list size, not just feature usage — expensive for large databases",
+      "CMS tools are less flexible than standalone platforms; advanced site architecture often still requires supplementary tools or developer work"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "HubSpot is the most complete CRM platform for SMBs that want marketing, sales, and service in one system. The free CRM is genuinely useful as an entry point, but the real value — automation, reporting, and multi-team visibility — sits behind expensive tier upgrades. Teams that outgrow a basic CRM but are not ready for Salesforce will find HubSpot hits the right balance of capability and approachability."
+    }
   },
   {
     "name": "Mailchimp",
@@ -2424,7 +2502,7 @@
     "website": "https://clickup.com",
     "logo": "/logos/clickup.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "$7/user/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -2437,10 +2515,23 @@
       "monday",
       "asana"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "ClickUp is a project management and productivity platform that combines tasks, docs, goals, whiteboards, time tracking, and dashboards in one workspace. It is designed to replace multiple specialized tools with a highly configurable system that maps to any team's workflow.\n\nThe platform supports six views (list, board, calendar, Gantt, timeline, workload) and lets teams structure work in a hierarchy of spaces, folders, and lists. ClickUp AI is included in paid plans to draft documents, generate task summaries, and create subtask breakdowns from descriptions. Free plan is generous; Unlimited (/user/mo) unlocks automations and integrations; Business (/user/mo) adds advanced dashboards and goal tracking.",
+    "pros": [
+      "Exceptionally configurable — tasks support custom statuses, custom fields, dependencies, watchers, and multiple assignees across six different views",
+      "Time tracking, workload management, and resource planning are built natively — no separate time-tracking tool required for most teams",
+      "ClickUp AI generates task summaries, draft responses, subtask breakdowns, and document content from task context without leaving the workspace",
+      "Free plan includes unlimited tasks, unlimited members, and 100MB storage — among the most generous free tiers in project management",
+      "Native Docs with bidirectional task linking allows knowledge management and project documentation to coexist in the same workspace"
+    ],
+    "cons": [
+      "Interface complexity is a real barrier — the volume of features and configuration options creates a steep setup burden before teams can work productively",
+      "Mobile app performance lags behind the desktop experience — common reports include slow loading times and missing feature parity on iOS and Android",
+      "Notification defaults are aggressive — requires intentional configuration to avoid overwhelming team members with alerts across every update"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "ClickUp is the most feature-complete project management platform available at its price point, and the right choice for teams that have outgrown simpler tools like Trello or Asana and need custom fields, multiple views, and native time tracking. The trade-off is complexity — ClickUp requires genuine setup investment before it runs smoothly. Teams that invest in configuration get a system that handles complex operations; teams that expect immediate productivity may find it overwhelming compared to opinionated alternatives like Linear or Asana."
+    }
   },
   {
     "name": "Monday.com",
@@ -2724,7 +2815,7 @@
     "website": "https://siteground.com",
     "logo": "",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$2.99/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -2737,10 +2828,23 @@
       "hostinger",
       "wp-engine"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "SiteGround is a managed web hosting provider known for strong performance, responsive customer support, and developer-friendly tooling. It offers shared hosting, managed WordPress, cloud hosting, and WooCommerce hosting across data centers in the US, Europe, Asia-Pacific, and South America.\n\nDistinguishing features include a proprietary SuperCacher system, built-in staging environments on mid-tier plans and above, daily automated backups with 30-day retention, and a custom Site Tools control panel with Git integration and PHP version management. WordPress installations come pre-optimized with Nginx, PHP-FPM, and HTTP/2. Plans start at .99/mo introductory (renewing at .99/mo); GrowBig and GoGeek add staging, on-demand backups, and priority support.",
+    "pros": [
+      "Customer support responds in under 2 minutes on average via live chat — one of the most consistently praised support teams in shared hosting",
+      "Built-in staging environment on GrowBig and above — test changes safely before pushing to production without a separate staging service",
+      "Daily automated backups with 30-day retention and one-click restore included at no extra cost on all plans",
+      "SuperCacher with Nginx and PHP-FPM delivers solid WordPress performance without manual server tuning or caching plugin configuration",
+      "Site Tools control panel includes Git integration, SSH access, PHP version switching, and WP-CLI — genuinely useful for developers"
+    ],
+    "cons": [
+      "Introductory pricing of .99/mo renews at .99/mo — the price jump at renewal catches many first-time customers off guard",
+      "Shared hosting resource limits cause slowdowns on high-traffic sites or sites with resource-intensive plugins at peak hours",
+      "StartUp plan restricts to a single website — agencies and developers managing multiple sites must upgrade to GrowBig or GoGeek"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "SiteGround is the best shared and managed WordPress host for users who prioritize support quality and want developer-friendly tools without managing a VPS. Its customer support response times are genuinely exceptional in the category. The main consideration is renewal pricing — the jump from introductory to regular rates is significant, and the StartUp plan's single-site limit is restrictive. For anyone moving beyond one site or needing staging environments, GrowBig is the realistic entry point."
+    }
   },
   {
     "name": "Bluehost",
@@ -2824,7 +2928,7 @@
     "website": "https://kinsta.com",
     "logo": "/logos/kinsta.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "$35/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -2837,10 +2941,23 @@
       "wp-engine",
       "flywheel"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Kinsta is a premium managed WordPress hosting provider built on Google Cloud Platform, using isolated container architecture and automatic scaling for performance-critical WordPress sites. Each site runs in its own container with dedicated CPU and RAM — resources are not shared with other customers.\n\nKinsta provides automatic daily backups, a built-in staging environment, a free CDN via Cloudflare (260+ edge locations), server-level caching, and MyKinsta — a custom dashboard with real-time analytics and PHP error logging. Plans start at /mo for one WordPress install; add-ons include APM (application performance monitoring) and additional PHP workers for high-concurrency sites. The platform is SOC2 and GDPR compliant.",
+    "pros": [
+      "Google Cloud Platform infrastructure with isolated containers — dedicated CPU and RAM per site means one customer's traffic spike cannot degrade another's performance",
+      "Global CDN via Cloudflare is included at no extra cost — 260+ edge locations serve static assets from the closest point to each visitor worldwide",
+      "Built-in APM identifies slow database queries, external HTTP calls, and PHP bottlenecks without requiring a separate monitoring tool or APM subscription",
+      "Automatic staging environment with one-click push to production is available on every plan — no additional cost or configuration needed",
+      "MyKinsta dashboard provides real-time site analytics, PHP error log access, cache management, and redirect management in one clean interface"
+    ],
+    "cons": [
+      "Starting at /mo for one site, Kinsta is significantly more expensive than shared or semi-managed alternatives — cost is prohibitive for small or personal sites",
+      "Platform is WordPress-only — not suitable for non-WordPress applications, static sites, Node.js apps, or custom server configurations",
+      "Certain caching, backup, and security plugins are blocked — Kinsta handles these at the server level, which conflicts with popular WordPress plugins"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Kinsta is the right managed WordPress host for businesses where site performance and reliability have a direct revenue impact. The Google Cloud infrastructure, isolation guarantees, and included CDN are genuinely enterprise-grade at a price point accessible to growing businesses. It is not the right choice for personal sites or budget projects — the /mo minimum is real, and managed WordPress makes most sense when the alternative is paying a developer to manage a VPS. For agencies and high-traffic WordPress businesses, it is a strong option."
+    }
   },
   {
     "name": "Shopify",
@@ -2937,7 +3054,7 @@
     "website": "https://lemonsqueezy.com",
     "logo": "/logos/lemon-squeezy.svg",
     "pricing": "Free",
-    "startingPrice": "",
+    "startingPrice": "$29/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -2950,10 +3067,23 @@
       "paddle",
       "gumroad"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Lemon Squeezy is a merchant-of-record ecommerce platform for software developers and digital product creators selling SaaS subscriptions, digital downloads, and one-time products globally. As the merchant of record, Lemon Squeezy handles sales tax collection, VAT remittance, and compliance across 100+ countries — eliminating the tax burden from individual sellers.\n\nThe platform covers checkout pages, subscription billing, license key generation, usage-based pricing, affiliate management, and customer portals. Developers integrate via REST API or official SDKs. Lemon Squeezy charges percentage-based transaction fees on the base tier; Store plans (-/mo) reduce per-transaction costs for higher-revenue sellers.",
+    "pros": [
+      "Merchant-of-record model handles sales tax, VAT, and GST collection and remittance in 100+ countries — sellers have zero tax compliance burden internationally",
+      "Subscription billing supports recurring plans, free trials, mid-cycle upgrades and downgrades, and customer self-service portals out of the box",
+      "License key generation integrates directly with checkout — software products automatically issue, validate, and manage license keys without a separate system",
+      "Built-in affiliate program lets creators run commission-based referral campaigns with tracking and automatic payout management",
+      "Overlay and embedded checkouts reduce friction — customers complete purchases without leaving the seller's site or app"
+    ],
+    "cons": [
+      "Percentage-based fees on the free tier become expensive at higher revenue volumes compared to using Stripe or Paddle with direct payment processing",
+      "Less flexibility for complex or non-standard pricing structures — unusual billing models may require workarounds not native to the platform",
+      "Customer support response times have been inconsistent — some sellers report slow resolution for edge-case billing and refund disputes"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Lemon Squeezy is the right choice for indie developers and small software companies that want to sell internationally without hiring a tax specialist. The merchant-of-record model solves a real, expensive problem — global tax compliance — at a cost that is reasonable for early-stage products. At higher revenue volumes, the transaction fee economics eventually favor direct payment processing, but most independent developers will never reach that threshold."
+    }
   },
   {
     "name": "BigCommerce",
