@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    name: Build & Validate
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Run pre-build validation (source + generated file sync check)
+      - name: Validate source data
+        run: node scripts/validate-release.mjs
+
+      # Run the full build (prebuild → merge-data.mjs → astro build)
+      - name: Build
+        run: npm run build
+
+      # Run post-build validation (dist/ sitemap, robots, HTML checks)
+      - name: Validate build output
+        run: node scripts/validate-release.mjs --post

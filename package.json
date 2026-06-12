@@ -10,7 +10,9 @@
     "prebuild": "node scripts/merge-data.mjs || echo '[prebuild] merge-data failed — using committed generated files'",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "validate-release": "node scripts/validate-release.mjs",
+    "validate-release:post": "node scripts/validate-release.mjs --post"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.2",
