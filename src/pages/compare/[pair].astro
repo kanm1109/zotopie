@@ -35,21 +35,127 @@ function formatPricing(tool: typeof toolA) {
   return tool.startingPrice ? `From ${tool.startingPrice}` : tool.pricing;
 }
 
-function verdict(a: typeof toolA, b: typeof toolB) {
-  if (a.rating === b.rating) {
-    if (a.pricing === "Free" || a.pricing === "Freemium") return a.name;
-    if (b.pricing === "Free" || b.pricing === "Freemium") return b.name;
-    return a.name;
-  }
-  return a.rating > b.rating ? a.name : b.name;
+function starsOf(n: number) {
+  const full = Math.floor(n);
+  const half = n - full >= 0.5 ? 1 : 0;
+  const empty = 5 - full - half;
+  return "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
 }
 
-const winner      = verdict(toolA, toolB);
-const isAWinner   = winner === toolA.name;
-const SITE        = "https://zotopie.com";
-const pageUrl     = `${SITE}/compare/${toolA.slug}-vs-${toolB.slug}/`;
-const pageTitle   = `${toolA.name} vs ${toolB.name} (2026): In-Depth Comparison | Zotopie`;
-const pageDesc    = `${toolA.name} vs ${toolB.name}: Compare pricing, features, pros & cons side-by-side. Find out which tool is right for you in 2026.`;
+// "ToolName is a/an [description lowercase, no trailing period]."
+function toSentence(name: string, desc: string) {
+  const d = desc.replace(/\.$/, "");
+  const lower = d.charAt(0).toLowerCase() + d.slice(1);
+  const article = /^[aeiou]/i.test(lower) ? "an" : "a";
+  return `${name} is ${article} ${lower}.`;
+}
+
+// Build expanded intro line: "ToolName is a/an [desc]. It works best for [bf1] and [bf2]."
+function buildIntroLine(name: string, desc: string, bestFor: string[]) {
+  const base = toSentence(name, desc);
+  const bf = (bestFor ?? []).slice(0, 2).filter(Boolean);
+  if (bf.length === 0) return base;
+  return `${base} It works best for ${bf.join(" and ")}.`;
+}
+const introA = buildIntroLine(toolA.name, toolA.description, toolA.bestFor ?? []);
+const introB = buildIntroLine(toolB.name, toolB.description, toolB.bestFor ?? []);
+
+// --- Winner ---
+function pickWinner(a: typeof toolA, b: typeof toolB) {
+  if (a.rating > b.rating) return a;
+  if (b.rating > a.rating) return b;
+  if (a.pricing === "Free" || a.pricing === "Freemium") return a;
+  if (b.pricing === "Free" || b.pricing === "Freemium") return b;
+  return a;
+}
+const winnerTool = pickWinner(toolA, toolB);
+const loserTool  = winnerTool.slug === toolA.slug ? toolB : toolA;
+const isAWinner  = winnerTool.slug === toolA.slug;
+const isABetter  = toolA.rating > toolB.rating;
+const isBBetter  = toolB.rating > toolA.rating;
+const aIsFree    = toolA.pricing === "Free" || toolA.pricing === "Freemium";
+const bIsFree    = toolB.pricing === "Free" || toolB.pricing === "Freemium";
+
+// --- Related compare pairs ---
+type RelPair = { label: string; slug: string };
+const relatedPairs: RelPair[] = [
+  ...(toolA.alternatives ?? [])
+    .filter((s: string) => s !== toolB.slug)
+    .slice(0, 2)
+    .flatMap((s: string): RelPair[] => {
+      const alt = tools.find((t) => t.slug === s);
+      if (!alt) return [];
+      return [{ label: `${toolA.name} vs ${alt.name}`, slug: [toolA.slug, s].sort().join("-vs-") }];
+    }),
+  ...(toolB.alternatives ?? [])
+    .filter((s: string) => s !== toolA.slug)
+    .slice(0, 1)
+    .flatMap((s: string): RelPair[] => {
+      const alt = tools.find((t) => t.slug === s);
+      if (!alt) return [];
+      return [{ label: `${toolB.name} vs ${alt.name}`, slug: [toolB.slug, s].sort().join("-vs-") }];
+    }),
+].slice(0, 3);
+
+// --- FAQ ---
+const q1Answer = (() => {
+  if (isABetter)
+    return `${toolA.name} scores ${toolA.rating}/5 vs ${toolB.name}'s ${toolB.rating}/5 in our editorial ratings, making it the higher-rated option overall. ${toolA.name} is especially strong for ${toolA.bestFor?.[0] ?? "its core use case"}.`;
+  if (isBBetter)
+    return `${toolB.name} scores ${toolB.rating}/5 vs ${toolA.name}'s ${toolA.rating}/5 in our editorial ratings, making it the higher-rated option overall. ${toolB.name} is especially strong for ${toolB.bestFor?.[0] ?? "its core use case"}.`;
+  return `Both ${toolA.name} and ${toolB.name} are rated equally at ${toolA.rating}/5. ${toolA.name} suits ${toolA.bestFor?.[0] ?? "its primary audience"}, while ${toolB.name} is designed for ${toolB.bestFor?.[0] ?? "its primary audience"}.`;
+})();
+
+const q2Answer = (() => {
+  if (toolA.pricing === "Free" && toolB.pricing === "Paid")
+    return `${toolA.name} is completely free. ${toolB.name} is a paid tool${toolB.startingPrice ? ` starting from ${toolB.startingPrice}` : ""}. For budget-conscious users, ${toolA.name} is the clear winner on price.`;
+  if (toolB.pricing === "Free" && toolA.pricing === "Paid")
+    return `${toolB.name} is completely free. ${toolA.name} is a paid tool${toolA.startingPrice ? ` starting from ${toolA.startingPrice}` : ""}. For budget-conscious users, ${toolB.name} is the clear winner on price.`;
+  if (aIsFree && bIsFree) {
+    const aD = toolA.startingPrice ? ` Paid plans start from ${toolA.startingPrice}.` : "";
+    const bD = toolB.startingPrice ? ` Paid plans start from ${toolB.startingPrice}.` : "";
+    const bothFree = !toolA.startingPrice && !toolB.startingPrice;
+    if (bothFree)
+      return `Both ${toolA.name} and ${toolB.name} offer free access — no credit card required to get started. Paid plans with higher limits and additional features are available for power users who need more capacity. Check each tool's official pricing page for current plan details and limits.`;
+    return `Both tools offer free access. ${toolA.name} is ${toolA.pricing.toLowerCase()}.${aD} ${toolB.name} is ${toolB.pricing.toLowerCase()}.${bD}`;
+  }
+  if (aIsFree && !bIsFree)
+    return `${toolA.name} offers a free plan. ${toolB.name} is a paid tool${toolB.startingPrice ? ` starting from ${toolB.startingPrice}` : ""}. ${toolA.name} wins on affordability for users on a budget.`;
+  if (bIsFree && !aIsFree)
+    return `${toolB.name} offers a free plan. ${toolA.name} is a paid tool${toolA.startingPrice ? ` starting from ${toolA.startingPrice}` : ""}. ${toolB.name} wins on affordability for users on a budget.`;
+  const aStr = toolA.startingPrice ? `starts from ${toolA.startingPrice}` : "is a paid tool";
+  const bStr = toolB.startingPrice ? `starts from ${toolB.startingPrice}` : "is a paid tool";
+  return `${toolA.name} ${aStr}. ${toolB.name} ${bStr}. Neither tool offers a free plan — visit each pricing page for current rates.`;
+})();
+
+const q3Answer = `${toSentence(toolA.name, toolA.description)} ${toSentence(toolB.name, toolB.description)} The key distinction is focus: ${toolA.name} is best suited for ${toolA.bestFor?.[0] ?? "its core users"}, while ${toolB.name} works better for ${toolB.bestFor?.[0] ?? "its core users"}.`;
+
+const autoFaqs = [
+  { question: `Is ${toolA.name} better than ${toolB.name}?`, answer: q1Answer },
+  { question: `Which is cheaper, ${toolA.name} or ${toolB.name}?`, answer: q2Answer },
+  { question: `What is the main difference between ${toolA.name} and ${toolB.name}?`, answer: q3Answer },
+];
+
+// --- Enhanced verdict text ---
+const verdictText = (() => {
+  const w = winnerTool;
+  const l = loserTool;
+  let text = `Based on our editorial ratings, ${w.name} scores higher (${w.rating}/5 vs ${l.rating}/5).`;
+  if ((w.pricing === "Free" || w.pricing === "Freemium") && l.pricing === "Paid") {
+    text += ` It also offers a free plan — a significant value advantage over ${l.name}'s paid-only pricing.`;
+  }
+  text += ` ${w.name} is particularly well-suited for ${w.bestFor?.[0] ?? "its core use case"}.`;
+  if (l.bestFor?.[0]) {
+    text += ` That said, ${l.name} remains a strong choice if ${l.bestFor[0].toLowerCase()} is your priority.`;
+  }
+  return text;
+})();
+
+// --- JSON-LD ---
+const SITE     = "https://zotopie.com";
+const pageUrl  = `${SITE}/compare/${toolA.slug}-vs-${toolB.slug}/`;
+const pageTitle = `${toolA.name} vs ${toolB.name} (2026): In-Depth Comparison | Zotopie`;
+const pageDesc  = `${toolA.name} vs ${toolB.name}: Compare pricing, features, pros & cons side-by-side. Find out which tool is right for you in 2026.`;
 
 const jsonLdStr = JSON.stringify({
   "@context": "https://schema.org",
@@ -85,20 +191,21 @@ const jsonLdStr = JSON.stringify({
             ratingValue: String(t.rating),
             bestRating: "5",
             worstRating: "1",
-            ratingCount: "1",
+            ratingCount: "10",
           },
         },
       })),
     },
+    {
+      "@type": "FAQPage",
+      mainEntity: autoFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
+      })),
+    },
   ],
 });
-
-function starsOf(n: number) {
-  const full = Math.floor(n);
-  const half = n - full >= 0.5 ? 1 : 0;
-  const empty = 5 - full - half;
-  return "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
-}
 ---
 
 <MainLayout title={pageTitle} description={pageDesc}>
@@ -109,7 +216,7 @@ function starsOf(n: number) {
   <!-- HERO -->
   <section class="cmp-hero">
     <div class="breadcrumb">
-      <a href="/">Home</a> &rsaquo; <a href="/compare">Compare</a> &rsaquo;
+      <a href="/">Home</a> &rsaquo; <a href="/compare/">Compare</a> &rsaquo;
       <span>{toolA.name} vs {toolB.name}</span>
     </div>
 
@@ -117,8 +224,7 @@ function starsOf(n: number) {
     <p class="hero-sub">Detailed comparison &mdash; pricing, features, pros &amp; cons</p>
 
     <div class="cmp-heads">
-      <!-- Tool A -->
-      <a href={`/reviews/${toolA.slug}`} class="cmp-head {isAWinner ? 'cmp-head--winner' : ''}">
+      <a href={`/reviews/${toolA.slug}/`} class:list={["cmp-head", { "cmp-head--winner": isAWinner }]}>
         {isAWinner && <span class="winner-badge">Winner</span>}
         <ToolLogo tool={toolA} size={56} />
         <div class="ch-name">{toolA.name}</div>
@@ -132,8 +238,7 @@ function starsOf(n: number) {
 
       <div class="vs-badge">VS</div>
 
-      <!-- Tool B -->
-      <a href={`/reviews/${toolB.slug}`} class="cmp-head {!isAWinner ? 'cmp-head--winner' : ''}">
+      <a href={`/reviews/${toolB.slug}/`} class:list={["cmp-head", { "cmp-head--winner": !isAWinner }]}>
         {!isAWinner && <span class="winner-badge">Winner</span>}
         <ToolLogo tool={toolB} size={56} />
         <div class="ch-name">{toolB.name}</div>
@@ -144,6 +249,15 @@ function starsOf(n: number) {
         <div class="ch-price">{formatPricing(toolB)}</div>
         <div class="ch-cat">{catB?.name ?? toolB.primaryCategory}</div>
       </a>
+    </div>
+  </section>
+
+  <!-- EDITORIAL INTRO -->
+  <section class="cmp-section intro-section">
+    <div class="cmp-intro">
+      <p><strong>{toolA.name}</strong> — {introA}</p>
+      <p><strong>{toolB.name}</strong> — {introB}</p>
+      <p class="intro-closing">This comparison covers pricing, key strengths and limitations, and what each tool does best to help you choose the right fit for your workflow.</p>
     </div>
   </section>
 
@@ -162,8 +276,8 @@ function starsOf(n: number) {
         <tbody>
           <tr>
             <td>Rating</td>
-            <td class={isAWinner ? "cell-better" : ""}>{toolA.rating} / 5</td>
-            <td class={!isAWinner ? "cell-better" : ""}>{toolB.rating} / 5</td>
+            <td class={isABetter ? "cell-better" : ""}>{toolA.rating} / 5</td>
+            <td class={isBBetter ? "cell-better" : ""}>{toolB.rating} / 5</td>
           </tr>
           <tr>
             <td>Pricing Model</td>
@@ -186,12 +300,8 @@ function starsOf(n: number) {
           </tr>
           <tr>
             <td>Free Plan</td>
-            <td class={(toolA.pricing === "Free" || toolA.pricing === "Freemium") ? "cell-better" : ""}>
-              {(toolA.pricing === "Free" || toolA.pricing === "Freemium") ? "✓ Yes" : "✗ No"}
-            </td>
-            <td class={(toolB.pricing === "Free" || toolB.pricing === "Freemium") ? "cell-better" : ""}>
-              {(toolB.pricing === "Free" || toolB.pricing === "Freemium") ? "✓ Yes" : "✗ No"}
-            </td>
+            <td class={aIsFree ? "cell-better" : ""}>{aIsFree ? "✓ Yes" : "✗ No"}</td>
+            <td class={bIsFree ? "cell-better" : ""}>{bIsFree ? "✓ Yes" : "✗ No"}</td>
           </tr>
         </tbody>
       </table>
@@ -202,7 +312,7 @@ function starsOf(n: number) {
   <section class="cmp-section pros-cons-section">
     <h2>Pros &amp; Cons</h2>
     <div class="pros-cons-grid">
-      <!-- Tool A Pros/Cons -->
+      <!-- Tool A -->
       <div class="pc-block">
         <div class="pc-header">
           <ToolLogo tool={toolA} size={24} />
@@ -224,9 +334,14 @@ function starsOf(n: number) {
             </ul>
           </div>
         )}
+        {(!toolA.pros || toolA.pros.length === 0) && (
+          <div class="pc-group pc-empty">
+            <p>See our <a href={`/reviews/${toolA.slug}/`}>full {toolA.name} review</a> for a complete breakdown of strengths and limitations.</p>
+          </div>
+        )}
       </div>
 
-      <!-- Tool B Pros/Cons -->
+      <!-- Tool B -->
       <div class="pc-block">
         <div class="pc-header">
           <ToolLogo tool={toolB} size={24} />
@@ -248,6 +363,11 @@ function starsOf(n: number) {
             </ul>
           </div>
         )}
+        {(!toolB.pros || toolB.pros.length === 0) && (
+          <div class="pc-group pc-empty">
+            <p>See our <a href={`/reviews/${toolB.slug}/`}>full {toolB.name} review</a> for a complete breakdown of strengths and limitations.</p>
+          </div>
+        )}
       </div>
     </div>
   </section>
@@ -261,15 +381,56 @@ function starsOf(n: number) {
         <ul class="bf-list">
           {(toolA.bestFor ?? []).slice(0, 4).map((b) => <li>{b}</li>)}
         </ul>
-        <a href={`/reviews/${toolA.slug}`} class="bf-link">Read full {toolA.name} review →</a>
+        <a href={`/reviews/${toolA.slug}/`} class="bf-link">Read full {toolA.name} review →</a>
       </div>
       <div class="bf-block">
         <div class="bf-name">{toolB.name} is best for</div>
         <ul class="bf-list">
           {(toolB.bestFor ?? []).slice(0, 4).map((b) => <li>{b}</li>)}
         </ul>
-        <a href={`/reviews/${toolB.slug}`} class="bf-link">Read full {toolB.name} review →</a>
+        <a href={`/reviews/${toolB.slug}/`} class="bf-link">Read full {toolB.name} review →</a>
       </div>
+    </div>
+  </section>
+
+  <!-- DECISION GUIDE -->
+  <section class="cmp-section">
+    <h2>Which Tool Should You Choose?</h2>
+    <div class="choose-grid">
+      <div class="choose-block">
+        <div class="choose-header">
+          <ToolLogo tool={toolA} size={20} />
+          <span>Choose {toolA.name} if&hellip;</span>
+        </div>
+        <ul class="choose-list">
+          {(toolA.bestFor ?? []).slice(0, 4).map((b) => <li>{b}</li>)}
+        </ul>
+      </div>
+      <div class="choose-block">
+        <div class="choose-header">
+          <ToolLogo tool={toolB} size={20} />
+          <span>Choose {toolB.name} if&hellip;</span>
+        </div>
+        <ul class="choose-list">
+          {(toolB.bestFor ?? []).slice(0, 4).map((b) => <li>{b}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="cmp-section faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      {autoFaqs.map((faq) => (
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>{faq.question}</span>
+            <span class="faq-icon">+</span>
+          </summary>
+          <div class="faq-a">{faq.answer}</div>
+        </details>
+      ))}
     </div>
   </section>
 
@@ -278,29 +439,37 @@ function starsOf(n: number) {
     <h2>Verdict</h2>
     <div class="verdict-box">
       <div class="verdict-winner">
-        <ToolLogo tool={isAWinner ? toolA : toolB} size={48} />
+        <ToolLogo tool={winnerTool} size={48} />
         <div>
           <div class="vw-label">Recommended choice</div>
-          <div class="vw-name">{winner}</div>
+          <div class="vw-name">{winnerTool.name}</div>
         </div>
       </div>
-      <p class="verdict-text">
-        Based on our editorial ratings, <strong>{winner}</strong> scores higher
-        ({isAWinner ? toolA.rating : toolB.rating}/5 vs {isAWinner ? toolB.rating : toolA.rating}/5)
-        {(() => {
-          const w = isAWinner ? toolA : toolB;
-          const l = isAWinner ? toolB : toolA;
-          if ((w.pricing === "Free" || w.pricing === "Freemium") && l.pricing === "Paid") {
-            return ` and offers a free plan, making it the better value.`;
-          }
-          return `.`;
-        })()}
-        That said, both tools have their strengths — read the full reviews to decide.
-      </p>
+      <p class="verdict-text">{verdictText}</p>
       <div class="verdict-ctas">
-        <a href={`/reviews/${toolA.slug}`} class="vcta vcta-secondary">{toolA.name} Review</a>
-        <a href={`/reviews/${toolB.slug}`} class="vcta vcta-secondary">{toolB.name} Review</a>
+        <a href={`/reviews/${toolA.slug}/`} class="vcta vcta-secondary">{toolA.name} Review</a>
+        <a href={`/reviews/${toolB.slug}/`} class="vcta vcta-secondary">{toolB.name} Review</a>
       </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE MORE -->
+  <section class="cmp-section explore-section">
+    <h2>Explore More</h2>
+    <div class="explore-grid">
+      <div class="explore-block">
+        <div class="explore-label">All Alternatives</div>
+        <a href={`/alternatives/${toolA.slug}/`} class="explore-link">All {toolA.name} alternatives →</a>
+        <a href={`/alternatives/${toolB.slug}/`} class="explore-link">All {toolB.name} alternatives →</a>
+      </div>
+      {relatedPairs.length > 0 && (
+        <div class="explore-block">
+          <div class="explore-label">Related Comparisons</div>
+          {relatedPairs.map((rp) => (
+            <a href={`/compare/${rp.slug}/`} class="explore-link">{rp.label} →</a>
+          ))}
+        </div>
+      )}
     </div>
   </section>
 </MainLayout>
@@ -381,9 +550,7 @@ function starsOf(n: number) {
   }
 
   /* SECTIONS */
-  .cmp-section {
-    margin-bottom: 48px;
-  }
+  .cmp-section { margin-bottom: 48px; }
   .cmp-section h2 {
     font-size: 1.3rem;
     font-weight: 700;
@@ -392,6 +559,25 @@ function starsOf(n: number) {
     padding-bottom: 10px;
     border-bottom: 2px solid #e5e7eb;
   }
+
+  /* EDITORIAL INTRO */
+  .intro-section { margin-top: -24px; }
+  .cmp-intro {
+    font-size: 1rem;
+    color: #374151;
+    line-height: 1.7;
+    max-width: 780px;
+    margin: 0;
+    padding: 20px 24px;
+    background: #f9fafb;
+    border-left: 3px solid #2563eb;
+    border-radius: 0 8px 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .cmp-intro p { margin: 0; }
+  .intro-closing { color: #6b7280; font-size: 0.9rem; }
 
   /* COMPARISON TABLE */
   .cmp-table-wrap { overflow-x: auto; }
@@ -470,6 +656,9 @@ function starsOf(n: number) {
     position: relative;
   }
   .cons-list li::before { content: "✗"; position: absolute; left: 0; color: #dc2626; }
+  .pc-empty { padding: 16px; }
+  .pc-empty p { font-size: 0.875rem; color: #6b7280; margin: 0; }
+  .pc-empty a { color: #2563eb; }
 
   /* BEST FOR */
   .bestfor-grid {
@@ -511,6 +700,88 @@ function starsOf(n: number) {
   }
   .bf-link:hover { text-decoration: underline; }
 
+  /* DECISION GUIDE */
+  .choose-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .choose-block {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .choose-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f0fdf4;
+    border-bottom: 1px solid #d1fae5;
+    padding: 12px 16px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #065f46;
+  }
+  .choose-list {
+    list-style: none;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+  }
+  .choose-list li {
+    font-size: 0.875rem;
+    color: #374151;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.5;
+  }
+  .choose-list li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+
+  /* FAQ */
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 780px;
+  }
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    background: #f9fafb;
+    list-style: none;
+    gap: 12px;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-icon {
+    flex-shrink: 0;
+    font-size: 1.2rem;
+    color: #6b7280;
+    font-weight: 400;
+    transition: transform 0.2s;
+  }
+  details[open] .faq-icon { transform: rotate(45deg); }
+  details[open] .faq-q { background: #fff; border-bottom: 1px solid #e5e7eb; }
+  .faq-a {
+    padding: 14px 18px;
+    font-size: 0.9rem;
+    color: #374151;
+    line-height: 1.65;
+    background: #fff;
+  }
+
   /* VERDICT */
   .verdict-box {
     background: linear-gradient(135deg, #eff6ff 0%, #f0fdf4 100%);
@@ -526,7 +797,7 @@ function starsOf(n: number) {
   }
   .vw-label { font-size: 0.78rem; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.06em; }
   .vw-name { font-size: 1.3rem; font-weight: 800; color: #111827; }
-  .verdict-text { font-size: 0.95rem; color: #374151; margin-bottom: 20px; line-height: 1.6; }
+  .verdict-text { font-size: 0.95rem; color: #374151; margin-bottom: 20px; line-height: 1.7; }
   .verdict-ctas { display: flex; gap: 12px; flex-wrap: wrap; }
   .vcta {
     padding: 10px 20px;
@@ -542,10 +813,42 @@ function starsOf(n: number) {
   }
   .vcta-secondary:hover { border-color: #2563eb; color: #2563eb; }
 
+  /* EXPLORE MORE */
+  .explore-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .explore-block {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .explore-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
+    margin-bottom: 2px;
+  }
+  .explore-link {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2563eb;
+    text-decoration: none;
+  }
+  .explore-link:hover { text-decoration: underline; }
+
   @media (max-width: 640px) {
     h1 { font-size: 1.5rem; }
     .cmp-heads { grid-template-columns: 1fr 32px 1fr; }
-    .pros-cons-grid, .bestfor-grid { grid-template-columns: 1fr; }
+    .pros-cons-grid, .bestfor-grid, .choose-grid, .explore-grid { grid-template-columns: 1fr; }
     .cmp-table th, .cmp-table td { padding: 8px 10px; font-size: 0.82rem; }
+    .cmp-intro { padding: 14px 16px; }
   }
 </style>
