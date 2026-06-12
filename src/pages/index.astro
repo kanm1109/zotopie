@@ -4,6 +4,7 @@ import taxonomies from "../data/taxonomies.json";
 import MainLayout from "../layouts/MainLayout.astro";
 import ToolCard from "../components/ToolCard.astro";
 import CategoryCard from "../components/CategoryCard.astro";
+import ToolLogo from "../components/ToolLogo.astro";
 
 const popularTools = tools.filter((t) => t.featured).sort((a, b) => b.rating - a.rating).slice(0, 6);
 
@@ -17,6 +18,27 @@ const catCount = taxonomies.length;
 const top8cats = [...categoriesWithCount].sort((a, b) => b.toolCount - a.toolCount).slice(0, 8);
 const slimTools = tools.map((t) => [t.name, t.slug, t.rating]);
 const slimCats = taxonomies.map((t) => [t.name, t.slug]);
+
+const newestTools = [...tools]
+  .sort((a, b) => {
+    const d = b.addedDate.localeCompare(a.addedDate);
+    return d !== 0 ? d : b.rating - a.rating;
+  })
+  .slice(0, 6);
+
+const altCountMap = {} as Record<string, number>;
+tools.forEach((t) => {
+  (t.alternatives || []).forEach((s: string) => {
+    altCountMap[s] = (altCountMap[s] || 0) + 1;
+  });
+});
+const popularAlts = tools
+  .filter((t) => (altCountMap[t.slug] || 0) > 0)
+  .sort((a, b) => (altCountMap[b.slug] || 0) - (altCountMap[a.slug] || 0))
+  .slice(0, 6)
+  .map((t) => ({ ...t, altCount: altCountMap[t.slug] || 0 }));
+
+const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) as Record<string, string>;
 ---
 
 <MainLayout
@@ -68,6 +90,67 @@ const slimCats = taxonomies.map((t) => [t.name, t.slug]);
     </section>
   )}
 
+  <!-- NEWLY ADDED -->
+  {newestTools.length > 0 && (
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Newly Added</h2>
+          <p class="section-sub">The latest tools added to our database</p>
+        </div>
+        <a href="/reviews" class="see-all">View all &rarr;</a>
+      </div>
+      <div class="new-grid">
+        {newestTools.map((tool) => (
+          <a href={`/reviews/${tool.slug}`} class="new-card">
+            <div class="new-card-left">
+              <ToolLogo tool={tool} size={36} />
+              <div class="new-card-info">
+                <span class="new-card-name">{tool.name}</span>
+                <span class="new-card-cat">{catNameMap[tool.categories[0]] || tool.categories[0]}</span>
+              </div>
+            </div>
+            <div class="new-card-right">
+              <span class="new-badge">NEW</span>
+              <span class="new-rating">&#9733; {tool.rating}</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- MOST COMPARED TOOLS -->
+  {popularAlts.length > 0 && (
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Most Compared Tools</h2>
+          <p class="section-sub">Tools teams evaluate most often when switching platforms</p>
+        </div>
+        <a href="/search" class="see-all">Find alternatives &rarr;</a>
+      </div>
+      <div class="tools-grid">
+        {popularAlts.map((tool) => (
+          <a href={`/reviews/${tool.slug}`} class="pa-card">
+            <div class="pa-top">
+              <div class="pa-id">
+                <ToolLogo tool={tool} size={32} />
+                <h3 class="pa-name">{tool.name}</h3>
+              </div>
+              <span class="pa-rating">&#9733; {tool.rating}</span>
+            </div>
+            <p class="pa-desc">{tool.description}</p>
+            <div class="pa-footer">
+              <span class="pa-count">In {tool.altCount} comparisons</span>
+              <span class="pa-link">View Review &rarr;</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </section>
+  )}
+
   <!-- BROWSE BY USE CASE -->
   <section class="section">
     <div class="section-header">
@@ -81,13 +164,31 @@ const slimCats = taxonomies.map((t) => [t.name, t.slug]);
     </div>
   </section>
 
-  <!-- CTA -->
+  <!-- CTA + TRUST SIGNALS -->
   <section class="cta-section">
-    <h2>Find the right tool for your workflow</h2>
-    <p>Honest reviews. No fluff.</p>
-    <div class="cta-actions">
-      <a href="/reviews" class="btn-primary">Browse All Reviews</a>
-      <a href="/category" class="btn-secondary">Browse Categories</a>
+    <div class="cta-inner">
+      <div class="cta-content">
+        <h2>Find the right tool for your workflow</h2>
+        <p>Honest reviews. No fluff. Updated regularly.</p>
+        <div class="cta-actions">
+          <a href="/reviews" class="btn-primary">Browse {toolCount} Reviews</a>
+          <a href="/search" class="btn-secondary">Search by feature</a>
+        </div>
+      </div>
+      <div class="cta-stats">
+        <div class="stat">
+          <span class="stat-num">{toolCount}+</span>
+          <span class="stat-label">Tools Reviewed</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">{catCount}</span>
+          <span class="stat-label">Categories</span>
+        </div>
+        <div class="stat">
+          <span class="stat-num">100%</span>
+          <span class="stat-label">Independent</span>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -412,7 +513,158 @@ const slimCats = taxonomies.map((t) => [t.name, t.slug]);
     gap: 20px;
   }
 
-  /* CTA */
+  /* Newly Added */
+  .new-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .new-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 16px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    gap: 12px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .new-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+    text-decoration: none;
+  }
+  .new-card-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .new-card-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .new-card-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .new-card-cat {
+    font-size: 0.75rem;
+    color: #6b7280;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .new-card-right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    flex-shrink: 0;
+  }
+  .new-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    color: #fff;
+    background: #2563eb;
+    border-radius: 4px;
+    padding: 2px 6px;
+    letter-spacing: 0.05em;
+  }
+  .new-rating {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #d97706;
+    background: #fef3c7;
+    padding: 1px 7px;
+    border-radius: 10px;
+  }
+
+  /* Most Compared / Popular Alternatives */
+  .pa-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 20px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+    text-decoration: none;
+    color: inherit;
+  }
+  .pa-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    text-decoration: none;
+  }
+  .pa-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .pa-id {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+  }
+  .pa-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0;
+  }
+  .pa-rating {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #d97706;
+    background: #fef3c7;
+    padding: 2px 8px;
+    border-radius: 12px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .pa-desc {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .pa-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+  .pa-count {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #7c3aed;
+    background: #f5f3ff;
+    padding: 3px 10px;
+    border-radius: 12px;
+  }
+  .pa-link {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #2563eb;
+  }
+
+  /* CTA buttons */
   .btn-primary {
     display: inline-flex;
     align-items: center;
@@ -443,25 +695,69 @@ const slimCats = taxonomies.map((t) => [t.name, t.slug]);
   }
   .btn-secondary:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; }
 
+  /* CTA + Trust Signals */
   .cta-section {
-    text-align: center;
-    padding: 64px 24px;
     border-top: 1px solid #e5e7eb;
     background: #f9fafb;
     margin: 0 -24px;
   }
-  .cta-section h2 {
+  .cta-inner {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 48px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 64px 24px;
+  }
+  .cta-content h2 {
     font-size: 1.75rem;
     font-weight: 700;
     color: #111827;
     margin: 0 0 8px;
   }
-  .cta-section p { color: #6b7280; margin: 0 0 28px; }
+  .cta-content p {
+    color: #6b7280;
+    margin: 0 0 24px;
+  }
   .cta-actions {
     display: flex;
     gap: 12px;
-    justify-content: center;
     flex-wrap: wrap;
+  }
+  .cta-stats {
+    display: flex;
+    gap: 32px;
+    flex-shrink: 0;
+  }
+  .stat {
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #111827;
+    display: block;
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    color: #6b7280;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 5px;
+    display: block;
+  }
+
+  @media (max-width: 768px) {
+    .cta-inner {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      text-align: center;
+    }
+    .cta-actions { justify-content: center; }
+    .cta-stats { justify-content: center; }
   }
 
   @media (max-width: 640px) {
@@ -471,8 +767,11 @@ const slimCats = taxonomies.map((t) => [t.name, t.slug]);
     .hero-s-icon { left: 14px; }
     .cats-grid { grid-template-columns: 1fr 1fr; }
     .tools-grid { grid-template-columns: 1fr; }
+    .new-grid { grid-template-columns: 1fr; }
     .section-header { flex-wrap: wrap; }
     .hero-cats { gap: 6px; }
     .hero-cat-chip { font-size: 0.8rem; padding: 4px 12px; }
+    .cta-stats { gap: 20px; }
+    .stat-num { font-size: 1.5rem; }
   }
 </style>
