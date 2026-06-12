@@ -39,7 +39,9 @@
       "semrush",
       "moz",
       "ubersuggest",
-      "surfer-seo"
+      "surfer-seo",
+      "screaming-frog",
+      "rank-math"
     ],
     "keyFeatures": [
       {
@@ -149,7 +151,9 @@
       "ahrefs",
       "moz",
       "ubersuggest",
-      "screaming-frog"
+      "screaming-frog",
+      "surfer-seo",
+      "clearscope"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -196,7 +200,9 @@
       "ahrefs",
       "semrush",
       "ubersuggest",
-      "rank-math"
+      "rank-math",
+      "yoast-seo",
+      "clearscope"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -243,7 +249,9 @@
       "clearscope",
       "moz",
       "ahrefs",
-      "semrush"
+      "semrush",
+      "rank-math",
+      "yoast-seo"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -290,7 +298,9 @@
       "yoast-seo",
       "screaming-frog",
       "ahrefs",
-      "semrush"
+      "semrush",
+      "moz",
+      "ubersuggest"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -337,7 +347,9 @@
       "rank-math",
       "moz",
       "ahrefs",
-      "semrush"
+      "semrush",
+      "screaming-frog",
+      "clearscope"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -384,7 +396,9 @@
       "moz",
       "ubersuggest",
       "ahrefs",
-      "semrush"
+      "semrush",
+      "surfer-seo",
+      "rank-math"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -431,7 +445,9 @@
       "ahrefs",
       "semrush",
       "moz",
-      "surfer-seo"
+      "surfer-seo",
+      "screaming-frog",
+      "rank-math"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -478,7 +494,9 @@
       "surfer-seo",
       "moz",
       "ahrefs",
-      "semrush"
+      "semrush",
+      "rank-math",
+      "yoast-seo"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -526,7 +544,9 @@
       "hootsuite",
       "later",
       "sprout-social",
-      "metricool"
+      "metricool",
+      "publer",
+      "socialbee"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -573,7 +593,9 @@
       "sprout-social",
       "buffer",
       "later",
-      "agorapulse"
+      "agorapulse",
+      "metricool",
+      "sendible"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -620,7 +642,9 @@
       "hootsuite",
       "sendible",
       "buffer",
-      "agorapulse"
+      "agorapulse",
+      "later",
+      "metricool"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -667,7 +691,9 @@
       "buffer",
       "planoly",
       "hootsuite",
-      "tailwind"
+      "tailwind",
+      "metricool",
+      "socialbee"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -714,7 +740,9 @@
       "buffer",
       "hootsuite",
       "later",
-      "publer"
+      "publer",
+      "sprout-social",
+      "agorapulse"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -761,7 +789,9 @@
       "buffer",
       "socialbee",
       "hootsuite",
-      "metricool"
+      "metricool",
+      "later",
+      "agorapulse"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -808,7 +838,9 @@
       "sprout-social",
       "hootsuite",
       "buffer",
-      "sendible"
+      "sendible",
+      "metricool",
+      "publer"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -855,7 +887,9 @@
       "agorapulse",
       "sprout-social",
       "hootsuite",
-      "buffer"
+      "buffer",
+      "metricool",
+      "later"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -902,7 +936,9 @@
       "later",
       "buffer",
       "hootsuite",
-      "metricool"
+      "metricool",
+      "socialbee",
+      "planoly"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -950,7 +986,9 @@
       "make",
       "pabbly-connect",
       "n8n",
-      "ifttt"
+      "ifttt",
+      "tray-io",
+      "workato"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -997,7 +1035,9 @@
       "zapier",
       "n8n",
       "pabbly-connect",
-      "tray-io"
+      "tray-io",
+      "ifttt",
+      "integrately"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1044,7 +1084,9 @@
       "make",
       "zapier",
       "pabbly-connect",
-      "workato"
+      "workato",
+      "tray-io",
+      "ifttt"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1091,7 +1133,9 @@
       "zapier",
       "make",
       "n8n",
-      "integrately"
+      "integrately",
+      "tray-io",
+      "ifttt"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1138,7 +1182,9 @@
       "zapier",
       "make",
       "n8n",
-      "pabbly-connect"
+      "pabbly-connect",
+      "tray-io",
+      "workato"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1185,7 +1231,9 @@
       "workato",
       "zapier",
       "make",
-      "celigo"
+      "celigo",
+      "n8n",
+      "pabbly-connect"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1232,7 +1280,9 @@
       "tray-io",
       "n8n",
       "zapier",
-      "celigo"
+      "celigo",
+      "make",
+      "pabbly-connect"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1279,7 +1329,9 @@
       "zapier",
       "make",
       "pabbly-connect",
-      "n8n"
+      "n8n",
+      "tray-io",
+      "workato"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1326,7 +1378,9 @@
       "workato",
       "tray-io",
       "zapier",
-      "make"
+      "make",
+      "n8n",
+      "pabbly-connect"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1363,7 +1417,9 @@
       "claude",
       "jasper",
       "copy-ai",
-      "midjourney"
+      "midjourney",
+      "gemini",
+      "grammarly"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1400,7 +1456,9 @@
       "chatgpt",
       "gemini",
       "jasper",
-      "copy-ai"
+      "copy-ai",
+      "grammarly",
+      "midjourney"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1437,7 +1495,9 @@
       "copy-ai",
       "grammarly",
       "chatgpt",
-      "claude"
+      "claude",
+      "gemini",
+      "canva"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1474,7 +1534,9 @@
       "jasper",
       "grammarly",
       "chatgpt",
-      "claude"
+      "claude",
+      "gemini",
+      "canva"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1511,7 +1573,9 @@
       "jasper",
       "grammarly",
       "midjourney",
-      "chatgpt"
+      "chatgpt",
+      "dall-e",
+      "stable-diffusion"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1548,7 +1612,9 @@
       "dall-e",
       "stable-diffusion",
       "canva",
-      "chatgpt"
+      "chatgpt",
+      "gemini",
+      "claude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1585,7 +1651,9 @@
       "grammarly",
       "canva",
       "synthesia",
-      "chatgpt"
+      "chatgpt",
+      "heygen",
+      "d-id"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1622,7 +1690,9 @@
       "jasper",
       "copy-ai",
       "chatgpt",
-      "claude"
+      "claude",
+      "gemini",
+      "canva"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1659,7 +1729,9 @@
       "heygen",
       "d-id",
       "elevenlabs",
-      "canva"
+      "canva",
+      "dall-e",
+      "midjourney"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1696,7 +1768,9 @@
       "circle",
       "mighty-networks",
       "discord",
-      "patreon"
+      "patreon",
+      "bettermode",
+      "slack"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1733,7 +1807,9 @@
       "skool",
       "mighty-networks",
       "discord",
-      "bettermode"
+      "bettermode",
+      "slack",
+      "patreon"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1770,7 +1846,9 @@
       "slack",
       "bettermode",
       "circle",
-      "skool"
+      "skool",
+      "microsoft-teams",
+      "discourse"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1807,7 +1885,9 @@
       "gumroad",
       "payhip",
       "skool",
-      "circle"
+      "circle",
+      "mighty-networks",
+      "ghost"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1844,7 +1924,9 @@
       "circle",
       "skool",
       "discord",
-      "patreon"
+      "patreon",
+      "bettermode",
+      "slack"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1881,7 +1963,9 @@
       "circle",
       "discourse",
       "skool",
-      "mighty-networks"
+      "mighty-networks",
+      "slack",
+      "discord"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1918,7 +2002,9 @@
       "discord",
       "microsoft-teams",
       "circle",
-      "skool"
+      "skool",
+      "discourse",
+      "bettermode"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1955,7 +2041,9 @@
       "slack",
       "bettermode",
       "circle",
-      "discord"
+      "discord",
+      "mighty-networks",
+      "wordpress"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -1992,7 +2080,9 @@
       "substack",
       "wordpress",
       "patreon",
-      "skool"
+      "skool",
+      "discourse",
+      "bettermode"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2029,7 +2119,9 @@
       "mailchimp",
       "activecampaign",
       "beehiiv",
-      "getresponse"
+      "getresponse",
+      "mailerlite",
+      "brevo"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2066,7 +2158,9 @@
       "hubspot",
       "getresponse",
       "convertkit",
-      "mailchimp"
+      "mailchimp",
+      "brevo",
+      "mailerlite"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2103,7 +2197,9 @@
       "activecampaign",
       "salesforce",
       "mailchimp",
-      "brevo"
+      "brevo",
+      "convertkit",
+      "getresponse"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2140,7 +2236,9 @@
       "convertkit",
       "mailerlite",
       "activecampaign",
-      "brevo"
+      "brevo",
+      "getresponse",
+      "hubspot"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2177,7 +2275,9 @@
       "clickfunnels",
       "kartra",
       "getresponse",
-      "convertkit"
+      "convertkit",
+      "hubspot",
+      "activecampaign"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2214,7 +2314,9 @@
       "activecampaign",
       "brevo",
       "mailchimp",
-      "convertkit"
+      "convertkit",
+      "mailerlite",
+      "hubspot"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2251,7 +2353,9 @@
       "mailchimp",
       "convertkit",
       "activecampaign",
-      "getresponse"
+      "getresponse",
+      "mailerlite",
+      "hubspot"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2288,7 +2392,9 @@
       "substack",
       "convertkit",
       "mailchimp",
-      "activecampaign"
+      "activecampaign",
+      "mailerlite",
+      "brevo"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2325,7 +2431,9 @@
       "systeme-io",
       "kartra",
       "getresponse",
-      "activecampaign"
+      "activecampaign",
+      "hubspot",
+      "mailchimp"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2362,7 +2470,9 @@
       "rebrandly",
       "tinyurl",
       "blink",
-      "pretty-links"
+      "pretty-links",
+      "voluum",
+      "clickmagick"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2399,7 +2509,9 @@
       "redtrack",
       "bemob",
       "clickmagick",
-      "bitly"
+      "bitly",
+      "pretty-links",
+      "blink"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2436,7 +2548,9 @@
       "voluum",
       "redtrack",
       "bemob",
-      "bitly"
+      "bitly",
+      "rebrandly",
+      "tinyurl"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2473,7 +2587,9 @@
       "voluum",
       "clickmagick",
       "bemob",
-      "rebrandly"
+      "rebrandly",
+      "blink",
+      "pretty-links"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2510,7 +2626,9 @@
       "bitly",
       "blink",
       "tinyurl",
-      "clickmagick"
+      "clickmagick",
+      "voluum",
+      "redtrack"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2547,7 +2665,9 @@
       "bitly",
       "rebrandly",
       "blink",
-      "pretty-links"
+      "pretty-links",
+      "voluum",
+      "clickmagick"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2584,7 +2704,9 @@
       "bitly",
       "rebrandly",
       "tinyurl",
-      "clickmagick"
+      "clickmagick",
+      "voluum",
+      "redtrack"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2621,7 +2743,9 @@
       "voluum",
       "redtrack",
       "clickmagick",
-      "bitly"
+      "bitly",
+      "rebrandly",
+      "tinyurl"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2658,7 +2782,9 @@
       "bemob",
       "bitly",
       "rebrandly",
-      "tinyurl"
+      "tinyurl",
+      "voluum",
+      "clickmagick"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2695,7 +2821,9 @@
       "plausible",
       "matomo",
       "fathom",
-      "mixpanel"
+      "mixpanel",
+      "hotjar",
+      "amplitude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2732,7 +2860,9 @@
       "google-analytics",
       "fathom",
       "matomo",
-      "mixpanel"
+      "mixpanel",
+      "hotjar",
+      "amplitude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2769,7 +2899,9 @@
       "crazy-egg",
       "microsoft-clarity",
       "google-analytics",
-      "mixpanel"
+      "mixpanel",
+      "plausible",
+      "amplitude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2806,7 +2938,9 @@
       "amplitude",
       "fathom",
       "google-analytics",
-      "plausible"
+      "plausible",
+      "hotjar",
+      "matomo"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2843,7 +2977,9 @@
       "mixpanel",
       "hotjar",
       "google-analytics",
-      "matomo"
+      "matomo",
+      "plausible",
+      "fathom"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2880,7 +3016,9 @@
       "plausible",
       "google-analytics",
       "matomo",
-      "mixpanel"
+      "mixpanel",
+      "hotjar",
+      "amplitude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2917,7 +3055,9 @@
       "google-analytics",
       "plausible",
       "fathom",
-      "mixpanel"
+      "mixpanel",
+      "hotjar",
+      "amplitude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2954,7 +3094,9 @@
       "hotjar",
       "mixpanel",
       "microsoft-clarity",
-      "google-analytics"
+      "google-analytics",
+      "plausible",
+      "amplitude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -2991,7 +3133,9 @@
       "hotjar",
       "crazy-egg",
       "google-analytics",
-      "plausible"
+      "plausible",
+      "mixpanel",
+      "amplitude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3028,7 +3172,9 @@
       "obsidian",
       "coda",
       "clickup",
-      "asana"
+      "asana",
+      "monday",
+      "airtable"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3065,7 +3211,9 @@
       "monday",
       "asana",
       "trello",
-      "notion"
+      "notion",
+      "airtable",
+      "coda"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3102,7 +3250,9 @@
       "clickup",
       "asana",
       "trello",
-      "airtable"
+      "airtable",
+      "notion",
+      "coda"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3139,7 +3289,9 @@
       "trello",
       "monday",
       "clickup",
-      "notion"
+      "notion",
+      "airtable",
+      "todoist"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3176,7 +3328,9 @@
       "asana",
       "clickup",
       "monday",
-      "todoist"
+      "todoist",
+      "notion",
+      "airtable"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3213,7 +3367,9 @@
       "notion",
       "airtable",
       "coda",
-      "todoist"
+      "todoist",
+      "clickup",
+      "monday"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3250,7 +3406,9 @@
       "todoist",
       "notion",
       "monday",
-      "clickup"
+      "clickup",
+      "asana",
+      "coda"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3287,7 +3445,9 @@
       "notion",
       "clickup",
       "trello",
-      "asana"
+      "asana",
+      "monday",
+      "airtable"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3324,7 +3484,9 @@
       "notion",
       "airtable",
       "clickup",
-      "monday"
+      "monday",
+      "asana",
+      "obsidian"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3361,7 +3523,9 @@
       "hostinger",
       "wp-engine",
       "digitalocean",
-      "vultr"
+      "vultr",
+      "siteground",
+      "hetzner"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3398,7 +3562,9 @@
       "vultr",
       "linode",
       "cloudflare",
-      "hostinger"
+      "hostinger",
+      "hetzner",
+      "siteground"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3435,7 +3601,9 @@
       "digitalocean",
       "hetzner",
       "cloudflare",
-      "siteground"
+      "siteground",
+      "linode",
+      "kinsta"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3472,7 +3640,9 @@
       "siteground",
       "bluehost",
       "namecheap",
-      "digitalocean"
+      "digitalocean",
+      "godaddy",
+      "wp-engine"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3509,7 +3679,9 @@
       "hostinger",
       "wp-engine",
       "bluehost",
-      "kinsta"
+      "kinsta",
+      "namecheap",
+      "digitalocean"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3546,7 +3718,9 @@
       "hostinger",
       "siteground",
       "namecheap",
-      "wp-engine"
+      "wp-engine",
+      "godaddy",
+      "kinsta"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3583,7 +3757,9 @@
       "godaddy",
       "hostinger",
       "bluehost",
-      "siteground"
+      "siteground",
+      "wp-engine",
+      "digitalocean"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3620,7 +3796,9 @@
       "kinsta",
       "siteground",
       "bluehost",
-      "hostinger"
+      "hostinger",
+      "cloudflare",
+      "namecheap"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3657,7 +3835,9 @@
       "wp-engine",
       "bluehost",
       "siteground",
-      "hostinger"
+      "hostinger",
+      "cloudflare",
+      "digitalocean"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3694,7 +3874,9 @@
       "woocommerce",
       "bigcommerce",
       "wix",
-      "squarespace"
+      "squarespace",
+      "magento",
+      "paddle"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3731,7 +3913,9 @@
       "shopify",
       "magento",
       "bigcommerce",
-      "wix"
+      "wix",
+      "squarespace",
+      "samcart"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3768,7 +3952,9 @@
       "lemon-squeezy",
       "payhip",
       "sendowl",
-      "samcart"
+      "samcart",
+      "paddle",
+      "thrivecart"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3805,7 +3991,9 @@
       "paddle",
       "gumroad",
       "payhip",
-      "sendowl"
+      "sendowl",
+      "samcart",
+      "thrivecart"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3842,7 +4030,9 @@
       "shopify",
       "magento",
       "woocommerce",
-      "wix"
+      "wix",
+      "squarespace",
+      "paddle"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3879,7 +4069,9 @@
       "squarespace",
       "shopify",
       "woocommerce",
-      "bigcommerce"
+      "bigcommerce",
+      "magento",
+      "lemon-squeezy"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3916,7 +4108,9 @@
       "wix",
       "shopify",
       "woocommerce",
-      "bigcommerce"
+      "bigcommerce",
+      "magento",
+      "gumroad"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3953,7 +4147,9 @@
       "gumroad",
       "payhip",
       "lemon-squeezy",
-      "samcart"
+      "samcart",
+      "paddle",
+      "thrivecart"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -3990,7 +4186,9 @@
       "gumroad",
       "sendowl",
       "lemon-squeezy",
-      "samcart"
+      "samcart",
+      "paddle",
+      "thrivecart"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4027,7 +4225,9 @@
       "clickfunnels",
       "thrivecart",
       "gumroad",
-      "lemon-squeezy"
+      "lemon-squeezy",
+      "paddle",
+      "payhip"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4073,7 +4273,9 @@
       "beehiiv",
       "convertkit",
       "ghost",
-      "mailchimp"
+      "mailchimp",
+      "activecampaign",
+      "hubspot"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4119,7 +4321,9 @@
       "ghost",
       "discourse",
       "wix",
-      "squarespace"
+      "squarespace",
+      "bettermode",
+      "mighty-networks"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4165,7 +4369,9 @@
       "chatgpt",
       "claude",
       "jasper",
-      "copy-ai"
+      "copy-ai",
+      "grammarly",
+      "canva"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4211,7 +4417,9 @@
       "hubspot",
       "activecampaign",
       "mailchimp",
-      "brevo"
+      "brevo",
+      "getresponse",
+      "convertkit"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4257,7 +4465,9 @@
       "mailchimp",
       "brevo",
       "convertkit",
-      "getresponse"
+      "getresponse",
+      "activecampaign",
+      "hubspot"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4303,7 +4513,9 @@
       "buffer",
       "hootsuite",
       "later",
-      "publer"
+      "publer",
+      "agorapulse",
+      "sendible"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4349,7 +4561,9 @@
       "later",
       "buffer",
       "hootsuite",
-      "tailwind"
+      "tailwind",
+      "socialbee",
+      "metricool"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4395,7 +4609,9 @@
       "synthesia",
       "elevenlabs",
       "canva",
-      "chatgpt"
+      "chatgpt",
+      "d-id",
+      "stable-diffusion"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4441,7 +4657,9 @@
       "shopify",
       "woocommerce",
       "bigcommerce",
-      "wix"
+      "wix",
+      "squarespace",
+      "paddle"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4487,7 +4705,9 @@
       "digitalocean",
       "vultr",
       "hostinger",
-      "cloudflare"
+      "cloudflare",
+      "hetzner",
+      "siteground"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4533,7 +4753,9 @@
       "vultr",
       "digitalocean",
       "hostinger",
-      "cloudflare"
+      "cloudflare",
+      "linode",
+      "siteground"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4579,7 +4801,9 @@
       "namecheap",
       "hostinger",
       "bluehost",
-      "siteground"
+      "siteground",
+      "wp-engine",
+      "digitalocean"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4625,7 +4849,9 @@
       "slack",
       "discord",
       "circle",
-      "notion"
+      "notion",
+      "discourse",
+      "bettermode"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4671,7 +4897,9 @@
       "midjourney",
       "stable-diffusion",
       "canva",
-      "chatgpt"
+      "chatgpt",
+      "claude",
+      "gemini"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4717,7 +4945,9 @@
       "systeme-io",
       "clickfunnels",
       "getresponse",
-      "activecampaign"
+      "activecampaign",
+      "hubspot",
+      "mailchimp"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4763,7 +4993,9 @@
       "lemon-squeezy",
       "gumroad",
       "shopify",
-      "samcart"
+      "samcart",
+      "payhip",
+      "thrivecart"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4809,7 +5041,9 @@
       "samcart",
       "lemon-squeezy",
       "clickfunnels",
-      "gumroad"
+      "gumroad",
+      "paddle",
+      "payhip"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4855,7 +5089,9 @@
       "midjourney",
       "dall-e",
       "canva",
-      "chatgpt"
+      "chatgpt",
+      "gemini",
+      "claude"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
@@ -4901,7 +5137,9 @@
       "synthesia",
       "heygen",
       "elevenlabs",
-      "canva"
+      "canva",
+      "stable-diffusion",
+      "dall-e"
     ],
     "keyFeatures": [],
     "pricingBreakdown": null,
