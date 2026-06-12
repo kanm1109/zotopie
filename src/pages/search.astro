@@ -72,6 +72,7 @@ const searchJsonLdStr = JSON.stringify({
         spellcheck="false"
         autofocus
       />
+      <div id="ac-drop" class="ac-drop" role="listbox" aria-label="Search suggestions" hidden></div>
     </div>
 
     <div id="cat-filters" class="cat-filter-row" role="group" aria-label="Filter by category"></div>
@@ -268,6 +269,130 @@ initCatChips();
 const init = new URLSearchParams(location.search).get('q') || '';
 if (init) { input.value = init; doSearch(init); }
 else { doSearch(''); }
+
+// ── Autocomplete ────────────────────────────────────────────────────────────
+(function() {
+  var acDrop = document.getElementById('ac-drop');
+  if (!acDrop) return;
+
+  var slimTools = TOOLS.map(function(t) { return [t.name, t.slug, t.rating]; });
+  var slimCats = TAXONOMIES.map(function(t) { return [t.name, t.slug]; });
+
+  var acIdx = -1;
+  var acItems = [];
+  var acTimer;
+
+  function escAc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  function markAc(text, q) {
+    var s = escAc(text);
+    if (!q) return s;
+    var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+    return s.replace(re, '<mark>$1</mark>');
+  }
+
+  function suggestAcTools(q) {
+    var ql = q.toLowerCase();
+    return slimTools
+      .filter(function(t) { return t[0].toLowerCase().includes(ql); })
+      .sort(function(a, b) {
+        var ap = a[0].toLowerCase().startsWith(ql) ? 1 : 0;
+        var bp = b[0].toLowerCase().startsWith(ql) ? 1 : 0;
+        return bp - ap || b[2] - a[2];
+      })
+      .slice(0, 5);
+  }
+
+  function suggestAcCats(q) {
+    var ql = q.toLowerCase();
+    return slimCats.filter(function(c) { return c[0].toLowerCase().includes(ql); }).slice(0, 3);
+  }
+
+  function renderAcDrop(q) {
+    var tools = suggestAcTools(q);
+    var cats = suggestAcCats(q);
+    if (!tools.length && !cats.length) { acDrop.hidden = true; return; }
+
+    var html = '';
+    if (tools.length) {
+      html += '<div class="ac-section"><div class="ac-label">Jump to</div>';
+      tools.forEach(function(t) {
+        html += '<div class="ac-item" data-href="/reviews/' + escAc(t[1]) + '" role="option" tabindex="-1">' +
+          '<span class="ac-name">' + markAc(t[0], q) + '</span>' +
+          '<span class="ac-rating">&#9733; ' + t[2] + '</span>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+    if (cats.length) {
+      html += '<div class="ac-section"><div class="ac-label">Categories</div>';
+      cats.forEach(function(c) {
+        html += '<div class="ac-item" data-href="/category/' + escAc(c[1]) + '" role="option" tabindex="-1">' +
+          '<span class="ac-name">' + markAc(c[0], q) + '</span>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+
+    acDrop.innerHTML = html;
+    acDrop.hidden = false;
+    acIdx = -1;
+    acItems = Array.from(acDrop.querySelectorAll('.ac-item'));
+    acItems.forEach(function(item) {
+      item.addEventListener('mouseenter', function() {
+        acIdx = acItems.indexOf(item);
+        updateAcSel();
+      });
+      item.addEventListener('click', function() {
+        location.href = item.dataset.href;
+      });
+    });
+  }
+
+  function closeAcDrop() {
+    acDrop.hidden = true;
+    acIdx = -1;
+    acItems = [];
+  }
+
+  function updateAcSel() {
+    acItems.forEach(function(item, i) {
+      item.classList.toggle('ac-item-active', i === acIdx);
+    });
+  }
+
+  input.addEventListener('input', function() {
+    clearTimeout(acTimer);
+    acTimer = setTimeout(function() {
+      var q = input.value.trim();
+      if (q.length < 1) { closeAcDrop(); return; }
+      renderAcDrop(q);
+    }, 80);
+  });
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { closeAcDrop(); return; }
+    if (!acItems.length) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      acIdx = Math.min(acIdx + 1, acItems.length - 1);
+      updateAcSel();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      acIdx = Math.max(acIdx - 1, -1);
+      updateAcSel();
+    } else if (e.key === 'Enter' && acIdx >= 0 && acItems[acIdx]) {
+      e.preventDefault();
+      location.href = acItems[acIdx].dataset.href;
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-box')) closeAcDrop();
+  });
+})();
 </script>
 
 <style>
@@ -537,6 +662,51 @@ else { doSearch(''); }
     text-align: center;
     color: #6b7280;
     font-size: 1rem;
+  }
+
+  /* Autocomplete dropdown */
+  .ac-drop {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    z-index: 200;
+    overflow: hidden;
+    text-align: left;
+  }
+  .ac-section { padding: 4px 0; }
+  .ac-section + .ac-section { border-top: 1px solid #f3f4f6; }
+  .ac-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
+    padding: 8px 16px 4px;
+  }
+  .ac-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .ac-item:hover, .ac-item-active { background: #f3f4f6; }
+  .ac-name { font-size: 0.95rem; color: #111827; font-weight: 500; }
+  .ac-rating {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #d97706;
+    background: #fef3c7;
+    padding: 1px 7px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    margin-left: 8px;
   }
 
   /* Mobile */

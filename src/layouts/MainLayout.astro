@@ -73,22 +73,42 @@ const ogImage = image
     .nav-links { display: flex; align-items: center; gap: 28px; }
     .nav-links a { font-size: 0.95rem; color: #374151; font-weight: 500; }
     .nav-links a:hover { color: #2563eb; text-decoration: none; }
-    .nav-search-btn {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      padding: 6px 14px;
-      border: 1px solid #e5e7eb;
-      border-radius: 20px;
+    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-search-form { position: relative; display: flex; align-items: center; }
+    .nav-s-icon { position: absolute; left: 10px; pointer-events: none; flex-shrink: 0; }
+    .nav-s-input {
+      width: 200px;
+      padding: 7px 36px 7px 32px;
       font-size: 0.875rem;
-      color: #6b7280;
+      border: 1.5px solid #e5e7eb;
+      border-radius: 20px;
       background: #f9fafb;
-      cursor: pointer;
-      text-decoration: none;
-      transition: border-color 0.2s, color 0.2s;
+      color: #111827;
+      outline: none;
+      font-family: inherit;
+      transition: width 0.25s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
     }
-    .nav-search-btn:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; }
-    .nav-search-btn svg { flex-shrink: 0; }
+    .nav-s-input::placeholder { color: #9ca3af; }
+    .nav-s-input:focus {
+      width: 260px;
+      border-color: #2563eb;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+    .nav-s-kbd {
+      position: absolute; right: 10px;
+      font-size: 0.7rem; color: #9ca3af;
+      background: #f3f4f6; border: 1px solid #e5e7eb;
+      border-radius: 4px; padding: 1px 5px;
+      pointer-events: none; font-family: inherit;
+      transition: opacity 0.15s;
+    }
+    .nav-s-input:focus + .nav-s-kbd { opacity: 0; }
+    .nav-s-mobile { display: none; color: #6b7280; padding: 4px; }
+    @media (max-width: 768px) {
+      .nav-search-form { display: none; }
+      .nav-s-mobile { display: flex; align-items: center; }
+    }
 
     /* MAIN WRAPPER */
     .page-wrapper {
@@ -114,17 +134,26 @@ const ogImage = image
   <header class="site-header">
     <div class="nav-inner">
       <a href="/" class="nav-logo">Zotopie</a>
-      <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category">Categories</a>
-        <a href="/reviews">Reviews</a>
-        <a href="/search" class="nav-search-btn" aria-label="Search">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="/">Home</a>
+          <a href="/category">Categories</a>
+          <a href="/reviews">Reviews</a>
+        </nav>
+        <form class="nav-search-form" action="/search" method="get" role="search">
+          <svg class="nav-s-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.5" aria-hidden="true">
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
           </svg>
-          Search
+          <input id="nav-q" name="q" type="text" placeholder="Search tools…"
+            autocomplete="off" spellcheck="false" class="nav-s-input" aria-label="Search tools" />
+          <kbd class="nav-s-kbd" aria-hidden="true">/</kbd>
+        </form>
+        <a href="/search" class="nav-s-mobile" aria-label="Search tools">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
         </a>
-      </nav>
+      </div>
     </div>
   </header>
 
@@ -135,5 +164,15 @@ const ogImage = image
   <footer class="site-footer">
     <p>&copy; {new Date().getFullYear()} Zotopie &mdash; Find the best software tools</p>
   </footer>
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var tag = document.activeElement && document.activeElement.tagName;
+      if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA' && tag !== 'SELECT') {
+        e.preventDefault();
+        var navQ = document.getElementById('nav-q');
+        if (navQ) navQ.focus();
+      }
+    });
+  </script>
 </body>
 </html>

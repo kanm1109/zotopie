@@ -5,45 +5,47 @@ import MainLayout from "../layouts/MainLayout.astro";
 import ToolCard from "../components/ToolCard.astro";
 import CategoryCard from "../components/CategoryCard.astro";
 
-const popularTools  = tools.filter((t) => t.featured).sort((a, b) => b.rating - a.rating).slice(0, 6);
-const topRated      = [...tools].sort((a, b) => b.rating - a.rating).slice(0, 6);
-const recentlyAdded = [...tools].sort((a, b) => b.addedDate.localeCompare(a.addedDate)).slice(0, 6);
+const popularTools = tools.filter((t) => t.featured).sort((a, b) => b.rating - a.rating).slice(0, 6);
 
 const categoriesWithCount = taxonomies.map((cat) => ({
   ...cat,
   toolCount: tools.filter((t) => t.categories.includes(cat.slug)).length,
 }));
+
+const toolCount = tools.length;
+const catCount = taxonomies.length;
+const top8cats = [...categoriesWithCount].sort((a, b) => b.toolCount - a.toolCount).slice(0, 8);
+const slimTools = tools.map((t) => [t.name, t.slug, t.rating]);
+const slimCats = taxonomies.map((t) => [t.name, t.slug]);
 ---
 
 <MainLayout
   title="Zotopie — Find the Best Software Tools"
-  description="Discover reviews, comparisons and alternatives for the best software tools. Find the right tool for your workflow."
+  description="Search 100+ expert software tool reviews. Find the right tool for your workflow — honest reviews, no fluff."
 >
 
   <!-- HERO -->
   <section class="hero">
     <h1>Discover The Best<br />Software Tools</h1>
-    <p class="hero-sub">Honest reviews. No fluff. Find the right tool for your workflow.</p>
-    <div class="hero-actions">
-      <a href="/reviews" class="btn-primary">Browse All Reviews</a>
-      <a href="/search" class="btn-secondary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="vertical-align:-2px">
+    <p class="hero-sub">Search {toolCount}+ expert reviews across {catCount} categories</p>
+
+    <div class="hero-search-wrap">
+      <form class="hero-search-form" action="/search" method="get" role="search">
+        <svg class="hero-s-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+          stroke="#9ca3af" stroke-width="2.5" aria-hidden="true">
           <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
         </svg>
-        Search Tools
-      </a>
+        <input id="hero-q" name="q" type="text"
+          placeholder={`Search ${toolCount}+ software tools…`}
+          autocomplete="off" spellcheck="false"
+          aria-label="Search software tools" />
+      </form>
+      <div id="hero-drop" class="ac-drop" role="listbox" aria-label="Search suggestions" hidden></div>
     </div>
-  </section>
 
-  <!-- BROWSE BY USE CASE -->
-  <section class="section">
-    <div class="section-header">
-      <h2>Browse by Use Case</h2>
-      <a href="/category" class="see-all">See all &rarr;</a>
-    </div>
-    <div class="cats-grid">
-      {categoriesWithCount.map((cat) => (
-        <CategoryCard category={cat} toolCount={cat.toolCount} />
+    <div class="hero-cats" role="list" aria-label="Browse by category">
+      {top8cats.map((cat) => (
+        <a href={`/category/${cat.slug}`} class="hero-cat-chip" role="listitem">{cat.name}</a>
       ))}
     </div>
   </section>
@@ -56,7 +58,7 @@ const categoriesWithCount = taxonomies.map((cat) => ({
           <h2>Popular Tools</h2>
           <p class="section-sub">Handpicked tools trusted by thousands of teams</p>
         </div>
-        <a href="/reviews" class="see-all">See all &rarr;</a>
+        <a href="/reviews" class="see-all">See all {toolCount} reviews &rarr;</a>
       </div>
       <div class="tools-grid">
         {popularTools.map((tool) => (
@@ -66,34 +68,15 @@ const categoriesWithCount = taxonomies.map((cat) => ({
     </section>
   )}
 
-  <!-- TOP RATED -->
+  <!-- BROWSE BY USE CASE -->
   <section class="section">
     <div class="section-header">
-      <div>
-        <h2>Top Rated</h2>
-        <p class="section-sub">Highest-rated tools based on our in-depth reviews</p>
-      </div>
-      <a href="/reviews" class="see-all">See all &rarr;</a>
+      <h2>Browse by Use Case</h2>
+      <a href="/category" class="see-all">See all {catCount} categories &rarr;</a>
     </div>
-    <div class="tools-grid">
-      {topRated.map((tool) => (
-        <ToolCard tool={tool} />
-      ))}
-    </div>
-  </section>
-
-  <!-- RECENTLY ADDED -->
-  <section class="section">
-    <div class="section-header">
-      <div>
-        <h2>Recently Added</h2>
-        <p class="section-sub">Fresh reviews added to our database</p>
-      </div>
-      <a href="/reviews" class="see-all">See all &rarr;</a>
-    </div>
-    <div class="tools-grid">
-      {recentlyAdded.map((tool) => (
-        <ToolCard tool={tool} />
+    <div class="cats-grid">
+      {categoriesWithCount.map((cat) => (
+        <CategoryCard category={cat} toolCount={cat.toolCount} />
       ))}
     </div>
   </section>
@@ -110,60 +93,282 @@ const categoriesWithCount = taxonomies.map((cat) => ({
 
 </MainLayout>
 
+<script define:vars={{ slimTools, slimCats }}>
+(function () {
+  var TOOLS = slimTools;
+  var CATS = slimCats;
+
+  var input = document.getElementById('hero-q');
+  var drop = document.getElementById('hero-drop');
+  var form = document.querySelector('.hero-search-form');
+  if (!input || !drop || !form) return;
+
+  var acIdx = -1;
+  var acItems = [];
+  var acTimer;
+
+  function esc(s) {
+    return String(s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  }
+
+  function markMatch(text, q) {
+    var s = esc(text);
+    if (!q) return s;
+    var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+    return s.replace(re, '<mark>$1</mark>');
+  }
+
+  function suggestTools(q) {
+    var ql = q.toLowerCase();
+    return TOOLS
+      .filter(function(t) { return t[0].toLowerCase().includes(ql); })
+      .sort(function(a, b) {
+        var ap = a[0].toLowerCase().startsWith(ql) ? 1 : 0;
+        var bp = b[0].toLowerCase().startsWith(ql) ? 1 : 0;
+        return bp - ap || b[2] - a[2];
+      })
+      .slice(0, 5);
+  }
+
+  function suggestCats(q) {
+    var ql = q.toLowerCase();
+    return CATS.filter(function(c) { return c[0].toLowerCase().includes(ql); }).slice(0, 3);
+  }
+
+  function renderDrop(q) {
+    var tools = suggestTools(q);
+    var cats = suggestCats(q);
+    if (!tools.length && !cats.length) { drop.hidden = true; return; }
+
+    var html = '';
+    if (tools.length) {
+      html += '<div class="ac-section"><div class="ac-label">Tools</div>';
+      tools.forEach(function(t) {
+        html += '<div class="ac-item" data-href="/reviews/' + esc(t[1]) + '" role="option" tabindex="-1">' +
+          '<span class="ac-name">' + markMatch(t[0], q) + '</span>' +
+          '<span class="ac-rating">&#9733; ' + t[2] + '</span>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+    if (cats.length) {
+      html += '<div class="ac-section"><div class="ac-label">Categories</div>';
+      cats.forEach(function(c) {
+        html += '<div class="ac-item" data-href="/category/' + esc(c[1]) + '" role="option" tabindex="-1">' +
+          '<span class="ac-name">' + markMatch(c[0], q) + '</span>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+
+    drop.innerHTML = html;
+    drop.hidden = false;
+    acIdx = -1;
+    acItems = Array.from(drop.querySelectorAll('.ac-item'));
+    acItems.forEach(function(item) {
+      item.addEventListener('mouseenter', function() {
+        acIdx = acItems.indexOf(item);
+        updateSel();
+      });
+      item.addEventListener('click', function() {
+        location.href = item.dataset.href;
+      });
+    });
+  }
+
+  function closeDrop() {
+    drop.hidden = true;
+    acIdx = -1;
+    acItems = [];
+  }
+
+  function updateSel() {
+    acItems.forEach(function(item, i) {
+      item.classList.toggle('ac-item-active', i === acIdx);
+    });
+  }
+
+  input.addEventListener('input', function() {
+    clearTimeout(acTimer);
+    acTimer = setTimeout(function() {
+      var q = input.value.trim();
+      if (q.length < 1) { closeDrop(); return; }
+      renderDrop(q);
+    }, 100);
+  });
+
+  input.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') { closeDrop(); return; }
+    if (!acItems.length) return;
+    if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      acIdx = Math.min(acIdx + 1, acItems.length - 1);
+      updateSel();
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      acIdx = Math.max(acIdx - 1, -1);
+      updateSel();
+    }
+  });
+
+  input.addEventListener('focus', function() {
+    var q = input.value.trim();
+    if (q.length >= 1) renderDrop(q);
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    if (acIdx >= 0 && acItems[acIdx]) {
+      location.href = acItems[acIdx].dataset.href;
+    } else if (input.value.trim()) {
+      location.href = '/search?q=' + encodeURIComponent(input.value.trim());
+    }
+  });
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.hero-search-wrap')) closeDrop();
+  });
+})();
+</script>
+
 <style>
   .hero {
     text-align: center;
-    padding: 72px 0 64px;
+    padding: 72px 0 56px;
   }
   .hero h1 {
     font-size: 3rem;
     font-weight: 800;
     color: #111827;
     line-height: 1.1;
-    margin: 0 0 16px;
+    margin: 0 0 14px;
   }
   .hero-sub {
-    font-size: 1.15rem;
+    font-size: 1.1rem;
     color: #6b7280;
-    margin: 0 0 32px;
+    margin: 0 0 28px;
   }
-  .hero-actions {
+
+  /* Hero search box */
+  .hero-search-wrap {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto 20px;
+  }
+  .hero-search-form {
+    position: relative;
     display: flex;
-    gap: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 12px 28px;
-    background: #2563eb;
-    color: #fff;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: background 0.2s;
   }
-  .btn-primary:hover { background: #1d4ed8; text-decoration: none; }
-  .btn-secondary {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 12px 28px;
+  .hero-s-icon {
+    position: absolute;
+    left: 18px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    flex-shrink: 0;
+  }
+  #hero-q {
+    width: 100%;
+    padding: 16px 20px 16px 52px;
+    font-size: 1.1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 14px;
+    outline: none;
+    font-family: inherit;
+    color: #111827;
     background: #fff;
-    color: #374151;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
   }
-  .btn-secondary:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; }
+  #hero-q:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 4px rgba(37,99,235,0.12), 0 2px 8px rgba(0,0,0,0.06);
+  }
+  #hero-q::placeholder { color: #9ca3af; }
 
+  /* Autocomplete dropdown */
+  .ac-drop {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    z-index: 200;
+    overflow: hidden;
+    text-align: left;
+  }
+  .ac-section { padding: 4px 0; }
+  .ac-section + .ac-section { border-top: 1px solid #f3f4f6; }
+  .ac-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
+    padding: 8px 16px 4px;
+  }
+  .ac-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 16px;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .ac-item:hover, .ac-item-active { background: #f3f4f6; }
+  .ac-name { font-size: 0.95rem; color: #111827; font-weight: 500; }
+  .ac-rating {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #d97706;
+    background: #fef3c7;
+    padding: 1px 7px;
+    border-radius: 10px;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+  :global(mark) {
+    background: #fef08a;
+    color: inherit;
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+
+  /* Category chips */
+  .hero-cats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .hero-cat-chip {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: #374151;
+    background: #fff;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 20px;
+    padding: 5px 14px;
+    text-decoration: none;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .hero-cat-chip:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+    text-decoration: none;
+  }
+
+  /* Sections */
   .section {
     padding: 48px 0;
     border-top: 1px solid #e5e7eb;
@@ -207,6 +412,37 @@ const categoriesWithCount = taxonomies.map((cat) => ({
     gap: 20px;
   }
 
+  /* CTA */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 28px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover { background: #1d4ed8; text-decoration: none; }
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 12px 28px;
+    background: #fff;
+    color: #374151;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-secondary:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; }
+
   .cta-section {
     text-align: center;
     padding: 64px 24px;
@@ -220,10 +456,7 @@ const categoriesWithCount = taxonomies.map((cat) => ({
     color: #111827;
     margin: 0 0 8px;
   }
-  .cta-section p {
-    color: #6b7280;
-    margin: 0 0 28px;
-  }
+  .cta-section p { color: #6b7280; margin: 0 0 28px; }
   .cta-actions {
     display: flex;
     gap: 12px;
@@ -233,8 +466,13 @@ const categoriesWithCount = taxonomies.map((cat) => ({
 
   @media (max-width: 640px) {
     .hero h1 { font-size: 2rem; }
+    .hero-sub { font-size: 1rem; }
+    #hero-q { font-size: 1rem; padding: 14px 16px 14px 44px; }
+    .hero-s-icon { left: 14px; }
     .cats-grid { grid-template-columns: 1fr 1fr; }
     .tools-grid { grid-template-columns: 1fr; }
     .section-header { flex-wrap: wrap; }
+    .hero-cats { gap: 6px; }
+    .hero-cat-chip { font-size: 0.8rem; padding: 4px 12px; }
   }
 </style>
