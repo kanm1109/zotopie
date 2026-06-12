@@ -17,7 +17,8 @@ const { tool } = Astro.props;
 
 const primaryCategory = taxonomies.find((c) => c.slug === tool.primaryCategory);
 const allCategories = taxonomies.filter((c) => tool.categories.includes(c.slug));
-// Alternatives: use defined list first, fallback to top-rated same-category tools
+
+// Alternatives: defined list first, fallback to top-rated same-category
 let alternativeTools = tools.filter((t) => tool.alternatives.includes(t.slug)).slice(0, 4);
 if (alternativeTools.length === 0) {
   alternativeTools = tools
@@ -26,7 +27,7 @@ if (alternativeTools.length === 0) {
     .slice(0, 4);
 }
 
-// Related Tools: same category, sorted by closest rating to current tool; excl. current + alternatives; max 4
+// Related Tools: same category, closest rating to current tool; excl. current + alternatives
 const altSlugs = new Set(alternativeTools.map((t) => t.slug));
 const relatedTools = tools
   .filter((t) =>
@@ -39,8 +40,87 @@ const relatedTools = tools
 
 // Previous / Next (by position in dataset)
 const toolIndex = tools.findIndex((t) => t.slug === tool.slug);
-const prevTool  = toolIndex > 0                 ? tools[toolIndex - 1] : null;
-const nextTool  = toolIndex < tools.length - 1  ? tools[toolIndex + 1] : null;
+const prevTool = toolIndex > 0                 ? tools[toolIndex - 1] : null;
+const nextTool = toolIndex < tools.length - 1  ? tools[toolIndex + 1] : null;
+
+// Reviewed date: "June 2026" from addedDate "2026-06-10"
+const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+const [addedYear, addedMonth] = tool.addedDate.split('-');
+const reviewDateStr = `${MONTH_NAMES[parseInt(addedMonth) - 1]} ${addedYear}`;
+
+// Auto-generated FAQ from tool data
+const autoFaqs: { question: string; answer: string }[] = [];
+
+if (tool.overview) {
+  const firstPara = tool.overview.split('\n\n')[0];
+  autoFaqs.push({
+    question: `What is ${tool.name}?`,
+    answer: firstPara.length > 350 ? firstPara.slice(0, 347) + '...' : firstPara,
+  });
+}
+
+if (tool.pricing === 'Free') {
+  autoFaqs.push({
+    question: `Is ${tool.name} free?`,
+    answer: `Yes, ${tool.name} is free to use.`,
+  });
+} else if (tool.pricing === 'Freemium') {
+  autoFaqs.push({
+    question: `Is ${tool.name} free?`,
+    answer: `${tool.name} offers a free plan${tool.startingPrice ? `, with paid plans starting at ${tool.startingPrice}` : ''}.`,
+  });
+} else if (tool.startingPrice) {
+  autoFaqs.push({
+    question: `How much does ${tool.name} cost?`,
+    answer: `${tool.name} pricing starts at ${tool.startingPrice}.`,
+  });
+}
+
+if (tool.bestFor && tool.bestFor.length > 0) {
+  autoFaqs.push({
+    question: `Who is ${tool.name} best for?`,
+    answer: `${tool.name} is best for: ${(tool.bestFor as string[]).slice(0, 5).join(', ')}.`,
+  });
+}
+
+if (alternativeTools.length > 0) {
+  const altNames = alternativeTools.slice(0, 3).map((t) => t.name);
+  const altList = altNames.length > 1
+    ? altNames.slice(0, -1).join(', ') + ' and ' + altNames[altNames.length - 1]
+    : altNames[0];
+  autoFaqs.push({
+    question: `What are the best alternatives to ${tool.name}?`,
+    answer: `Top alternatives to ${tool.name} include ${altList}.`,
+  });
+}
+
+// FAQPage JSON-LD for auto-generated FAQs
+const faqJsonLdStr = autoFaqs.length > 0
+  ? JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: autoFaqs.map(({ question, answer }) => ({
+        '@type': 'Question',
+        name: question,
+        acceptedAnswer: { '@type': 'Answer', text: answer },
+      })),
+    })
+  : null;
+
+// Table of Contents: only sections with content
+type TocItem = { id: string; label: string };
+const toc: TocItem[] = [];
+if (tool.overview) toc.push({ id: 'overview', label: 'Overview' });
+if ((tool.pros as string[] | undefined)?.length || (tool.cons as string[] | undefined)?.length) toc.push({ id: 'pros-cons', label: 'Pros & Cons' });
+if ((tool.bestFor as string[] | undefined)?.length) toc.push({ id: 'best-for', label: 'Best For' });
+if ((tool.keyFeatures as unknown[] | undefined)?.length) toc.push({ id: 'key-features', label: 'Key Features' });
+if ((tool.useCases as string[] | undefined)?.length) toc.push({ id: 'use-cases', label: 'Use Cases' });
+if ((tool.pricingBreakdown as { plans?: unknown[] } | undefined)?.plans?.length) toc.push({ id: 'pricing', label: 'Pricing' });
+if ((tool.whoShouldAvoid as string[] | undefined)?.length) toc.push({ id: 'who-should-avoid', label: 'Who to Avoid' });
+if (tool.verdict?.summary) toc.push({ id: 'verdict', label: 'Verdict' });
+if (alternativeTools.length > 0) toc.push({ id: 'alternatives', label: 'Alternatives' });
+if (autoFaqs.length > 0) toc.push({ id: 'faq', label: 'FAQ' });
+if (relatedTools.length > 0) toc.push({ id: 'related', label: 'Related' });
 
 // JSON-LD: WebPage + BreadcrumbList + SoftwareApplication + Review
 const SITE    = "https://zotopie.com";
@@ -48,14 +128,12 @@ const pageUrl = `${SITE}/reviews/${tool.slug}/`;
 const pageTitle = `${tool.name} Review 2026: Pricing, Pros & Cons | Zotopie`;
 const pageDesc  = `${tool.name} review 2026: ${tool.description}. Compare pricing, pros, cons, and top alternatives.`;
 
-// Extract numeric price from strings like "$129/mo", "from $99/month", "$9.99/mo"
 function parsePrice(raw: string | undefined): string | null {
   if (!raw) return null;
   const m = raw.match(/[\d]+\.?\d*/);
   return m ? m[0] : null;
 }
 
-// Build Offer node with correct price field
 const numericPrice =
   tool.pricing === "Free" || (tool.pricing === "Freemium" && !tool.startingPrice)
     ? "0"
@@ -68,7 +146,6 @@ const offerNode: Record<string, unknown> = {
   ...(tool.startingPrice ? { description: tool.startingPrice } : {}),
 };
 
-// applicationCategory: use primary category name; fallback to generic
 const appCategory = primaryCategory?.name ?? "WebApplication";
 
 const breadcrumbItems = [
@@ -141,6 +218,7 @@ const jsonLdStr = JSON.stringify({
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLdStr} />
+    {faqJsonLdStr && <script type="application/ld+json" set:html={faqJsonLdStr} />}
   </Fragment>
 
   <!-- BREADCRUMB -->
@@ -155,9 +233,13 @@ const jsonLdStr = JSON.stringify({
   <section class="review-hero">
     <div class="hero-id">
       <ToolLogo tool={tool} size={56} />
-      <div>
-        <h1>{tool.name} Review</h1>
+      <div class="hero-text">
+        <div class="hero-title-row">
+          <h1>{tool.name} Review</h1>
+          <span class="hero-rating-badge">★ {tool.rating}</span>
+        </div>
         <p class="tool-desc">{tool.description}</p>
+        <p class="review-date">Reviewed {reviewDateStr}</p>
       </div>
     </div>
   </section>
@@ -190,7 +272,7 @@ const jsonLdStr = JSON.stringify({
     </div>
     <div class="summary-actions">
       <a href={`/go/${tool.slug}`} class="visit-btn">
-        Visit {tool.name} &rarr;
+        Visit {tool.name} ↗
       </a>
       {tool.alternatives && tool.alternatives.length > 0 && (
         <a href={`/alternatives/${tool.slug}`} class="alt-link">
@@ -203,46 +285,57 @@ const jsonLdStr = JSON.stringify({
     </div>
   </section>
 
+  <!-- TABLE OF CONTENTS -->
+  {toc.length > 2 && (
+    <nav class="toc" aria-label="Jump to section">
+      <div class="toc-inner">
+        {toc.map((item) => (
+          <a href={`#${item.id}`} class="toc-link">{item.label}</a>
+        ))}
+      </div>
+    </nav>
+  )}
+
   <!-- OVERVIEW -->
   {tool.overview && (
-    <section class="detail-section">
+    <section class="detail-section" id="overview">
       <h2>Overview</h2>
-      {tool.overview.split('\n\n').map((para: string) => (
+      {(tool.overview as string).split('\n\n').map((para: string) => (
         <p class="overview-text">{para}</p>
       ))}
     </section>
   )}
 
   <!-- PROS & CONS -->
-  {(tool.pros?.length > 0 || tool.cons?.length > 0) && (
-    <section class="detail-section">
-      <h2>Pros & Cons</h2>
+  {((tool.pros as string[] | undefined)?.length > 0 || (tool.cons as string[] | undefined)?.length > 0) && (
+    <section class="detail-section" id="pros-cons">
+      <h2>Pros &amp; Cons</h2>
       <div class="pros-cons-grid">
-        {tool.pros?.length > 0 && (
+        {(tool.pros as string[] | undefined)?.length > 0 && (
           <div class="pros-box">
             <div class="pc-header">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <polyline points="20 6 9 17 4 12"/>
               </svg>
               Pros
             </div>
             <ul class="pc-list">
-              {tool.pros.map((item) => (
+              {(tool.pros as string[]).map((item) => (
                 <li>{item}</li>
               ))}
             </ul>
           </div>
         )}
-        {tool.cons?.length > 0 && (
+        {(tool.cons as string[] | undefined)?.length > 0 && (
           <div class="cons-box">
             <div class="pc-header">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
                 <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
               </svg>
               Cons
             </div>
             <ul class="pc-list">
-              {tool.cons.map((item) => (
+              {(tool.cons as string[]).map((item) => (
                 <li>{item}</li>
               ))}
             </ul>
@@ -253,13 +346,13 @@ const jsonLdStr = JSON.stringify({
   )}
 
   <!-- BEST FOR -->
-  {tool.bestFor?.length > 0 && (
-    <section class="detail-section">
+  {(tool.bestFor as string[] | undefined)?.length > 0 && (
+    <section class="detail-section" id="best-for">
       <h2>Best For</h2>
       <div class="best-for-grid">
-        {tool.bestFor.map((item) => (
+        {(tool.bestFor as string[]).map((item) => (
           <div class="best-for-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" style="flex-shrink:0;margin-top:3px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" style="flex-shrink:0;margin-top:3px" aria-hidden="true">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
             <span>{item}</span>
@@ -269,30 +362,12 @@ const jsonLdStr = JSON.stringify({
     </section>
   )}
 
-  <!-- RELATED TOOLS (C24) — same category, placed right after Best For -->
-  {relatedTools.length > 0 && (
-    <section class="detail-section">
-      <div class="section-hd">
-        <div>
-          <h2>Related Tools</h2>
-          <p class="section-sub">Other {primaryCategory?.name ?? "software"} tools you might like</p>
-        </div>
-        {primaryCategory && (
-          <a href={`/category/${primaryCategory.slug}`} class="see-all">See all {primaryCategory.name} &rarr;</a>
-        )}
-      </div>
-      <div class="tools-grid">
-        {relatedTools.map((t) => <ToolCard tool={t} />)}
-      </div>
-    </section>
-  )}
-
   <!-- KEY FEATURES -->
-  {tool.keyFeatures?.length > 0 && (
-    <section class="detail-section">
+  {(tool.keyFeatures as unknown[] | undefined)?.length > 0 && (
+    <section class="detail-section" id="key-features">
       <h2>Key Features</h2>
       <div class="features-grid">
-        {tool.keyFeatures.map((f: { title: string; description: string }) => (
+        {(tool.keyFeatures as { title: string; description: string }[]).map((f) => (
           <div class="feature-card">
             <div class="feature-title">{f.title}</div>
             <p class="feature-desc">{f.description}</p>
@@ -303,11 +378,11 @@ const jsonLdStr = JSON.stringify({
   )}
 
   <!-- USE CASES -->
-  {tool.useCases?.length > 0 && (
-    <section class="detail-section">
+  {(tool.useCases as string[] | undefined)?.length > 0 && (
+    <section class="detail-section" id="use-cases">
       <h2>Use Cases</h2>
       <ol class="use-cases-list">
-        {tool.useCases.map((item: string, i: number) => (
+        {(tool.useCases as string[]).map((item, i) => (
           <li class="use-case-item">
             <span class="uc-num">{String(i + 1).padStart(2, '0')}</span>
             <span>{item}</span>
@@ -318,11 +393,11 @@ const jsonLdStr = JSON.stringify({
   )}
 
   <!-- PRICING BREAKDOWN -->
-  {tool.pricingBreakdown?.plans?.length > 0 && (
-    <section class="detail-section">
+  {(tool.pricingBreakdown as { plans?: { name: string; price: string; description: string }[]; note?: string } | undefined)?.plans?.length > 0 && (
+    <section class="detail-section" id="pricing">
       <h2>Pricing Breakdown</h2>
       <div class="pricing-table">
-        {tool.pricingBreakdown.plans.map((plan: { name: string; price: string; description: string }) => (
+        {(tool.pricingBreakdown as { plans: { name: string; price: string; description: string }[]; note?: string }).plans.map((plan) => (
           <div class="pricing-plan">
             <div class="plan-name">{plan.name}</div>
             <div class="plan-price">{plan.price}</div>
@@ -330,20 +405,20 @@ const jsonLdStr = JSON.stringify({
           </div>
         ))}
       </div>
-      {tool.pricingBreakdown.note && (
-        <p class="pricing-note">{tool.pricingBreakdown.note}</p>
+      {(tool.pricingBreakdown as { note?: string }).note && (
+        <p class="pricing-note">{(tool.pricingBreakdown as { note: string }).note}</p>
       )}
     </section>
   )}
 
   <!-- WHO SHOULD AVOID -->
-  {tool.whoShouldAvoid?.length > 0 && (
-    <section class="detail-section">
+  {(tool.whoShouldAvoid as string[] | undefined)?.length > 0 && (
+    <section class="detail-section avoid-section" id="who-should-avoid">
       <h2>Who Should Avoid It</h2>
       <ul class="avoid-list">
-        {tool.whoShouldAvoid.map((item: string) => (
+        {(tool.whoShouldAvoid as string[]).map((item) => (
           <li class="avoid-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.5" style="flex-shrink:0;margin-top:2px" aria-hidden="true">
               <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
             </svg>
             <span>{item}</span>
@@ -355,26 +430,26 @@ const jsonLdStr = JSON.stringify({
 
   <!-- FINAL VERDICT -->
   {tool.verdict?.summary && (
-    <section class="detail-section">
+    <section class="detail-section" id="verdict">
       <h2>Final Verdict</h2>
       <div class="verdict-box">
-        <p class="verdict-text">{tool.verdict.summary}</p>
+        <p class="verdict-text">{(tool.verdict as { summary: string }).summary}</p>
         <div class="verdict-footer">
           <div class="verdict-rating">
-            <span class="vr-score">★ {tool.verdict.score ?? tool.rating}</span>
+            <span class="vr-score">★ {(tool.verdict as { score?: number }).score ?? tool.rating}</span>
             <span class="vr-label">/ 5</span>
           </div>
           <a href={`/go/${tool.slug}`} class="visit-btn">
-            Visit {tool.name} &rarr;
+            Visit {tool.name} ↗
           </a>
         </div>
       </div>
     </section>
   )}
 
-  <!-- ALTERNATIVES (C25) — "Best Alternatives to {tool}" -->
+  <!-- ALTERNATIVES -->
   {alternativeTools.length > 0 && (
-    <section class="detail-section alt-section">
+    <section class="detail-section alt-section" id="alternatives">
       <div class="section-hd">
         <div>
           <h2>Best Alternatives to {tool.name}</h2>
@@ -386,6 +461,44 @@ const jsonLdStr = JSON.stringify({
         {alternativeTools.map((t) => (
           <AltCard tool={t} />
         ))}
+      </div>
+    </section>
+  )}
+
+  <!-- FAQ (auto-generated) -->
+  {autoFaqs.length > 0 && (
+    <section class="detail-section faq-section" id="faq">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        {autoFaqs.map(({ question, answer }) => (
+          <details class="faq-item">
+            <summary class="faq-q">
+              <span>{question}</span>
+              <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </summary>
+            <div class="faq-a">{answer}</div>
+          </details>
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- RELATED TOOLS -->
+  {relatedTools.length > 0 && (
+    <section class="detail-section" id="related">
+      <div class="section-hd">
+        <div>
+          <h2>Related Tools</h2>
+          <p class="section-sub">Other {primaryCategory?.name ?? "software"} tools you might like</p>
+        </div>
+        {primaryCategory && (
+          <a href={`/category/${primaryCategory.slug}`} class="see-all">See all {primaryCategory.name} &rarr;</a>
+        )}
+      </div>
+      <div class="tools-grid">
+        {relatedTools.map((t) => <ToolCard tool={t} />)}
       </div>
     </section>
   )}
@@ -426,14 +539,14 @@ const jsonLdStr = JSON.stringify({
       <span class="sticky-rating">★ {tool.rating}</span>
     </div>
     <a href={`/go/${tool.slug}`} class="sticky-btn">
-      Visit {tool.name} &rarr;
+      Visit {tool.name} ↗
     </a>
   </div>
 </div>
 
 <script>
-  const cta     = document.getElementById('sticky-cta');
-  const anchor  = document.querySelector('.summary-card');
+  const cta    = document.getElementById('sticky-cta');
+  const anchor = document.querySelector('.summary-card');
   if (cta && anchor) {
     new IntersectionObserver(
       ([e]) => {
@@ -462,17 +575,42 @@ const jsonLdStr = JSON.stringify({
     align-items: flex-start;
     gap: 18px;
   }
+  .hero-text { flex: 1; min-width: 0; }
+  .hero-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
   .review-hero h1 {
     font-size: 2.1rem;
     font-weight: 800;
     color: #111827;
-    margin: 0 0 8px;
+    margin: 0;
     line-height: 1.15;
+  }
+  .hero-rating-badge {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #d97706;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    padding: 4px 12px;
+    border-radius: 20px;
+    white-space: nowrap;
+    flex-shrink: 0;
   }
   .tool-desc {
     font-size: 1.05rem;
     color: #6b7280;
+    margin: 0 0 6px;
+  }
+  .review-date {
+    font-size: 0.78rem;
+    color: #9ca3af;
     margin: 0;
+    font-weight: 500;
   }
 
   /* SUMMARY CARD */
@@ -481,7 +619,7 @@ const jsonLdStr = JSON.stringify({
     border: 1px solid #e5e7eb;
     border-radius: 14px;
     padding: 24px;
-    margin-bottom: 8px;
+    margin-bottom: 4px;
   }
   .summary-grid {
     display: grid;
@@ -489,11 +627,7 @@ const jsonLdStr = JSON.stringify({
     gap: 20px;
     margin-bottom: 20px;
   }
-  .summary-item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
+  .summary-item { display: flex; flex-direction: column; gap: 4px; }
   .label {
     font-size: 0.7rem;
     font-weight: 700;
@@ -501,15 +635,10 @@ const jsonLdStr = JSON.stringify({
     letter-spacing: 0.07em;
     color: #9ca3af;
   }
-  .value {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #111827;
-  }
+  .value { font-size: 1rem; font-weight: 600; color: #111827; }
   .rating-val { color: #d97706; }
   .cat-link { color: #2563eb; text-decoration: none; }
   .cat-link:hover { text-decoration: underline; }
-
   .summary-actions {
     border-top: 1px solid #e5e7eb;
     padding-top: 20px;
@@ -554,6 +683,38 @@ const jsonLdStr = JSON.stringify({
   }
   .tag:hover { background: #dbeafe; text-decoration: none; }
 
+  /* TABLE OF CONTENTS */
+  .toc {
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+    padding: 10px 0;
+    margin: 0 0 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .toc::-webkit-scrollbar { display: none; }
+  .toc-inner {
+    display: flex;
+    gap: 2px;
+    min-width: max-content;
+  }
+  .toc-link {
+    padding: 5px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6b7280;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: color 0.15s, background 0.15s;
+    white-space: nowrap;
+  }
+  .toc-link:hover {
+    color: #2563eb;
+    background: #eff6ff;
+    text-decoration: none;
+  }
+
   /* SECTIONS */
   .detail-section {
     border-top: 1px solid #e5e7eb;
@@ -572,26 +733,15 @@ const jsonLdStr = JSON.stringify({
     color: #374151;
     line-height: 1.75;
     max-width: 780px;
+    margin: 0 0 1em;
   }
+  .overview-text:last-child { margin-bottom: 0; }
 
   /* PROS & CONS */
-  .pros-cons-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-  .pros-box, .cons-box {
-    border-radius: 12px;
-    padding: 20px;
-  }
-  .pros-box {
-    background: #f0fdf4;
-    border: 1px solid #bbf7d0;
-  }
-  .cons-box {
-    background: #fff7f7;
-    border: 1px solid #fecaca;
-  }
+  .pros-cons-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .pros-box, .cons-box { border-radius: 12px; padding: 20px; }
+  .pros-box { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .cons-box { background: #fff7f7; border: 1px solid #fecaca; }
   .pc-header {
     display: flex;
     align-items: center;
@@ -637,11 +787,7 @@ const jsonLdStr = JSON.stringify({
   }
 
   /* BEST FOR */
-  .best-for-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 12px;
-  }
+  .best-for-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
   .best-for-item {
     display: flex;
     align-items: flex-start;
@@ -657,11 +803,7 @@ const jsonLdStr = JSON.stringify({
   }
 
   /* KEY FEATURES */
-  .features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 14px;
-  }
+  .features-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 14px; }
   .feature-card {
     padding: 18px 20px;
     background: #fff;
@@ -670,18 +812,8 @@ const jsonLdStr = JSON.stringify({
     transition: border-color 0.2s, box-shadow 0.2s;
   }
   .feature-card:hover { border-color: #2563eb; box-shadow: 0 2px 10px rgba(37,99,235,0.07); }
-  .feature-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 6px;
-  }
-  .feature-desc {
-    font-size: 0.875rem;
-    color: #6b7280;
-    line-height: 1.6;
-    margin: 0;
-  }
+  .feature-title { font-size: 0.95rem; font-weight: 700; color: #111827; margin-bottom: 6px; }
+  .feature-desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin: 0; }
 
   /* USE CASES */
   .use-cases-list {
@@ -717,12 +849,7 @@ const jsonLdStr = JSON.stringify({
   }
 
   /* PRICING BREAKDOWN */
-  .pricing-table {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-    gap: 12px;
-    margin-bottom: 14px;
-  }
+  .pricing-table { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 12px; margin-bottom: 14px; }
   .pricing-plan {
     padding: 20px;
     background: #fff;
@@ -739,19 +866,8 @@ const jsonLdStr = JSON.stringify({
     letter-spacing: 0.07em;
     color: #9ca3af;
   }
-  .plan-price {
-    font-size: 1.45rem;
-    font-weight: 800;
-    color: #111827;
-    line-height: 1.1;
-    margin: 4px 0 2px;
-  }
-  .plan-desc {
-    font-size: 0.8rem;
-    color: #6b7280;
-    margin: 0;
-    line-height: 1.5;
-  }
+  .plan-price { font-size: 1.45rem; font-weight: 800; color: #111827; line-height: 1.1; margin: 4px 0 2px; }
+  .plan-desc { font-size: 0.8rem; color: #6b7280; margin: 0; line-height: 1.5; }
   .pricing-note {
     font-size: 0.85rem;
     color: #6b7280;
@@ -763,6 +879,7 @@ const jsonLdStr = JSON.stringify({
   }
 
   /* WHO SHOULD AVOID */
+  .avoid-section { background: #fffbfb; }
   .avoid-list {
     list-style: none;
     padding: 0;
@@ -793,12 +910,7 @@ const jsonLdStr = JSON.stringify({
     padding: 28px;
     max-width: 780px;
   }
-  .verdict-text {
-    font-size: 1rem;
-    color: #374151;
-    line-height: 1.75;
-    margin: 0 0 20px;
-  }
+  .verdict-text { font-size: 1rem; color: #374151; line-height: 1.75; margin: 0 0 20px; }
   .verdict-footer {
     display: flex;
     align-items: center;
@@ -812,25 +924,11 @@ const jsonLdStr = JSON.stringify({
   .vr-label { font-size: 0.9rem; color: #9ca3af; font-weight: 600; }
 
   /* TOOLS GRID */
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 16px;
-  }
+  .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
 
   /* ALTERNATIVES */
-  .alt-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .section-sub {
-    font-size: 0.875rem;
-    color: #9ca3af;
-    margin: 2px 0 0;
-  }
-
-  /* SECTION HEADER w/ see-all */
+  .alt-list { display: flex; flex-direction: column; gap: 10px; }
+  .section-sub { font-size: 0.875rem; color: #9ca3af; margin: 2px 0 0; }
   .section-hd {
     display: flex;
     align-items: baseline;
@@ -839,14 +937,46 @@ const jsonLdStr = JSON.stringify({
     margin-bottom: 18px;
   }
   .section-hd h2 { margin: 0; }
-  .see-all {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: #2563eb;
-    white-space: nowrap;
-    flex-shrink: 0;
-  }
+  .see-all { font-size: 0.875rem; font-weight: 600; color: #2563eb; white-space: nowrap; flex-shrink: 0; }
   .see-all:hover { text-decoration: underline; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 780px; }
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+    transition: border-color 0.15s;
+  }
+  .faq-item[open] { border-color: #bfdbfe; }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 18px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    background: #f9fafb;
+    transition: background 0.15s;
+  }
+  .faq-item[open] .faq-q { background: #eff6ff; color: #1d4ed8; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q span { flex: 1; }
+  .faq-icon { flex-shrink: 0; transition: transform 0.25s; color: #9ca3af; }
+  .faq-item[open] .faq-icon { transform: rotate(180deg); color: #2563eb; }
+  .faq-a {
+    padding: 14px 18px 16px;
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.65;
+    border-top: 1px solid #e5e7eb;
+  }
 
   /* PREV / NEXT */
   .prev-next {
@@ -875,32 +1005,10 @@ const jsonLdStr = JSON.stringify({
     text-decoration: none;
   }
   .pn-card.next { justify-content: flex-end; text-align: right; }
-  .pn-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
-  }
-  .pn-dir {
-    font-size: 0.7rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: #9ca3af;
-  }
-  .pn-name {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: #111827;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .pn-rating {
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #d97706;
-  }
+  .pn-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+  .pn-dir { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: #9ca3af; }
+  .pn-name { font-size: 0.9rem; font-weight: 700; color: #111827; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pn-rating { font-size: 0.8rem; font-weight: 600; color: #d97706; }
 
   /* STICKY CTA */
   .sticky-cta {
@@ -925,18 +1033,8 @@ const jsonLdStr = JSON.stringify({
     justify-content: space-between;
     gap: 16px;
   }
-  .sticky-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
-  }
-  .sticky-name {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: #111827;
-    white-space: nowrap;
-  }
+  .sticky-info { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .sticky-name { font-size: 0.95rem; font-weight: 700; color: #111827; white-space: nowrap; }
   .sticky-price {
     font-size: 0.8rem;
     font-weight: 600;
@@ -972,6 +1070,8 @@ const jsonLdStr = JSON.stringify({
   @media (max-width: 640px) {
     .review-hero h1 { font-size: 1.6rem; }
     .hero-id { gap: 12px; }
+    .hero-title-row { gap: 8px; }
+    .hero-rating-badge { font-size: 0.85rem; padding: 3px 10px; }
     .pros-cons-grid { grid-template-columns: 1fr; }
     .summary-grid { grid-template-columns: 1fr 1fr; }
     .tools-grid { grid-template-columns: 1fr; }
@@ -985,5 +1085,7 @@ const jsonLdStr = JSON.stringify({
     .sticky-inner { padding: 10px 16px; gap: 10px; }
     .sticky-price, .sticky-rating { display: none; }
     .sticky-btn { padding: 9px 16px; font-size: 0.85rem; }
+    .faq-q { padding: 14px; font-size: 0.9rem; }
+    .faq-a { padding: 12px 14px 14px; }
   }
 </style>
