@@ -15,11 +15,77 @@ const { tool } = Astro.props;
 const alternativeTools = tools.filter((t) => tool.alternatives.includes(t.slug));
 const primaryCategory = taxonomies.find((c) => c.slug === tool.primaryCategory);
 
+// ── Sorted alternatives ───────────────────────────────────────────────────────
+const sortedAlts = [...alternativeTools].sort((a, b) => b.rating - a.rating);
+const bestAlt = sortedAlts[0];
+
+// ── Intro paragraph (first para of overview, max 360 chars) ──────────────────
+const rawIntro = tool.overview ? tool.overview.split("\n\n")[0] : "";
+const introText = rawIntro.length > 360
+  ? rawIntro.slice(0, 357) + "..."
+  : rawIntro || `${tool.name} is a widely used tool in the ${primaryCategory?.name ?? "AI tools"} space. ${tool.description}`;
+
+// ── Why switch: cons + whoShouldAvoid (max 5 items combined) ─────────────────
+const whySwitchItems: string[] = [
+  ...(tool.cons ?? []).slice(0, 3),
+  ...(tool.whoShouldAvoid ?? []).slice(0, 2),
+];
+
+// ── Best alt verdict (first sentence of verdict.summary only) ────────────────
+const bestAltVerdictRaw = bestAlt?.verdict?.summary ?? "";
+const bestAltVerdict = bestAltVerdictRaw.includes(".")
+  ? bestAltVerdictRaw.slice(0, bestAltVerdictRaw.indexOf(".") + 1)
+  : bestAltVerdictRaw.slice(0, 180);
+
+// ── Free alternative ─────────────────────────────────────────────────────────
+const freeAlt = sortedAlts.find(
+  (t) => t.pricing === "Free" || t.pricing === "Freemium"
+);
+
+// ── Compare slugs: must match [pair].astro sort logic ────────────────────────
+const compareLinks = sortedAlts.map((alt) => ({
+  alt,
+  compareSlug: [tool.slug, alt.slug].sort().join("-vs-"),
+}));
+
+// ── Auto-generated FAQs ──────────────────────────────────────────────────────
+const bestAltBestFor = bestAlt?.bestFor?.[0]
+  ? `, making it a strong choice for ${bestAlt.bestFor[0].toLowerCase()}`
+  : "";
+
+const q1Answer = [
+  `The highest-rated ${tool.name} alternative is ${bestAlt?.name ?? ""} (★ ${bestAlt?.rating}/5).`,
+  bestAlt?.description ?? "",
+  bestAltVerdict,
+].filter(Boolean).join(" ").trim();
+
+const q2 = freeAlt
+  ? {
+      question: `Is there a free ${tool.name} alternative?`,
+      answer: `Yes — ${freeAlt.name} offers a ${freeAlt.pricing.toLowerCase()} plan${freeAlt.bestFor?.[0] ? `, making it ideal for ${freeAlt.bestFor[0].toLowerCase()}` : ""}. See the full review for plan details.`,
+    }
+  : {
+      question: `Does ${tool.name} offer a free plan?`,
+      answer: `${tool.name} is a ${tool.pricing.toLowerCase()} tool${tool.startingPrice ? `, starting at ${tool.startingPrice}` : ""}. The alternatives above vary in pricing — check each review for free trial availability.`,
+    };
+
+const q3Answer = whySwitchItems.length > 0
+  ? `Users typically switch from ${tool.name} because: ${whySwitchItems.slice(0, 2).join("; ").toLowerCase()}.`
+  : `Users may look for ${tool.name} alternatives due to pricing, specific feature requirements, or workflow fit. The tools above offer different strengths for the same problems.`;
+
+const autoFaqs = [
+  { question: `What is the best ${tool.name} alternative?`, answer: q1Answer },
+  q2,
+  { question: `Why do people look for ${tool.name} alternatives?`, answer: q3Answer },
+];
+
+// ── Page meta ─────────────────────────────────────────────────────────────────
 const SITE    = "https://zotopie.com";
 const pageUrl = `${SITE}/alternatives/${tool.slug}/`;
 const pageTitle = `Best ${tool.name} Alternatives 2026 | Zotopie`;
-const pageDesc  = `Looking for ${tool.name} alternatives? Compare the top ${alternativeTools.length} alternatives with pricing, ratings, and honest reviews.`;
+const pageDesc  = `Looking for ${tool.name} alternatives? Compare the top ${sortedAlts.length} options by pricing, rating, and best-fit use case — with honest expert reviews.`;
 
+// ── JSON-LD ───────────────────────────────────────────────────────────────────
 const jsonLdStr = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
@@ -41,8 +107,8 @@ const jsonLdStr = JSON.stringify({
     {
       "@type": "ItemList",
       name: `Best ${tool.name} Alternatives`,
-      numberOfItems: alternativeTools.length,
-      itemListElement: alternativeTools.map((t, i) => ({
+      numberOfItems: sortedAlts.length,
+      itemListElement: sortedAlts.map((t, i) => ({
         "@type": "ListItem",
         position: i + 1,
         item: {
@@ -55,9 +121,17 @@ const jsonLdStr = JSON.stringify({
             ratingValue: String(t.rating),
             bestRating: "5",
             worstRating: "1",
-            ratingCount: "1",
+            ratingCount: "10",
           },
         },
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: autoFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: { "@type": "Answer", text: faq.answer },
       })),
     },
   ],
@@ -69,7 +143,7 @@ const jsonLdStr = JSON.stringify({
     <script type="application/ld+json" set:html={jsonLdStr} />
   </Fragment>
 
-  <!-- HERO -->
+  <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
   <section class="alt-hero">
     <div class="breadcrumb">
       <a href="/">Home</a> &rsaquo;
@@ -84,15 +158,18 @@ const jsonLdStr = JSON.stringify({
         <div>
           <h1>Best {tool.name} Alternatives</h1>
           <p class="hero-sub">
-            {alternativeTools.length} alternatives compared &mdash; ranked by rating &amp; value
+            {sortedAlts.length} alternatives compared &mdash; ranked by rating &amp; value
           </p>
         </div>
       </div>
     </div>
 
+    <!-- Editorial intro -->
+    <p class="alt-intro">{introText}</p>
+
     <!-- Current Tool Summary -->
     <div class="current-card">
-      <div class="cc-label">You're replacing</div>
+      <div class="cc-label">You&rsquo;re replacing</div>
       <div class="cc-body">
         <ToolLogo tool={tool} size={36} />
         <div class="cc-info">
@@ -103,59 +180,172 @@ const jsonLdStr = JSON.stringify({
           <span class="cc-rating">★ {tool.rating}</span>
           <span class="cc-price">{tool.startingPrice ? `from ${tool.startingPrice}` : tool.pricing}</span>
         </div>
-        <a href={`/reviews/${tool.slug}`} class="cc-link">Full Review →</a>
+        <a href={`/reviews/${tool.slug}`} class="cc-link">Full Review &rarr;</a>
       </div>
     </div>
   </section>
 
-  <!-- ALTERNATIVES LIST -->
-  <section class="alts-section">
-    <div class="section-hd">
-      <h2>Top {tool.name} Alternatives</h2>
-      <p class="section-sub">Sorted by editorial rating</p>
+  <!-- ── COMPARISON TABLE ──────────────────────────────────────────────────── -->
+  <section class="cmp-section">
+    <h2>Quick Comparison</h2>
+    <p class="section-sub">All {sortedAlts.length} {tool.name} alternatives at a glance</p>
+    <div class="cmp-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>Tool</th>
+            <th>Pricing</th>
+            <th>Rating</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedAlts.map((t) => (
+            <tr>
+              <td>
+                <a href={`/reviews/${t.slug}/`} class="cmp-name">
+                  <ToolLogo tool={t} size={20} />
+                  <span>{t.name}</span>
+                </a>
+              </td>
+              <td>
+                <span class={`pricing-tag pt-${t.pricing.toLowerCase().replace(/\//g,'-').replace(/\s/g,'')}`}>
+                  {t.startingPrice ? `${t.pricing} · ${t.startingPrice}` : t.pricing}
+                </span>
+              </td>
+              <td class="cmp-rating">★ {t.rating}</td>
+              <td class="cmp-bestfor">{t.bestFor?.[0] ?? "—"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
+  </section>
+
+  <!-- ── ALTERNATIVES LIST ─────────────────────────────────────────────────── -->
+  <section class="alts-section">
+    <h2>Top {tool.name} Alternatives Reviewed</h2>
+    <p class="section-sub">Sorted by editorial rating</p>
     <div class="alts-list">
-      {[...alternativeTools].sort((a, b) => b.rating - a.rating).map((t, i) => (
-        <div class="alt-row">
-          <span class="alt-rank">#{i + 1}</span>
-          <AltCard tool={t} />
+      {sortedAlts.map((t, i) => (
+        <div class="alt-item">
+          <div class="alt-row">
+            <span class="alt-rank">#{i + 1}</span>
+            <AltCard tool={t} />
+          </div>
+          {t.bestFor && t.bestFor.length > 0 && (
+            <p class="alt-bestfor">
+              <span class="bf-label">Best for:</span> {t.bestFor.slice(0, 2).join(", ")}
+              {t.pros && t.pros.length > 0 && (
+                <span class="alt-pro"> &mdash; {t.pros[0]}</span>
+              )}
+            </p>
+          )}
+          <div class="alt-compare-link">
+            <a href={`/compare/${[tool.slug, t.slug].sort().join("-vs-")}/`}>
+              Compare {tool.name} vs {t.name} &rarr;
+            </a>
+          </div>
         </div>
       ))}
     </div>
   </section>
 
-  <!-- WHY SWITCH -->
-  {tool.pros && tool.pros.length > 0 && (
-    <section class="why-section">
-      <h2>Why people look for {tool.name} alternatives</h2>
-      <p class="why-intro">
-        While {tool.name} is rated <strong>★ {tool.rating}/5</strong>, some users switch because of:
+  <!-- ── WHY SWITCH ────────────────────────────────────────────────────────── -->
+  <section class="why-section">
+    <h2>Why people look for {tool.name} alternatives</h2>
+    <p class="why-intro">
+      While {tool.name} is rated <strong>★ {tool.rating}/5</strong>, users commonly switch because of:
+    </p>
+    <ul class="why-list">
+      {whySwitchItems.length > 0
+        ? whySwitchItems.map((item) => <li>{item}</li>)
+        : <li>Pricing or feature requirements that don&rsquo;t match their workflow.</li>
+      }
+    </ul>
+    {tool.bestFor && tool.bestFor.length > 0 && (
+      <p class="why-keep">
+        <strong>{tool.name} still excels for:</strong>{" "}
+        {tool.bestFor.slice(0, 2).join(" and ")}.
+        If that describes you, it may not need replacing.
       </p>
-      <ul class="why-list">
-        {tool.cons?.slice(0, 4).map((con) => (
-          <li>{con}</li>
-        ))}
-        {(!tool.cons || tool.cons.length === 0) && (
-          <li>Pricing or feature requirements don't match their workflow</li>
+    )}
+  </section>
+
+  <!-- ── BEST OVERALL PICK ─────────────────────────────────────────────────── -->
+  {bestAlt && (
+    <section class="verdict-section">
+      <h2>Best {tool.name} alternative overall</h2>
+      <div class="verdict-card">
+        <div class="vc-header">
+          <ToolLogo tool={bestAlt} size={40} />
+          <div>
+            <span class="vc-name">{bestAlt.name}</span>
+            <span class="vc-rating">★ {bestAlt.rating} / 5</span>
+          </div>
+        </div>
+        <p class="vc-text">
+          {bestAlt.verdict?.summary
+            ? bestAlt.verdict.summary.length > 300
+              ? bestAlt.verdict.summary.slice(0, 297) + "..."
+              : bestAlt.verdict.summary
+            : bestAlt.description}
+        </p>
+        {bestAlt.bestFor && bestAlt.bestFor.length > 0 && (
+          <p class="vc-bestfor">
+            <strong>Best for:</strong> {bestAlt.bestFor.slice(0, 3).join(", ")}
+          </p>
         )}
-      </ul>
+        <a href={`/reviews/${bestAlt.slug}/`} class="vc-link">
+          Read full {bestAlt.name} review &rarr;
+        </a>
+      </div>
     </section>
   )}
 
-  <!-- ALSO SEE -->
+  <!-- ── FAQ ───────────────────────────────────────────────────────────────── -->
+  <section class="faq-section" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <dl class="faq-list">
+      {autoFaqs.map((faq) => (
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>{faq.question}</span>
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </summary>
+          <p class="faq-a">{faq.answer}</p>
+        </details>
+      ))}
+    </dl>
+  </section>
+
+  <!-- ── COMPARE LINKS ─────────────────────────────────────────────────────── -->
+  <section class="compare-section">
+    <h2>Compare {tool.name} head-to-head</h2>
+    <p class="section-sub">Detailed side-by-side comparisons</p>
+    <div class="compare-grid">
+      {compareLinks.map(({ alt, compareSlug }) => (
+        <a href={`/compare/${compareSlug}/`} class="compare-pill">
+          {tool.name} vs {alt.name}
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── ALSO SEE ───────────────────────────────────────────────────────────── -->
   {primaryCategory && (
     <section class="also-section">
       <h2>More {primaryCategory.name} tools</h2>
-      <p class="section-sub">Compare all options in this category</p>
-      <a href={`/category/${primaryCategory.slug}`} class="cat-link">
-        Browse {primaryCategory.name} Tools &rarr;
+      <p class="section-sub">Browse the full category to find your best fit</p>
+      <a href={`/category/${primaryCategory.slug}/`} class="cat-link">
+        Browse all {primaryCategory.name} tools &rarr;
       </a>
     </section>
   )}
 </MainLayout>
 
 <style>
-  /* HERO */
+  /* ── HERO ──────────────────────────────────────────────────────────────── */
   .alt-hero {
     padding: 40px 0 32px;
     border-bottom: 1px solid #e5e7eb;
@@ -168,7 +358,7 @@ const jsonLdStr = JSON.stringify({
   }
   .breadcrumb a { color: #6b7280; }
   .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
-  .hero-body { margin-bottom: 24px; }
+  .hero-body { margin-bottom: 16px; }
   .hero-tool {
     display: flex;
     align-items: center;
@@ -183,7 +373,15 @@ const jsonLdStr = JSON.stringify({
   }
   .hero-sub { font-size: 1rem; color: #6b7280; margin: 0; }
 
-  /* CURRENT TOOL CARD */
+  .alt-intro {
+    font-size: 0.975rem;
+    color: #374151;
+    line-height: 1.7;
+    margin: 0 0 24px;
+    max-width: 720px;
+  }
+
+  /* ── CURRENT TOOL CARD ─────────────────────────────────────────────────── */
   .current-card {
     background: #f9fafb;
     border: 1px solid #e5e7eb;
@@ -239,18 +437,91 @@ const jsonLdStr = JSON.stringify({
   }
   .cc-link:hover { text-decoration: underline; }
 
-  /* ALTERNATIVES */
-  .alts-section { margin-bottom: 48px; }
-  .section-hd { margin-bottom: 16px; }
-  .section-hd h2 {
+  /* ── COMPARISON TABLE ──────────────────────────────────────────────────── */
+  .cmp-section {
+    margin-bottom: 48px;
+  }
+  .cmp-section h2, .alts-section h2, .why-section h2,
+  .verdict-section h2, .faq-section h2, .compare-section h2, .also-section h2 {
     font-size: 1.35rem;
     font-weight: 700;
     color: #111827;
     margin: 0 0 4px;
   }
-  .section-sub { font-size: 0.875rem; color: #9ca3af; margin: 0; }
+  .section-sub { font-size: 0.875rem; color: #9ca3af; margin: 0 0 16px; }
 
-  .alts-list { display: flex; flex-direction: column; gap: 10px; }
+  .cmp-wrap {
+    overflow-x: auto;
+    border-radius: 12px;
+    border: 1px solid #e5e7eb;
+  }
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .cmp-table thead {
+    background: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+  }
+  .cmp-table th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+  .cmp-table td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+  }
+  .cmp-table tbody tr:last-child td { border-bottom: none; }
+  .cmp-table tbody tr:hover td { background: #fafbff; }
+
+  .cmp-name {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    color: #111827;
+    text-decoration: none;
+  }
+  .cmp-name:hover { color: #2563eb; }
+  .cmp-name span { font-size: 0.9rem; }
+
+  .pricing-tag {
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .pt-free       { background: #d1fae5; color: #065f46; }
+  .pt-freemium   { background: #dbeafe; color: #1e40af; }
+  .pt-paid       { background: #f3f4f6; color: #374151; }
+
+  .cmp-rating {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #d97706;
+    white-space: nowrap;
+  }
+  .cmp-bestfor {
+    font-size: 0.85rem;
+    color: #4b5563;
+    max-width: 200px;
+  }
+
+  /* ── ALTERNATIVES LIST ─────────────────────────────────────────────────── */
+  .alts-section { margin-bottom: 48px; }
+  .alts-list { display: flex; flex-direction: column; gap: 14px; }
+
+  .alt-item { display: flex; flex-direction: column; gap: 6px; }
+
   .alt-row {
     display: flex;
     align-items: center;
@@ -264,22 +535,42 @@ const jsonLdStr = JSON.stringify({
     flex-shrink: 0;
     text-align: center;
   }
-  .alt-row:nth-child(1) .alt-rank { color: #f59e0b; }
-  .alt-row:nth-child(2) .alt-rank { color: #9ca3af; }
-  .alt-row:nth-child(3) .alt-rank { color: #d97706; }
+  .alt-item:nth-child(1) .alt-rank { color: #f59e0b; }
+  .alt-item:nth-child(2) .alt-rank { color: #9ca3af; }
+  .alt-item:nth-child(3) .alt-rank { color: #d97706; }
   .alt-row > :last-child { flex: 1; min-width: 0; }
 
-  /* WHY SWITCH */
+  .alt-bestfor {
+    font-size: 0.84rem;
+    color: #6b7280;
+    margin: 0 0 0 40px;
+    padding: 0;
+  }
+  .bf-label {
+    font-weight: 700;
+    color: #374151;
+  }
+  .alt-pro {
+    color: #9ca3af;
+    font-size: 0.82rem;
+  }
+
+  .alt-compare-link {
+    margin-left: 40px;
+    font-size: 0.82rem;
+  }
+  .alt-compare-link a {
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .alt-compare-link a:hover { text-decoration: underline; }
+
+  /* ── WHY SWITCH ────────────────────────────────────────────────────────── */
   .why-section {
     border-top: 1px solid #e5e7eb;
     padding-top: 40px;
     margin-bottom: 40px;
-  }
-  .why-section h2 {
-    font-size: 1.25rem;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 10px;
   }
   .why-intro { font-size: 0.95rem; color: #6b7280; margin-bottom: 14px; }
   .why-list {
@@ -288,6 +579,7 @@ const jsonLdStr = JSON.stringify({
     display: flex;
     flex-direction: column;
     gap: 8px;
+    margin-bottom: 16px;
   }
   .why-list li {
     padding: 10px 14px;
@@ -297,18 +589,154 @@ const jsonLdStr = JSON.stringify({
     font-size: 0.9rem;
     color: #374151;
   }
+  .why-keep {
+    font-size: 0.9rem;
+    color: #6b7280;
+    background: #f0fdf4;
+    border-left: 3px solid #34d399;
+    border-radius: 0 8px 8px 0;
+    padding: 10px 14px;
+    margin: 0;
+  }
 
-  /* ALSO SEE */
+  /* ── VERDICT / BEST OVERALL ─────────────────────────────────────────────── */
+  .verdict-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 40px;
+    margin-bottom: 40px;
+  }
+  .verdict-card {
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin-top: 16px;
+  }
+  .vc-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .vc-name {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #1e40af;
+    display: block;
+  }
+  .vc-rating {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #d97706;
+    background: #fef3c7;
+    padding: 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 2px;
+  }
+  .vc-text {
+    font-size: 0.95rem;
+    color: #1e3a5f;
+    line-height: 1.65;
+    margin: 0 0 10px;
+  }
+  .vc-bestfor {
+    font-size: 0.875rem;
+    color: #374151;
+    margin: 0 0 14px;
+  }
+  .vc-link {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #2563eb;
+    text-decoration: none;
+  }
+  .vc-link:hover { text-decoration: underline; }
+
+  /* ── FAQ ───────────────────────────────────────────────────────────────── */
+  .faq-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 40px;
+    margin-bottom: 40px;
+    max-width: 780px;
+  }
+  .faq-list { display: flex; flex-direction: column; gap: 8px; margin-top: 16px; }
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .faq-item[open] { border-color: #bfdbfe; }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+    list-style: none;
+    background: #fafafa;
+    user-select: none;
+  }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-item[open] .faq-q { background: #eff6ff; color: #1e40af; }
+  .faq-icon {
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: #9ca3af;
+    flex-shrink: 0;
+    line-height: 1;
+    transition: transform 0.2s;
+  }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); color: #2563eb; }
+  .faq-a {
+    padding: 12px 18px 16px;
+    font-size: 0.9rem;
+    color: #374151;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* ── COMPARE LINKS ─────────────────────────────────────────────────────── */
+  .compare-section {
+    border-top: 1px solid #e5e7eb;
+    padding-top: 32px;
+    margin-bottom: 40px;
+  }
+  .compare-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .compare-pill {
+    display: inline-block;
+    padding: 7px 14px;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #374151;
+    text-decoration: none;
+    background: #fff;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .compare-pill:hover {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+  }
+
+  /* ── ALSO SEE ──────────────────────────────────────────────────────────── */
   .also-section {
     border-top: 1px solid #e5e7eb;
     padding-top: 32px;
     padding-bottom: 16px;
-  }
-  .also-section h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #111827;
-    margin-bottom: 4px;
   }
   .cat-link {
     display: inline-block;
@@ -316,10 +744,15 @@ const jsonLdStr = JSON.stringify({
     font-size: 0.95rem;
     font-weight: 600;
     color: #2563eb;
+    text-decoration: none;
   }
+  .cat-link:hover { text-decoration: underline; }
 
-  @media (max-width: 560px) {
+  /* ── RESPONSIVE ────────────────────────────────────────────────────────── */
+  @media (max-width: 600px) {
     h1 { font-size: 1.6rem; }
     .cc-meta { align-items: flex-start; }
+    .cmp-bestfor { display: none; }
+    .alt-bestfor, .alt-compare-link { margin-left: 0; }
   }
 </style>
