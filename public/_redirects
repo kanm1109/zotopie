@@ -5,6 +5,9 @@ https://www.zotopie.com/* https://zotopie.com/:splat 301
 http://zotopie.com/* https://zotopie.com/:splat 301
 http://www.zotopie.com/* https://zotopie.com/:splat 301
 
+# Sitemap alias — Astro generates sitemap-index.xml, not sitemap.xml
+/sitemap.xml  /sitemap-index.xml  301
+
 # Redirect bare category paths to trailing-slash versions
 /reddit  /reddit/  301
 /threads  /threads/  301
