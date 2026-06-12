@@ -20,31 +20,31 @@ const categoryTools = tools.filter((t) => t.categories.includes(category.slug));
 const topRated = [...categoryTools].sort((a, b) => b.rating - a.rating).slice(0, 3);
 const topSlugs = new Set(topRated.map((t) => t.slug));
 
-// Featured: featured flag, excl. top-rated, max 3
-const featuredTools = categoryTools
-  .filter((t) => t.featured && !topSlugs.has(t.slug))
-  .sort((a, b) => b.rating - a.rating)
-  .slice(0, 3);
-const featuredSlugs = new Set(featuredTools.map((t) => t.slug));
-
-// Newest: by addedDate desc, excl. top-rated + featured, max 3
-const newestTools = [...categoryTools]
-  .filter((t) => !topSlugs.has(t.slug) && !featuredSlugs.has(t.slug))
-  .sort((a, b) => b.addedDate.localeCompare(a.addedDate))
-  .slice(0, 3);
+// Remaining tools (not in top-rated), sorted by rating desc
+const allRemainingTools = categoryTools
+  .filter((t) => !topSlugs.has(t.slug))
+  .sort((a, b) => b.rating - a.rating);
 
 // Hero stats
 const avgRating = categoryTools.length
   ? (categoryTools.reduce((s, t) => s + t.rating, 0) / categoryTools.length).toFixed(1)
   : "—";
-const freeCount = categoryTools.filter((t) => t.pricing === "Free" || t.pricing === "Freemium").length;
+const freemiumCount = categoryTools.filter((t) => t.pricing === "Free" || t.pricing === "Freemium").length;
+const paidCount = categoryTools.filter((t) => t.pricing === "Paid").length;
 
-const relatedCategories = taxonomies.filter((c) => c.slug !== category.slug).slice(0, 6);
+// Related categories: all 10 others, sorted by tool count descending
+const relatedCategories = taxonomies
+  .filter((c) => c.slug !== category.slug)
+  .map((c) => ({
+    ...c,
+    toolCount: tools.filter((t) => t.categories.includes(c.slug)).length,
+  }))
+  .sort((a, b) => b.toolCount - a.toolCount);
 
 // SEO content from category-content.json
 const catContent = (categoryContent as any[]).find((c: any) => c.category === category.slug) ?? null;
 
-// Convert intro paragraphs (split on double newline) to HTML <p> tags
+// Convert intro paragraphs to HTML <p> tags
 const introHtml: string | null = catContent?.intro
   ? catContent.intro
       .split('\n\n')
@@ -69,7 +69,7 @@ const faqJsonLdStr: string | null = catContent?.faqs?.length
 const SITE      = "https://zotopie.com";
 const pageUrl   = `${SITE}/category/${category.slug}/`;
 const pageTitle = `Best ${category.name} Tools | Zotopie`;
-const pageDesc  = `Discover the best ${category.name} tools. ${category.description}`;
+const pageDesc  = `Discover the best ${category.name} tools. Expert reviews of ${categoryTools.length} tools — ${category.description}`;
 
 const catJsonLdStr = JSON.stringify({
   "@context": "https://schema.org",
@@ -149,12 +149,21 @@ const catJsonLdStr = JSON.stringify({
         <span class="stat-value">★ {avgRating}</span>
         <span class="stat-label">Avg Rating</span>
       </div>
-      {freeCount > 0 && (
+      {freemiumCount > 0 && (
         <>
           <div class="stat-div"></div>
           <div class="stat">
-            <span class="stat-value">{freeCount}</span>
+            <span class="stat-value">{freemiumCount}</span>
             <span class="stat-label">Free / Freemium</span>
+          </div>
+        </>
+      )}
+      {paidCount > 0 && (
+        <>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-value">{paidCount}</span>
+            <span class="stat-label">Paid Only</span>
           </div>
         </>
       )}
@@ -166,7 +175,8 @@ const catJsonLdStr = JSON.stringify({
     <section class="cat-intro">
       <div class="intro-inner" set:html={introHtml} />
       <button class="intro-toggle" id="introToggle" aria-expanded="false">
-        Read more <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        <span>Read more</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
       </button>
     </section>
   )}
@@ -207,48 +217,49 @@ const catJsonLdStr = JSON.stringify({
     </section>
   )}
 
-  <!-- FEATURED (editor's picks not in top-rated) -->
-  {featuredTools.length > 0 && (
+  <!-- MORE TOOLS (all category tools minus top-rated, with pricing filter) -->
+  {allRemainingTools.length > 0 && (
     <section class="cat-section">
       <div class="section-hd">
         <div>
-          <h2>Editor's Picks</h2>
-          <p class="section-sub">Hand-selected tools worth trying</p>
+          <h2>More {category.name} Tools</h2>
+          <p class="section-sub">All reviewed tools, sorted by rating</p>
         </div>
+        <span class="tool-count-badge">{allRemainingTools.length} tools</span>
       </div>
-      <div class="tools-grid">
-        {featuredTools.map((tool) => <ToolCard tool={tool} />)}
+
+      {(freemiumCount > 0 && paidCount > 0) && (
+        <div class="filter-tabs" role="group" aria-label="Filter by pricing">
+          <button class="ftab ftab-active" data-filter="all">
+            All <span class="ftab-count">{allRemainingTools.length}</span>
+          </button>
+          <button class="ftab" data-filter="freemium">
+            Free / Freemium
+            <span class="ftab-count">{allRemainingTools.filter(t => t.pricing === 'Free' || t.pricing === 'Freemium').length}</span>
+          </button>
+          <button class="ftab" data-filter="paid">
+            Paid
+            <span class="ftab-count">{allRemainingTools.filter(t => t.pricing === 'Paid').length}</span>
+          </button>
+        </div>
+      )}
+
+      <div class="tools-grid" id="toolsGrid">
+        {allRemainingTools.map((tool) => (
+          <div data-pricing={tool.pricing.toLowerCase()}>
+            <ToolCard tool={tool} />
+          </div>
+        ))}
+      </div>
+
+      <div class="no-results" id="noResults" hidden>
+        <p>No tools match this filter. <button class="no-results-reset" id="noResultsReset">Show all</button></p>
       </div>
     </section>
   )}
 
-  <!-- NEWEST -->
-  {newestTools.length > 0 && (
-    <section class="cat-section">
-      <div class="section-hd">
-        <div>
-          <h2>Recently Added</h2>
-          <p class="section-sub">Freshly reviewed tools in this category</p>
-        </div>
-      </div>
-      <div class="tools-grid">
-        {newestTools.map((tool) => <ToolCard tool={tool} />)}
-      </div>
-    </section>
-  )}
-
-  <!-- ALL TOOLS -->
-  {categoryTools.length > 0 ? (
-    <section class="cat-section">
-      <div class="section-hd">
-        <h2>All {category.name} Tools</h2>
-        <span class="tool-count-badge">{categoryTools.length} tools</span>
-      </div>
-      <div class="tools-grid">
-        {categoryTools.map((tool) => <ToolCard tool={tool} />)}
-      </div>
-    </section>
-  ) : (
+  <!-- EMPTY STATE -->
+  {categoryTools.length === 0 && (
     <section class="empty-state">
       <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1.5">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
@@ -258,126 +269,7 @@ const catJsonLdStr = JSON.stringify({
     </section>
   )}
 
-  <!-- BUYING GUIDE -->
-  {categoryTools.length > 0 && (() => {
-    const sortedByPrice = [...categoryTools]
-      .filter((t) => t.startingPrice)
-      .sort((a, b) => {
-        const pa = parseFloat(a.startingPrice?.match(/[\d.]+/)?.[0] ?? "999999");
-        const pb = parseFloat(b.startingPrice?.match(/[\d.]+/)?.[0] ?? "999999");
-        return pa - pb;
-      });
-    const cheapest   = sortedByPrice[0];
-    const mostFull   = [...categoryTools].sort((a, b) => b.rating - a.rating)[0];
-    const freeOpts   = categoryTools.filter((t) => t.pricing === "Free" || t.pricing === "Freemium");
-    const paidOpts   = categoryTools.filter((t) => t.pricing === "Paid");
-    const priceRange = sortedByPrice.length >= 2
-      ? `${sortedByPrice[0].startingPrice} – ${sortedByPrice[sortedByPrice.length - 1].startingPrice}`
-      : sortedByPrice[0]?.startingPrice ?? null;
-    return (
-      <section class="cat-section buying-guide">
-        <div class="section-hd">
-          <div>
-            <h2>How to Choose the Right {category.name} Tool</h2>
-            <p class="section-sub">A quick buying guide for {new Date().getFullYear()}</p>
-          </div>
-        </div>
-        <div class="guide-grid">
-          <div class="guide-body">
-            <p class="guide-intro">
-              With {categoryTools.length} tools reviewed in this category, choosing the right one can be tough.
-              Here's what to look for when evaluating {category.name} software.
-            </p>
-            <div class="checklist">
-              <div class="cl-item">
-                <span class="cl-icon">💰</span>
-                <div>
-                  <strong>Budget</strong>
-                  <p>{freeOpts.length > 0
-                    ? `${freeOpts.length} free or freemium option${freeOpts.length !== 1 ? "s" : ""} available.`
-                    : "All tools in this category are paid."
-                  } {priceRange ? `Paid plans range from ${priceRange}.` : ""}</p>
-                </div>
-              </div>
-              <div class="cl-item">
-                <span class="cl-icon">⭐</span>
-                <div>
-                  <strong>Top-rated pick</strong>
-                  <p>Our highest-rated option is <a href={`/reviews/${mostFull.slug}`}>{mostFull.name}</a> (★ {mostFull.rating}/5) — best for those who want the most trusted tool.</p>
-                </div>
-              </div>
-              {cheapest && cheapest.slug !== mostFull.slug && (
-                <div class="cl-item">
-                  <span class="cl-icon">🏷️</span>
-                  <div>
-                    <strong>Best value</strong>
-                    <p><a href={`/reviews/${cheapest.slug}`}>{cheapest.name}</a> starts at {cheapest.startingPrice} — the most affordable paid option reviewed.</p>
-                  </div>
-                </div>
-              )}
-              {freeOpts.length > 0 && (
-                <div class="cl-item">
-                  <span class="cl-icon">🆓</span>
-                  <div>
-                    <strong>Free options</strong>
-                    <p>{freeOpts.slice(0, 3).map((t, i) => (
-                      <><a href={`/reviews/${t.slug}`}>{t.name}</a>{i < Math.min(freeOpts.length, 3) - 1 ? ", " : ""}</>
-                    ))}{freeOpts.length > 3 ? ` and ${freeOpts.length - 3} more` : ""} — start for free and upgrade when ready.</p>
-                  </div>
-                </div>
-              )}
-              <div class="cl-item">
-                <span class="cl-icon">🔗</span>
-                <div>
-                  <strong>Integrations</strong>
-                  <p>Check whether the tool connects with your existing stack (CRM, email, analytics) before committing.</p>
-                </div>
-              </div>
-              <div class="cl-item">
-                <span class="cl-icon">📈</span>
-                <div>
-                  <strong>Scalability</strong>
-                  <p>Consider how pricing scales with usage. Some tools charge per seat, others per usage volume — model your expected growth.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="guide-sidebar">
-            <div class="guide-summary-card">
-              <div class="gsc-title">Quick Stats</div>
-              <div class="gsc-row">
-                <span class="gsc-label">Tools reviewed</span>
-                <span class="gsc-val">{categoryTools.length}</span>
-              </div>
-              <div class="gsc-row">
-                <span class="gsc-label">Avg rating</span>
-                <span class="gsc-val">★ {avgRating}</span>
-              </div>
-              <div class="gsc-row">
-                <span class="gsc-label">Free options</span>
-                <span class="gsc-val">{freeOpts.length}</span>
-              </div>
-              <div class="gsc-row">
-                <span class="gsc-label">Paid only</span>
-                <span class="gsc-val">{paidOpts.length}</span>
-              </div>
-              {priceRange && (
-                <div class="gsc-row">
-                  <span class="gsc-label">Price range</span>
-                  <span class="gsc-val gsc-price">{priceRange}</span>
-                </div>
-              )}
-              <a href={`/reviews/${mostFull.slug}`} class="gsc-cta">
-                See top pick: {mostFull.name} →
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  })()}
-
-  <!-- HOW TO CHOOSE (from category-content.json) -->
+  <!-- HOW TO CHOOSE (from category-content.json only) -->
   {catContent?.how_to_choose?.length > 0 && (
     <section class="cat-section htc-section">
       <div class="section-hd">
@@ -411,7 +303,7 @@ const catJsonLdStr = JSON.stringify({
           <details class="faq-item">
             <summary class="faq-q">
               <span>{question}</span>
-              <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+              <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
             </summary>
             <div class="faq-a">{answer}</div>
           </details>
@@ -422,17 +314,19 @@ const catJsonLdStr = JSON.stringify({
 
   <!-- RELATED CATEGORIES -->
   <section class="related-section">
-    <h2>Explore Other Categories</h2>
+    <div class="section-hd">
+      <h2>Explore Other Categories</h2>
+    </div>
     <div class="related-grid">
-      {relatedCategories.map((cat) => {
-        const count = tools.filter((t) => t.categories.includes(cat.slug)).length;
-        return (
-          <a href={`/category/${cat.slug}`} class="related-card">
+      {relatedCategories.map((cat) => (
+        <a href={`/category/${cat.slug}`} class="related-card">
+          <div class="related-card-top">
             <span class="related-name">{cat.name}</span>
-            <span class="related-count">{count}</span>
-          </a>
-        );
-      })}
+            <span class="related-count">{cat.toolCount}</span>
+          </div>
+          <p class="related-desc">{cat.description}</p>
+        </a>
+      ))}
     </div>
   </section>
 
@@ -568,21 +462,14 @@ const catJsonLdStr = JSON.stringify({
   .rank-2 { color: #9ca3af; }
   .rank-3 { color: #d97706; }
   .rc-logo { flex-shrink: 0; }
-  .rc-body {
-    flex: 1;
-    min-width: 0;
-  }
+  .rc-body { flex: 1; min-width: 0; }
   .rc-header {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 3px;
   }
-  .rc-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111827;
-  }
+  .rc-name { font-size: 1rem; font-weight: 700; color: #111827; }
   .rc-badge {
     font-size: 0.7rem;
     font-weight: 700;
@@ -602,11 +489,7 @@ const catJsonLdStr = JSON.stringify({
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .rc-price {
-    font-size: 0.78rem;
-    color: #9ca3af;
-    font-weight: 500;
-  }
+  .rc-price { font-size: 0.78rem; color: #9ca3af; font-weight: 500; }
   .rc-right {
     display: flex;
     flex-direction: column;
@@ -622,10 +505,51 @@ const catJsonLdStr = JSON.stringify({
     padding: 2px 10px;
     border-radius: 10px;
   }
-  .rc-cta {
-    font-size: 0.8rem;
+  .rc-cta { font-size: 0.8rem; font-weight: 600; color: #2563eb; }
+
+  /* PRICING FILTER TABS */
+  .filter-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .ftab {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 16px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 20px;
+    background: #fff;
+    font-size: 0.85rem;
     font-weight: 600;
+    color: #6b7280;
+    cursor: pointer;
+    font-family: inherit;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+  }
+  .ftab:hover {
+    border-color: #2563eb;
     color: #2563eb;
+    background: #eff6ff;
+  }
+  .ftab-active {
+    border-color: #2563eb;
+    color: #2563eb;
+    background: #eff6ff;
+  }
+  .ftab-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #e5e7eb;
+    color: #6b7280;
+    padding: 1px 6px;
+    border-radius: 10px;
+  }
+  .ftab-active .ftab-count {
+    background: #bfdbfe;
+    color: #1d4ed8;
   }
 
   /* TOOLS GRID */
@@ -633,6 +557,26 @@ const catJsonLdStr = JSON.stringify({
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 20px;
+  }
+  .tools-grid > [data-pricing][hidden] { display: none; }
+
+  /* NO RESULTS */
+  .no-results {
+    padding: 24px;
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+  }
+  .no-results-reset {
+    background: none;
+    border: none;
+    color: #2563eb;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 0;
+    text-decoration: underline;
   }
 
   /* EMPTY */
@@ -645,143 +589,76 @@ const catJsonLdStr = JSON.stringify({
   .empty-state p { font-size: 1rem; margin-bottom: 16px; }
   .empty-link { font-size: 0.95rem; font-weight: 600; color: #2563eb; }
 
-  /* RELATED */
+  /* RELATED CATEGORIES */
   .related-section {
     border-top: 1px solid #e5e7eb;
-    padding-top: 40px;
-    padding-bottom: 16px;
+    padding: 40px 0 24px;
   }
-  .related-section h2 {
+  .related-section .section-hd {
+    margin-bottom: 16px;
+  }
+  .related-section .section-hd h2 {
     font-size: 1.25rem;
     font-weight: 700;
     color: #111827;
-    margin-bottom: 16px;
+    margin: 0;
   }
   .related-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
   }
   .related-card {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 14px 16px;
     border: 1px solid #e5e7eb;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    color: #374151;
+    border-radius: 10px;
+    background: #fff;
     text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
   }
   .related-card:hover {
     border-color: #2563eb;
-    color: #2563eb;
+    box-shadow: 0 2px 10px rgba(37,99,235,0.08);
     text-decoration: none;
   }
-  .related-name { font-weight: 500; }
+  .related-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .related-name { font-size: 0.9rem; font-weight: 700; color: #111827; }
   .related-count {
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 600;
     background: #f3f4f6;
     color: #9ca3af;
-    padding: 1px 7px;
+    padding: 2px 7px;
     border-radius: 10px;
+    flex-shrink: 0;
   }
-
-  /* BUYING GUIDE */
-  .buying-guide { border-top: 2px solid #e5e7eb; padding-top: 40px; }
-  .guide-grid {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 32px;
-    align-items: start;
-  }
-  .guide-intro {
-    font-size: 0.95rem;
-    color: #6b7280;
-    margin: 0 0 20px;
-    line-height: 1.6;
-  }
-  .checklist { display: flex; flex-direction: column; gap: 14px; }
-  .cl-item {
-    display: flex;
-    gap: 14px;
-    align-items: flex-start;
-    padding: 14px 16px;
-    background: #f9fafb;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-  }
-  .cl-icon { font-size: 1.2rem; flex-shrink: 0; }
-  .cl-item strong { display: block; font-size: 0.9rem; color: #111827; margin-bottom: 2px; }
-  .cl-item p { font-size: 0.85rem; color: #6b7280; margin: 0; line-height: 1.5; }
-  .cl-item p a { color: #2563eb; font-weight: 600; }
-
-  .guide-summary-card {
-    background: #fff;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 14px;
-    padding: 20px;
-    position: sticky;
-    top: 80px;
-  }
-  .gsc-title {
+  .related-desc {
     font-size: 0.78rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
     color: #9ca3af;
-    margin-bottom: 14px;
-  }
-  .gsc-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 8px 0;
-    border-bottom: 1px solid #f3f4f6;
-  }
-  .gsc-row:last-of-type { border-bottom: none; }
-  .gsc-label { font-size: 0.85rem; color: #6b7280; }
-  .gsc-val { font-size: 0.9rem; font-weight: 700; color: #111827; }
-  .gsc-price { font-size: 0.82rem; }
-  .gsc-cta {
-    display: block;
-    margin-top: 16px;
-    background: #2563eb;
-    color: #fff;
-    text-align: center;
-    padding: 10px 14px;
-    border-radius: 8px;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-decoration: none;
+    margin: 0;
     line-height: 1.4;
-  }
-  .gsc-cta:hover { background: #1d4ed8; }
-
-  @media (max-width: 900px) {
-    .guide-grid { grid-template-columns: 1fr; }
-    .guide-sidebar { order: -1; }
-    .guide-summary-card { position: static; }
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  @media (max-width: 640px) {
-    h1 { font-size: 1.75rem; }
-    .tools-grid { grid-template-columns: 1fr; }
-    .rc-cta { display: none; }
-    .hero-stats { gap: 16px; }
-    .stat-div { display: none; }
-    .stat { padding: 0; }
-  }
-
-  /* ── INTRO ─────────────────────────────────────────────── */
+  /* INTRO */
   .cat-intro {
     padding: 32px 0 8px;
     border-bottom: 1px solid #e5e7eb;
   }
   .intro-inner {
-    max-height: 6.4em;       /* show ~3 lines initially */
+    max-height: 6.4em;
     overflow: hidden;
     transition: max-height 0.35s ease;
     position: relative;
@@ -794,7 +671,6 @@ const catJsonLdStr = JSON.stringify({
     margin: 0 0 1em;
   }
   .intro-inner :global(p:last-child) { margin-bottom: 0; }
-  /* fade-out at bottom when collapsed */
   .intro-inner:not(.expanded)::after {
     content: "";
     position: absolute;
@@ -823,7 +699,7 @@ const catJsonLdStr = JSON.stringify({
   .intro-toggle svg { transition: transform 0.25s; }
   .intro-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 
-  /* ── HOW TO CHOOSE ─────────────────────────────────────── */
+  /* HOW TO CHOOSE */
   .htc-section { border-top: 1px solid #e5e7eb; }
   .htc-list {
     list-style: none;
@@ -856,19 +732,11 @@ const catJsonLdStr = JSON.stringify({
     justify-content: center;
     margin-top: 1px;
   }
-  .htc-text {
-    font-size: 0.9rem;
-    color: #374151;
-    line-height: 1.55;
-  }
+  .htc-text { font-size: 0.9rem; color: #374151; line-height: 1.55; }
 
-  /* ── FAQ ────────────────────────────────────────────────── */
+  /* FAQ */
   .faq-section { border-top: 1px solid #e5e7eb; }
-  .faq-list {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
+  .faq-list { display: flex; flex-direction: column; gap: 8px; }
   .faq-item {
     border: 1px solid #e5e7eb;
     border-radius: 10px;
@@ -895,11 +763,7 @@ const catJsonLdStr = JSON.stringify({
   .faq-item[open] .faq-q { background: #eff6ff; color: #1d4ed8; }
   .faq-q::-webkit-details-marker { display: none; }
   .faq-q span { flex: 1; }
-  .faq-icon {
-    flex-shrink: 0;
-    transition: transform 0.25s;
-    color: #9ca3af;
-  }
+  .faq-icon { flex-shrink: 0; transition: transform 0.25s; color: #9ca3af; }
   .faq-item[open] .faq-icon { transform: rotate(180deg); color: #2563eb; }
   .faq-a {
     padding: 14px 18px 16px;
@@ -910,22 +774,70 @@ const catJsonLdStr = JSON.stringify({
   }
 
   @media (max-width: 640px) {
+    h1 { font-size: 1.75rem; }
+    .tools-grid { grid-template-columns: 1fr; }
+    .related-grid { grid-template-columns: 1fr; }
+    .rc-cta { display: none; }
+    .hero-stats { gap: 16px; }
+    .stat-div { display: none; }
+    .stat { padding: 0; }
     .htc-item { padding: 12px 14px; }
     .faq-q { padding: 14px 14px; font-size: 0.9rem; }
     .faq-a { padding: 12px 14px 14px; }
+    .filter-tabs { gap: 6px; }
+    .ftab { padding: 6px 12px; font-size: 0.8rem; }
   }
 </style>
 
 <script>
   // Intro expand/collapse
-  const btn = document.getElementById('introToggle');
+  const btn = document.getElementById('introToggle') as HTMLButtonElement | null;
   const inner = document.querySelector('.intro-inner');
-  if (btn && inner) {
+  const label = btn?.querySelector('span');
+  if (btn && inner && label) {
     btn.addEventListener('click', () => {
       const expanded = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!expanded));
       inner.classList.toggle('expanded', !expanded);
-      btn.querySelector('span') && (btn.querySelector('span')!.textContent = expanded ? 'Read more' : 'Show less');
+      label.textContent = expanded ? 'Read more' : 'Show less';
     });
+  }
+
+  // Pricing filter tabs
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.ftab');
+  const grid = document.getElementById('toolsGrid');
+  const noResults = document.getElementById('noResults');
+  const noResultsReset = document.getElementById('noResultsReset');
+
+  function applyFilter(filter: string) {
+    tabs.forEach(t => t.classList.remove('ftab-active'));
+    const activeTab = Array.from(tabs).find(t => t.dataset.filter === filter);
+    if (activeTab) activeTab.classList.add('ftab-active');
+
+    if (!grid) return;
+    const cards = grid.querySelectorAll<HTMLElement>('[data-pricing]');
+    let visible = 0;
+    cards.forEach(card => {
+      const pricing = card.dataset.pricing ?? '';
+      let show = false;
+      if (filter === 'all') {
+        show = true;
+      } else if (filter === 'freemium') {
+        show = pricing === 'free' || pricing === 'freemium';
+      } else {
+        show = pricing === filter;
+      }
+      card.hidden = !show;
+      if (show) visible++;
+    });
+    if (noResults) noResults.hidden = visible > 0;
+  }
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => applyFilter(tab.dataset.filter ?? 'all'));
+  });
+
+  if (noResultsReset) {
+    noResultsReset.addEventListener('click', () => applyFilter('all'));
   }
 </script>
