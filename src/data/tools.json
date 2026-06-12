@@ -1157,7 +1157,7 @@
     "website": "https://chatgpt.com",
     "logo": "/logos/chatgpt.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": false,
     "rating": 4.9,
     "featured": false,
@@ -1170,10 +1170,23 @@
       "claude",
       "jasper"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "ChatGPT is OpenAI's conversational AI model, the most widely adopted generative AI product globally with over 200 million weekly active users as of 2025. Built on the GPT-4o model, it handles a wide range of tasks: drafting emails, writing and debugging code, summarizing documents, analyzing data, generating images, translating text, and reasoning through complex problems in real time.\n\nThe platform operates through a chat interface where users submit prompts and receive text, image, or code responses. Free users access GPT-4o with usage limits; ChatGPT Plus (/mo) unlocks higher message limits, voice mode, and advanced reasoning models (o3, o4-mini). Custom GPTs let users deploy specialized assistants for specific domains without technical setup.",
+    "pros": [
+      "Free access to GPT-4o — no credit card required to start, with generous daily usage limits",
+      "Handles the broadest task range of any consumer AI: writing, coding, image generation, voice, and data analysis in one interface",
+      "Custom GPTs marketplace lets users deploy specialized assistants for legal, finance, coding, and hundreds of other domains",
+      "Advanced reasoning models (o3, o4-mini) available for complex math, science, and multi-step research tasks",
+      "API access and enterprise tier available for teams and developers building AI-powered products at scale"
+    ],
+    "cons": [
+      "Prone to confident-sounding hallucinations — factual claims should be independently verified, especially for medical, legal, or financial topics",
+      "Free tier limits cut in during peak hours, sometimes switching to GPT-4o mini without notice",
+      "Knowledge cutoff and absence of real-time data unless web browsing is enabled (Plus plan only)"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "ChatGPT is the most capable general-purpose AI assistant available, with the widest task coverage and the largest ecosystem of custom tools. For most users, it replaces multiple single-purpose AI apps — writing, coding, research, and image generation all in one interface. The free plan is genuinely useful, and Plus is worth it for anyone using AI daily."
+    }
   },
   {
     "name": "Claude",
@@ -1257,7 +1270,7 @@
     "website": "https://canva.com",
     "logo": "/logos/canva.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": true,
     "rating": 4.9,
     "featured": true,
@@ -1270,10 +1283,23 @@
       "adobe-express",
       "visme"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Canva is a browser-based graphic design platform that lets non-designers create professional-looking visuals without design expertise. With over 170 million users, it covers presentations, social media graphics, videos, documents, websites, logos, and print materials — all through a drag-and-drop editor backed by a template library of millions of assets.\n\nThe AI suite (Magic Studio) includes text-to-image generation, background removal, image enhancement, and AI copywriting. Teams collaborate in real time, comment on designs, and publish across formats. The free tier is unusually generous; Canva Pro (/user/mo) adds brand kits, premium templates, bulk content creation, and 1TB storage.",
+    "pros": [
+      "Template library spans presentations, Instagram posts, resumes, whiteboards, videos, and 1,000+ other formats in one platform",
+      "Magic Studio AI tools generate images, remove backgrounds, and write copy directly inside designs without switching apps",
+      "Real-time collaboration with comments, version history, and brand kit enforcement for consistent team output",
+      "Free tier includes 1 million+ templates and 5GB storage — genuinely functional at no cost for individuals",
+      "One-click resize converts any design to any platform format automatically, saving time on multi-channel publishing"
+    ],
+    "cons": [
+      "Advanced layout control is limited — precise typographic and grid control does not match professional tools like Adobe InDesign",
+      "Pro plan requires per-seat licensing; costs scale quickly for larger teams needing full feature access",
+      "AI-generated images are noticeably lower quality than dedicated image generators like Midjourney for complex prompts"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Canva is the default choice for teams and individuals who need professional-looking visuals without hiring a designer. Its template depth, AI features, and collaboration tools beat every competitor at its price point. The main limitation is the ceiling — advanced design work still requires professional software, but for 90% of marketing and content needs, Canva is more than enough."
+    }
   },
   {
     "name": "Midjourney",
@@ -1307,7 +1333,7 @@
     "website": "https://elevenlabs.io",
     "logo": "/logos/elevenlabs.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": true,
     "rating": 4.9,
     "featured": true,
@@ -1320,10 +1346,23 @@
       "murf-ai",
       "playht"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "ElevenLabs is an AI voice synthesis platform that generates natural-sounding speech from text in 32 languages, with output quality that is difficult to distinguish from human recording in many use cases. It is used for voiceovers, audiobook production, video dubbing, podcast narration, and conversational AI voice agents.\n\nVoice Cloning creates a replicable voice from as little as one minute of audio sample. Dubbing Studio automates lip-sync video translation into 29 languages. The Conversational AI API enables real-time voice agents for customer service and interactive applications. Free plan provides 10,000 characters/month (~8 minutes of audio); paid plans start at /mo.",
+    "pros": [
+      "Voice quality is among the most natural available — prosody, pacing, and emotional range outperform most competitors on blind listening tests",
+      "Instant Voice Cloning creates a usable voice replica from 1 minute of audio; Professional Clone produces higher quality from 30+ minutes of samples",
+      "Dubbing Studio translates and lip-syncs video content into 29 languages automatically, preserving speaker timing and on-screen matching",
+      "32 supported languages with culturally appropriate intonation — not just translated voices but natural-sounding regional delivery",
+      "Conversational AI API enables real-time, low-latency voice agents for customer-facing applications and interactive voice products"
+    ],
+    "cons": [
+      "Voice Cloning raises ethical concerns — requires consent verification but enforcement at scale is difficult to guarantee",
+      "Free plan's 10,000 character/month limit (~8 minutes of audio) is quickly exhausted on professional projects",
+      "Output quality varies significantly by language — English and major European languages perform substantially better than less-resourced languages"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "ElevenLabs is the highest-quality AI voice tool available and the right choice for any professional use case where voice naturalness matters — audiobooks, YouTube narration, corporate training, or customer-facing voice agents. The quality gap versus competitors is noticeable on careful listening. The main consideration is the cloning ethics and the character-limited free tier. For serious audio production work, it is the clear category leader."
+    }
   },
   {
     "name": "Grammarly",
@@ -1332,7 +1371,7 @@
     "website": "https://grammarly.com",
     "logo": "/logos/grammarly.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": true,
     "rating": 4.7,
     "featured": false,
@@ -1345,10 +1384,23 @@
       "prowritingaid",
       "quillbot"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Grammarly is an AI-powered writing assistant used by over 30 million people daily across a browser extension, desktop app, and mobile keyboard integrations. It reviews grammar, spelling, punctuation, tone, clarity, and style in real time as you write in any web application — Gmail, Google Docs, LinkedIn, Slack, and thousands of others.\n\nThe free tier catches basic grammar and spelling errors. Grammarly Premium (/mo) adds advanced suggestions for sentence structure, word choice, and clarity, plus a plagiarism checker across 16 billion web pages. Grammarly Business extends this to teams with shared style guides, brand tone settings, and writing analytics. Grammarly Go can draft, rewrite, and respond to messages from a prompt.",
+    "pros": [
+      "Works across virtually every writing surface — browser-based apps, desktop editors, and mobile keyboards — without switching between tools",
+      "Tone detection identifies whether writing sounds confident, friendly, formal, or passive and suggests adjustments before sending",
+      "Plagiarism checker compares content against 16 billion web pages — included in Premium without additional cost",
+      "Grammarly Business includes shared style guides and team writing analytics to standardize communication quality across organizations",
+      "Each suggestion includes an explanation of why it was flagged, not just what to change — useful for writers learning as they go"
+    ],
+    "cons": [
+      "AI rewrites in Grammarly Go tend to produce generic, bland sentences — useful for structure but often erases individual writing voice",
+      "Premium is difficult to justify for users who only need basic grammar checking; the free tier covers most common errors adequately",
+      "Suggestions sometimes flag intentional stylistic choices (deliberate fragments, informal tone, em dashes) as errors in non-formal writing contexts"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Grammarly is most valuable as a safety net for professional communication — catching errors in emails, proposals, and client-facing documents before they go out. The free tier is genuinely useful for grammar and spelling. Premium is worth it if you write professionally and need tone awareness and plagiarism checking. Business makes sense for teams where writing quality and brand consistency matter at scale."
+    }
   },
   {
     "name": "Synthesia",
@@ -1607,7 +1659,7 @@
     "website": "https://convertkit.com",
     "logo": "/logos/convertkit.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -1620,10 +1672,23 @@
       "mailchimp",
       "activecampaign"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "ConvertKit, rebranded as Kit in 2024, is an email marketing platform built for content creators — bloggers, course creators, podcasters, and newsletter writers who earn from an audience. Its focus is on behavior-triggered automations and tag-based subscriber management rather than mass broadcast email.\n\nThe visual automation builder maps subscriber journeys with conditional branching based on tags, form submissions, purchases, or custom fields. Native integrations connect to Teachable, Gumroad, Shopify, and other creator tools. The Creator Network enables paid recommendation partnerships between creators. Free plan supports 10,000 subscribers; Creator (/mo) unlocks automations; Creator Pro (/mo) adds advanced reporting and subscriber scoring.",
+    "pros": [
+      "Visual automation builder creates complex subscriber journeys — onboarding sequences, purchase follow-ups, and conditional branching — without writing code",
+      "Tag-based subscriber management is more flexible than list-based systems for creators running multiple content streams simultaneously",
+      "Creator Network enables paid newsletter recommendation partnerships with per-subscriber revenue tracking built in",
+      "Native integrations with Teachable, Gumroad, Shopify, and Kajabi trigger emails automatically based on course or product purchases",
+      "Free plan supports up to 10,000 subscribers with unlimited email sends — the most generous free tier in this category"
+    ],
+    "cons": [
+      "Landing page builder and website tools are functional but limited compared to dedicated tools like Unbounce or Leadpages",
+      "Email template design is intentionally simple — built for plain-text newsletters rather than heavily designed promotional campaigns",
+      "Pricing increases significantly at larger list sizes — 100,000 subscribers costs /mo on Creator, which is steep relative to alternatives"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "ConvertKit is the strongest email platform for creators who monetize through digital products, courses, or sponsorships and need automations that respond to subscriber behavior. The tag system and automation builder are significantly more powerful than Mailchimp for segmented, behavior-driven communication. The limitation is cost at scale — large lists become expensive, and the design tooling is deliberately minimal, which is a trade-off that suits newsletter-first creators but may not suit marketing teams."
+    }
   },
   {
     "name": "ActiveCampaign",
@@ -1782,7 +1847,7 @@
     "website": "https://beehiiv.com",
     "logo": "",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": true,
     "rating": 4.9,
     "featured": true,
@@ -1795,10 +1860,23 @@
       "substack",
       "convertkit"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Beehiiv is a newsletter and media platform built by former Morning Brew engineers, designed for creators who want to monetize an audience rather than just send email. It combines publishing tools with a native ad network, subscription management, referral programs, and a built-in website for subscriber acquisition.\n\nBeehiiv's ad network connects newsletters directly with brand advertisers, removing the need to source deals independently. Boosts let newsletters earn per-subscriber by recommending other publications. Free plans support up to 2,500 subscribers with unlimited sends; Launch (/mo), Grow (/mo), and Scale (/mo) unlock automations, custom domains, advanced analytics, and full ad network access.",
+    "pros": [
+      "Built-in ad network connects creators to brand sponsors without sourcing deals or managing contracts directly",
+      "Boosts monetization lets newsletters earn per-subscriber by recommending other publications to their own audience",
+      "Native referral program with tracking, custom rewards, and subscriber attribution built into the platform without third-party tools",
+      "Audience segmentation and behavioral analytics go deeper than most newsletter platforms at equivalent price points",
+      "Free plan supports up to 2,500 subscribers with unlimited sends and no platform revenue share taken on subscription income"
+    ],
+    "cons": [
+      "Ad network revenue is meaningful only at larger subscriber counts — consistently profitable typically requires 10,000+ engaged subscribers",
+      "Template design options are fewer and less customizable than general-purpose email tools like Mailchimp or ActiveCampaign",
+      "Migration from Substack or ConvertKit requires manual subscriber import and list cleanup before meaningful analysis is possible"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Beehiiv is the best newsletter platform for creators who see their newsletter as a business rather than just a distribution channel. The ad network and Boosts monetization infrastructure is genuinely unique — no other newsletter platform gives creators this level of monetization tooling without taking a revenue cut. The main caveat: these features only become significant at 5,000+ subscribers. Below that, simpler tools may be adequate."
+    }
   },
   {
     "name": "ClickFunnels",
@@ -2070,10 +2148,23 @@
       "plausible",
       "matomo"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Google Analytics 4 (GA4) is the current version of Google's web and app analytics platform, used by over 28 million websites globally. It tracks user behavior through an event-based data model that captures page views, scroll depth, video engagement, file downloads, and custom events without separate configuration.\n\nGA4 integrates natively with Google Ads, Search Console, and BigQuery for end-to-end marketing measurement. The platform offers audience segmentation, funnel analysis, predictive metrics (churn probability, purchase probability), and a no-code Explorations interface for custom reports. Standard features are completely free; Google Analytics 360 (,000+/year) adds SLA guarantees and increased data freshness for enterprise.",
+    "pros": [
+      "Completely free for standard use — no volume limits, seat limits, or feature paywalls for core analytics functionality",
+      "Event-based tracking model captures granular user actions (scroll depth, video play, file download) without requiring custom code",
+      "Native integration with Google Ads creates closed-loop attribution between paid search spend and on-site conversions",
+      "BigQuery export connects raw event data to advanced analysis at no additional cost — enterprise capability on a free plan",
+      "Predictive metrics (purchase probability, churn probability) are built in without requiring a data science team"
+    ],
+    "cons": [
+      "Data sampling in standard reports above 500,000 sessions can produce statistically inaccurate results for high-traffic sites",
+      "Privacy compliance risk in the EU — multiple supervisory authorities have ruled GA4 data transfers to the US unlawful under GDPR",
+      "The GA4 interface is significantly less intuitive than Universal Analytics; basic reports require more configuration and clicks"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Google Analytics is the default starting point for web analytics — it is free, deeply integrated with Google's advertising ecosystem, and powerful enough for most businesses. The main considerations are privacy compliance (significant in the EU) and the steeper learning curve of GA4. For teams running Google Ads, it is effectively irreplaceable. For privacy-focused or EU-based businesses, Plausible or Matomo are worth evaluating."
+    }
   },
   {
     "name": "Plausible",
@@ -2082,7 +2173,7 @@
     "website": "https://plausible.io",
     "logo": "/logos/plausible.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": true,
     "rating": 4.9,
     "featured": true,
@@ -2095,10 +2186,23 @@
       "google-analytics",
       "fathom"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Plausible Analytics is an open-source, privacy-first web analytics platform that tracks visitor behavior without cookies or personal data collection — and without requiring a GDPR consent banner. It is used by over 10,000 websites as a lightweight, legally compliant alternative to Google Analytics.\n\nThe dashboard surfaces pageviews, unique visitors, bounce rate, session duration, referral sources, countries, and top pages in a single screen that loads in under a second. The tracking script weighs under 1KB (vs. Google Analytics' 45KB). Plausible can be self-hosted on any server for full data ownership, or used as a managed service starting at /mo for up to 10,000 monthly pageviews.",
+    "pros": [
+      "Cookieless tracking is legally compliant with GDPR, CCPA, and PECR out of the box — no consent banner required",
+      "Sub-1KB tracking script adds zero measurable latency and has no impact on Core Web Vitals or page speed scores",
+      "Single-screen dashboard shows all essential metrics without requiring custom report configuration",
+      "Open-source codebase on GitHub — self-host on any infrastructure for complete data ownership and zero vendor lock-in",
+      "Goal tracking and conversion funnels work without cookies and without data sampling — accurate results at any traffic volume"
+    ],
+    "cons": [
+      "Intentionally omits user-level tracking and session recording — not a replacement for behavioral analytics tools like Hotjar",
+      "No native integration with Google Ads or Search Console — teams running paid campaigns lose attribution convenience",
+      "Paid plans become more expensive than free GA4 at high traffic volumes (-69/mo scales with monthly pageviews)"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Plausible is the cleanest choice for privacy-conscious teams or anyone operating in the EU where Google Analytics compliance is uncertain. The simplicity is a feature, not a limitation — it answers the core question (where are visitors coming from, what are they doing) without the setup complexity of GA4. Teams that need Google Ads attribution or advanced behavioral analysis will need to supplement it, but for most content-driven sites, Plausible is sufficient and meaningfully easier."
+    }
   },
   {
     "name": "Hotjar",
@@ -2282,7 +2386,7 @@
     "website": "https://notion.so",
     "logo": "/logos/notion.svg",
     "pricing": "Freemium",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": true,
     "rating": 4.9,
     "featured": true,
@@ -2295,10 +2399,23 @@
       "obsidian",
       "coda"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Notion is an all-in-one workspace that combines notes, wikis, databases, task management, and project tracking in a flexible block-based editor. Teams use it to build internal knowledge bases, manage projects across Kanban boards or calendars, collaborate on documents, and replace a stack of separate tools with a single configurable workspace.\n\nNotion AI (/user/mo add-on) summarizes content, generates text, and answers questions across your entire workspace. Free plans support unlimited pages for individuals; Plus (/user/mo) adds collaborative workspace history and larger file uploads. Notion is especially popular with startups, content teams, and product managers reducing tool sprawl.",
+    "pros": [
+      "Block-based editor unifies notes, databases, kanban boards, calendars, and wikis in one workspace — no separate apps needed",
+      "Database relations and rollups enable project management complexity (linked tasks, rollup formulas) without dedicated PM software",
+      "Template gallery covers hundreds of use cases from personal OKRs to product roadmaps, editorial calendars, and CRMs",
+      "Free plan supports unlimited pages and blocks for individual users — genuinely usable at no cost",
+      "Notion AI can draft, summarize, translate, and answer questions using your workspace content as context"
+    ],
+    "cons": [
+      "Performance degrades noticeably with large databases or high volumes of linked content across many relations",
+      "Learning curve is steep for users expecting traditional folder-file structure — blocks and databases require a mental model shift",
+      "Offline access is limited — most functionality requires an active internet connection, making it unreliable in low-connectivity situations"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Notion is the best all-in-one workspace for teams that want to consolidate notes, projects, and documentation in one place. Its flexibility is both its strength and its weakness — it can become anything, which means it requires setup and maintenance. Teams willing to invest in structuring their workspace will get more value than any competing tool; teams that want something opinionated out of the box may find it overwhelming."
+    }
   },
   {
     "name": "ClickUp",
@@ -2732,7 +2849,7 @@
     "website": "https://shopify.com",
     "logo": "/logos/shopify.svg",
     "pricing": "Paid",
-    "startingPrice": "",
+    "startingPrice": "/mo",
     "affiliate": true,
     "rating": 4.8,
     "featured": true,
@@ -2745,10 +2862,23 @@
       "woocommerce",
       "bigcommerce"
     ],
-    "overview": "",
-    "pros": [],
-    "cons": [],
-    "bestFor": []
+    "overview": "Shopify is the leading hosted ecommerce platform, powering over 1.7 million merchants across 175 countries. It provides a complete ecommerce stack: storefront builder, inventory management, payment processing, shipping tools, analytics, and an app marketplace of 8,000+ third-party integrations.\n\nPlans range from Basic (/mo) to Advanced (/mo), with transaction fees that decrease at higher tiers. Shopify Payments eliminates third-party transaction fees entirely. For high-volume merchants, Shopify Plus (,500+/mo) adds B2B features, unlimited staff accounts, and priority support. The platform suits direct-to-consumer brands, dropshippers, and brick-and-mortar retailers adding an online channel.",
+    "pros": [
+      "Fully hosted platform — no server management, security patching, or performance optimization required from the merchant",
+      "Shopify Payments eliminates third-party transaction fees; 100+ payment gateways supported for international expansion",
+      "App marketplace with 8,000+ integrations covers subscriptions, loyalty programs, advanced analytics, and international shipping",
+      "Point-of-sale system included — syncs online and in-person inventory in real time for omnichannel retailers",
+      "Shopify Shipping provides pre-negotiated discounted rates with USPS, UPS, and DHL with automatic label printing"
+    ],
+    "cons": [
+      "Transaction fees apply on every sale unless using Shopify Payments, which is unavailable in several countries",
+      "Theme customization beyond visual basics requires Liquid template knowledge, creating a technical dependency",
+      "Monthly costs compound quickly — plan fees plus essential app subscriptions typically reach -400/mo for serious stores"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Shopify is the most reliable choice for merchants who want to focus on selling rather than managing infrastructure. Its ecosystem depth and hosted reliability are unmatched. The main consideration is cost — Shopify becomes expensive at scale when app subscriptions and transaction fees are factored in. Merchants with technical resources may find WooCommerce cheaper; everyone else should default to Shopify."
+    }
   },
   {
     "name": "WooCommerce",
