@@ -207,7 +207,9 @@ const jsonLdStr = JSON.stringify({
   {tool.overview && (
     <section class="detail-section">
       <h2>Overview</h2>
-      <p class="overview-text">{tool.overview}</p>
+      {tool.overview.split('\n\n').map((para: string) => (
+        <p class="overview-text">{para}</p>
+      ))}
     </section>
   )}
 

@@ -30,7 +30,7 @@
     "tool": "Surfer SEO",
     "alternatives": [
       "clearscope",
-      "frase",
+      "moz",
       "ahrefs",
       "semrush"
     ]
@@ -39,7 +39,7 @@
     "tool": "Rank Math",
     "alternatives": [
       "yoast-seo",
-      "all-in-one-seo",
+      "screaming-frog",
       "ahrefs",
       "semrush"
     ]
@@ -48,7 +48,7 @@
     "tool": "Yoast SEO",
     "alternatives": [
       "rank-math",
-      "seopress",
+      "moz",
       "ahrefs",
       "semrush"
     ]
@@ -56,8 +56,8 @@
   {
     "tool": "Screaming Frog",
     "alternatives": [
-      "sitebulb",
-      "deepcrawl",
+      "moz",
+      "ubersuggest",
       "ahrefs",
       "semrush"
     ]
@@ -75,7 +75,7 @@
     "tool": "Clearscope",
     "alternatives": [
       "surfer-seo",
-      "marketmuse",
+      "moz",
       "ahrefs",
       "semrush"
     ]
@@ -219,7 +219,7 @@
     "tool": "Workato",
     "alternatives": [
       "tray-io",
-      "mulesoft",
+      "n8n",
       "zapier",
       "celigo"
     ]
@@ -264,7 +264,7 @@
     "tool": "Jasper",
     "alternatives": [
       "copy-ai",
-      "writesonic",
+      "grammarly",
       "chatgpt",
       "claude"
     ]
@@ -273,7 +273,7 @@
     "tool": "Copy.ai",
     "alternatives": [
       "jasper",
-      "rytr",
+      "grammarly",
       "chatgpt",
       "claude"
     ]
@@ -281,8 +281,8 @@
   {
     "tool": "Canva",
     "alternatives": [
-      "adobe-express",
-      "visme",
+      "jasper",
+      "grammarly",
       "midjourney",
       "chatgpt"
     ]
@@ -299,8 +299,8 @@
   {
     "tool": "ElevenLabs",
     "alternatives": [
-      "murf-ai",
-      "playht",
+      "grammarly",
+      "canva",
       "synthesia",
       "chatgpt"
     ]
@@ -308,8 +308,8 @@
   {
     "tool": "Grammarly",
     "alternatives": [
-      "prowritingaid",
-      "quillbot",
+      "jasper",
+      "copy-ai",
       "chatgpt",
       "claude"
     ]
@@ -345,7 +345,7 @@
     "tool": "Discord",
     "alternatives": [
       "slack",
-      "guilded",
+      "bettermode",
       "circle",
       "skool"
     ]
@@ -353,8 +353,8 @@
   {
     "tool": "Patreon",
     "alternatives": [
-      "buy-me-a-coffee",
-      "kofi",
+      "gumroad",
+      "payhip",
       "skool",
       "circle"
     ]
@@ -389,7 +389,7 @@
   {
     "tool": "Discourse",
     "alternatives": [
-      "xenforo",
+      "slack",
       "bettermode",
       "circle",
       "discord"
@@ -453,7 +453,7 @@
     "tool": "GetResponse",
     "alternatives": [
       "activecampaign",
-      "aweber",
+      "brevo",
       "mailchimp",
       "convertkit"
     ]
@@ -462,7 +462,7 @@
     "tool": "Brevo",
     "alternatives": [
       "mailchimp",
-      "omnisend",
+      "convertkit",
       "activecampaign",
       "getresponse"
     ]
@@ -560,7 +560,7 @@
   {
     "tool": "Pretty Links",
     "alternatives": [
-      "thirsty-affiliates",
+      "bemob",
       "bitly",
       "rebrandly",
       "tinyurl"
@@ -597,7 +597,7 @@
     "tool": "Mixpanel",
     "alternatives": [
       "amplitude",
-      "heap",
+      "fathom",
       "google-analytics",
       "plausible"
     ]
@@ -606,7 +606,7 @@
     "tool": "Amplitude",
     "alternatives": [
       "mixpanel",
-      "heap",
+      "hotjar",
       "google-analytics",
       "matomo"
     ]
@@ -633,7 +633,7 @@
     "tool": "Crazy Egg",
     "alternatives": [
       "hotjar",
-      "vwo",
+      "mixpanel",
       "microsoft-clarity",
       "google-analytics"
     ]
@@ -696,7 +696,7 @@
     "tool": "Obsidian",
     "alternatives": [
       "notion",
-      "roam-research",
+      "airtable",
       "coda",
       "todoist"
     ]
@@ -704,7 +704,7 @@
   {
     "tool": "Airtable",
     "alternatives": [
-      "smartsheet",
+      "todoist",
       "notion",
       "monday",
       "clickup"
@@ -713,8 +713,8 @@
   {
     "tool": "Todoist",
     "alternatives": [
-      "ticktick",
-      "any-do",
+      "notion",
+      "clickup",
       "trello",
       "asana"
     ]
@@ -731,8 +731,8 @@
   {
     "tool": "Cloudflare",
     "alternatives": [
-      "fastly",
-      "aws-cloudfront",
+      "hostinger",
+      "wp-engine",
       "digitalocean",
       "vultr"
     ]
@@ -804,7 +804,7 @@
     "tool": "Kinsta",
     "alternatives": [
       "wp-engine",
-      "flywheel",
+      "bluehost",
       "siteground",
       "hostinger"
     ]

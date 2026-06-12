@@ -4,9 +4,8 @@
  * Also generates src/data/generated/icon-data.json (slug → {hex, path})
  *
  * Sources (all keyed by tool name):
- *   src/data/tools.json          — base: slug, categories, pricing, rating, …
- *   src/data/overviews.json      — { tool, overview }
- *   src/data/pros-cons.json      — { tool, pros[], cons[] }
+ *   src/data/tools.json          — base + overview + pros/cons (canonical)
+ *   src/data/overviews.json      — { tool, overview } legacy boilerplate fallback
  *   src/data/best-for.json       — { tool, bestFor[] }
  *   src/data/alternatives.json   — { tool, alternatives[] }
  *   src/data/logo-mapping.json   — { tool_name, simple_icon }
@@ -28,11 +27,10 @@ const DATA    = join(ROOT, "src", "data");
 const OUT_DIR = join(DATA, "generated");
 
 // ── Load ─────────────────────────────────────────────────────────────────────
-const [tools, overviews, prosCons, bestFor, alternatives, logoMapping] =
+const [tools, overviews, bestFor, alternatives, logoMapping] =
   await Promise.all([
     readFile(join(DATA, "tools.json"),        "utf8").then(JSON.parse),
     readFile(join(DATA, "overviews.json"),    "utf8").then(JSON.parse),
-    readFile(join(DATA, "pros-cons.json"),    "utf8").then(JSON.parse),
     readFile(join(DATA, "best-for.json"),     "utf8").then(JSON.parse),
     readFile(join(DATA, "alternatives.json"), "utf8").then(JSON.parse),
     readFile(join(DATA, "logo-mapping.json"), "utf8").then(JSON.parse),
@@ -43,9 +41,8 @@ const [tools, overviews, prosCons, bestFor, alternatives, logoMapping] =
 const norm = (s) => (s ?? "").toLowerCase().trim();
 const toolKey = (e) => norm(e.tool ?? e.name ?? e.tool_name ?? "");
 
-const overviewMap   = new Map(overviews.map   ((e) => [toolKey(e), e.overview]));
-const prosConsMap   = new Map(prosCons.map    ((e) => [toolKey(e), { pros: e.pros ?? [], cons: e.cons ?? [] }]));
-const bestForMap    = new Map(bestFor.map     ((e) => [toolKey(e), e.bestFor ?? []]));
+const overviewMap   = new Map(overviews.map((e) => [toolKey(e), e.overview]));
+const bestForMap    = new Map(bestFor.map  ((e) => [toolKey(e), e.bestFor ?? []]));
 const alternatesMap = new Map(alternatives.map((e) => [toolKey(e), e.alternatives ?? []]));
 const iconSlugMap   = new Map(logoMapping.map ((e) => [norm(e.tool_name ?? e.tool ?? ""), e.simple_icon ?? ""]));
 
@@ -83,11 +80,9 @@ const iconDataMap = {};
 const enriched = tools.map((tool) => {
   const key = norm(tool.name);
 
-  // content fields
-  const overview = overviewMap.get(key) ?? tool.overview ?? "";
-  const pc       = prosConsMap.get(key);
-  const pros     = pc?.pros.length   ? pc.pros   : (tool.pros  ?? []);
-  const cons     = pc?.cons.length   ? pc.cons   : (tool.cons  ?? []);
+  const overview = (tool.overview?.trim()) ? tool.overview : (overviewMap.get(key) ?? "");
+  const pros     = tool.pros  ?? [];
+  const cons     = tool.cons  ?? [];
   const bestForV = bestForMap.get(key)    ?? tool.bestFor     ?? [];
   const altsV    = alternatesMap.get(key) ?? tool.alternatives ?? [];
 

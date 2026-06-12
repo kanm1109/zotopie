@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#1e3a8a"/>
+    </linearGradient>
+    <linearGradient id="dot" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Subtle grid pattern -->
+  <g opacity="0.06" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Decorative circles -->
+  <circle cx="1100" cy="80" r="180" fill="#3b82f6" opacity="0.12"/>
+  <circle cx="100" cy="550" r="140" fill="#60a5fa" opacity="0.10"/>
+  <circle cx="1050" cy="560" r="90" fill="#93c5fd" opacity="0.08"/>
+
+  <!-- Logo mark: Z icon -->
+  <rect x="80" y="60" width="56" height="56" rx="14" fill="url(#dot)"/>
+  <text x="108" y="100" font-family="Arial Black, Arial, sans-serif" font-size="36" font-weight="900" fill="#fff" text-anchor="middle">Z</text>
+
+  <!-- Brand name -->
+  <text x="155" y="102" font-family="Arial, sans-serif" font-size="32" font-weight="700" fill="#fff" dominant-baseline="middle" letter-spacing="-0.5">Zotopie</text>
+
+  <!-- Divider line -->
+  <rect x="80" y="148" width="260" height="2" fill="#3b82f6" rx="1" opacity="0.6"/>
+
+  <!-- Main headline -->
+  <text x="600" y="285" font-family="Arial Black, Arial, sans-serif" font-size="72" font-weight="900" fill="#fff" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">Find the Best</text>
+  <text x="600" y="375" font-family="Arial Black, Arial, sans-serif" font-size="72" font-weight="900" fill="#60a5fa" text-anchor="middle" dominant-baseline="middle" letter-spacing="-1">Software Tools</text>
+
+  <!-- Subline -->
+  <text x="600" y="455" font-family="Arial, sans-serif" font-size="28" fill="rgba(255,255,255,0.65)" text-anchor="middle" dominant-baseline="middle" letter-spacing="0.3">Honest reviews · No fluff · Real comparisons</text>
+
+  <!-- Pill tags -->
+  <rect x="254" y="510" width="130" height="38" rx="19" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="319" y="534" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.75)" text-anchor="middle" dominant-baseline="middle">Reviews</text>
+
+  <rect x="400" y="510" width="160" height="38" rx="19" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="480" y="534" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.75)" text-anchor="middle" dominant-baseline="middle">Alternatives</text>
+
+  <rect x="576" y="510" width="148" height="38" rx="19" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="650" y="534" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.75)" text-anchor="middle" dominant-baseline="middle">Compare</text>
+
+  <rect x="740" y="510" width="128" height="38" rx="19" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <text x="804" y="534" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.75)" text-anchor="middle" dominant-baseline="middle">119+ Tools</text>
+
+  <!-- Domain watermark -->
+  <text x="1120" y="608" font-family="Arial, sans-serif" font-size="18" fill="rgba(255,255,255,0.3)" text-anchor="end">zotopie.com</text>
+</svg>

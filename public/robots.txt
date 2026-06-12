@@ -1,10 +1,8 @@
 User-agent: *
 Allow: /
-Allow: /reviews/
-Allow: /category/
-Allow: /alternatives/
-Allow: /compare/
+
 Disallow: /go/
 Disallow: /search?*
 
 Sitemap: https://zotopie.com/sitemap-index.xml
+Sitemap: https://zotopie.com/sitemap.xml

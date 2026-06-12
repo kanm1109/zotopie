@@ -1,0 +1,74 @@
+{
+    "generated_at":  "2026-06-10T15:11:42",
+    "merge_script":  "scripts/merge-data.mjs",
+    "fix_applied":  "Removed pros-cons.json from pipeline; pros/cons now read directly from tools.json",
+    "summary":  {
+                    "tools_total":  119,
+                    "enriched_total":  119,
+                    "pros_cons_match":  119,
+                    "pros_cons_fail":  0,
+                    "verdict":  "PASS — 100% match"
+                },
+    "spot_check":  [
+                       {
+                           "slug":  "ahrefs",
+                           "status":  "PASS",
+                           "pros_count":  5,
+                           "cons_count":  3,
+                           "pros_match":  true,
+                           "cons_match":  true,
+                           "tools_json_pros_sample":  "World\u0027s largest backlink database updated every 15–30 minutes",
+                           "enriched_pros_sample":  "World\u0027s largest backlink database updated every 15–30 minutes"
+                       },
+                       {
+                           "slug":  "semrush",
+                           "status":  "PASS",
+                           "pros_count":  5,
+                           "cons_count":  3,
+                           "pros_match":  true,
+                           "cons_match":  true,
+                           "tools_json_pros_sample":  "Combines SEO, PPC, local SEO, and competitive research datasets",
+                           "enriched_pros_sample":  "Combines SEO, PPC, local SEO, and competitive research datasets"
+                       },
+                       {
+                           "slug":  "buffer",
+                           "status":  "PASS",
+                           "pros_count":  5,
+                           "cons_count":  4,
+                           "pros_match":  true,
+                           "cons_match":  true,
+                           "tools_json_pros_sample":  "Free plan supports up to 3 social channels and 10 scheduled posts",
+                           "enriched_pros_sample":  "Free plan supports up to 3 social channels and 10 scheduled posts"
+                       },
+                       {
+                           "slug":  "zapier",
+                           "status":  "PASS",
+                           "pros_count":  5,
+                           "cons_count":  4,
+                           "pros_match":  true,
+                           "cons_match":  true,
+                           "tools_json_pros_sample":  "Connects 6,000+ apps — the largest integration library available",
+                           "enriched_pros_sample":  "Connects 6,000+ apps — the largest integration library available"
+                       },
+                       {
+                           "slug":  "surfer-seo",
+                           "status":  "PASS",
+                           "pros_count":  5,
+                           "cons_count":  3,
+                           "pros_match":  true,
+                           "cons_match":  true,
+                           "tools_json_pros_sample":  "Content Editor provides SERP-based optimization recommendations while writing",
+                           "enriched_pros_sample":  "Content Editor provides SERP-based optimization recommendations while writing"
+                       }
+                   ],
+    "full_comparison":  {
+                            "checked":  119,
+                            "passed":  119,
+                            "failed":  0,
+                            "failures":  [
+
+                                         ]
+                        },
+    "node_version":  "v24.11.1",
+    "tools_enriched_path":  "src/data/generated/tools-enriched.json"
+}
