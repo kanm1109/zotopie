@@ -15,9 +15,9 @@
 | Production branch | `main` |
 | Build command | `npm run build` |
 | Output directory | `dist` |
-| Node.js version | `20` |
+| Node.js version | `22` |
 | Site URL | `https://zotopie.com` |
-| Required env vars | `NODE_VERSION = 20` (1 var only) |
+| Required env vars | `NODE_VERSION = 22` (1 var only) |
 
 ---
 
@@ -58,17 +58,17 @@ On the same setup screen, click **Environment variables (advanced)** and add:
 
 | Variable name | Value | Environment |
 |---|---|---|
-| `NODE_VERSION` | `20` | Production + Preview |
+| `NODE_VERSION` | `22` | Production + Preview |
 
-> **Why NODE_VERSION = 20?**  
-> The `package.json` requires `node >=18.0.0`. Cloudflare Pages defaults to Node.js v18 which satisfies this, but v20 is the current LTS and avoids any future v18 compatibility edge cases. Setting it explicitly pins the version.
+> **Why NODE_VERSION = 22?**  
+> `astro@6.4.4` requires Node.js `>=22.12.0` (confirmed from astro's own `engines` field). Cloudflare Pages defaults to an older Node.js version. Without this variable, builds will fail immediately. Node.js 22 is the minimum compatible LTS version.
 
 **No other environment variables are required.** The project has no API keys, secrets, or `.env` dependencies.
 
 To add the variable:
 1. Click **Add variable**
 2. Name: `NODE_VERSION`
-3. Value: `20`
+3. Value: `22`
 4. Click the scope dropdown → select **Production and preview**
 5. Click **Save and deploy**
 
