@@ -1,6 +1,7 @@
 ---
 import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
+import bestPages from "../../data/best-pages.json";
 import MainLayout from "../../layouts/MainLayout.astro";
 import ToolCard from "../../components/ToolCard.astro";
 import ToolLogo from "../../components/ToolLogo.astro";
@@ -37,6 +38,13 @@ const relatedTools = tools
   )
   .sort((a, b) => Math.abs(a.rating - tool.rating) - Math.abs(b.rating - tool.rating))
   .slice(0, 4);
+
+// Related authority guides: direct match (tool featured in guide) + category match
+const relatedGuides = (bestPages as { slug: string; h1: string; categorySlug: string; categoryName: string; toolSlugs: string[] }[]).filter((page) => {
+  if (page.toolSlugs.includes(tool.slug)) return true;
+  if ((tool.categories as string[]).includes(page.categorySlug)) return true;
+  return false;
+}).slice(0, 4);
 
 // Previous / Next (by position in dataset)
 const toolIndex = tools.findIndex((t) => t.slug === tool.slug);
@@ -119,6 +127,7 @@ if ((tool.pricingBreakdown as { plans?: unknown[] } | undefined)?.plans?.length)
 if ((tool.whoShouldAvoid as string[] | undefined)?.length) toc.push({ id: 'who-should-avoid', label: 'Who to Avoid' });
 if (tool.verdict?.summary) toc.push({ id: 'verdict', label: 'Verdict' });
 if (alternativeTools.length > 0) toc.push({ id: 'alternatives', label: 'Alternatives' });
+if (relatedGuides.length > 0) toc.push({ id: 'guides', label: 'Guides' });
 if (autoFaqs.length > 0) toc.push({ id: 'faq', label: 'FAQ' });
 if (relatedTools.length > 0) toc.push({ id: 'related', label: 'Related' });
 
@@ -466,6 +475,28 @@ const jsonLdStr = JSON.stringify({
       <div class="alt-list">
         {alternativeTools.map((t) => (
           <AltCard tool={t} compareSlug={[tool.slug, t.slug].sort().join("-vs-")} />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- RELATED GUIDES -->
+  {relatedGuides.length > 0 && (
+    <section class="detail-section" id="guides">
+      <div class="section-hd">
+        <div>
+          <h2>Expert Guides Featuring {tool.name}</h2>
+          <p class="section-sub">In-depth comparisons and ranked lists</p>
+        </div>
+        <a href="/best/" class="see-all">All guides &rarr;</a>
+      </div>
+      <div class="guides-grid">
+        {relatedGuides.map((guide) => (
+          <a href={`/best/${guide.slug}/`} class="guide-card">
+            <div class="gc-cat">{guide.categoryName}</div>
+            <div class="gc-title">{guide.h1}</div>
+            <div class="gc-meta">{guide.toolSlugs.length} tools compared &rarr;</div>
+          </a>
         ))}
       </div>
     </section>
@@ -985,6 +1016,49 @@ const jsonLdStr = JSON.stringify({
     color: #4b5563;
     line-height: 1.65;
     border-top: 1px solid #e5e7eb;
+  }
+
+  /* RELATED GUIDES */
+  .guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+  }
+  .guide-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 18px 20px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #faf5ff 100%);
+    border: 1px solid #c7d7f8;
+    border-radius: 12px;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+  }
+  .guide-card:hover {
+    border-color: #2563eb;
+    box-shadow: 0 4px 16px rgba(37,99,235,0.12);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
+  .gc-cat {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #7c3aed;
+  }
+  .gc-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.35;
+  }
+  .gc-meta {
+    font-size: 0.78rem;
+    color: #2563eb;
+    font-weight: 600;
+    margin-top: 2px;
   }
 
   /* PREV / NEXT */
