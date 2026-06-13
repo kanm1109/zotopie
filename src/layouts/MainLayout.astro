@@ -35,29 +35,48 @@ const ogImage = image
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="icon" href="/favicon.ico" />
   <link rel="sitemap" href="/sitemap-index.xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
+    :root {
+      --c-purple: #7C3AED;
+      --c-purple-light: #EDE9FE;
+      --c-purple-mid: #DDD6FE;
+      --c-blue: #6366F1;
+      --c-blue-light: #EEF2FF;
+      --c-pink: #EC4899;
+      --c-green: #10B981;
+      --c-green-light: #ECFDF5;
+      --c-dark: #0F172A;
+      --c-gray: #647488;
+      --c-border: #E8ECF0;
+      --c-bg: #FAFBFC;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: #111827;
+      font-family: var(--font-sans);
+      color: var(--c-dark);
       background: #fff;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
-    a { color: #2563eb; text-decoration: none; }
+    a { color: var(--c-purple); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
     /* NAV */
     .site-header {
-      border-bottom: 1px solid #f3f4f6;
-      background: rgba(255,255,255,0.95);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--c-border);
+      background: rgba(255,255,255,0.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 100;
-      box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 1px 12px rgba(15,23,42,0.06);
     }
     .nav-inner {
       max-width: 1200px;
@@ -66,49 +85,69 @@ const ogImage = image
       display: flex;
       align-items: center;
       justify-content: space-between;
-      height: 60px;
+      height: 64px;
     }
     .nav-logo {
-      font-size: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+    .nav-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--c-purple), var(--c-blue));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .nav-logo-text {
+      font-size: 1.2rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #2563eb, #7c3aed);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      letter-spacing: -0.5px;
+      color: var(--c-dark);
+      letter-spacing: -0.4px;
     }
     .nav-logo:hover { text-decoration: none; opacity: 0.9; }
-    .nav-links { display: flex; align-items: center; gap: 28px; }
-    .nav-links a { font-size: 0.9rem; color: #374151; font-weight: 500; }
-    .nav-links a:hover { color: #2563eb; text-decoration: none; }
-    .nav-right { display: flex; align-items: center; gap: 20px; }
+    .nav-links { display: flex; align-items: center; gap: 4px; }
+    .nav-links a {
+      font-size: 0.875rem;
+      color: #4B5563;
+      font-weight: 500;
+      padding: 6px 12px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a:hover { color: var(--c-purple); background: var(--c-purple-light); text-decoration: none; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
     .nav-search-form { position: relative; display: flex; align-items: center; }
     .nav-s-icon { position: absolute; left: 10px; pointer-events: none; flex-shrink: 0; }
     .nav-s-input {
       width: 200px;
-      padding: 7px 36px 7px 32px;
+      padding: 8px 36px 8px 32px;
       font-size: 0.875rem;
-      border: 1.5px solid #e5e7eb;
-      border-radius: 20px;
-      background: #f9fafb;
-      color: #111827;
+      border: 1.5px solid var(--c-border);
+      border-radius: 22px;
+      background: var(--c-bg);
+      color: var(--c-dark);
       outline: none;
-      font-family: inherit;
+      font-family: var(--font-sans);
       transition: width 0.25s, border-color 0.2s, box-shadow 0.2s, background 0.2s;
     }
     .nav-s-input::placeholder { color: #9ca3af; }
     .nav-s-input:focus {
       width: 260px;
-      border-color: #2563eb;
+      border-color: var(--c-purple);
       background: #fff;
-      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+      box-shadow: 0 0 0 3px rgba(124,58,237,0.12);
     }
     .nav-s-kbd {
       position: absolute; right: 10px;
       font-size: 0.7rem; color: #9ca3af;
       background: #f3f4f6; border: 1px solid #e5e7eb;
       border-radius: 4px; padding: 1px 5px;
-      pointer-events: none; font-family: inherit;
+      pointer-events: none; font-family: var(--font-sans);
       transition: opacity 0.15s;
     }
     .nav-s-input:focus + .nav-s-kbd { opacity: 0; }
@@ -122,26 +161,93 @@ const ogImage = image
     .page-wrapper {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 24px 64px;
+      padding: 0 24px 80px;
     }
 
     /* FOOTER */
     .site-footer {
-      border-top: 1px solid #e5e7eb;
-      background: #f9fafb;
-      padding: 36px 24px;
-      text-align: center;
+      border-top: 1px solid var(--c-border);
+      background: var(--c-bg);
+      padding: 48px 24px 32px;
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .footer-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--c-border);
+      flex-wrap: wrap;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .footer-brand-icon {
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, var(--c-purple), var(--c-blue));
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .footer-brand-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--c-dark);
+    }
+    .footer-tagline {
       font-size: 0.875rem;
+      color: var(--c-gray);
+      max-width: 280px;
+      line-height: 1.5;
+    }
+    .footer-links-group { display: flex; gap: 48px; }
+    .footer-links-col h4 {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--c-dark);
+      margin-bottom: 14px;
+    }
+    .footer-links-col a {
+      display: block;
+      font-size: 0.875rem;
+      color: var(--c-gray);
+      margin-bottom: 8px;
+      transition: color 0.15s;
+    }
+    .footer-links-col a:hover { color: var(--c-purple); text-decoration: none; }
+    .footer-bottom {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-copy {
+      font-size: 0.82rem;
       color: #9ca3af;
     }
     .footer-disclosure {
-      margin-top: 8px;
       font-size: 0.78rem;
       color: #9ca3af;
-      max-width: 640px;
-      margin-left: auto;
-      margin-right: auto;
+      max-width: 520px;
       line-height: 1.5;
+    }
+    @media (max-width: 768px) {
+      .footer-top { flex-direction: column; gap: 28px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .footer-disclosure { max-width: 100%; }
     }
   </style>
   <slot name="head" />
@@ -150,7 +256,14 @@ const ogImage = image
 <body>
   <header class="site-header">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">Zotopie</a>
+      <a href="/" class="nav-logo">
+        <div class="nav-logo-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M3 4h12L9 14 3 4z" fill="#fff" opacity="0.9"/>
+          </svg>
+        </div>
+        <span class="nav-logo-text">Zotopie</span>
+      </a>
       <div class="nav-right">
         <nav class="nav-links">
           <a href="/">Home</a>
@@ -180,11 +293,41 @@ const ogImage = image
   </div>
 
   <footer class="site-footer">
-    <p>&copy; {new Date().getFullYear()} Zotopie &mdash; Find the best software tools</p>
-    <p class="footer-disclosure">
-      Some links on this site are affiliate links. We may earn a commission when you click through and make a purchase &mdash; at no extra cost to you.
-      Our editorial ratings and recommendations are independent of affiliate relationships.
-    </p>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div>
+          <div class="footer-brand">
+            <div class="footer-brand-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+                <path d="M3 4h12L9 14 3 4z" fill="#fff" opacity="0.9"/>
+              </svg>
+            </div>
+            <span class="footer-brand-name">Zotopie</span>
+          </div>
+          <p class="footer-tagline">Expert software reviews, comparisons, and rankings — built for modern teams.</p>
+        </div>
+        <div class="footer-links-group">
+          <div class="footer-links-col">
+            <h4>Explore</h4>
+            <a href="/reviews">All Reviews</a>
+            <a href="/best/">Best Tools</a>
+            <a href="/category">Categories</a>
+          </div>
+          <div class="footer-links-col">
+            <h4>Compare</h4>
+            <a href="/search">Search Tools</a>
+            <a href="/best/ai-writing-tools/">AI Writing</a>
+            <a href="/best/seo-tools/">SEO Tools</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; {new Date().getFullYear()} Zotopie — Find the best software tools</p>
+        <p class="footer-disclosure">
+          Some links on this site are affiliate links. We may earn a commission when you click through and make a purchase — at no extra cost to you. Editorial ratings are independent of affiliate relationships.
+        </p>
+      </div>
+    </div>
   </footer>
   <script>
     document.addEventListener('keydown', function(e) {

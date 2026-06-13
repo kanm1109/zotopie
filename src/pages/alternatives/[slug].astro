@@ -1,4 +1,4 @@
----
+﻿---
 import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
 import MainLayout from "../../layouts/MainLayout.astro";
@@ -15,46 +15,46 @@ const { tool } = Astro.props;
 const alternativeTools = tools.filter((t) => tool.alternatives.includes(t.slug));
 const primaryCategory = taxonomies.find((c) => c.slug === tool.primaryCategory);
 
-// ── Sorted alternatives ───────────────────────────────────────────────────────
+// â”€â”€ Sorted alternatives â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const sortedAlts = [...alternativeTools].sort((a, b) => b.rating - a.rating);
 const bestAlt = sortedAlts[0];
 
-// ── Intro paragraph (first para of overview, max 360 chars) ──────────────────
+// â”€â”€ Intro paragraph (first para of overview, max 360 chars) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const rawIntro = tool.overview ? tool.overview.split("\n\n")[0] : "";
 const introText = rawIntro.length > 360
   ? rawIntro.slice(0, 357) + "..."
   : rawIntro || `${tool.name} is a widely used tool in the ${primaryCategory?.name ?? "AI tools"} space. ${tool.description}`;
 
-// ── Why switch: cons + whoShouldAvoid (max 5 items combined) ─────────────────
+// â”€â”€ Why switch: cons + whoShouldAvoid (max 5 items combined) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const whySwitchItems: string[] = [
   ...(tool.cons ?? []).slice(0, 3),
   ...(tool.whoShouldAvoid ?? []).slice(0, 2),
 ];
 
-// ── Best alt verdict (first sentence of verdict.summary only) ────────────────
+// â”€â”€ Best alt verdict (first sentence of verdict.summary only) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const bestAltVerdictRaw = bestAlt?.verdict?.summary ?? "";
 const bestAltVerdict = bestAltVerdictRaw.includes(".")
   ? bestAltVerdictRaw.slice(0, bestAltVerdictRaw.indexOf(".") + 1)
   : bestAltVerdictRaw.slice(0, 180);
 
-// ── Free alternative ─────────────────────────────────────────────────────────
+// â”€â”€ Free alternative â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const freeAlt = sortedAlts.find(
   (t) => t.pricing === "Free" || t.pricing === "Freemium"
 );
 
-// ── Compare slugs: must match [pair].astro sort logic ────────────────────────
+// â”€â”€ Compare slugs: must match [pair].astro sort logic â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const compareLinks = sortedAlts.map((alt) => ({
   alt,
   compareSlug: [tool.slug, alt.slug].sort().join("-vs-"),
 }));
 
-// ── Auto-generated FAQs ──────────────────────────────────────────────────────
+// â”€â”€ Auto-generated FAQs â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const bestAltBestFor = bestAlt?.bestFor?.[0]
   ? `, making it a strong choice for ${bestAlt.bestFor[0].toLowerCase()}`
   : "";
 
 const q1Answer = [
-  `The highest-rated ${tool.name} alternative is ${bestAlt?.name ?? ""} (★ ${bestAlt?.rating}/5).`,
+  `The highest-rated ${tool.name} alternative is ${bestAlt?.name ?? ""} (â˜… ${bestAlt?.rating}/5).`,
   bestAlt?.description ?? "",
   bestAltVerdict,
 ].filter(Boolean).join(" ").trim();
@@ -62,11 +62,11 @@ const q1Answer = [
 const q2 = freeAlt
   ? {
       question: `Is there a free ${tool.name} alternative?`,
-      answer: `Yes — ${freeAlt.name} offers a ${freeAlt.pricing.toLowerCase()} plan${freeAlt.bestFor?.[0] ? `, making it ideal for ${freeAlt.bestFor[0].toLowerCase()}` : ""}. See the full review for plan details.`,
+      answer: `Yes â€” ${freeAlt.name} offers a ${freeAlt.pricing.toLowerCase()} plan${freeAlt.bestFor?.[0] ? `, making it ideal for ${freeAlt.bestFor[0].toLowerCase()}` : ""}. See the full review for plan details.`,
     }
   : {
       question: `Does ${tool.name} offer a free plan?`,
-      answer: `${tool.name} is a ${tool.pricing.toLowerCase()} tool${tool.startingPrice ? `, starting at ${tool.startingPrice}` : ""}. The alternatives above vary in pricing — check each review for free trial availability.`,
+      answer: `${tool.name} is a ${tool.pricing.toLowerCase()} tool${tool.startingPrice ? `, starting at ${tool.startingPrice}` : ""}. The alternatives above vary in pricing â€” check each review for free trial availability.`,
     };
 
 const q3Answer = whySwitchItems.length > 0
@@ -79,13 +79,13 @@ const autoFaqs = [
   { question: `Why do people look for ${tool.name} alternatives?`, answer: q3Answer },
 ];
 
-// ── Page meta ─────────────────────────────────────────────────────────────────
+// â”€â”€ Page meta â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const SITE    = "https://zotopie.com";
 const pageUrl = `${SITE}/alternatives/${tool.slug}/`;
 const pageTitle = `Best ${tool.name} Alternatives 2026 | Zotopie`;
-const pageDesc  = `Looking for ${tool.name} alternatives? Compare the top ${sortedAlts.length} options by pricing, rating, and best-fit use case — with honest expert reviews.`;
+const pageDesc  = `Looking for ${tool.name} alternatives? Compare the top ${sortedAlts.length} options by pricing, rating, and best-fit use case â€” with honest expert reviews.`;
 
-// ── JSON-LD ───────────────────────────────────────────────────────────────────
+// â”€â”€ JSON-LD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const jsonLdStr = JSON.stringify({
   "@context": "https://schema.org",
   "@graph": [
@@ -143,7 +143,7 @@ const jsonLdStr = JSON.stringify({
     <script type="application/ld+json" set:html={jsonLdStr} />
   </Fragment>
 
-  <!-- ── HERO ─────────────────────────────────────────────────────────────── -->
+  <!-- â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <section class="alt-hero">
     <div class="breadcrumb">
       <a href="/">Home</a> &rsaquo;
@@ -177,7 +177,7 @@ const jsonLdStr = JSON.stringify({
           <span class="cc-desc">{tool.description}</span>
         </div>
         <div class="cc-meta">
-          <span class="cc-rating">★ {tool.rating}</span>
+          <span class="cc-rating">â˜… {tool.rating}</span>
           <span class="cc-price">{tool.startingPrice ? `from ${tool.startingPrice}` : tool.pricing}</span>
         </div>
         <a href={`/reviews/${tool.slug}`} class="cc-link">Full Review &rarr;</a>
@@ -185,7 +185,7 @@ const jsonLdStr = JSON.stringify({
     </div>
   </section>
 
-  <!-- ── COMPARISON TABLE ──────────────────────────────────────────────────── -->
+  <!-- â”€â”€ COMPARISON TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <section class="cmp-section">
     <h2>Quick Comparison</h2>
     <p class="section-sub">All {sortedAlts.length} {tool.name} alternatives at a glance</p>
@@ -210,11 +210,11 @@ const jsonLdStr = JSON.stringify({
               </td>
               <td>
                 <span class={`pricing-tag pt-${t.pricing.toLowerCase().replace(/\//g,'-').replace(/\s/g,'')}`}>
-                  {t.startingPrice ? `${t.pricing} · ${t.startingPrice}` : t.pricing}
+                  {t.startingPrice ? `${t.pricing} Â· ${t.startingPrice}` : t.pricing}
                 </span>
               </td>
-              <td class="cmp-rating">★ {t.rating}</td>
-              <td class="cmp-bestfor">{t.bestFor?.[0] ?? "—"}</td>
+              <td class="cmp-rating">â˜… {t.rating}</td>
+              <td class="cmp-bestfor">{t.bestFor?.[0] ?? "â€”"}</td>
             </tr>
           ))}
         </tbody>
@@ -222,7 +222,7 @@ const jsonLdStr = JSON.stringify({
     </div>
   </section>
 
-  <!-- ── ALTERNATIVES LIST ─────────────────────────────────────────────────── -->
+  <!-- â”€â”€ ALTERNATIVES LIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <section class="alts-section">
     <h2>Top {tool.name} Alternatives Reviewed</h2>
     <p class="section-sub">Sorted by editorial rating</p>
@@ -246,11 +246,11 @@ const jsonLdStr = JSON.stringify({
     </div>
   </section>
 
-  <!-- ── WHY SWITCH ────────────────────────────────────────────────────────── -->
+  <!-- â”€â”€ WHY SWITCH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <section class="why-section">
     <h2>Why people look for {tool.name} alternatives</h2>
     <p class="why-intro">
-      While {tool.name} is rated <strong>★ {tool.rating}/5</strong>, users commonly switch because of:
+      While {tool.name} is rated <strong>â˜… {tool.rating}/5</strong>, users commonly switch because of:
     </p>
     <ul class="why-list">
       {whySwitchItems.length > 0
@@ -267,7 +267,7 @@ const jsonLdStr = JSON.stringify({
     )}
   </section>
 
-  <!-- ── BEST OVERALL PICK ─────────────────────────────────────────────────── -->
+  <!-- â”€â”€ BEST OVERALL PICK â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   {bestAlt && (
     <section class="verdict-section">
       <h2>Best {tool.name} alternative overall</h2>
@@ -276,7 +276,7 @@ const jsonLdStr = JSON.stringify({
           <ToolLogo tool={bestAlt} size={40} />
           <div>
             <span class="vc-name">{bestAlt.name}</span>
-            <span class="vc-rating">★ {bestAlt.rating} / 5</span>
+            <span class="vc-rating">â˜… {bestAlt.rating} / 5</span>
           </div>
         </div>
         <p class="vc-text">
@@ -297,8 +297,8 @@ const jsonLdStr = JSON.stringify({
              rel={bestAlt.affiliate ? "sponsored noopener" : "noopener"}
              target="_blank">
             {bestAlt.pricing === "Free" || bestAlt.pricing === "Freemium"
-              ? `Try ${bestAlt.name} Free →`
-              : `Visit ${bestAlt.name} →`}
+              ? `Try ${bestAlt.name} Free â†’`
+              : `Visit ${bestAlt.name} â†’`}
           </a>
           <a href={`/reviews/${bestAlt.slug}/`} class="vc-link">
             Full review &rarr;
@@ -308,7 +308,7 @@ const jsonLdStr = JSON.stringify({
     </section>
   )}
 
-  <!-- ── FAQ ───────────────────────────────────────────────────────────────── -->
+  <!-- â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <section class="faq-section" id="faq">
     <h2>Frequently Asked Questions</h2>
     <dl class="faq-list">
@@ -324,7 +324,7 @@ const jsonLdStr = JSON.stringify({
     </dl>
   </section>
 
-  <!-- ── COMPARE LINKS ─────────────────────────────────────────────────────── -->
+  <!-- â”€â”€ COMPARE LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   <section class="compare-section">
     <h2>Compare {tool.name} head-to-head</h2>
     <p class="section-sub">Detailed side-by-side comparisons</p>
@@ -337,7 +337,7 @@ const jsonLdStr = JSON.stringify({
     </div>
   </section>
 
-  <!-- ── ALSO SEE ───────────────────────────────────────────────────────────── -->
+  <!-- â”€â”€ ALSO SEE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
   {primaryCategory && (
     <section class="also-section">
       <h2>More {primaryCategory.name} tools</h2>
@@ -350,7 +350,7 @@ const jsonLdStr = JSON.stringify({
 </MainLayout>
 
 <style>
-  /* ── HERO ──────────────────────────────────────────────────────────────── */
+  /* â”€â”€ HERO â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .alt-hero {
     padding: 40px 0 32px;
     border-bottom: 1px solid #e5e7eb;
@@ -362,7 +362,7 @@ const jsonLdStr = JSON.stringify({
     margin-bottom: 20px;
   }
   .breadcrumb a { color: #6b7280; }
-  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  .breadcrumb a:hover { color: #7C3AED; text-decoration: none; }
   .hero-body { margin-bottom: 16px; }
   .hero-tool {
     display: flex;
@@ -386,7 +386,7 @@ const jsonLdStr = JSON.stringify({
     max-width: 720px;
   }
 
-  /* ── CURRENT TOOL CARD ─────────────────────────────────────────────────── */
+  /* â”€â”€ CURRENT TOOL CARD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .current-card {
     background: #f9fafb;
     border: 1px solid #e5e7eb;
@@ -435,14 +435,14 @@ const jsonLdStr = JSON.stringify({
   .cc-link {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #2563eb;
+    color: #7C3AED;
     white-space: nowrap;
     text-decoration: none;
     flex-shrink: 0;
   }
   .cc-link:hover { text-decoration: underline; }
 
-  /* ── COMPARISON TABLE ──────────────────────────────────────────────────── */
+  /* â”€â”€ COMPARISON TABLE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .cmp-section {
     margin-bottom: 48px;
   }
@@ -495,7 +495,7 @@ const jsonLdStr = JSON.stringify({
     color: #111827;
     text-decoration: none;
   }
-  .cmp-name:hover { color: #2563eb; }
+  .cmp-name:hover { color: #7C3AED; }
   .cmp-name span { font-size: 0.9rem; }
 
   .pricing-tag {
@@ -506,7 +506,7 @@ const jsonLdStr = JSON.stringify({
     white-space: nowrap;
   }
   .pt-free       { background: #d1fae5; color: #065f46; }
-  .pt-freemium   { background: #dbeafe; color: #1e40af; }
+  .pt-freemium   { background: #EDE9FE; color: #1e40af; }
   .pt-paid       { background: #f3f4f6; color: #374151; }
 
   .cmp-rating {
@@ -521,7 +521,7 @@ const jsonLdStr = JSON.stringify({
     max-width: 200px;
   }
 
-  /* ── ALTERNATIVES LIST ─────────────────────────────────────────────────── */
+  /* â”€â”€ ALTERNATIVES LIST â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .alts-section { margin-bottom: 48px; }
   .alts-list { display: flex; flex-direction: column; gap: 14px; }
 
@@ -565,13 +565,13 @@ const jsonLdStr = JSON.stringify({
     font-size: 0.82rem;
   }
   .alt-compare-link a {
-    color: #2563eb;
+    color: #7C3AED;
     text-decoration: none;
     font-weight: 500;
   }
   .alt-compare-link a:hover { text-decoration: underline; }
 
-  /* ── WHY SWITCH ────────────────────────────────────────────────────────── */
+  /* â”€â”€ WHY SWITCH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .why-section {
     border-top: 1px solid #e5e7eb;
     padding-top: 40px;
@@ -604,15 +604,15 @@ const jsonLdStr = JSON.stringify({
     margin: 0;
   }
 
-  /* ── VERDICT / BEST OVERALL ─────────────────────────────────────────────── */
+  /* â”€â”€ VERDICT / BEST OVERALL â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .verdict-section {
     border-top: 1px solid #e5e7eb;
     padding-top: 40px;
     margin-bottom: 40px;
   }
   .verdict-card {
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
+    background: #F5F3FF;
+    border: 1px solid #DDD6FE;
     border-radius: 14px;
     padding: 20px 24px;
     margin-top: 16px;
@@ -655,7 +655,7 @@ const jsonLdStr = JSON.stringify({
   .vc-cta {
     display: inline-block;
     padding: 9px 20px;
-    background: #2563eb;
+    background: #7C3AED;
     color: #fff;
     border-radius: 8px;
     font-size: 0.9rem;
@@ -663,7 +663,7 @@ const jsonLdStr = JSON.stringify({
     text-decoration: none;
     transition: background 0.2s;
   }
-  .vc-cta:hover { background: #1d4ed8; text-decoration: none; }
+  .vc-cta:hover { background: #6D28D9; text-decoration: none; }
   .vc-link {
     display: inline-block;
     font-size: 0.9rem;
@@ -671,9 +671,9 @@ const jsonLdStr = JSON.stringify({
     color: #6b7280;
     text-decoration: none;
   }
-  .vc-link:hover { color: #2563eb; text-decoration: underline; }
+  .vc-link:hover { color: #7C3AED; text-decoration: underline; }
 
-  /* ── FAQ ───────────────────────────────────────────────────────────────── */
+  /* â”€â”€ FAQ â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .faq-section {
     border-top: 1px solid #e5e7eb;
     padding-top: 40px;
@@ -686,7 +686,7 @@ const jsonLdStr = JSON.stringify({
     border-radius: 10px;
     overflow: hidden;
   }
-  .faq-item[open] { border-color: #bfdbfe; }
+  .faq-item[open] { border-color: #DDD6FE; }
   .faq-q {
     display: flex;
     justify-content: space-between;
@@ -702,7 +702,7 @@ const jsonLdStr = JSON.stringify({
     user-select: none;
   }
   .faq-q::-webkit-details-marker { display: none; }
-  .faq-item[open] .faq-q { background: #eff6ff; color: #1e40af; }
+  .faq-item[open] .faq-q { background: #F5F3FF; color: #1e40af; }
   .faq-icon {
     font-size: 1.2rem;
     font-weight: 300;
@@ -711,7 +711,7 @@ const jsonLdStr = JSON.stringify({
     line-height: 1;
     transition: transform 0.2s;
   }
-  .faq-item[open] .faq-icon { transform: rotate(45deg); color: #2563eb; }
+  .faq-item[open] .faq-icon { transform: rotate(45deg); color: #7C3AED; }
   .faq-a {
     padding: 12px 18px 16px;
     font-size: 0.9rem;
@@ -720,7 +720,7 @@ const jsonLdStr = JSON.stringify({
     margin: 0;
   }
 
-  /* ── COMPARE LINKS ─────────────────────────────────────────────────────── */
+  /* â”€â”€ COMPARE LINKS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .compare-section {
     border-top: 1px solid #e5e7eb;
     padding-top: 32px;
@@ -745,12 +745,12 @@ const jsonLdStr = JSON.stringify({
     transition: border-color 0.15s, color 0.15s, background 0.15s;
   }
   .compare-pill:hover {
-    border-color: #2563eb;
-    color: #2563eb;
-    background: #eff6ff;
+    border-color: #7C3AED;
+    color: #7C3AED;
+    background: #F5F3FF;
   }
 
-  /* ── ALSO SEE ──────────────────────────────────────────────────────────── */
+  /* â”€â”€ ALSO SEE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   .also-section {
     border-top: 1px solid #e5e7eb;
     padding-top: 32px;
@@ -761,12 +761,12 @@ const jsonLdStr = JSON.stringify({
     margin-top: 12px;
     font-size: 0.95rem;
     font-weight: 600;
-    color: #2563eb;
+    color: #7C3AED;
     text-decoration: none;
   }
   .cat-link:hover { text-decoration: underline; }
 
-  /* ── RESPONSIVE ────────────────────────────────────────────────────────── */
+  /* â”€â”€ RESPONSIVE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
   @media (max-width: 600px) {
     h1 { font-size: 1.6rem; }
     .cc-meta { align-items: flex-start; }

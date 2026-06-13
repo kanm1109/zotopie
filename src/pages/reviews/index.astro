@@ -1,4 +1,4 @@
----
+﻿---
 import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
 import iconData from "../../data/generated/icon-data.json";
@@ -11,7 +11,7 @@ const iconDataStr    = JSON.stringify(iconData);
 
 <MainLayout
   title="All Tool Reviews | Zotopie"
-  description="Browse honest reviews of 100+ software tools — SEO, social media, automation, analytics, AI, and more."
+  description="Browse honest reviews of 100+ software tools â€” SEO, social media, automation, analytics, AI, and more."
   canonical="https://zotopie.com/reviews/"
 >
   <Fragment slot="head">
@@ -46,9 +46,9 @@ const iconDataStr    = JSON.stringify(iconData);
 
     <select id="f-rating" class="f-select" aria-label="Filter by rating">
       <option value="">Any Rating</option>
-      <option value="4.8">4.8+ ★ Top Rated</option>
-      <option value="4.5">4.5+ ★</option>
-      <option value="4.0">4.0+ ★</option>
+      <option value="4.8">4.8+ â˜… Top Rated</option>
+      <option value="4.5">4.5+ â˜…</option>
+      <option value="4.0">4.0+ â˜…</option>
     </select>
 
     <button id="f-clear" class="f-clear-btn" style="display:none">Clear filters</button>
@@ -70,7 +70,7 @@ const TAXONOMIES = JSON.parse(taxonomiesData);
 const ICON_DATA = JSON.parse(iconDataStr);
 const PER_PAGE = 12;
 
-const PALETTE = ['#2563eb','#7c3aed','#059669','#dc2626','#d97706','#0891b2','#be185d','#16a34a'];
+const PALETTE = ['#7C3AED','#7c3aed','#059669','#dc2626','#d97706','#0891b2','#be185d','#16a34a'];
 
 // State
 let state = { cat: '', pricing: '', rating: 0, page: 1 };
@@ -109,7 +109,7 @@ function logoHtml(tool, size) {
 
 function renderCard(tool) {
   const price = tool.startingPrice
-    ? `${esc(tool.pricing)} · from ${esc(tool.startingPrice)}`
+    ? `${esc(tool.pricing)} Â· from ${esc(tool.startingPrice)}`
     : esc(tool.pricing);
   return `
 <div class="tc-card">
@@ -118,12 +118,12 @@ function renderCard(tool) {
       ${logoHtml(tool, 32)}
       <h3 class="tc-name"><a href="/reviews/${tool.slug}">${esc(tool.name)}</a></h3>
     </div>
-    <span class="tc-rating">★ ${tool.rating}</span>
+    <span class="tc-rating">â˜… ${tool.rating}</span>
   </div>
   <p class="tc-desc">${esc(tool.description)}</p>
   <div class="tc-footer">
     <span class="tc-pricing">${price}</span>
-    <a href="/reviews/${tool.slug}" class="tc-link">View Review →</a>
+    <a href="/reviews/${tool.slug}" class="tc-link">View Review â†’</a>
   </div>
 </div>`;
 }
@@ -138,7 +138,7 @@ function pgRange(cur, total) {
   const result = [];
   let prev = 0;
   for (const p of sorted) {
-    if (p - prev > 1) result.push('…');
+    if (p - prev > 1) result.push('â€¦');
     result.push(p);
     prev = p;
   }
@@ -149,15 +149,15 @@ function renderPagination(cur, total) {
   if (total <= 1) return '';
   const range = pgRange(cur, total);
   const items = range.map((p) =>
-    p === '…'
-      ? `<span class="pg-dot">…</span>`
+    p === 'â€¦'
+      ? `<span class="pg-dot">â€¦</span>`
       : `<button class="pg-btn${p === cur ? ' pg-active' : ''}" data-p="${p}">${p}</button>`
   ).join('');
   return `
 <div class="pg-bar">
-  <button class="pg-btn pg-prev" ${cur === 1 ? 'disabled' : ''} data-p="${cur - 1}">← Prev</button>
+  <button class="pg-btn pg-prev" ${cur === 1 ? 'disabled' : ''} data-p="${cur - 1}">â† Prev</button>
   <div class="pg-nums">${items}</div>
-  <button class="pg-btn pg-next" ${cur === total ? 'disabled' : ''} data-p="${cur + 1}">Next →</button>
+  <button class="pg-btn pg-next" ${cur === total ? 'disabled' : ''} data-p="${cur + 1}">Next â†’</button>
 </div>`;
 }
 
@@ -204,7 +204,7 @@ function updatePaginationMeta(page, total) {
   const BASE    = 'https://zotopie.com/reviews/';
   const hasFilter = state.cat || state.pricing || state.rating;
 
-  // Canonical: when filters active → base (no index params); else per-page URL
+  // Canonical: when filters active â†’ base (no index params); else per-page URL
   const canonical = hasFilter ? BASE : (page === 1 ? BASE : `${BASE}?page=${page}`);
   const canonEl = document.querySelector('link[rel="canonical"]');
   if (canonEl) canonEl.setAttribute('href', canonical);
@@ -279,7 +279,7 @@ render();
     gap: 10px;
     transition: box-shadow 0.2s, border-color 0.2s;
   }
-  .tc-card:hover { border-color: #2563eb; box-shadow: 0 4px 16px rgba(37,99,235,0.08); }
+  .tc-card:hover { border-color: #7C3AED; box-shadow: 0 4px 16px rgba(124,58,237,0.08); }
   .tc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
   .tc-id  { display: flex; align-items: center; gap: 10px; min-width: 0; }
   .tc-logo-svg { border-radius: 6px; flex-shrink: 0; display: block; background: #f9fafb; padding: 2px; box-sizing: content-box; }
@@ -289,12 +289,12 @@ render();
   }
   .tc-name { font-size: 1.05rem; font-weight: 700; margin: 0; min-width: 0; }
   .tc-name a { color: #111827; text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
-  .tc-name a:hover { color: #2563eb; }
+  .tc-name a:hover { color: #7C3AED; }
   .tc-rating { font-size: 0.875rem; font-weight: 700; color: #d97706; background: #fef3c7; padding: 2px 8px; border-radius: 12px; white-space: nowrap; flex-shrink: 0; }
   .tc-desc { font-size: 0.9rem; color: #6b7280; margin: 0; flex: 1; }
   .tc-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 4px; }
   .tc-pricing { font-size: 0.8rem; font-weight: 600; color: #6b7280; background: #f3f4f6; padding: 3px 10px; border-radius: 12px; }
-  .tc-link { font-size: 0.85rem; font-weight: 600; color: #2563eb; text-decoration: none; }
+  .tc-link { font-size: 0.85rem; font-weight: 600; color: #7C3AED; text-decoration: none; }
   .tc-link:hover { text-decoration: underline; }
 </style>
 
@@ -303,7 +303,7 @@ render();
   .rv-hero { padding: 48px 0 28px; border-bottom: 1px solid #e5e7eb; margin-bottom: 0; }
   .breadcrumb { font-size: 0.875rem; color: #9ca3af; margin-bottom: 16px; }
   .breadcrumb a { color: #6b7280; }
-  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  .breadcrumb a:hover { color: #7C3AED; text-decoration: none; }
   h1 { font-size: 2.25rem; font-weight: 800; color: #111827; margin: 0 0 8px; }
   .hero-desc { font-size: 1rem; color: #6b7280; margin: 0; }
 
@@ -329,7 +329,7 @@ render();
     outline: none;
     transition: border-color 0.2s;
   }
-  .f-select:focus { border-color: #2563eb; }
+  .f-select:focus { border-color: #7C3AED; }
   .f-clear-btn {
     padding: 8px 14px;
     border: 1.5px solid #fca5a5;
@@ -374,7 +374,7 @@ render();
     margin-left: 8px;
     font-size: 0.9rem;
     font-weight: 600;
-    color: #2563eb;
+    color: #7C3AED;
     background: none;
     border: none;
     cursor: pointer;
@@ -399,10 +399,10 @@ render();
     cursor: pointer;
     transition: border-color 0.2s, background 0.2s, color 0.2s;
   }
-  .pg-btn:hover:not(:disabled) { border-color: #2563eb; color: #2563eb; background: #eff6ff; }
+  .pg-btn:hover:not(:disabled) { border-color: #7C3AED; color: #7C3AED; background: #F5F3FF; }
   .pg-btn:disabled { opacity: 0.35; cursor: not-allowed; }
-  .pg-active { background: #2563eb; color: #fff; border-color: #2563eb; }
-  .pg-active:hover { background: #1d4ed8; border-color: #1d4ed8; color: #fff; }
+  .pg-active { background: #7C3AED; color: #fff; border-color: #7C3AED; }
+  .pg-active:hover { background: #6D28D9; border-color: #6D28D9; color: #fff; }
   .pg-prev, .pg-next { padding: 0 14px; }
   .pg-dot { font-size: 0.875rem; color: #9ca3af; padding: 0 4px; display: inline-flex; align-items: center; }
 

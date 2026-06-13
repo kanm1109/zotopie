@@ -16,6 +16,7 @@ const categoriesWithCount = taxonomies.map((cat) => ({
 
 const toolCount = tools.length;
 const catCount = taxonomies.length;
+const compareCount = Math.round((toolCount * (toolCount - 1)) / 2);
 const top8cats = [...categoriesWithCount].sort((a, b) => b.toolCount - a.toolCount).slice(0, 8);
 const slimTools = tools.map((t) => [t.name, t.slug, t.rating]);
 const slimCats = taxonomies.map((t) => [t.name, t.slug]);
@@ -49,30 +50,83 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero-eyebrow">Software Directory</div>
-    <h1>Discover The <span class="hero-accent">Best</span><br />Software Tools</h1>
-    <p class="hero-sub">Search {toolCount}+ expert reviews across {catCount} categories</p>
-
-    <div class="hero-search-wrap">
-      <form class="hero-search-form" action="/search" method="get" role="search">
-        <svg class="hero-s-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
-          stroke="#9ca3af" stroke-width="2.5" aria-hidden="true">
-          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <circle cx="6" cy="6" r="5" fill="#7C3AED" opacity="0.2"/>
+          <circle cx="6" cy="6" r="2.5" fill="#7C3AED"/>
         </svg>
-        <input id="hero-q" name="q" type="text"
-          placeholder={`Search ${toolCount}+ software tools…`}
-          autocomplete="off" spellcheck="false"
-          aria-label="Search software tools" />
-      </form>
-      <div id="hero-drop" class="ac-drop" role="listbox" aria-label="Search suggestions" hidden></div>
-    </div>
+        Expert Software Directory
+      </div>
+      <h1>Find The <span class="hero-accent">Best Tools</span><br />For Your Success</h1>
+      <p class="hero-sub">Search {toolCount}+ expert reviews across {catCount} categories — no fluff, just honest ratings.</p>
 
-    <div class="hero-cats" role="list" aria-label="Browse by category">
-      {top8cats.map((cat) => (
-        <a href={`/category/${cat.slug}`} class="hero-cat-chip" role="listitem">{cat.name}</a>
-      ))}
+      <div class="hero-search-wrap">
+        <form class="hero-search-form" action="/search" method="get" role="search">
+          <svg class="hero-s-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="#9ca3af" stroke-width="2.5" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input id="hero-q" name="q" type="text"
+            placeholder={`Search ${toolCount}+ software tools…`}
+            autocomplete="off" spellcheck="false"
+            aria-label="Search software tools" />
+          <button type="submit" class="hero-search-btn">Search</button>
+        </form>
+        <div id="hero-drop" class="ac-drop" role="listbox" aria-label="Search suggestions" hidden></div>
+      </div>
+
+      <div class="hero-cats" role="list" aria-label="Browse by category">
+        {top8cats.map((cat) => (
+          <a href={`/category/${cat.slug}`} class="hero-cat-chip" role="listitem">{cat.name}</a>
+        ))}
+      </div>
     </div>
   </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <div class="stat-icon stat-icon-purple">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div>
+        <span class="stat-num">{toolCount}+</span>
+        <span class="stat-lbl">Expert Reviews</span>
+      </div>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat-item">
+      <div class="stat-icon stat-icon-blue">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+      </div>
+      <div>
+        <span class="stat-num">{catCount}</span>
+        <span class="stat-lbl">Categories</span>
+      </div>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat-item">
+      <div class="stat-icon stat-icon-pink">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+      </div>
+      <div>
+        <span class="stat-num">{compareCount}+</span>
+        <span class="stat-lbl">Comparisons</span>
+      </div>
+    </div>
+    <div class="stat-divider" aria-hidden="true"></div>
+    <div class="stat-item">
+      <div class="stat-icon stat-icon-green">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      </div>
+      <div>
+        <span class="stat-num">100%</span>
+        <span class="stat-lbl">Independent</span>
+      </div>
+    </div>
+  </div>
 
   <!-- POPULAR TOOLS -->
   {popularTools.length > 0 && (
@@ -82,7 +136,7 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
           <h2>Popular Tools</h2>
           <p class="section-sub">Handpicked tools trusted by thousands of teams</p>
         </div>
-        <a href="/reviews" class="see-all">See all {toolCount} reviews &rarr;</a>
+        <a href="/reviews" class="see-all">See all {toolCount} reviews →</a>
       </div>
       <div class="tools-grid">
         {popularTools.map((tool) => (
@@ -92,6 +146,42 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     </section>
   )}
 
+  <!-- BROWSE BY CATEGORY -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <h2>Browse by Category</h2>
+        <p class="section-sub">Find the right tools for your specific workflow</p>
+      </div>
+      <a href="/category" class="see-all">All {catCount} categories →</a>
+    </div>
+    <div class="cats-grid">
+      {categoriesWithCount.map((cat) => (
+        <CategoryCard category={cat} toolCount={cat.toolCount} />
+      ))}
+    </div>
+  </section>
+
+  <!-- BEST GUIDES -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <h2>Expert Best-Of Guides</h2>
+        <p class="section-sub">Independently ranked — no sponsored placements</p>
+      </div>
+      <a href="/best/" class="see-all">All guides →</a>
+    </div>
+    <div class="best-grid">
+      {bestPages.slice(0, 6).map((page) => (
+        <a href={`/best/${page.slug}/`} class="best-card">
+          <div class="bc-cat">{page.categoryName}</div>
+          <div class="bc-title">{page.h1}</div>
+          <div class="bc-count">{page.toolSlugs.length} tools compared →</div>
+        </a>
+      ))}
+    </div>
+  </section>
+
   <!-- NEWLY ADDED -->
   {newestTools.length > 0 && (
     <section class="section">
@@ -100,7 +190,7 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
           <h2>Newly Added</h2>
           <p class="section-sub">The latest tools added to our database</p>
         </div>
-        <a href="/reviews" class="see-all">View all &rarr;</a>
+        <a href="/reviews" class="see-all">View all →</a>
       </div>
       <div class="new-grid">
         {newestTools.map((tool) => (
@@ -114,7 +204,7 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
             </div>
             <div class="new-card-right">
               <span class="new-badge">NEW</span>
-              <span class="new-rating">&#9733; {tool.rating}</span>
+              <span class="new-rating">★ {tool.rating}</span>
             </div>
           </a>
         ))}
@@ -130,7 +220,7 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
           <h2>Most Compared Tools</h2>
           <p class="section-sub">Tools teams evaluate most often when switching platforms</p>
         </div>
-        <a href="/search" class="see-all">Find alternatives &rarr;</a>
+        <a href="/search" class="see-all">Find alternatives →</a>
       </div>
       <div class="tools-grid">
         {popularAlts.map((tool) => (
@@ -140,12 +230,12 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
                 <ToolLogo tool={tool} size={32} />
                 <h3 class="pa-name">{tool.name}</h3>
               </div>
-              <span class="pa-rating">&#9733; {tool.rating}</span>
+              <span class="pa-rating">★ {tool.rating}</span>
             </div>
             <p class="pa-desc">{tool.description}</p>
             <div class="pa-footer">
               <span class="pa-count">In {tool.altCount} comparisons</span>
-              <span class="pa-link">View Review &rarr;</span>
+              <span class="pa-link">View Review →</span>
             </div>
           </a>
         ))}
@@ -153,63 +243,15 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     </section>
   )}
 
-  <!-- BEST GUIDES -->
-  <section class="section">
-    <div class="section-header">
-      <div>
-        <h2>Expert Best-Of Guides</h2>
-        <p class="section-sub">Independently ranked — no sponsored placements</p>
-      </div>
-      <a href="/best/" class="see-all">All guides &rarr;</a>
-    </div>
-    <div class="best-grid">
-      {bestPages.slice(0, 6).map((page) => (
-        <a href={`/best/${page.slug}/`} class="best-card">
-          <div class="bc-cat">{page.categoryName}</div>
-          <div class="bc-title">{page.h1}</div>
-          <div class="bc-count">{page.toolSlugs.length} tools →</div>
-        </a>
-      ))}
-    </div>
-  </section>
-
-  <!-- BROWSE BY USE CASE -->
-  <section class="section">
-    <div class="section-header">
-      <h2>Browse by Use Case</h2>
-      <a href="/category" class="see-all">See all {catCount} categories &rarr;</a>
-    </div>
-    <div class="cats-grid">
-      {categoriesWithCount.map((cat) => (
-        <CategoryCard category={cat} toolCount={cat.toolCount} />
-      ))}
-    </div>
-  </section>
-
-  <!-- CTA + TRUST SIGNALS -->
+  <!-- CTA BANNER -->
   <section class="cta-section">
     <div class="cta-inner">
-      <div class="cta-content">
-        <h2>Find the right tool for your workflow</h2>
-        <p>Honest reviews. No fluff. Updated regularly.</p>
-        <div class="cta-actions">
-          <a href="/reviews" class="btn-primary">Browse {toolCount} Reviews</a>
-          <a href="/search" class="btn-secondary">Search by feature</a>
-        </div>
-      </div>
-      <div class="cta-stats">
-        <div class="stat">
-          <span class="stat-num">{toolCount}+</span>
-          <span class="stat-label">Tools Reviewed</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">{catCount}</span>
-          <span class="stat-label">Categories</span>
-        </div>
-        <div class="stat">
-          <span class="stat-num">100%</span>
-          <span class="stat-label">Independent</span>
-        </div>
+      <div class="cta-badge">Expert Directory</div>
+      <h2>Find the right tool for your workflow</h2>
+      <p>Honest reviews. No fluff. Updated regularly.</p>
+      <div class="cta-actions">
+        <a href="/reviews" class="btn-primary">Browse {toolCount} Reviews</a>
+        <a href="/search" class="btn-secondary">Search by feature</a>
       </div>
     </div>
   </section>
@@ -271,7 +313,7 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
       tools.forEach(function(t) {
         html += '<div class="ac-item" data-href="/reviews/' + esc(t[1]) + '" role="option" tabindex="-1">' +
           '<span class="ac-name">' + markMatch(t[0], q) + '</span>' +
-          '<span class="ac-rating">&#9733; ' + t[2] + '</span>' +
+          '<span class="ac-rating">★ ' + t[2] + '</span>' +
           '</div>';
       });
       html += '</div>';
@@ -357,63 +399,79 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
 </script>
 
 <style>
+  /* ── HERO ───────────────────────────────────────────── */
   .hero {
     text-align: center;
-    padding: 80px 0 60px;
+    padding: 88px 0 64px;
     position: relative;
   }
-  .hero::before {
-    content: "";
+  .hero-bg {
     position: absolute;
     inset: 0;
-    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.06) 0%, transparent 70%);
+    background: radial-gradient(ellipse 90% 70% at 50% -10%, rgba(124,58,237,0.08) 0%, rgba(99,102,241,0.04) 40%, transparent 70%);
     pointer-events: none;
   }
+  .hero-content { position: relative; }
+
   .hero-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
     font-size: 0.75rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: #2563eb;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    padding: 4px 14px;
+    letter-spacing: 0.1em;
+    color: #7C3AED;
+    background: #F5F3FF;
+    border: 1.5px solid #DDD6FE;
+    padding: 5px 14px;
     border-radius: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
   }
   .hero h1 {
-    font-size: 3.25rem;
+    font-size: 3.5rem;
     font-weight: 800;
-    color: #111827;
+    color: #0F172A;
     line-height: 1.1;
-    margin: 0 0 16px;
-    letter-spacing: -0.02em;
+    margin: 0 0 18px;
+    letter-spacing: -0.03em;
   }
   .hero-accent {
-    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, #7C3AED 0%, #6366F1 50%, #EC4899 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .hero-sub {
     font-size: 1.1rem;
-    color: #6b7280;
-    margin: 0 0 32px;
+    color: #647488;
+    margin: 0 0 36px;
+    max-width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
   }
 
-  /* Hero search box */
+  /* Hero search */
   .hero-search-wrap {
     position: relative;
     max-width: 600px;
-    margin: 0 auto 20px;
+    margin: 0 auto 22px;
   }
   .hero-search-form {
     position: relative;
     display: flex;
     align-items: center;
+    background: #fff;
+    border: 2px solid #E8ECF0;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(15,23,42,0.08);
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .hero-search-form:focus-within {
+    border-color: #7C3AED;
+    box-shadow: 0 0 0 4px rgba(124,58,237,0.12), 0 4px 20px rgba(15,23,42,0.08);
   }
   .hero-s-icon {
     position: absolute;
@@ -424,45 +482,53 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     flex-shrink: 0;
   }
   #hero-q {
-    width: 100%;
-    padding: 16px 20px 16px 52px;
-    font-size: 1.1rem;
-    border: 2px solid #e5e7eb;
-    border-radius: 14px;
+    flex: 1;
+    padding: 16px 16px 16px 52px;
+    font-size: 1.05rem;
+    border: none;
     outline: none;
-    font-family: inherit;
-    color: #111827;
-    background: #fff;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-  #hero-q:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 4px rgba(37,99,235,0.12), 0 2px 8px rgba(0,0,0,0.06);
+    font-family: var(--font-sans, inherit);
+    color: #0F172A;
+    background: transparent;
   }
   #hero-q::placeholder { color: #9ca3af; }
+  .hero-search-btn {
+    flex-shrink: 0;
+    margin: 6px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #7C3AED, #6366F1);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    font-family: var(--font-sans, inherit);
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.15s;
+    white-space: nowrap;
+  }
+  .hero-search-btn:hover { opacity: 0.9; transform: translateY(-1px); }
 
-  /* Autocomplete dropdown */
+  /* Autocomplete */
   .ac-drop {
     position: absolute;
-    top: calc(100% + 4px);
-    left: 0;
-    right: 0;
+    top: calc(100% + 6px);
+    left: 0; right: 0;
     background: #fff;
-    border: 1.5px solid #e5e7eb;
-    border-radius: 12px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    border: 1.5px solid #E8ECF0;
+    border-radius: 14px;
+    box-shadow: 0 12px 40px rgba(15,23,42,0.14);
     z-index: 200;
     overflow: hidden;
     text-align: left;
   }
   .ac-section { padding: 4px 0; }
-  .ac-section + .ac-section { border-top: 1px solid #f3f4f6; }
+  .ac-section + .ac-section { border-top: 1px solid #F1F5F9; }
   .ac-label {
-    font-size: 0.7rem;
+    font-size: 0.68rem;
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.07em;
+    letter-spacing: 0.08em;
     color: #9ca3af;
     padding: 8px 16px 4px;
   }
@@ -470,24 +536,24 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 9px 16px;
+    padding: 10px 16px;
     cursor: pointer;
     transition: background 0.1s;
   }
-  .ac-item:hover, .ac-item-active { background: #f3f4f6; }
-  .ac-name { font-size: 0.95rem; color: #111827; font-weight: 500; }
+  .ac-item:hover, .ac-item-active { background: #F5F3FF; }
+  .ac-name { font-size: 0.95rem; color: #0F172A; font-weight: 500; }
   .ac-rating {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #d97706;
-    background: #fef3c7;
-    padding: 1px 7px;
+    color: #D97706;
+    background: #FEF3C7;
+    padding: 2px 8px;
     border-radius: 10px;
     flex-shrink: 0;
     margin-left: 8px;
   }
   :global(mark) {
-    background: #fef08a;
+    background: #FDE68A;
     color: inherit;
     border-radius: 2px;
     padding: 0 1px;
@@ -499,15 +565,15 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
-    max-width: 640px;
+    max-width: 680px;
     margin: 0 auto;
   }
   .hero-cat-chip {
     font-size: 0.82rem;
     font-weight: 600;
-    color: #374151;
+    color: #4B5563;
     background: #fff;
-    border: 1.5px solid #e5e7eb;
+    border: 1.5px solid #E8ECF0;
     border-radius: 20px;
     padding: 6px 16px;
     text-decoration: none;
@@ -516,17 +582,76 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .hero-cat-chip:hover {
-    border-color: #2563eb;
-    color: #2563eb;
-    background: #eff6ff;
-    box-shadow: 0 2px 8px rgba(37,99,235,0.12);
+    border-color: #7C3AED;
+    color: #7C3AED;
+    background: #F5F3FF;
+    box-shadow: 0 2px 8px rgba(124,58,237,0.12);
     text-decoration: none;
   }
 
-  /* Sections */
+  /* ── STATS BAR ──────────────────────────────────────── */
+  .stats-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    background: #fff;
+    border: 1.5px solid #E8ECF0;
+    border-radius: 16px;
+    padding: 20px 32px;
+    margin: 0 0 20px;
+    box-shadow: 0 2px 12px rgba(15,23,42,0.05);
+    flex-wrap: wrap;
+    row-gap: 16px;
+  }
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 32px;
+    flex: 1;
+    min-width: 140px;
+    justify-content: center;
+  }
+  .stat-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .stat-icon-purple { background: #F5F3FF; color: #7C3AED; }
+  .stat-icon-blue   { background: #EEF2FF; color: #6366F1; }
+  .stat-icon-pink   { background: #FDF2F8; color: #EC4899; }
+  .stat-icon-green  { background: #ECFDF5; color: #10B981; }
+  .stat-num {
+    display: block;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .stat-lbl {
+    display: block;
+    font-size: 0.75rem;
+    color: #647488;
+    font-weight: 500;
+    margin-top: 3px;
+  }
+  .stat-divider {
+    width: 1px;
+    height: 36px;
+    background: #E8ECF0;
+    flex-shrink: 0;
+  }
+
+  /* ── SECTIONS ───────────────────────────────────────── */
   .section {
     padding: 56px 0;
-    border-top: 1px solid #f3f4f6;
+    border-top: 1px solid #F1F5F9;
   }
   .section-header {
     display: flex;
@@ -536,26 +661,15 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     gap: 16px;
   }
   .section-header h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #111827;
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: #0F172A;
     margin: 0 0 5px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  .section-header h2::before {
-    content: "";
-    display: inline-block;
-    width: 4px;
-    height: 1.1em;
-    background: linear-gradient(180deg, #2563eb, #7c3aed);
-    border-radius: 2px;
-    flex-shrink: 0;
+    letter-spacing: -0.02em;
   }
   .section-sub {
     font-size: 0.875rem;
-    color: #9ca3af;
+    color: #647488;
     margin: 0;
   }
   .see-all {
@@ -563,23 +677,36 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     align-items: center;
     font-size: 0.84rem;
     font-weight: 600;
-    color: #2563eb;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    padding: 5px 14px;
+    color: #7C3AED;
+    background: #F5F3FF;
+    border: 1.5px solid #DDD6FE;
+    padding: 6px 16px;
     border-radius: 20px;
     white-space: nowrap;
     flex-shrink: 0;
     text-decoration: none;
-    transition: background 0.15s, border-color 0.15s;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
   }
   .see-all:hover {
-    background: #dbeafe;
-    border-color: #93c5fd;
+    background: #7C3AED;
+    border-color: #7C3AED;
+    color: #fff;
     text-decoration: none;
   }
 
-  /* Best-of guides grid */
+  /* ── GRIDS ──────────────────────────────────────────── */
+  .tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 20px;
+  }
+  .cats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+
+  /* ── BEST GUIDES ────────────────────────────────────── */
   .best-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -589,8 +716,8 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     display: flex;
     flex-direction: column;
     gap: 8px;
-    padding: 20px;
-    border: 1px solid #e5e7eb;
+    padding: 20px 22px;
+    border: 1.5px solid #E8ECF0;
     border-radius: 14px;
     background: #fff;
     text-decoration: none;
@@ -604,13 +731,13 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    background: linear-gradient(90deg, #7C3AED, #6366F1);
     opacity: 0;
     transition: opacity 0.2s;
   }
   .best-card:hover {
-    border-color: #93c5fd;
-    box-shadow: 0 6px 20px rgba(37,99,235,0.10);
+    border-color: #C4B5FD;
+    box-shadow: 0 8px 24px rgba(124,58,237,0.12);
     transform: translateY(-2px);
     text-decoration: none;
   }
@@ -620,13 +747,13 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    color: #2563eb;
+    color: #7C3AED;
   }
   .bc-title {
     font-size: 0.95rem;
     font-weight: 700;
-    color: #111827;
-    line-height: 1.3;
+    color: #0F172A;
+    line-height: 1.35;
   }
   .bc-count {
     font-size: 0.78rem;
@@ -635,18 +762,7 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     margin-top: auto;
   }
 
-  .cats-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    gap: 16px;
-  }
-  .tools-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
-  }
-
-  /* Newly Added */
+  /* ── NEWLY ADDED ────────────────────────────────────── */
   .new-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -657,8 +773,8 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     align-items: center;
     justify-content: space-between;
     padding: 14px 16px;
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
+    border: 1.5px solid #E8ECF0;
+    border-radius: 12px;
     background: #fff;
     text-decoration: none;
     color: inherit;
@@ -666,8 +782,8 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     transition: border-color 0.2s, box-shadow 0.2s;
   }
   .new-card:hover {
-    border-color: #2563eb;
-    box-shadow: 0 4px 12px rgba(37,99,235,0.08);
+    border-color: #C4B5FD;
+    box-shadow: 0 4px 14px rgba(124,58,237,0.10);
     text-decoration: none;
   }
   .new-card-left {
@@ -676,22 +792,18 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     gap: 10px;
     min-width: 0;
   }
-  .new-card-info {
-    display: flex;
-    flex-direction: column;
-    min-width: 0;
-  }
+  .new-card-info { display: flex; flex-direction: column; min-width: 0; }
   .new-card-name {
     font-size: 0.9rem;
     font-weight: 700;
-    color: #111827;
+    color: #0F172A;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
   }
   .new-card-cat {
     font-size: 0.75rem;
-    color: #6b7280;
+    color: #647488;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -707,36 +819,37 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     font-size: 0.65rem;
     font-weight: 700;
     color: #fff;
-    background: #2563eb;
+    background: linear-gradient(135deg, #7C3AED, #6366F1);
     border-radius: 4px;
-    padding: 2px 6px;
+    padding: 2px 7px;
     letter-spacing: 0.05em;
   }
   .new-rating {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #d97706;
-    background: #fef3c7;
-    padding: 1px 7px;
+    color: #D97706;
+    background: #FEF3C7;
+    padding: 2px 8px;
     border-radius: 10px;
   }
 
-  /* Most Compared / Popular Alternatives */
+  /* ── MOST COMPARED ──────────────────────────────────── */
   .pa-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
+    border: 1.5px solid #E8ECF0;
+    border-radius: 14px;
     padding: 20px;
     background: #fff;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
     text-decoration: none;
     color: inherit;
   }
   .pa-card:hover {
-    border-color: #2563eb;
-    box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    border-color: #C4B5FD;
+    box-shadow: 0 6px 20px rgba(124,58,237,0.10);
+    transform: translateY(-2px);
     text-decoration: none;
   }
   .pa-top {
@@ -745,23 +858,13 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     justify-content: space-between;
     gap: 8px;
   }
-  .pa-id {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    min-width: 0;
-  }
-  .pa-name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #111827;
-    margin: 0;
-  }
+  .pa-id { display: flex; align-items: center; gap: 10px; min-width: 0; }
+  .pa-name { font-size: 1rem; font-weight: 700; color: #0F172A; margin: 0; }
   .pa-rating {
     font-size: 0.85rem;
     font-weight: 700;
-    color: #d97706;
-    background: #fef3c7;
+    color: #D97706;
+    background: #FEF3C7;
     padding: 2px 8px;
     border-radius: 12px;
     white-space: nowrap;
@@ -769,7 +872,7 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
   }
   .pa-desc {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #647488;
     margin: 0;
     flex: 1;
     display: -webkit-box;
@@ -786,36 +889,78 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
   .pa-count {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #7c3aed;
-    background: #f5f3ff;
+    color: #7C3AED;
+    background: #F5F3FF;
     padding: 3px 10px;
     border-radius: 12px;
   }
-  .pa-link {
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #2563eb;
+  .pa-link { font-size: 0.85rem; font-weight: 600; color: #7C3AED; }
+
+  /* ── CTA BANNER ─────────────────────────────────────── */
+  .cta-section {
+    margin: 40px -24px 0;
+    background: linear-gradient(135deg, #F5F3FF 0%, #EEF2FF 50%, #ECFDF5 100%);
+    border-top: 1px solid #E8ECF0;
+    border-radius: 0;
+  }
+  .cta-inner {
+    text-align: center;
+    padding: 72px 24px;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .cta-badge {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7C3AED;
+    background: #fff;
+    border: 1.5px solid #DDD6FE;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .cta-inner h2 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #0F172A;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  .cta-inner p {
+    color: #647488;
+    margin: 0 0 32px;
+    font-size: 1rem;
+  }
+  .cta-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  /* CTA buttons */
   .btn-primary {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     padding: 13px 32px;
-    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    background: linear-gradient(135deg, #7C3AED, #6366F1);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 12px;
     font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
-    transition: box-shadow 0.2s, transform 0.15s;
-    box-shadow: 0 2px 12px rgba(37,99,235,0.3);
+    transition: box-shadow 0.2s, transform 0.15s, opacity 0.15s;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.35);
   }
   .btn-primary:hover {
-    box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+    box-shadow: 0 8px 24px rgba(124,58,237,0.45);
     transform: translateY(-1px);
     text-decoration: none;
+    opacity: 0.95;
   }
   .btn-secondary {
     display: inline-flex;
@@ -823,98 +968,47 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     gap: 6px;
     padding: 13px 32px;
     background: #fff;
-    color: #374151;
-    border: 1.5px solid #d1d5db;
-    border-radius: 10px;
+    color: #4B5563;
+    border: 1.5px solid #E8ECF0;
+    border-radius: 12px;
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
     transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 6px rgba(0,0,0,0.05);
   }
-  .btn-secondary:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; box-shadow: 0 2px 10px rgba(37,99,235,0.10); }
-
-  /* CTA + Trust Signals */
-  .cta-section {
-    border-top: 1px solid #e5e7eb;
-    background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 50%, #f0fdf4 100%);
-    margin: 0 -24px;
-  }
-  .cta-inner {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 48px;
-    max-width: 960px;
-    margin: 0 auto;
-    padding: 72px 24px;
-  }
-  .cta-content h2 {
-    font-size: 1.85rem;
-    font-weight: 800;
-    color: #111827;
-    margin: 0 0 10px;
-    letter-spacing: -0.01em;
-  }
-  .cta-content p {
-    color: #6b7280;
-    margin: 0 0 28px;
-    font-size: 1rem;
-  }
-  .cta-actions {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .cta-stats {
-    display: flex;
-    gap: 36px;
-    flex-shrink: 0;
-  }
-  .stat {
-    text-align: center;
-  }
-  .stat-num {
-    font-size: 2.25rem;
-    font-weight: 800;
-    color: #111827;
-    display: block;
-    line-height: 1;
-    letter-spacing: -0.02em;
-  }
-  .stat-label {
-    font-size: 0.7rem;
-    color: #9ca3af;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    margin-top: 6px;
-    display: block;
+  .btn-secondary:hover {
+    border-color: #7C3AED;
+    color: #7C3AED;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(124,58,237,0.12);
   }
 
+  /* ── RESPONSIVE ─────────────────────────────────────── */
   @media (max-width: 768px) {
-    .cta-inner {
-      grid-template-columns: 1fr;
-      gap: 32px;
-      text-align: center;
-    }
-    .cta-actions { justify-content: center; }
-    .cta-stats { justify-content: center; }
+    .stats-bar { padding: 16px; gap: 0; }
+    .stat-item { padding: 0 16px; }
+    .stat-divider { height: 28px; }
   }
 
   @media (max-width: 640px) {
-    .hero h1 { font-size: 2.1rem; }
+    .hero { padding: 60px 0 44px; }
+    .hero h1 { font-size: 2.2rem; }
     .hero-sub { font-size: 1rem; }
-    #hero-q { font-size: 1rem; padding: 14px 16px 14px 44px; }
+    #hero-q { font-size: 1rem; padding: 14px 14px 14px 46px; }
+    .hero-search-btn { padding: 8px 16px; font-size: 0.85rem; }
     .hero-s-icon { left: 14px; }
-    .cats-grid { grid-template-columns: 1fr 1fr; }
+    .hero-cats { gap: 6px; }
+    .hero-cat-chip { font-size: 0.8rem; padding: 5px 12px; }
+
+    .stats-bar { flex-direction: column; gap: 12px; }
+    .stat-divider { display: none; }
+    .stat-item { padding: 0; justify-content: flex-start; width: 100%; }
+
+    .cats-grid { grid-template-columns: 1fr; }
     .tools-grid { grid-template-columns: 1fr; }
     .new-grid { grid-template-columns: 1fr; }
     .section-header { flex-wrap: wrap; }
-    .hero-cats { gap: 6px; }
-    .hero-cat-chip { font-size: 0.8rem; padding: 5px 12px; }
-    .cta-stats { gap: 20px; }
-    .stat-num { font-size: 1.75rem; }
-    .section-header h2::before { height: 1em; }
+    .cta-inner h2 { font-size: 1.6rem; }
   }
 </style>

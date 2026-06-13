@@ -1,4 +1,4 @@
----
+﻿---
 import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
 import bestPages from "../../data/best-pages.json";
@@ -245,7 +245,7 @@ const jsonLdStr = JSON.stringify({
       <div class="hero-text">
         <div class="hero-title-row">
           <h1>{tool.name} Review</h1>
-          <span class="hero-rating-badge">★ {tool.rating}</span>
+          <span class="hero-rating-badge">â˜… {tool.rating}</span>
         </div>
         <p class="tool-desc">{tool.description}</p>
         <p class="review-date">Reviewed {reviewDateStr}</p>
@@ -258,7 +258,7 @@ const jsonLdStr = JSON.stringify({
     <div class="summary-grid">
       <div class="summary-item">
         <span class="label">Rating</span>
-        <span class="value rating-val">★ {tool.rating} / 5</span>
+        <span class="value rating-val">â˜… {tool.rating} / 5</span>
       </div>
       <div class="summary-item">
         <span class="label">Pricing</span>
@@ -284,7 +284,7 @@ const jsonLdStr = JSON.stringify({
          class="visit-btn"
          rel={tool.affiliate ? "sponsored noopener" : "noopener"}
          target="_blank">
-        Visit {tool.name} ↗
+        Visit {tool.name} â†—
       </a>
       {tool.affiliate && <span class="aff-note">Affiliate link</span>}
       {tool.alternatives && tool.alternatives.length > 0 && (
@@ -365,7 +365,7 @@ const jsonLdStr = JSON.stringify({
       <div class="best-for-grid">
         {(tool.bestFor as string[]).map((item) => (
           <div class="best-for-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2.5" style="flex-shrink:0;margin-top:3px" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7C3AED" stroke-width="2.5" style="flex-shrink:0;margin-top:3px" aria-hidden="true">
               <polyline points="20 6 9 17 4 12"/>
             </svg>
             <span>{item}</span>
@@ -449,14 +449,14 @@ const jsonLdStr = JSON.stringify({
         <p class="verdict-text">{(tool.verdict as { summary: string }).summary}</p>
         <div class="verdict-footer">
           <div class="verdict-rating">
-            <span class="vr-score">★ {(tool.verdict as { score?: number }).score ?? tool.rating}</span>
+            <span class="vr-score">â˜… {(tool.verdict as { score?: number }).score ?? tool.rating}</span>
             <span class="vr-label">/ 5</span>
           </div>
           <a href={`/go/${tool.slug}`}
              class="visit-btn"
              rel={tool.affiliate ? "sponsored noopener" : "noopener"}
              target="_blank">
-            Visit {tool.name} ↗
+            Visit {tool.name} â†—
           </a>
         </div>
       </div>
@@ -549,7 +549,7 @@ const jsonLdStr = JSON.stringify({
         <div class="pn-meta">
           <span class="pn-dir">&#8592; Previous</span>
           <span class="pn-name">{prevTool.name}</span>
-          <span class="pn-rating">★ {prevTool.rating}</span>
+          <span class="pn-rating">â˜… {prevTool.rating}</span>
         </div>
       </a>
     ) : <div />}
@@ -558,7 +558,7 @@ const jsonLdStr = JSON.stringify({
         <div class="pn-meta">
           <span class="pn-dir">Next &rarr;</span>
           <span class="pn-name">{nextTool.name}</span>
-          <span class="pn-rating">★ {nextTool.rating}</span>
+          <span class="pn-rating">â˜… {nextTool.rating}</span>
         </div>
         <ToolLogo tool={nextTool} size={36} />
       </a>
@@ -574,13 +574,13 @@ const jsonLdStr = JSON.stringify({
       <ToolLogo tool={tool} size={28} />
       <span class="sticky-name">{tool.name}</span>
       {tool.startingPrice && <span class="sticky-price">{tool.startingPrice}</span>}
-      <span class="sticky-rating">★ {tool.rating}</span>
+      <span class="sticky-rating">â˜… {tool.rating}</span>
     </div>
     <a href={`/go/${tool.slug}`}
        class="sticky-btn"
        rel={tool.affiliate ? "sponsored noopener" : "noopener"}
        target="_blank">
-      Visit {tool.name} ↗
+      Visit {tool.name} â†—
     </a>
   </div>
 </div>
@@ -607,7 +607,7 @@ const jsonLdStr = JSON.stringify({
     margin-bottom: 24px;
   }
   .breadcrumb a { color: #6b7280; }
-  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  .breadcrumb a:hover { color: #7C3AED; text-decoration: none; }
 
   /* HERO */
   .review-hero { margin-bottom: 28px; }
@@ -678,7 +678,7 @@ const jsonLdStr = JSON.stringify({
   }
   .value { font-size: 1rem; font-weight: 600; color: #111827; }
   .rating-val { color: #d97706; }
-  .cat-link { color: #2563eb; text-decoration: none; }
+  .cat-link { color: #7C3AED; text-decoration: none; }
   .cat-link:hover { text-decoration: underline; }
   .summary-actions {
     border-top: 1px solid #e5e7eb;
@@ -691,7 +691,7 @@ const jsonLdStr = JSON.stringify({
   .visit-btn {
     display: inline-block;
     padding: 10px 22px;
-    background: #2563eb;
+    background: #7C3AED;
     color: #fff;
     border-radius: 8px;
     font-weight: 600;
@@ -699,30 +699,30 @@ const jsonLdStr = JSON.stringify({
     text-decoration: none;
     transition: background 0.2s;
   }
-  .visit-btn:hover { background: #1d4ed8; text-decoration: none; }
+  .visit-btn:hover { background: #6D28D9; text-decoration: none; }
   .alt-link {
     display: inline-block;
     padding: 9px 18px;
-    border: 1.5px solid #2563eb;
-    color: #2563eb;
+    border: 1.5px solid #7C3AED;
+    color: #7C3AED;
     border-radius: 8px;
     font-size: 0.9rem;
     font-weight: 600;
     text-decoration: none;
   }
-  .alt-link:hover { background: #eff6ff; text-decoration: none; }
+  .alt-link:hover { background: #F5F3FF; text-decoration: none; }
   .tag {
     display: inline-block;
     padding: 6px 13px;
-    background: #eff6ff;
-    color: #2563eb;
+    background: #F5F3FF;
+    color: #7C3AED;
     border-radius: 20px;
     font-size: 0.8rem;
     font-weight: 600;
     text-decoration: none;
-    border: 1px solid #bfdbfe;
+    border: 1px solid #DDD6FE;
   }
-  .tag:hover { background: #dbeafe; text-decoration: none; }
+  .tag:hover { background: #EDE9FE; text-decoration: none; }
   .aff-note {
     font-size: 0.72rem;
     color: #9ca3af;
@@ -761,8 +761,8 @@ const jsonLdStr = JSON.stringify({
     white-space: nowrap;
   }
   .toc-link:hover {
-    color: #2563eb;
-    background: #eff6ff;
+    color: #7C3AED;
+    background: #F5F3FF;
     text-decoration: none;
   }
 
@@ -821,7 +821,7 @@ const jsonLdStr = JSON.stringify({
     line-height: 1.5;
   }
   .pros-box .pc-list li::before {
-    content: "✓";
+    content: "âœ“";
     position: absolute;
     left: 0;
     color: #15803d;
@@ -829,7 +829,7 @@ const jsonLdStr = JSON.stringify({
     font-size: 0.8rem;
   }
   .cons-box .pc-list li::before {
-    content: "✗";
+    content: "âœ—";
     position: absolute;
     left: 0;
     color: #b91c1c;
@@ -845,7 +845,7 @@ const jsonLdStr = JSON.stringify({
     gap: 10px;
     padding: 14px 16px;
     background: #f8faff;
-    border: 1px solid #dbeafe;
+    border: 1px solid #EDE9FE;
     border-radius: 10px;
     font-size: 0.9rem;
     color: #1e3a8a;
@@ -862,7 +862,7 @@ const jsonLdStr = JSON.stringify({
     border-radius: 12px;
     transition: border-color 0.2s, box-shadow 0.2s;
   }
-  .feature-card:hover { border-color: #2563eb; box-shadow: 0 2px 10px rgba(37,99,235,0.07); }
+  .feature-card:hover { border-color: #7C3AED; box-shadow: 0 2px 10px rgba(124,58,237,0.07); }
   .feature-title { font-size: 0.95rem; font-weight: 700; color: #111827; margin-bottom: 6px; }
   .feature-desc { font-size: 0.875rem; color: #6b7280; line-height: 1.6; margin: 0; }
 
@@ -891,8 +891,8 @@ const jsonLdStr = JSON.stringify({
   .uc-num {
     font-size: 0.7rem;
     font-weight: 800;
-    color: #2563eb;
-    background: #eff6ff;
+    color: #7C3AED;
+    background: #F5F3FF;
     border-radius: 6px;
     padding: 2px 7px;
     flex-shrink: 0;
@@ -988,7 +988,7 @@ const jsonLdStr = JSON.stringify({
     margin-bottom: 18px;
   }
   .section-hd h2 { margin: 0; }
-  .see-all { font-size: 0.875rem; font-weight: 600; color: #2563eb; white-space: nowrap; flex-shrink: 0; }
+  .see-all { font-size: 0.875rem; font-weight: 600; color: #7C3AED; white-space: nowrap; flex-shrink: 0; }
   .see-all:hover { text-decoration: underline; }
 
   /* FAQ */
@@ -1000,7 +1000,7 @@ const jsonLdStr = JSON.stringify({
     background: #fff;
     transition: border-color 0.15s;
   }
-  .faq-item[open] { border-color: #bfdbfe; }
+  .faq-item[open] { border-color: #DDD6FE; }
   .faq-q {
     display: flex;
     justify-content: space-between;
@@ -1016,11 +1016,11 @@ const jsonLdStr = JSON.stringify({
     background: #f9fafb;
     transition: background 0.15s;
   }
-  .faq-item[open] .faq-q { background: #eff6ff; color: #1d4ed8; }
+  .faq-item[open] .faq-q { background: #F5F3FF; color: #6D28D9; }
   .faq-q::-webkit-details-marker { display: none; }
   .faq-q span { flex: 1; }
   .faq-icon { flex-shrink: 0; transition: transform 0.25s; color: #9ca3af; }
-  .faq-item[open] .faq-icon { transform: rotate(180deg); color: #2563eb; }
+  .faq-item[open] .faq-icon { transform: rotate(180deg); color: #7C3AED; }
   .faq-a {
     padding: 14px 18px 16px;
     font-size: 0.9rem;
@@ -1047,8 +1047,8 @@ const jsonLdStr = JSON.stringify({
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
   }
   .guide-card:hover {
-    border-color: #2563eb;
-    box-shadow: 0 4px 16px rgba(37,99,235,0.12);
+    border-color: #7C3AED;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.12);
     transform: translateY(-1px);
     text-decoration: none;
   }
@@ -1067,7 +1067,7 @@ const jsonLdStr = JSON.stringify({
   }
   .gc-meta {
     font-size: 0.78rem;
-    color: #2563eb;
+    color: #7C3AED;
     font-weight: 600;
     margin-top: 2px;
   }
@@ -1093,9 +1093,9 @@ const jsonLdStr = JSON.stringify({
     min-width: 0;
   }
   .pn-card:hover {
-    border-color: #2563eb;
+    border-color: #7C3AED;
     background: #fafbff;
-    box-shadow: 0 2px 12px rgba(37,99,235,0.08);
+    box-shadow: 0 2px 12px rgba(124,58,237,0.08);
     text-decoration: none;
   }
   .pn-card.next { justify-content: flex-end; text-align: right; }
@@ -1149,7 +1149,7 @@ const jsonLdStr = JSON.stringify({
   }
   .sticky-btn {
     padding: 10px 24px;
-    background: #2563eb;
+    background: #7C3AED;
     color: #fff;
     border-radius: 8px;
     font-weight: 600;
@@ -1159,7 +1159,7 @@ const jsonLdStr = JSON.stringify({
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .sticky-btn:hover { background: #1d4ed8; text-decoration: none; }
+  .sticky-btn:hover { background: #6D28D9; text-decoration: none; }
 
   @media (max-width: 640px) {
     .review-hero h1 { font-size: 1.6rem; }

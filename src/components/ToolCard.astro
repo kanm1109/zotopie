@@ -11,7 +11,7 @@ const priceLabel = tool.startingPrice
 <div class="tool-card">
   <div class="tool-top">
     <div class="tool-id">
-      <ToolLogo tool={tool} size={36} />
+      <ToolLogo tool={tool} size={38} />
       <div class="tool-meta">
         <h3 class="tool-name">
           <a href={`/reviews/${tool.slug}`}>{tool.name}</a>
@@ -31,8 +31,8 @@ const priceLabel = tool.startingPrice
 
 <style>
   .tool-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 14px;
+    border: 1.5px solid #E8ECF0;
+    border-radius: 16px;
     padding: 22px;
     background: #fff;
     display: flex;
@@ -47,13 +47,13 @@ const priceLabel = tool.startingPrice
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    background: linear-gradient(90deg, #7C3AED, #6366F1);
     opacity: 0;
     transition: opacity 0.2s;
   }
   .tool-card:hover {
-    border-color: #93c5fd;
-    box-shadow: 0 8px 28px rgba(37,99,235,0.11), 0 2px 8px rgba(0,0,0,0.04);
+    border-color: #C4B5FD;
+    box-shadow: 0 8px 28px rgba(124,58,237,0.12), 0 2px 8px rgba(0,0,0,0.04);
     transform: translateY(-2px);
   }
   .tool-card:hover::before { opacity: 1; }
@@ -77,26 +77,26 @@ const priceLabel = tool.startingPrice
     min-width: 0;
   }
   .tool-name {
-    font-size: 1.05rem;
+    font-size: 1.02rem;
     font-weight: 700;
     margin: 0;
     line-height: 1.2;
   }
   .tool-name a {
-    color: #111827;
+    color: #0F172A;
     text-decoration: none;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     display: block;
   }
-  .tool-name a:hover { color: #2563eb; }
+  .tool-name a:hover { color: #7C3AED; }
 
   .tool-pricing {
     font-size: 0.72rem;
     font-weight: 600;
-    color: #6b7280;
-    background: #f3f4f6;
+    color: #647488;
+    background: #F1F5F9;
     padding: 2px 8px;
     border-radius: 10px;
     display: inline-block;
@@ -104,34 +104,34 @@ const priceLabel = tool.startingPrice
   }
   .pricing-free {
     color: #059669;
-    background: #dcfce7;
+    background: #DCFCE7;
   }
 
   .tool-rating {
     display: flex;
     align-items: center;
-    gap: 2px;
-    font-size: 0.88rem;
+    gap: 3px;
+    font-size: 0.85rem;
     font-weight: 700;
-    color: #92400e;
-    background: #fef3c7;
-    border: 1px solid #fde68a;
+    color: #92400E;
+    background: #FEF3C7;
+    border: 1px solid #FDE68A;
     padding: 3px 10px;
     border-radius: 20px;
     flex-shrink: 0;
     white-space: nowrap;
   }
   .rating-star {
-    color: #f59e0b;
+    color: #F59E0B;
     font-size: 0.82rem;
   }
 
   .tool-desc {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #647488;
     margin: 0;
     flex: 1;
-    line-height: 1.55;
+    line-height: 1.6;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -147,17 +147,17 @@ const priceLabel = tool.startingPrice
     align-items: center;
     font-size: 0.82rem;
     font-weight: 700;
-    color: #2563eb;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
+    color: #7C3AED;
+    background: #F5F3FF;
+    border: 1.5px solid #DDD6FE;
     padding: 6px 16px;
     border-radius: 20px;
     text-decoration: none;
     transition: background 0.15s, border-color 0.15s, color 0.15s;
   }
   .view-btn:hover {
-    background: #2563eb;
-    border-color: #2563eb;
+    background: #7C3AED;
+    border-color: #7C3AED;
     color: #fff;
     text-decoration: none;
   }

@@ -1,4 +1,4 @@
----
+﻿---
 import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
 import MainLayout from "../../layouts/MainLayout.astro";
@@ -39,7 +39,7 @@ function starsOf(n: number) {
   const full = Math.floor(n);
   const half = n - full >= 0.5 ? 1 : 0;
   const empty = 5 - full - half;
-  return "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
+  return "â˜…".repeat(full) + (half ? "Â½" : "") + "â˜†".repeat(empty);
 }
 
 // "ToolName is a/an [description lowercase, no trailing period]."
@@ -116,7 +116,7 @@ const q2Answer = (() => {
     const bD = toolB.startingPrice ? ` Paid plans start from ${toolB.startingPrice}.` : "";
     const bothFree = !toolA.startingPrice && !toolB.startingPrice;
     if (bothFree)
-      return `Both ${toolA.name} and ${toolB.name} offer free access — no credit card required to get started. Paid plans with higher limits and additional features are available for power users who need more capacity. Check each tool's official pricing page for current plan details and limits.`;
+      return `Both ${toolA.name} and ${toolB.name} offer free access â€” no credit card required to get started. Paid plans with higher limits and additional features are available for power users who need more capacity. Check each tool's official pricing page for current plan details and limits.`;
     return `Both tools offer free access. ${toolA.name} is ${toolA.pricing.toLowerCase()}.${aD} ${toolB.name} is ${toolB.pricing.toLowerCase()}.${bD}`;
   }
   if (aIsFree && !bIsFree)
@@ -125,7 +125,7 @@ const q2Answer = (() => {
     return `${toolB.name} offers a free plan. ${toolA.name} is a paid tool${toolA.startingPrice ? ` starting from ${toolA.startingPrice}` : ""}. ${toolB.name} wins on affordability for users on a budget.`;
   const aStr = toolA.startingPrice ? `starts from ${toolA.startingPrice}` : "is a paid tool";
   const bStr = toolB.startingPrice ? `starts from ${toolB.startingPrice}` : "is a paid tool";
-  return `${toolA.name} ${aStr}. ${toolB.name} ${bStr}. Neither tool offers a free plan — visit each pricing page for current rates.`;
+  return `${toolA.name} ${aStr}. ${toolB.name} ${bStr}. Neither tool offers a free plan â€” visit each pricing page for current rates.`;
 })();
 
 const q3Answer = `${toSentence(toolA.name, toolA.description)} ${toSentence(toolB.name, toolB.description)} The key distinction is focus: ${toolA.name} is best suited for ${toolA.bestFor?.[0] ?? "its core users"}, while ${toolB.name} works better for ${toolB.bestFor?.[0] ?? "its core users"}.`;
@@ -142,7 +142,7 @@ const verdictText = (() => {
   const l = loserTool;
   let text = `Based on our editorial ratings, ${w.name} scores higher (${w.rating}/5 vs ${l.rating}/5).`;
   if ((w.pricing === "Free" || w.pricing === "Freemium") && l.pricing === "Paid") {
-    text += ` It also offers a free plan — a significant value advantage over ${l.name}'s paid-only pricing.`;
+    text += ` It also offers a free plan â€” a significant value advantage over ${l.name}'s paid-only pricing.`;
   }
   text += ` ${w.name} is particularly well-suited for ${w.bestFor?.[0] ?? "its core use case"}.`;
   if (l.bestFor?.[0]) {
@@ -257,14 +257,14 @@ const jsonLdStr = JSON.stringify({
          class="hero-cta-a"
          rel={toolA.affiliate ? "sponsored noopener" : "noopener"}
          target="_blank">
-        {aIsFree ? `Try ${toolA.name} Free →` : `Visit ${toolA.name} →`}
+        {aIsFree ? `Try ${toolA.name} Free â†’` : `Visit ${toolA.name} â†’`}
       </a>
       <span class="hero-cta-sep">or</span>
       <a href={`/go/${toolB.slug}`}
          class="hero-cta-b"
          rel={toolB.affiliate ? "sponsored noopener" : "noopener"}
          target="_blank">
-        {bIsFree ? `Try ${toolB.name} Free →` : `Visit ${toolB.name} →`}
+        {bIsFree ? `Try ${toolB.name} Free â†’` : `Visit ${toolB.name} â†’`}
       </a>
     </div>
   </section>
@@ -272,8 +272,8 @@ const jsonLdStr = JSON.stringify({
   <!-- EDITORIAL INTRO -->
   <section class="cmp-section intro-section">
     <div class="cmp-intro">
-      <p><strong>{toolA.name}</strong> — {introA}</p>
-      <p><strong>{toolB.name}</strong> — {introB}</p>
+      <p><strong>{toolA.name}</strong> â€” {introA}</p>
+      <p><strong>{toolB.name}</strong> â€” {introB}</p>
       <p class="intro-closing">This comparison covers pricing, key strengths and limitations, and what each tool does best to help you choose the right fit for your workflow.</p>
     </div>
   </section>
@@ -317,8 +317,8 @@ const jsonLdStr = JSON.stringify({
           </tr>
           <tr>
             <td>Free Plan</td>
-            <td class={aIsFree ? "cell-better" : ""}>{aIsFree ? "✓ Yes" : "✗ No"}</td>
-            <td class={bIsFree ? "cell-better" : ""}>{bIsFree ? "✓ Yes" : "✗ No"}</td>
+            <td class={aIsFree ? "cell-better" : ""}>{aIsFree ? "âœ“ Yes" : "âœ— No"}</td>
+            <td class={bIsFree ? "cell-better" : ""}>{bIsFree ? "âœ“ Yes" : "âœ— No"}</td>
           </tr>
         </tbody>
       </table>
@@ -398,14 +398,14 @@ const jsonLdStr = JSON.stringify({
         <ul class="bf-list">
           {(toolA.bestFor ?? []).slice(0, 4).map((b) => <li>{b}</li>)}
         </ul>
-        <a href={`/reviews/${toolA.slug}/`} class="bf-link">Read full {toolA.name} review →</a>
+        <a href={`/reviews/${toolA.slug}/`} class="bf-link">Read full {toolA.name} review â†’</a>
       </div>
       <div class="bf-block">
         <div class="bf-name">{toolB.name} is best for</div>
         <ul class="bf-list">
           {(toolB.bestFor ?? []).slice(0, 4).map((b) => <li>{b}</li>)}
         </ul>
-        <a href={`/reviews/${toolB.slug}/`} class="bf-link">Read full {toolB.name} review →</a>
+        <a href={`/reviews/${toolB.slug}/`} class="bf-link">Read full {toolB.name} review â†’</a>
       </div>
     </div>
   </section>
@@ -469,8 +469,8 @@ const jsonLdStr = JSON.stringify({
            rel={winnerTool.affiliate ? "sponsored noopener" : "noopener"}
            target="_blank">
           {winnerTool.pricing === "Free" || winnerTool.pricing === "Freemium"
-            ? `Try ${winnerTool.name} Free →`
-            : `Visit ${winnerTool.name} →`}
+            ? `Try ${winnerTool.name} Free â†’`
+            : `Visit ${winnerTool.name} â†’`}
         </a>
         <a href={`/reviews/${toolA.slug}/`} class="vcta vcta-secondary">{toolA.name} Review</a>
         <a href={`/reviews/${toolB.slug}/`} class="vcta vcta-secondary">{toolB.name} Review</a>
@@ -484,14 +484,14 @@ const jsonLdStr = JSON.stringify({
     <div class="explore-grid">
       <div class="explore-block">
         <div class="explore-label">All Alternatives</div>
-        <a href={`/alternatives/${toolA.slug}/`} class="explore-link">All {toolA.name} alternatives →</a>
-        <a href={`/alternatives/${toolB.slug}/`} class="explore-link">All {toolB.name} alternatives →</a>
+        <a href={`/alternatives/${toolA.slug}/`} class="explore-link">All {toolA.name} alternatives â†’</a>
+        <a href={`/alternatives/${toolB.slug}/`} class="explore-link">All {toolB.name} alternatives â†’</a>
       </div>
       {relatedPairs.length > 0 && (
         <div class="explore-block">
           <div class="explore-label">Related Comparisons</div>
           {relatedPairs.map((rp) => (
-            <a href={`/compare/${rp.slug}/`} class="explore-link">{rp.label} →</a>
+            <a href={`/compare/${rp.slug}/`} class="explore-link">{rp.label} â†’</a>
           ))}
         </div>
       )}
@@ -512,7 +512,7 @@ const jsonLdStr = JSON.stringify({
     margin-bottom: 16px;
   }
   .breadcrumb a { color: #6b7280; }
-  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  .breadcrumb a:hover { color: #7C3AED; text-decoration: none; }
   h1 {
     font-size: 2rem;
     font-weight: 800;
@@ -542,7 +542,7 @@ const jsonLdStr = JSON.stringify({
     transition: border-color 0.15s, box-shadow 0.15s;
     position: relative;
   }
-  .cmp-head:hover { border-color: #93c5fd; box-shadow: 0 4px 16px rgba(37,99,235,0.10); }
+  .cmp-head:hover { border-color: #C4B5FD; box-shadow: 0 4px 16px rgba(124,58,237,0.10); }
   .cmp-head--winner {
     border-color: #f59e0b;
     background: linear-gradient(160deg, #fffbeb 0%, #fff 100%);
@@ -598,7 +598,7 @@ const jsonLdStr = JSON.stringify({
   }
   .hero-cta-a {
     padding: 11px 26px;
-    background: #2563eb;
+    background: #7C3AED;
     color: #fff;
     border-radius: 8px;
     font-weight: 700;
@@ -606,19 +606,19 @@ const jsonLdStr = JSON.stringify({
     text-decoration: none;
     transition: background 0.15s;
   }
-  .hero-cta-a:hover { background: #1d4ed8; text-decoration: none; }
+  .hero-cta-a:hover { background: #6D28D9; text-decoration: none; }
   .hero-cta-b {
     padding: 11px 26px;
     background: #fff;
-    color: #2563eb;
-    border: 2px solid #2563eb;
+    color: #7C3AED;
+    border: 2px solid #7C3AED;
     border-radius: 8px;
     font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
     transition: background 0.15s, color 0.15s;
   }
-  .hero-cta-b:hover { background: #eff6ff; text-decoration: none; }
+  .hero-cta-b:hover { background: #F5F3FF; text-decoration: none; }
   .hero-cta-sep {
     font-size: 0.85rem;
     color: #9ca3af;
@@ -643,7 +643,7 @@ const jsonLdStr = JSON.stringify({
     display: inline-block;
     width: 4px;
     height: 1.1em;
-    background: linear-gradient(180deg, #2563eb, #7c3aed);
+    background: linear-gradient(180deg, #7C3AED, #7c3aed);
     border-radius: 2px;
     flex-shrink: 0;
   }
@@ -658,7 +658,7 @@ const jsonLdStr = JSON.stringify({
     margin: 0;
     padding: 20px 24px;
     background: #f9fafb;
-    border-left: 3px solid #2563eb;
+    border-left: 3px solid #7C3AED;
     border-radius: 0 8px 8px 0;
     display: flex;
     flex-direction: column;
@@ -694,7 +694,7 @@ const jsonLdStr = JSON.stringify({
     border-bottom: 2px solid #e5e7eb;
   }
   .cmp-table tbody tr:nth-child(even) { background: #f9fafb; }
-  .cmp-table tbody tr:hover { background: #eff6ff; }
+  .cmp-table tbody tr:hover { background: #F5F3FF; }
   .cmp-table .col-winner {
     background: #fef9c3;
     color: #92400e;
@@ -754,17 +754,17 @@ const jsonLdStr = JSON.stringify({
     padding-left: 18px;
     position: relative;
   }
-  .pros-list li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+  .pros-list li::before { content: "âœ“"; position: absolute; left: 0; color: #059669; font-weight: 700; }
   .cons-list li {
     font-size: 0.875rem;
     color: #374151;
     padding-left: 18px;
     position: relative;
   }
-  .cons-list li::before { content: "✗"; position: absolute; left: 0; color: #dc2626; }
+  .cons-list li::before { content: "âœ—"; position: absolute; left: 0; color: #dc2626; }
   .pc-empty { padding: 16px; }
   .pc-empty p { font-size: 0.875rem; color: #6b7280; margin: 0; }
-  .pc-empty a { color: #2563eb; }
+  .pc-empty a { color: #7C3AED; }
 
   /* BEST FOR */
   .bestfor-grid {
@@ -798,11 +798,11 @@ const jsonLdStr = JSON.stringify({
     padding-left: 16px;
     position: relative;
   }
-  .bf-list li::before { content: "→"; position: absolute; left: 0; color: #2563eb; }
+  .bf-list li::before { content: "â†’"; position: absolute; left: 0; color: #7C3AED; }
   .bf-link {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #2563eb;
+    color: #7C3AED;
   }
   .bf-link:hover { text-decoration: underline; }
 
@@ -843,7 +843,7 @@ const jsonLdStr = JSON.stringify({
     position: relative;
     line-height: 1.5;
   }
-  .choose-list li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+  .choose-list li::before { content: "âœ“"; position: absolute; left: 0; color: #059669; font-weight: 700; }
 
   /* FAQ */
   .faq-list {
@@ -890,7 +890,7 @@ const jsonLdStr = JSON.stringify({
 
   /* VERDICT */
   .verdict-box {
-    background: linear-gradient(135deg, #fffbeb 0%, #eff6ff 60%, #f0fdf4 100%);
+    background: linear-gradient(135deg, #fffbeb 0%, #F5F3FF 60%, #f0fdf4 100%);
     border: 1.5px solid #fde68a;
     border-radius: 18px;
     padding: 32px;
@@ -928,18 +928,18 @@ const jsonLdStr = JSON.stringify({
     text-decoration: none;
   }
   .vcta-primary {
-    background: #2563eb;
+    background: #7C3AED;
     color: #fff;
-    border: 1.5px solid #2563eb;
-    box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+    border: 1.5px solid #7C3AED;
+    box-shadow: 0 2px 8px rgba(124,58,237,0.25);
   }
-  .vcta-primary:hover { background: #1d4ed8; border-color: #1d4ed8; text-decoration: none; }
+  .vcta-primary:hover { background: #6D28D9; border-color: #6D28D9; text-decoration: none; }
   .vcta-secondary {
     background: #fff;
     border: 1.5px solid #d1d5db;
     color: #374151;
   }
-  .vcta-secondary:hover { border-color: #2563eb; color: #2563eb; }
+  .vcta-secondary:hover { border-color: #7C3AED; color: #7C3AED; }
 
   /* EXPLORE MORE */
   .explore-grid {
@@ -967,7 +967,7 @@ const jsonLdStr = JSON.stringify({
   .explore-link {
     font-size: 0.9rem;
     font-weight: 600;
-    color: #2563eb;
+    color: #7C3AED;
     text-decoration: none;
   }
   .explore-link:hover { text-decoration: underline; }

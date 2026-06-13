@@ -1,4 +1,4 @@
----
+﻿---
 import tools from "../data/generated/tools-enriched.json";
 import taxonomies from "../data/taxonomies.json";
 import iconData from "../data/generated/icon-data.json";
@@ -68,7 +68,7 @@ const searchJsonLdStr = JSON.stringify({
       <input
         id="q"
         type="search"
-        placeholder="Try &quot;SEO&quot;, &quot;automation&quot;, &quot;scheduling&quot;…"
+        placeholder="Try &quot;SEO&quot;, &quot;automation&quot;, &quot;scheduling&quot;â€¦"
         autocomplete="off"
         spellcheck="false"
         autofocus
@@ -91,7 +91,7 @@ const TAXONOMIES = JSON.parse(taxonomiesData);
 const ICON_DATA = JSON.parse(iconDataStr);
 
 const PALETTE = [
-  '#2563eb','#7c3aed','#059669',
+  '#7C3AED','#7c3aed','#059669',
   '#dc2626','#d97706','#0891b2',
   '#be185d','#16a34a',
 ];
@@ -130,7 +130,7 @@ function renderCard(tool, q) {
     .map((s) => `<a href="/category/${s}" class="rc-cat">${esc(catName(s))}</a>`)
     .join('');
   const price = tool.startingPrice
-    ? `${esc(tool.pricing)} · from ${esc(tool.startingPrice)}`
+    ? `${esc(tool.pricing)} Â· from ${esc(tool.startingPrice)}`
     : esc(tool.pricing);
   return `
 <div class="rc-card">
@@ -139,7 +139,7 @@ function renderCard(tool, q) {
       ${logoHtml(tool)}
       <h3 class="rc-name"><a href="/reviews/${tool.slug}">${highlight(tool.name, q)}</a></h3>
     </div>
-    <span class="rc-rating">★ ${tool.rating}</span>
+    <span class="rc-rating">â˜… ${tool.rating}</span>
   </div>
   <p class="rc-desc">${highlight(tool.description, q)}</p>
   ${cats ? `<div class="rc-cats">${cats}</div>` : ''}
@@ -165,7 +165,7 @@ function fillSearch(term) {
   input.focus();
 }
 
-// ── Relevance scoring ───────────────────────────────────────────────────
+// â”€â”€ Relevance scoring â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function scoreMatch(tool, q) {
   let score = 0;
   const nameLo = tool.name.toLowerCase();
@@ -183,7 +183,7 @@ function scoreMatch(tool, q) {
   return score;
 }
 
-// ── Category filter state ────────────────────────────────────────────────
+// â”€â”€ Category filter state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 let activeCat = '';
 
 const catCounts = {};
@@ -214,7 +214,7 @@ function initCatChips() {
   });
 }
 
-// ── Search ───────────────────────────────────────────────────────────────
+// â”€â”€ Search â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function doSearch(raw) {
   const q = raw.trim().toLowerCase();
   const countEl = document.getElementById('count');
@@ -271,7 +271,7 @@ const init = new URLSearchParams(location.search).get('q') || '';
 if (init) { input.value = init; doSearch(init); }
 else { doSearch(''); }
 
-// ── Autocomplete ────────────────────────────────────────────────────────────
+// â”€â”€ Autocomplete â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 (function() {
   var acDrop = document.getElementById('ac-drop');
   if (!acDrop) return;
@@ -441,8 +441,8 @@ else { doSearch(''); }
     transition: border-color 0.2s, box-shadow 0.2s;
   }
   #q:focus {
-    border-color: #2563eb;
-    box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    border-color: #7C3AED;
+    box-shadow: 0 0 0 3px rgba(124,58,237,0.1);
   }
   #q::placeholder { color: #9ca3af; }
 
@@ -472,8 +472,8 @@ else { doSearch(''); }
     transition: box-shadow 0.2s, border-color 0.2s;
   }
   .rc-card:hover {
-    border-color: #2563eb;
-    box-shadow: 0 4px 16px rgba(37,99,235,0.08);
+    border-color: #7C3AED;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.08);
   }
   .rc-top {
     display: flex;
@@ -521,7 +521,7 @@ else { doSearch(''); }
     text-overflow: ellipsis;
     display: block;
   }
-  .rc-name a:hover { color: #2563eb; }
+  .rc-name a:hover { color: #7C3AED; }
   .rc-rating {
     font-size: 0.875rem;
     font-weight: 700;
@@ -546,14 +546,14 @@ else { doSearch(''); }
   .rc-cat {
     font-size: 0.75rem;
     font-weight: 600;
-    color: #2563eb;
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
+    color: #7C3AED;
+    background: #F5F3FF;
+    border: 1px solid #DDD6FE;
     border-radius: 10px;
     padding: 2px 9px;
     text-decoration: none;
   }
-  .rc-cat:hover { background: #dbeafe; text-decoration: none; }
+  .rc-cat:hover { background: #EDE9FE; text-decoration: none; }
   .rc-footer {
     display: flex;
     align-items: center;
@@ -571,7 +571,7 @@ else { doSearch(''); }
   .rc-link {
     font-size: 0.85rem;
     font-weight: 600;
-    color: #2563eb;
+    color: #7C3AED;
     text-decoration: none;
   }
   .rc-link:hover { text-decoration: underline; }
@@ -615,9 +615,9 @@ else { doSearch(''); }
     transition: border-color 0.2s, color 0.2s, background 0.2s;
   }
   .popular-chip:hover {
-    border-color: #2563eb;
-    color: #2563eb;
-    background: #eff6ff;
+    border-color: #7C3AED;
+    color: #7C3AED;
+    background: #F5F3FF;
   }
 
   /* Category filter chips */
@@ -641,18 +641,18 @@ else { doSearch(''); }
     transition: border-color 0.15s, color 0.15s, background 0.15s;
   }
   .cat-chip:hover {
-    border-color: #2563eb;
-    color: #2563eb;
-    background: #eff6ff;
+    border-color: #7C3AED;
+    color: #7C3AED;
+    background: #F5F3FF;
   }
   .cat-chip-active {
-    border-color: #2563eb;
-    background: #2563eb;
+    border-color: #7C3AED;
+    background: #7C3AED;
     color: #fff;
   }
   .cat-chip-active:hover {
-    background: #1d4ed8;
-    border-color: #1d4ed8;
+    background: #6D28D9;
+    border-color: #6D28D9;
     color: #fff;
   }
 

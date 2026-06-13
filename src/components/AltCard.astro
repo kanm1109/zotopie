@@ -44,15 +44,14 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
     align-items: center;
     gap: 16px;
     padding: 16px 20px;
-    border: 1px solid #e5e7eb;
+    border: 1.5px solid #E8ECF0;
     border-radius: 14px;
     background: #fff;
-    transition: border-color 0.18s, box-shadow 0.18s, background 0.18s, transform 0.15s;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
   }
   .alt-card:hover {
-    border-color: #93c5fd;
-    box-shadow: 0 6px 20px rgba(37,99,235,0.10);
-    background: #fafbff;
+    border-color: #C4B5FD;
+    box-shadow: 0 6px 20px rgba(124,58,237,0.10);
     transform: translateY(-1px);
   }
 
@@ -81,20 +80,20 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
   .alt-name {
     font-size: 1rem;
     font-weight: 700;
-    color: #111827;
+    color: #0F172A;
   }
   .alt-rating {
     font-size: 0.8rem;
     font-weight: 700;
-    color: #d97706;
-    background: #fef3c7;
+    color: #D97706;
+    background: #FEF3C7;
     padding: 2px 8px;
     border-radius: 10px;
     flex-shrink: 0;
   }
   .alt-desc {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #647488;
     margin: 0 0 6px;
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -105,7 +104,7 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
     font-size: 0.78rem;
     font-weight: 600;
     color: #9ca3af;
-    background: #f3f4f6;
+    background: #F1F5F9;
     padding: 2px 8px;
     border-radius: 8px;
   }
@@ -122,18 +121,18 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
     display: inline-block;
     font-size: 0.8rem;
     font-weight: 600;
-    color: #7c3aed;
-    background: #f5f3ff;
-    border: 1px solid #e9d5ff;
+    color: #7C3AED;
+    background: #F5F3FF;
+    border: 1.5px solid #DDD6FE;
     padding: 5px 12px;
-    border-radius: 6px;
+    border-radius: 8px;
     text-decoration: none;
     white-space: nowrap;
     transition: background 0.15s, border-color 0.15s;
   }
   .alt-cmp-btn:hover {
-    background: #ede9fe;
-    border-color: #c4b5fd;
+    background: #EDE9FE;
+    border-color: #C4B5FD;
     text-decoration: none;
   }
 
@@ -142,15 +141,17 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
     font-size: 0.82rem;
     font-weight: 700;
     color: #fff;
-    background: #2563eb;
-    padding: 5px 14px;
-    border-radius: 6px;
+    background: linear-gradient(135deg, #7C3AED, #6366F1);
+    padding: 6px 14px;
+    border-radius: 8px;
     text-decoration: none;
     white-space: nowrap;
-    transition: background 0.15s;
+    transition: opacity 0.15s, transform 0.15s;
+    box-shadow: 0 2px 8px rgba(124,58,237,0.3);
   }
   .alt-try-btn:hover {
-    background: #1d4ed8;
+    opacity: 0.9;
+    transform: translateY(-1px);
     text-decoration: none;
   }
 
@@ -158,12 +159,12 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
     display: inline-block;
     font-size: 0.82rem;
     font-weight: 600;
-    color: #6b7280;
+    color: #647488;
     white-space: nowrap;
     text-decoration: none;
   }
   .alt-review-btn:hover {
-    color: #2563eb;
+    color: #7C3AED;
     text-decoration: underline;
   }
 
