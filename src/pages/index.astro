@@ -1,6 +1,7 @@
 ---
 import tools from "../data/generated/tools-enriched.json";
 import taxonomies from "../data/taxonomies.json";
+import bestPages from "../data/best-pages.json";
 import MainLayout from "../layouts/MainLayout.astro";
 import ToolCard from "../components/ToolCard.astro";
 import CategoryCard from "../components/CategoryCard.astro";
@@ -151,6 +152,26 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
       </div>
     </section>
   )}
+
+  <!-- BEST GUIDES -->
+  <section class="section">
+    <div class="section-header">
+      <div>
+        <h2>Expert Best-Of Guides</h2>
+        <p class="section-sub">Independently ranked — no sponsored placements</p>
+      </div>
+      <a href="/best/" class="see-all">All guides &rarr;</a>
+    </div>
+    <div class="best-grid">
+      {bestPages.slice(0, 6).map((page) => (
+        <a href={`/best/${page.slug}/`} class="best-card">
+          <div class="bc-cat">{page.categoryName}</div>
+          <div class="bc-title">{page.h1}</div>
+          <div class="bc-count">{page.toolSlugs.length} tools →</div>
+        </a>
+      ))}
+    </div>
+  </section>
 
   <!-- BROWSE BY USE CASE -->
   <section class="section">
@@ -556,6 +577,62 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     background: #dbeafe;
     border-color: #93c5fd;
     text-decoration: none;
+  }
+
+  /* Best-of guides grid */
+  .best-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .best-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
+    position: relative;
+    overflow: hidden;
+  }
+  .best-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .best-card:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 6px 20px rgba(37,99,235,0.10);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .best-card:hover::before { opacity: 1; }
+  .bc-cat {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #2563eb;
+  }
+  .bc-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #111827;
+    line-height: 1.3;
+  }
+  .bc-count {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #9ca3af;
+    margin-top: auto;
   }
 
   .cats-grid {

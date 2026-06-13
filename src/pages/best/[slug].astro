@@ -1,0 +1,1059 @@
+---
+import bestPages from "../../data/best-pages.json";
+import allTools from "../../data/generated/tools-enriched.json";
+import MainLayout from "../../layouts/MainLayout.astro";
+import ToolLogo from "../../components/ToolLogo.astro";
+
+export async function getStaticPaths() {
+  return bestPages.map((page) => ({
+    params: { slug: page.slug },
+    props: { page },
+  }));
+}
+
+const { page } = Astro.props;
+
+// Resolve tools in ranked order
+const pageTools = page.toolSlugs
+  .map((slug: string) => allTools.find((t) => t.slug === slug))
+  .filter(Boolean) as typeof allTools;
+
+// Stats
+const avgRating = pageTools.length
+  ? (pageTools.reduce((s, t) => s + t.rating, 0) / pageTools.length).toFixed(1)
+  : "—";
+const freeCount = pageTools.filter(
+  (t) => t.pricing === "Free" || t.pricing === "Freemium"
+).length;
+
+// Compare pairs between top 3 tools
+type ComparePair = { label: string; slug: string };
+const top3 = pageTools.slice(0, 3);
+const comparePairs: ComparePair[] = [];
+for (let i = 0; i < top3.length; i++) {
+  for (let j = i + 1; j < top3.length; j++) {
+    const a = top3[i].slug;
+    const b = top3[j].slug;
+    const pairSlug = [a, b].sort().join("-vs-");
+    comparePairs.push({ label: `${top3[i].name} vs ${top3[j].name}`, slug: pairSlug });
+  }
+}
+
+// Winner = first in list (highest-ranked)
+const winner = pageTools[0];
+
+// Typed helpers to avoid inline casts in template
+const rankLabels = page.rankLabels as Record<string, string>;
+const pageFaqs = page.faqs as { q: string; a: string }[];
+
+function formatPricing(tool: typeof allTools[0]) {
+  if (tool.pricing === "Free") return "Free";
+  if (tool.pricing === "Freemium")
+    return tool.startingPrice ? `Free / ${tool.startingPrice}` : "Freemium";
+  return tool.startingPrice ? `From ${tool.startingPrice}` : "Paid";
+}
+
+// JSON-LD
+const SITE = "https://zotopie.com";
+const pageUrl = `${SITE}/best/${page.slug}/`;
+
+const jsonLdStr = JSON.stringify({
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": `${pageUrl}#webpage`,
+      url: pageUrl,
+      name: page.metaTitle,
+      description: page.metaDesc,
+      breadcrumb: {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: `${SITE}/` },
+          { "@type": "ListItem", position: 2, name: "Best Tools", item: `${SITE}/best/` },
+          { "@type": "ListItem", position: 3, name: page.h1 },
+        ],
+      },
+    },
+    {
+      "@type": "ItemList",
+      name: page.h1,
+      description: page.metaDesc,
+      numberOfItems: pageTools.length,
+      itemListElement: pageTools.map((t, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        item: {
+          "@type": "SoftwareApplication",
+          name: t.name,
+          url: `${SITE}/reviews/${t.slug}/`,
+          applicationCategory: "WebApplication",
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: String(t.rating),
+            bestRating: "5",
+            worstRating: "1",
+            ratingCount: "10",
+          },
+        },
+      })),
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: pageFaqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+  ],
+});
+---
+
+<MainLayout title={page.metaTitle} description={page.metaDesc}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLdStr} />
+  </Fragment>
+
+  <!-- HERO -->
+  <section class="best-hero">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>&rsaquo;</span>
+      <a href="/best/">Best Tools</a>
+      <span>&rsaquo;</span>
+      <span aria-current="page">{page.h1}</span>
+    </nav>
+
+    <div class="hero-eyebrow">
+      <span class="eyebrow-dot"></span>
+      Editorial Guide &mdash; Updated 2026
+    </div>
+
+    <h1>{page.h1}</h1>
+    <p class="hero-intro">{page.intro}</p>
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <span class="hstat-num">{pageTools.length}</span>
+        <span class="hstat-label">Tools Reviewed</span>
+      </div>
+      <div class="hstat-div"></div>
+      <div class="hstat">
+        <span class="hstat-num">★ {avgRating}</span>
+        <span class="hstat-label">Avg Rating</span>
+      </div>
+      {freeCount > 0 && (
+        <>
+          <div class="hstat-div"></div>
+          <div class="hstat">
+            <span class="hstat-num">{freeCount}</span>
+            <span class="hstat-label">Free / Freemium</span>
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+
+  <!-- TOP PICK BANNER -->
+  {winner && (
+    <section class="top-pick-banner">
+      <div class="tp-label">
+        <span class="tp-crown">★</span> Editor's Top Pick
+      </div>
+      <div class="tp-content">
+        <ToolLogo tool={winner} size={48} />
+        <div class="tp-body">
+          <div class="tp-name">{winner.name}</div>
+          <div class="tp-tag">{rankLabels[winner.slug]}</div>
+          <p class="tp-desc">{winner.description}</p>
+        </div>
+        <div class="tp-actions">
+          <a href={`/go/${winner.slug}`}
+             class="tp-cta-primary"
+             rel={winner.affiliate ? "sponsored noopener" : "noopener"}
+             target="_blank">
+            {winner.pricing === "Free" || winner.pricing === "Freemium"
+              ? `Try ${winner.name} Free →`
+              : `Visit ${winner.name} →`}
+          </a>
+          <a href={`/reviews/${winner.slug}/`} class="tp-cta-sec">Read Full Review →</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- COMPARISON TABLE -->
+  <section class="best-section">
+    <h2>Quick Comparison</h2>
+    <div class="cmp-table-wrap">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th class="col-rank">Rank</th>
+            <th>Tool</th>
+            <th>Rating</th>
+            <th>Pricing</th>
+            <th>Free Plan</th>
+            <th>Best For</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pageTools.map((tool, i) => {
+            const isFree = tool.pricing === "Free" || tool.pricing === "Freemium";
+            return (
+              <tr class={i === 0 ? "row-winner" : ""}>
+                <td class="col-rank">
+                  <span class:list={["rank-pill", `rank-${i + 1}`]}>#{i + 1}</span>
+                </td>
+                <td>
+                  <a href={`/reviews/${tool.slug}/`} class="tbl-tool-link">
+                    <ToolLogo tool={tool} size={24} />
+                    <span class="tbl-tool-name">{tool.name}</span>
+                    {i === 0 && <span class="tbl-winner-badge">Top Pick</span>}
+                  </a>
+                </td>
+                <td><span class="tbl-rating">★ {tool.rating}</span></td>
+                <td><span class:list={["tbl-price", { "tbl-price-free": isFree }]}>{formatPricing(tool)}</span></td>
+                <td class={isFree ? "cell-yes" : "cell-no"}>{isFree ? "✓ Yes" : "✗ No"}</td>
+                <td class="tbl-bestfor">{rankLabels[tool.slug]}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- RANKED TOOL SECTIONS -->
+  <section class="best-section">
+    <h2>All {pageTools.length} Tools Ranked</h2>
+
+    <div class="tool-list">
+      {pageTools.map((tool, i) => {
+        const isFree = tool.pricing === "Free" || tool.pricing === "Freemium";
+        const rankLabel = rankLabels[tool.slug] ?? "";
+        const whyText = tool.pros && tool.pros.length > 0
+          ? `${tool.name} earns the "${rankLabel}" title because: ${tool.pros[0].toLowerCase()}. It is particularly well-suited for ${tool.bestFor?.[0]?.toLowerCase() ?? "its core use case"}.`
+          : tool.overview?.slice(0, 200) + "…";
+
+        // Compare pairs involving this tool (vs higher-ranked tools only)
+        const toolComparePairs = comparePairs.filter(
+          (p) => p.slug.includes(tool.slug)
+        ).slice(0, 2);
+
+        return (
+          <div class:list={["tool-entry", { "tool-entry-top": i === 0 }]}>
+            <div class="te-rank-col">
+              <span class:list={["te-rank", `te-rank-${i + 1}`]}>#{i + 1}</span>
+            </div>
+
+            <div class="te-body">
+              <div class="te-header">
+                <div class="te-id">
+                  <ToolLogo tool={tool} size={40} />
+                  <div>
+                    <div class="te-name">{tool.name}</div>
+                    <div class="te-label">{rankLabel}</div>
+                  </div>
+                </div>
+                <div class="te-badges">
+                  <span class:list={["te-rating", { "te-rating-top": i === 0 }]}>★ {tool.rating}</span>
+                  <span class:list={["te-price", { "te-price-free": isFree }]}>{formatPricing(tool)}</span>
+                </div>
+              </div>
+
+              <p class="te-desc">{tool.description}</p>
+
+              <div class="te-why">
+                <span class="te-why-label">Why #{i + 1}:</span>
+                <span class="te-why-text">{whyText}</span>
+              </div>
+
+              {(tool.pros?.length > 0 || tool.cons?.length > 0) && (
+                <div class="te-proscons">
+                  {tool.pros?.length > 0 && (
+                    <div class="te-pros">
+                      <div class="pc-label pros-lbl">Pros</div>
+                      <ul class="pc-list">
+                        {tool.pros.slice(0, 3).map((p) => <li>{p}</li>)}
+                      </ul>
+                    </div>
+                  )}
+                  {tool.cons?.length > 0 && (
+                    <div class="te-cons">
+                      <div class="pc-label cons-lbl">Cons</div>
+                      <ul class="pc-list">
+                        {tool.cons.slice(0, 2).map((c) => <li>{c}</li>)}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {tool.bestFor?.length > 0 && (
+                <div class="te-bestfor">
+                  <span class="te-bestfor-label">Best for:</span>
+                  {tool.bestFor.slice(0, 3).map((b) => (
+                    <span class="te-bestfor-tag">{b}</span>
+                  ))}
+                </div>
+              )}
+
+              <div class="te-actions">
+                <a href={`/go/${tool.slug}`}
+                   class="te-btn-primary"
+                   rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+                   target="_blank">
+                  {isFree ? `Try ${tool.name} Free →` : `Visit ${tool.name} →`}
+                </a>
+                <a href={`/reviews/${tool.slug}/`} class="te-btn-sec">Full Review →</a>
+                <a href={`/alternatives/${tool.slug}/`} class="te-btn-alt">Alternatives →</a>
+                {toolComparePairs.map((pair) => (
+                  <a href={`/compare/${pair.slug}/`} class="te-btn-cmp">{pair.label} →</a>
+                ))}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </section>
+
+  <!-- HOW WE RANK -->
+  <section class="best-section how-section">
+    <h2>How We Ranked These Tools</h2>
+    <div class="how-grid">
+      <div class="how-item">
+        <div class="how-num">01</div>
+        <div class="how-body">
+          <div class="how-title">Editorial Rating</div>
+          <p>Each tool is scored 1–5 based on feature depth, performance benchmarks, and real-world usability.</p>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">02</div>
+        <div class="how-body">
+          <div class="how-title">Pricing Value</div>
+          <p>We evaluate what you get per dollar — free plan quality, paid tier value, and hidden costs.</p>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">03</div>
+        <div class="how-body">
+          <div class="how-title">Use Case Fit</div>
+          <p>Rankings reflect specific audiences. A tool ranked #1 for agencies may be ranked differently for solo creators.</p>
+        </div>
+      </div>
+      <div class="how-item">
+        <div class="how-num">04</div>
+        <div class="how-body">
+          <div class="how-title">Independence</div>
+          <p>Affiliate relationships never affect rankings. Some links earn us a commission at no cost to you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="best-section faq-section">
+    <h2>Frequently Asked Questions</h2>
+    <div class="faq-list">
+      {pageFaqs.map((faq) => (
+        <details class="faq-item">
+          <summary class="faq-q">
+            <span>{faq.q}</span>
+            <svg class="faq-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </summary>
+          <div class="faq-a">{faq.a}</div>
+        </details>
+      ))}
+    </div>
+  </section>
+
+  <!-- RELATED COMPARISONS -->
+  {comparePairs.length > 0 && (
+    <section class="best-section explore-section">
+      <h2>Compare Top {page.categoryName} Tools</h2>
+      <div class="compare-links">
+        {comparePairs.map((pair) => (
+          <a href={`/compare/${pair.slug}/`} class="compare-pill">
+            {pair.label} →
+          </a>
+        ))}
+        <a href={`/category/${page.categorySlug}/`} class="compare-pill compare-pill-cat">
+          Browse all {page.categoryName} tools →
+        </a>
+      </div>
+    </section>
+  )}
+
+  <!-- FOOTER NAV -->
+  <section class="best-footer-nav">
+    <p>
+      <a href={`/category/${page.categorySlug}/`}>← All {page.categoryName} tools</a>
+      &nbsp;&bull;&nbsp;
+      <a href="/best/">More best-of guides →</a>
+    </p>
+  </section>
+</MainLayout>
+
+<style>
+  /* HERO */
+  .best-hero {
+    padding: 48px 0 36px;
+    border-bottom: 2px solid #e5e7eb;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .best-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -24px; right: -24px;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+  }
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .breadcrumb a { color: #6b7280; }
+  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  .breadcrumb span { color: #d1d5db; }
+  .breadcrumb [aria-current] { color: #374151; font-weight: 500; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .eyebrow-dot {
+    width: 6px; height: 6px;
+    background: #22c55e;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 0 2px rgba(34,197,94,0.3);
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+  .hero-intro {
+    font-size: 1.05rem;
+    color: #6b7280;
+    line-height: 1.75;
+    max-width: 720px;
+    margin: 0 0 28px;
+  }
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    flex-wrap: wrap;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    padding: 16px 24px;
+    width: fit-content;
+  }
+  .hstat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 0 20px;
+  }
+  .hstat:first-child { padding-left: 0; }
+  .hstat-num {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #111827;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+  .hstat-label {
+    font-size: 0.7rem;
+    color: #9ca3af;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .hstat-div {
+    width: 1px;
+    height: 36px;
+    background: #e5e7eb;
+    flex-shrink: 0;
+  }
+
+  /* TOP PICK BANNER */
+  .top-pick-banner {
+    background: linear-gradient(135deg, #fffbeb 0%, #eff6ff 100%);
+    border: 1.5px solid #fde68a;
+    border-radius: 18px;
+    padding: 24px 28px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 20px rgba(245,158,11,0.08);
+  }
+  .tp-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #d97706;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tp-crown { font-size: 0.9rem; }
+  .tp-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .tp-body { flex: 1; min-width: 200px; }
+  .tp-name { font-size: 1.25rem; font-weight: 800; color: #111827; margin-bottom: 4px; }
+  .tp-tag {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-bottom: 8px;
+  }
+  .tp-desc { font-size: 0.9rem; color: #6b7280; margin: 0; line-height: 1.55; }
+  .tp-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .tp-cta-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 10px rgba(37,99,235,0.25);
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .tp-cta-primary:hover { box-shadow: 0 4px 16px rgba(37,99,235,0.35); transform: translateY(-1px); text-decoration: none; }
+  .tp-cta-sec {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 18px;
+    background: #fff;
+    color: #374151;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .tp-cta-sec:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; }
+
+  /* SECTIONS */
+  .best-section {
+    margin-bottom: 52px;
+  }
+  .best-section h2 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid #f3f4f6;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .best-section h2::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: linear-gradient(180deg, #2563eb, #7c3aed);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* COMPARISON TABLE */
+  .cmp-table-wrap {
+    border: 1px solid #e5e7eb;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+  .cmp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+  .cmp-table thead tr { background: #f1f5f9; }
+  .cmp-table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+    color: #374151;
+    font-size: 0.8rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+  .cmp-table td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+  }
+  .cmp-table tbody tr:nth-child(even) { background: #f9fafb; }
+  .cmp-table tbody tr:hover { background: #eff6ff; }
+  .row-winner { background: #fffbeb !important; }
+  .row-winner:hover { background: #fef3c7 !important; }
+  .col-rank { width: 64px; text-align: center; }
+  .rank-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    font-size: 0.78rem;
+    font-weight: 700;
+    background: #f3f4f6;
+    color: #6b7280;
+  }
+  .rank-1 { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+  .rank-2 { background: #f3f4f6; color: #6b7280; }
+  .rank-3 { background: #fed7aa; color: #9a3412; }
+  .tbl-tool-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    color: #111827;
+    font-weight: 600;
+  }
+  .tbl-tool-link:hover { color: #2563eb; text-decoration: none; }
+  .tbl-tool-name { font-size: 0.9rem; }
+  .tbl-winner-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    flex-shrink: 0;
+  }
+  .tbl-rating {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #92400e;
+    background: #fef3c7;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .tbl-price {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .tbl-price-free { color: #059669; background: #dcfce7; }
+  .cell-yes { color: #059669; font-weight: 700; }
+  .cell-no { color: #d1d5db; }
+  .tbl-bestfor { font-size: 0.82rem; color: #6b7280; }
+  .cmp-table tr:last-child td { border-bottom: none; }
+
+  /* TOOL ENTRY */
+  .tool-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  .tool-entry {
+    display: flex;
+    gap: 20px;
+    padding: 24px;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    background: #fff;
+    transition: border-color 0.18s, box-shadow 0.18s;
+  }
+  .tool-entry:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 4px 20px rgba(37,99,235,0.08);
+  }
+  .tool-entry-top {
+    border-color: #fde68a;
+    background: linear-gradient(160deg, #fffbeb 0%, #fff 40%);
+    box-shadow: 0 4px 20px rgba(245,158,11,0.08);
+  }
+  .tool-entry-top:hover {
+    border-color: #f59e0b;
+    box-shadow: 0 6px 28px rgba(245,158,11,0.12);
+  }
+  .te-rank-col {
+    flex-shrink: 0;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4px;
+  }
+  .te-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    font-size: 0.8rem;
+    font-weight: 800;
+    background: #f3f4f6;
+    color: #6b7280;
+  }
+  .te-rank-1 { background: linear-gradient(135deg, #fef3c7, #fde68a); color: #92400e; }
+  .te-rank-2 { background: #f3f4f6; color: #6b7280; }
+  .te-rank-3 { background: #fed7aa; color: #9a3412; }
+
+  .te-body { flex: 1; min-width: 0; }
+  .te-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+    flex-wrap: wrap;
+  }
+  .te-id { display: flex; align-items: center; gap: 12px; }
+  .te-name { font-size: 1.15rem; font-weight: 800; color: #111827; }
+  .te-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  .te-badges {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .te-rating {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #92400e;
+    background: #fef3c7;
+    border: 1px solid #fde68a;
+    padding: 3px 10px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .te-rating-top { background: linear-gradient(90deg, #fef3c7, #fde68a); }
+  .te-price {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 2px 10px;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
+  .te-price-free { color: #059669; background: #dcfce7; }
+
+  .te-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin: 0 0 12px;
+  }
+
+  .te-why {
+    font-size: 0.875rem;
+    color: #374151;
+    line-height: 1.6;
+    background: #f9fafb;
+    border-left: 3px solid #2563eb;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    margin-bottom: 14px;
+  }
+  .te-why-label { font-weight: 700; color: #111827; margin-right: 4px; }
+
+  .te-proscons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 14px;
+  }
+  .pc-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 8px;
+  }
+  .pros-lbl { color: #059669; }
+  .cons-lbl { color: #dc2626; }
+  .pc-list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 0;
+  }
+  .te-pros .pc-list li {
+    font-size: 0.85rem;
+    color: #374151;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .te-pros .pc-list li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+  .te-cons .pc-list li {
+    font-size: 0.85rem;
+    color: #374151;
+    padding-left: 18px;
+    position: relative;
+    line-height: 1.4;
+  }
+  .te-cons .pc-list li::before { content: "✗"; position: absolute; left: 0; color: #dc2626; }
+
+  .te-bestfor {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .te-bestfor-label { font-size: 0.78rem; font-weight: 700; color: #6b7280; }
+  .te-bestfor-tag {
+    font-size: 0.75rem;
+    color: #374151;
+    background: #f3f4f6;
+    border: 1px solid #e5e7eb;
+    padding: 2px 10px;
+    border-radius: 20px;
+  }
+
+  .te-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .te-btn-primary {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.2);
+    transition: box-shadow 0.15s;
+  }
+  .te-btn-primary:hover { box-shadow: 0 4px 14px rgba(37,99,235,0.3); text-decoration: none; }
+  .te-btn-sec, .te-btn-alt {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    background: #fff;
+    color: #374151;
+    border: 1.5px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  .te-btn-sec:hover, .te-btn-alt:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; }
+  .te-btn-cmp {
+    display: inline-flex;
+    align-items: center;
+    padding: 7px 14px;
+    background: #f5f3ff;
+    color: #7c3aed;
+    border: 1.5px solid #e9d5ff;
+    border-radius: 8px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .te-btn-cmp:hover { background: #ede9fe; border-color: #c4b5fd; text-decoration: none; }
+
+  /* HOW WE RANK */
+  .how-section {
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 28px;
+  }
+  .how-section h2 { border-bottom-color: #e5e7eb; }
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .how-item {
+    display: flex;
+    gap: 14px;
+  }
+  .how-num {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #e5e7eb;
+    flex-shrink: 0;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+  }
+  .how-title { font-size: 0.9rem; font-weight: 700; color: #111827; margin-bottom: 4px; }
+  .how-body p { font-size: 0.85rem; color: #6b7280; line-height: 1.6; margin: 0; }
+
+  /* FAQ */
+  .faq-list { display: flex; flex-direction: column; gap: 8px; max-width: 800px; }
+  .faq-item {
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    transition: border-color 0.15s;
+  }
+  .faq-item[open] { border-color: #bfdbfe; }
+  .faq-q {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #111827;
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+    background: #f9fafb;
+    transition: background 0.15s;
+  }
+  .faq-item[open] .faq-q { background: #eff6ff; color: #1d4ed8; }
+  .faq-q::-webkit-details-marker { display: none; }
+  .faq-q span { flex: 1; }
+  .faq-icon { flex-shrink: 0; transition: transform 0.25s; color: #9ca3af; }
+  .faq-item[open] .faq-icon { transform: rotate(180deg); color: #2563eb; }
+  .faq-a {
+    padding: 16px 20px;
+    font-size: 0.9rem;
+    color: #374151;
+    line-height: 1.7;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  /* EXPLORE / COMPARE LINKS */
+  .compare-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .compare-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 18px;
+    background: #f5f3ff;
+    color: #7c3aed;
+    border: 1.5px solid #e9d5ff;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .compare-pill:hover { background: #ede9fe; border-color: #c4b5fd; text-decoration: none; }
+  .compare-pill-cat {
+    background: #eff6ff;
+    color: #2563eb;
+    border-color: #bfdbfe;
+  }
+  .compare-pill-cat:hover { background: #dbeafe; border-color: #93c5fd; }
+
+  /* FOOTER NAV */
+  .best-footer-nav {
+    border-top: 1px solid #f3f4f6;
+    padding: 24px 0 8px;
+    font-size: 0.875rem;
+    color: #6b7280;
+  }
+  .best-footer-nav a { color: #2563eb; font-weight: 500; }
+  .best-footer-nav a:hover { text-decoration: underline; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .te-proscons { grid-template-columns: 1fr; gap: 12px; }
+    .how-grid { grid-template-columns: 1fr; }
+    .tp-content { flex-direction: column; gap: 16px; }
+    .tp-actions { flex-direction: row; flex-wrap: wrap; }
+    .cmp-table { font-size: 0.82rem; }
+    .cmp-table th, .cmp-table td { padding: 9px 10px; }
+    .tbl-bestfor { display: none; }
+  }
+  @media (max-width: 640px) {
+    h1 { font-size: 1.9rem; }
+    .tool-entry { flex-direction: column; gap: 12px; padding: 18px; }
+    .te-rank-col { flex-direction: row; width: auto; padding-top: 0; }
+    .te-header { flex-direction: column; gap: 10px; }
+    .te-badges { flex-direction: row; align-items: center; }
+    .hero-stats { padding: 14px 16px; }
+    .hstat { padding: 0 12px; }
+    .hstat-num { font-size: 1.2rem; }
+    .te-btn-cmp { display: none; }
+  }
+</style>

@@ -1,0 +1,224 @@
+---
+import bestPages from "../../data/best-pages.json";
+import allTools from "../../data/generated/tools-enriched.json";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const pageTitle = "Best Software Tools — Expert Guides | Zotopie";
+const pageDesc = "Editorial guides ranking the best software tools by category — AI writing, SEO, email marketing, hosting, social media, and more. Independently reviewed and updated for 2026.";
+
+// Enrich each best page with top tool data
+const pages = bestPages.map((page) => {
+  const topTool = allTools.find((t) => t.slug === page.toolSlugs[0]);
+  const toolCount = page.toolSlugs.length;
+  return { ...page, topTool, toolCount };
+});
+---
+
+<MainLayout title={pageTitle} description={pageDesc}>
+  <section class="best-index-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a>
+      <span>&rsaquo;</span>
+      <span>Best Tools</span>
+    </div>
+    <div class="hero-eyebrow">Editorial Guides — Updated 2026</div>
+    <h1>Best Software Tools by Category</h1>
+    <p class="hero-sub">
+      {bestPages.length} expert guides — independently ranked, no sponsored placements.
+    </p>
+  </section>
+
+  <div class="guides-grid">
+    {pages.map((page, i) => (
+      <a href={`/best/${page.slug}/`} class="guide-card">
+        <div class="gc-rank">#{i + 1}</div>
+        <div class="gc-body">
+          <div class="gc-cat">{page.categoryName}</div>
+          <h2 class="gc-title">{page.h1}</h2>
+          <p class="gc-desc">{page.metaDesc}</p>
+          <div class="gc-meta">
+            <span class="gc-count">{page.toolCount} tools ranked</span>
+            {page.topTool && (
+              <span class="gc-top">Top pick: <strong>{page.topTool.name}</strong> ★ {page.topTool.rating}</span>
+            )}
+          </div>
+        </div>
+        <div class="gc-arrow">→</div>
+      </a>
+    ))}
+  </div>
+
+  <section class="index-footer">
+    <p>Looking for a specific tool? <a href="/search">Search all {allTools.length} tools →</a></p>
+    <p>Want to compare two tools side-by-side? <a href="/compare/">Browse all comparisons →</a></p>
+  </section>
+</MainLayout>
+
+<style>
+  .best-index-hero {
+    padding: 48px 0 40px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 40px;
+    position: relative;
+  }
+  .best-index-hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -24px; right: -24px;
+    height: 3px;
+    background: linear-gradient(90deg, #2563eb, #7c3aed);
+  }
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .breadcrumb a { color: #6b7280; }
+  .breadcrumb a:hover { color: #2563eb; text-decoration: none; }
+  .breadcrumb span { color: #d1d5db; }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0;
+  }
+
+  .guides-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .guide-card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 22px 24px;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
+    position: relative;
+  }
+  .guide-card:hover {
+    border-color: #93c5fd;
+    box-shadow: 0 6px 24px rgba(37,99,235,0.10);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+
+  .gc-rank {
+    font-size: 1.25rem;
+    font-weight: 900;
+    color: #d1d5db;
+    width: 36px;
+    flex-shrink: 0;
+    text-align: center;
+    letter-spacing: -0.03em;
+  }
+  .guide-card:nth-child(1) .gc-rank { color: #f59e0b; }
+  .guide-card:nth-child(2) .gc-rank { color: #9ca3af; }
+  .guide-card:nth-child(3) .gc-rank { color: #d97706; }
+
+  .gc-body { flex: 1; min-width: 0; }
+  .gc-cat {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #2563eb;
+    margin-bottom: 4px;
+  }
+  .gc-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 6px;
+  }
+  .gc-desc {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0 0 10px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .gc-meta {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .gc-count {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #9ca3af;
+    background: #f3f4f6;
+    padding: 2px 10px;
+    border-radius: 10px;
+  }
+  .gc-top {
+    font-size: 0.78rem;
+    color: #6b7280;
+  }
+  .gc-top strong { color: #111827; }
+
+  .gc-arrow {
+    font-size: 1.1rem;
+    color: #d1d5db;
+    flex-shrink: 0;
+    transition: color 0.15s, transform 0.15s;
+  }
+  .guide-card:hover .gc-arrow {
+    color: #2563eb;
+    transform: translateX(4px);
+  }
+
+  .index-footer {
+    border-top: 1px solid #f3f4f6;
+    padding: 28px 0 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+  .index-footer a { color: #2563eb; font-weight: 500; }
+  .index-footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 1.75rem; }
+    .guide-card { flex-wrap: wrap; padding: 18px; }
+    .gc-rank { width: auto; }
+    .gc-desc { -webkit-line-clamp: 1; }
+    .gc-top { display: none; }
+  }
+</style>
