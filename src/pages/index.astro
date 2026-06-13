@@ -77,6 +77,23 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
         <div id="hero-drop" class="ac-drop" role="listbox" aria-label="Search suggestions" hidden></div>
       </div>
 
+      <div class="hero-trust">
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          No sponsored placements
+        </div>
+        <div class="trust-dot" aria-hidden="true"></div>
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          Editorial independence
+        </div>
+        <div class="trust-dot" aria-hidden="true"></div>
+        <div class="trust-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          Real user-tested reviews
+        </div>
+      </div>
+
       <div class="hero-cats" role="list" aria-label="Browse by category">
         {top8cats.map((cat) => (
           <a href={`/category/${cat.slug}`} class="hero-cat-chip" role="listitem">{cat.name}</a>
@@ -557,6 +574,32 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     color: inherit;
     border-radius: 2px;
     padding: 0 1px;
+  }
+
+  /* Trust signals */
+  .hero-trust {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0 28px;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #647488;
+  }
+  .trust-item svg { color: #10B981; flex-shrink: 0; }
+  .trust-dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #CBD5E1;
+    flex-shrink: 0;
   }
 
   /* Category chips */

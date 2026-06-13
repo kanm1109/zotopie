@@ -33,23 +33,27 @@ const fs       = Math.round(size * 0.38);
 
 <style>
   .tl-svg {
-    border-radius: 6px;
+    border-radius: 8px;
     flex-shrink: 0;
     display: block;
-    background: #f9fafb;
-    padding: 2px;
+    background: #fff;
+    border: 1px solid #E8ECF0;
+    padding: 3px;
     box-sizing: content-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
   }
   .tl-fallback {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: 6px;
+    border-radius: 8px;
     color: #fff;
     font-weight: 700;
     flex-shrink: 0;
     line-height: 1;
     user-select: none;
     letter-spacing: 0.02em;
+    font-family: var(--font-sans, inherit);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
   }
 </style>
