@@ -11,8 +11,8 @@ export async function getStaticPaths() {
 }
 
 const { tool } = Astro.props;
-const dest = tool.website;
 const isAffiliate = tool.affiliate === true;
+const dest = (isAffiliate && tool.affiliateUrl) ? tool.affiliateUrl : tool.website;
 ---
 
 <!doctype html>
@@ -48,10 +48,16 @@ const isAffiliate = tool.affiliate === true;
       </p>
       <a
         href={dest}
+        rel={isAffiliate ? "sponsored noopener" : "noopener"}
         style="display:inline-block;background:#2563eb;color:#fff;padding:10px 24px;border-radius:8px;text-decoration:none;font-size:0.95rem;font-weight:600;"
       >
         Continue to {tool.name} →
       </a>
+      {isAffiliate && (
+        <p style="margin-top:14px;font-size:0.72rem;color:#9ca3af;">
+          Affiliate link — we may earn a commission at no extra cost to you.
+        </p>
+      )}
       <p style="margin-top:20px;font-size:0.78rem;color:#9ca3af;">
         <a href="/" style="color:#6b7280;">Back to Zotopie</a>
       </p>

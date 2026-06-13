@@ -1,47 +1,68 @@
 ---
 import ToolLogo from "./ToolLogo.astro";
 
-const { tool } = Astro.props;
+const { tool, compareSlug } = Astro.props;
 const price = tool.startingPrice
-  ? `from ${tool.startingPrice}`
+  ? (tool.pricing === "Free" || tool.pricing === "Freemium"
+      ? `Free / ${tool.startingPrice}`
+      : tool.startingPrice)
   : tool.pricing;
+const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try Free →" : "Visit →";
 ---
 
-<a href={`/reviews/${tool.slug}`} class="alt-card">
-  <div class="alt-logo">
-    <ToolLogo tool={tool} size={44} />
-  </div>
-  <div class="alt-body">
-    <div class="alt-header">
-      <span class="alt-name">{tool.name}</span>
-      <span class="alt-rating">★ {tool.rating}</span>
+<div class="alt-card">
+  <a href={`/reviews/${tool.slug}`} class="alt-card-link">
+    <div class="alt-logo">
+      <ToolLogo tool={tool} size={44} />
     </div>
-    <p class="alt-desc">{tool.description}</p>
-    <span class="alt-price">{price}</span>
+    <div class="alt-body">
+      <div class="alt-header">
+        <span class="alt-name">{tool.name}</span>
+        <span class="alt-rating">★ {tool.rating}</span>
+      </div>
+      <p class="alt-desc">{tool.description}</p>
+      <span class="alt-price">{price}</span>
+    </div>
+  </a>
+  <div class="alt-actions">
+    {compareSlug && (
+      <a href={`/compare/${compareSlug}/`} class="alt-cmp-btn">Compare →</a>
+    )}
+    <a href={`/go/${tool.slug}`}
+       class="alt-try-btn"
+       rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+       target="_blank">
+      {tryLabel}
+    </a>
+    <a href={`/reviews/${tool.slug}`} class="alt-review-btn">Review →</a>
   </div>
-  <div class="alt-action">
-    <span class="alt-btn">Read Review &rarr;</span>
-  </div>
-</a>
+</div>
 
 <style>
   .alt-card {
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 16px 20px;
+    padding: 14px 20px;
     border: 1px solid #e5e7eb;
     border-radius: 12px;
     background: #fff;
-    text-decoration: none;
-    color: inherit;
     transition: border-color 0.18s, box-shadow 0.18s, background 0.18s;
   }
   .alt-card:hover {
     border-color: #2563eb;
     box-shadow: 0 2px 14px rgba(37,99,235,0.09);
     background: #fafbff;
+  }
+
+  .alt-card-link {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex: 1;
+    min-width: 0;
     text-decoration: none;
+    color: inherit;
   }
 
   .alt-logo { flex-shrink: 0; }
@@ -88,23 +109,70 @@ const price = tool.startingPrice
     border-radius: 8px;
   }
 
-  .alt-action {
+  .alt-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     flex-shrink: 0;
     margin-left: 8px;
   }
-  .alt-btn {
+
+  .alt-cmp-btn {
     display: inline-block;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    color: #2563eb;
+    color: #7c3aed;
+    background: #f5f3ff;
+    border: 1px solid #e9d5ff;
+    padding: 5px 12px;
+    border-radius: 6px;
+    text-decoration: none;
     white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s;
   }
-  .alt-card:hover .alt-btn {
+  .alt-cmp-btn:hover {
+    background: #ede9fe;
+    border-color: #c4b5fd;
+    text-decoration: none;
+  }
+
+  .alt-try-btn {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #fff;
+    background: #2563eb;
+    padding: 5px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+  .alt-try-btn:hover {
+    background: #1d4ed8;
+    text-decoration: none;
+  }
+
+  .alt-review-btn {
+    display: inline-block;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #6b7280;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .alt-review-btn:hover {
+    color: #2563eb;
     text-decoration: underline;
   }
 
-  @media (max-width: 560px) {
-    .alt-action { display: none; }
+  @media (max-width: 640px) {
+    .alt-cmp-btn { display: none; }
+    .alt-review-btn { display: none; }
     .alt-desc { -webkit-line-clamp: 1; }
+  }
+  @media (max-width: 400px) {
+    .alt-actions { margin-left: 4px; }
+    .alt-try-btn { padding: 5px 10px; font-size: 0.78rem; }
   }
 </style>

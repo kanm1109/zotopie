@@ -231,7 +231,7 @@ const jsonLdStr = JSON.stringify({
         <div class="alt-item">
           <div class="alt-row">
             <span class="alt-rank">#{i + 1}</span>
-            <AltCard tool={t} />
+            <AltCard tool={t} compareSlug={[tool.slug, t.slug].sort().join("-vs-")} />
           </div>
           {t.bestFor && t.bestFor.length > 0 && (
             <p class="alt-bestfor">
@@ -241,11 +241,6 @@ const jsonLdStr = JSON.stringify({
               )}
             </p>
           )}
-          <div class="alt-compare-link">
-            <a href={`/compare/${[tool.slug, t.slug].sort().join("-vs-")}/`}>
-              Compare {tool.name} vs {t.name} &rarr;
-            </a>
-          </div>
         </div>
       ))}
     </div>

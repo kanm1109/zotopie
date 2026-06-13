@@ -250,6 +250,23 @@ const jsonLdStr = JSON.stringify({
         <div class="ch-cat">{catB?.name ?? toolB.primaryCategory}</div>
       </a>
     </div>
+
+    <!-- HERO CTAs -->
+    <div class="hero-ctas">
+      <a href={`/go/${toolA.slug}`}
+         class="hero-cta-a"
+         rel={toolA.affiliate ? "sponsored noopener" : "noopener"}
+         target="_blank">
+        {aIsFree ? `Try ${toolA.name} Free →` : `Visit ${toolA.name} →`}
+      </a>
+      <span class="hero-cta-sep">or</span>
+      <a href={`/go/${toolB.slug}`}
+         class="hero-cta-b"
+         rel={toolB.affiliate ? "sponsored noopener" : "noopener"}
+         target="_blank">
+        {bIsFree ? `Try ${toolB.name} Free →` : `Visit ${toolB.name} →`}
+      </a>
+    </div>
   </section>
 
   <!-- EDITORIAL INTRO -->
@@ -447,6 +464,14 @@ const jsonLdStr = JSON.stringify({
       </div>
       <p class="verdict-text">{verdictText}</p>
       <div class="verdict-ctas">
+        <a href={`/go/${winnerTool.slug}`}
+           class="vcta vcta-primary"
+           rel={winnerTool.affiliate ? "sponsored noopener" : "noopener"}
+           target="_blank">
+          {winnerTool.pricing === "Free" || winnerTool.pricing === "Freemium"
+            ? `Try ${winnerTool.name} Free →`
+            : `Visit ${winnerTool.name} →`}
+        </a>
         <a href={`/reviews/${toolA.slug}/`} class="vcta vcta-secondary">{toolA.name} Review</a>
         <a href={`/reviews/${toolB.slug}/`} class="vcta vcta-secondary">{toolB.name} Review</a>
       </div>
@@ -547,6 +572,44 @@ const jsonLdStr = JSON.stringify({
     font-weight: 900;
     color: #d1d5db;
     text-align: center;
+  }
+
+  /* HERO CTAs */
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+  .hero-cta-a {
+    padding: 11px 26px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.15s;
+  }
+  .hero-cta-a:hover { background: #1d4ed8; text-decoration: none; }
+  .hero-cta-b {
+    padding: 11px 26px;
+    background: #fff;
+    color: #2563eb;
+    border: 2px solid #2563eb;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.15s, color 0.15s;
+  }
+  .hero-cta-b:hover { background: #eff6ff; text-decoration: none; }
+  .hero-cta-sep {
+    font-size: 0.85rem;
+    color: #9ca3af;
+    font-weight: 500;
   }
 
   /* SECTIONS */
@@ -806,6 +869,12 @@ const jsonLdStr = JSON.stringify({
     font-weight: 600;
     text-decoration: none;
   }
+  .vcta-primary {
+    background: #2563eb;
+    color: #fff;
+    border: 1.5px solid #2563eb;
+  }
+  .vcta-primary:hover { background: #1d4ed8; border-color: #1d4ed8; text-decoration: none; }
   .vcta-secondary {
     background: #fff;
     border: 1.5px solid #d1d5db;

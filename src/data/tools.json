@@ -1262,7 +1262,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Jasper is worth the premium over general AI tools specifically when Brand Voice consistency and marketing-template structure matter. Individual content creators rarely justify the $39/mo over ChatGPT Plus; marketing teams producing high-volume branded content get the clearest value."
-    }
+    },
+    "affiliateUrl": "https://jasper.ai/affiliate-program"
   },
   {
     "name": "Copy.ai",
@@ -1528,7 +1529,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Skool is the best-value community platform for creators who already have an audience and want to monetize it without giving up a revenue cut. The flat fee and no-commission model are genuinely different from competitors. The limitation is what it deliberately omits — advanced course features, email marketing, and complex funnels all need external tools. Creators who want a simple, unified community-first experience and have the audience to cover the /mo will find it the right choice."
-    }
+    },
+    "affiliateUrl": "https://www.skool.com/refer?ref=YOURREF"
   },
   {
     "name": "Circle",
@@ -1566,7 +1568,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Circle is the strongest white-label community platform for creators who want full brand ownership without social media dependency. The combination of discussion, courses, events, and live streaming in one space removes the need for multiple tools. The pricing is the main friction — /mo for a single community is a real commitment before reaching profitability. Creators with an existing audience can justify it; those still building will likely wait for traction before committing."
-    }
+    },
+    "affiliateUrl": "https://circle.so/affiliate-program"
   },
   {
     "name": "Discord",
@@ -1870,7 +1873,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "ConvertKit is the strongest email platform for creators who monetize through digital products, courses, or sponsorships and need automations that respond to subscriber behavior. The tag system and automation builder are significantly more powerful than Mailchimp for segmented, behavior-driven communication. The limitation is cost at scale — large lists become expensive, and the design tooling is deliberately minimal, which is a trade-off that suits newsletter-first creators but may not suit marketing teams."
-    }
+    },
+    "affiliateUrl": "https://convertkit.com?lmref=YOURREF"
   },
   {
     "name": "ActiveCampaign",
@@ -1908,7 +1912,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "ActiveCampaign is the best choice for businesses that need serious marketing automation — behavioral triggers, lead scoring, CRM sync, and multi-branch sequences — without moving to an enterprise platform. It is meaningfully more powerful than Mailchimp or ConvertKit for complex B2B and ecommerce workflows. The trade-offs are complexity and cost at scale. Teams willing to invest in setup will get a platform that grows with them; teams wanting simple email broadcasting will find it over-engineered."
-    }
+    },
+    "affiliateUrl": "https://www.activecampaign.com/partner/"
   },
   {
     "name": "HubSpot",
@@ -1946,7 +1951,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "HubSpot is the most complete CRM platform for SMBs that want marketing, sales, and service in one system. The free CRM is genuinely useful as an entry point, but the real value — automation, reporting, and multi-team visibility — sits behind expensive tier upgrades. Teams that outgrow a basic CRM but are not ready for Salesforce will find HubSpot hits the right balance of capability and approachability."
-    }
+    },
+    "affiliateUrl": "https://app.impact.com/campaign-promo-signup/HubSpot.brand"
   },
   {
     "name": "Mailchimp",
@@ -1984,7 +1990,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Mailchimp is the sensible starting point for most small businesses and creators entering email marketing. Deliverability and ease of use are genuine strengths. As list size grows, the economics shift — users with complex automation needs or large lists often migrate to ActiveCampaign or Klaviyo."
-    }
+    },
+    "affiliateUrl": "https://mailchimp.com/referral/"
   },
   {
     "name": "Systeme.io",
@@ -2022,7 +2029,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Systeme.io offers the most compelling free plan for creators and solo entrepreneurs testing a business model. The all-in-one stack eliminates the Zapier complexity of stitching separate tools together. Established businesses with existing email platforms may find the deliverability and integration limitations restrictive."
-    }
+    },
+    "affiliateUrl": "https://systeme.io/?sa=YOURREF"
   },
   {
     "name": "GetResponse",
@@ -2060,7 +2068,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "GetResponse is the strongest choice when webinar integration is a core part of the lead generation process. The all-in-one funnel builder is genuinely useful for course creators and consultants. Businesses focused purely on email automation get better results from ActiveCampaign at comparable price."
-    }
+    },
+    "affiliateUrl": "https://www.getresponse.com/affiliate-programs"
   },
   {
     "name": "Brevo",
@@ -2136,7 +2145,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Beehiiv is the best newsletter platform for creators who see their newsletter as a business rather than just a distribution channel. The ad network and Boosts monetization infrastructure is genuinely unique — no other newsletter platform gives creators this level of monetization tooling without taking a revenue cut. The main caveat: these features only become significant at 5,000+ subscribers. Below that, simpler tools may be adequate."
-    }
+    },
+    "affiliateUrl": "https://www.beehiiv.com?via=YOURREF"
   },
   {
     "name": "ClickFunnels",
@@ -2174,7 +2184,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "ClickFunnels remains the default platform for coaches, consultants, and info-product creators who need proven funnel templates and built-in order bumps. The high entry price is only justified once the funnel concept is validated with some traffic. Systeme.io or Kartra offer comparable features at lower cost for early-stage creators."
-    }
+    },
+    "affiliateUrl": "https://www.clickfunnels.com/affiliate-program"
   },
   {
     "name": "Bitly",
@@ -2744,7 +2755,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Fathom is the right choice when GDPR compliance, simplicity, and accurate traffic numbers matter more than deep funnel analysis. The single-dashboard approach is genuinely faster than GA4 for answering basic traffic questions. Teams needing behavioral analytics or conversion funnels need to add a second tool."
-    }
+    },
+    "affiliateUrl": "https://usefathom.com/affiliates/YOURREF"
   },
   {
     "name": "Matomo",
@@ -2934,7 +2946,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "ClickUp is the most feature-complete project management platform available at its price point, and the right choice for teams that have outgrown simpler tools like Trello or Asana and need custom fields, multiple views, and native time tracking. The trade-off is complexity — ClickUp requires genuine setup investment before it runs smoothly. Teams that invest in configuration get a system that handles complex operations; teams that expect immediate productivity may find it overwhelming compared to opinionated alternatives like Linear or Asana."
-    }
+    },
+    "affiliateUrl": "https://clickup.com/affiliate-program"
   },
   {
     "name": "Monday.com",
@@ -2972,7 +2985,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Monday.com offers the most visual and approachable work management experience for non-technical teams. The automation capabilities and integration depth are legitimate. The 3-seat minimum and upgrade pressure on automation limits are the main friction points for small teams."
-    }
+    },
+    "affiliateUrl": "https://monday.com/partner/"
   },
   {
     "name": "Asana",
@@ -3352,7 +3366,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Hostinger is the best value entry point for new websites and WordPress blogs that prioritize low cost and reasonable performance. The LiteSpeed advantage is real. Renewal pricing transparency and storage limits are the main caveats — budget for the renewal rate, not the intro rate."
-    }
+    },
+    "affiliateUrl": "https://www.hostinger.com/affiliates?YOURREF"
   },
   {
     "name": "SiteGround",
@@ -3390,7 +3405,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "SiteGround is the best shared and managed WordPress host for users who prioritize support quality and want developer-friendly tools without managing a VPS. Its customer support response times are genuinely exceptional in the category. The main consideration is renewal pricing — the jump from introductory to regular rates is significant, and the StartUp plan's single-site limit is restrictive. For anyone moving beyond one site or needing staging environments, GrowBig is the realistic entry point."
-    }
+    },
+    "affiliateUrl": "https://www.siteground.com/affiliates?YOURREF"
   },
   {
     "name": "Bluehost",
@@ -3428,7 +3444,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Bluehost's WordPress.org endorsement and beginner-friendly setup make it a reasonable first hosting choice. Performance and renewal pricing transparency are the weaknesses — SiteGround offers better speed at comparable post-renewal pricing. Businesses with traffic that matters should budget for managed WordPress alternatives."
-    }
+    },
+    "affiliateUrl": "https://www.bluehost.com/track/YOURREF/"
   },
   {
     "name": "Namecheap",
@@ -3504,7 +3521,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "WP Engine is the right managed WordPress host when site performance has direct revenue impact and technical support quality matters. The EverCache technology and staging workflow are genuine advantages for agency and ecommerce use cases. Personal sites and low-traffic blogs rarely justify the $20/mo entry point."
-    }
+    },
+    "affiliateUrl": "https://shareasale.com/r.cfm?b=394937&u=YOURID"
   },
   {
     "name": "Kinsta",
@@ -3542,7 +3560,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Kinsta is the right managed WordPress host for businesses where site performance and reliability have a direct revenue impact. The Google Cloud infrastructure, isolation guarantees, and included CDN are genuinely enterprise-grade at a price point accessible to growing businesses. It is not the right choice for personal sites or budget projects — the /mo minimum is real, and managed WordPress makes most sense when the alternative is paying a developer to manage a VPS. For agencies and high-traffic WordPress businesses, it is a strong option."
-    }
+    },
+    "affiliateUrl": "https://kinsta.com?kaid=YOURREF"
   },
   {
     "name": "Shopify",
@@ -3694,7 +3713,8 @@
     "bestFor": [],
     "verdict": {
       "summary": "Lemon Squeezy is the right choice for indie developers and small software companies that want to sell internationally without hiring a tax specialist. The merchant-of-record model solves a real, expensive problem — global tax compliance — at a cost that is reasonable for early-stage products. At higher revenue volumes, the transaction fee economics eventually favor direct payment processing, but most independent developers will never reach that threshold."
-    }
+    },
+    "affiliateUrl": "https://app.impact.com/campaign-promo-signup/LemonSqueezy.brand"
   },
   {
     "name": "BigCommerce",

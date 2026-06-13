@@ -271,7 +271,10 @@ const jsonLdStr = JSON.stringify({
       )}
     </div>
     <div class="summary-actions">
-      <a href={`/go/${tool.slug}`} class="visit-btn">
+      <a href={`/go/${tool.slug}`}
+         class="visit-btn"
+         rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+         target="_blank">
         Visit {tool.name} ↗
       </a>
       {tool.alternatives && tool.alternatives.length > 0 && (
@@ -439,7 +442,10 @@ const jsonLdStr = JSON.stringify({
             <span class="vr-score">★ {(tool.verdict as { score?: number }).score ?? tool.rating}</span>
             <span class="vr-label">/ 5</span>
           </div>
-          <a href={`/go/${tool.slug}`} class="visit-btn">
+          <a href={`/go/${tool.slug}`}
+             class="visit-btn"
+             rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+             target="_blank">
             Visit {tool.name} ↗
           </a>
         </div>
@@ -459,7 +465,7 @@ const jsonLdStr = JSON.stringify({
       </div>
       <div class="alt-list">
         {alternativeTools.map((t) => (
-          <AltCard tool={t} />
+          <AltCard tool={t} compareSlug={[tool.slug, t.slug].sort().join("-vs-")} />
         ))}
       </div>
     </section>
@@ -538,7 +544,10 @@ const jsonLdStr = JSON.stringify({
       {tool.startingPrice && <span class="sticky-price">{tool.startingPrice}</span>}
       <span class="sticky-rating">★ {tool.rating}</span>
     </div>
-    <a href={`/go/${tool.slug}`} class="sticky-btn">
+    <a href={`/go/${tool.slug}`}
+       class="sticky-btn"
+       rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+       target="_blank">
       Visit {tool.name} ↗
     </a>
   </div>

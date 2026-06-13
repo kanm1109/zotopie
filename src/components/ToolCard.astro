@@ -15,7 +15,13 @@ const { tool } = Astro.props;
   </div>
   <p class="tool-desc">{tool.description}</p>
   <div class="tool-footer">
-    <span class="tool-pricing">{tool.pricing}</span>
+    <span class="tool-pricing">
+      {tool.startingPrice
+        ? (tool.pricing === "Free" || tool.pricing === "Freemium"
+            ? `Free / ${tool.startingPrice}`
+            : tool.startingPrice)
+        : tool.pricing}
+    </span>
     <a href={`/reviews/${tool.slug}`} class="view-btn">View Review</a>
   </div>
 </div>

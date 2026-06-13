@@ -126,6 +126,15 @@ const ogImage = image
       font-size: 0.875rem;
       color: #6b7280;
     }
+    .footer-disclosure {
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: #9ca3af;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.5;
+    }
   </style>
   <slot name="head" />
 </head>
@@ -163,6 +172,10 @@ const ogImage = image
 
   <footer class="site-footer">
     <p>&copy; {new Date().getFullYear()} Zotopie &mdash; Find the best software tools</p>
+    <p class="footer-disclosure">
+      Some links on this site are affiliate links. We may earn a commission when you click through and make a purchase &mdash; at no extra cost to you.
+      Our editorial ratings and recommendations are independent of affiliate relationships.
+    </p>
   </footer>
   <script>
     document.addEventListener('keydown', function(e) {
