@@ -52,6 +52,7 @@ const searchJsonLdStr = JSON.stringify({
   description="Search across hundreds of software tool reviews by name, description, or category."
 >
   <Fragment slot="head">
+    <meta name="robots" content="noindex, follow" />
     <script type="application/ld+json" set:html={searchJsonLdStr} />
   </Fragment>
 

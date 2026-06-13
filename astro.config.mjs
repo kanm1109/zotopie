@@ -10,7 +10,7 @@ export default defineConfig({
 		mdx(),
 		sitemap({
 			lastmod: new Date(),
-			filter: (page) => !page.includes('?') && !page.includes('/go/'),
+			filter: (page) => !page.includes('?') && !page.includes('/go/') && !page.endsWith('/search/') && page !== 'https://zotopie.com/search/',
 			serialize(item) {
 				const url = item.url;
 				if (url === 'https://zotopie.com/') {
@@ -30,6 +30,9 @@ export default defineConfig({
 				}
 				if (url.includes('/compare/')) {
 					return { ...item, changefreq: 'monthly', priority: 0.7 };
+				}
+				if (url.includes('/best/')) {
+					return { ...item, changefreq: 'weekly',  priority: 0.9 };
 				}
 				if (url.includes('/search')) {
 					return { ...item, changefreq: 'monthly', priority: 0.4 };
