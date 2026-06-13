@@ -48,7 +48,8 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
 
   <!-- HERO -->
   <section class="hero">
-    <h1>Discover The Best<br />Software Tools</h1>
+    <div class="hero-eyebrow">Software Directory</div>
+    <h1>Discover The <span class="hero-accent">Best</span><br />Software Tools</h1>
     <p class="hero-sub">Search {toolCount}+ expert reviews across {catCount} categories</p>
 
     <div class="hero-search-wrap">
@@ -337,19 +338,49 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
 <style>
   .hero {
     text-align: center;
-    padding: 72px 0 56px;
+    padding: 80px 0 60px;
+    position: relative;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
   }
   .hero h1 {
-    font-size: 3rem;
+    font-size: 3.25rem;
     font-weight: 800;
     color: #111827;
     line-height: 1.1;
-    margin: 0 0 14px;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+  .hero-accent {
+    background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .hero-sub {
     font-size: 1.1rem;
     color: #6b7280;
-    margin: 0 0 28px;
+    margin: 0 0 32px;
   }
 
   /* Hero search box */
@@ -447,60 +478,85 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     flex-wrap: wrap;
     justify-content: center;
     gap: 8px;
-    max-width: 600px;
+    max-width: 640px;
     margin: 0 auto;
   }
   .hero-cat-chip {
-    font-size: 0.83rem;
+    font-size: 0.82rem;
     font-weight: 600;
     color: #374151;
     background: #fff;
     border: 1.5px solid #e5e7eb;
     border-radius: 20px;
-    padding: 5px 14px;
+    padding: 6px 16px;
     text-decoration: none;
-    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    transition: border-color 0.18s, color 0.18s, background 0.18s, box-shadow 0.18s;
     white-space: nowrap;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
   }
   .hero-cat-chip:hover {
     border-color: #2563eb;
     color: #2563eb;
     background: #eff6ff;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.12);
     text-decoration: none;
   }
 
   /* Sections */
   .section {
-    padding: 48px 0;
-    border-top: 1px solid #e5e7eb;
+    padding: 56px 0;
+    border-top: 1px solid #f3f4f6;
   }
   .section-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    margin-bottom: 24px;
+    margin-bottom: 28px;
     gap: 16px;
   }
   .section-header h2 {
     font-size: 1.5rem;
     font-weight: 700;
     color: #111827;
-    margin: 0 0 4px;
+    margin: 0 0 5px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .section-header h2::before {
+    content: "";
+    display: inline-block;
+    width: 4px;
+    height: 1.1em;
+    background: linear-gradient(180deg, #2563eb, #7c3aed);
+    border-radius: 2px;
+    flex-shrink: 0;
   }
   .section-sub {
     font-size: 0.875rem;
-    color: #6b7280;
+    color: #9ca3af;
     margin: 0;
   }
   .see-all {
-    font-size: 0.875rem;
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.84rem;
     font-weight: 600;
     color: #2563eb;
+    background: #eff6ff;
+    border: 1px solid #bfdbfe;
+    padding: 5px 14px;
+    border-radius: 20px;
     white-space: nowrap;
     flex-shrink: 0;
-    padding-top: 4px;
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
   }
-  .see-all:hover { text-decoration: underline; }
+  .see-all:hover {
+    background: #dbeafe;
+    border-color: #93c5fd;
+    text-decoration: none;
+  }
 
   .cats-grid {
     display: grid;
@@ -669,36 +725,42 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 12px 28px;
-    background: #2563eb;
+    padding: 13px 32px;
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
     color: #fff;
-    border-radius: 8px;
-    font-weight: 600;
+    border-radius: 10px;
+    font-weight: 700;
     font-size: 0.95rem;
     text-decoration: none;
-    transition: background 0.2s;
+    transition: box-shadow 0.2s, transform 0.15s;
+    box-shadow: 0 2px 12px rgba(37,99,235,0.3);
   }
-  .btn-primary:hover { background: #1d4ed8; text-decoration: none; }
+  .btn-primary:hover {
+    box-shadow: 0 6px 20px rgba(37,99,235,0.4);
+    transform: translateY(-1px);
+    text-decoration: none;
+  }
   .btn-secondary {
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    padding: 12px 28px;
+    padding: 13px 32px;
     background: #fff;
     color: #374151;
-    border: 1px solid #e5e7eb;
-    border-radius: 8px;
+    border: 1.5px solid #d1d5db;
+    border-radius: 10px;
     font-weight: 600;
     font-size: 0.95rem;
     text-decoration: none;
-    transition: border-color 0.2s, color 0.2s;
+    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
   }
-  .btn-secondary:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; }
+  .btn-secondary:hover { border-color: #2563eb; color: #2563eb; text-decoration: none; box-shadow: 0 2px 10px rgba(37,99,235,0.10); }
 
   /* CTA + Trust Signals */
   .cta-section {
     border-top: 1px solid #e5e7eb;
-    background: #f9fafb;
+    background: linear-gradient(135deg, #eff6ff 0%, #f5f3ff 50%, #f0fdf4 100%);
     margin: 0 -24px;
   }
   .cta-inner {
@@ -708,17 +770,19 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     gap: 48px;
     max-width: 960px;
     margin: 0 auto;
-    padding: 64px 24px;
+    padding: 72px 24px;
   }
   .cta-content h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
+    font-size: 1.85rem;
+    font-weight: 800;
     color: #111827;
-    margin: 0 0 8px;
+    margin: 0 0 10px;
+    letter-spacing: -0.01em;
   }
   .cta-content p {
     color: #6b7280;
-    margin: 0 0 24px;
+    margin: 0 0 28px;
+    font-size: 1rem;
   }
   .cta-actions {
     display: flex;
@@ -727,26 +791,27 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
   }
   .cta-stats {
     display: flex;
-    gap: 32px;
+    gap: 36px;
     flex-shrink: 0;
   }
   .stat {
     text-align: center;
   }
   .stat-num {
-    font-size: 2rem;
+    font-size: 2.25rem;
     font-weight: 800;
     color: #111827;
     display: block;
     line-height: 1;
+    letter-spacing: -0.02em;
   }
   .stat-label {
-    font-size: 0.72rem;
-    color: #6b7280;
+    font-size: 0.7rem;
+    color: #9ca3af;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    margin-top: 5px;
+    letter-spacing: 0.07em;
+    margin-top: 6px;
     display: block;
   }
 
@@ -761,7 +826,7 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
   }
 
   @media (max-width: 640px) {
-    .hero h1 { font-size: 2rem; }
+    .hero h1 { font-size: 2.1rem; }
     .hero-sub { font-size: 1rem; }
     #hero-q { font-size: 1rem; padding: 14px 16px 14px 44px; }
     .hero-s-icon { left: 14px; }
@@ -770,8 +835,9 @@ const catNameMap = Object.fromEntries(taxonomies.map((t) => [t.slug, t.name])) a
     .new-grid { grid-template-columns: 1fr; }
     .section-header { flex-wrap: wrap; }
     .hero-cats { gap: 6px; }
-    .hero-cat-chip { font-size: 0.8rem; padding: 4px 12px; }
+    .hero-cat-chip { font-size: 0.8rem; padding: 5px 12px; }
     .cta-stats { gap: 20px; }
-    .stat-num { font-size: 1.5rem; }
+    .stat-num { font-size: 1.75rem; }
+    .section-header h2::before { height: 1em; }
   }
 </style>
