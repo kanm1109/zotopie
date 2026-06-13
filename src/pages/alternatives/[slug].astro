@@ -291,9 +291,19 @@ const jsonLdStr = JSON.stringify({
             <strong>Best for:</strong> {bestAlt.bestFor.slice(0, 3).join(", ")}
           </p>
         )}
-        <a href={`/reviews/${bestAlt.slug}/`} class="vc-link">
-          Read full {bestAlt.name} review &rarr;
-        </a>
+        <div class="vc-actions">
+          <a href={`/go/${bestAlt.slug}`}
+             class="vc-cta"
+             rel={bestAlt.affiliate ? "sponsored noopener" : "noopener"}
+             target="_blank">
+            {bestAlt.pricing === "Free" || bestAlt.pricing === "Freemium"
+              ? `Try ${bestAlt.name} Free →`
+              : `Visit ${bestAlt.name} →`}
+          </a>
+          <a href={`/reviews/${bestAlt.slug}/`} class="vc-link">
+            Full review &rarr;
+          </a>
+        </div>
       </div>
     </section>
   )}
@@ -641,14 +651,27 @@ const jsonLdStr = JSON.stringify({
     color: #374151;
     margin: 0 0 14px;
   }
+  .vc-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 4px; }
+  .vc-cta {
+    display: inline-block;
+    padding: 9px 20px;
+    background: #2563eb;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+  .vc-cta:hover { background: #1d4ed8; text-decoration: none; }
   .vc-link {
     display: inline-block;
     font-size: 0.9rem;
-    font-weight: 700;
-    color: #2563eb;
+    font-weight: 600;
+    color: #6b7280;
     text-decoration: none;
   }
-  .vc-link:hover { text-decoration: underline; }
+  .vc-link:hover { color: #2563eb; text-decoration: underline; }
 
   /* ── FAQ ───────────────────────────────────────────────────────────────── */
   .faq-section {

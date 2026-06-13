@@ -286,6 +286,7 @@ const jsonLdStr = JSON.stringify({
          target="_blank">
         Visit {tool.name} ↗
       </a>
+      {tool.affiliate && <span class="aff-note">Affiliate link</span>}
       {tool.alternatives && tool.alternatives.length > 0 && (
         <a href={`/alternatives/${tool.slug}`} class="alt-link">
           {tool.alternatives.length} Alternatives &rarr;
@@ -722,6 +723,16 @@ const jsonLdStr = JSON.stringify({
     border: 1px solid #bfdbfe;
   }
   .tag:hover { background: #dbeafe; text-decoration: none; }
+  .aff-note {
+    font-size: 0.72rem;
+    color: #9ca3af;
+    font-weight: 500;
+    padding: 3px 8px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    white-space: nowrap;
+  }
 
   /* TABLE OF CONTENTS */
   .toc {
