@@ -16,7 +16,7 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
@@ -116,7 +116,7 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
       font-size: 0.875rem;
       color: #4B5563;
       font-weight: 500;
-      padding: 6px 12px;
+      padding: 11px 12px;
       border-radius: 8px;
       transition: background 0.15s, color 0.15s;
     }
@@ -152,10 +152,76 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
       transition: opacity 0.15s;
     }
     .nav-s-input:focus + .nav-s-kbd { opacity: 0; }
-    .nav-s-mobile { display: none; color: #6b7280; padding: 4px; }
+    .nav-s-mobile {
+      display: none;
+      color: #6b7280;
+      min-width: 44px;
+      min-height: 44px;
+      padding: 0;
+      align-items: center;
+      justify-content: center;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-s-mobile:hover { background: var(--c-purple-light); color: var(--c-purple); text-decoration: none; }
     @media (max-width: 768px) {
       .nav-search-form { display: none; }
-      .nav-s-mobile { display: flex; align-items: center; }
+      .nav-s-mobile { display: flex; }
+    }
+
+    /* HAMBURGER + MOBILE MENU */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      border-radius: 8px;
+      color: var(--c-dark);
+      flex-shrink: 0;
+      transition: background 0.15s;
+    }
+    .nav-hamburger:hover { background: var(--c-purple-light); }
+    .hamburger-bar {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: currentColor;
+      border-radius: 2px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    .nav-hamburger[aria-expanded="true"] .hamburger-bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger[aria-expanded="true"] .hamburger-bar:nth-child(2) { opacity: 0; }
+    .nav-hamburger[aria-expanded="true"] .hamburger-bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid var(--c-border);
+      background: rgba(255,255,255,0.99);
+      padding: 8px 16px 16px;
+      box-shadow: 0 8px 24px rgba(15,23,42,0.08);
+    }
+    .mobile-menu.is-open { display: block; }
+    .mobile-nav-links { display: flex; flex-direction: column; gap: 2px; }
+    .mobile-nav-links a {
+      display: block;
+      padding: 11px 16px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: #4B5563;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+      text-decoration: none;
+    }
+    .mobile-nav-links a:hover { color: var(--c-purple); background: var(--c-purple-light); text-decoration: none; }
+    @media (max-width: 600px) {
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
     }
 
     /* MAIN WRAPPER */
@@ -163,6 +229,9 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 24px 80px;
+    }
+    @media (max-width: 375px) {
+      .page-wrapper { padding: 0 16px 64px; }
     }
 
     /* FOOTER */
@@ -296,7 +365,21 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
             <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
           </svg>
         </a>
+        <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
       </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+      <nav class="mobile-nav-links" aria-label="Mobile navigation">
+        <a href="/">Home</a>
+        <a href="/best/">Best Tools</a>
+        <a href="/category">Categories</a>
+        <a href="/reviews">Reviews</a>
+        <a href="/search">Search Tools</a>
+      </nav>
     </div>
   </header>
 
@@ -350,6 +433,33 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
         if (navQ) navQ.focus();
       }
     });
+    (function() {
+      var hamburger = document.getElementById('nav-hamburger');
+      var mobileMenu = document.getElementById('mobile-menu');
+      if (!hamburger || !mobileMenu) return;
+      function closeMenu() {
+        hamburger.setAttribute('aria-expanded', 'false');
+        mobileMenu.setAttribute('aria-hidden', 'true');
+        mobileMenu.classList.remove('is-open');
+      }
+      hamburger.addEventListener('click', function(e) {
+        e.stopPropagation();
+        var isOpen = hamburger.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+          closeMenu();
+        } else {
+          hamburger.setAttribute('aria-expanded', 'true');
+          mobileMenu.setAttribute('aria-hidden', 'false');
+          mobileMenu.classList.add('is-open');
+        }
+      });
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.site-header')) closeMenu();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeMenu();
+      });
+    })();
   </script>
 </body>
 </html>
