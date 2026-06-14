@@ -39,7 +39,7 @@ function starsOf(n: number) {
   const full = Math.floor(n);
   const half = n - full >= 0.5 ? 1 : 0;
   const empty = 5 - full - half;
-  return "â˜…".repeat(full) + (half ? "Â½" : "") + "â˜†".repeat(empty);
+  return "★".repeat(full) + (half ? "½" : "") + "☆".repeat(empty);
 }
 
 // "ToolName is a/an [description lowercase, no trailing period]."
@@ -317,8 +317,8 @@ const jsonLdStr = JSON.stringify({
           </tr>
           <tr>
             <td>Free Plan</td>
-            <td class={aIsFree ? "cell-better" : ""}>{aIsFree ? "âœ“ Yes" : "âœ— No"}</td>
-            <td class={bIsFree ? "cell-better" : ""}>{bIsFree ? "âœ“ Yes" : "âœ— No"}</td>
+            <td class={aIsFree ? "cell-better" : ""}>{aIsFree ? "✓ Yes" : "✗ No"}</td>
+            <td class={bIsFree ? "cell-better" : ""}>{bIsFree ? "✓ Yes" : "✗ No"}</td>
           </tr>
         </tbody>
       </table>
@@ -754,14 +754,14 @@ const jsonLdStr = JSON.stringify({
     padding-left: 18px;
     position: relative;
   }
-  .pros-list li::before { content: "âœ“"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+  .pros-list li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
   .cons-list li {
     font-size: 0.875rem;
     color: #374151;
     padding-left: 18px;
     position: relative;
   }
-  .cons-list li::before { content: "âœ—"; position: absolute; left: 0; color: #dc2626; }
+  .cons-list li::before { content: "✗"; position: absolute; left: 0; color: #dc2626; }
   .pc-empty { padding: 16px; }
   .pc-empty p { font-size: 0.875rem; color: #6b7280; margin: 0; }
   .pc-empty a { color: #7C3AED; }
@@ -843,7 +843,7 @@ const jsonLdStr = JSON.stringify({
     position: relative;
     line-height: 1.5;
   }
-  .choose-list li::before { content: "âœ“"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+  .choose-list li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
 
   /* FAQ */
   .faq-list {

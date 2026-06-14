@@ -139,7 +139,7 @@ function renderCard(tool, q) {
       ${logoHtml(tool)}
       <h3 class="rc-name"><a href="/reviews/${tool.slug}">${highlight(tool.name, q)}</a></h3>
     </div>
-    <span class="rc-rating">â˜… ${tool.rating}</span>
+    <span class="rc-rating">★ ${tool.rating}</span>
   </div>
   <p class="rc-desc">${highlight(tool.description, q)}</p>
   ${cats ? `<div class="rc-cats">${cats}</div>` : ''}

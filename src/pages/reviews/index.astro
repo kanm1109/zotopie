@@ -46,9 +46,9 @@ const iconDataStr    = JSON.stringify(iconData);
 
     <select id="f-rating" class="f-select" aria-label="Filter by rating">
       <option value="">Any Rating</option>
-      <option value="4.8">4.8+ â˜… Top Rated</option>
-      <option value="4.5">4.5+ â˜…</option>
-      <option value="4.0">4.0+ â˜…</option>
+      <option value="4.8">4.8+ ★ Top Rated</option>
+      <option value="4.5">4.5+ ★</option>
+      <option value="4.0">4.0+ ★</option>
     </select>
 
     <button id="f-clear" class="f-clear-btn" style="display:none">Clear filters</button>
@@ -118,7 +118,7 @@ function renderCard(tool) {
       ${logoHtml(tool, 32)}
       <h3 class="tc-name"><a href="/reviews/${tool.slug}">${esc(tool.name)}</a></h3>
     </div>
-    <span class="tc-rating">â˜… ${tool.rating}</span>
+    <span class="tc-rating">★ ${tool.rating}</span>
   </div>
   <p class="tc-desc">${esc(tool.description)}</p>
   <div class="tc-footer">

@@ -1,11 +1,13 @@
 ---
 import iconData from '../data/generated/icon-data.json';
+import logoSlugs from '../data/generated/logo-slugs.json';
 import { getInitials, getAvatarColor } from '../utils/logo';
 
 const { tool, size = 32 } = Astro.props;
 
 const slug     = tool.simple_icon ?? '';
 const icon     = slug ? (iconData as Record<string, { hex: string; path: string }>)[slug] : null;
+const hasPublicLogo = (logoSlugs as string[]).includes(tool.slug);
 const initials = getInitials(tool.name);
 const color    = getAvatarColor(tool.slug);
 const fs       = Math.round(size * 0.38);
@@ -23,6 +25,15 @@ const fs       = Math.round(size * 0.38);
   >
     <path d={icon.path} />
   </svg>
+) : hasPublicLogo ? (
+  <img
+    src={`/logos/${tool.slug}.svg`}
+    width={size}
+    height={size}
+    class="tl-img"
+    alt={`${tool.name} logo`}
+    loading="lazy"
+  />
 ) : (
   <span
     class="tl-fallback"
@@ -41,6 +52,17 @@ const fs       = Math.round(size * 0.38);
     padding: 3px;
     box-sizing: content-box;
     box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+  .tl-img {
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: block;
+    background: #fff;
+    border: 1px solid #E8ECF0;
+    padding: 3px;
+    box-sizing: content-box;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    object-fit: contain;
   }
   .tl-fallback {
     display: inline-flex;

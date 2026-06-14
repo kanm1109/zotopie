@@ -140,7 +140,7 @@ const jsonLdStr = JSON.stringify({
       </div>
       <div class="hstat-div"></div>
       <div class="hstat">
-        <span class="hstat-num">â˜… {avgRating}</span>
+        <span class="hstat-num">★ {avgRating}</span>
         <span class="hstat-label">Avg Rating</span>
       </div>
       {freeCount > 0 && (
@@ -159,7 +159,7 @@ const jsonLdStr = JSON.stringify({
   {winner && (
     <section class="top-pick-banner">
       <div class="tp-label">
-        <span class="tp-crown">â˜…</span> Editor's Top Pick
+        <span class="tp-crown">★</span> Editor's Top Pick
       </div>
       <div class="tp-content">
         <ToolLogo tool={winner} size={48} />
@@ -213,9 +213,9 @@ const jsonLdStr = JSON.stringify({
                     {i === 0 && <span class="tbl-winner-badge">Top Pick</span>}
                   </a>
                 </td>
-                <td><span class="tbl-rating">â˜… {tool.rating}</span></td>
+                <td><span class="tbl-rating">★ {tool.rating}</span></td>
                 <td><span class:list={["tbl-price", { "tbl-price-free": isFree }]}>{formatPricing(tool)}</span></td>
-                <td class={isFree ? "cell-yes" : "cell-no"}>{isFree ? "âœ“ Yes" : "âœ— No"}</td>
+                <td class={isFree ? "cell-yes" : "cell-no"}>{isFree ? "✓ Yes" : "✗ No"}</td>
                 <td class="tbl-bestfor">{rankLabels[tool.slug]}</td>
               </tr>
             );
@@ -258,7 +258,7 @@ const jsonLdStr = JSON.stringify({
                   </div>
                 </div>
                 <div class="te-badges">
-                  <span class:list={["te-rating", { "te-rating-top": i === 0 }]}>â˜… {tool.rating}</span>
+                  <span class:list={["te-rating", { "te-rating-top": i === 0 }]}>★ {tool.rating}</span>
                   <span class:list={["te-price", { "te-price-free": isFree }]}>{formatPricing(tool)}</span>
                 </div>
               </div>
@@ -851,7 +851,7 @@ const jsonLdStr = JSON.stringify({
     position: relative;
     line-height: 1.4;
   }
-  .te-pros .pc-list li::before { content: "âœ“"; position: absolute; left: 0; color: #059669; font-weight: 700; }
+  .te-pros .pc-list li::before { content: "✓"; position: absolute; left: 0; color: #059669; font-weight: 700; }
   .te-cons .pc-list li {
     font-size: 0.85rem;
     color: #374151;
@@ -859,7 +859,7 @@ const jsonLdStr = JSON.stringify({
     position: relative;
     line-height: 1.4;
   }
-  .te-cons .pc-list li::before { content: "âœ—"; position: absolute; left: 0; color: #dc2626; }
+  .te-cons .pc-list li::before { content: "✗"; position: absolute; left: 0; color: #dc2626; }
 
   .te-bestfor {
     display: flex;

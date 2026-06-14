@@ -54,7 +54,7 @@ const bestAltBestFor = bestAlt?.bestFor?.[0]
   : "";
 
 const q1Answer = [
-  `The highest-rated ${tool.name} alternative is ${bestAlt?.name ?? ""} (â˜… ${bestAlt?.rating}/5).`,
+  `The highest-rated ${tool.name} alternative is ${bestAlt?.name ?? ""} (★ ${bestAlt?.rating}/5).`,
   bestAlt?.description ?? "",
   bestAltVerdict,
 ].filter(Boolean).join(" ").trim();
@@ -177,7 +177,7 @@ const jsonLdStr = JSON.stringify({
           <span class="cc-desc">{tool.description}</span>
         </div>
         <div class="cc-meta">
-          <span class="cc-rating">â˜… {tool.rating}</span>
+          <span class="cc-rating">★ {tool.rating}</span>
           <span class="cc-price">{tool.startingPrice ? `from ${tool.startingPrice}` : tool.pricing}</span>
         </div>
         <a href={`/reviews/${tool.slug}`} class="cc-link">Full Review &rarr;</a>
@@ -213,7 +213,7 @@ const jsonLdStr = JSON.stringify({
                   {t.startingPrice ? `${t.pricing} Â· ${t.startingPrice}` : t.pricing}
                 </span>
               </td>
-              <td class="cmp-rating">â˜… {t.rating}</td>
+              <td class="cmp-rating">★ {t.rating}</td>
               <td class="cmp-bestfor">{t.bestFor?.[0] ?? "—"}</td>
             </tr>
           ))}
@@ -250,7 +250,7 @@ const jsonLdStr = JSON.stringify({
   <section class="why-section">
     <h2>Why people look for {tool.name} alternatives</h2>
     <p class="why-intro">
-      While {tool.name} is rated <strong>â˜… {tool.rating}/5</strong>, users commonly switch because of:
+      While {tool.name} is rated <strong>★ {tool.rating}/5</strong>, users commonly switch because of:
     </p>
     <ul class="why-list">
       {whySwitchItems.length > 0
@@ -276,7 +276,7 @@ const jsonLdStr = JSON.stringify({
           <ToolLogo tool={bestAlt} size={40} />
           <div>
             <span class="vc-name">{bestAlt.name}</span>
-            <span class="vc-rating">â˜… {bestAlt.rating} / 5</span>
+            <span class="vc-rating">★ {bestAlt.rating} / 5</span>
           </div>
         </div>
         <p class="vc-text">

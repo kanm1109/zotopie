@@ -199,7 +199,7 @@ const jsonLdStr = JSON.stringify({
         ratingValue: tool.rating,
         bestRating: "5",
         worstRating: "1",
-        ratingCount: "1",
+        reviewCount: "1",
       },
     },
     {
@@ -245,7 +245,7 @@ const jsonLdStr = JSON.stringify({
       <div class="hero-text">
         <div class="hero-title-row">
           <h1>{tool.name} Review</h1>
-          <span class="hero-rating-badge">â˜… {tool.rating}</span>
+          <span class="hero-rating-badge">★ {tool.rating}</span>
         </div>
         <p class="tool-desc">{tool.description}</p>
         <p class="review-date">Reviewed {reviewDateStr}</p>
@@ -258,7 +258,7 @@ const jsonLdStr = JSON.stringify({
     <div class="summary-grid">
       <div class="summary-item">
         <span class="label">Rating</span>
-        <span class="value rating-val">â˜… {tool.rating} / 5</span>
+        <span class="value rating-val">★ {tool.rating} / 5</span>
       </div>
       <div class="summary-item">
         <span class="label">Pricing</span>
@@ -449,7 +449,7 @@ const jsonLdStr = JSON.stringify({
         <p class="verdict-text">{(tool.verdict as { summary: string }).summary}</p>
         <div class="verdict-footer">
           <div class="verdict-rating">
-            <span class="vr-score">â˜… {(tool.verdict as { score?: number }).score ?? tool.rating}</span>
+            <span class="vr-score">★ {(tool.verdict as { score?: number }).score ?? tool.rating}</span>
             <span class="vr-label">/ 5</span>
           </div>
           <a href={`/go/${tool.slug}`}
@@ -549,7 +549,7 @@ const jsonLdStr = JSON.stringify({
         <div class="pn-meta">
           <span class="pn-dir">&#8592; Previous</span>
           <span class="pn-name">{prevTool.name}</span>
-          <span class="pn-rating">â˜… {prevTool.rating}</span>
+          <span class="pn-rating">★ {prevTool.rating}</span>
         </div>
       </a>
     ) : <div />}
@@ -558,7 +558,7 @@ const jsonLdStr = JSON.stringify({
         <div class="pn-meta">
           <span class="pn-dir">Next &rarr;</span>
           <span class="pn-name">{nextTool.name}</span>
-          <span class="pn-rating">â˜… {nextTool.rating}</span>
+          <span class="pn-rating">★ {nextTool.rating}</span>
         </div>
         <ToolLogo tool={nextTool} size={36} />
       </a>
@@ -574,7 +574,7 @@ const jsonLdStr = JSON.stringify({
       <ToolLogo tool={tool} size={28} />
       <span class="sticky-name">{tool.name}</span>
       {tool.startingPrice && <span class="sticky-price">{tool.startingPrice}</span>}
-      <span class="sticky-rating">â˜… {tool.rating}</span>
+      <span class="sticky-rating">★ {tool.rating}</span>
     </div>
     <a href={`/go/${tool.slug}`}
        class="sticky-btn"
@@ -821,7 +821,7 @@ const jsonLdStr = JSON.stringify({
     line-height: 1.5;
   }
   .pros-box .pc-list li::before {
-    content: "âœ“";
+    content: "✓";
     position: absolute;
     left: 0;
     color: #15803d;
@@ -829,7 +829,7 @@ const jsonLdStr = JSON.stringify({
     font-size: 0.8rem;
   }
   .cons-box .pc-list li::before {
-    content: "âœ—";
+    content: "✗";
     position: absolute;
     left: 0;
     color: #b91c1c;
