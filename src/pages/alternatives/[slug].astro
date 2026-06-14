@@ -62,11 +62,11 @@ const q1Answer = [
 const q2 = freeAlt
   ? {
       question: `Is there a free ${tool.name} alternative?`,
-      answer: `Yes â€” ${freeAlt.name} offers a ${freeAlt.pricing.toLowerCase()} plan${freeAlt.bestFor?.[0] ? `, making it ideal for ${freeAlt.bestFor[0].toLowerCase()}` : ""}. See the full review for plan details.`,
+      answer: `Yes — ${freeAlt.name} offers a ${freeAlt.pricing.toLowerCase()} plan${freeAlt.bestFor?.[0] ? `, making it ideal for ${freeAlt.bestFor[0].toLowerCase()}` : ""}. See the full review for plan details.`,
     }
   : {
       question: `Does ${tool.name} offer a free plan?`,
-      answer: `${tool.name} is a ${tool.pricing.toLowerCase()} tool${tool.startingPrice ? `, starting at ${tool.startingPrice}` : ""}. The alternatives above vary in pricing â€” check each review for free trial availability.`,
+      answer: `${tool.name} is a ${tool.pricing.toLowerCase()} tool${tool.startingPrice ? `, starting at ${tool.startingPrice}` : ""}. The alternatives above vary in pricing — check each review for free trial availability.`,
     };
 
 const q3Answer = whySwitchItems.length > 0
@@ -83,7 +83,7 @@ const autoFaqs = [
 const SITE    = "https://zotopie.com";
 const pageUrl = `${SITE}/alternatives/${tool.slug}/`;
 const pageTitle = `Best ${tool.name} Alternatives 2026 | Zotopie`;
-const pageDesc  = `Looking for ${tool.name} alternatives? Compare the top ${sortedAlts.length} options by pricing, rating, and best-fit use case â€” with honest expert reviews.`;
+const pageDesc  = `Looking for ${tool.name} alternatives? Compare the top ${sortedAlts.length} options by pricing, rating, and best-fit use case — with honest expert reviews.`;
 
 // â”€â”€ JSON-LD â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const jsonLdStr = JSON.stringify({
@@ -214,7 +214,7 @@ const jsonLdStr = JSON.stringify({
                 </span>
               </td>
               <td class="cmp-rating">â˜… {t.rating}</td>
-              <td class="cmp-bestfor">{t.bestFor?.[0] ?? "â€”"}</td>
+              <td class="cmp-bestfor">{t.bestFor?.[0] ?? "—"}</td>
             </tr>
           ))}
         </tbody>
@@ -297,8 +297,8 @@ const jsonLdStr = JSON.stringify({
              rel={bestAlt.affiliate ? "sponsored noopener" : "noopener"}
              target="_blank">
             {bestAlt.pricing === "Free" || bestAlt.pricing === "Freemium"
-              ? `Try ${bestAlt.name} Free â†’`
-              : `Visit ${bestAlt.name} â†’`}
+              ? `Try ${bestAlt.name} Free →`
+              : `Visit ${bestAlt.name} →`}
           </a>
           <a href={`/reviews/${bestAlt.slug}/`} class="vc-link">
             Full review &rarr;

@@ -11,7 +11,7 @@ const iconDataStr    = JSON.stringify(iconData);
 
 <MainLayout
   title="All Tool Reviews | Zotopie"
-  description="Browse honest reviews of 100+ software tools â€” SEO, social media, automation, analytics, AI, and more."
+  description="Browse honest reviews of 100+ software tools — SEO, social media, automation, analytics, AI, and more."
   canonical="https://zotopie.com/reviews/"
 >
   <Fragment slot="head">
@@ -123,7 +123,7 @@ function renderCard(tool) {
   <p class="tc-desc">${esc(tool.description)}</p>
   <div class="tc-footer">
     <span class="tc-pricing">${price}</span>
-    <a href="/reviews/${tool.slug}" class="tc-link">View Review â†’</a>
+    <a href="/reviews/${tool.slug}" class="tc-link">View Review →</a>
   </div>
 </div>`;
 }
@@ -138,7 +138,7 @@ function pgRange(cur, total) {
   const result = [];
   let prev = 0;
   for (const p of sorted) {
-    if (p - prev > 1) result.push('â€¦');
+    if (p - prev > 1) result.push('…');
     result.push(p);
     prev = p;
   }
@@ -149,15 +149,15 @@ function renderPagination(cur, total) {
   if (total <= 1) return '';
   const range = pgRange(cur, total);
   const items = range.map((p) =>
-    p === 'â€¦'
-      ? `<span class="pg-dot">â€¦</span>`
+    p === '…'
+      ? `<span class="pg-dot">…</span>`
       : `<button class="pg-btn${p === cur ? ' pg-active' : ''}" data-p="${p}">${p}</button>`
   ).join('');
   return `
 <div class="pg-bar">
-  <button class="pg-btn pg-prev" ${cur === 1 ? 'disabled' : ''} data-p="${cur - 1}">â† Prev</button>
+  <button class="pg-btn pg-prev" ${cur === 1 ? 'disabled' : ''} data-p="${cur - 1}">← Prev</button>
   <div class="pg-nums">${items}</div>
-  <button class="pg-btn pg-next" ${cur === total ? 'disabled' : ''} data-p="${cur + 1}">Next â†’</button>
+  <button class="pg-btn pg-next" ${cur === total ? 'disabled' : ''} data-p="${cur + 1}">Next →</button>
 </div>`;
 }
 
@@ -204,7 +204,7 @@ function updatePaginationMeta(page, total) {
   const BASE    = 'https://zotopie.com/reviews/';
   const hasFilter = state.cat || state.pricing || state.rating;
 
-  // Canonical: when filters active â†’ base (no index params); else per-page URL
+  // Canonical: when filters active → base (no index params); else per-page URL
   const canonical = hasFilter ? BASE : (page === 1 ? BASE : `${BASE}?page=${page}`);
   const canonEl = document.querySelector('link[rel="canonical"]');
   if (canonEl) canonEl.setAttribute('href', canonical);

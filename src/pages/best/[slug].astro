@@ -21,7 +21,7 @@ const pageTools = page.toolSlugs
 // Stats
 const avgRating = pageTools.length
   ? (pageTools.reduce((s, t) => s + t.rating, 0) / pageTools.length).toFixed(1)
-  : "â€”";
+  : "—";
 const freeCount = pageTools.filter(
   (t) => t.pricing === "Free" || t.pricing === "Freemium"
 ).length;
@@ -174,10 +174,10 @@ const jsonLdStr = JSON.stringify({
              rel={winner.affiliate ? "sponsored noopener" : "noopener"}
              target="_blank">
             {winner.pricing === "Free" || winner.pricing === "Freemium"
-              ? `Try ${winner.name} Free â†’`
-              : `Visit ${winner.name} â†’`}
+              ? `Try ${winner.name} Free →`
+              : `Visit ${winner.name} →`}
           </a>
-          <a href={`/reviews/${winner.slug}/`} class="tp-cta-sec">Read Full Review â†’</a>
+          <a href={`/reviews/${winner.slug}/`} class="tp-cta-sec">Read Full Review →</a>
         </div>
       </div>
     </section>
@@ -235,7 +235,7 @@ const jsonLdStr = JSON.stringify({
         const rankLabel = rankLabels[tool.slug] ?? "";
         const whyText = tool.pros && tool.pros.length > 0
           ? `${tool.name} earns the "${rankLabel}" title because: ${tool.pros[0].toLowerCase()}. It is particularly well-suited for ${tool.bestFor?.[0]?.toLowerCase() ?? "its core use case"}.`
-          : tool.overview?.slice(0, 200) + "â€¦";
+          : tool.overview?.slice(0, 200) + "…";
 
         // Compare pairs involving this tool (vs higher-ranked tools only)
         const toolComparePairs = comparePairs.filter(
@@ -305,12 +305,12 @@ const jsonLdStr = JSON.stringify({
                    class="te-btn-primary"
                    rel={tool.affiliate ? "sponsored noopener" : "noopener"}
                    target="_blank">
-                  {isFree ? `Try ${tool.name} Free â†’` : `Visit ${tool.name} â†’`}
+                  {isFree ? `Try ${tool.name} Free →` : `Visit ${tool.name} →`}
                 </a>
-                <a href={`/reviews/${tool.slug}/`} class="te-btn-sec">Full Review â†’</a>
-                <a href={`/alternatives/${tool.slug}/`} class="te-btn-alt">Alternatives â†’</a>
+                <a href={`/reviews/${tool.slug}/`} class="te-btn-sec">Full Review →</a>
+                <a href={`/alternatives/${tool.slug}/`} class="te-btn-alt">Alternatives →</a>
                 {toolComparePairs.map((pair) => (
-                  <a href={`/compare/${pair.slug}/`} class="te-btn-cmp">{pair.label} â†’</a>
+                  <a href={`/compare/${pair.slug}/`} class="te-btn-cmp">{pair.label} →</a>
                 ))}
               </div>
             </div>
@@ -335,7 +335,7 @@ const jsonLdStr = JSON.stringify({
         <div class="how-num">02</div>
         <div class="how-body">
           <div class="how-title">Pricing Value</div>
-          <p>We evaluate what you get per dollar â€” free plan quality, paid tier value, and hidden costs.</p>
+          <p>We evaluate what you get per dollar — free plan quality, paid tier value, and hidden costs.</p>
         </div>
       </div>
       <div class="how-item">
@@ -380,11 +380,11 @@ const jsonLdStr = JSON.stringify({
       <div class="compare-links">
         {comparePairs.map((pair) => (
           <a href={`/compare/${pair.slug}/`} class="compare-pill">
-            {pair.label} â†’
+            {pair.label} →
           </a>
         ))}
         <a href={`/category/${page.categorySlug}/`} class="compare-pill compare-pill-cat">
-          Browse all {page.categoryName} tools â†’
+          Browse all {page.categoryName} tools →
         </a>
       </div>
     </section>
@@ -393,9 +393,9 @@ const jsonLdStr = JSON.stringify({
   <!-- FOOTER NAV -->
   <section class="best-footer-nav">
     <p>
-      <a href={`/category/${page.categorySlug}/`}>â† All {page.categoryName} tools</a>
+      <a href={`/category/${page.categorySlug}/`}>← All {page.categoryName} tools</a>
       &nbsp;&bull;&nbsp;
-      <a href="/best/">More best-of guides â†’</a>
+      <a href="/best/">More best-of guides →</a>
     </p>
   </section>
 </MainLayout>
