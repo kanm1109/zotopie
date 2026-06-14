@@ -323,7 +323,7 @@
     "categories": [
       "seo-search"
     ],
-    "simple_icon": "",
+    "simple_icon": "yoast",
     "overview": "Yoast SEO is a WordPress plugin focused on helping website owners improve on-page optimization, content structure, and search engine visibility. It has been one of the most widely adopted SEO plugins in the WordPress ecosystem and is commonly used by bloggers, publishers, businesses, and content teams managing search-focused websites.\n\nA central component of Yoast SEO is its content analysis system. While editing content, users receive feedback related to SEO fundamentals such as keyword placement, heading structure, internal linking opportunities, metadata, and content organization. The plugin also includes readability analysis, which evaluates sentence length, paragraph structure, transition words, and other factors intended to improve content clarity.\n\nBeyond content optimization, Yoast SEO provides technical SEO functionality including XML sitemap generation, canonical URL management, indexing controls, metadata configuration, and structured data implementation. These features help website owners manage many foundational SEO requirements without directly editing code.\n\nThe plugin is commonly used by non-technical WordPress users because much of its functionality is accessible through a guided interface. Editorial teams often incorporate Yoast's analysis into publishing workflows to maintain consistency across large content libraries. It is also frequently used by small businesses that need basic SEO controls without extensive technical expertise.\n\nOne of Yoast's strengths is its emphasis on content quality and publishing workflows rather than advanced SEO experimentation. This makes it approachable for beginners while still providing enough functionality for many content-focused websites.\n\nThere are some limitations to consider. Advanced SEO professionals may find certain technical features less flexible than specialized alternatives. Some capabilities are available only through premium plans, and optimization indicators should be interpreted as guidance rather than ranking guarantees. Additionally, websites requiring extensive schema customization or advanced SEO automation may need supplementary tools.\n\nFor WordPress users seeking structured content optimization and foundational SEO management, Yoast SEO remains primarily a publishing-oriented SEO plugin rather than a full competitive research platform.",
     "pros": [
       "Readability analysis evaluates sentence structure and content clarity",
@@ -1158,7 +1158,7 @@
     "categories": [
       "workflow-automation"
     ],
-    "simple_icon": "",
+    "simple_icon": "ifttt",
     "overview": "IFTTT, an abbreviation for If This Then That, is an automation platform that enables simple conditional connections between web services, smart home devices, and mobile apps. Its name describes its fundamental structure: a trigger condition from one service initiates a single action in another.\n\nThe platform's core unit is the Applet, previously called a recipe. Each Applet connects one trigger to one action, keeping automations intentionally simple. Unlike multi-step automation platforms, IFTTT does not natively support complex branching, conditional logic, or data transformation within a single Applet. Pro tiers add limited multiple-action Applets.\n\nIFTTT's breadth of supported services is concentrated in the consumer, smart home, and IoT space. Integrations cover smart home platforms including Philips Hue, Amazon Alexa, and Google Home, as well as consumer apps for fitness tracking, weather services, social media, note-taking, and mobile notifications. This makes IFTTT useful for personal automation scenarios that do not require business software or complex data handling.\n\nTypical use cases include triggering smart home devices based on location or schedule, logging fitness data to a spreadsheet, receiving weather-based notifications, archiving social media posts to a file, or syncing calendar events to other apps. These are primarily personal productivity and smart home workflows rather than business process automations.\n\nFor business automation requirements involving multi-step workflows, data field mapping, CRM integrations, or complex conditional logic, IFTTT is generally less capable than platforms such as Make, Zapier, or n8n. Its intended audience is individual consumers and smart home enthusiasts rather than enterprise or business operations teams. Its simplicity makes it accessible to non-technical users who need basic connected services without configuration complexity.",
     "pros": [
       "Strong support for smart home ecosystems including lights, sensors, and voice assistants",
@@ -1709,7 +1709,7 @@
     "categories": [
       "content-ai-creation"
     ],
-    "simple_icon": "",
+    "simple_icon": "elevenlabs",
     "overview": "ElevenLabs is an AI voice synthesis platform that generates natural-sounding speech from text in 32 languages, with output quality that is difficult to distinguish from human recording in many use cases. It is used for voiceovers, audiobook production, video dubbing, podcast narration, and conversational AI voice agents.\n\nVoice Cloning creates a replicable voice from as little as one minute of audio sample. Dubbing Studio automates lip-sync video translation into 29 languages. The Conversational AI API enables real-time voice agents for customer service and interactive applications. Free plan provides 10,000 characters/month (~8 minutes of audio); paid plans start at /mo.",
     "pros": [
       "Voice quality is among the most natural available — prosody, pacing, and emotional range outperform most competitors on blind listening tests",
@@ -1760,7 +1760,7 @@
     "categories": [
       "content-ai-creation"
     ],
-    "simple_icon": "",
+    "simple_icon": "grammarly",
     "overview": "Grammarly is an AI-powered writing assistant used by over 30 million people daily across a browser extension, desktop app, and mobile keyboard integrations. It reviews grammar, spelling, punctuation, tone, clarity, and style in real time as you write in any web application — Gmail, Google Docs, LinkedIn, Slack, and thousands of others.\n\nThe free tier catches basic grammar and spelling errors. Grammarly Premium (/mo) adds advanced suggestions for sentence structure, word choice, and clarity, plus a plagiarism checker across 16 billion web pages. Grammarly Business extends this to teams with shared style guides, brand tone settings, and writing analytics. Grammarly Go can draft, rewrite, and respond to messages from a prompt.",
     "pros": [
       "Works across virtually every writing surface — browser-based apps, desktop editors, and mobile keyboards — without switching between tools",
@@ -2015,7 +2015,7 @@
     "categories": [
       "community-growth"
     ],
-    "simple_icon": "",
+    "simple_icon": "patreon",
     "overview": "Patreon is a membership platform enabling creators — artists, podcasters, writers, and YouTubers — to receive recurring support from fans. Creators set up monthly tiers with perks, and Patreon handles payments, tier management, and payouts. Platform fee is 8% on Pro, 12% on Premium; Lite charges 5% with limited features. Additional 2.9% + $0.30 payment processing applies on all plans.",
     "pros": [
       "Built-in creator discovery exposes memberships to Patreon's existing audience of active patrons",
@@ -2219,7 +2219,7 @@
     "categories": [
       "community-growth"
     ],
-    "simple_icon": "",
+    "simple_icon": "discourse",
     "overview": "Discourse is an open-source discussion forum platform used by developer communities, support forums, and online communities. Its thread-based structure, category management, trust levels, and plugin ecosystem power communities ranging from Stack Overflow-style Q&A to product support portals. Self-hosting on any server is free; Discourse Basic hosted plan starts at $50/mo.",
     "pros": [
       "Open-source with full self-hosting option — no monthly fee for teams with server administration capacity",
@@ -2270,7 +2270,7 @@
     "categories": [
       "community-growth"
     ],
-    "simple_icon": "",
+    "simple_icon": "ghost",
     "overview": "Ghost is a headless CMS and publishing platform built specifically for professional bloggers, journalists, and membership publications. It combines content management, newsletter delivery, and paid membership tiers in one platform. Ghost(Pro) hosted plans start at $9/mo (Starter, 500 members); self-hosting on Node.js is free. Native newsletter delivery is included without requiring Mailchimp or ConvertKit.",
     "pros": [
       "Native membership and subscription tiers gate content for paid members without external tools",
@@ -2423,7 +2423,7 @@
     "categories": [
       "marketing-lead-generation"
     ],
-    "simple_icon": "",
+    "simple_icon": "hubspot",
     "overview": "HubSpot is a CRM platform that bundles marketing, sales, customer service, content management, and operations tools in one connected system. It is designed to help businesses attract visitors, convert leads, and retain customers — all tracked through a central contact database linking activity across every team.\n\nThe platform is organized into Hubs (Marketing, Sales, Service, CMS, Operations), each with a free tier and paid plans from Starter (/mo) to Enterprise (,600/mo). The free CRM is the entry point for most businesses, offering contact management, email tracking, meeting scheduling, and pipeline management at no cost. HubSpot is best suited for SMBs and mid-market companies building an inbound growth system.",
     "pros": [
       "Free CRM includes contact management, pipeline tracking, email scheduling, meeting links, and live chat — meaningful functionality at no cost",
@@ -2474,7 +2474,7 @@
     "categories": [
       "marketing-lead-generation"
     ],
-    "simple_icon": "",
+    "simple_icon": "mailchimp",
     "overview": "Mailchimp is an email marketing platform used by small businesses and creators for newsletters, automated sequences, and audience management. It offers a drag-and-drop email builder, audience segmentation, A/B testing, and landing pages. Free plan covers up to 500 contacts; Essentials starts at $13/mo; Standard adds advanced automation; Premium at $350/mo unlocks multivariate testing and advanced segmentation.",
     "pros": [
       "Industry-leading deliverability reputation built over 20+ years with major ISPs",
@@ -2627,7 +2627,7 @@
     "categories": [
       "marketing-lead-generation"
     ],
-    "simple_icon": "",
+    "simple_icon": "brevo",
     "overview": "Brevo (formerly Sendinblue) is a marketing platform offering email, SMS, WhatsApp, and transactional messaging with volume-based pricing rather than contact-based pricing. Unlike competitors charging by list size, Brevo charges by emails sent per month — making it cost-effective for large lists with low send frequency. Free plan allows unlimited contacts with 300 emails/day; Starter ($25/mo) removes daily limits.",
     "pros": [
       "Email volume pricing — a 100K contact list sending once monthly costs far less than Mailchimp",
@@ -3341,7 +3341,7 @@
     "categories": [
       "data-analytics"
     ],
-    "simple_icon": "",
+    "simple_icon": "hotjar",
     "overview": "Hotjar is a behavioral analytics platform that records user sessions, generates heatmaps, and collects feedback through on-site surveys and polls. Product and UX teams use it to understand how visitors navigate pages and where they drop off before converting. Observe plan ($32/mo) includes session recordings and heatmaps; Ask plan ($80/mo) adds on-site surveys and user interviews.",
     "pros": [
       "Session recordings reveal real user behavior — where users click, scroll, and hesitate — beyond what quantitative data shows",
@@ -3545,7 +3545,7 @@
     "categories": [
       "data-analytics"
     ],
-    "simple_icon": "",
+    "simple_icon": "matomo",
     "overview": "Matomo (formerly Piwik) is an open-source web analytics platform offering a self-hosted alternative to Google Analytics with full data ownership. Teams requiring GDPR compliance without consent banners, privacy-sensitive data handling, or complete raw log access choose Matomo. Self-hosted version is free; Matomo Cloud starts at $23/mo for 50K pageviews/mo.",
     "pros": [
       "100% data ownership — raw data stored in your own database with no third-party data processing",
@@ -3851,7 +3851,7 @@
     "categories": [
       "productivity-knowledge-management"
     ],
-    "simple_icon": "",
+    "simple_icon": "asana",
     "overview": "Asana is a project management platform used by teams to organize work into tasks, projects, and portfolios. Timeline, Kanban, list, and calendar views adapt to different team workflows — from engineering sprints to editorial calendars to cross-functional launches. Free plan works for teams up to 10 users; Premium ($10.99/user/mo) unlocks timelines, milestones, and advanced workflow rules.",
     "pros": [
       "Timeline view with task dependencies clearly visualizes complex project schedules",
@@ -4055,7 +4055,7 @@
     "categories": [
       "productivity-knowledge-management"
     ],
-    "simple_icon": "",
+    "simple_icon": "todoist",
     "overview": "Todoist is a task management app used by individuals and teams to capture, organize, and prioritize tasks across projects. Natural language input converts plain text like 'every Tuesday at 9am' into scheduled recurring tasks. Free plan covers 5 active projects; Pro ($4/mo) adds unlimited projects, task reminders, and productivity trend analytics.",
     "pros": [
       "Natural language date parsing creates scheduled tasks from plain text without date pickers",
@@ -4106,7 +4106,7 @@
     "categories": [
       "productivity-knowledge-management"
     ],
-    "simple_icon": "",
+    "simple_icon": "coda",
     "overview": "Coda is a document platform that combines the flexibility of word processors, the power of spreadsheets, and the interactivity of lightweight apps in one document format. Teams use Coda for product roadmaps, OKR tracking, meeting notes, and internal wikis where linked tables and automations replace separate tools. Free plan is limited by doc size; Pro ($10/user/mo) removes limits and adds automations.",
     "pros": [
       "Tables connected across document sections eliminate copy-paste data silos between spreadsheets",
@@ -4259,7 +4259,7 @@
     "categories": [
       "infrastructure-hosting"
     ],
-    "simple_icon": "",
+    "simple_icon": "vultr",
     "overview": "Vultr is a cloud infrastructure provider offering VPS (Cloud Compute), bare metal servers, and object storage with global server locations and hourly billing. Its competitive pricing, 32 global regions, and NVMe-backed High Frequency plans make it a strong DigitalOcean alternative for developers and hosting providers. Cloud Compute starts at $2.50/mo for 512MB RAM.",
     "pros": [
       "32 global data centers — more than double DigitalOcean's 15 locations for regional proximity",
@@ -4310,7 +4310,7 @@
     "categories": [
       "infrastructure-hosting"
     ],
-    "simple_icon": "",
+    "simple_icon": "hostinger",
     "overview": "Hostinger is a web hosting provider known for aggressive pricing across shared, cloud, VPS, and WordPress hosting. Its custom hPanel control panel, free domain for the first year, and LiteSpeed server stack make it competitive for price-conscious users. Premium shared hosting starts at $2.99/mo intro (renews $8.99/mo); WordPress hosting from $2.99/mo; VPS from $4.99/mo for developers needing root access.",
     "pros": [
       "Among the lowest prices in shared hosting without sacrificing LiteSpeed server performance",
@@ -4463,7 +4463,7 @@
     "categories": [
       "infrastructure-hosting"
     ],
-    "simple_icon": "",
+    "simple_icon": "namecheap",
     "overview": "Namecheap is a domain registrar and web hosting provider known for low domain prices and transparent renewal rates. It offers domain registration for 400+ TLDs, EasyWP managed WordPress hosting, private email, and SSL certificates. Popular primarily as a registrar — many users register domains at Namecheap while hosting elsewhere. .com domains from $7.98/yr; EasyWP WordPress hosting from $1.44/mo.",
     "pros": [
       "Domain renewal prices are among the lowest and most transparent — no hidden renewal fee inflation",
@@ -4514,7 +4514,7 @@
     "categories": [
       "infrastructure-hosting"
     ],
-    "simple_icon": "",
+    "simple_icon": "wpengine",
     "overview": "WP Engine is a managed WordPress hosting platform built for businesses, agencies, and enterprises that require performance, security, and reliability without server management. It includes daily automated backups, one-click staging environments, proprietary EverCache caching, Cloudflare CDN, and 24/7 WordPress-expert support. Startup ($20/mo) hosts 1 site; Growth ($115/mo) scales to 25 sites for agencies.",
     "pros": [
       "EverCache performance engine consistently delivers fast page loads under traffic spikes",
@@ -4565,7 +4565,7 @@
     "categories": [
       "infrastructure-hosting"
     ],
-    "simple_icon": "",
+    "simple_icon": "kinsta",
     "overview": "Kinsta is a premium managed WordPress hosting provider built on Google Cloud Platform, using isolated container architecture and automatic scaling for performance-critical WordPress sites. Each site runs in its own container with dedicated CPU and RAM — resources are not shared with other customers.\n\nKinsta provides automatic daily backups, a built-in staging environment, a free CDN via Cloudflare (260+ edge locations), server-level caching, and MyKinsta — a custom dashboard with real-time analytics and PHP error logging. Plans start at /mo for one WordPress install; add-ons include APM (application performance monitoring) and additional PHP workers for high-concurrency sites. The platform is SOC2 and GDPR compliant.",
     "pros": [
       "Google Cloud Platform infrastructure with isolated containers — dedicated CPU and RAM per site means one customer's traffic spike cannot degrade another's performance",
@@ -4667,7 +4667,7 @@
     "categories": [
       "ecommerce-monetization"
     ],
-    "simple_icon": "",
+    "simple_icon": "woocommerce",
     "overview": "WooCommerce is an open-source ecommerce plugin for WordPress that powers approximately 30% of all online stores globally. It converts any WordPress site into a fully functional store with product management, payment processing, shipping, and tax calculation. The plugin is free; costs come from hosting, themes, and premium extensions for subscriptions, memberships, advanced shipping, or additional payment gateways.",
     "pros": [
       "No monthly platform fee — costs scale with actual usage rather than a fixed subscription",
@@ -4769,7 +4769,7 @@
     "categories": [
       "ecommerce-monetization"
     ],
-    "simple_icon": "",
+    "simple_icon": "lemonsqueezy",
     "overview": "Lemon Squeezy is a merchant-of-record ecommerce platform for software developers and digital product creators selling SaaS subscriptions, digital downloads, and one-time products globally. As the merchant of record, Lemon Squeezy handles sales tax collection, VAT remittance, and compliance across 100+ countries — eliminating the tax burden from individual sellers.\n\nThe platform covers checkout pages, subscription billing, license key generation, usage-based pricing, affiliate management, and customer portals. Developers integrate via REST API or official SDKs. Lemon Squeezy charges percentage-based transaction fees on the base tier; Store plans (-/mo) reduce per-transaction costs for higher-revenue sellers.",
     "pros": [
       "Merchant-of-record model handles sales tax, VAT, and GST collection and remittance in 100+ countries — sellers have zero tax compliance burden internationally",
@@ -4820,7 +4820,7 @@
     "categories": [
       "ecommerce-monetization"
     ],
-    "simple_icon": "",
+    "simple_icon": "bigcommerce",
     "overview": "BigCommerce is a hosted ecommerce platform targeting mid-market and enterprise merchants who need more built-in functionality than Shopify without Magento's development overhead. Native features include multi-currency, faceted search, B2B pricing groups, and headless commerce support. Standard ($29/mo) has no transaction fees; Plus ($79/mo) adds abandoned cart recovery and customer groups.",
     "pros": [
       "No transaction fees on any plan — unlike Shopify's 0.5-2% fee on non-Shopify Payments",
@@ -4871,7 +4871,7 @@
     "categories": [
       "ecommerce-monetization"
     ],
-    "simple_icon": "",
+    "simple_icon": "wix",
     "overview": "Wix is a cloud-based website builder with 900+ templates, AI site generation (Wix ADI), and an integrated app market. It targets small businesses, restaurants, and service providers needing a no-code website. Light plan ($17/mo) removes Wix branding; Core ($29/mo) adds ecommerce; Business ($36/mo) enables full online store with abandoned cart recovery.",
     "pros": [
       "Drag-and-drop editor with pixel-perfect control over element positioning on the canvas",
@@ -4922,7 +4922,7 @@
     "categories": [
       "ecommerce-monetization"
     ],
-    "simple_icon": "",
+    "simple_icon": "squarespace",
     "overview": "Squarespace is an all-in-one website builder combining hosting, templates, domain management, and basic ecommerce in one subscription. It targets creatives, freelancers, and small businesses needing a professional online presence without technical skills. Personal ($16/mo) covers portfolio and content sites; Business ($23/mo) and Commerce ($28-52/mo) add ecommerce with reduced transaction fees.",
     "pros": [
       "Award-winning template designs maintain visual quality without professional design skills",
@@ -5174,7 +5174,7 @@
     "categories": [
       "community-growth"
     ],
-    "simple_icon": "",
+    "simple_icon": "wordpress",
     "overview": "WordPress is the world's most popular open-source CMS, powering over 43% of all websites. It offers unmatched flexibility through thousands of themes and plugins, making it the go-to platform for blogs, business sites, and complex web applications.",
     "pros": [
       "Free and open-source with a massive plugin ecosystem (60,000+ plugins)",
@@ -5222,7 +5222,7 @@
     "categories": [
       "content-ai-creation"
     ],
-    "simple_icon": "",
+    "simple_icon": "googlegemini",
     "overview": "Gemini is Google's flagship AI model family, available via Google products and the Gemini API. It excels at multimodal tasks — understanding and generating text, code, images, and audio — and integrates deeply with Google Workspace for productivity.",
     "pros": [
       "Deep integration with Google Workspace (Docs, Gmail, Sheets)",
@@ -5606,7 +5606,7 @@
     "categories": [
       "infrastructure-hosting"
     ],
-    "simple_icon": "",
+    "simple_icon": "hetzner",
     "overview": "Hetzner is a German cloud provider renowned for offering the best price-to-performance ratio in the industry. Its cloud servers, dedicated servers, and object storage are consistently cheaper than AWS, Google Cloud, or Azure with comparable performance — making it popular with cost-conscious developers.",
     "pros": [
       "Exceptional value — 2-3x cheaper than AWS for equivalent specs",
@@ -5654,7 +5654,7 @@
     "categories": [
       "infrastructure-hosting"
     ],
-    "simple_icon": "",
+    "simple_icon": "godaddy",
     "overview": "GoDaddy is the world's largest domain registrar, managing over 85 million domain names. Beyond domains, it offers web hosting, website builders, email hosting, and SSL certificates. Its ubiquity makes it a default choice for many first-time website owners.",
     "pros": [
       "World's largest domain registrar with massive domain inventory",
@@ -5846,7 +5846,7 @@
     "categories": [
       "ecommerce-monetization"
     ],
-    "simple_icon": "",
+    "simple_icon": "paddle",
     "overview": "Paddle acts as the Merchant of Record for SaaS and digital product companies, handling all payment processing, tax compliance (VAT, GST, sales tax), and fraud protection. It's the preferred choice for software businesses selling globally who want to outsource the complexity of international tax.",
     "pros": [
       "Full Merchant of Record — Paddle handles all global tax compliance",
