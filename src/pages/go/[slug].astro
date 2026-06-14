@@ -13,6 +13,7 @@ export async function getStaticPaths() {
 const { tool } = Astro.props;
 const isAffiliate = tool.affiliate === true;
 const dest = (isAffiliate && tool.affiliateUrl) ? tool.affiliateUrl : tool.website;
+const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
 ---
 
 <!doctype html>
@@ -20,11 +21,22 @@ const dest = (isAffiliate && tool.affiliateUrl) ? tool.affiliateUrl : tool.websi
   <head>
     <meta charset="utf-8" />
     <meta name="robots" content="noindex, nofollow" />
-    <meta http-equiv="refresh" content={`0;url=${dest}`} />
+    <!-- Delay gives GA4 time to beacon; JS redirect fires faster (~300ms) -->
+    <meta http-equiv="refresh" content={`3;url=${dest}`} />
     <title>Redirecting to {tool.name}…</title>
-    <!-- Tracking beacon fires before JS redirect -->
-    <script define:vars={{ slug: tool.slug, dest, isAffiliate }}>
-      // Record click in localStorage for analytics
+    {GA_ID && (
+      <>
+        <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}></script>
+        <script is:inline define:vars={{ GA_ID }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', GA_ID, { send_page_view: false });
+        </script>
+      </>
+    )}
+    <script define:vars={{ slug: tool.slug, dest, isAffiliate, toolName: tool.name, GA_ID }}>
+      // 1. localStorage (per-browser debug data)
       try {
         const key = "ztp_clicks";
         const raw = localStorage.getItem(key);
@@ -36,8 +48,25 @@ const dest = (isAffiliate && tool.affiliateUrl) ? tool.affiliateUrl : tool.websi
         if (isAffiliate) data[slug].affiliate = true;
         localStorage.setItem(key, JSON.stringify(data));
       } catch (_) {}
-      // Redirect immediately
-      window.location.replace(dest);
+
+      // 2. GA4 affiliate_click event → redirect on callback
+      var _redirected = false;
+      function _doRedirect() {
+        if (!_redirected) { _redirected = true; window.location.replace(dest); }
+      }
+
+      if (GA_ID && typeof gtag === 'function') {
+        gtag('event', 'affiliate_click', {
+          tool_name: toolName,
+          tool_slug: slug,
+          is_affiliate: isAffiliate,
+          event_callback: _doRedirect,
+        });
+        // Fallback: redirect after 1.2s even if GA4 doesn't callback
+        setTimeout(_doRedirect, 1200);
+      } else {
+        _doRedirect();
+      }
     </script>
   </head>
   <body style="font-family:sans-serif;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;background:#f9fafb;">

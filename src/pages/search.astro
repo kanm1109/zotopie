@@ -248,6 +248,15 @@ function doSearch(raw) {
   resultsEl.innerHTML = hits.length
     ? hits.map((t) => renderCard(t, q)).join('')
     : `<div class="no-results">Try a different keyword or <a href="/category">browse categories</a>.</div>`;
+
+  // GA4 search event (fires after results render, not on every keystroke)
+  if (q && typeof gtag === 'function') {
+    gtag('event', 'search', {
+      search_term: q,
+      results_count: hits.length,
+      category_filter: activeCat || null,
+    });
+  }
 }
 
 const input = document.getElementById('q');
