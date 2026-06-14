@@ -1,0 +1,27 @@
+<svg width="450" height="120" viewBox="0 0 450 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="zg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <!-- Z mark: gradient stroke (for use on dark/navy surfaces) -->
+  <path d="M 18 30 L 100 30 L 18 90 L 100 90"
+    stroke="url(#zg)" stroke-width="17" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Network nodes: white (visible on dark backgrounds) -->
+  <circle cx="100" cy="30" r="8" fill="#FFFFFF" opacity="0.20"/>
+  <circle cx="100" cy="30" r="5.5" fill="#FFFFFF" opacity="0.88"/>
+  <circle cx="59" cy="60" r="6" fill="#FFFFFF" opacity="0.14"/>
+  <circle cx="59" cy="60" r="4" fill="#FFFFFF" opacity="0.55"/>
+  <circle cx="18" cy="90" r="8" fill="#FFFFFF" opacity="0.20"/>
+  <circle cx="18" cy="90" r="5.5" fill="#FFFFFF" opacity="0.88"/>
+  <!-- Wordmark: white for dark backgrounds -->
+  <text x="120" y="74"
+    font-family='"Plus Jakarta Sans","Helvetica Neue",Helvetica,Arial,sans-serif'
+    font-size="50" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">Zotopie</text>
+  <!-- Tagline -->
+  <text x="122" y="99"
+    font-family='"Plus Jakarta Sans","Helvetica Neue",Helvetica,Arial,sans-serif'
+    font-size="10.5" font-weight="600" fill="rgba(255,255,255,0.55)" letter-spacing="2.8">DISCOVER THE BEST AI TOOLS</text>
+</svg>

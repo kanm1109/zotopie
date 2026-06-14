@@ -1,0 +1,27 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <!-- Circle background -->
+  <circle cx="256" cy="256" r="256" fill="url(#bg)"/>
+  <!-- Z mark (same coordinates as square variant) -->
+  <path d="M 104 168 L 408 168 L 104 344 L 408 344"
+    stroke="#FFFFFF" stroke-width="64" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Network nodes: white (fixed from gradient-fill bug) -->
+  <!-- Top-right pivot -->
+  <circle cx="408" cy="168" r="30" fill="#FFFFFF" opacity="0.18"/>
+  <circle cx="408" cy="168" r="21" fill="#FFFFFF" opacity="0.9"/>
+  <!-- Diagonal midpoint -->
+  <circle cx="256" cy="256" r="22" fill="#FFFFFF" opacity="0.14"/>
+  <circle cx="256" cy="256" r="14" fill="#FFFFFF" opacity="0.60"/>
+  <!-- Bottom-left pivot -->
+  <circle cx="104" cy="344" r="30" fill="#FFFFFF" opacity="0.18"/>
+  <circle cx="104" cy="344" r="21" fill="#FFFFFF" opacity="0.9"/>
+  <!-- Network connection lines -->
+  <line x1="408" y1="168" x2="256" y2="256" stroke="#FFFFFF" stroke-width="2.5" opacity="0.22"/>
+  <line x1="256" y1="256" x2="104" y2="344" stroke="#FFFFFF" stroke-width="2.5" opacity="0.22"/>
+</svg>

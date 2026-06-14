@@ -1,0 +1,27 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <!-- Square background: iOS applies its own squircle mask -->
+  <rect width="512" height="512" fill="url(#bg)"/>
+  <!-- Z mark -->
+  <path d="M 104 168 L 408 168 L 104 344 L 408 344"
+    stroke="#FFFFFF" stroke-width="66" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Network nodes (white, visible at 120px+) -->
+  <!-- Top-right: where diagonal begins -->
+  <circle cx="408" cy="168" r="28" fill="#FFFFFF" opacity="0.2"/>
+  <circle cx="408" cy="168" r="20" fill="#FFFFFF" opacity="0.88"/>
+  <!-- Diagonal midpoint: network waypoint -->
+  <circle cx="256" cy="256" r="21" fill="#FFFFFF" opacity="0.18"/>
+  <circle cx="256" cy="256" r="14" fill="#FFFFFF" opacity="0.58"/>
+  <!-- Bottom-left: where diagonal ends -->
+  <circle cx="104" cy="344" r="28" fill="#FFFFFF" opacity="0.2"/>
+  <circle cx="104" cy="344" r="20" fill="#FFFFFF" opacity="0.88"/>
+  <!-- Subtle connection echo between nodes -->
+  <line x1="408" y1="168" x2="256" y2="256" stroke="#FFFFFF" stroke-width="2" opacity="0.2"/>
+  <line x1="256" y1="256" x2="104" y2="344" stroke="#FFFFFF" stroke-width="2" opacity="0.2"/>
+</svg>

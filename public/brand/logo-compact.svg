@@ -1,0 +1,21 @@
+<svg width="320" height="72" viewBox="0 0 320 72" xmlns="http://www.w3.org/2000/svg">
+  <!-- logo-compact: no tagline — for navbar, small headers, tight spaces -->
+  <defs>
+    <linearGradient id="zg" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#7C3AED"/>
+      <stop offset="50%" stop-color="#6366F1"/>
+      <stop offset="100%" stop-color="#0EA5E9"/>
+    </linearGradient>
+  </defs>
+  <!-- Z mark: scaled to 72px height -->
+  <path d="M 12 18 L 60 18 L 12 54 L 60 54"
+    stroke="url(#zg)" stroke-width="12" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <!-- Network nodes (small but visible) -->
+  <circle cx="60" cy="18" r="5" fill="#7C3AED" opacity="0.75"/>
+  <circle cx="36" cy="36" r="3" fill="#6366F1" opacity="0.50"/>
+  <circle cx="12" cy="54" r="5" fill="#0EA5E9" opacity="0.75"/>
+  <!-- Wordmark: dark, no tagline -->
+  <text x="76" y="46"
+    font-family='"Plus Jakarta Sans","Helvetica Neue",Helvetica,Arial,sans-serif'
+    font-size="34" font-weight="800" fill="#0F172A" letter-spacing="-0.3">Zotopie</text>
+</svg>
