@@ -5,7 +5,7 @@ import BaseHead from '../components/BaseHead.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
+import SiteHeader from '../components/SiteHeader.astro';
 import { SITE_URL } from '../consts';
 
 interface Props {
@@ -52,9 +52,12 @@ const breadcrumbs = [
 			tags={tags}
 			breadcrumbs={breadcrumbs}
 		/>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 	</head>
 	<body>
-		<Header />
+		<SiteHeader />
 		<main>
 			<article class="article-wrap">
 				<div class="article-header">
@@ -105,6 +108,9 @@ const breadcrumbs = [
 </html>
 
 <style>
+	body {
+		font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	}
 	.article-wrap {
 		max-width: 780px;
 		margin: 0 auto;

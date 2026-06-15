@@ -86,6 +86,11 @@ input {
 table {
 	width: 100%;
 }
+.prose table {
+	display: block;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
 img {
 	max-width: 100%;
 	height: auto;
@@ -99,6 +104,8 @@ code {
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
+	overflow-x: auto;
+	max-width: 100%;
 }
 pre > code {
 	all: unset;
