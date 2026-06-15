@@ -6730,5 +6730,126 @@
 
                            ],
         "verdict":  null
+    },
+    {
+        "name":  "Brand24",
+        "slug":  "brand24",
+        "description":  "Brand24 is a social media monitoring and brand intelligence platform that tracks mentions across the web, social media, forums, news, and Reddit in real time.",
+        "rating":  4.3,
+        "pricing":  "Paid",
+        "startingPrice":  "/month",
+        "website":  "https://brand24.com",
+        "affiliate":  false,
+        "affiliateUrl":  null,
+        "featured":  false,
+        "addedDate":  "2026-06-15",
+        "categories":  [
+                           "community-growth",
+                           "social-media-management"
+                       ],
+        "primaryCategory":  "community-growth",
+        "alternatives":  [
+                             "mention",
+                             "awario"
+                         ],
+        "simple_icon":  null,
+        "overview":  "Brand24 is a comprehensive social listening platform that monitors online conversations about your brand in real time across social media, forums, news sites, blogs, and Reddit. It provides sentiment analysis, influencer identification, storm alerts, and executive reporting — helping PR and marketing teams manage brand reputation proactively.",
+        "pros":  [
+                     "Excellent Reddit monitoring with thread-level tracking",
+                     "Real-time alerts for brand mention spikes",
+                     "Clean, intuitive dashboard for non-technical users",
+                     "Strong sentiment analysis accuracy",
+                     "Competitive benchmarking against rival brands"
+                 ],
+        "cons":  [
+                     "Higher price point compared to basic social listening tools",
+                     "Historical data limited on lower-tier plans",
+                     "No free plan — trial only",
+                     "LinkedIn monitoring has limitations"
+                 ],
+        "keyFeatures":  [
+                            {
+                                "title":  "Reddit Monitoring",
+                                "description":  "Track brand mentions across Reddit threads, subreddits, and comments in real time."
+                            },
+                            {
+                                "title":  "Sentiment Analysis",
+                                "description":  "AI-powered sentiment scoring for every mention — positive, negative, or neutral."
+                            },
+                            {
+                                "title":  "Storm Alerts",
+                                "description":  "Automatic alerts when mention volume spikes beyond your configured threshold."
+                            },
+                            {
+                                "title":  "Influencer Score",
+                                "description":  "Identifies the most influential voices discussing your brand online."
+                            },
+                            {
+                                "title":  "PDF Reports",
+                                "description":  "One-click executive reports exportable as PDF or sent automatically by email."
+                            }
+                        ],
+        "bestFor":  [
+                        "PR teams monitoring brand reputation",
+                        "Marketing managers tracking campaign reach",
+                        "Agencies managing multiple brand clients",
+                        "Businesses active on Reddit wanting community insights",
+                        "Competitive intelligence and market research"
+                    ],
+        "useCases":  [
+                         "Monitor brand mentions across Reddit and social media in real time",
+                         "Track competitor mentions and industry trends",
+                         "Identify potential PR crises before they escalate",
+                         "Measure campaign reach and social media impact",
+                         "Find brand advocates and influencers in your niche"
+                     ],
+        "pricingBreakdown":  {
+                                 "plans":  [
+                                               {
+                                                   "name":  "Individual",
+                                                   "price":  "$99/month",
+                                                   "features":  [
+                                                                    "3 keywords",
+                                                                    "2K mentions/month",
+                                                                    "1 user"
+                                                                ]
+                                               },
+                                               {
+                                                   "name":  "Team",
+                                                   "price":  "$179/month",
+                                                   "features":  [
+                                                                    "7 keywords",
+                                                                    "5K mentions/month",
+                                                                    "3 users"
+                                                                ]
+                                               },
+                                               {
+                                                   "name":  "Pro",
+                                                   "price":  "$249/month",
+                                                   "features":  [
+                                                                    "12 keywords",
+                                                                    "25K mentions/month",
+                                                                    "5 users"
+                                                                ]
+                                               },
+                                               {
+                                                   "name":  "Enterprise",
+                                                   "price":  "Custom",
+                                                   "features":  [
+                                                                    "Unlimited keywords",
+                                                                    "Custom mentions",
+                                                                    "Custom users"
+                                                                ]
+                                               }
+                                           ]
+                             },
+        "whoShouldAvoid":  [
+                               "Freelancers on tight budgets — too expensive for casual monitoring",
+                               "Businesses that only need Twitter/X monitoring",
+                               "Teams that primarily need SEO tools rather than social listening"
+                           ],
+        "verdict":  {
+                        "summary":  "Brand24 is one of the strongest social listening tools for businesses that need comprehensive Reddit monitoring alongside cross-platform brand intelligence. Real-time alerts, sentiment analysis, and clean reporting make it ideal for PR and marketing teams. The main drawback is pricing — at 99 USD+/month, it is a significant investment for smaller teams."
+                    }
     }
 ]

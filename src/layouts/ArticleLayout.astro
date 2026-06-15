@@ -3,10 +3,11 @@ import { Image } from 'astro:assets';
 import type { ImageMetadata } from 'astro';
 import BaseHead from '../components/BaseHead.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import Footer from '../components/Footer.astro';
+import SiteFooter from '../components/SiteFooter.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import { SITE_URL } from '../consts';
+import tools from '../data/generated/tools-enriched.json';
 
 interface Props {
 	title: string;
@@ -33,6 +34,9 @@ const {
 } = Astro.props;
 
 const displayCategory = categoryName ?? category;
+const relatedTool = (tools as any[]).find((t) =>
+  tags.includes(t.slug) || tags.some((tag: string) => tag === t.slug)
+) ?? null;
 const breadcrumbs = [
 	{ name: displayCategory, url: `${SITE_URL}/${category}/` },
 	{ name: title, url: Astro.url.href },
@@ -90,6 +94,21 @@ const breadcrumbs = [
 						<Image src={featuredImage} alt={title} width={1200} height={630} />
 					</div>
 				)}
+				{relatedTool && (
+					<div class="tool-profile-block">
+						<div class="tpb-label">
+							<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+							Tool Profile
+						</div>
+						<p class="tpb-name">{relatedTool.name}</p>
+						<div class="tpb-meta">
+							<span class="tpb-rating">★ {relatedTool.rating}</span>
+							<span class="tpb-sep">·</span>
+							<span class="tpb-pricing">{relatedTool.pricing}{relatedTool.startingPrice ? ` · from ${relatedTool.startingPrice}` : ''}</span>
+						</div>
+						<a href={`/reviews/${relatedTool.slug}/`} class="tpb-cta">View Tool Profile →</a>
+					</div>
+				)}
 				<div class="prose">
 					<slot />
 				</div>
@@ -103,18 +122,30 @@ const breadcrumbs = [
 				)}
 			</article>
 		</main>
-		<Footer />
+		<SiteFooter />
 	</body>
 </html>
 
 <style>
+	:root {
+		--c-purple: #7C3AED;
+		--c-blue: #6366F1;
+		--c-dark: #0F172A;
+		--c-gray: #647488;
+		--c-border: #E8ECF0;
+		--c-bg: #FAFBFC;
+		--font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+	}
 	body {
-		font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+		font-family: var(--font-sans);
+		color: var(--c-dark);
+		background: #fff;
+		-webkit-font-smoothing: antialiased;
 	}
 	.article-wrap {
 		max-width: 780px;
 		margin: 0 auto;
-		padding: 2rem 1rem 4rem;
+		padding: 2rem 1.5rem 4rem;
 	}
 	.article-header { margin-bottom: 2rem; }
 	.tags-row {
@@ -124,24 +155,28 @@ const breadcrumbs = [
 		margin-bottom: 0.75rem;
 	}
 	.tag {
-		color: var(--accent);
+		color: var(--c-purple);
 		text-decoration: none;
 		font-size: 0.85rem;
+		font-weight: 500;
 	}
 	.tag:hover { text-decoration: underline; }
 	h1 {
 		font-size: 2.4rem;
+		font-weight: 800;
 		line-height: 1.15;
+		letter-spacing: -0.5px;
+		color: var(--c-dark);
 		margin: 0.5rem 0 1rem;
 	}
 	.meta {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		font-size: 0.9rem;
-		color: rgb(var(--gray));
+		font-size: 0.875rem;
+		color: var(--c-gray);
 	}
-	.dot { color: rgb(var(--gray)); }
+	.dot { color: var(--c-gray); }
 	.hero {
 		margin-bottom: 2.5rem;
 		border-radius: 12px;
@@ -156,11 +191,67 @@ const breadcrumbs = [
 		gap: 0.5rem;
 		margin-top: 3rem;
 		padding-top: 1.5rem;
-		border-top: 1px solid rgb(var(--gray-light));
-		font-size: 0.9rem;
+		border-top: 1px solid var(--c-border);
+		font-size: 0.875rem;
+		color: var(--c-gray);
 	}
+	.footer-tags .tag { color: var(--c-purple); }
+	/* TOOL PROFILE BLOCK */
+	.tool-profile-block {
+		background: #F5F3FF;
+		border: 1px solid #DDD6FE;
+		border-left: 4px solid var(--c-purple);
+		border-radius: 10px;
+		padding: 18px 20px;
+		margin-bottom: 2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+	.tpb-label {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 0.75rem;
+		font-weight: 600;
+		color: var(--c-purple);
+		text-transform: uppercase;
+		letter-spacing: 0.04em;
+	}
+	.tpb-label svg { flex-shrink: 0; }
+	.tpb-name {
+		font-size: 1rem;
+		font-weight: 700;
+		color: var(--c-dark);
+		margin: 0;
+	}
+	.tpb-meta {
+		display: flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 0.85rem;
+		color: var(--c-gray);
+	}
+	.tpb-rating { color: #D97706; font-weight: 600; }
+	.tpb-sep { color: var(--c-border); }
+	.tpb-cta {
+		display: inline-flex;
+		align-items: center;
+		gap: 4px;
+		margin-top: 4px;
+		font-size: 0.875rem;
+		font-weight: 600;
+		color: var(--c-purple);
+		text-decoration: none;
+	}
+	.tpb-cta:hover { text-decoration: underline; }
+
 	@media (max-width: 720px) {
 		h1 { font-size: 1.8rem; }
 		.article-wrap { padding: 1rem 1rem 3rem; }
+		.tool-profile-block { padding: 14px 16px; }
+	}
+	@media (max-width: 400px) {
+		h1 { font-size: 1.5rem; }
 	}
 </style>

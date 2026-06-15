@@ -1,4 +1,5 @@
 ﻿---
+import { getCollection } from 'astro:content';
 import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
 import bestPages from "../../data/best-pages.json";
@@ -55,6 +56,18 @@ const nextTool = toolIndex < tools.length - 1  ? tools[toolIndex + 1] : null;
 const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
 const [addedYear, addedMonth] = tool.addedDate.split('-');
 const reviewDateStr = `${MONTH_NAMES[parseInt(addedMonth) - 1]} ${addedYear}`;
+
+// Find content articles that review this tool (matched by tag = tool.slug)
+const [reddits, blogs, threads, exts, mkts] = await Promise.all([
+  getCollection('reddit',     ({ data }) => !data.draft),
+  getCollection('blog',       ({ data }) => !data.draft),
+  getCollection('threads',    ({ data }) => !data.draft),
+  getCollection('extensions', ({ data }) => !data.draft),
+  getCollection('marketing',  ({ data }) => !data.draft),
+]);
+const linkedArticle = [...reddits, ...blogs, ...threads, ...exts, ...mkts].find(
+  (post) => post.data.tags?.includes(tool.slug) || post.id.startsWith(tool.slug + '-')
+) ?? null;
 
 // Auto-generated FAQ from tool data
 const autoFaqs: { question: string; answer: string }[] = [];
@@ -317,6 +330,21 @@ const jsonLdStr = JSON.stringify({
         <p class="overview-text">{para}</p>
       ))}
     </section>
+  )}
+
+  <!-- LINKED ARTICLE -->
+  {linkedArticle && (
+    <div class="linked-article">
+      <div class="la-eyebrow">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Read In-Depth Review
+      </div>
+      <p class="la-title">{linkedArticle.data.title}</p>
+      <span class="la-cat">{linkedArticle.collection}</span>
+      <a href={`/${linkedArticle.collection}/${linkedArticle.id}/`} class="la-cta">
+        Read Full Review →
+      </a>
+    </div>
   )}
 
   <!-- PROS & CONS -->
@@ -1187,5 +1215,61 @@ const jsonLdStr = JSON.stringify({
     .pricing-table { grid-template-columns: 1fr; }
     .review-hero h1 { font-size: 1.3rem; }
     .hero-id { flex-wrap: wrap; }
+  }
+
+  /* LINKED ARTICLE */
+  .linked-article {
+    background: #F5F3FF;
+    border: 1px solid #DDD6FE;
+    border-left: 4px solid var(--c-purple);
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .la-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--c-purple);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .la-eyebrow svg { flex-shrink: 0; }
+  .la-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--c-dark);
+    margin: 0;
+    line-height: 1.4;
+  }
+  .la-cat {
+    font-size: 0.72rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--c-purple);
+    background: #EDE9FE;
+    border-radius: 4px;
+    padding: 2px 8px;
+    align-self: flex-start;
+  }
+  .la-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--c-purple);
+    text-decoration: none;
+  }
+  .la-cta:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .linked-article { padding: 14px 16px; }
   }
 </style>

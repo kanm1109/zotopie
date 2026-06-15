@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import tools from "../data/generated/tools-enriched.json";
 import taxonomies from "../data/taxonomies.json";
 import bestPages from "../data/best-pages.json";
@@ -6,8 +7,22 @@ import MainLayout from "../layouts/MainLayout.astro";
 import ToolCard from "../components/ToolCard.astro";
 import CategoryCard from "../components/CategoryCard.astro";
 import ToolLogo from "../components/ToolLogo.astro";
+import ArticleCard from "../components/ArticleCard.astro";
 
 const popularTools = tools.filter((t) => t.featured).sort((a, b) => b.rating - a.rating).slice(0, 6);
+
+const [reddits, threads, extensions, marketings] = await Promise.all([
+  getCollection('reddit',     ({ data }) => !data.draft),
+  getCollection('threads',    ({ data }) => !data.draft),
+  getCollection('extensions', ({ data }) => !data.draft),
+  getCollection('marketing',  ({ data }) => !data.draft),
+]);
+const latestArticles = [
+  ...reddits.map((p)     => ({ ...p, collection: 'reddit'     as const })),
+  ...threads.map((p)     => ({ ...p, collection: 'threads'    as const })),
+  ...extensions.map((p)  => ({ ...p, collection: 'extensions' as const })),
+  ...marketings.map((p)  => ({ ...p, collection: 'marketing'  as const })),
+].sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()).slice(0, 6);
 
 const categoriesWithCount = taxonomies.map((cat) => ({
   ...cat,
@@ -188,6 +203,33 @@ const homeJsonLd = JSON.stringify({
       <div class="tools-grid">
         {popularTools.map((tool) => (
           <ToolCard tool={tool} />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- LATEST ARTICLES -->
+  {latestArticles.length > 0 && (
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Latest Articles</h2>
+          <p class="section-sub">In-depth reviews and guides from our editorial team</p>
+        </div>
+        <a href="/reddit/" class="see-all">View all articles →</a>
+      </div>
+      <div class="articles-grid">
+        {latestArticles.map((post) => (
+          <ArticleCard
+            title={post.data.title}
+            description={post.data.description}
+            publishDate={post.data.publishDate}
+            slug={post.id}
+            category={post.collection}
+            tags={post.data.tags}
+            featuredImage={post.data.featuredImage}
+            featured={false}
+          />
         ))}
       </div>
     </section>
@@ -778,6 +820,11 @@ const homeJsonLd = JSON.stringify({
     grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     gap: 16px;
   }
+  .articles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 24px;
+  }
 
   /* ── BEST GUIDES ────────────────────────────────────── */
   .best-grid {
@@ -1081,6 +1128,7 @@ const homeJsonLd = JSON.stringify({
     .cats-grid { grid-template-columns: 1fr; }
     .tools-grid { grid-template-columns: 1fr; }
     .new-grid { grid-template-columns: 1fr; }
+    .articles-grid { grid-template-columns: 1fr; }
     .section-header { flex-wrap: wrap; }
     .cta-inner h2 { font-size: 1.6rem; }
   }

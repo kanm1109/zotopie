@@ -1,0 +1,138 @@
+---
+---
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-brand-icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 18 18" fill="none">
+              <path d="M4 4 H14 L4 14 H14" stroke="#fff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="14" cy="4" r="1.8" fill="#fff" opacity="0.9"/>
+              <circle cx="9" cy="9" r="1.2" fill="#fff" opacity="0.6"/>
+              <circle cx="4" cy="14" r="1.8" fill="#fff" opacity="0.9"/>
+            </svg>
+          </div>
+          <span class="footer-brand-name">Zotopie</span>
+        </div>
+        <p class="footer-tagline">Expert software reviews, comparisons, and rankings — built for modern teams.</p>
+      </div>
+      <div class="footer-links-group">
+        <div class="footer-links-col">
+          <h4>Explore</h4>
+          <a href="/reviews">All Reviews</a>
+          <a href="/best/">Best Tools</a>
+          <a href="/category">Categories</a>
+        </div>
+        <div class="footer-links-col">
+          <h4>Compare</h4>
+          <a href="/search">Search Tools</a>
+          <a href="/best/ai-writing-tools/">AI Writing</a>
+          <a href="/best/seo-tools/">SEO Tools</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; {new Date().getFullYear()} Zotopie — Find the best software tools</p>
+      <p class="footer-disclosure">
+        Some links on this site are affiliate links. We may earn a commission when you click through and make a purchase — at no extra cost to you. Editorial ratings are independent of affiliate relationships.
+      </p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  :root {
+    --c-purple: #7C3AED;
+    --c-blue: #6366F1;
+    --c-dark: #0F172A;
+    --c-gray: #647488;
+    --c-border: #E8ECF0;
+    --c-bg: #FAFBFC;
+  }
+  .site-footer {
+    border-top: 1px solid var(--c-border);
+    background: var(--c-bg);
+    padding: 48px 24px 32px;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--c-border);
+    flex-wrap: wrap;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .footer-brand-icon {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, var(--c-purple), var(--c-blue));
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .footer-brand-name {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--c-dark);
+  }
+  .footer-tagline {
+    font-size: 0.875rem;
+    color: var(--c-gray);
+    max-width: 280px;
+    line-height: 1.5;
+  }
+  .footer-links-group { display: flex; gap: 48px; }
+  .footer-links-col h4 {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c-dark);
+    margin-bottom: 14px;
+  }
+  .footer-links-col a {
+    display: block;
+    font-size: 0.875rem;
+    color: var(--c-gray);
+    margin-bottom: 8px;
+    transition: color 0.15s;
+    text-decoration: none;
+  }
+  .footer-links-col a:hover { color: var(--c-purple); text-decoration: none; }
+  .footer-bottom {
+    margin-top: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-copy {
+    font-size: 0.82rem;
+    color: #9ca3af;
+  }
+  .footer-disclosure {
+    font-size: 0.78rem;
+    color: #9ca3af;
+    max-width: 520px;
+    line-height: 1.5;
+  }
+  @media (max-width: 768px) {
+    .footer-top { flex-direction: column; gap: 28px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .footer-disclosure { max-width: 100%; }
+  }
+</style>

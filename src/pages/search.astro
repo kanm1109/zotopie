@@ -1,4 +1,5 @@
 ﻿---
+import { getCollection } from 'astro:content';
 import tools from "../data/generated/tools-enriched.json";
 import taxonomies from "../data/taxonomies.json";
 import iconData from "../data/generated/icon-data.json";
@@ -7,6 +8,28 @@ import MainLayout from "../layouts/MainLayout.astro";
 const toolsData      = JSON.stringify(tools);
 const taxonomiesData = JSON.stringify(taxonomies);
 const iconDataStr    = JSON.stringify(iconData);
+
+// Collect all articles from every content collection; allSettled tolerates empty collections
+const _cols = await Promise.allSettled([
+  getCollection('reddit',     ({ data }) => !data.draft),
+  getCollection('threads',    ({ data }) => !data.draft),
+  getCollection('extensions', ({ data }) => !data.draft),
+  getCollection('marketing',  ({ data }) => !data.draft),
+]);
+const COL_NAMES = ['reddit', 'threads', 'extensions', 'marketing'];
+const allArticles = _cols.flatMap((res, i) => {
+  if (res.status !== 'fulfilled') return [];
+  return res.value.map((p) => ({
+    title:       p.data.title,
+    description: p.data.description || '',
+    slug:        p.id,
+    collection:  COL_NAMES[i],
+    tags:        p.data.tags || [],
+    publishDate: p.data.publishDate?.toISOString?.()?.slice(0, 10) || '',
+  }));
+}).sort((a, b) => b.publishDate.localeCompare(a.publishDate));
+
+const articlesData = JSON.stringify(allArticles);
 
 // JSON-LD: WebSite (with SearchAction) + WebPage
 const SITE = "https://zotopie.com";
@@ -57,8 +80,8 @@ const searchJsonLdStr = JSON.stringify({
   </Fragment>
 
   <section class="search-hero">
-    <h1>Search Tools</h1>
-    <p class="search-sub">Find the right tool by name, description, or category.</p>
+    <h1>Search Tools &amp; Articles</h1>
+    <p class="search-sub">Find tools by name or category — or discover in-depth reviews and guides.</p>
 
     <div class="search-box">
       <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -81,14 +104,17 @@ const searchJsonLdStr = JSON.stringify({
     <p id="count" class="result-count" aria-live="polite"></p>
   </section>
 
-  <div id="results" class="results-grid"></div>
+  <div id="results"></div>
 
 </MainLayout>
 
-<script define:vars={{ toolsData, taxonomiesData, iconDataStr }}>
+<script define:vars={{ toolsData, taxonomiesData, iconDataStr, articlesData }}>
 const TOOLS = JSON.parse(toolsData);
 const TAXONOMIES = JSON.parse(taxonomiesData);
 const ICON_DATA = JSON.parse(iconDataStr);
+const ARTICLES  = JSON.parse(articlesData);
+
+const COL_LABEL = { reddit: 'Reddit', threads: 'Threads', extensions: 'Extensions', marketing: 'Marketing' };
 
 const PALETTE = [
   '#7C3AED','#7c3aed','#059669',
@@ -130,7 +156,7 @@ function renderCard(tool, q) {
     .map((s) => `<a href="/category/${s}" class="rc-cat">${esc(catName(s))}</a>`)
     .join('');
   const price = tool.startingPrice
-    ? `${esc(tool.pricing)} Â· from ${esc(tool.startingPrice)}`
+    ? `${esc(tool.pricing)} · from ${esc(tool.startingPrice)}`
     : esc(tool.pricing);
   return `
 <div class="rc-card">
@@ -146,6 +172,41 @@ function renderCard(tool, q) {
   <div class="rc-footer">
     <span class="rc-pricing">${price}</span>
     <a href="/reviews/${tool.slug}" class="rc-link">View Review &rarr;</a>
+  </div>
+</div>`;
+}
+
+// ── Article scoring ────────────────────────────────────────────────────────
+function scoreArticle(article, q) {
+  let score = 0;
+  const titleLo = article.title.toLowerCase();
+  if (titleLo === q)                                        score += 30;
+  else if (titleLo.startsWith(q))                          score += 20;
+  else if (titleLo.includes(q))                            score += 10;
+  if (article.tags?.some((t) => t.toLowerCase().includes(q))) score += 8;
+  if (article.description?.toLowerCase().includes(q))      score += 3;
+  if (article.slug.toLowerCase().includes(q))              score += 1;
+  return score;
+}
+
+function renderArticleCard(article, q) {
+  const url   = `/${article.collection}/${article.slug}/`;
+  const label = COL_LABEL[article.collection] || article.collection;
+  return `
+<div class="rc-card rc-article-card">
+  <div class="rc-top">
+    <div class="rc-id">
+      <span class="rc-art-icon" aria-hidden="true">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+      </span>
+      <h3 class="rc-name"><a href="${url}">${highlight(article.title, q)}</a></h3>
+    </div>
+    <span class="rc-art-badge">${esc(label)}</span>
+  </div>
+  <p class="rc-desc">${highlight(article.description, q)}</p>
+  <div class="rc-footer">
+    <span class="rc-pricing">${esc(article.publishDate)}</span>
+    <a href="${url}" class="rc-link">Read Article &rarr;</a>
   </div>
 </div>`;
 }
@@ -226,34 +287,63 @@ function doSearch(raw) {
     return;
   }
 
-  let hits;
+  // Tool hits (category filter applies only to tools)
+  let toolHits;
   if (!q && activeCat) {
-    hits = TOOLS.filter((t) => t.categories.includes(activeCat));
+    toolHits = TOOLS.filter((t) => t.categories.includes(activeCat));
   } else {
-    hits = TOOLS
+    toolHits = TOOLS
       .map((t) => ({ tool: t, score: scoreMatch(t, q) }))
       .filter((x) => x.score > 0 && (!activeCat || x.tool.categories.includes(activeCat)))
       .sort((a, b) => b.score - a.score)
       .map((x) => x.tool);
   }
 
+  // Article hits (no category filter — articles use their own tag taxonomy)
+  const articleHits = q
+    ? ARTICLES
+        .map((a) => ({ art: a, score: scoreArticle(a, q) }))
+        .filter((x) => x.score > 0)
+        .sort((a, b) => b.score - a.score)
+        .map((x) => x.art)
+    : [];
+
   const label = activeCat
     ? (q ? `"${raw.trim()}" in ${catName(activeCat)}` : catName(activeCat))
     : `"${raw.trim()}"`;
 
-  countEl.textContent = hits.length
-    ? `${hits.length} result${hits.length === 1 ? '' : 's'} for ${label}`
-    : `No results for ${label}`;
+  const total = toolHits.length + articleHits.length;
 
-  resultsEl.innerHTML = hits.length
-    ? hits.map((t) => renderCard(t, q)).join('')
-    : `<div class="no-results">Try a different keyword or <a href="/category">browse categories</a>.</div>`;
+  if (total === 0) {
+    countEl.textContent = `No results for ${label}`;
+    resultsEl.innerHTML = `<div class="no-results">Try a different keyword or <a href="/category">browse categories</a>.</div>`;
+  } else {
+    const parts = [];
+    if (toolHits.length)    parts.push(`${toolHits.length} tool${toolHits.length === 1 ? '' : 's'}`);
+    if (articleHits.length) parts.push(`${articleHits.length} article${articleHits.length === 1 ? '' : 's'}`);
+    countEl.textContent = `${parts.join(', ')} for ${label}`;
 
-  // GA4 search event (fires after results render, not on every keystroke)
+    let html = '';
+    if (toolHits.length) {
+      html += `<section class="result-group">` +
+        `<h2 class="rg-title">Tools <span class="rg-count">${toolHits.length}</span></h2>` +
+        `<div class="results-grid">${toolHits.map((t) => renderCard(t, q)).join('')}</div>` +
+        `</section>`;
+    }
+    if (articleHits.length) {
+      html += `<section class="result-group">` +
+        `<h2 class="rg-title">Articles <span class="rg-count">${articleHits.length}</span></h2>` +
+        `<div class="results-grid">${articleHits.map((a) => renderArticleCard(a, q)).join('')}</div>` +
+        `</section>`;
+    }
+    resultsEl.innerHTML = html;
+  }
+
+  // GA4 search event
   if (q && typeof gtag === 'function') {
     gtag('event', 'search', {
       search_term: q,
-      results_count: hits.length,
+      results_count: total,
       category_filter: activeCat || null,
     });
   }
@@ -320,18 +410,45 @@ else { doSearch(''); }
     return slimCats.filter(function(c) { return c[0].toLowerCase().includes(ql); }).slice(0, 3);
   }
 
+  function suggestAcArticles(q) {
+    var ql = q.toLowerCase();
+    return ARTICLES
+      .filter(function(a) {
+        return a.title.toLowerCase().includes(ql) ||
+          (a.tags && a.tags.some(function(t) { return t.toLowerCase().includes(ql); }));
+      })
+      .sort(function(a, b) {
+        var ap = a.title.toLowerCase().startsWith(ql) ? 1 : 0;
+        var bp = b.title.toLowerCase().startsWith(ql) ? 1 : 0;
+        return bp - ap;
+      })
+      .slice(0, 3);
+  }
+
   function renderAcDrop(q) {
     var tools = suggestAcTools(q);
     var cats = suggestAcCats(q);
-    if (!tools.length && !cats.length) { acDrop.hidden = true; return; }
+    var arts = suggestAcArticles(q);
+    if (!tools.length && !cats.length && !arts.length) { acDrop.hidden = true; return; }
 
     var html = '';
     if (tools.length) {
-      html += '<div class="ac-section"><div class="ac-label">Jump to</div>';
+      html += '<div class="ac-section"><div class="ac-label">Tools</div>';
       tools.forEach(function(t) {
         html += '<div class="ac-item" data-href="/reviews/' + escAc(t[1]) + '" role="option" tabindex="-1">' +
           '<span class="ac-name">' + markAc(t[0], q) + '</span>' +
           '<span class="ac-rating">&#9733; ' + t[2] + '</span>' +
+          '</div>';
+      });
+      html += '</div>';
+    }
+    if (arts.length) {
+      html += '<div class="ac-section"><div class="ac-label">Articles</div>';
+      arts.forEach(function(a) {
+        var url = '/' + a.collection + '/' + a.slug + '/';
+        html += '<div class="ac-item" data-href="' + escAc(url) + '" role="option" tabindex="-1">' +
+          '<span class="ac-name">' + markAc(a.title, q) + '</span>' +
+          '<span class="ac-art-col">' + escAc(COL_LABEL[a.collection] || a.collection) + '</span>' +
           '</div>';
       });
       html += '</div>';
@@ -715,6 +832,67 @@ else { doSearch(''); }
     background: #fef3c7;
     padding: 1px 7px;
     border-radius: 10px;
+    flex-shrink: 0;
+    margin-left: 8px;
+  }
+
+  /* Result groups — :global() required for JS-injected elements */
+  :global(.result-group) { margin-bottom: 40px; }
+  :global(.rg-title) {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #9ca3af;
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  :global(.rg-count) {
+    background: #f3f4f6;
+    color: #6b7280;
+    border-radius: 10px;
+    padding: 1px 8px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  /* Article card variants */
+  :global(.rc-art-icon) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: #F5F3FF;
+    color: #7C3AED;
+    flex-shrink: 0;
+  }
+  :global(.rc-art-badge) {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #7C3AED;
+    background: #F5F3FF;
+    border: 1px solid #DDD6FE;
+    border-radius: 10px;
+    padding: 2px 8px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Autocomplete article collection label */
+  :global(.ac-art-col) {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #7C3AED;
+    background: #F5F3FF;
+    border-radius: 8px;
+    padding: 1px 7px;
     flex-shrink: 0;
     margin-left: 8px;
   }

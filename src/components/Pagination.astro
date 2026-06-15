@@ -32,6 +32,12 @@ const next = currentPage < totalPages ? currentPage + 1 : null;
 )}
 
 <style>
+	:root {
+		--c-purple: #7C3AED;
+		--c-blue: #6366F1;
+		--c-gray: #647488;
+		--c-border: #E8ECF0;
+	}
 	.pagination {
 		display: flex;
 		align-items: center;
@@ -39,28 +45,32 @@ const next = currentPage < totalPages ? currentPage + 1 : null;
 		gap: 1.5rem;
 		margin: 3rem 0 1rem;
 		padding-top: 1rem;
-		border-top: 1px solid rgb(var(--gray-light));
+		border-top: 1px solid var(--c-border);
 	}
 	.page-link {
-		padding: 0.5rem 1rem;
-		border: 1px solid rgb(var(--gray-light));
-		border-radius: 6px;
+		padding: 8px 20px;
+		border: 1.5px solid var(--c-border);
+		border-radius: 8px;
 		text-decoration: none;
-		color: var(--accent);
-		font-size: 0.9rem;
-		transition: all 0.2s;
+		color: var(--c-purple);
+		font-size: 0.875rem;
+		font-weight: 600;
+		transition: background 0.15s, border-color 0.15s, color 0.15s;
 	}
 	.page-link:hover:not(.disabled) {
-		background: var(--accent);
-		color: white;
-		border-color: var(--accent);
+		background: linear-gradient(135deg, #7C3AED, #6366F1);
+		color: #fff;
+		border-color: #7C3AED;
+		text-decoration: none;
 	}
 	.disabled {
-		color: rgb(var(--gray));
+		color: var(--c-gray);
 		pointer-events: none;
+		opacity: 0.5;
 	}
 	.page-info {
-		font-size: 0.9rem;
-		color: rgb(var(--gray));
+		font-size: 0.875rem;
+		color: var(--c-gray);
+		font-weight: 500;
 	}
 </style>
