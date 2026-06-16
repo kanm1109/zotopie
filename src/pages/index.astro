@@ -78,7 +78,7 @@ const homeJsonLd = JSON.stringify({
       "@id": `${SITE}/#organization`,
       name: "Zotopie",
       url: `${SITE}/`,
-      logo: { "@type": "ImageObject", url: `${SITE}/favicon.svg` },
+      logo: { "@type": "ImageObject", url: `${SITE}/images/og-homepage.webp`, width: 1200, height: 630 },
       sameAs: [],
     },
   ],
@@ -88,6 +88,7 @@ const homeJsonLd = JSON.stringify({
 <MainLayout
   title="Zotopie — Find the Best Software Tools"
   description="Search 100+ expert software tool reviews. Find the right tool for your workflow — honest reviews, no fluff."
+  image="/images/og-homepage.webp"
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={homeJsonLd} />
