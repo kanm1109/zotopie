@@ -109,7 +109,7 @@ function logoHtml(tool, size) {
 
 function renderCard(tool) {
   const price = tool.startingPrice
-    ? `${esc(tool.pricing)} Â· from ${esc(tool.startingPrice)}`
+    ? `${esc(tool.pricing)} · from ${esc(tool.startingPrice)}`
     : esc(tool.pricing);
   return `
 <div class="tc-card">
