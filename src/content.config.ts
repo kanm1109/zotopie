@@ -2,9 +2,7 @@ import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
-const articleSchema = ({ image }: any) =>
-	z
-		.object({
+const articleSchema = z.object({
 			title: z.string(),
 			description: z.string(),
 			publishDate: z.coerce.date().optional(),
@@ -13,15 +11,14 @@ const articleSchema = ({ image }: any) =>
 			author: z.string().default('Zotopie Team'),
 			tags: z.array(z.string()).default([]),
 			category: z.string().default('blog'),
-			featuredImage: z.optional(image()),
-			heroImage: z.optional(image()),
+			featuredImage: z.string().optional(),
+			heroImage: z.string().optional(),
 			draft: z.boolean().default(false),
-		})
-		.transform((data) => ({
-			...data,
-			publishDate: data.publishDate ?? data.pubDate ?? new Date(),
-			featuredImage: data.featuredImage ?? data.heroImage,
-		}));
+	}).transform((data) => ({
+		...data,
+		publishDate: data.publishDate ?? data.pubDate ?? new Date(),
+		featuredImage: data.featuredImage ?? data.heroImage,
+	}));
 
 const blog = defineCollection({
 	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),

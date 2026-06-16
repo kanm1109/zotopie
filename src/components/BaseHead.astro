@@ -32,9 +32,13 @@ const {
 	noindex = false,
 } = Astro.props;
 
-const imageUrl = image
-	? (typeof image === 'string' ? image : new URL(image.src, Astro.site))
-	: new URL('/favicon.svg', Astro.site);
+const imageUrl = (() => {
+	if (!image) return `${SITE_URL}/og-default.svg`;
+	if (typeof image === 'string') {
+		return image.startsWith('http') ? image : `${SITE_URL}${image}`;
+	}
+	return new URL(image.src, Astro.site).href;
+})();
 const pageTitle =
 	title === SITE_TITLE ? SITE_TITLE : `${title} | ${SITE_TITLE}`;
 

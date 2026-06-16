@@ -1,5 +1,4 @@
 ---
-import type { ImageMetadata } from 'astro';
 import ArticleCard from '../components/ArticleCard.astro';
 import BaseHead from '../components/BaseHead.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
@@ -15,7 +14,7 @@ interface Post {
 		publishDate: Date;
 		tags: string[];
 		category: string;
-		featuredImage?: ImageMetadata;
+		featuredImage?: string;
 		draft: boolean;
 	};
 	collection: string;

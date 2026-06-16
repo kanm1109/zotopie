@@ -1,6 +1,4 @@
 ---
-import { Image } from 'astro:assets';
-import type { ImageMetadata } from 'astro';
 import BaseHead from '../components/BaseHead.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
 import SiteFooter from '../components/SiteFooter.astro';
@@ -18,7 +16,7 @@ interface Props {
 	tags?: string[];
 	category: string;
 	categoryName?: string;
-	featuredImage?: ImageMetadata;
+	featuredImage?: string;
 }
 
 const {
@@ -91,7 +89,7 @@ const breadcrumbs = [
 				</div>
 				{featuredImage && (
 					<div class="hero">
-						<Image src={featuredImage} alt={title} width={1200} height={630} />
+						<img src={featuredImage} alt={title} loading="eager" />
 					</div>
 				)}
 				{relatedTool && (
