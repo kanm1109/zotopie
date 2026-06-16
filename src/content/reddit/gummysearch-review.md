@@ -197,6 +197,8 @@ Mention is a highly capable alternative suited for **Agency Workflows and Team C
 ### F5Bot
 F5Bot is the absolute best **Free Alternative for Basic Alerts**. It is not a feature-level replacement for GummySearch's deep AI research, but if your only use case was knowing when someone mentioned your specific brand name or product on Reddit or Hacker News, F5Bot does exactly that for free. It sends simple, real-time email alerts the moment your keyword matches. It is the perfect fallback option for bootstrappers who are not ready to pay for a premium tool.
 
+For a complete comparison of all available Reddit monitoring tools, see our [Best Reddit Monitoring Tools (2026)](/reddit/best-reddit-monitoring-tools/) guide.
+
 ---
 
 ## FAQ
