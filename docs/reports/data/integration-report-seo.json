@@ -1,0 +1,187 @@
+{
+    "generated_at":  "2026-06-10T14:36:18",
+    "summary":  {
+                    "pros_cons_updated":  24,
+                    "pros_cons_skipped":  3,
+                    "overviews_updated":  6,
+                    "overviews_skipped":  1,
+                    "tools_total":  119
+                },
+    "sources":  {
+                    "pros_cons_seo_unique_keys":  28,
+                    "overviews_seo_keys":  8,
+                    "note_duplicates_in_pc_seo":  "7 duplicate keys in pros-cons-seo.json; PS5.1 kept last occurrence (Version B) for: ahrefs(skipped), semrush, surfer-seo, rank-math, yoast-seo, screaming-frog, clearscope"
+                },
+    "pros_cons_updated":  [
+                              {
+                                  "slug":  "semrush",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "moz",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "surfer-seo",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "rank-math",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "yoast-seo",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "screaming-frog",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "ubersuggest",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "clearscope",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "hootsuite",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "sprout-social",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "later",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "metricool",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "publer",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "agorapulse",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "sendible",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "tailwind",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "make",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "n8n",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "pabbly-connect",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "ifttt",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "tray-io",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "workato",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "integrately",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              },
+                              {
+                                  "slug":  "celigo",
+                                  "pros_count":  5,
+                                  "cons_count":  3
+                              }
+                          ],
+    "pros_cons_skipped_has_content":  [
+                                          "ahrefs",
+                                          "buffer",
+                                          "zapier"
+                                      ],
+    "pros_cons_no_source":  "92 tools not in pros-cons-seo.json (other categories)",
+    "overviews_updated":  [
+                              {
+                                  "slug":  "semrush",
+                                  "chars":  2295
+                              },
+                              {
+                                  "slug":  "surfer-seo",
+                                  "chars":  2268
+                              },
+                              {
+                                  "slug":  "rank-math",
+                                  "chars":  2158
+                              },
+                              {
+                                  "slug":  "yoast-seo",
+                                  "chars":  2350
+                              },
+                              {
+                                  "slug":  "screaming-frog",
+                                  "chars":  2224
+                              },
+                              {
+                                  "slug":  "clearscope",
+                                  "chars":  2446
+                              }
+                          ],
+    "overviews_skipped_has_content":  [
+                                          "ahrefs"
+                                      ],
+    "overviews_slug_map_applied":  {
+                                       "surferseo":  "surfer-seo",
+                                       "rank_math":  "rank-math",
+                                       "yoast_seo":  "yoast-seo",
+                                       "screaming_frog":  "screaming-frog"
+                                   },
+    "skipped_not_in_tools_json":  [
+                                      "keyword-insights"
+                                  ],
+    "next_steps":  [
+                       "Run: node scripts/merge-data.mjs  (regenerate tools-enriched.json)",
+                       "Verify build output for 24 updated review pages",
+                       "Phase 2: Write real overviews for remaining 113 tools in tools.json",
+                       "Phase 3: Deprecate overviews.json and pros-cons.json after all tools have content"
+                   ]
+}

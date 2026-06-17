@@ -1,0 +1,187 @@
+========================================
+ZOTOPIE.COM - HƯỚNG DẪN TIẾP THEO
+Cập nhật: 2026-06-09
+========================================
+
+========================================
+KIẾN TRÚC MỚI ĐÃ CHỐT (2026-06-09)
+========================================
+
+URL Structure:
+  /best/{use-case}-tools/          ← Best Pages (listicle)
+  /reviews/{tool-slug}/            ← 1 review duy nhất mỗi tool
+  /compare/{tool-a}-vs-{tool-b}/   ← Comparisons
+  /alternatives/{tool-slug}/       ← 1 alternatives page mỗi tool
+  /category/{use-case}/            ← Taxonomy pages
+  /tools/{tool-slug}/              ← Tools Database
+
+Content Model:
+  Mỗi tool: 1 Review + 1 Alternatives + nhiều Categories + nhiều Best Pages
+
+ROADMAP TIẾP THEO (theo thứ tự):
+  □ BƯỚC A: Chốt Taxonomy (10-15 category use-case)
+  □ BƯỚC B: Tạo Tool Database (50 tool đầu tiên)
+  □ BƯỚC C: Thiết kế schema dữ liệu
+  □ BƯỚC D: Vẽ wireframe UI
+
+Resources/Guides → làm sau, chưa ưu tiên.
+
+========================================
+
+TRẠNG THÁI HIỆN TẠI - ĐÃ HOÀN THÀNH:
+✅ Code đẩy lên GitHub (kanm1109/zotopie)
+✅ Cloudflare Pages kết nối và tự động deploy
+✅ zotopie.com live với SSL
+✅ Google Search Console đã xác minh
+
+
+========================================
+BƯỚC 1 - SUBMIT SITEMAP (LÀM NGAY)
+========================================
+
+1. Vào search.google.com/search-console
+2. Chọn property zotopie.com
+3. Menu trái → click "Sơ đồ trang web" (Sitemaps)
+4. Nhập vào ô: sitemap-index.xml
+5. Click "Gửi"
+
+→ Google sẽ bắt đầu crawl và index website trong 1-7 ngày
+
+
+========================================
+BƯỚC 2 - THÊM WWW.ZOTOPIE.COM (NÊN LÀM)
+========================================
+
+1. Vào Cloudflare Dashboard → Workers & Pages → zotopie
+2. Tab "Custom domains" → "Set up a custom domain"
+3. Nhập: www.zotopie.com → Continue → Activate domain
+4. Cloudflare tự thêm DNS record cho www
+
+→ Đảm bảo cả www.zotopie.com cũng trỏ đúng vào website
+
+
+========================================
+BƯỚC 3 - CLOUDFLARE ANALYTICS (TÙY CHỌN)
+========================================
+
+Cloudflare tự động có analytics miễn phí, không cần cài gì thêm.
+
+Xem thống kê tại:
+→ Cloudflare Dashboard → Workers & Pages → zotopie → tab "Metrics"
+
+Thấy được: lượt truy cập, quốc gia, bandwidth, request...
+
+
+========================================
+BƯỚC 4 - GOOGLE ANALYTICS 4 (TÙY CHỌN)
+========================================
+
+Nếu muốn tracking chi tiết hơn:
+
+1. Vào analytics.google.com → tạo account mới
+2. Tạo property → chọn "Web" → nhập zotopie.com
+3. Lấy Measurement ID dạng: G-XXXXXXXXXX
+4. Nhắn ID đó cho Claude → sẽ thêm vào code và push lên
+
+→ Có thể bỏ qua nếu dùng Cloudflare Analytics là đủ
+
+
+========================================
+BƯỚC 5 - ĐĂNG BÀI VIẾT MỚI (WORKFLOW CHÍNH)
+========================================
+
+Mỗi lần muốn đăng bài:
+
+a. Tạo file markdown mới trong thư mục phù hợp:
+   - src/content/reddit/     ← bài về Reddit
+   - src/content/threads/    ← bài về Threads
+   - src/content/extensions/ ← bài về Extensions
+   - src/content/marketing/  ← bài về Marketing
+   - src/content/blog/       ← bài blog chung
+
+b. Dùng ARTICLE_TEMPLATE.md làm mẫu (copy file đó ra)
+
+c. Điền đầy đủ phần frontmatter:
+   ---
+   title: 'Tiêu đề bài viết'
+   description: 'Mô tả 150-160 ký tự'
+   publishDate: '2025-06-08'
+   author: 'Zotopie Team'
+   tags: ['tag1', 'tag2', 'tag3']
+   category: 'reddit'
+   draft: false
+   ---
+
+d. Mở PowerShell → chạy 3 lệnh:
+   cd "H:\ca nhan\zotopie\zotopie"
+   git add .
+   git commit -m "publish: Tên bài viết"
+   git push origin main
+
+e. Chờ ~2 phút → Cloudflare tự build → bài live
+
+→ URL bài viết sẽ là: zotopie.com/reddit/ten-file/
+
+
+========================================
+BƯỚC 6 - THEO DÕI GOOGLE INDEX
+========================================
+
+Sau khi đăng bài mới, muốn Google index nhanh:
+
+1. Vào search.google.com/search-console
+2. Dán URL bài viết vào ô tìm kiếm trên cùng
+   Ví dụ: https://zotopie.com/reddit/reddit-marketing-guide-2025/
+3. Click "Yêu cầu lập chỉ mục"
+
+→ Google sẽ crawl bài đó trong vài giờ đến vài ngày
+
+
+========================================
+BƯỚC 7 - KIỂM TRA ĐỊNH KỲ
+========================================
+
+Mỗi tuần nên kiểm tra:
+
+□ search.google.com/search-console
+  → Xem bao nhiêu trang được index
+  → Kiểm tra lỗi crawl nếu có
+
+□ zotopie.com/sitemap-index.xml
+  → Đảm bảo sitemap cập nhật bài mới
+
+□ Cloudflare Pages → Deployments
+  → Xác nhận mỗi lần push đều build thành công
+
+
+========================================
+CÁC URL QUAN TRỌNG
+========================================
+
+Website:        https://zotopie.com
+Sitemap:        https://zotopie.com/sitemap-index.xml
+Robots:         https://zotopie.com/robots.txt
+RSS Feed:       https://zotopie.com/rss.xml
+
+Cloudflare:     dash.cloudflare.com
+Search Console: search.google.com/search-console
+GitHub repo:    github.com/kanm1109/zotopie
+
+
+========================================
+THỨ TỰ ƯU TIÊN
+========================================
+
+LÀM NGAY HÔM NAY:
+1. Submit sitemap (Bước 1)
+2. Thêm www.zotopie.com (Bước 2)
+
+TUẦN NÀY:
+3. Đăng ít nhất 3-5 bài viết mới (Bước 5)
+4. Request index từng bài trên Search Console (Bước 6)
+
+SAU ĐÓ:
+5. Theo dõi traffic hàng tuần (Bước 7)
+6. Thêm Google Analytics nếu cần (Bước 4)
+
+========================================
