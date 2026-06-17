@@ -1,4 +1,4 @@
-﻿[
+[
   {
     "name": "Ahrefs",
     "slug": "ahrefs",
@@ -1491,7 +1491,13 @@
     "bestFor": [],
     "verdict": {
       "summary": "Synthesia is the right tool for internal training videos, localized product demos, and explainer content where production speed matters more than emotional connection. The multilingual capability is a genuine differentiator for international teams. High-emotion content — testimonials, brand campaigns — still requires human presenters."
-    }
+    },
+    "affiliateProgramExists": true,
+    "affiliateApproved": true,
+    "affiliateUrl": "https://www.synthesia.io/?via=1a4a4b",
+    "affiliateNetwork": "direct",
+    "affiliateSource": "https://synthesia.io/affiliates",
+    "trackingEnabled": false
   },
   {
     "name": "Skool",
@@ -1530,7 +1536,8 @@
     "verdict": {
       "summary": "Skool is the best-value community platform for creators who already have an audience and want to monetize it without giving up a revenue cut. The flat fee and no-commission model are genuinely different from competitors. The limitation is what it deliberately omits — advanced course features, email marketing, and complex funnels all need external tools. Creators who want a simple, unified community-first experience and have the audience to cover the /mo will find it the right choice."
     },
-    "affiliateUrl": "https://www.skool.com/refer?ref=YOURREF"
+    "affiliateUrl": null,
+    "affiliateSource": "https://www.skool.com/refer?ref=YOURREF"
   },
   {
     "name": "Circle",
@@ -1874,7 +1881,8 @@
     "verdict": {
       "summary": "ConvertKit is the strongest email platform for creators who monetize through digital products, courses, or sponsorships and need automations that respond to subscriber behavior. The tag system and automation builder are significantly more powerful than Mailchimp for segmented, behavior-driven communication. The limitation is cost at scale — large lists become expensive, and the design tooling is deliberately minimal, which is a trade-off that suits newsletter-first creators but may not suit marketing teams."
     },
-    "affiliateUrl": "https://convertkit.com?lmref=YOURREF"
+    "affiliateUrl": null,
+    "affiliateSource": "https://convertkit.com?lmref=YOURREF"
   },
   {
     "name": "ActiveCampaign",
@@ -2030,7 +2038,8 @@
     "verdict": {
       "summary": "Systeme.io offers the most compelling free plan for creators and solo entrepreneurs testing a business model. The all-in-one stack eliminates the Zapier complexity of stitching separate tools together. Established businesses with existing email platforms may find the deliverability and integration limitations restrictive."
     },
-    "affiliateUrl": "https://systeme.io/?sa=YOURREF"
+    "affiliateUrl": null,
+    "affiliateSource": "https://systeme.io/?sa=YOURREF"
   },
   {
     "name": "GetResponse",
@@ -2146,7 +2155,8 @@
     "verdict": {
       "summary": "Beehiiv is the best newsletter platform for creators who see their newsletter as a business rather than just a distribution channel. The ad network and Boosts monetization infrastructure is genuinely unique — no other newsletter platform gives creators this level of monetization tooling without taking a revenue cut. The main caveat: these features only become significant at 5,000+ subscribers. Below that, simpler tools may be adequate."
     },
-    "affiliateUrl": "https://www.beehiiv.com?via=YOURREF"
+    "affiliateUrl": null,
+    "affiliateSource": "https://www.beehiiv.com?via=YOURREF"
   },
   {
     "name": "ClickFunnels",
@@ -2756,7 +2766,8 @@
     "verdict": {
       "summary": "Fathom is the right choice when GDPR compliance, simplicity, and accurate traffic numbers matter more than deep funnel analysis. The single-dashboard approach is genuinely faster than GA4 for answering basic traffic questions. Teams needing behavioral analytics or conversion funnels need to add a second tool."
     },
-    "affiliateUrl": "https://usefathom.com/affiliates/YOURREF"
+    "affiliateUrl": null,
+    "affiliateSource": "https://usefathom.com/affiliates/YOURREF"
   },
   {
     "name": "Matomo",
@@ -3367,7 +3378,8 @@
     "verdict": {
       "summary": "Hostinger is the best value entry point for new websites and WordPress blogs that prioritize low cost and reasonable performance. The LiteSpeed advantage is real. Renewal pricing transparency and storage limits are the main caveats — budget for the renewal rate, not the intro rate."
     },
-    "affiliateUrl": "https://www.hostinger.com/affiliates?YOURREF"
+    "affiliateUrl": null,
+    "affiliateSource": "https://www.hostinger.com/affiliates?YOURREF"
   },
   {
     "name": "SiteGround",
@@ -3406,7 +3418,8 @@
     "verdict": {
       "summary": "SiteGround is the best shared and managed WordPress host for users who prioritize support quality and want developer-friendly tools without managing a VPS. Its customer support response times are genuinely exceptional in the category. The main consideration is renewal pricing — the jump from introductory to regular rates is significant, and the StartUp plan's single-site limit is restrictive. For anyone moving beyond one site or needing staging environments, GrowBig is the realistic entry point."
     },
-    "affiliateUrl": "https://www.siteground.com/affiliates?YOURREF"
+    "affiliateUrl": null,
+    "affiliateSource": "https://www.siteground.com/affiliates?YOURREF"
   },
   {
     "name": "Bluehost",
@@ -3445,7 +3458,8 @@
     "verdict": {
       "summary": "Bluehost's WordPress.org endorsement and beginner-friendly setup make it a reasonable first hosting choice. Performance and renewal pricing transparency are the weaknesses — SiteGround offers better speed at comparable post-renewal pricing. Businesses with traffic that matters should budget for managed WordPress alternatives."
     },
-    "affiliateUrl": "https://www.bluehost.com/track/YOURREF/"
+    "affiliateUrl": null,
+    "affiliateSource": "https://www.bluehost.com/track/YOURREF/"
   },
   {
     "name": "Namecheap",
@@ -3522,7 +3536,8 @@
     "verdict": {
       "summary": "WP Engine is the right managed WordPress host when site performance has direct revenue impact and technical support quality matters. The EverCache technology and staging workflow are genuine advantages for agency and ecommerce use cases. Personal sites and low-traffic blogs rarely justify the $20/mo entry point."
     },
-    "affiliateUrl": "https://shareasale.com/r.cfm?b=394937&u=YOURID"
+    "affiliateUrl": null,
+    "affiliateSource": "https://shareasale.com/r.cfm?b=394937&u=YOURID"
   },
   {
     "name": "Kinsta",
@@ -3561,7 +3576,8 @@
     "verdict": {
       "summary": "Kinsta is the right managed WordPress host for businesses where site performance and reliability have a direct revenue impact. The Google Cloud infrastructure, isolation guarantees, and included CDN are genuinely enterprise-grade at a price point accessible to growing businesses. It is not the right choice for personal sites or budget projects — the /mo minimum is real, and managed WordPress makes most sense when the alternative is paying a developer to manage a VPS. For agencies and high-traffic WordPress businesses, it is a strong option."
     },
-    "affiliateUrl": "https://kinsta.com?kaid=YOURREF"
+    "affiliateUrl": null,
+    "affiliateSource": "https://kinsta.com?kaid=YOURREF"
   },
   {
     "name": "Shopify",
@@ -4760,5 +4776,315 @@
       "Educators producing video lessons from presentation slides",
       "Developers building talking-avatar features into apps"
     ]
+  },
+  {
+    "name": "GPTZero",
+    "slug": "gptzero",
+    "description": "AI-generated content detection tool for educators, publishers, and content teams.",
+    "website": "https://gptzero.me",
+    "logo": "",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $10/mo",
+    "affiliate": true,
+    "affiliateProgramExists": true,
+    "affiliateApproved": true,
+    "affiliateUrl": "https://gptzero.me/?via=nguyen-khanh",
+    "affiliateNetwork": "direct",
+    "affiliateSource": "https://gptzero.me/affiliate",
+    "trackingEnabled": false,
+    "rating": 4.3,
+    "featured": false,
+    "addedDate": "2026-06-17",
+    "primaryCategory": "content-ai-creation",
+    "categories": [
+      "content-ai-creation"
+    ],
+    "alternatives": [
+      "grammarly",
+      "jasper"
+    ],
+    "overview": "GPTZero is an AI content detection tool that identifies AI-generated text from models including ChatGPT, Claude, Gemini, and Llama. It provides document-level and sentence-level analysis, highlighting specific sentences flagged as AI-written with probability scores. Educators use it to screen student submissions; publishers use it to verify human authorship before publication. Free plan scans documents up to 5,000 characters; Essentials ($10/mo) removes limits and adds batch uploads.",
+    "pros": [
+      "Sentence-level highlighting pinpoints specific AI-written passages within a longer document",
+      "Multi-model detection covers ChatGPT, Claude, Gemini, Llama, and other major LLMs",
+      "Batch upload on paid plans processes multiple documents simultaneously",
+      "API access allows integration into institutional workflows and plagiarism screening pipelines",
+      "Writing Reports generate shareable proof of AI detection results for documentation"
+    ],
+    "cons": [
+      "False positive rate affects human-written text with formal or structured language styles",
+      "Detection accuracy drops for heavily edited AI content mixed with significant human rewriting",
+      "Free plan 5,000 character limit requires paid upgrade for full document scanning"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "GPTZero is the best standalone AI detection tool for educators and publishers who need sentence-level evidence rather than a simple pass/fail score. The false positive rate is an ongoing limitation across all detection tools — results should inform review, not replace human judgment. Most valuable at institutions processing high document volumes where manual review is impractical."
+    }
+  },
+  {
+    "name": "Fireflies AI",
+    "slug": "fireflies-ai",
+    "description": "AI meeting intelligence platform for automated recording, transcription, and meeting summaries.",
+    "website": "https://fireflies.ai",
+    "logo": "",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $10/user/mo",
+    "affiliate": true,
+    "affiliateProgramExists": true,
+    "affiliateApproved": true,
+    "affiliateUrl": "https://app.fireflies.ai/?via=nguyen-khanh",
+    "affiliateNetwork": "direct",
+    "affiliateSource": "https://fireflies.ai/affiliate",
+    "trackingEnabled": false,
+    "rating": 4.5,
+    "featured": false,
+    "addedDate": "2026-06-17",
+    "primaryCategory": "productivity-knowledge-management",
+    "categories": [
+      "productivity-knowledge-management"
+    ],
+    "alternatives": [
+      "notion",
+      "clickup"
+    ],
+    "overview": "Fireflies AI is a meeting intelligence platform that automatically records, transcribes, and summarizes meetings across Zoom, Google Meet, Teams, and other video conferencing tools. It joins meetings as a bot, generates searchable transcripts with speaker labels, produces AI summaries with action items, and syncs notes to CRMs including Salesforce and HubSpot. Free plan includes 800 minutes of transcription storage; Pro ($10/user/mo) provides unlimited transcription and AI-generated summaries.",
+    "pros": [
+      "Automatic bot joins meetings without manual recording — zero-friction capture for every call",
+      "Speaker labels correctly attribute statements in multi-participant calls",
+      "AI Soundbite extraction pulls key moments and decisions from long meetings",
+      "Native CRM integrations push meeting notes and action items to Salesforce and HubSpot",
+      "Search across all meetings finds any statement or topic discussed in past recordings"
+    ],
+    "cons": [
+      "Bot participant is visible to other meeting members — some clients may object",
+      "Transcription accuracy drops with heavy accents, technical jargon, or poor audio quality",
+      "AI summaries occasionally miss critical context or misrepresent nuanced discussions"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Fireflies AI delivers consistent value for sales and customer success teams who need every call documented and synced to their CRM without manual note-taking. The bot model is its biggest friction point — some meeting contexts require asking permission first. Teams with regular external calls should evaluate whether their client base accepts AI meeting bots before committing."
+    }
+  },
+  {
+    "name": "Rytr",
+    "slug": "rytr",
+    "description": "Budget-friendly AI writing assistant with 40+ use case templates and multi-language support.",
+    "website": "https://rytr.me",
+    "logo": "",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $9/mo",
+    "affiliate": true,
+    "affiliateProgramExists": true,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": "https://rytr.me/affiliate",
+    "trackingEnabled": false,
+    "rating": 4.2,
+    "featured": false,
+    "addedDate": "2026-06-17",
+    "primaryCategory": "content-ai-creation",
+    "categories": [
+      "content-ai-creation"
+    ],
+    "alternatives": [
+      "jasper",
+      "copy-ai"
+    ],
+    "overview": "Rytr is an AI writing assistant positioned as a cost-effective alternative to premium tools like Jasper. It offers 40+ use case templates for blog posts, product descriptions, ad copy, email, and social content, with support for 30+ languages and 20+ tone options. Free plan provides 10,000 characters per month; Saver ($9/mo) adds 100,000 characters; Unlimited ($29/mo) removes all limits. Targets freelancers and solopreneurs who need AI assistance without enterprise-level pricing.",
+    "pros": [
+      "40+ content templates cover blogs, ads, product descriptions, and emails in one platform",
+      "30+ language support enables non-English content creation without separate translation tools",
+      "Built-in plagiarism checker via Copyscape integration screens AI-generated content before use",
+      "$9/mo Saver plan is among the lowest price points for dedicated AI writing assistants",
+      "Chrome extension brings Rytr into any web-based editor or CMS workflow"
+    ],
+    "cons": [
+      "Output quality trails Jasper and Claude for complex, nuanced long-form content",
+      "10,000 character free plan limit is restrictive for evaluating full capability",
+      "Templates produce formulaic output — heavy editing required for distinctive brand voice"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Rytr is the right choice for budget-conscious freelancers and small teams who need templated AI writing assistance without paying $39-59/mo for Jasper. The quality ceiling is lower than premium tools, making it suitable for high-volume routine content rather than flagship brand assets."
+    }
+  },
+  {
+    "name": "Clipto",
+    "slug": "clipto",
+    "description": "AI-powered video clip creator for repurposing long-form content into short social media clips.",
+    "website": "https://clipto.io",
+    "logo": "",
+    "pricing": "Paid",
+    "startingPrice": "$19/mo",
+    "affiliate": true,
+    "affiliateProgramExists": true,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": null,
+    "trackingEnabled": false,
+    "rating": 4.1,
+    "featured": false,
+    "addedDate": "2026-06-17",
+    "primaryCategory": "content-ai-creation",
+    "categories": [
+      "content-ai-creation",
+      "social-media-management"
+    ],
+    "alternatives": [
+      "synthesia",
+      "heygen"
+    ],
+    "overview": "Clipto is a video content repurposing tool that uses AI to identify and extract the most engaging moments from long-form videos — podcasts, webinars, and interviews — and formats them into short clips optimized for Instagram Reels, TikTok, and YouTube Shorts. Auto-captioning, aspect ratio adjustment, and b-roll suggestions reduce post-production time for content creators and marketing teams.",
+    "pros": [
+      "AI-powered highlight detection identifies key moments without manual scrubbing",
+      "Auto-captioning produces accurate subtitles for social-native silent viewing",
+      "Multi-format export resizes clips for TikTok, Instagram Reels, and YouTube Shorts simultaneously"
+    ],
+    "cons": [
+      "AI clip selection occasionally misses context-dependent highlights requiring manual override",
+      "Output quality varies with source video audio and production quality"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Clipto suits content creators and podcasters who produce long-form video content and want to distribute highlights across short-form channels without manual editing. NOTE: PM should verify product details for this entry before publishing."
+    }
+  },
+  {
+    "name": "Arcads",
+    "slug": "arcads",
+    "description": "AI UGC video ad generator using AI avatars to produce authentic-looking performance ad creatives.",
+    "website": "https://arcads.ai",
+    "logo": "",
+    "pricing": "Paid",
+    "startingPrice": "$99/mo",
+    "affiliate": true,
+    "affiliateProgramExists": true,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": "https://arcads.ai/affiliate",
+    "trackingEnabled": false,
+    "rating": 4.4,
+    "featured": false,
+    "addedDate": "2026-06-17",
+    "primaryCategory": "content-ai-creation",
+    "categories": [
+      "content-ai-creation",
+      "marketing-lead-generation"
+    ],
+    "alternatives": [
+      "synthesia",
+      "heygen",
+      "d-id"
+    ],
+    "overview": "Arcads generates UGC-style (user-generated content) video ads using AI actors that replicate the informal, authentic feel of creator-made content. Brands input an ad script and choose from a library of AI avatars with diverse demographics; Arcads renders talking-head videos optimized for Meta, TikTok, and YouTube ad formats. The result is performance ad creatives at scale without real influencer partnerships or casting costs.",
+    "pros": [
+      "AI avatars produce UGC-style ad creatives without real influencer contracting or casting",
+      "Multi-language rendering allows the same ad script to run in multiple markets simultaneously",
+      "Script A/B testing generates multiple avatar and delivery variations for performance testing",
+      "Direct export in Meta and TikTok ad format specifications reduces production overhead",
+      "Custom avatar creation from video submission maintains brand-specific AI spokesperson identity"
+    ],
+    "cons": [
+      "$99/mo entry price is high for small brands testing performance creative at low volume",
+      "AI avatars still lack the authentic imperfection that makes genuine UGC high-performing",
+      "Render limits on base plan require upgrading for high-volume ad testing programs"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Arcads is purpose-built for performance marketers running Meta and TikTok campaigns who need UGC-style creative volume without real creator costs. The authenticity gap versus genuine UGC is its primary limitation — best used alongside real creator content. Most valuable for brands spending $5,000+/mo on paid social who need creative variety to avoid ad fatigue."
+    }
+  },
+  {
+    "name": "Copymatic",
+    "slug": "copymatic",
+    "description": "AI copywriting tool for generating marketing copy, blog posts, and product descriptions.",
+    "website": "https://copymatic.ai",
+    "logo": "",
+    "pricing": "Paid",
+    "startingPrice": "$19/mo",
+    "affiliate": true,
+    "affiliateProgramExists": true,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": "https://copymatic.ai/affiliate",
+    "trackingEnabled": false,
+    "rating": 4.1,
+    "featured": false,
+    "addedDate": "2026-06-17",
+    "primaryCategory": "content-ai-creation",
+    "categories": [
+      "content-ai-creation"
+    ],
+    "alternatives": [
+      "jasper",
+      "copy-ai",
+      "rytr"
+    ],
+    "overview": "Copymatic is an AI copywriting platform offering 90+ templates for blog posts, landing pages, product descriptions, email sequences, and ad copy. It supports 25+ languages and includes a built-in plagiarism checker. Plans start at $19/mo for individual users; team plans add collaboration features and higher word limits. Positioned as a mid-range alternative between budget tools like Rytr and premium platforms like Jasper.",
+    "pros": [
+      "90+ content templates cover a wider range of copy formats than most budget AI writing tools",
+      "Built-in plagiarism checker screens output before use without requiring a separate tool",
+      "25+ language support enables multi-market content production",
+      "$19/mo pricing sits between free-tier tools and premium platforms at a reasonable mid-range"
+    ],
+    "cons": [
+      "Output quality is lower than Jasper or Claude for complex, nuanced long-form content",
+      "Template-driven approach produces formulaic copy requiring significant editing for brand differentiation",
+      "Less feature development momentum compared to Jasper and Copy.ai"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "Copymatic occupies the mid-tier AI copywriting space — more templates than Rytr, lower cost than Jasper. Best suited for freelancers and small agencies managing high-volume routine copy who need more template variety than budget tools provide."
+    }
+  },
+  {
+    "name": "HyperWrite",
+    "slug": "hyperwrite",
+    "description": "AI writing assistant with browser-integrated suggestions, templates, and AI agent workflows.",
+    "website": "https://hyperwriteai.com",
+    "logo": "",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $19.99/mo",
+    "affiliate": true,
+    "affiliateProgramExists": true,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": "https://hyperwriteai.com/affiliates",
+    "trackingEnabled": false,
+    "rating": 4.3,
+    "featured": false,
+    "addedDate": "2026-06-17",
+    "primaryCategory": "content-ai-creation",
+    "categories": [
+      "content-ai-creation",
+      "productivity-knowledge-management"
+    ],
+    "alternatives": [
+      "jasper",
+      "copy-ai",
+      "grammarly"
+    ],
+    "overview": "HyperWrite is an AI writing assistant with a Chrome extension that provides in-browser AI suggestions across Gmail, Google Docs, LinkedIn, and other web applications without copy-pasting. Its AutoWrite feature generates multi-paragraph content from a prompt; TypeAhead offers sentence completion while typing. The Agent mode allows HyperWrite to navigate and take actions on websites autonomously. Free plan includes 15 TypeAheads and 5 Automations per day; Personal ($19.99/mo) and Ultra ($44.99/mo) unlock full access.",
+    "pros": [
+      "Chrome extension delivers AI suggestions within any web app — no context switching required",
+      "TypeAhead sentence completion integrates into natural typing flow rather than requiring separate generation",
+      "Agent mode automates browser-based tasks including research, form filling, and content scraping",
+      "750+ AI writing templates cover a comprehensive range of content types and use cases",
+      "Works inside Gmail, Google Docs, Notion, and LinkedIn without leaving the native interface"
+    ],
+    "cons": [
+      "$19.99/mo pricing positions it against Grammarly and other writing tools with broader polish features",
+      "Agent mode is experimental — reliability varies by website and task complexity",
+      "Less customizable brand voice training compared to Jasper for team-consistent AI outputs"
+    ],
+    "bestFor": [],
+    "verdict": {
+      "summary": "HyperWrite's Chrome extension is its core differentiator — it meets writers where they work instead of requiring a separate dashboard. Best for professionals who write extensively in Gmail, Google Docs, or LinkedIn and want inline AI assistance. Teams needing deep brand customization and collaborative workflows are better served by Jasper."
+    }
   }
 ]

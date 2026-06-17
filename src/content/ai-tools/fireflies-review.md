@@ -11,7 +11,7 @@ draft: false
 
 In the modern corporate and startup ecosystem, synchronous remote communication has emerged as both a necessity and a significant productivity drain. Professionals find themselves trapped in back-to-back video calls, attempting to engage with team members or clients while simultaneously scrambling to scribble down action items, deadlines, and strategic insights. When manual note-taking falls short, critical decisions are misremembered, tasks slide through the cracks, and hours are wasted syncing up on information that was already discussed.
 
-At the intersection of collaborative workflows and natural language processing stands <a href="https://app.fireflies.ai/?via=nguyen-khanh" target="_blank" rel="nofollow sponsored"><strong>Fireflies AI</strong></a>.
+At the intersection of collaborative workflows and natural language processing stands <a href="/go/fireflies-ai" target="_blank" rel="sponsored noopener"><strong>Fireflies AI</strong></a>.
 
 Positioned as an omnipresent automated intelligence layer for your corporate voice conversations, Fireflies AI deploys virtual agents directly into your meeting rooms to record, transcribe, search, and analyze data in real time. However, entering 2026, the marketplace for conversational artificial intelligence is intensely competitive. Native video conferencing tools like Zoom and Microsoft Teams have aggressively integrated built-in recording assistants, specialized boutique plugins offer streamlined zero-dollar transcription alternatives, and cross-channel workspace tools are attempting to capture market share.
 
@@ -36,7 +36,7 @@ Before we analyze the underlying natural language processing infrastructure, her
 ### Quick Access
 Need an AI meeting assistant for recording, transcription, and meeting summaries?
 
-<a href="https://app.fireflies.ai/?via=nguyen-khanh" target="_blank" rel="nofollow sponsored">Try Fireflies AI →</a>
+<a href="/go/fireflies-ai" target="_blank" rel="sponsored noopener">Try Fireflies AI →</a>
 
 ### Quick Facts
 
@@ -284,7 +284,7 @@ Fireflies AI remains an industry-leading application for robust conversational d
 ### Try Fireflies AI
 If your team spends hours taking meeting notes manually, Fireflies AI can automate transcription, summaries, and action items while integrating with your existing workflow.
 
-<a href="https://app.fireflies.ai/?via=nguyen-khanh" target="_blank" rel="nofollow sponsored">Try Fireflies AI →</a>
+<a href="/go/fireflies-ai" target="_blank" rel="sponsored noopener">Try Fireflies AI →</a>
 
 ---
 

@@ -125,6 +125,13 @@ const enriched = tools.map((tool) => {
     useCases:         tool.useCases          ?? [],
     whoShouldAvoid:   tool.whoShouldAvoid    ?? [],
     verdict:          tool.verdict           ?? null,
+
+    affiliateProgramExists: tool.affiliateProgramExists ?? false,
+    affiliateApproved:      tool.affiliateApproved      ?? false,
+    affiliateUrl:           tool.affiliateUrl           ?? null,
+    affiliateNetwork:       tool.affiliateNetwork       ?? null,
+    affiliateSource:        tool.affiliateSource        ?? null,
+    trackingEnabled:        tool.trackingEnabled        ?? false,
   };
 });
 
