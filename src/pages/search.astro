@@ -15,8 +15,9 @@ const _cols = await Promise.allSettled([
   getCollection('threads',    ({ data }) => !data.draft),
   getCollection('extensions', ({ data }) => !data.draft),
   getCollection('marketing',  ({ data }) => !data.draft),
+  getCollection('ai-tools',   ({ data }) => !data.draft),
 ]);
-const COL_NAMES = ['reddit', 'threads', 'extensions', 'marketing'];
+const COL_NAMES = ['reddit', 'threads', 'extensions', 'marketing', 'ai-tools'];
 const allArticles = _cols.flatMap((res, i) => {
   if (res.status !== 'fulfilled') return [];
   return res.value.map((p) => ({
@@ -114,7 +115,7 @@ const TAXONOMIES = JSON.parse(taxonomiesData);
 const ICON_DATA = JSON.parse(iconDataStr);
 const ARTICLES  = JSON.parse(articlesData);
 
-const COL_LABEL = { reddit: 'Reddit', threads: 'Threads', extensions: 'Extensions', marketing: 'Marketing' };
+const COL_LABEL = { reddit: 'Reddit', threads: 'Threads', extensions: 'Extensions', marketing: 'Marketing', 'ai-tools': 'AI Tools' };
 
 const PALETTE = [
   '#7C3AED','#7c3aed','#059669',

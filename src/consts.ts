@@ -31,4 +31,9 @@ export const CATEGORIES = [
 		slug: 'blog',
 		description: 'Software reviews, tutorials, and digital guides.',
 	},
+	{
+		name: 'AI Tools',
+		slug: 'ai-tools',
+		description: 'AI software reviews, comparisons, and buying guides.',
+	},
 ] as const;

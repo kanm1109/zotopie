@@ -45,4 +45,9 @@ const marketing = defineCollection({
 	schema: articleSchema,
 });
 
-export const collections = { blog, reddit, threads, extensions, marketing };
+const aiTools = defineCollection({
+	loader: glob({ base: './src/content/ai-tools', pattern: '**/*.{md,mdx}' }),
+	schema: articleSchema,
+});
+
+export const collections = { blog, reddit, threads, extensions, marketing, 'ai-tools': aiTools };

@@ -1,0 +1,32 @@
+---
+import { type CollectionEntry, getCollection, render } from 'astro:content';
+import ArticleLayout from '../../layouts/ArticleLayout.astro';
+import { CATEGORIES } from '../../consts';
+
+export async function getStaticPaths() {
+	const posts = await getCollection('ai-tools', ({ data }) => !data.draft);
+	return posts.map((post) => ({
+		params: { slug: post.id },
+		props: post,
+	}));
+}
+type Props = CollectionEntry<'ai-tools'>;
+
+const post = Astro.props;
+const { Content } = await render(post);
+const cat = CATEGORIES.find((c) => c.slug === 'ai-tools')!;
+---
+
+<ArticleLayout
+	title={post.data.title}
+	description={post.data.description}
+	publishDate={post.data.publishDate}
+	updatedDate={post.data.updatedDate}
+	author={post.data.author}
+	tags={post.data.tags}
+	category="ai-tools"
+	categoryName={cat.name}
+	featuredImage={post.data.featuredImage}
+>
+	<Content />
+</ArticleLayout>

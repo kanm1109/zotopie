@@ -8,12 +8,13 @@ import SiteHeader from '../../components/SiteHeader.astro';
 import { SITE_URL } from '../../consts';
 
 export async function getStaticPaths() {
-	const [blogs, reddits, threads, extensions, marketings] = await Promise.all([
+	const [blogs, reddits, threads, extensions, marketings, aiToolsCol] = await Promise.all([
 		getCollection('blog', ({ data }) => !data.draft),
 		getCollection('reddit', ({ data }) => !data.draft),
 		getCollection('threads', ({ data }) => !data.draft),
 		getCollection('extensions', ({ data }) => !data.draft),
 		getCollection('marketing', ({ data }) => !data.draft),
+		getCollection('ai-tools', ({ data }) => !data.draft),
 	]);
 
 	const allPosts = [
@@ -22,6 +23,7 @@ export async function getStaticPaths() {
 		...threads.map((p) => ({ ...p, collection: 'threads' as const })),
 		...extensions.map((p) => ({ ...p, collection: 'extensions' as const })),
 		...marketings.map((p) => ({ ...p, collection: 'marketing' as const })),
+		...aiToolsCol.map((p) => ({ ...p, collection: 'ai-tools' as const })),
 	];
 
 	const tagMap = new Map<string, typeof allPosts>();
