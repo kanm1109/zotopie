@@ -9,10 +9,9 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding       = "DB"
 database_name = "zotopie-clicks"
-database_id   = "00000000-0000-0000-0000-000000000000"
+database_id   = "4ca5656e-8bab-4d14-a7e3-836f3b278df4"
 
 # ── Environment variables ──────────────────────────────────────────────────────
-# STATS_KEY: secret for the internal /api/clicks endpoint.
-# Override in Cloudflare dashboard → Pages → Settings → Environment variables.
-[vars]
-STATS_KEY = "dev-key-change-before-deploy"
+# STATS_KEY is stored as an encrypted CF Pages secret (not here).
+# Local dev: set STATS_KEY in a .env file or pass inline to wrangler pages dev.
+# Production: already configured via `wrangler pages secret put STATS_KEY`.
