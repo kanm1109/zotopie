@@ -27,7 +27,7 @@ If you are looking for a quick, high-level summary of our findings, here is our 
 
 Rytr remains one of the most practical and accessible utilities for short-form copy generation, technical framework outlines, and rapid brainstorming sessions. It delivers an intuitive, fast user experience at a fraction of the cost of legacy content platforms. While it lacks the deep, automated research modes and advanced multi-step workflow capabilities required for scaling long-form authority articles without heavy manual editing, its unbeatable price point and streamlined Chrome extension make it a must-have utility for freelancers, email marketers, and bootstrapped startup founders looking to accelerate their daily output.
 
-<a href="https://rytr.me" target="_blank" rel="noopener">Try Rytr →</a>
+<a href="https://rytr.me/?via=nguyen-khanh" target="_blank" rel="noopener">Try Rytr →</a>
 
 ---
 
@@ -117,7 +117,7 @@ For freelancers, bloggers, and solo creators, Rytr delivers significantly more v
 
 If affordability is your top priority, Rytr remains one of the easiest AI writing tools to recommend in 2026.
 
-<a href="https://rytr.me" target="_blank" rel="noopener">Try Rytr →</a>
+<a href="https://rytr.me/?via=nguyen-khanh" target="_blank" rel="noopener">Try Rytr →</a>
 
 ---
 
@@ -194,7 +194,7 @@ Priced at $29 per month (or $24.10/month if billed annually), the Unlimited Plan
 ### Ready to Try Rytr?
 If you need an affordable AI writing assistant for blogs, emails, marketing copy, and social media content, Rytr remains one of the strongest value-for-money options available today.
 
-<a href="https://rytr.me" target="_blank" rel="noopener">Try Rytr →</a>
+<a href="https://rytr.me/?via=nguyen-khanh" target="_blank" rel="noopener">Try Rytr →</a>
 
 ---
 
@@ -281,4 +281,4 @@ While high-volume enterprise agencies may eventually outgrow its simple features
 
 **Score: 8.6/10**
 
-<a href="https://rytr.me" target="_blank" rel="noopener">Try Rytr →</a>
+<a href="https://rytr.me/?via=nguyen-khanh" target="_blank" rel="noopener">Try Rytr →</a>
