@@ -1,0 +1,19 @@
+name               = "zotopie-cron"
+main               = "workers/daily-report.ts"
+compatibility_date = "2024-11-01"
+workers_dev        = false
+
+# ── Cron Trigger ──────────────────────────────────────────────────────────────
+# Daily at 08:00 VN (Asia/Ho_Chi_Minh = UTC+7 → 01:00 UTC)
+[triggers]
+crons = ["0 1 * * *"]
+
+# ── D1 Database ───────────────────────────────────────────────────────────────
+[[d1_databases]]
+binding       = "DB"
+database_name = "zotopie-clicks"
+database_id   = "4ca5656e-8bab-4d14-a7e3-836f3b278df4"
+
+# ── Secrets (NEVER store values here — use wrangler CLI) ─────────────────────
+# wrangler secret put TELEGRAM_BOT_TOKEN --config wrangler-cron.toml
+# wrangler secret put TELEGRAM_CHAT_ID   --config wrangler-cron.toml

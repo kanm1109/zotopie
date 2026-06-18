@@ -13,7 +13,8 @@
     "astro": "astro",
     "validate-release": "node scripts/validate-release.mjs",
     "validate-release:post": "node scripts/validate-release.mjs --post",
-    "pages:dev": "wrangler pages dev dist --d1=DB"
+    "pages:dev": "wrangler pages dev dist --d1=DB",
+    "cron:dev": "wrangler dev --config wrangler-cron.toml --test-scheduled"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.2",
