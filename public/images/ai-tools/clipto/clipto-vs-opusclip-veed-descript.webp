@@ -1,0 +1,157 @@
+<svg width="100%" viewBox="0 0 680 680" role="img" xmlns="http://www.w3.org/2000/svg">
+  <title>Clipto vs Opus Clip vs Veed vs Descript – Tool Comparison</title>
+  <desc>Side-by-side feature and pricing comparison of four AI video/media tools: Clipto, Opus Clip, Veed, and Descript</desc>
+
+  <!-- Card background -->
+  <rect x="20" y="16" width="640" height="648" rx="16" fill="#F8F7F4" stroke="#E0DED6" stroke-width="0.5"/>
+
+  <!-- Header -->
+  <rect x="20" y="16" width="640" height="50" rx="16" fill="#2C2C2A" stroke="none"/>
+  <rect x="20" y="42" width="640" height="24" fill="#2C2C2A" stroke="none"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#F1EFE8" x="340" y="46" text-anchor="middle" dominant-baseline="central">Clipto vs Opus Clip vs Veed vs Descript</text>
+
+  <!-- Column header backgrounds -->
+  <!-- Feature col -->
+  <rect x="20" y="66" width="148" height="46" fill="#E8E6DF" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#444441" x="94" y="89" text-anchor="middle" dominant-baseline="central">Feature</text>
+
+  <!-- Clipto -->
+  <rect x="168" y="66" width="122" height="46" fill="#E1F5EE" stroke="#9FE1CB" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#085041" x="229" y="82" text-anchor="middle" dominant-baseline="central">Clipto</text>
+  <text font-family="sans-serif" font-size="10" fill="#0F6E56" x="229" y="101" text-anchor="middle" dominant-baseline="central">Local Search</text>
+
+  <!-- Opus Clip -->
+  <rect x="290" y="66" width="122" height="46" fill="#EEEDFE" stroke="#CECBF6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#26215C" x="351" y="82" text-anchor="middle" dominant-baseline="central">Opus Clip</text>
+  <text font-family="sans-serif" font-size="10" fill="#534AB7" x="351" y="101" text-anchor="middle" dominant-baseline="central">AI Repurposing</text>
+
+  <!-- Veed -->
+  <rect x="412" y="66" width="122" height="46" fill="#FAEEDA" stroke="#FAC775" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#412402" x="473" y="82" text-anchor="middle" dominant-baseline="central">Veed</text>
+  <text font-family="sans-serif" font-size="10" fill="#854F0B" x="473" y="101" text-anchor="middle" dominant-baseline="central">Online Editor</text>
+
+  <!-- Descript -->
+  <rect x="534" y="66" width="126" height="46" fill="#FAECE7" stroke="#F5C4B3" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#4A1B0C" x="597" y="82" text-anchor="middle" dominant-baseline="central">Descript</text>
+  <text font-family="sans-serif" font-size="10" fill="#993C1D" x="597" y="101" text-anchor="middle" dominant-baseline="central">Text-based Edit</text>
+
+  <!-- ROW 1: Price -->
+  <rect x="20" y="112" width="640" height="40" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="132" text-anchor="middle" dominant-baseline="central">Starting price</text>
+  <text font-family="sans-serif" font-size="11" font-weight="500" fill="#0F6E56" x="229" y="132" text-anchor="middle" dominant-baseline="central">Free / $8/mo</text>
+  <text font-family="sans-serif" font-size="11" font-weight="500" fill="#534AB7" x="351" y="132" text-anchor="middle" dominant-baseline="central">Free / $19/mo</text>
+  <text font-family="sans-serif" font-size="11" font-weight="500" fill="#854F0B" x="473" y="132" text-anchor="middle" dominant-baseline="central">Free / $24/mo</text>
+  <text font-family="sans-serif" font-size="11" font-weight="500" fill="#993C1D" x="597" y="132" text-anchor="middle" dominant-baseline="central">Free / $24/mo</text>
+
+  <!-- ROW 2: Platform -->
+  <rect x="20" y="152" width="640" height="40" fill="#F8F7F4" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="172" text-anchor="middle" dominant-baseline="central">Platform</text>
+  <text font-family="sans-serif" font-size="11" fill="#0F6E56" x="229" y="172" text-anchor="middle" dominant-baseline="central">Mac / iOS only</text>
+  <text font-family="sans-serif" font-size="11" fill="#444441" x="351" y="172" text-anchor="middle" dominant-baseline="central">Web</text>
+  <text font-family="sans-serif" font-size="11" fill="#444441" x="473" y="172" text-anchor="middle" dominant-baseline="central">Web</text>
+  <text font-family="sans-serif" font-size="11" fill="#444441" x="597" y="172" text-anchor="middle" dominant-baseline="central">Web / Mac / Win</text>
+
+  <!-- ROW 3: AI Transcription -->
+  <rect x="20" y="192" width="640" height="40" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="212" text-anchor="middle" dominant-baseline="central">AI Transcription</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="229" y="212" text-anchor="middle" dominant-baseline="central">✓ 99% accuracy</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="351" y="212" text-anchor="middle" dominant-baseline="central">✓ 97% accuracy</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="473" y="212" text-anchor="middle" dominant-baseline="central">✓ Good</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="597" y="212" text-anchor="middle" dominant-baseline="central">✓ Excellent</text>
+
+  <!-- ROW 4: AI Clip Generation -->
+  <rect x="20" y="232" width="640" height="40" fill="#F8F7F4" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="252" text-anchor="middle" dominant-baseline="central">AI Clip Generation</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="229" y="252" text-anchor="middle" dominant-baseline="central">✗ Not supported</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#1D9E75" x="351" y="252" text-anchor="middle" dominant-baseline="central">✓ Best-in-class</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="473" y="252" text-anchor="middle" dominant-baseline="central">✓ Manual</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="597" y="252" text-anchor="middle" dominant-baseline="central">✓ Transcript-based</text>
+
+  <!-- ROW 5: Video Repurposing -->
+  <rect x="20" y="272" width="640" height="40" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="292" text-anchor="middle" dominant-baseline="central">Video Repurposing</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="229" y="292" text-anchor="middle" dominant-baseline="central">✗ No</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#1D9E75" x="351" y="292" text-anchor="middle" dominant-baseline="central">✓ Core feature</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="473" y="292" text-anchor="middle" dominant-baseline="central">✓ Partial</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="597" y="292" text-anchor="middle" dominant-baseline="central">✓ Manual</text>
+
+  <!-- ROW 6: Media Search -->
+  <rect x="20" y="312" width="640" height="40" fill="#F8F7F4" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="332" text-anchor="middle" dominant-baseline="central">Natural Lang. Search</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#1D9E75" x="229" y="332" text-anchor="middle" dominant-baseline="central">✓ Core feature</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="351" y="332" text-anchor="middle" dominant-baseline="central">✗ No</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="473" y="332" text-anchor="middle" dominant-baseline="central">✗ No</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="597" y="332" text-anchor="middle" dominant-baseline="central">✗ Limited</text>
+
+  <!-- ROW 7: Privacy / Local -->
+  <rect x="20" y="352" width="640" height="40" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="372" text-anchor="middle" dominant-baseline="central">100% Local / Private</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#1D9E75" x="229" y="372" text-anchor="middle" dominant-baseline="central">✓ Fully local</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="351" y="372" text-anchor="middle" dominant-baseline="central">✗ Cloud-based</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="473" y="372" text-anchor="middle" dominant-baseline="central">✗ Cloud-based</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="597" y="372" text-anchor="middle" dominant-baseline="central">✗ Cloud-based</text>
+
+  <!-- ROW 8: Auto Captions -->
+  <rect x="20" y="392" width="640" height="40" fill="#F8F7F4" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="412" text-anchor="middle" dominant-baseline="central">Auto Captions</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="229" y="412" text-anchor="middle" dominant-baseline="central">✓ SRT / VTT</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#1D9E75" x="351" y="412" text-anchor="middle" dominant-baseline="central">✓ Animated</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="473" y="412" text-anchor="middle" dominant-baseline="central">✓ Styled</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="597" y="412" text-anchor="middle" dominant-baseline="central">✓ Functional</text>
+
+  <!-- ROW 9: Collaboration -->
+  <rect x="20" y="432" width="640" height="40" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="452" text-anchor="middle" dominant-baseline="central">Team Collaboration</text>
+  <text font-family="sans-serif" font-size="12" fill="#A32D2D" x="229" y="452" text-anchor="middle" dominant-baseline="central">✗ Solo only</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="351" y="452" text-anchor="middle" dominant-baseline="central">✓ Team workspace</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="473" y="452" text-anchor="middle" dominant-baseline="central">✓ Collaborative</text>
+  <text font-family="sans-serif" font-size="12" fill="#1D9E75" x="597" y="452" text-anchor="middle" dominant-baseline="central">✓ Real-time</text>
+
+  <!-- ROW 10: Best For -->
+  <rect x="20" y="472" width="640" height="40" fill="#F8F7F4" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="94" y="492" text-anchor="middle" dominant-baseline="central">Best for</text>
+  <text font-family="sans-serif" font-size="10" fill="#085041" x="229" y="492" text-anchor="middle" dominant-baseline="central">Media archiving</text>
+  <text font-family="sans-serif" font-size="10" fill="#26215C" x="351" y="492" text-anchor="middle" dominant-baseline="central">Short-form creators</text>
+  <text font-family="sans-serif" font-size="10" fill="#854F0B" x="473" y="492" text-anchor="middle" dominant-baseline="central">Marketing teams</text>
+  <text font-family="sans-serif" font-size="10" fill="#712B13" x="597" y="492" text-anchor="middle" dominant-baseline="central">Podcasters / editors</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="524" x2="640" y2="524" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Award badges row -->
+  <!-- Clipto badge -->
+  <rect x="26" y="534" width="148" height="112" rx="10" fill="#E1F5EE" stroke="#5DCAA5" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="16" x="42" y="558">🏆</text>
+  <text font-family="sans-serif" font-size="11" font-weight="500" fill="#085041" x="62" y="556" dominant-baseline="central">Most Private</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#0F6E56" x="42" y="578">Clipto</text>
+  <text font-family="sans-serif" font-size="10" fill="#085041" x="42" y="596">100% local, no cloud,</text>
+  <text font-family="sans-serif" font-size="10" fill="#085041" x="42" y="612">offline search in media</text>
+  <text font-family="sans-serif" font-size="10" fill="#085041" x="42" y="628">archives on Mac</text>
+
+  <!-- Opus Clip badge -->
+  <rect x="180" y="534" width="148" height="112" rx="10" fill="#EEEDFE" stroke="#AFA9EC" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="16" x="196" y="558">🏆</text>
+  <text font-family="sans-serif" font-size="11" font-weight="500" fill="#26215C" x="216" y="556" dominant-baseline="central">Best Repurposing</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#534AB7" x="196" y="578">Opus Clip</text>
+  <text font-family="sans-serif" font-size="10" fill="#26215C" x="196" y="596">AI auto-generates</text>
+  <text font-family="sans-serif" font-size="10" fill="#26215C" x="196" y="612">10–30 viral short clips</text>
+  <text font-family="sans-serif" font-size="10" fill="#26215C" x="196" y="628">from one long video</text>
+
+  <!-- Veed badge -->
+  <rect x="334" y="534" width="148" height="112" rx="10" fill="#FAEEDA" stroke="#FAC775" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="16" x="350" y="558">🏆</text>
+  <text font-family="sans-serif" font-size="11" font-weight="500" fill="#412402" x="370" y="556" dominant-baseline="central">Easiest Editor</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#854F0B" x="350" y="578">Veed</text>
+  <text font-family="sans-serif" font-size="10" fill="#412402" x="350" y="596">Browser-based, great</text>
+  <text font-family="sans-serif" font-size="10" fill="#412402" x="350" y="612">templates &amp; brand kit</text>
+  <text font-family="sans-serif" font-size="10" fill="#412402" x="350" y="628">for marketing teams</text>
+
+  <!-- Descript badge -->
+  <rect x="488" y="534" width="172" height="112" rx="10" fill="#FAECE7" stroke="#F0997B" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="16" x="504" y="558">🏆</text>
+  <text font-family="sans-serif" font-size="11" font-weight="500" fill="#4A1B0C" x="524" y="556" dominant-baseline="central">Best for Podcasts</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#993C1D" x="504" y="578">Descript</text>
+  <text font-family="sans-serif" font-size="10" fill="#4A1B0C" x="504" y="596">Text-based editing,</text>
+  <text font-family="sans-serif" font-size="10" fill="#4A1B0C" x="504" y="612">voice cloning &amp; full</text>
+  <text font-family="sans-serif" font-size="10" fill="#4A1B0C" x="504" y="628">podcast workflow</text>
+</svg>
