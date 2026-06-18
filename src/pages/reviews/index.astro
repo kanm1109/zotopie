@@ -4,7 +4,13 @@ import taxonomies from "../../data/taxonomies.json";
 import iconData from "../../data/generated/icon-data.json";
 import MainLayout from "../../layouts/MainLayout.astro";
 
-const toolsData      = JSON.stringify(tools);
+const toolsData      = JSON.stringify(tools.map(({
+  name, slug, description, pricing, startingPrice,
+  rating, categories, simple_icon,
+}) => ({
+  name, slug, description, pricing, startingPrice,
+  rating, categories, simple_icon,
+})));
 const taxonomiesData = JSON.stringify(taxonomies);
 const iconDataStr    = JSON.stringify(iconData);
 ---

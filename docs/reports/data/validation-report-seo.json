@@ -1,0 +1,126 @@
+{
+"summary": {
+"toolsChecked": 8,
+"errors": 5,
+"warnings": 18
+},
+"errors": [
+{
+"tool": "keyword-insights",
+"type": "missing_overview",
+"message": "Tool exists in target list but no overview record was found in overviews.json."
+},
+{
+"tool": "keyword-insights",
+"type": "missing_pros_cons",
+"message": "Cross-file validation failed because the tool is missing from one or more source files."
+},
+{
+"tool": "surfer-seo",
+"type": "slug_mismatch",
+"message": "Overview uses 'Surfer SEO' while pros-cons uses slug 'surfer-seo'. Verify slug mapping consistency across files."
+},
+{
+"tool": "rank-math",
+"type": "duplicate_record",
+"message": "pros-cons-seo.json contains multiple records for several categories and repeated tool keys, indicating potential duplicate-record generation issues."
+},
+{
+"tool": "all",
+"type": "cross_file_integrity",
+"message": "Unable to verify tool names, websites, categories, slug consistency, duplicate tools, and orphan records in tools.json because tools.json was not provided."
+}
+],
+"warnings": [
+{
+"tool": "ahrefs",
+"type": "generic_overview",
+"message": "Overview contains large amounts of reusable boilerplate shared across many tools, reducing differentiation."
+},
+{
+"tool": "semrush",
+"type": "generic_overview",
+"message": "Overview contains large amounts of reusable boilerplate shared across many tools, reducing differentiation."
+},
+{
+"tool": "surfer-seo",
+"type": "generic_overview",
+"message": "Overview contains large amounts of reusable boilerplate shared across many tools, reducing differentiation."
+},
+{
+"tool": "rank-math",
+"type": "generic_overview",
+"message": "Overview contains large amounts of reusable boilerplate shared across many tools, reducing differentiation."
+},
+{
+"tool": "yoast-seo",
+"type": "generic_overview",
+"message": "Overview contains large amounts of reusable boilerplate shared across many tools, reducing differentiation."
+},
+{
+"tool": "screaming-frog",
+"type": "generic_overview",
+"message": "Overview contains large amounts of reusable boilerplate shared across many tools, reducing differentiation."
+},
+{
+"tool": "clearscope",
+"type": "generic_overview",
+"message": "Overview contains large amounts of reusable boilerplate shared across many tools, reducing differentiation."
+},
+{
+"tool": "ahrefs",
+"type": "marketing_language",
+"message": "Overview includes promotional wording such as 'widely recognized' and 'commonly considered alongside alternatives'."
+},
+{
+"tool": "semrush",
+"type": "marketing_language",
+"message": "Overview includes promotional wording such as 'widely recognized' and 'commonly considered alongside alternatives'."
+},
+{
+"tool": "surfer-seo",
+"type": "marketing_language",
+"message": "Overview includes promotional wording that may read as vendor-style positioning."
+},
+{
+"tool": "rank-math",
+"type": "marketing_language",
+"message": "Overview includes 'widely recognized within its category', which is not strongly evidence-based."
+},
+{
+"tool": "yoast-seo",
+"type": "marketing_language",
+"message": "Overview includes 'widely recognized within its category', which may be considered promotional."
+},
+{
+"tool": "screaming-frog",
+"type": "marketing_language",
+"message": "Overview includes 'widely recognized within its category', which may be considered promotional."
+},
+{
+"tool": "clearscope",
+"type": "marketing_language",
+"message": "Overview claim about helping teams achieve 'page-one rankings' may be difficult to substantiate universally."
+},
+{
+"tool": "keyword-insights",
+"type": "missing_validation_source",
+"message": "Unable to validate overview quality because no overview record was found."
+},
+{
+"tool": "all",
+"type": "tools_json_not_available",
+"message": "Website format validation could not be completed without tools.json."
+},
+{
+"tool": "all",
+"type": "tools_json_not_available",
+"message": "Duplicate tool detection could not be completed without tools.json."
+},
+{
+"tool": "all",
+"type": "tools_json_not_available",
+"message": "Category validation could not be completed without tools.json."
+}
+]
+}

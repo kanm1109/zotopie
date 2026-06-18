@@ -11,7 +11,7 @@ export async function getStaticPaths() {
 }
 
 const { tool } = Astro.props;
-const isAffiliate = tool.affiliate === true;
+const isAffiliate = tool.affiliateApproved === true;
 const dest = (isAffiliate && tool.affiliateUrl) ? tool.affiliateUrl : tool.website;
 const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
 ---

@@ -1,0 +1,25 @@
+﻿import { readFileSync } from "fs";
+const tools = JSON.parse(readFileSync("./src/data/generated/tools-enriched.json","utf8"));
+const bySlug = Object.fromEntries(tools.map(t=>[t.slug,t]));
+const targets = ["midjourney","hubspot","skool","lemon-squeezy","circle","claude","activecampaign","siteground","kinsta","clickup"];
+let pass = 0;
+targets.forEach(slug => {
+  const t = bySlug[slug];
+  const ovWords = (t.overview||"").trim().split(/\s+/).length;
+  const isBP = (t.overview||"").includes("software platform used primarily");
+  const ok = !isBP && (t.pros||[]).length>=5 && (t.cons||[]).length>=3 && (t.startingPrice||"").startsWith("$");
+  if (ok) pass++;
+  const stat = ok ? "OK" : "FAIL";
+  console.log(stat+" | "+t.name+" | ov="+ovWords+"w | pros="+(t.pros||[]).length+" cons="+(t.cons||[]).length+" sp="+t.startingPrice);
+});
+const pairSet = new Set();
+tools.forEach(t=>{(t.alternatives||[]).forEach(alt=>{pairSet.add([t.slug,alt].sort().join("-vs-"));});});
+const pairs=[...pairSet];
+const hasReal=s=>{const t=bySlug[s];return t&&t.pros&&t.pros.length>0;};
+let both=0,one=0,none=0;
+pairs.forEach(p=>{const[a,b]=p.split("-vs-");if(hasReal(a)&&hasReal(b))both++;else if(hasReal(a)||hasReal(b))one++;else none++;});
+console.log("");
+console.log("ALL PASS: "+pass+"/10");
+console.log("Compare both-enriched: "+both+"/"+pairs.length+" ("+Math.round(both/pairs.length*100)+"%)");
+console.log("Compare neither:       "+none+"/"+pairs.length+" ("+Math.round(none/pairs.length*100)+"%)");
+console.log("Compare any-fallback:  "+(one+none)+"/"+pairs.length+" ("+Math.round((one+none)/pairs.length*100)+"%)");

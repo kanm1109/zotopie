@@ -35,7 +35,7 @@ Before diving into the detailed technical capabilities, here is a high-level sum
 
 If you're looking for an AI video platform for training videos, onboarding content, or multilingual communication, you can check out Synthesia here:
 
-<a href="https://www.synthesia.io/?via=1a4a4b" target="_blank" rel="nofollow sponsored">Try Synthesia →</a>
+<a href="/go/synthesia" target="_blank" rel="sponsored noopener">Try Synthesia →</a>
 
 ### Quick Facts
 
@@ -265,7 +265,7 @@ You are a content creator running a faceless YouTube channel or a blogger who wa
 
 If your primary goal is creating professional training videos, onboarding content, or multilingual corporate communications, Synthesia remains one of the strongest AI video platforms available today.
 
-<a href="https://www.synthesia.io/?via=1a4a4b" target="_blank" rel="nofollow sponsored">Try Synthesia →</a>
+<a href="/go/synthesia" target="_blank" rel="sponsored noopener">Try Synthesia →</a>
 
 ---
 
