@@ -1497,7 +1497,7 @@
     "affiliateUrl": "https://www.synthesia.io/?via=1a4a4b",
     "affiliateNetwork": "direct",
     "affiliateSource": "https://synthesia.io/affiliates",
-    "trackingEnabled": false
+    "trackingEnabled": true
   },
   {
     "name": "Skool",
@@ -4791,7 +4791,7 @@
     "affiliateUrl": "https://gptzero.me/?via=nguyen-khanh",
     "affiliateNetwork": "direct",
     "affiliateSource": "https://gptzero.me/affiliate",
-    "trackingEnabled": false,
+    "trackingEnabled": true,
     "rating": 4.3,
     "featured": false,
     "addedDate": "2026-06-17",
@@ -4835,7 +4835,7 @@
     "affiliateUrl": "https://app.fireflies.ai/?via=nguyen-khanh",
     "affiliateNetwork": "direct",
     "affiliateSource": "https://fireflies.ai/affiliate",
-    "trackingEnabled": false,
+    "trackingEnabled": true,
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-06-17",

@@ -12,7 +12,8 @@
     "preview": "astro preview",
     "astro": "astro",
     "validate-release": "node scripts/validate-release.mjs",
-    "validate-release:post": "node scripts/validate-release.mjs --post"
+    "validate-release:post": "node scripts/validate-release.mjs --post",
+    "pages:dev": "wrangler pages dev dist --d1=DB"
   },
   "dependencies": {
     "@astrojs/mdx": "^6.0.2",
@@ -21,5 +22,9 @@
     "astro": "^6.4.4",
     "sharp": "^0.34.3",
     "simple-icons": "^16.23.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20260617.1",
+    "wrangler": "^4.101.0"
   }
 }

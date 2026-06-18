@@ -2061,7 +2061,7 @@
     "affiliateUrl": "https://www.synthesia.io/?via=1a4a4b",
     "affiliateNetwork": "direct",
     "affiliateSource": "https://synthesia.io/affiliates",
-    "trackingEnabled": false
+    "trackingEnabled": true
   },
   {
     "name": "Skool",
@@ -6783,7 +6783,7 @@
     "affiliateUrl": "https://gptzero.me/?via=nguyen-khanh",
     "affiliateNetwork": "direct",
     "affiliateSource": "https://gptzero.me/affiliate",
-    "trackingEnabled": false
+    "trackingEnabled": true
   },
   {
     "name": "Fireflies AI",
@@ -6831,7 +6831,7 @@
     "affiliateUrl": "https://app.fireflies.ai/?via=nguyen-khanh",
     "affiliateNetwork": "direct",
     "affiliateSource": "https://fireflies.ai/affiliate",
-    "trackingEnabled": false
+    "trackingEnabled": true
   },
   {
     "name": "Rytr",
