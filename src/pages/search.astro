@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import tools from "../data/generated/tools-enriched.json";
 import taxonomies from "../data/taxonomies.json";
 import iconData from "../data/generated/icon-data.json";
+import logoSlugs from "../data/generated/logo-slugs.json";
 import MainLayout from "../layouts/MainLayout.astro";
 
 const toolsData      = JSON.stringify(tools.map(({
@@ -16,6 +17,7 @@ const toolsData      = JSON.stringify(tools.map(({
 })));
 const taxonomiesData = JSON.stringify(taxonomies);
 const iconDataStr    = JSON.stringify(iconData);
+const logoSlugsStr   = JSON.stringify(logoSlugs);
 
 // Collect all articles from every content collection; allSettled tolerates empty collections
 const _cols = await Promise.allSettled([
@@ -117,11 +119,12 @@ const searchJsonLdStr = JSON.stringify({
 
 </MainLayout>
 
-<script define:vars={{ toolsData, taxonomiesData, iconDataStr, articlesData }}>
+<script define:vars={{ toolsData, taxonomiesData, iconDataStr, articlesData, logoSlugsStr }}>
 const TOOLS = JSON.parse(toolsData);
 const TAXONOMIES = JSON.parse(taxonomiesData);
 const ICON_DATA = JSON.parse(iconDataStr);
 const ARTICLES  = JSON.parse(articlesData);
+const LOGO_SLUGS = JSON.parse(logoSlugsStr);
 
 const COL_LABEL = { reddit: 'Reddit', threads: 'Threads', extensions: 'Extensions', marketing: 'Marketing', 'ai-tools': 'AI Tools' };
 
@@ -142,12 +145,16 @@ function initials(name) {
 
 function logoHtml(tool) {
   const bg   = PALETTE[tool.slug.charCodeAt(0) % PALETTE.length];
-  const fs   = Math.round(32 * 0.38);
+  const sz   = 48;
+  const fs   = Math.round(sz * 0.38);
   const icon = tool.simple_icon ? ICON_DATA[tool.simple_icon] : null;
   if (icon) {
-    return `<svg width="32" height="32" viewBox="0 0 24 24" class="rc-logo-svg" style="fill:#${icon.hex}" aria-label="${esc(tool.name)} logo" role="img"><path d="${icon.path}"/></svg>`;
+    return `<svg width="${sz}" height="${sz}" viewBox="0 0 24 24" class="rc-logo-svg" style="fill:#${icon.hex}" aria-label="${esc(tool.name)} logo" role="img"><path d="${icon.path}"/></svg>`;
   }
-  return `<span class="rc-logo-fb" style="width:32px;height:32px;background:${bg};font-size:${fs}px" aria-hidden="true">${initials(tool.name)}</span>`;
+  if (LOGO_SLUGS.includes(tool.slug)) {
+    return `<img src="/logos/${tool.slug}.svg" width="${sz}" height="${sz}" class="rc-logo-img" alt="${esc(tool.name)} logo" loading="lazy" />`;
+  }
+  return `<span class="rc-logo-fb" style="width:${sz}px;height:${sz}px;background:${bg};font-size:${fs}px" aria-hidden="true">${initials(tool.name)}</span>`;
 }
 
 function esc(s) {
@@ -180,7 +187,7 @@ function renderCard(tool, q) {
   ${cats ? `<div class="rc-cats">${cats}</div>` : ''}
   <div class="rc-footer">
     <span class="rc-pricing">${price}</span>
-    <a href="/reviews/${tool.slug}" class="rc-link">View Review &rarr;</a>
+    <a href="/reviews/${tool.slug}" class="rc-cta">Read Review &rarr;</a>
   </div>
 </div>`;
 }
@@ -206,7 +213,7 @@ function renderArticleCard(article, q) {
   <div class="rc-top">
     <div class="rc-id">
       <span class="rc-art-icon" aria-hidden="true">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="flex-shrink:0"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
       </span>
       <h3 class="rc-name"><a href="${url}">${highlight(article.title, q)}</a></h3>
     </div>
@@ -215,7 +222,7 @@ function renderArticleCard(article, q) {
   <p class="rc-desc">${highlight(article.description, q)}</p>
   <div class="rc-footer">
     <span class="rc-pricing">${esc(article.publishDate)}</span>
-    <a href="${url}" class="rc-link">Read Article &rarr;</a>
+    <a href="${url}" class="rc-cta rc-cta-article">Read Article &rarr;</a>
   </div>
 </div>`;
 }
@@ -533,10 +540,10 @@ else { doSearch(''); }
 
 <style>
   .search-hero {
-    padding: 48px 0 32px;
+    padding: 36px 0 24px;
     text-align: center;
     border-bottom: 1px solid #e5e7eb;
-    margin-bottom: 40px;
+    margin-bottom: 28px;
   }
   h1 {
     font-size: 2.25rem;
@@ -588,67 +595,77 @@ else { doSearch(''); }
     min-height: 20px;
   }
 
-  /* Results grid */
-  .results-grid {
+  /* Results grid — :global() because elements are injected via JS innerHTML */
+  :global(.results-grid) {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
   }
 
   /* Result card */
-  .rc-card {
-    border: 1px solid #e5e7eb;
-    border-radius: 10px;
-    padding: 20px;
+  :global(.rc-card) {
+    border: 1.5px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 16px;
     background: #fff;
     display: flex;
     flex-direction: column;
     gap: 10px;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    transition: box-shadow 0.2s, border-color 0.2s, transform 0.15s;
   }
-  .rc-card:hover {
+  :global(.rc-card:hover) {
     border-color: #7C3AED;
-    box-shadow: 0 4px 16px rgba(124,58,237,0.08);
+    box-shadow: 0 4px 20px rgba(124,58,237,0.1);
+    transform: translateY(-1px);
   }
-  .rc-top {
+  :global(.rc-top) {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     gap: 8px;
   }
-  .rc-id {
+  :global(.rc-id) {
     display: flex;
     align-items: center;
     gap: 10px;
     min-width: 0;
   }
-  .rc-logo-svg {
-    border-radius: 6px;
+  :global(.rc-logo-svg) {
+    border-radius: 8px;
     flex-shrink: 0;
     display: block;
     background: #f9fafb;
-    padding: 2px;
-    box-sizing: content-box;
+    padding: 4px;
+    box-sizing: border-box;
   }
-  .rc-logo-fb {
+  :global(.rc-logo-img) {
+    border-radius: 8px;
+    flex-shrink: 0;
+    display: block;
+    object-fit: contain;
+    background: #f9fafb;
+    padding: 4px;
+    box-sizing: border-box;
+  }
+  :global(.rc-logo-fb) {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
     color: #fff;
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     flex-shrink: 0;
   }
-  .rc-name {
+  :global(.rc-name) {
     font-size: 1.05rem;
     font-weight: 700;
     margin: 0;
     min-width: 0;
   }
-  .rc-name a {
+  :global(.rc-name a) {
     color: #111827;
     text-decoration: none;
     white-space: nowrap;
@@ -656,8 +673,8 @@ else { doSearch(''); }
     text-overflow: ellipsis;
     display: block;
   }
-  .rc-name a:hover { color: #7C3AED; }
-  .rc-rating {
+  :global(.rc-name a:hover) { color: #7C3AED; }
+  :global(.rc-rating) {
     font-size: 0.875rem;
     font-weight: 700;
     color: #d97706;
@@ -667,18 +684,18 @@ else { doSearch(''); }
     white-space: nowrap;
     flex-shrink: 0;
   }
-  .rc-desc {
+  :global(.rc-desc) {
     font-size: 0.9rem;
     color: #6b7280;
     margin: 0;
     flex: 1;
   }
-  .rc-cats {
+  :global(.rc-cats) {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
   }
-  .rc-cat {
+  :global(.rc-cat) {
     font-size: 0.75rem;
     font-weight: 600;
     color: #7C3AED;
@@ -688,14 +705,14 @@ else { doSearch(''); }
     padding: 2px 9px;
     text-decoration: none;
   }
-  .rc-cat:hover { background: #EDE9FE; text-decoration: none; }
-  .rc-footer {
+  :global(.rc-cat:hover) { background: #EDE9FE; text-decoration: none; }
+  :global(.rc-footer) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 4px;
   }
-  .rc-pricing {
+  :global(.rc-pricing) {
     font-size: 0.8rem;
     font-weight: 600;
     color: #6b7280;
@@ -703,13 +720,37 @@ else { doSearch(''); }
     padding: 3px 10px;
     border-radius: 12px;
   }
-  .rc-link {
-    font-size: 0.85rem;
-    font-weight: 600;
+  :global(.rc-cta) {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.82rem;
+    font-weight: 700;
     color: #7C3AED;
+    background: #F5F3FF;
+    border: 1.5px solid #DDD6FE;
+    border-radius: 20px;
+    padding: 5px 14px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  :global(.rc-cta:hover) {
+    background: #7C3AED;
+    border-color: #7C3AED;
+    color: #fff;
     text-decoration: none;
   }
-  .rc-link:hover { text-decoration: underline; }
+  :global(.rc-cta-article) {
+    color: #059669;
+    background: #ECFDF5;
+    border-color: #A7F3D0;
+  }
+  :global(.rc-cta-article:hover) {
+    background: #059669;
+    border-color: #059669;
+    color: #fff;
+  }
 
   /* Highlight */
   :global(mark) {
@@ -846,7 +887,7 @@ else { doSearch(''); }
   }
 
   /* Result groups — :global() required for JS-injected elements */
-  :global(.result-group) { margin-bottom: 40px; }
+  :global(.result-group) { margin-bottom: 28px; }
   :global(.rg-title) {
     font-size: 0.75rem;
     font-weight: 700;
@@ -869,15 +910,25 @@ else { doSearch(''); }
   }
 
   /* Article card variants */
+  :global(.rc-article-card) {
+    background: #FAFAF5;
+    border-color: #E5E7EB;
+    border-left: 3px solid #059669;
+  }
+  :global(.rc-article-card:hover) {
+    border-color: #059669;
+    border-left-color: #059669;
+    box-shadow: 0 4px 16px rgba(5,150,105,0.08);
+  }
   :global(.rc-art-icon) {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
-    border-radius: 6px;
-    background: #F5F3FF;
-    color: #7C3AED;
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: #ECFDF5;
+    color: #059669;
     flex-shrink: 0;
   }
   :global(.rc-art-badge) {
