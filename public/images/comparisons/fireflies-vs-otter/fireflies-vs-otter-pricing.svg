@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 700 560">
+  <title>Fireflies vs Otter — Pricing Comparison</title>
+  <desc>Pricing plan comparison table for Fireflies and Otter, covering Free, Pro, Business, and Enterprise tiers with monthly per-user rates billed annually</desc>
+
+  <!-- Card -->
+  <rect x="20" y="16" width="660" height="528" rx="16" fill="#F8F7F4" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Header -->
+  <rect x="20" y="16" width="660" height="56" rx="16" fill="#1C1C1A"/>
+  <rect x="20" y="48" width="660" height="24" fill="#1C1C1A"/>
+  <text font-family="sans-serif" font-size="17" font-weight="500" fill="#F1EFE8" x="350" y="44" text-anchor="middle" dominant-baseline="central">Pricing Comparison</text>
+
+  <!-- Column headers -->
+  <rect x="20" y="72" width="180" height="48" fill="#E8E6DF" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#444441" x="110" y="96" text-anchor="middle" dominant-baseline="central">Plan</text>
+
+  <rect x="200" y="72" width="240" height="48" fill="#FCE9DA" stroke="#F0B27A" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#8A4A0F" x="320" y="96" text-anchor="middle" dominant-baseline="central">Fireflies</text>
+
+  <rect x="440" y="72" width="240" height="48" fill="#E5F0FA" stroke="#A9D1F7" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#0D4A8A" x="560" y="96" text-anchor="middle" dominant-baseline="central">Otter</text>
+
+  <!-- ROW 1: Free -->
+  <rect x="20" y="120" width="180" height="76" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="200" y="120" width="240" height="76" fill="#FFF7F0" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="440" y="120" width="240" height="76" fill="#F4FAFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#5F5E5A" x="110" y="158" text-anchor="middle" dominant-baseline="central">Free</text>
+  <text font-family="sans-serif" font-size="22" x="320" y="150" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="10" fill="#8A4A0F" x="320" y="172" text-anchor="middle" dominant-baseline="central">800 min/mo</text>
+  <text font-family="sans-serif" font-size="22" x="560" y="150" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="10" fill="#0D4A8A" x="560" y="172" text-anchor="middle" dominant-baseline="central">300 min/mo</text>
+
+  <!-- ROW 2: Pro -->
+  <rect x="20" y="196" width="180" height="76" fill="#FAFAF8" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="200" y="196" width="240" height="76" fill="#FDF0E5" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="440" y="196" width="240" height="76" fill="#EAF5FF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#5F5E5A" x="110" y="234" text-anchor="middle" dominant-baseline="central">Pro</text>
+  <text font-family="sans-serif" font-size="20" font-weight="500" fill="#8A4A0F" x="320" y="226" text-anchor="middle" dominant-baseline="central">$10<tspan font-size="11" font-weight="400">/user/mo</tspan></text>
+  <text font-family="sans-serif" font-size="10" fill="#8A4A0F" x="320" y="248" text-anchor="middle" dominant-baseline="central">billed annually ($18 monthly)</text>
+  <text font-family="sans-serif" font-size="20" font-weight="500" fill="#0D4A8A" x="560" y="226" text-anchor="middle" dominant-baseline="central">$8.33<tspan font-size="11" font-weight="400">/user/mo</tspan></text>
+  <text font-family="sans-serif" font-size="10" fill="#0D4A8A" x="560" y="248" text-anchor="middle" dominant-baseline="central">billed annually ($16.99 monthly)</text>
+
+  <!-- ROW 3: Business -->
+  <rect x="20" y="272" width="180" height="76" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="200" y="272" width="240" height="76" fill="#FFF7F0" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="440" y="272" width="240" height="76" fill="#F4FAFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#5F5E5A" x="110" y="310" text-anchor="middle" dominant-baseline="central">Business</text>
+  <text font-family="sans-serif" font-size="20" font-weight="500" fill="#8A4A0F" x="320" y="302" text-anchor="middle" dominant-baseline="central">$19<tspan font-size="11" font-weight="400">/user/mo</tspan></text>
+  <text font-family="sans-serif" font-size="10" fill="#8A4A0F" x="320" y="324" text-anchor="middle" dominant-baseline="central">billed annually ($29 monthly)</text>
+  <text font-family="sans-serif" font-size="20" font-weight="500" fill="#0D4A8A" x="560" y="302" text-anchor="middle" dominant-baseline="central">$20<tspan font-size="11" font-weight="400">/user/mo</tspan></text>
+  <text font-family="sans-serif" font-size="10" fill="#0D4A8A" x="560" y="324" text-anchor="middle" dominant-baseline="central">billed annually ($30 monthly)</text>
+
+  <!-- ROW 4: Enterprise -->
+  <rect x="20" y="348" width="180" height="76" fill="#FAFAF8" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="200" y="348" width="240" height="76" fill="#FDF0E5" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="440" y="348" width="240" height="76" fill="#EAF5FF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#5F5E5A" x="110" y="386" text-anchor="middle" dominant-baseline="central">Enterprise</text>
+  <text font-family="sans-serif" font-size="20" font-weight="500" fill="#8A4A0F" x="320" y="378" text-anchor="middle" dominant-baseline="central">$39<tspan font-size="11" font-weight="400">/user/mo</tspan></text>
+  <text font-family="sans-serif" font-size="10" fill="#8A4A0F" x="320" y="400" text-anchor="middle" dominant-baseline="central">billed annually</text>
+  <text font-family="sans-serif" font-size="16" font-weight="500" fill="#0D4A8A" x="560" y="386" text-anchor="middle" dominant-baseline="central">Custom</text>
+  <text font-family="sans-serif" font-size="10" fill="#0D4A8A" x="560" y="404" text-anchor="middle" dominant-baseline="central">contact sales</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="442" x2="660" y2="442" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Footer: Pricing Winner -->
+  <rect x="36" y="456" width="608" height="68" rx="12" fill="#E5F0FA" stroke="#1565C0" stroke-width="1.5"/>
+  <text font-family="sans-serif" font-size="18" x="58" y="490">🏆</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#0D4A8A" x="88" y="482" dominant-baseline="central">Pricing Winner</text>
+  <text font-family="sans-serif" font-size="18" font-weight="600" fill="#0D4A8A" x="88" y="503" dominant-baseline="central">Otter</text>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="320" y="492" text-anchor="middle" dominant-baseline="central">Lower cost across Pro and Business tiers,</text>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="320" y="507" text-anchor="middle" dominant-baseline="central">better value for individuals and small teams</text>
+
+</svg>

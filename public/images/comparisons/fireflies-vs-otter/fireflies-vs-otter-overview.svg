@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 700 560">
+  <title>Fireflies vs Otter — Overview Comparison</title>
+  <desc>Overview comparison table for Fireflies and Otter meeting transcription tools, covering best use case, starting price, CRM features, collaboration, and overall winner category</desc>
+
+  <!-- Card -->
+  <rect x="20" y="16" width="660" height="528" rx="16" fill="#F8F7F4" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Header band -->
+  <rect x="20" y="16" width="660" height="68" rx="16" fill="#1C1C1A"/>
+  <rect x="20" y="48" width="660" height="36" fill="#1C1C1A"/>
+  <text font-family="sans-serif" font-size="18" font-weight="500" fill="#F1EFE8" x="350" y="50" text-anchor="middle" dominant-baseline="central">Fireflies vs Otter</text>
+  <text font-family="sans-serif" font-size="11" fill="#B4B2A9" x="350" y="72" text-anchor="middle" dominant-baseline="central" letter-spacing="1.5">MEETING ASSISTANT COMPARISON</text>
+
+  <!-- Tool name strip -->
+  <rect x="20" y="84" width="660" height="44" fill="#E8E6DF"/>
+  <rect x="20" y="84" width="330" height="44" fill="#FCE9DA" stroke="#F0B27A" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="17" font-weight="500" fill="#8A4A0F" x="185" y="106" text-anchor="middle" dominant-baseline="central">Fireflies</text>
+
+  <rect x="350" y="84" width="330" height="44" fill="#E5F0FA" stroke="#A9D1F7" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="17" font-weight="500" fill="#0D4A8A" x="515" y="106" text-anchor="middle" dominant-baseline="central">Otter</text>
+
+  <!-- Column headers -->
+  <rect x="20" y="128" width="180" height="46" fill="#E8E6DF" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#444441" x="110" y="151" text-anchor="middle" dominant-baseline="central">Feature</text>
+
+  <rect x="200" y="128" width="240" height="46" fill="#FCE9DA" stroke="#F0B27A" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#8A4A0F" x="320" y="151" text-anchor="middle" dominant-baseline="central">Fireflies</text>
+
+  <rect x="440" y="128" width="240" height="46" fill="#E5F0FA" stroke="#A9D1F7" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#0D4A8A" x="560" y="151" text-anchor="middle" dominant-baseline="central">Otter</text>
+
+  <!-- ROW 1: Best For -->
+  <rect x="20" y="174" width="180" height="62" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="200" y="174" width="240" height="62" fill="#FFF7F0" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="440" y="174" width="240" height="62" fill="#F4FAFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="110" y="205" text-anchor="middle" dominant-baseline="central">Best for</text>
+  <text font-family="sans-serif" font-size="16" font-weight="500" fill="#8A4A0F" x="320" y="205" text-anchor="middle" dominant-baseline="central">Teams</text>
+  <text font-family="sans-serif" font-size="16" font-weight="500" fill="#0D4A8A" x="560" y="205" text-anchor="middle" dominant-baseline="central">Individuals</text>
+
+  <!-- ROW 2: Starting Price -->
+  <rect x="20" y="236" width="180" height="62" fill="#FAFAF8" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="200" y="236" width="240" height="62" fill="#FDF0E5" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="440" y="236" width="240" height="62" fill="#EAF5FF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="110" y="267" text-anchor="middle" dominant-baseline="central">Starting price</text>
+  <text font-family="sans-serif" font-size="18" font-weight="500" fill="#8A4A0F" x="320" y="267" text-anchor="middle" dominant-baseline="central">$$$</text>
+  <text font-family="sans-serif" font-size="18" font-weight="500" fill="#0D4A8A" x="560" y="267" text-anchor="middle" dominant-baseline="central">$$</text>
+
+  <!-- ROW 3: CRM Features -->
+  <rect x="20" y="298" width="180" height="62" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="200" y="298" width="240" height="62" fill="#FFF7F0" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="440" y="298" width="240" height="62" fill="#F4FAFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="110" y="329" text-anchor="middle" dominant-baseline="central">CRM features</text>
+  <text font-family="sans-serif" font-size="20" x="320" y="329" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="20" x="560" y="329" text-anchor="middle" dominant-baseline="central">⚠️</text>
+
+  <!-- ROW 4: Collaboration -->
+  <rect x="20" y="360" width="180" height="62" fill="#FAFAF8" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="200" y="360" width="240" height="62" fill="#FDF0E5" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="440" y="360" width="240" height="62" fill="#EAF5FF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="110" y="391" text-anchor="middle" dominant-baseline="central">Collaboration</text>
+  <text font-family="sans-serif" font-size="20" x="320" y="391" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="20" x="560" y="391" text-anchor="middle" dominant-baseline="central">⚠️</text>
+
+  <!-- ROW 5: Winner -->
+  <rect x="20" y="422" width="180" height="70" fill="#E8E6DF" stroke="#D3D1C7" stroke-width="0.5"/>
+  <rect x="200" y="422" width="240" height="70" fill="#F7DCC0" stroke="#E08A2E" stroke-width="2"/>
+  <rect x="440" y="422" width="240" height="70" fill="#D9ECFF" stroke="#1565C0" stroke-width="2"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#444441" x="110" y="457" text-anchor="middle" dominant-baseline="central">Winner</text>
+  <text font-family="sans-serif" font-size="18" x="280" y="457" text-anchor="middle" dominant-baseline="central">🏆</text>
+  <text font-family="sans-serif" font-size="16" font-weight="600" fill="#8A4A0F" x="340" y="457" text-anchor="middle" dominant-baseline="central">Teams</text>
+  <text font-family="sans-serif" font-size="18" x="500" y="457" text-anchor="middle" dominant-baseline="central">🏆</text>
+  <text font-family="sans-serif" font-size="16" font-weight="600" fill="#0D4A8A" x="595" y="457" text-anchor="middle" dominant-baseline="central">Personal Use</text>
+
+  <!-- Footer -->
+  <rect x="20" y="492" width="660" height="40" rx="0" fill="#1C1C1A"/>
+  <path d="M20 494 L20 532 Q20 532 36 532 L664 532 Q680 532 680 516 L680 494 Z" fill="#1C1C1A"/>
+  <text font-family="sans-serif" font-size="12" fill="#888780" x="350" y="512" text-anchor="middle" dominant-baseline="central">Fireflies for teams · Otter for individuals</text>
+
+</svg>

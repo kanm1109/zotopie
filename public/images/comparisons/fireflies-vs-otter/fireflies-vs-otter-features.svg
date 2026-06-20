@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 700 720">
+  <title>Fireflies vs Otter — Feature Comparison</title>
+  <desc>Feature comparison table for Fireflies and Otter meeting assistants covering recording, AI notes, CRM sync, team collaboration, search, analytics, integrations, and speaker recognition</desc>
+
+  <!-- Card -->
+  <rect x="20" y="16" width="660" height="688" rx="16" fill="#F8F7F4" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Header -->
+  <rect x="20" y="16" width="660" height="56" rx="16" fill="#1C1C1A"/>
+  <rect x="20" y="48" width="660" height="24" fill="#1C1C1A"/>
+  <text font-family="sans-serif" font-size="17" font-weight="500" fill="#F1EFE8" x="350" y="44" text-anchor="middle" dominant-baseline="central">Feature Comparison</text>
+
+  <!-- Column headers -->
+  <rect x="20" y="72" width="220" height="48" fill="#E8E6DF" stroke="#D3D1C7" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" font-weight="500" fill="#444441" x="130" y="96" text-anchor="middle" dominant-baseline="central">Feature</text>
+
+  <rect x="240" y="72" width="220" height="48" fill="#FCE9DA" stroke="#F0B27A" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#8A4A0F" x="350" y="96" text-anchor="middle" dominant-baseline="central">Fireflies</text>
+
+  <rect x="460" y="72" width="220" height="48" fill="#E5F0FA" stroke="#A9D1F7" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="14" font-weight="500" fill="#0D4A8A" x="570" y="96" text-anchor="middle" dominant-baseline="central">Otter</text>
+
+  <!-- ROW 1: Recording -->
+  <rect x="20" y="120" width="220" height="58" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="240" y="120" width="220" height="58" fill="#FFF7F0" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="460" y="120" width="220" height="58" fill="#F4FAFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="130" y="149" text-anchor="middle" dominant-baseline="central">Recording</text>
+  <text font-family="sans-serif" font-size="19" x="350" y="149" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="19" x="570" y="149" text-anchor="middle" dominant-baseline="central">✅</text>
+
+  <!-- ROW 2: AI Notes -->
+  <rect x="20" y="178" width="220" height="58" fill="#FAFAF8" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="240" y="178" width="220" height="58" fill="#FDF0E5" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="460" y="178" width="220" height="58" fill="#EAF5FF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="130" y="207" text-anchor="middle" dominant-baseline="central">AI Notes</text>
+  <text font-family="sans-serif" font-size="19" x="350" y="207" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="19" x="570" y="207" text-anchor="middle" dominant-baseline="central">✅</text>
+
+  <!-- ROW 3: CRM Sync -->
+  <rect x="20" y="236" width="220" height="58" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="240" y="236" width="220" height="58" fill="#F7DCC0" stroke="#E08A2E" stroke-width="2"/>
+  <rect x="460" y="236" width="220" height="58" fill="#F4FAFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="130" y="265" text-anchor="middle" dominant-baseline="central">CRM Sync</text>
+  <text font-family="sans-serif" font-size="19" x="350" y="265" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="19" x="570" y="265" text-anchor="middle" dominant-baseline="central">❌</text>
+
+  <!-- ROW 4: Team Collaboration -->
+  <rect x="20" y="294" width="220" height="58" fill="#FAFAF8" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="240" y="294" width="220" height="58" fill="#FDF0E5" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="460" y="294" width="220" height="58" fill="#EAF5FF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="130" y="323" text-anchor="middle" dominant-baseline="central">Team Collaboration</text>
+  <text font-family="sans-serif" font-size="19" x="350" y="323" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="19" x="570" y="323" text-anchor="middle" dominant-baseline="central">⚠️</text>
+
+  <!-- ROW 5: Search -->
+  <rect x="20" y="352" width="220" height="58" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="240" y="352" width="220" height="58" fill="#FFF7F0" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="460" y="352" width="220" height="58" fill="#F4FAFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="130" y="381" text-anchor="middle" dominant-baseline="central">Search</text>
+  <text font-family="sans-serif" font-size="19" x="350" y="381" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="19" x="570" y="381" text-anchor="middle" dominant-baseline="central">✅</text>
+
+  <!-- ROW 6: Analytics -->
+  <rect x="20" y="410" width="220" height="58" fill="#FAFAF8" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="240" y="410" width="220" height="58" fill="#FDF0E5" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="460" y="410" width="220" height="58" fill="#EAF5FF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="130" y="439" text-anchor="middle" dominant-baseline="central">Analytics</text>
+  <text font-family="sans-serif" font-size="19" x="350" y="439" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="19" x="570" y="439" text-anchor="middle" dominant-baseline="central">⚠️</text>
+
+  <!-- ROW 7: Integrations -->
+  <rect x="20" y="468" width="220" height="58" fill="#FFFFFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="240" y="468" width="220" height="58" fill="#FFF7F0" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="460" y="468" width="220" height="58" fill="#F4FAFF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="130" y="497" text-anchor="middle" dominant-baseline="central">Integrations</text>
+  <text font-family="sans-serif" font-size="19" x="350" y="497" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="19" x="570" y="497" text-anchor="middle" dominant-baseline="central">⚠️</text>
+
+  <!-- ROW 8: Speaker Recognition -->
+  <rect x="20" y="526" width="220" height="58" fill="#FAFAF8" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="240" y="526" width="220" height="58" fill="#FDF0E5" stroke="#E0DED6" stroke-width="0.5"/>
+  <rect x="460" y="526" width="220" height="58" fill="#EAF5FF" stroke="#E0DED6" stroke-width="0.5"/>
+  <text font-family="sans-serif" font-size="13" fill="#5F5E5A" x="130" y="555" text-anchor="middle" dominant-baseline="central">Speaker Recognition</text>
+  <text font-family="sans-serif" font-size="19" x="350" y="555" text-anchor="middle" dominant-baseline="central">✅</text>
+  <text font-family="sans-serif" font-size="19" x="570" y="555" text-anchor="middle" dominant-baseline="central">✅</text>
+
+  <!-- Divider -->
+  <line x1="40" y1="600" x2="660" y2="600" stroke="#D3D1C7" stroke-width="0.5"/>
+
+  <!-- Legend -->
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="350" y="618" text-anchor="middle" dominant-baseline="central">✅ Full support &#160;&#160;&#160; ⚠️ Limited support &#160;&#160;&#160; ❌ Not available</text>
+
+  <!-- Footer: Feature Winner -->
+  <rect x="36" y="634" width="608" height="58" rx="12" fill="#FDF0E5" stroke="#E08A2E" stroke-width="1.5"/>
+  <text font-family="sans-serif" font-size="18" x="58" y="663">🏆</text>
+  <text font-family="sans-serif" font-size="12" font-weight="500" fill="#8A4A0F" x="88" y="655" dominant-baseline="central">Feature Winner</text>
+  <text font-family="sans-serif" font-size="18" font-weight="600" fill="#8A4A0F" x="88" y="676" dominant-baseline="central">Fireflies</text>
+  <text font-family="sans-serif" font-size="11" fill="#5F5E5A" x="360" y="667" text-anchor="middle" dominant-baseline="central">Stronger CRM sync, team tools &amp; integrations</text>
+
+</svg>
