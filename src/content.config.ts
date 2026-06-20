@@ -50,4 +50,9 @@ const aiTools = defineCollection({
 	schema: articleSchema,
 });
 
-export const collections = { blog, reddit, threads, extensions, marketing, 'ai-tools': aiTools };
+const comparisons = defineCollection({
+	loader: glob({ base: './src/content/comparisons', pattern: '**/*.{md,mdx}' }),
+	schema: articleSchema,
+});
+
+export const collections = { blog, reddit, threads, extensions, marketing, 'ai-tools': aiTools, comparisons };
