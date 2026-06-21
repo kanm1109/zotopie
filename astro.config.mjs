@@ -19,20 +19,23 @@ export default defineConfig({
 				if (url === 'https://zotopie.com/reviews/') {
 					return { ...item, changefreq: 'weekly',  priority: 0.9 };
 				}
+				if (url.includes('/comparisons/')) {
+					return { ...item, changefreq: 'monthly', priority: 0.8 };
+				}
 				if (url.includes('/category/')) {
-					return { ...item, changefreq: 'weekly',  priority: 0.9 };
+					return { ...item, changefreq: 'weekly',  priority: 0.8 };
+				}
+				if (url.includes('/best/')) {
+					return { ...item, changefreq: 'weekly',  priority: 0.8 };
 				}
 				if (url.includes('/reviews/')) {
-					return { ...item, changefreq: 'monthly', priority: 0.8 };
+					return { ...item, changefreq: 'monthly', priority: 0.7 };
 				}
 				if (url.includes('/alternatives/')) {
 					return { ...item, changefreq: 'monthly', priority: 0.7 };
 				}
 				if (url.includes('/compare/')) {
 					return { ...item, changefreq: 'monthly', priority: 0.7 };
-				}
-				if (url.includes('/best/')) {
-					return { ...item, changefreq: 'weekly',  priority: 0.9 };
 				}
 				if (url.includes('/search')) {
 					return { ...item, changefreq: 'monthly', priority: 0.4 };

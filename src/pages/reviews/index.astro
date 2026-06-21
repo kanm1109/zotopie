@@ -62,11 +62,48 @@ const iconDataStr    = JSON.stringify(iconData);
     <span id="rv-count" class="rv-count"></span>
   </div>
 
-  <!-- GRID -->
-  <div id="rv-grid" class="rv-grid"></div>
+  <!-- GRID: SSR pre-render first 12 tools so Google can crawl links without JS -->
+  <div id="rv-grid" class="rv-grid">
+    {tools.slice(0, 12).map((tool) => (
+      <div class="tc-card">
+        <div class="tc-top">
+          <div class="tc-id">
+            <h3 class="tc-name">
+              <a href={`/reviews/${tool.slug}/`}>{tool.name}</a>
+            </h3>
+          </div>
+          <span class="tc-rating">★ {tool.rating}</span>
+        </div>
+        <p class="tc-desc">{tool.description}</p>
+        <div class="tc-footer">
+          <span class="tc-pricing">
+            {tool.pricing}{tool.startingPrice ? ` · from ${tool.startingPrice}` : ''}
+          </span>
+          <a href={`/reviews/${tool.slug}/`} class="tc-link">View Review →</a>
+        </div>
+      </div>
+    ))}
+  </div>
 
   <!-- PAGINATION -->
   <div id="rv-pagination" class="rv-pagination"></div>
+
+  <!-- NOSCRIPT: full tool link list for no-JS crawlers and fallback -->
+  <noscript>
+    <nav aria-label="All tool reviews" style="padding: 24px 0;">
+      <h2 style="font-size:1.1rem;margin-bottom:12px;">All Tool Reviews</h2>
+      <ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">
+        {tools.map((tool) => (
+          <li>
+            <a href={`/reviews/${tool.slug}/`}
+               style="display:block;padding:8px 12px;border:1px solid #e5e7eb;border-radius:6px;font-size:0.875rem;color:#374151;">
+              {tool.name}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </noscript>
 
 </MainLayout>
 

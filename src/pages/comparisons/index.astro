@@ -1,0 +1,189 @@
+---
+import { getCollection } from 'astro:content';
+import MainLayout from '../../layouts/MainLayout.astro';
+
+const comparisons = (await getCollection('comparisons', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+
+const SITE = 'https://zotopie.com';
+const pageTitle = 'AI Tool Comparisons | Zotopie';
+const pageDesc = `In-depth head-to-head comparisons of ${comparisons.length} AI tools. Expert analysis of features, pricing, and real-world performance — no sponsored placements.`;
+
+const breadcrumbJsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+    { '@type': 'ListItem', position: 2, name: 'Comparisons', item: `${SITE}/comparisons/` },
+  ],
+});
+---
+
+<MainLayout title={pageTitle} description={pageDesc}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={breadcrumbJsonLd} />
+  </Fragment>
+
+  <section class="cmp-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <span>Comparisons</span>
+    </div>
+    <h1>AI Tool Comparisons</h1>
+    <p class="hero-sub">
+      {comparisons.length} in-depth head-to-head comparisons — features, pricing, and real-world performance.
+    </p>
+  </section>
+
+  <div class="cmp-grid">
+    {comparisons.map((post) => (
+      <a href={`/comparisons/${post.id}/`} class="cmp-card">
+        <div class="cmp-card-body">
+          <h2 class="cmp-title">{post.data.title}</h2>
+          <p class="cmp-desc">{post.data.description}</p>
+        </div>
+        <div class="cmp-card-footer">
+          <span class="cmp-date">
+            {post.data.publishDate.toLocaleDateString('en-US', { year: 'numeric', month: 'long' })}
+          </span>
+          <span class="cmp-cta">Read Comparison →</span>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  {comparisons.length === 0 && (
+    <div class="cmp-empty">
+      <p>No comparisons published yet. Check back soon.</p>
+      <a href="/compare/">Browse auto-generated comparisons →</a>
+    </div>
+  )}
+
+  <div class="cmp-also">
+    <p>
+      Looking for side-by-side feature tables?
+      <a href="/compare/">Browse {Math.round(126 * 125 / 2)}+ auto-generated tool comparisons →</a>
+    </p>
+  </div>
+</MainLayout>
+
+<style>
+  .cmp-hero {
+    padding: 48px 0 32px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 40px;
+  }
+  .breadcrumb {
+    font-size: 0.875rem;
+    color: #9ca3af;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: #6b7280; text-decoration: none; }
+  .breadcrumb a:hover { color: #7C3AED; }
+  h1 {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: #111827;
+    margin: 0 0 10px;
+    letter-spacing: -0.02em;
+  }
+  .hero-sub {
+    font-size: 1rem;
+    color: #6b7280;
+    margin: 0;
+    max-width: 560px;
+  }
+
+  .cmp-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 48px;
+  }
+
+  .cmp-card {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 24px 28px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 14px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.18s, box-shadow 0.18s, transform 0.15s;
+    position: relative;
+  }
+  .cmp-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #7C3AED, #6366F1);
+    border-radius: 14px 14px 0 0;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .cmp-card:hover {
+    border-color: #C4B5FD;
+    box-shadow: 0 6px 24px rgba(124,58,237,0.12);
+    transform: translateY(-2px);
+    text-decoration: none;
+  }
+  .cmp-card:hover::before { opacity: 1; }
+
+  .cmp-card-body { flex: 1; }
+  .cmp-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #111827;
+    margin: 0 0 8px;
+    line-height: 1.35;
+  }
+  .cmp-desc {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  .cmp-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-top: 14px;
+    border-top: 1px solid #f3f4f6;
+  }
+  .cmp-date {
+    font-size: 0.78rem;
+    color: #9ca3af;
+    font-weight: 500;
+  }
+  .cmp-cta {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #7C3AED;
+  }
+
+  .cmp-empty {
+    padding: 64px 0;
+    text-align: center;
+    color: #6b7280;
+  }
+  .cmp-empty a { color: #7C3AED; }
+
+  .cmp-also {
+    border-top: 1px solid #e5e7eb;
+    padding: 24px 0 8px;
+    font-size: 0.9rem;
+    color: #6b7280;
+  }
+  .cmp-also a { color: #7C3AED; font-weight: 600; }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 1.75rem; }
+    .cmp-card { padding: 18px 20px; }
+    .cmp-title { font-size: 1rem; }
+  }
+</style>

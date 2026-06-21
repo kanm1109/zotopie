@@ -12,13 +12,20 @@ http://www.zotopie.com/* https://zotopie.com/:splat 301
 /reddit/synthesia-review/  /ai-tools/synthesia-review/  301
 /reddit/gptzero-review/    /ai-tools/gptzero-review/    301
 
-# Redirect bare category paths to trailing-slash versions
-/reddit    /reddit/    301
-/ai-tools  /ai-tools/  301
-/threads  /threads/  301
-/extensions  /extensions/  301
-/marketing  /marketing/  301
-/blog  /blog/  301
+# Redirect bare paths to trailing-slash versions
+/reviews      /reviews/      301
+/category     /category/     301
+/best         /best/         301
+/compare      /compare/      301
+/comparisons  /comparisons/  301
+/alternatives /alternatives/ 301
+/search       /search/       301
+/reddit       /reddit/       301
+/ai-tools     /ai-tools/     301
+/threads      /threads/      301
+/extensions   /extensions/   301
+/marketing    /marketing/    301
+/blog         /blog/         301
 
 # 404 fallback
 /*  /404  404
