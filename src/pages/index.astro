@@ -45,6 +45,10 @@ const newestTools = [...tools]
   })
   .slice(0, 6);
 
+const editorPicks = tools
+  .filter((t) => ['synthesia', 'gptzero', 'fireflies-ai'].includes(t.slug))
+  .sort((a, b) => b.rating - a.rating);
+
 const altCountMap = {} as Record<string, number>;
 tools.forEach((t) => {
   (t.alternatives || []).forEach((s: string) => {
@@ -213,6 +217,24 @@ const homeJsonLd = JSON.stringify({
       </div>
       <div class="tools-grid">
         {popularTools.map((tool) => (
+          <ToolCard tool={tool} />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- EDITOR'S PICKS — revenue-ready tools our editorial team recommends -->
+  {editorPicks.length > 0 && (
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Editor's Picks</h2>
+          <p class="section-sub">Tested and recommended by our editorial team</p>
+        </div>
+        <a href="/reviews/" class="see-all">Browse all reviews →</a>
+      </div>
+      <div class="tools-grid">
+        {editorPicks.map((tool) => (
           <ToolCard tool={tool} />
         ))}
       </div>
