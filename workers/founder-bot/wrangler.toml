@@ -8,8 +8,8 @@ compatibility_flags = ["nodejs_compat"]
 # Replace the id values below with the output from that command.
 [[kv_namespaces]]
 binding = "BOT_KV"
-id = "REPLACE_WITH_KV_NAMESPACE_ID"
-preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
+id = "fa7343f475844c56b7cd488665837b73"
+preview_id = "0321c279cb4b42e69b1479a7ca8dcb29"
 
 # ── Routes ────────────────────────────────────────────────────────────────────
 # Worker is deployed to: https://zotopie-founder-bot.<your-subdomain>.workers.dev
