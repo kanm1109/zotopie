@@ -11,11 +11,12 @@ binding = "BOT_KV"
 id = "fa7343f475844c56b7cd488665837b73"
 preview_id = "0321c279cb4b42e69b1479a7ca8dcb29"
 
-# ── Routes ────────────────────────────────────────────────────────────────────
-# Worker is deployed to: https://zotopie-founder-bot.<your-subdomain>.workers.dev
-# Or bind a custom route if desired.
+# ── Cron trigger — post-deploy health verification ────────────────────────────
+[triggers]
+crons = ["* * * * *"]
 
 # ── Secrets (DO NOT put values here — set via CLI) ────────────────────────────
 # wrangler secret put BOT_TOKEN
 # wrangler secret put FOUNDER_CHAT_ID
 # wrangler secret put BOT_SECRET
+# wrangler secret put DEPLOY_HOOK_URL

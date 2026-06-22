@@ -1,22 +1,24 @@
 /**
- * Zotopie Founder Control Bot — Cloudflare Worker v1
+ * Zotopie Founder Control Bot — Cloudflare Worker v2
  *
  * Endpoints:
- *   POST /webhook        — Telegram update handler
+ *   POST /webhook        — Telegram update handler (messages + callback queries)
  *   POST /deploy         — GitHub Actions deploy notification (requires X-Bot-Secret)
  *   POST /task-complete  — Task complete notification (requires X-Bot-Secret)
  *   GET  /               — Health check
  *
- * Required Worker Secrets (set via: wrangler secret put <NAME>):
+ * Required Worker Secrets:
  *   BOT_TOKEN        — Telegram bot token from @BotFather
  *   FOUNDER_CHAT_ID  — Founder's Telegram chat ID
  *   BOT_SECRET       — Shared secret for protected endpoints
+ *   DEPLOY_HOOK_URL  — Cloudflare Pages deploy hook URL
  *
  * KV Binding: BOT_KV
  *   LAST_DEPLOY      — JSON: { commit, status, branch, message, time }
  *   DEPLOY_HISTORY   — JSON array: last 20 deployments
  *   PENDING_TASKS    — JSON array: { id, name, assignee }
  *   WAITING_APPROVAL — JSON array: { id, name, status, time }
+ *   DEPLOY_PENDING   — JSON: { commit, startTime } — cleared after post-deploy verify
  */
 
 const TELEGRAM_API = 'https://api.telegram.org/bot';
@@ -24,26 +26,44 @@ const GITHUB_API = 'https://api.github.com';
 const REPO = 'kanm1109/zotopie';
 const SITE_URL = 'https://zotopie.com';
 
-// ── Persistent keyboard shown after every reply ──────────────────────────────
+const HEALTH_URLS = [
+  { label: 'Homepage', url: 'https://zotopie.com/' },
+  { label: 'Reviews Hub', url: 'https://zotopie.com/reviews/' },
+  { label: 'Alternatives Hub', url: 'https://zotopie.com/alternatives/' },
+  { label: 'Compare Hub', url: 'https://zotopie.com/compare/' },
+  { label: 'Best Hub', url: 'https://zotopie.com/best/' },
+];
+
+// ── Keyboards ─────────────────────────────────────────────────────────────────
 
 const MAIN_KEYBOARD = {
   keyboard: [
     [{ text: '📊 Status' }, { text: '🚀 Deployments' }],
     [{ text: '📋 Pending Tasks' }, { text: '✅ Waiting Approval' }],
+    [{ text: '🩺 Health' }, { text: '🚀 Deploy' }],
   ],
   resize_keyboard: true,
   persistent: true,
   one_time_keyboard: false,
 };
 
+const DEPLOY_CONFIRM_KEYBOARD = {
+  inline_keyboard: [
+    [
+      { text: '✅ Confirm Deploy', callback_data: 'confirm_deploy' },
+      { text: '❌ Cancel', callback_data: 'cancel_deploy' },
+    ],
+  ],
+};
+
 // ── Telegram helpers ─────────────────────────────────────────────────────────
 
-async function sendMessage(token, chatId, text, extraMarkup = null) {
+async function sendMessage(token, chatId, text, replyMarkup = null) {
   const body = {
     chat_id: chatId,
     text,
     parse_mode: 'HTML',
-    reply_markup: extraMarkup ?? MAIN_KEYBOARD,
+    reply_markup: replyMarkup ?? MAIN_KEYBOARD,
   };
   const res = await fetch(`${TELEGRAM_API}${token}/sendMessage`, {
     method: 'POST',
@@ -53,13 +73,29 @@ async function sendMessage(token, chatId, text, extraMarkup = null) {
   return res.json();
 }
 
+async function editMessage(token, chatId, messageId, text) {
+  await fetch(`${TELEGRAM_API}${token}/editMessageText`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ chat_id: chatId, message_id: messageId, text, parse_mode: 'HTML' }),
+  });
+}
+
+async function answerCallback(token, callbackQueryId, text = '') {
+  await fetch(`${TELEGRAM_API}${token}/answerCallbackQuery`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ callback_query_id: callbackQueryId, text }),
+  });
+}
+
 // ── GitHub helpers ───────────────────────────────────────────────────────────
 
 async function fetchLatestCommit() {
   try {
     const res = await fetch(`${GITHUB_API}/repos/${REPO}/commits/main`, {
       headers: {
-        'User-Agent': 'ZotopieFounderBot/1.0',
+        'User-Agent': 'ZotopieFounderBot/2.0',
         Accept: 'application/vnd.github.v3+json',
       },
     });
@@ -110,6 +146,43 @@ function fmtDate(iso) {
   }
 }
 
+// ── Health check helpers ──────────────────────────────────────────────────────
+
+async function runHealthChecks() {
+  const results = await Promise.all(
+    HEALTH_URLS.map(async ({ label, url }) => {
+      try {
+        const res = await fetch(url, { method: 'HEAD', redirect: 'follow' });
+        return { label, url, status: res.status, ok: res.status === 200 };
+      } catch (_) {
+        return { label, url, status: 0, ok: false };
+      }
+    })
+  );
+  return results;
+}
+
+function formatHealthLine(r) {
+  const icon = r.ok ? '✅' : '❌';
+  const dots = '.'.repeat(Math.max(2, 22 - r.label.length));
+  return `${r.label} ${dots} ${r.status} ${icon}`;
+}
+
+function buildHealthText(results, title = '🩺 <b>ZOTOPIE HEALTH</b>') {
+  const allOk = results.every(r => r.ok);
+  const lines = results.map(formatHealthLine);
+  const overall = allOk ? '🟢 <b>HEALTHY</b>' : '🔴 <b>ATTENTION REQUIRED</b>';
+  const failed = results.filter(r => !r.ok);
+
+  const parts = [title, '', `<code>${lines.join('\n')}</code>`, '', 'Overall Status:', overall];
+
+  if (!allOk && failed.length > 0) {
+    parts.push('', 'Failed:', ...failed.map(r => `• ${r.label} → ${r.status || 'ERR'}`));
+  }
+
+  return parts.join('\n');
+}
+
 // ── Button handlers ───────────────────────────────────────────────────────────
 
 async function handleStatus(env, chatId) {
@@ -147,7 +220,7 @@ async function handleStatus(env, chatId) {
     `📋 <b>Pending Tasks:</b> ${pending.length}`,
     `✅ <b>Waiting Approval:</b> ${waiting.length}`,
     '',
-    `🟢 <b>Sync Status:</b>`,
+    '🟢 <b>Sync Status:</b>',
     syncStatus,
   ].join('\n');
 
@@ -159,7 +232,7 @@ async function handleDeployments(env, chatId) {
 
   if (history.length === 0) {
     await sendMessage(env.BOT_TOKEN, chatId,
-      '🚀 <b>Deployments</b>\n\n⏳ No deployments recorded yet.\n\n<i>Deployments will appear here after the first push to main.</i>');
+      '🚀 <b>Deployments</b>\n\n⏳ No deployments recorded yet.\n\n<i>Deployments appear here after each push to main.</i>');
     return;
   }
 
@@ -170,8 +243,7 @@ async function handleDeployments(env, chatId) {
     return `${i + 1}. ${icon} <code>${short}</code>\n    ${d.message?.slice(0, 60) ?? ''}\n    ${time}`;
   });
 
-  const text = `🚀 <b>Recent Deployments</b>\n\n${lines.join('\n\n')}`;
-  await sendMessage(env.BOT_TOKEN, chatId, text);
+  await sendMessage(env.BOT_TOKEN, chatId, `🚀 <b>Recent Deployments</b>\n\n${lines.join('\n\n')}`);
 }
 
 async function handlePendingTasks(env, chatId) {
@@ -183,12 +255,12 @@ async function handlePendingTasks(env, chatId) {
     return;
   }
 
-  const lines = tasks.map((t) =>
+  const lines = tasks.map(t =>
     `• <b>${t.id}</b> — ${t.name}${t.assignee ? ` <i>(${t.assignee})</i>` : ''}`
   );
 
-  const text = `📋 <b>Pending Tasks</b>\n\n${lines.join('\n')}\n\n<i>${tasks.length} task(s) in queue</i>`;
-  await sendMessage(env.BOT_TOKEN, chatId, text);
+  await sendMessage(env.BOT_TOKEN, chatId,
+    `📋 <b>Pending Tasks</b>\n\n${lines.join('\n')}\n\n<i>${tasks.length} task(s) in queue</i>`);
 }
 
 async function handleWaitingApproval(env, chatId) {
@@ -200,12 +272,102 @@ async function handleWaitingApproval(env, chatId) {
     return;
   }
 
-  const lines = items.map((t) =>
+  const lines = items.map(t =>
     `• <b>${t.id}</b> — ${t.name}\n  Status: <i>${t.status}</i>\n  Since: ${fmtDate(t.time)}`
   );
 
-  const text = `✅ <b>Waiting Approval</b>\n\n${lines.join('\n\n')}\n\n<i>${items.length} item(s) need your decision</i>`;
-  await sendMessage(env.BOT_TOKEN, chatId, text);
+  await sendMessage(env.BOT_TOKEN, chatId,
+    `✅ <b>Waiting Approval</b>\n\n${lines.join('\n\n')}\n\n<i>${items.length} item(s) need your decision</i>`);
+}
+
+async function handleHealth(env, chatId) {
+  await sendMessage(env.BOT_TOKEN, chatId, '🔍 Running health checks...');
+  const results = await runHealthChecks();
+  await sendMessage(env.BOT_TOKEN, chatId, buildHealthText(results));
+}
+
+async function handleDeploy(env, chatId) {
+  const commit = await fetchLatestCommit();
+  const commitLine = commit
+    ? `<code>${commit.short}</code> — ${commit.message.slice(0, 70)}`
+    : '⚠️ Unable to fetch (GitHub rate limit)';
+
+  const text = [
+    '🚀 <b>Production Deploy</b>',
+    '',
+    'Current Branch: <code>main</code>',
+    '',
+    'Latest Commit:',
+    commitLine,
+    '',
+    'Deploy production?',
+  ].join('\n');
+
+  await sendMessage(env.BOT_TOKEN, chatId, text, DEPLOY_CONFIRM_KEYBOARD);
+}
+
+// ── Deploy execution ──────────────────────────────────────────────────────────
+
+async function executeDeploy(env) {
+  if (!env.DEPLOY_HOOK_URL) return { ok: false, error: 'DEPLOY_HOOK_URL not configured' };
+  try {
+    const res = await fetch(env.DEPLOY_HOOK_URL, { method: 'POST' });
+    const body = await res.json().catch(() => ({}));
+    return { ok: res.ok, id: body?.result?.id ?? null };
+  } catch (e) {
+    return { ok: false, error: e.message };
+  }
+}
+
+// ── Inline keyboard callback handler ─────────────────────────────────────────
+
+async function handleCallbackQuery(update, env) {
+  const query = update.callback_query;
+  const chatId = String(query.message.chat.id);
+  const messageId = query.message.message_id;
+  const data = query.data;
+
+  // Security: only founder may act on deploy controls
+  if (env.FOUNDER_CHAT_ID && chatId !== String(env.FOUNDER_CHAT_ID)) {
+    await answerCallback(env.BOT_TOKEN, query.id, '🔒 Access denied');
+    return;
+  }
+
+  await answerCallback(env.BOT_TOKEN, query.id);
+
+  if (data === 'cancel_deploy') {
+    await editMessage(env.BOT_TOKEN, chatId, messageId, '❌ <b>Deploy cancelled.</b>');
+    await sendMessage(env.BOT_TOKEN, chatId, 'Deploy cancelled. Use the buttons below to continue.');
+    return;
+  }
+
+  if (data === 'confirm_deploy') {
+    await editMessage(env.BOT_TOKEN, chatId, messageId, '⏳ <b>Deploy confirmed. Triggering deployment...</b>');
+
+    const commit = await fetchLatestCommit();
+    const result = await executeDeploy(env);
+
+    if (!result.ok) {
+      await sendMessage(env.BOT_TOKEN, chatId,
+        `❌ <b>Deployment Failed</b>\n\nCould not trigger deploy hook.\n<i>${result.error ?? 'Unknown error'}</i>`);
+      return;
+    }
+
+    const shortSha = commit?.short ?? '???????';
+    await kvPut(env, 'DEPLOY_PENDING', {
+      commit: commit?.sha ?? 'unknown',
+      startTime: new Date().toISOString(),
+    });
+
+    await sendMessage(env.BOT_TOKEN, chatId, [
+      '🚀 <b>Deployment Started</b>',
+      '',
+      `Commit: <code>${shortSha}</code>`,
+      '',
+      '⏳ Cloudflare Pages is building (~3–5 min).',
+      'You will receive a notification when live.',
+    ].join('\n'));
+  }
 }
 
 // ── Telegram webhook handler ──────────────────────────────────────────────────
@@ -218,17 +380,21 @@ async function handleWebhook(request, env) {
     return new Response('Bad Request', { status: 400 });
   }
 
+  // Inline keyboard button presses
+  if (update.callback_query) {
+    await handleCallbackQuery(update, env);
+    return new Response('OK');
+  }
+
   const message = update.message;
   if (!message?.text) return new Response('OK');
 
   const chatId = String(message.chat.id);
   const text = message.text.trim();
 
-  // Security: only respond to the configured founder chat
-  // (comment out during initial setup to discover your chat_id)
+  // Security: only respond to configured founder
   if (env.FOUNDER_CHAT_ID && chatId !== String(env.FOUNDER_CHAT_ID)) {
-    await sendMessage(env.BOT_TOKEN, chatId,
-      '🔒 Unauthorized. This bot is private.', {});
+    await sendMessage(env.BOT_TOKEN, chatId, '🔒 Unauthorized. This bot is private.', {});
     return new Response('OK');
   }
 
@@ -245,18 +411,24 @@ async function handleWebhook(request, env) {
     case '✅ Waiting Approval':
       await handleWaitingApproval(env, chatId);
       break;
+    case '🩺 Health':
+      await handleHealth(env, chatId);
+      break;
+    case '🚀 Deploy':
+      await handleDeploy(env, chatId);
+      break;
     case '/start':
     default:
       await sendMessage(env.BOT_TOKEN, chatId,
-        '👋 <b>Zotopie Founder Bot</b>\n\nUse the buttons below to monitor the project.\n\n<i>Tap any button to get started.</i>');
+        '👋 <b>Zotopie Founder Bot</b>\n\nUse the buttons below to monitor and control the project.\n\n<i>Tap any button to get started.</i>');
   }
 
   return new Response('OK');
 }
 
-// ── Deploy notification handler ───────────────────────────────────────────────
+// ── Deploy notification handler (GitHub Actions) ──────────────────────────────
 
-async function handleDeploy(request, env) {
+async function handleDeploy_GHA(request, env) {
   if (request.headers.get('X-Bot-Secret') !== env.BOT_SECRET) {
     return new Response('Unauthorized', { status: 401 });
   }
@@ -269,7 +441,6 @@ async function handleDeploy(request, env) {
   }
 
   const { commit, status, branch, message, time, reason } = body;
-
   const record = {
     commit,
     status: status ?? 'success',
@@ -278,7 +449,6 @@ async function handleDeploy(request, env) {
     time: time ?? new Date().toISOString(),
   };
 
-  // Persist to KV
   await kvPut(env, 'LAST_DEPLOY', record);
   const history = await kvGet(env, 'DEPLOY_HISTORY', []);
   await kvPut(env, 'DEPLOY_HISTORY', [record, ...history].slice(0, 20));
@@ -295,7 +465,7 @@ async function handleDeploy(request, env) {
       `Branch: ${branch ?? 'main'}`,
       `Time: ${fmtTime}`,
       '',
-      `Reason: ${reason ?? 'Unknown — check GitHub Actions logs'}`,
+      `Reason: ${reason ?? 'Check GitHub Actions logs'}`,
     ].join('\n');
   } else {
     msgText = [
@@ -309,7 +479,7 @@ async function handleDeploy(request, env) {
       '',
       `Status: <b>LIVE</b> ✅`,
       `<a href="${SITE_URL}">${SITE_URL}</a>`,
-    ].filter((l) => l !== null).join('\n');
+    ].filter(Boolean).join('\n');
   }
 
   await sendMessage(env.BOT_TOKEN, env.FOUNDER_CHAT_ID, msgText.trim());
@@ -332,29 +502,16 @@ async function handleTaskComplete(request, env) {
     return new Response('Bad Request', { status: 400 });
   }
 
-  const {
-    taskId,
-    taskName = '',
-    status = 'READY FOR REVIEW',
-    deployed = false,
-    removeFromPending = true,
-  } = body;
+  const { taskId, taskName = '', status = 'READY FOR REVIEW', deployed = false, removeFromPending = true } = body;
 
-  // Remove from pending tasks if requested
   if (removeFromPending) {
     const pending = await kvGet(env, 'PENDING_TASKS', []);
-    await kvPut(
-      env,
-      'PENDING_TASKS',
-      pending.filter((t) => t.id !== taskId)
-    );
+    await kvPut(env, 'PENDING_TASKS', pending.filter(t => t.id !== taskId));
   }
 
-  // Add to waiting approval if not yet deployed
   if (!deployed) {
     const waiting = await kvGet(env, 'WAITING_APPROVAL', []);
-    const alreadyExists = waiting.some((t) => t.id === taskId);
-    if (!alreadyExists) {
+    if (!waiting.some(t => t.id === taskId)) {
       await kvPut(env, 'WAITING_APPROVAL', [
         ...waiting,
         { id: taskId, name: taskName, status, time: new Date().toISOString() },
@@ -370,7 +527,7 @@ async function handleTaskComplete(request, env) {
     `Status: <b>${status}</b>`,
     '',
     `Deployment: <b>${deployed ? '✅ DEPLOYED' : '⏳ NOT DEPLOYED — needs push'}</b>`,
-  ].filter((l) => l !== null).join('\n');
+  ].filter(Boolean).join('\n');
 
   await sendMessage(env.BOT_TOKEN, env.FOUNDER_CHAT_ID, msgText);
   return new Response(JSON.stringify({ ok: true }), {
@@ -378,7 +535,7 @@ async function handleTaskComplete(request, env) {
   });
 }
 
-// ── Seed endpoint (one-time setup) ────────────────────────────────────────────
+// ── Seed endpoint ─────────────────────────────────────────────────────────────
 
 async function handleSeed(request, env) {
   if (request.headers.get('X-Bot-Secret') !== env.BOT_SECRET) {
@@ -395,15 +552,60 @@ async function handleSeed(request, env) {
   await kvPut(env, 'PENDING_TASKS', initialTasks);
   await kvPut(env, 'WAITING_APPROVAL', []);
 
-  await sendMessage(
-    env.BOT_TOKEN,
-    env.FOUNDER_CHAT_ID,
-    '🌱 <b>Bot initialized</b>\n\nPending tasks seeded with current sprint.\nUse the buttons below to get started.'
-  );
+  await sendMessage(env.BOT_TOKEN, env.FOUNDER_CHAT_ID,
+    '🌱 <b>Bot initialized</b>\n\nPending tasks seeded with current sprint.');
 
   return new Response(JSON.stringify({ ok: true, seeded: initialTasks.length }), {
     headers: { 'Content-Type': 'application/json' },
   });
+}
+
+// ── Scheduled handler — post-deploy verification ──────────────────────────────
+
+async function scheduled(event, env) {
+  const pending = await kvGet(env, 'DEPLOY_PENDING');
+  if (!pending) return;
+
+  const ageMs = Date.now() - new Date(pending.startTime).getTime();
+  const MIN_WAIT = 3 * 60 * 1000;   // wait at least 3 min before first check
+  const MAX_WAIT = 10 * 60 * 1000;  // give up after 10 min
+
+  if (ageMs < MIN_WAIT) return;
+
+  // Timeout — deploy took too long or something went wrong
+  if (ageMs > MAX_WAIT) {
+    await env.BOT_KV.delete('DEPLOY_PENDING');
+    await sendMessage(env.BOT_TOKEN, env.FOUNDER_CHAT_ID, [
+      '⚠️ <b>Deploy Verification Timeout</b>',
+      '',
+      'Deployment may still be in progress.',
+      'Tap 🩺 Health to check manually.',
+    ].join('\n'));
+    return;
+  }
+
+  const results = await runHealthChecks();
+  const allOk = results.every(r => r.ok);
+
+  // Not ready yet — try next cron tick
+  if (!allOk) return;
+
+  await env.BOT_KV.delete('DEPLOY_PENDING');
+
+  const shortSha = pending.commit?.slice(0, 7) ?? '???????';
+  const lines = results.map(formatHealthLine);
+
+  await sendMessage(env.BOT_TOKEN, env.FOUNDER_CHAT_ID, [
+    '✅ <b>Deployment Success</b>',
+    '',
+    `Commit: <code>${shortSha}</code>`,
+    `Production: <b>LIVE</b> ✅`,
+    '',
+    '🩺 <b>Post-Deploy Verification:</b>',
+    `<code>${lines.join('\n')}</code>`,
+    '',
+    'Verification: <b>PASSED</b> ✅',
+  ].join('\n'));
 }
 
 // ── Main fetch handler ────────────────────────────────────────────────────────
@@ -418,7 +620,7 @@ export default {
       return handleWebhook(request, env);
 
     if (pathname === '/deploy' && method === 'POST')
-      return handleDeploy(request, env);
+      return handleDeploy_GHA(request, env);
 
     if (pathname === '/task-complete' && method === 'POST')
       return handleTaskComplete(request, env);
@@ -426,10 +628,13 @@ export default {
     if (pathname === '/seed' && method === 'POST')
       return handleSeed(request, env);
 
-    // Health check
     return new Response(
-      JSON.stringify({ service: 'Zotopie Founder Bot', status: 'ok', version: '1.0.0' }),
+      JSON.stringify({ service: 'Zotopie Founder Bot', status: 'ok', version: '2.0.0' }),
       { headers: { 'Content-Type': 'application/json' } }
     );
+  },
+
+  async scheduled(event, env, ctx) {
+    ctx.waitUntil(scheduled(event, env));
   },
 };
