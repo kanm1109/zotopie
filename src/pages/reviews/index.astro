@@ -159,14 +159,14 @@ function renderCard(tool) {
   <div class="tc-top">
     <div class="tc-id">
       ${logoHtml(tool, 32)}
-      <h3 class="tc-name"><a href="/reviews/${tool.slug}">${esc(tool.name)}</a></h3>
+      <h3 class="tc-name"><a href="/reviews/${tool.slug}/">${esc(tool.name)}</a></h3>
     </div>
     <span class="tc-rating">★ ${tool.rating}</span>
   </div>
   <p class="tc-desc">${esc(tool.description)}</p>
   <div class="tc-footer">
     <span class="tc-pricing">${price}</span>
-    <a href="/reviews/${tool.slug}" class="tc-link">View Review →</a>
+    <a href="/reviews/${tool.slug}/" class="tc-link">View Review →</a>
   </div>
 </div>`;
 }

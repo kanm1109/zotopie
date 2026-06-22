@@ -10,7 +10,16 @@ export default defineConfig({
 		mdx(),
 		sitemap({
 			lastmod: new Date(),
-			filter: (page) => !page.includes('?') && !page.includes('/go/') && !page.endsWith('/search/') && page !== 'https://zotopie.com/search/',
+			filter: (page) =>
+				!page.includes('?') &&
+				!page.includes('/go/') &&
+				!page.endsWith('/search/') &&
+				page !== 'https://zotopie.com/search/' &&
+				page !== 'https://zotopie.com/stats/' &&
+				!page.startsWith('https://zotopie.com/blog/') &&
+				!page.startsWith('https://zotopie.com/threads/') &&
+				!page.startsWith('https://zotopie.com/extensions/') &&
+				!page.startsWith('https://zotopie.com/marketing/'),
 			serialize(item) {
 				const url = item.url;
 				if (url === 'https://zotopie.com/') {

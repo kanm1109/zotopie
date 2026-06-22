@@ -152,7 +152,7 @@ const homeJsonLd = JSON.stringify({
 
       <div class="hero-cats" role="list" aria-label="Browse by category">
         {top8cats.map((cat) => (
-          <a href={`/category/${cat.slug}`} class="hero-cat-chip" role="listitem">{cat.name}</a>
+          <a href={`/category/${cat.slug}/`} class="hero-cat-chip" role="listitem">{cat.name}</a>
         ))}
       </div>
     </div>
@@ -209,7 +209,7 @@ const homeJsonLd = JSON.stringify({
           <h2>Popular Tools</h2>
           <p class="section-sub">Handpicked tools trusted by thousands of teams</p>
         </div>
-        <a href="/reviews" class="see-all">See all {toolCount} reviews →</a>
+        <a href="/reviews/" class="see-all">See all {toolCount} reviews →</a>
       </div>
       <div class="tools-grid">
         {popularTools.map((tool) => (
@@ -253,7 +253,7 @@ const homeJsonLd = JSON.stringify({
         <h2>Browse by Category</h2>
         <p class="section-sub">Find the right tools for your specific workflow</p>
       </div>
-      <a href="/category" class="see-all">All {catCount} categories →</a>
+      <a href="/category/" class="see-all">All {catCount} categories →</a>
     </div>
     <div class="cats-grid">
       {categoriesWithCount.map((cat) => (
@@ -290,11 +290,11 @@ const homeJsonLd = JSON.stringify({
           <h2>Newly Added</h2>
           <p class="section-sub">The latest tools added to our database</p>
         </div>
-        <a href="/reviews" class="see-all">View all →</a>
+        <a href="/reviews/" class="see-all">View all →</a>
       </div>
       <div class="new-grid">
         {newestTools.map((tool) => (
-          <a href={`/reviews/${tool.slug}`} class="new-card">
+          <a href={`/reviews/${tool.slug}/`} class="new-card">
             <div class="new-card-left">
               <ToolLogo tool={tool} size={36} />
               <div class="new-card-info">
@@ -320,11 +320,11 @@ const homeJsonLd = JSON.stringify({
           <h2>Most Compared Tools</h2>
           <p class="section-sub">Tools teams evaluate most often when switching platforms</p>
         </div>
-        <a href="/search" class="see-all">Find alternatives →</a>
+        <a href="/search/" class="see-all">Find alternatives →</a>
       </div>
       <div class="tools-grid">
         {popularAlts.map((tool) => (
-          <a href={`/reviews/${tool.slug}`} class="pa-card">
+          <a href={`/reviews/${tool.slug}/`} class="pa-card">
             <div class="pa-top">
               <div class="pa-id">
                 <ToolLogo tool={tool} size={32} />
@@ -350,8 +350,8 @@ const homeJsonLd = JSON.stringify({
       <h2>Find the right tool for your workflow</h2>
       <p>Honest reviews. No fluff. Updated regularly.</p>
       <div class="cta-actions">
-        <a href="/reviews" class="btn-primary">Browse {toolCount} Reviews</a>
-        <a href="/search" class="btn-secondary">Search by feature</a>
+        <a href="/reviews/" class="btn-primary">Browse {toolCount} Reviews</a>
+        <a href="/search/" class="btn-secondary">Search by feature</a>
       </div>
     </div>
   </section>

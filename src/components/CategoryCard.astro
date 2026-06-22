@@ -18,7 +18,7 @@ const iconMap: Record<string, { emoji: string; color: string; bg: string }> = {
 const icon = iconMap[category.slug] ?? { emoji: '🔧', color: '#7C3AED', bg: '#F5F3FF' };
 ---
 
-<a href={`/category/${category.slug}`} class="cat-card">
+<a href={`/category/${category.slug}/`} class="cat-card">
   <div class="cat-icon" style={`background:${icon.bg};color:${icon.color}`}>
     <span aria-hidden="true">{icon.emoji}</span>
   </div>

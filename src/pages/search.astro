@@ -179,7 +179,7 @@ function renderCard(tool, q) {
   <div class="rc-top">
     <div class="rc-id">
       ${logoHtml(tool)}
-      <h3 class="rc-name"><a href="/reviews/${tool.slug}">${highlight(tool.name, q)}</a></h3>
+      <h3 class="rc-name"><a href="/reviews/${tool.slug}/">${highlight(tool.name, q)}</a></h3>
     </div>
     <span class="rc-rating">★ ${tool.rating}</span>
   </div>
@@ -187,7 +187,7 @@ function renderCard(tool, q) {
   ${cats ? `<div class="rc-cats">${cats}</div>` : ''}
   <div class="rc-footer">
     <span class="rc-pricing">${price}</span>
-    <a href="/reviews/${tool.slug}" class="rc-cta">Read Review &rarr;</a>
+    <a href="/reviews/${tool.slug}/" class="rc-cta">Read Review &rarr;</a>
   </div>
 </div>`;
 }
@@ -332,7 +332,7 @@ function doSearch(raw) {
 
   if (total === 0) {
     countEl.textContent = `No results for ${label}`;
-    resultsEl.innerHTML = `<div class="no-results">Try a different keyword or <a href="/category">browse categories</a>.</div>`;
+    resultsEl.innerHTML = `<div class="no-results">Try a different keyword or <a href="/category/">browse categories</a>.</div>`;
   } else {
     const parts = [];
     if (toolHits.length)    parts.push(`${toolHits.length} tool${toolHits.length === 1 ? '' : 's'}`);

@@ -14,7 +14,7 @@ const priceLabel = tool.startingPrice
       <ToolLogo tool={tool} size={38} />
       <div class="tool-meta">
         <h3 class="tool-name">
-          <a href={`/reviews/${tool.slug}`}>{tool.name}</a>
+          <a href={`/reviews/${tool.slug}/`}>{tool.name}</a>
         </h3>
         <span class:list={["tool-pricing", { "pricing-free": isFree }]}>{priceLabel}</span>
       </div>
@@ -25,7 +25,7 @@ const priceLabel = tool.startingPrice
   </div>
   <p class="tool-desc">{tool.description}</p>
   <div class="tool-footer">
-    <a href={`/reviews/${tool.slug}`} class="view-btn">Read Review →</a>
+    <a href={`/reviews/${tool.slug}/`} class="view-btn">Read Review →</a>
   </div>
 </div>
 

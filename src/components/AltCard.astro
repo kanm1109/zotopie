@@ -11,7 +11,7 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
 ---
 
 <div class="alt-card">
-  <a href={`/reviews/${tool.slug}`} class="alt-card-link">
+  <a href={`/reviews/${tool.slug}/`} class="alt-card-link">
     <div class="alt-logo">
       <ToolLogo tool={tool} size={44} />
     </div>
@@ -34,7 +34,7 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
        target="_blank">
       {tryLabel}
     </a>
-    <a href={`/reviews/${tool.slug}`} class="alt-review-btn">Review →</a>
+    <a href={`/reviews/${tool.slug}/`} class="alt-review-btn">Review →</a>
   </div>
 </div>
 

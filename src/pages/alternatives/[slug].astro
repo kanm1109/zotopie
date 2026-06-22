@@ -147,8 +147,8 @@ const jsonLdStr = JSON.stringify({
   <section class="alt-hero">
     <div class="breadcrumb">
       <a href="/">Home</a> &rsaquo;
-      <a href="/reviews">Reviews</a> &rsaquo;
-      <a href={`/reviews/${tool.slug}`}>{tool.name}</a> &rsaquo;
+      <a href="/reviews/">Reviews</a> &rsaquo;
+      <a href={`/reviews/${tool.slug}/`}>{tool.name}</a> &rsaquo;
       <span>Alternatives</span>
     </div>
 
@@ -180,7 +180,7 @@ const jsonLdStr = JSON.stringify({
           <span class="cc-rating">★ {tool.rating}</span>
           <span class="cc-price">{tool.startingPrice ? `from ${tool.startingPrice}` : tool.pricing}</span>
         </div>
-        <a href={`/reviews/${tool.slug}`} class="cc-link">Full Review &rarr;</a>
+        <a href={`/reviews/${tool.slug}/`} class="cc-link">Full Review &rarr;</a>
       </div>
     </div>
   </section>

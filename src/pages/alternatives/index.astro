@@ -1,0 +1,333 @@
+---
+import tools from "../../data/generated/tools-enriched.json";
+import taxonomies from "../../data/taxonomies.json";
+import MainLayout from "../../layouts/MainLayout.astro";
+
+const SITE = "https://zotopie.com";
+
+const altTools = tools
+  .filter((t: any) => t.alternatives && t.alternatives.length > 0)
+  .sort((a: any, b: any) => a.name.localeCompare(b.name));
+
+const totalCount = altTools.length;
+
+// Group by primaryCategory for the static rendered list
+const catMap = Object.fromEntries(taxonomies.map((c: any) => [c.slug, c.name]));
+const byCategory: Record<string, typeof altTools> = {};
+for (const tool of altTools) {
+  const cat = (tool as any).primaryCategory ?? "other";
+  if (!byCategory[cat]) byCategory[cat] = [];
+  byCategory[cat].push(tool);
+}
+const sortedCats = Object.keys(byCategory).sort((a, b) =>
+  (catMap[a] ?? a).localeCompare(catMap[b] ?? b)
+);
+
+const toolsJson = JSON.stringify(
+  altTools.map((t: any) => ({
+    name: t.name,
+    slug: t.slug,
+    description: t.description,
+    pricing: t.pricing,
+    rating: t.rating,
+    primaryCategory: t.primaryCategory,
+    altCount: t.alternatives.length,
+  }))
+);
+const taxonomiesJson = JSON.stringify(taxonomies);
+---
+
+<MainLayout
+  title="Alternatives Hub — Find the Best Tool Alternatives | Zotopie"
+  description={`Browse ${totalCount} software tool alternatives. Find honest comparisons for every major tool — ranked by rating and reviewed by experts.`}
+  canonical={`${SITE}/alternatives/`}
+>
+
+  <!-- HERO -->
+  <section class="alt-hub-hero">
+    <div class="breadcrumb">
+      <a href="/">Home</a> &rsaquo; <span>Alternatives</span>
+    </div>
+    <h1>Tool Alternatives Hub</h1>
+    <p class="hero-desc">
+      <span id="alt-total">{totalCount}</span> tools with curated alternatives — find the best replacement for any tool you use.
+    </p>
+  </section>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <select id="f-cat" class="f-select" aria-label="Filter by category">
+      <option value="">All Categories</option>
+      {taxonomies.map((cat: any) => (
+        <option value={cat.slug}>{cat.name}</option>
+      ))}
+    </select>
+    <button id="f-clear" class="f-clear-btn" style="display:none">Clear filter</button>
+    <span id="alt-count" class="alt-count"></span>
+  </div>
+
+  <!-- GRID: statically rendered for crawler discovery -->
+  <div id="alt-grid" class="alt-grid">
+    {altTools.map((tool: any) => (
+      <a href={`/alternatives/${tool.slug}/`} class="alt-card">
+        <div class="ac-top">
+          <span class="ac-name">{tool.name}</span>
+          <span class="ac-badge">{tool.alternatives.length} alt{tool.alternatives.length !== 1 ? 's' : ''}</span>
+        </div>
+        <p class="ac-desc">{tool.description}</p>
+        <div class="ac-footer">
+          <span class="ac-cat">{catMap[(tool as any).primaryCategory] ?? (tool as any).primaryCategory}</span>
+          <span class="ac-rating">★ {tool.rating}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+
+  <!-- NOSCRIPT: full link list for non-JS crawlers -->
+  <noscript>
+    <nav aria-label="All tool alternatives" style="padding:24px 0;">
+      <h2 style="font-size:1.1rem;margin-bottom:12px;">All Tool Alternatives</h2>
+      <ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">
+        {altTools.map((tool: any) => (
+          <li>
+            <a href={`/alternatives/${tool.slug}/`}
+               style="display:block;padding:8px 12px;border:1px solid #e5e7eb;border-radius:6px;font-size:0.875rem;color:#374151;">
+              {tool.name} Alternatives
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </noscript>
+
+</MainLayout>
+
+<script define:vars={{ toolsJson, taxonomiesJson }}>
+const TOOLS = JSON.parse(toolsJson);
+const TAXONOMIES = JSON.parse(taxonomiesJson);
+
+let activeCat = '';
+
+const grid    = document.getElementById('alt-grid');
+const countEl = document.getElementById('alt-count');
+const clearBtn = document.getElementById('f-clear');
+const totalEl  = document.getElementById('alt-total');
+
+function esc(s) {
+  return String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+}
+
+function catName(slug) {
+  const t = TAXONOMIES.find((x) => x.slug === slug);
+  return t ? t.name : slug;
+}
+
+function filtered() {
+  return TOOLS.filter((t) => !activeCat || t.primaryCategory === activeCat);
+}
+
+function renderCard(t) {
+  const badge = `${t.altCount} alt${t.altCount !== 1 ? 's' : ''}`;
+  return `
+<a href="/alternatives/${esc(t.slug)}/" class="alt-card">
+  <div class="ac-top">
+    <span class="ac-name">${esc(t.name)}</span>
+    <span class="ac-badge">${badge}</span>
+  </div>
+  <p class="ac-desc">${esc(t.description)}</p>
+  <div class="ac-footer">
+    <span class="ac-cat">${esc(catName(t.primaryCategory))}</span>
+    <span class="ac-rating">★ ${t.rating}</span>
+  </div>
+</a>`;
+}
+
+function render() {
+  const hits = filtered();
+  grid.innerHTML = hits.length
+    ? hits.map(renderCard).join('')
+    : `<div class="alt-empty">No tools found for this category.</div>`;
+
+  countEl.textContent = `${hits.length} tool${hits.length !== 1 ? 's' : ''}`;
+  clearBtn.style.display = activeCat ? 'inline-flex' : 'none';
+}
+
+document.getElementById('f-cat').addEventListener('change', (e) => {
+  activeCat = e.target.value;
+  render();
+});
+
+clearBtn.addEventListener('click', () => {
+  activeCat = '';
+  document.getElementById('f-cat').value = '';
+  render();
+});
+
+// Sync URL param
+const sp = new URLSearchParams(location.search);
+if (sp.get('cat')) {
+  activeCat = sp.get('cat');
+  const sel = document.getElementById('f-cat');
+  if (sel) sel.value = activeCat;
+  render();
+} else {
+  countEl.textContent = `${TOOLS.length} tools`;
+}
+</script>
+
+<style>
+  .alt-hub-hero {
+    padding: 48px 0 28px;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 0;
+  }
+  .breadcrumb { font-size: 0.875rem; color: #9ca3af; margin-bottom: 16px; }
+  .breadcrumb a { color: #6b7280; }
+  .breadcrumb a:hover { color: #7C3AED; text-decoration: none; }
+  h1 { font-size: 2.25rem; font-weight: 800; color: #111827; margin: 0 0 8px; }
+  .hero-desc { font-size: 1rem; color: #6b7280; margin: 0; }
+
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+    border-bottom: 1px solid #e5e7eb;
+    margin-bottom: 28px;
+  }
+  .f-select {
+    padding: 8px 14px;
+    border: 1.5px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    color: #374151;
+    background: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .f-select:focus { border-color: #7C3AED; }
+  .f-clear-btn {
+    padding: 8px 14px;
+    border: 1.5px solid #fca5a5;
+    border-radius: 8px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #b91c1c;
+    background: #fff;
+    font-family: inherit;
+    cursor: pointer;
+    align-items: center;
+    gap: 6px;
+    transition: background 0.2s;
+  }
+  .f-clear-btn:hover { background: #fee2e2; }
+  .alt-count {
+    margin-left: auto;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #9ca3af;
+    white-space: nowrap;
+  }
+
+  .alt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+    margin-bottom: 48px;
+    min-height: 200px;
+  }
+
+  .alt-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    padding: 18px 20px;
+    background: #fff;
+    text-decoration: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    color: inherit;
+  }
+  .alt-card:hover {
+    border-color: #7C3AED;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.08);
+    text-decoration: none;
+  }
+
+  .ac-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .ac-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #111827;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .ac-badge {
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: #EDE9FE;
+    color: #7C3AED;
+    padding: 2px 8px;
+    border-radius: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .ac-desc {
+    font-size: 0.875rem;
+    color: #6b7280;
+    margin: 0;
+    flex: 1;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .ac-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+  .ac-cat {
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 2px 9px;
+    border-radius: 10px;
+  }
+  .ac-rating {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #d97706;
+  }
+
+  .alt-empty {
+    grid-column: 1 / -1;
+    padding: 48px 0;
+    text-align: center;
+    color: #6b7280;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 640px) {
+    h1 { font-size: 1.75rem; }
+    .alt-grid { grid-template-columns: 1fr; }
+    .filter-bar { gap: 8px; }
+    .alt-count { margin-left: 0; width: 100%; }
+  }
+</style>

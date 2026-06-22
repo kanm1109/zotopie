@@ -246,8 +246,8 @@ const jsonLdStr = JSON.stringify({
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
     <a href="/">Home</a> &rsaquo;
-    <a href="/reviews">Reviews</a> &rsaquo;
-    {primaryCategory && <><a href={`/category/${primaryCategory.slug}`}>{primaryCategory.name}</a> &rsaquo;</>}
+    <a href="/reviews/">Reviews</a> &rsaquo;
+    {primaryCategory && <><a href={`/category/${primaryCategory.slug}/`}>{primaryCategory.name}</a> &rsaquo;</>}
     <span>{tool.name}</span>
   </div>
 
@@ -286,7 +286,7 @@ const jsonLdStr = JSON.stringify({
       {primaryCategory && (
         <div class="summary-item">
           <span class="label">Category</span>
-          <a href={`/category/${primaryCategory.slug}`} class="value cat-link">
+          <a href={`/category/${primaryCategory.slug}/`} class="value cat-link">
             {primaryCategory.name}
           </a>
         </div>
@@ -301,12 +301,12 @@ const jsonLdStr = JSON.stringify({
       </a>
       {tool.affiliate && <span class="aff-note">Affiliate link</span>}
       {tool.alternatives && tool.alternatives.length > 0 && (
-        <a href={`/alternatives/${tool.slug}`} class="alt-link">
+        <a href={`/alternatives/${tool.slug}/`} class="alt-link">
           {tool.alternatives.length} Alternatives &rarr;
         </a>
       )}
       {allCategories.map((cat) => (
-        <a href={`/category/${cat.slug}`} class="tag">{cat.name}</a>
+        <a href={`/category/${cat.slug}/`} class="tag">{cat.name}</a>
       ))}
     </div>
   </section>
@@ -499,7 +499,7 @@ const jsonLdStr = JSON.stringify({
           <h2>Best Alternatives to {tool.name}</h2>
           <p class="section-sub">Compare {tool.name} with top alternatives</p>
         </div>
-        <a href={`/alternatives/${tool.slug}`} class="see-all">See all alternatives &rarr;</a>
+        <a href={`/alternatives/${tool.slug}/`} class="see-all">See all alternatives &rarr;</a>
       </div>
       <div class="alt-list">
         {alternativeTools.map((t) => (
@@ -560,7 +560,7 @@ const jsonLdStr = JSON.stringify({
           <p class="section-sub">Other {primaryCategory?.name ?? "software"} tools you might like</p>
         </div>
         {primaryCategory && (
-          <a href={`/category/${primaryCategory.slug}`} class="see-all">See all {primaryCategory.name} &rarr;</a>
+          <a href={`/category/${primaryCategory.slug}/`} class="see-all">See all {primaryCategory.name} &rarr;</a>
         )}
       </div>
       <div class="tools-grid">
@@ -572,7 +572,7 @@ const jsonLdStr = JSON.stringify({
   <!-- PREV / NEXT -->
   <nav class="prev-next" aria-label="Review navigation">
     {prevTool ? (
-      <a href={`/reviews/${prevTool.slug}`} class="pn-card prev">
+      <a href={`/reviews/${prevTool.slug}/`} class="pn-card prev">
         <ToolLogo tool={prevTool} size={36} />
         <div class="pn-meta">
           <span class="pn-dir">&#8592; Previous</span>
@@ -582,7 +582,7 @@ const jsonLdStr = JSON.stringify({
       </a>
     ) : <div />}
     {nextTool ? (
-      <a href={`/reviews/${nextTool.slug}`} class="pn-card next">
+      <a href={`/reviews/${nextTool.slug}/`} class="pn-card next">
         <div class="pn-meta">
           <span class="pn-dir">Next &rarr;</span>
           <span class="pn-name">{nextTool.name}</span>

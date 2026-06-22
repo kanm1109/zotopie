@@ -134,7 +134,7 @@ const catJsonLdStr = JSON.stringify({
   <section class="cat-hero">
     <div class="breadcrumb">
       <a href="/">Home</a> &rsaquo;
-      <a href="/category">Categories</a> &rsaquo;
+      <a href="/category/">Categories</a> &rsaquo;
       <span>{category.name}</span>
     </div>
     <h1>{category.name}</h1>
@@ -192,7 +192,7 @@ const catJsonLdStr = JSON.stringify({
       </div>
       <div class="ranked-list">
         {topRated.map((tool, i) => (
-          <a href={`/reviews/${tool.slug}`} class="ranked-card">
+          <a href={`/reviews/${tool.slug}/`} class="ranked-card">
             <span class={`rank rank-${i + 1}`}>#{i + 1}</span>
             <div class="rc-logo">
               <ToolLogo tool={tool} size={44} />
@@ -265,7 +265,7 @@ const catJsonLdStr = JSON.stringify({
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
       </svg>
       <p>No tools reviewed in this category yet.</p>
-      <a href="/reviews" class="empty-link">Browse all reviews &rarr;</a>
+      <a href="/reviews/" class="empty-link">Browse all reviews &rarr;</a>
     </section>
   )}
 
@@ -319,7 +319,7 @@ const catJsonLdStr = JSON.stringify({
     </div>
     <div class="related-grid">
       {relatedCategories.map((cat) => (
-        <a href={`/category/${cat.slug}`} class="related-card">
+        <a href={`/category/${cat.slug}/`} class="related-card">
           <div class="related-card-top">
             <span class="related-name">{cat.name}</span>
             <span class="related-count">{cat.toolCount}</span>
