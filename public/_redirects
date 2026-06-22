@@ -12,6 +12,9 @@ http://www.zotopie.com/* https://zotopie.com/:splat 301
 /reddit/synthesia-review/  /ai-tools/synthesia-review/  301
 /reddit/gptzero-review/    /ai-tools/gptzero-review/    301
 
+# Fireflies slug fix — slug is fireflies-ai, not fireflies
+/reviews/fireflies/  /reviews/fireflies-ai/  301
+
 # Redirect bare paths to trailing-slash versions
 /reviews      /reviews/      301
 /category     /category/     301
