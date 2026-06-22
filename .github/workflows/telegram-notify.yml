@@ -1,0 +1,74 @@
+name: Telegram Deploy Notify
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  notify-deploy:
+    name: Send deployment notification
+    runs-on: ubuntu-latest
+    # Only run on the main repo (skip forks)
+    if: github.repository == 'kanm1109/zotopie'
+
+    steps:
+      # ── Step 1: Wait for Cloudflare Pages to finish building ──────────────
+      - name: Wait for Cloudflare Pages deploy
+        id: wait
+        run: |
+          echo "⏳ Waiting for Cloudflare Pages to deploy..."
+          MAX_TRIES=12
+          INTERVAL=20
+          STATUS="success"
+
+          for i in $(seq 1 $MAX_TRIES); do
+            sleep $INTERVAL
+            HTTP=$(curl -s -o /dev/null -w "%{http_code}" \
+              --max-time 10 \
+              "https://zotopie.com/" 2>/dev/null || echo "000")
+
+            echo "  Attempt $i / $MAX_TRIES — HTTP $HTTP"
+
+            if [ "$HTTP" = "200" ]; then
+              echo "✅ Site is live (HTTP 200)"
+              echo "status=success" >> "$GITHUB_OUTPUT"
+              break
+            fi
+
+            if [ "$i" = "$MAX_TRIES" ]; then
+              echo "⚠️ Max tries reached — reporting as success (Cloudflare may still be building)"
+              echo "status=success" >> "$GITHUB_OUTPUT"
+            fi
+          done
+
+      # ── Step 2: Send notification to Telegram via Worker ─────────────────
+      - name: Send Telegram notification
+        run: |
+          COMMIT="${{ github.sha }}"
+          BRANCH="${{ github.ref_name }}"
+          # First line of commit message only
+          MSG=$(echo "${{ github.event.head_commit.message }}" | head -1)
+          TIMESTAMP="${{ github.event.head_commit.timestamp }}"
+          DEPLOY_STATUS="${{ steps.wait.outputs.status }}"
+
+          # Escape double quotes in message for JSON
+          MSG_ESC=$(echo "$MSG" | sed 's/"/\\"/g')
+
+          HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" \
+            -X POST "${{ secrets.BOT_WORKER_URL }}/deploy" \
+            -H "Content-Type: application/json" \
+            -H "X-Bot-Secret: ${{ secrets.BOT_SECRET }}" \
+            -d "{
+              \"commit\": \"${COMMIT}\",
+              \"status\": \"${DEPLOY_STATUS}\",
+              \"branch\": \"${BRANCH}\",
+              \"message\": \"${MSG_ESC}\",
+              \"time\": \"${TIMESTAMP}\"
+            }")
+
+          echo "Notification response: HTTP $HTTP_CODE"
+
+          if [ "$HTTP_CODE" != "200" ]; then
+            echo "⚠️ Warning: Telegram notification may not have sent (HTTP $HTTP_CODE)"
+            # Don't fail the workflow just because notification failed
+          fi

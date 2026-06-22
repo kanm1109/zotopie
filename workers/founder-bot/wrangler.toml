@@ -1,0 +1,21 @@
+name = "zotopie-founder-bot"
+main = "src/index.js"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# ── KV Namespace ──────────────────────────────────────────────────────────────
+# After running: wrangler kv:namespace create "BOT_KV"
+# Replace the id values below with the output from that command.
+[[kv_namespaces]]
+binding = "BOT_KV"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+preview_id = "REPLACE_WITH_KV_PREVIEW_ID"
+
+# ── Routes ────────────────────────────────────────────────────────────────────
+# Worker is deployed to: https://zotopie-founder-bot.<your-subdomain>.workers.dev
+# Or bind a custom route if desired.
+
+# ── Secrets (DO NOT put values here — set via CLI) ────────────────────────────
+# wrangler secret put BOT_TOKEN
+# wrangler secret put FOUNDER_CHAT_ID
+# wrangler secret put BOT_SECRET
