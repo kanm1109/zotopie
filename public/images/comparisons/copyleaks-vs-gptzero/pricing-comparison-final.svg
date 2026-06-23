@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="#ffffff"/>
+
+<text x="800" y="80" text-anchor="middle"
+ font-family="Arial" font-size="52" font-weight="700" fill="#0f172a">
+Copyleaks vs GPTZero Pricing
+</text>
+
+<rect x="120" y="150" width="620" height="500" rx="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+<rect x="860" y="150" width="620" height="500" rx="24" fill="#f8fafc" stroke="#cbd5e1" stroke-width="2"/>
+
+<rect x="120" y="150" width="620" height="90" rx="24" fill="#2563eb"/>
+<rect x="860" y="150" width="620" height="90" rx="24" fill="#2563eb"/>
+
+<text x="430" y="205" text-anchor="middle" fill="white" font-family="Arial" font-size="34" font-weight="700">Copyleaks</text>
+<text x="1170" y="205" text-anchor="middle" fill="white" font-family="Arial" font-size="34" font-weight="700">GPTZero</text>
+
+<g font-family="Arial" fill="#111827">
+<text x="170" y="310" font-size="26" font-weight="700">Free Plan</text>
+<text x="420" y="310" font-size="22">Limited free access</text>
+
+<text x="170" y="400" font-size="26" font-weight="700">Entry Plan</text>
+<text x="420" y="400" font-size="22">Individual paid plan</text>
+
+<text x="170" y="490" font-size="26" font-weight="700">Team Plan</text>
+<text x="420" y="490" font-size="22">Team collaboration features</text>
+
+<text x="170" y="580" font-size="26" font-weight="700">Enterprise Plan</text>
+<text x="420" y="580" font-size="22">Advanced enterprise controls</text>
+
+<text x="910" y="310" font-size="26" font-weight="700">Free Plan</text>
+<text x="1160" y="310" font-size="22">Available</text>
+
+<text x="910" y="400" font-size="26" font-weight="700">Entry Plan</text>
+<text x="1160" y="400" font-size="22">Lower-cost starter plan</text>
+
+<text x="910" y="490" font-size="26" font-weight="700">Team Plan</text>
+<text x="1160" y="490" font-size="22">Basic team options</text>
+
+<text x="910" y="580" font-size="26" font-weight="700">Enterprise Plan</text>
+<text x="1160" y="580" font-size="22">Enterprise offering available</text>
+</g>
+
+<rect x="80" y="730" width="420" height="120" rx="18" fill="#dcfce7"/>
+<text x="290" y="785" text-anchor="middle" font-family="Arial" font-size="28" font-weight="700">Best For Beginners</text>
+<text x="290" y="825" text-anchor="middle" font-family="Arial" font-size="32">GPTZero</text>
+
+<rect x="590" y="730" width="420" height="120" rx="18" fill="#dbeafe"/>
+<text x="800" y="785" text-anchor="middle" font-family="Arial" font-size="28" font-weight="700">Best For Teams</text>
+<text x="800" y="825" text-anchor="middle" font-family="Arial" font-size="32">Copyleaks</text>
+
+<rect x="1100" y="730" width="420" height="120" rx="18" fill="#ede9fe"/>
+<text x="1310" y="785" text-anchor="middle" font-family="Arial" font-size="28" font-weight="700">Best Enterprise Value</text>
+<text x="1310" y="825" text-anchor="middle" font-family="Arial" font-size="32">Copyleaks</text>
+</svg>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="900" viewBox="0 0 1600 900">
+<rect width="1600" height="900" fill="white"/>
+
+<text x="800" y="70" text-anchor="middle"
+font-family="Arial" font-size="46" font-weight="700" fill="#0f172a">
+Should You Choose Copyleaks or GPTZero?
+</text>
+
+<rect x="80" y="120" width="1440" height="70" rx="12" fill="#2563eb"/>
+<text x="220" y="165" fill="white" font-family="Arial" font-size="28" font-weight="700">Use Case</text>
+<text x="700" y="165" fill="white" font-family="Arial" font-size="28" font-weight="700">Recommended Tool</text>
+<text x="1030" y="165" fill="white" font-family="Arial" font-size="28" font-weight="700">Reason</text>
+
+<g font-family="Arial" font-size="22" fill="#111827">
+<line x1="80" y1="190" x2="1520" y2="190" stroke="#e5e7eb"/>
+<text x="120" y="245">Publisher</text><text x="650" y="245">GPTZero</text><text x="900" y="245">Simple workflow and accessible entry options</text>
+
+<line x1="80" y1="270" x2="1520" y2="270" stroke="#e5e7eb"/>
+<text x="120" y="325">SEO Agency</text><text x="650" y="325">Copyleaks</text><text x="900" y="325">Team workflows and advanced scanning</text>
+
+<line x1="80" y1="350" x2="1520" y2="350" stroke="#e5e7eb"/>
+<text x="120" y="405">University</text><text x="650" y="405">Copyleaks</text><text x="900" y="405">Academic integrity and LMS integrations</text>
+
+<line x1="80" y1="430" x2="1520" y2="430" stroke="#e5e7eb"/>
+<text x="120" y="485">School District</text><text x="650" y="485">Copyleaks</text><text x="900" y="485">Centralized administration and compliance</text>
+
+<line x1="80" y1="510" x2="1520" y2="510" stroke="#e5e7eb"/>
+<text x="120" y="565">Enterprise Compliance Team</text><text x="650" y="565">Copyleaks</text><text x="900" y="565">Enterprise controls, API and auditability</text>
+
+<line x1="80" y1="590" x2="1520" y2="590" stroke="#e5e7eb"/>
+<text x="120" y="645">Software Company</text><text x="650" y="645">Copyleaks</text><text x="900" y="645">Source code and enterprise integrations</text>
+
+<line x1="80" y1="670" x2="1520" y2="670" stroke="#e5e7eb"/>
+<text x="120" y="725">Freelancer</text><text x="650" y="725">GPTZero</text><text x="900" y="725">Lower complexity and quick checks</text>
+
+<line x1="80" y1="750" x2="1520" y2="750" stroke="#e5e7eb"/>
+<text x="120" y="805">Student</text><text x="650" y="805">GPTZero</text><text x="900" y="805">Easy to use for individual needs</text>
+
+<line x1="80" y1="830" x2="1520" y2="830" stroke="#e5e7eb"/>
+<text x="120" y="885">Teacher</text><text x="650" y="885">GPTZero</text><text x="900" y="885">Straightforward classroom workflow</text>
+</g>
+</svg>
