@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 920" width="1000" height="920">
+
+  <!-- BG -->
+  <rect width="1000" height="920" fill="#F8F9FB"/>
+
+  <!-- ══ TITLE BLOCK ══ -->
+  <rect x="0" y="0" width="1000" height="72" fill="#0F172A"/>
+  <text x="500" y="30" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="11" font-weight="600"
+        fill="#94A3B8" letter-spacing="2">TOOL COMPARISON · 2025</text>
+  <text x="500" y="56" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="white">
+    GPTZero vs Originality.ai — Final Verdict
+  </text>
+
+  <!-- ══ MATRIX CARD ══ -->
+  <rect x="24" y="88" width="952" height="406" rx="12" fill="white"
+        stroke="#E2E8F0" stroke-width="1.5"/>
+
+  <!-- Column headers -->
+  <!-- GPTZero header pill -->
+  <rect x="484" y="98" width="224" height="34" rx="8" fill="#0F4C2A"/>
+  <text x="596" y="120" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="white">GPTZero</text>
+
+  <!-- Originality header pill -->
+  <rect x="726" y="98" width="224" height="34" rx="8" fill="#2E1A6E"/>
+  <text x="838" y="120" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="13" font-weight="700" fill="white">Originality.ai</text>
+
+  <!-- Col dividers -->
+  <line x1="476" y1="88"  x2="476" y2="494" stroke="#E2E8F0" stroke-width="1"/>
+  <line x1="718" y1="88"  x2="718" y2="494" stroke="#E2E8F0" stroke-width="1"/>
+
+  <!-- Row data: label | gpt_val | gpt_winner | orig_val | orig_winner -->
+  <!-- winner=1 → green pill, winner=0 → neutral -->
+
+  <!-- helper macro via repeated blocks -->
+  <!-- ROW 1 — Accuracy -->
+  <rect x="24" y="140" width="952" height="40" fill="#F8FAFC"/>
+  <line x1="24" y1="180" x2="976" y2="180" stroke="#E2E8F0" stroke-width="0.5"/>
+  <text x="44"  y="165" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#374151">Accuracy</text>
+  <!-- GPTZero -->
+  <rect x="492" y="149" width="200" height="22" rx="6" fill="#DCFCE7"/>
+  <text x="592" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#166534">99% claimed · 🏆 Winner</text>
+  <!-- Orig -->
+  <rect x="734" y="149" width="200" height="22" rx="6" fill="#F1F5F9"/>
+  <text x="834" y="164" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#64748B">High · multi-model</text>
+
+  <!-- ROW 2 — False Positives -->
+  <rect x="24" y="180" width="952" height="40" fill="white"/>
+  <line x1="24" y1="220" x2="976" y2="220" stroke="#E2E8F0" stroke-width="0.5"/>
+  <text x="44"  y="205" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#374151">False Positives</text>
+  <rect x="492" y="189" width="200" height="22" rx="6" fill="#DCFCE7"/>
+  <text x="592" y="204" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#166534">Low rate · 🏆 Winner</text>
+  <rect x="734" y="189" width="200" height="22" rx="6" fill="#FEF9EC"/>
+  <text x="834" y="204" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#92400E">Moderate rate</text>
+
+  <!-- ROW 3 — Pricing -->
+  <rect x="24" y="220" width="952" height="40" fill="#F8FAFC"/>
+  <line x1="24" y1="260" x2="976" y2="260" stroke="#E2E8F0" stroke-width="0.5"/>
+  <text x="44"  y="245" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#374151">Pricing</text>
+  <rect x="492" y="229" width="200" height="22" rx="6" fill="#DCFCE7"/>
+  <text x="592" y="244" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#166534">Free tier available · 🏆</text>
+  <rect x="734" y="229" width="200" height="22" rx="6" fill="#F1F5F9"/>
+  <text x="834" y="244" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#64748B">From $12.95/mo</text>
+
+  <!-- ROW 4 — Ease of Use -->
+  <rect x="24" y="260" width="952" height="40" fill="white"/>
+  <line x1="24" y1="300" x2="976" y2="300" stroke="#E2E8F0" stroke-width="0.5"/>
+  <text x="44"  y="285" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#374151">Ease of Use</text>
+  <rect x="492" y="269" width="200" height="22" rx="6" fill="#DCFCE7"/>
+  <text x="592" y="284" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#166534">Very simple UI · 🏆 Winner</text>
+  <rect x="734" y="269" width="200" height="22" rx="6" fill="#F1F5F9"/>
+  <text x="834" y="284" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#64748B">Feature-rich, steeper curve</text>
+
+  <!-- ROW 5 — Bulk Scanning -->
+  <rect x="24" y="300" width="952" height="40" fill="#F8FAFC"/>
+  <line x1="24" y1="340" x2="976" y2="340" stroke="#E2E8F0" stroke-width="0.5"/>
+  <text x="44"  y="325" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#374151">Bulk Scanning</text>
+  <rect x="492" y="309" width="200" height="22" rx="6" fill="#F1F5F9"/>
+  <text x="592" y="324" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#64748B">250 files (Pro only)</text>
+  <rect x="734" y="309" width="200" height="22" rx="6" fill="#EDE9FE"/>
+  <text x="834" y="324" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4C1D95">Unlimited bulk · 🏆 Winner</text>
+
+  <!-- ROW 6 — Plagiarism Detection -->
+  <rect x="24" y="340" width="952" height="40" fill="white"/>
+  <line x1="24" y1="380" x2="976" y2="380" stroke="#E2E8F0" stroke-width="0.5"/>
+  <text x="44"  y="365" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#374151">Plagiarism Detection</text>
+  <rect x="492" y="349" width="200" height="22" rx="6" fill="#FEF2F2"/>
+  <text x="592" y="364" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#991B1B">Not available</text>
+  <rect x="734" y="349" width="200" height="22" rx="6" fill="#EDE9FE"/>
+  <text x="834" y="364" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4C1D95">Built-in + web scan · 🏆</text>
+
+  <!-- ROW 7 — Team Features -->
+  <rect x="24" y="380" width="952" height="40" fill="#F8FAFC"/>
+  <line x1="24" y1="420" x2="976" y2="420" stroke="#E2E8F0" stroke-width="0.5"/>
+  <text x="44"  y="405" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#374151">Team Features</text>
+  <rect x="492" y="389" width="200" height="22" rx="6" fill="#FEF2F2"/>
+  <text x="592" y="404" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#991B1B">Limited</text>
+  <rect x="734" y="389" width="200" height="22" rx="6" fill="#EDE9FE"/>
+  <text x="834" y="404" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4C1D95">Seats + roles + mgmt · 🏆</text>
+
+  <!-- ROW 8 — API Access -->
+  <rect x="24" y="420" width="952" height="68" fill="white"/>
+  <text x="44"  y="452" font-family="system-ui,sans-serif" font-size="12" font-weight="600" fill="#374151">API Access</text>
+  <rect x="492" y="432" width="200" height="22" rx="6" fill="#F1F5F9"/>
+  <text x="592" y="447" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" fill="#64748B">Available (limited)</text>
+  <rect x="734" y="432" width="200" height="22" rx="6" fill="#EDE9FE"/>
+  <text x="834" y="447" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#4C1D95">Full API · Enterprise · 🏆</text>
+
+  <!-- score tally -->
+  <rect x="24" y="466" width="952" height="28" rx="0" fill="#0F172A"/>
+  <rect x="24" y="466" width="952" height="28" rx="12" fill="#0F172A"/>
+  <rect x="24" y="466" width="952" height="16" fill="#0F172A"/>
+  <text x="44"  y="484" font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="#94A3B8">WINS</text>
+  <text x="596" y="484" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#4ADE80">4 / 8</text>
+  <text x="838" y="484" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#A78BFA">4 / 8 — More Pro Features</text>
+
+  <!-- ══ RECOMMENDATION CARDS ══ -->
+  <text x="500" y="528" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="11" font-weight="700"
+        fill="#94A3B8" letter-spacing="2">RECOMMENDATION</text>
+
+  <!-- 5 cards, each 180px wide, 10px gap, total = 5×180+4×10=940, start x=30 -->
+
+  <!-- Card 1 — Students -->
+  <rect x="30"  y="538" width="178" height="106" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="30"  y="538" width="178" height="32"  rx="10" fill="#0F4C2A"/>
+  <rect x="30"  y="556" width="178" height="14"  fill="#0F4C2A"/>
+  <text x="50"  y="558" font-family="system-ui,sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Best For</text>
+  <text x="50"  y="574" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="white">🎓 Students</text>
+  <text x="119" y="600" text-anchor="middle" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#0F4C2A">GPTZero</text>
+  <text x="119" y="618" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">Free plan · simple UI</text>
+  <text x="119" y="633" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">no credit card needed</text>
+
+  <!-- Card 2 — Teachers -->
+  <rect x="218" y="538" width="178" height="106" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="218" y="538" width="178" height="32"  rx="10" fill="#0F4C2A"/>
+  <rect x="218" y="556" width="178" height="14"  fill="#0F4C2A"/>
+  <text x="238" y="558" font-family="system-ui,sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Best For</text>
+  <text x="238" y="574" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="white">👨‍🏫 Teachers</text>
+  <text x="307" y="600" text-anchor="middle" font-family="system-ui,sans-serif" font-size="20" font-weight="800" fill="#0F4C2A">GPTZero</text>
+  <text x="307" y="618" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">LMS integration</text>
+  <text x="307" y="633" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">educator partner program</text>
+
+  <!-- Card 3 — Bloggers -->
+  <rect x="406" y="538" width="178" height="106" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="406" y="538" width="178" height="32"  rx="10" fill="#2E1A6E"/>
+  <rect x="406" y="556" width="178" height="14"  fill="#2E1A6E"/>
+  <text x="426" y="558" font-family="system-ui,sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Best For</text>
+  <text x="426" y="574" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="white">✍️ Bloggers</text>
+  <text x="495" y="600" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#2E1A6E">Originality.ai</text>
+  <text x="495" y="618" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">AI + plagiarism in one</text>
+  <text x="495" y="633" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">SEO content optimizer</text>
+
+  <!-- Card 4 — Publishers -->
+  <rect x="594" y="538" width="178" height="106" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="594" y="538" width="178" height="32"  rx="10" fill="#2E1A6E"/>
+  <rect x="594" y="556" width="178" height="14"  fill="#2E1A6E"/>
+  <text x="614" y="558" font-family="system-ui,sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Best For</text>
+  <text x="614" y="574" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="white">📰 Publishers</text>
+  <text x="683" y="600" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#2E1A6E">Originality.ai</text>
+  <text x="683" y="618" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">bulk scan + team seats</text>
+  <text x="683" y="633" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">shareable reports</text>
+
+  <!-- Card 5 — Agencies -->
+  <rect x="792" y="538" width="178" height="106" rx="10" fill="white" stroke="#E2E8F0" stroke-width="1.5"/>
+  <rect x="792" y="538" width="178" height="32"  rx="10" fill="#2E1A6E"/>
+  <rect x="792" y="556" width="178" height="14"  fill="#2E1A6E"/>
+  <text x="812" y="558" font-family="system-ui,sans-serif" font-size="10" fill="rgba(255,255,255,0.7)">Best For</text>
+  <text x="812" y="574" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="white">📈 SEO Agencies</text>
+  <text x="881" y="600" text-anchor="middle" font-family="system-ui,sans-serif" font-size="14" font-weight="800" fill="#2E1A6E">Originality.ai</text>
+  <text x="881" y="618" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">API + full site scans</text>
+  <text x="881" y="633" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9"  fill="#6B7280">enterprise grade</text>
+
+  <!-- ══ CTA SECTION ══ -->
+  <rect x="24" y="664" width="952" height="68" rx="12" fill="#0F172A"/>
+
+  <text x="180" y="690" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="10" font-weight="600"
+        fill="#94A3B8" letter-spacing="1">DEEP DIVE →</text>
+
+  <!-- GPTZero CTA button -->
+  <rect x="30"  y="700" width="290" height="24" rx="8" fill="#0F4C2A"/>
+  <text x="175" y="716" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="white">
+    Read Full GPTZero Review  →
+  </text>
+
+  <!-- divider dot -->
+  <circle cx="500" cy="712" r="3" fill="#334155"/>
+
+  <!-- Originality CTA button -->
+  <rect x="680" y="700" width="290" height="24" rx="8" fill="#2E1A6E"/>
+  <text x="825" y="716" text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="white">
+    Read Full Originality.ai Review  →
+  </text>
+
+  <!-- tag line -->
+  <text x="500" y="748"  text-anchor="middle"
+        font-family="system-ui,sans-serif" font-size="10" fill="#64748B">
+    Independent analysis · No sponsored content · Updated June 2025
+  </text>
+
+</svg>
