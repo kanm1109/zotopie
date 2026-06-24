@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.title{font:700 42px Arial,sans-serif;fill:#163a6b}
+.subtitle{font:20px Arial,sans-serif;fill:#5b6b7f}
+.head{font:700 24px Arial,sans-serif;fill:white}
+.feature{font:600 20px Arial,sans-serif;fill:#1f2937}
+.cell{font:700 24px Arial,sans-serif}
+.summaryH{font:700 28px Arial,sans-serif;fill:#163a6b}
+.summaryT{font:20px Arial,sans-serif;fill:#374151}
+</style>
+<rect width="1600" height="1000" fill="white"/>
+<text x="800" y="70" text-anchor="middle" class="title">Originality.ai vs Copyleaks Dashboard Comparison</text>
+<text x="800" y="110" text-anchor="middle" class="subtitle">Modern SaaS Feature Comparison</text>
+
+<rect x="120" y="150" width="420" height="70" rx="12" fill="#1f3f75"/>
+<rect x="540" y="150" width="420" height="70" rx="12" fill="#2563eb"/>
+<rect x="960" y="150" width="420" height="70" rx="12" fill="#0f766e"/>
+<text x="330" y="194" text-anchor="middle" class="head">Feature</text>
+<text x="750" y="194" text-anchor="middle" class="head">Originality.ai</text>
+<text x="1170" y="194" text-anchor="middle" class="head">Copyleaks</text>
+
+<g font-family="Arial,sans-serif">
+<rect x="120" y="220" width="1260" height="75" fill="#f8fafc" stroke="#dbe4f0"/>
+<rect x="120" y="295" width="1260" height="75" fill="white" stroke="#dbe4f0"/>
+<rect x="120" y="370" width="1260" height="75" fill="#f8fafc" stroke="#dbe4f0"/>
+<rect x="120" y="445" width="1260" height="75" fill="white" stroke="#dbe4f0"/>
+<rect x="120" y="520" width="1260" height="75" fill="#f8fafc" stroke="#dbe4f0"/>
+<rect x="120" y="595" width="1260" height="75" fill="white" stroke="#dbe4f0"/>
+
+<line x1="540" y1="220" x2="540" y2="670" stroke="#dbe4f0"/>
+<line x1="960" y1="220" x2="960" y2="670" stroke="#dbe4f0"/>
+
+<text x="150" y="267" class="feature">Dashboard Layout</text>
+<text x="150" y="342" class="feature">Scan Workflow</text>
+<text x="150" y="417" class="feature">Report Clarity</text>
+<text x="150" y="492" class="feature">Bulk Scanning</text>
+<text x="150" y="567" class="feature">Team Management</text>
+<text x="150" y="642" class="feature">Website Scanning</text>
+
+<text x="750" y="267" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="750" y="342" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="750" y="417" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="750" y="492" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="750" y="567" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="750" y="642" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+
+<text x="1170" y="267" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="1170" y="342" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="1170" y="417" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="1170" y="492" text-anchor="middle" fill="#f59e0b" class="cell">⚠</text>
+<text x="1170" y="567" text-anchor="middle" fill="#16a34a" class="cell">✓</text>
+<text x="1170" y="642" text-anchor="middle" fill="#ef4444" class="cell">✗</text>
+</g>
+
+<rect x="120" y="740" width="600" height="180" rx="18" fill="#f8fbff" stroke="#cdddf5"/>
+<rect x="880" y="740" width="500" height="180" rx="18" fill="#f8fbff" stroke="#cdddf5"/>
+
+<text x="150" y="795" class="summaryH">Originality.ai Strengths</text>
+<text x="150" y="835" class="summaryT">• Complete website scanning capabilities</text>
+<text x="150" y="870" class="summaryT">• Strong bulk scanning workflows</text>
+<text x="150" y="905" class="summaryT">• Designed for publishers and agencies</text>
+
+<text x="910" y="795" class="summaryH">Copyleaks Strengths</text>
+<text x="910" y="835" class="summaryT">• Strong AI detection platform</text>
+<text x="910" y="870" class="summaryT">• Good team collaboration features</text>
+<text x="910" y="905" class="summaryT">• Broad educational adoption</text>
+</svg>

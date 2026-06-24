@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1200" viewBox="0 0 1600 1200">
+<style>
+.title{font:700 46px Arial,sans-serif;fill:#163a6b}
+.subtitle{font:20px Arial,sans-serif;fill:#64748b}
+.head{font:700 24px Arial,sans-serif;fill:white}
+.role{font:600 20px Arial,sans-serif;fill:#1f2937}
+.tool{font:700 20px Arial,sans-serif;fill:#0f172a}
+.reason{font:18px Arial,sans-serif;fill:#334155}
+</style>
+
+<rect width="100%" height="100%" fill="white"/>
+
+<text x="800" y="70" text-anchor="middle" class="title">Should You Choose Originality.ai or Copyleaks?</text>
+<text x="800" y="110" text-anchor="middle" class="subtitle">Professional Decision Matrix</text>
+
+<rect x="50" y="150" width="300" height="70" rx="10" fill="#1e3a5f"/>
+<rect x="350" y="150" width="350" height="70" rx="10" fill="#2563eb"/>
+<rect x="700" y="150" width="850" height="70" rx="10" fill="#0f766e"/>
+
+<text x="200" y="194" text-anchor="middle" class="head">User Type</text>
+<text x="525" y="194" text-anchor="middle" class="head">Recommended Tool</text>
+<text x="1125" y="194" text-anchor="middle" class="head">Reason</text>
+<rect x="50" y="220" width="1500" height="85" fill="#f8fafc" stroke="#dbe4f0"/><text x="70" y="270" class="role">Publisher</text><text x="525" y="270" text-anchor="middle" class="tool">Originality.ai</text><text x="720" y="270" class="reason">Website scanning and publisher-focused workflows</text><rect x="50" y="305" width="1500" height="85" fill="#ffffff" stroke="#dbe4f0"/><text x="70" y="355" class="role">SEO Agency</text><text x="525" y="355" text-anchor="middle" class="tool">Originality.ai</text><text x="720" y="355" class="reason">Bulk content review and SEO content validation</text><rect x="50" y="390" width="1500" height="85" fill="#f8fafc" stroke="#dbe4f0"/><text x="70" y="440" class="role">Content Team</text><text x="525" y="440" text-anchor="middle" class="tool">Originality.ai</text><text x="720" y="440" class="reason">Team collaboration for content operations</text><rect x="50" y="475" width="1500" height="85" fill="#ffffff" stroke="#dbe4f0"/><text x="70" y="525" class="role">Enterprise Compliance Team</text><text x="525" y="525" text-anchor="middle" class="tool">Copyleaks</text><text x="720" y="525" class="reason">Enterprise governance and compliance controls</text><rect x="50" y="560" width="1500" height="85" fill="#f8fafc" stroke="#dbe4f0"/><text x="70" y="610" class="role">Software Company</text><text x="525" y="610" text-anchor="middle" class="tool">Copyleaks</text><text x="720" y="610" class="reason">Source code and technical content detection</text><rect x="50" y="645" width="1500" height="85" fill="#ffffff" stroke="#dbe4f0"/><text x="70" y="695" class="role">Developer</text><text x="525" y="695" text-anchor="middle" class="tool">Copyleaks</text><text x="720" y="695" class="reason">Code-focused scanning and API integrations</text><rect x="50" y="730" width="1500" height="85" fill="#f8fafc" stroke="#dbe4f0"/><text x="70" y="780" class="role">Freelancer</text><text x="525" y="780" text-anchor="middle" class="tool">Originality.ai</text><text x="720" y="780" class="reason">Flexible usage and content quality workflows</text><rect x="50" y="815" width="1500" height="85" fill="#ffffff" stroke="#dbe4f0"/><text x="70" y="865" class="role">Teacher</text><text x="525" y="865" text-anchor="middle" class="tool">Copyleaks</text><text x="720" y="865" class="reason">Academic plagiarism and classroom support</text><rect x="50" y="900" width="1500" height="85" fill="#f8fafc" stroke="#dbe4f0"/><text x="70" y="950" class="role">University</text><text x="525" y="950" text-anchor="middle" class="tool">Copyleaks</text><text x="720" y="950" class="reason">Institutional deployment and large-scale management</text>
+<!-- Summary -->
+<rect x="100" y="1030" width="650" height="120" rx="16" fill="#f8fbff" stroke="#cdddf5"/>
+<rect x="850" y="1030" width="650" height="120" rx="16" fill="#f8fbff" stroke="#cdddf5"/>
+
+<text x="130" y="1080" style="font:700 28px Arial,sans-serif;fill:#163a6b">Originality.ai Wins</text>
+<text x="130" y="1120" style="font:20px Arial,sans-serif;fill:#334155">Publishers, SEO agencies, content marketing teams.</text>
+
+<text x="880" y="1080" style="font:700 28px Arial,sans-serif;fill:#163a6b">Copyleaks Wins</text>
+<text x="880" y="1120" style="font:20px Arial,sans-serif;fill:#334155">Universities, enterprises, developers, compliance teams.</text>
+
+</svg>

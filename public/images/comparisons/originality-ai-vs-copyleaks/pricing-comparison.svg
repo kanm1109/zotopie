@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000">
+<style>
+.title{font:700 46px Arial,sans-serif;fill:#163a6b}
+.subtitle{font:20px Arial,sans-serif;fill:#64748b}
+.head{font:700 26px Arial,sans-serif;fill:white}
+.label{font:600 22px Arial,sans-serif;fill:#1f2937}
+.value{font:700 22px Arial,sans-serif;fill:#0f172a}
+.cardTitle{font:700 28px Arial,sans-serif;fill:#163a6b}
+.cardText{font:20px Arial,sans-serif;fill:#334155}
+</style>
+
+<rect width="100%" height="100%" fill="white"/>
+
+<text x="800" y="70" text-anchor="middle" class="title">Originality.ai vs Copyleaks Pricing</text>
+<text x="800" y="110" text-anchor="middle" class="subtitle">Clean SaaS Pricing Comparison</text>
+
+<!-- Table Header -->
+<rect x="100" y="150" width="400" height="70" rx="12" fill="#1e3a5f"/>
+<rect x="500" y="150" width="500" height="70" rx="12" fill="#2563eb"/>
+<rect x="1000" y="150" width="500" height="70" rx="12" fill="#0f766e"/>
+
+<text x="300" y="194" text-anchor="middle" class="head">Pricing Feature</text>
+<text x="750" y="194" text-anchor="middle" class="head">Originality.ai</text>
+<text x="1250" y="194" text-anchor="middle" class="head">Copyleaks</text>
+<rect x="100" y="220" width="1400" height="80" fill="#f8fafc" stroke="#dbe4f0"/><text x="130" y="268" class="label">Free Access</text><text x="750" y="268" text-anchor="middle" class="value">✗</text><text x="1250" y="268" text-anchor="middle" class="value">✓ Limited</text><rect x="100" y="300" width="1400" height="80" fill="#ffffff" stroke="#dbe4f0"/><text x="130" y="348" class="label">Pay-As-You-Go</text><text x="750" y="348" text-anchor="middle" class="value">✓</text><text x="1250" y="348" text-anchor="middle" class="value">⚠ Limited</text><rect x="100" y="380" width="1400" height="80" fill="#f8fafc" stroke="#dbe4f0"/><text x="130" y="428" class="label">Team Plans</text><text x="750" y="428" text-anchor="middle" class="value">✓</text><text x="1250" y="428" text-anchor="middle" class="value">✓</text><rect x="100" y="460" width="1400" height="80" fill="#ffffff" stroke="#dbe4f0"/><text x="130" y="508" class="label">Enterprise Plans</text><text x="750" y="508" text-anchor="middle" class="value">✓</text><text x="1250" y="508" text-anchor="middle" class="value">✓</text><rect x="100" y="540" width="1400" height="80" fill="#f8fafc" stroke="#dbe4f0"/><text x="130" y="588" class="label">API Pricing</text><text x="750" y="588" text-anchor="middle" class="value">Usage Based</text><text x="1250" y="588" text-anchor="middle" class="value">Custom / Usage Based</text>
+<!-- Recommendation Cards -->
+<rect x="90" y="650" width="430" height="220" rx="18" fill="#f8fbff" stroke="#cdddf5"/>
+<rect x="585" y="650" width="430" height="220" rx="18" fill="#f8fbff" stroke="#cdddf5"/>
+<rect x="1080" y="650" width="430" height="220" rx="18" fill="#f8fbff" stroke="#cdddf5"/>
+
+<text x="120" y="715" class="cardTitle">Best for Freelancers</text>
+<text x="120" y="760" class="cardText">Copyleaks</text>
+<text x="120" y="800" class="cardText">Free access and flexible entry point</text>
+<text x="120" y="835" class="cardText">for individual users.</text>
+
+<text x="615" y="715" class="cardTitle">Best for Agencies</text>
+<text x="615" y="760" class="cardText">Originality.ai</text>
+<text x="615" y="800" class="cardText">Pay-as-you-go pricing and website</text>
+<text x="615" y="835" class="cardText">scanning workflows for content teams.</text>
+
+<text x="1110" y="715" class="cardTitle">Best for Enterprises</text>
+<text x="1110" y="760" class="cardText">Copyleaks</text>
+<text x="1110" y="800" class="cardText">Enterprise deployment options and</text>
+<text x="1110" y="835" class="cardText">scalable API integrations.</text>
+
+</svg>
