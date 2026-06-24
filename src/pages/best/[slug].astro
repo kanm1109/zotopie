@@ -367,7 +367,7 @@ const jsonLdStr = JSON.stringify({
               <polyline points="6 9 12 15 18 9"/>
             </svg>
           </summary>
-          <div class="faq-a">{faq.a}</div>
+          <div class="faq-a" set:html={faq.a}></div>
         </details>
       ))}
     </div>

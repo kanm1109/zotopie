@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'Segoe UI', system-ui, sans-serif">
+  <rect width="900" height="480" fill="#F8F9FB" rx="12"/>
+  <rect x="0" y="0" width="900" height="56" fill="#7C3AED" rx="12"/>
+  <rect x="0" y="44" width="900" height="12" fill="#7C3AED"/>
+  <text x="450" y="34" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">LMS Integration: GPTZero vs Turnitin</text>
+
+  <!-- GPTZero column -->
+  <rect x="24" y="72" width="415" height="388" fill="#fff" rx="10" stroke="#E8ECF0" stroke-width="1.5"/>
+  <rect x="24" y="72" width="415" height="44" fill="#EDE9FE" rx="10"/>
+  <rect x="24" y="104" width="415" height="12" fill="#EDE9FE"/>
+  <text x="231" y="100" text-anchor="middle" fill="#7C3AED" font-size="14" font-weight="700">GPTZero</text>
+
+  <text x="44" y="134" fill="#6B7280" font-size="11">Integration approach: Standalone + browser extension</text>
+
+  <!-- GPTZero LMS items -->
+  <rect x="44" y="148" width="375" height="34" fill="#F9FAFB" rx="6"/>
+  <text x="64" y="170" fill="#374151" font-size="12">📋  Manual upload via web interface</text>
+  <rect x="44" y="190" width="375" height="34" fill="#F9FAFB" rx="6"/>
+  <text x="64" y="212" fill="#374151" font-size="12">🔌  Chrome extension for Google Docs</text>
+  <rect x="44" y="232" width="375" height="34" fill="#F9FAFB" rx="6"/>
+  <text x="64" y="254" fill="#374151" font-size="12">📡  Open API for developer integration</text>
+  <rect x="44" y="274" width="375" height="34" fill="#FEF3C7" rx="6" stroke="#F59E0B" stroke-width="1"/>
+  <text x="64" y="296" fill="#92400E" font-size="12">⚠️  No native Canvas / Moodle / Blackboard embed</text>
+
+  <!-- GPTZero verdict -->
+  <rect x="44" y="326" width="375" height="60" fill="#EDE9FE" rx="8"/>
+  <text x="231" y="350" text-anchor="middle" fill="#7C3AED" font-size="12" font-weight="700">Best For</text>
+  <text x="231" y="370" text-anchor="middle" fill="#374151" font-size="11">Individual teachers · Freelancers · Small teams</text>
+  <text x="231" y="386" text-anchor="middle" fill="#374151" font-size="11">who manage documents one at a time</text>
+
+  <rect x="44" y="404" width="375" height="40" fill="#7C3AED" rx="8"/>
+  <text x="231" y="429" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">🔗 Try GPTZero → zotopie.com/go/gptzero</text>
+
+  <!-- Turnitin column -->
+  <rect x="461" y="72" width="415" height="388" fill="#fff" rx="10" stroke="#E8ECF0" stroke-width="1.5"/>
+  <rect x="461" y="72" width="415" height="44" fill="#DBEAFE" rx="10"/>
+  <rect x="461" y="104" width="415" height="12" fill="#DBEAFE"/>
+  <text x="668" y="100" text-anchor="middle" fill="#1D4ED8" font-size="14" font-weight="700">Turnitin</text>
+
+  <text x="481" y="134" fill="#6B7280" font-size="11">Integration approach: Native LTI enterprise embedding</text>
+
+  <!-- Turnitin LMS items -->
+  <rect x="481" y="148" width="375" height="34" fill="#D1FAE5" rx="6"/>
+  <text x="501" y="170" fill="#065F46" font-size="12">✅  Canvas — SpeedGrader native embed</text>
+  <rect x="481" y="190" width="375" height="34" fill="#D1FAE5" rx="6"/>
+  <text x="501" y="212" fill="#065F46" font-size="12">✅  Moodle — bi-directional grade sync</text>
+  <rect x="481" y="232" width="375" height="34" fill="#D1FAE5" rx="6"/>
+  <text x="501" y="254" fill="#065F46" font-size="12">✅  Blackboard — Grade Center integration</text>
+  <rect x="481" y="274" width="375" height="34" fill="#D1FAE5" rx="6"/>
+  <text x="501" y="296" fill="#065F46" font-size="12">✅  Google Classroom · Schoology · Brightspace</text>
+
+  <!-- Turnitin verdict -->
+  <rect x="481" y="326" width="375" height="60" fill="#DBEAFE" rx="8"/>
+  <text x="668" y="350" text-anchor="middle" fill="#1D4ED8" font-size="12" font-weight="700">Best For</text>
+  <text x="668" y="370" text-anchor="middle" fill="#374151" font-size="11">Universities · School districts · Admin teams</text>
+  <text x="668" y="386" text-anchor="middle" fill="#374151" font-size="11">requiring automated multi-seat oversight</text>
+
+  <rect x="481" y="404" width="375" height="40" fill="#1D4ED8" rx="8"/>
+  <text x="668" y="429" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">🏛️ Contact institution for enterprise licensing</text>
+</svg>

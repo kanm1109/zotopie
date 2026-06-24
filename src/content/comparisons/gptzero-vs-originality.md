@@ -241,7 +241,7 @@ If neither platform perfectly fits your active publication pipeline, several mar
 *   **[HyperWrite Review](/reviews/hyperwrite/):** For professionals seeking an adaptive inline assistant that learns your natural personal writing cadence over time to avoid robotic signatures, HyperWrite's browser companion functions smoothly.
 *   **Winston AI:** A powerful standalone option for publishers and educators that features advanced OCR technology, enabling it to accurately read and scan text hidden inside scanned PDFs, image files, and handwritten documents.
 *   **Copyleaks:** An enterprise-grade authentication platform engineered specifically to identify machine-generated source code across multiple programming languages, making it an exceptional utility for software firms.
-*   **Turnitin AI Detection:** The industry standard for institutional educational systems, deploying its verification modules natively inside classroom learning management platforms like Canvas and Blackboard.
+*   **Turnitin AI Detection:** The industry standard for institutional educational systems, deploying its verification modules natively inside classroom learning management platforms like Canvas and Blackboard. See how GPTZero compares directly against Turnitin in our [GPTZero vs Turnitin](/comparisons/gptzero-vs-turnitin/) breakdown.
 
 ![GPTZero vs Originality.ai pricing comparison](/images/comparisons/gptzero-vs-originality/pricing-comparison.svg)
 

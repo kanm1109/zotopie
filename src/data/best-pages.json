@@ -665,6 +665,10 @@
       {
         "q": "Can AI detection tools be bypassed?",
         "a": "Yes — all current AI detection tools can be evaded to varying degrees using advanced humanization prompts, paraphrasing software, or multi-step translation loops. This is a known limitation across the entire category. The best tools (GPTZero, Originality.ai) update their models regularly to counter new evasion techniques, but determined users with specialized prompting workflows can reduce detection rates significantly."
+      },
+      {
+        "q": "How does GPTZero compare to Turnitin?",
+        "a": "GPTZero and Turnitin serve different audiences. GPTZero offers open retail plans for individual teachers, freelancers, and small content teams — Turnitin is restricted to accredited universities and school districts via enterprise contracts only. For a full side-by-side analysis of accuracy, false-positive rates, LMS integration, and pricing access, see our <a href=\"/comparisons/gptzero-vs-turnitin/\">GPTZero vs Turnitin comparison</a>."
       }
     ]
   }

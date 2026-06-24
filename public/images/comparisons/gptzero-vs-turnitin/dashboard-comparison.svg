@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" font-family="'Segoe UI', system-ui, sans-serif">
+  <rect width="900" height="480" fill="#F8F9FB" rx="12"/>
+
+  <!-- Header -->
+  <rect x="0" y="0" width="900" height="56" fill="#7C3AED" rx="12"/>
+  <rect x="0" y="44" width="900" height="12" fill="#7C3AED"/>
+  <text x="450" y="34" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">GPTZero vs Turnitin — Dashboard Comparison</text>
+
+  <!-- GPTZero Panel -->
+  <rect x="24" y="76" width="410" height="380" fill="#fff" rx="10" stroke="#E8ECF0" stroke-width="1.5"/>
+  <rect x="24" y="76" width="410" height="44" fill="#EDE9FE" rx="10"/>
+  <rect x="24" y="108" width="410" height="12" fill="#EDE9FE"/>
+  <text x="229" y="104" text-anchor="middle" fill="#7C3AED" font-size="14" font-weight="700">GPTZero Dashboard</text>
+
+  <!-- GPTZero sentence highlights -->
+  <rect x="44" y="136" width="370" height="14" fill="#FDE68A" rx="3" opacity="0.9"/>
+  <text x="229" y="148" text-anchor="middle" fill="#78350F" font-size="10">AI-detected sentence — high probability</text>
+  <rect x="44" y="158" width="370" height="14" fill="#D1FAE5" rx="3" opacity="0.9"/>
+  <text x="229" y="170" text-anchor="middle" fill="#065F46" font-size="10">Human-written sentence — low probability</text>
+  <rect x="44" y="180" width="280" height="14" fill="#FEE2E2" rx="3" opacity="0.9"/>
+  <text x="184" y="192" text-anchor="middle" fill="#991B1B" font-size="10">Hybrid — mixed signals</text>
+
+  <!-- Perplexity chart -->
+  <text x="44" y="222" fill="#374151" font-size="11" font-weight="600">Perplexity Score Distribution</text>
+  <rect x="44" y="230" width="370" height="80" fill="#F5F3FF" rx="6"/>
+  <polyline points="60,290 100,270 140,285 180,255 220,240 260,265 280,250 320,268 360,242 400,258" stroke="#7C3AED" stroke-width="2.5" fill="none"/>
+  <text x="44" y="326" fill="#6B7280" font-size="10">Low perplexity = more predictable = AI-like</text>
+
+  <!-- Burstiness -->
+  <text x="44" y="352" fill="#374151" font-size="11" font-weight="600">Burstiness Index</text>
+  <rect x="44" y="360" width="170" height="30" fill="#EDE9FE" rx="6"/>
+  <rect x="44" y="360" width="110" height="30" fill="#7C3AED" rx="6"/>
+  <text x="129" y="380" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">64% Human</text>
+
+  <!-- AI probability badge -->
+  <rect x="240" y="356" width="174" height="38" fill="#FEF3C7" rx="8" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="327" y="371" text-anchor="middle" fill="#92400E" font-size="10" font-weight="600">Overall AI Probability</text>
+  <text x="327" y="387" text-anchor="middle" fill="#92400E" font-size="16" font-weight="800">34%</text>
+
+  <text x="44" y="436" fill="#7C3AED" font-size="11" font-weight="700">✅ Free tier available · Retail SaaS · Individual access</text>
+
+  <!-- Turnitin Panel -->
+  <rect x="466" y="76" width="410" height="380" fill="#fff" rx="10" stroke="#E8ECF0" stroke-width="1.5"/>
+  <rect x="466" y="76" width="410" height="44" fill="#DBEAFE" rx="10"/>
+  <rect x="466" y="108" width="410" height="12" fill="#DBEAFE"/>
+  <text x="671" y="104" text-anchor="middle" fill="#1D4ED8" font-size="14" font-weight="700">Turnitin Institutional Dashboard</text>
+
+  <!-- LMS gradebook view -->
+  <rect x="486" y="136" width="370" height="24" fill="#EFF6FF" rx="4"/>
+  <text x="671" y="152" text-anchor="middle" fill="#1D4ED8" font-size="11" font-weight="600">Canvas SpeedGrader Integration Active</text>
+
+  <!-- Submission list -->
+  <rect x="486" y="168" width="370" height="28" fill="#F9FAFB" rx="4" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="500" y="187" fill="#374151" font-size="11">Student A — Essay 3</text>
+  <rect x="720" y="172" width="60" height="20" fill="#FEE2E2" rx="10"/>
+  <text x="750" y="186" text-anchor="middle" fill="#991B1B" font-size="10" font-weight="700">AI: 78%</text>
+  <rect x="486" y="202" width="370" height="28" fill="#fff" rx="4" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="500" y="221" fill="#374151" font-size="11">Student B — Final Paper</text>
+  <rect x="720" y="206" width="60" height="20" fill="#D1FAE5" rx="10"/>
+  <text x="750" y="220" text-anchor="middle" fill="#065F46" font-size="10" font-weight="700">AI: 4%</text>
+  <rect x="486" y="236" width="370" height="28" fill="#F9FAFB" rx="4" stroke="#E5E7EB" stroke-width="1"/>
+  <text x="500" y="255" fill="#374151" font-size="11">Student C — Research Report</text>
+  <rect x="720" y="240" width="60" height="20" fill="#FEF3C7" rx="10"/>
+  <text x="750" y="254" text-anchor="middle" fill="#92400E" font-size="10" font-weight="700">AI: 41%</text>
+
+  <!-- Similarity index -->
+  <text x="486" y="286" fill="#374151" font-size="11" font-weight="600">Similarity Index Overview</text>
+  <rect x="486" y="294" width="370" height="60" fill="#EFF6FF" rx="6"/>
+  <text x="671" y="320" text-anchor="middle" fill="#1D4ED8" font-size="28" font-weight="800">23%</text>
+  <text x="671" y="342" text-anchor="middle" fill="#6B7280" font-size="10">Similarity Match — Student Paper Archive</text>
+
+  <!-- Archive badge -->
+  <rect x="486" y="368" width="370" height="32" fill="#DBEAFE" rx="6"/>
+  <text x="671" y="389" text-anchor="middle" fill="#1D4ED8" font-size="11" font-weight="600">📚 Cross-referenced against 1B+ historical submissions</text>
+
+  <text x="671" y="436" text-anchor="middle" fill="#1D4ED8" font-size="11" font-weight="700">🏛️ Enterprise contracts only · LMS embedded · No individual plans</text>
+</svg>

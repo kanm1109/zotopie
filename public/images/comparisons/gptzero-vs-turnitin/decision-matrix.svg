@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" font-family="'Segoe UI', system-ui, sans-serif">
+  <rect width="900" height="520" fill="#F8F9FB" rx="12"/>
+  <rect x="0" y="0" width="900" height="56" fill="#7C3AED" rx="12"/>
+  <rect x="0" y="44" width="900" height="12" fill="#7C3AED"/>
+  <text x="450" y="34" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">Decision Matrix — Which Tool Is Right for You?</text>
+
+  <!-- Column headers -->
+  <rect x="24" y="72" width="340" height="36" fill="#F5F3FF" rx="6"/>
+  <text x="194" y="95" text-anchor="middle" fill="#374151" font-size="12" font-weight="700">Your Situation</text>
+  <rect x="372" y="72" width="200" height="36" fill="#EDE9FE" rx="6"/>
+  <text x="472" y="95" text-anchor="middle" fill="#7C3AED" font-size="13" font-weight="700">Choose</text>
+  <rect x="580" y="72" width="296" height="36" fill="#F1F5F9" rx="6"/>
+  <text x="728" y="95" text-anchor="middle" fill="#374151" font-size="12" font-weight="700">Key Reason</text>
+
+  <!-- Rows -->
+  <rect x="24" y="116" width="852" height="38" fill="#F5F3FF" rx="4"/>
+  <text x="44" y="139" fill="#374151" font-size="12">Individual teacher, no IT budget</text>
+  <rect x="380" y="122" width="184" height="26" fill="#7C3AED" rx="12"/>
+  <text x="472" y="139" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">GPTZero</text>
+  <text x="600" y="139" fill="#374151" font-size="11">Free tier, no institutional contract needed</text>
+
+  <rect x="24" y="162" width="852" height="38" fill="#fff" rx="4"/>
+  <text x="44" y="185" fill="#374151" font-size="12">University or school district (1000+ students)</text>
+  <rect x="380" y="168" width="184" height="26" fill="#1D4ED8" rx="12"/>
+  <text x="472" y="185" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Turnitin</text>
+  <text x="600" y="185" fill="#374151" font-size="11">Student archive + LMS automation at scale</text>
+
+  <rect x="24" y="208" width="852" height="38" fill="#F5F3FF" rx="4"/>
+  <text x="44" y="231" fill="#374151" font-size="12">Freelance writer checking own work</text>
+  <rect x="380" y="214" width="184" height="26" fill="#7C3AED" rx="12"/>
+  <text x="472" y="231" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">GPTZero</text>
+  <text x="600" y="231" fill="#374151" font-size="11">Open retail plan, low false-positive risk</text>
+
+  <rect x="24" y="254" width="852" height="38" fill="#fff" rx="4"/>
+  <text x="44" y="277" fill="#374151" font-size="12">Need Canvas / Moodle assignment automation</text>
+  <rect x="380" y="260" width="184" height="26" fill="#1D4ED8" rx="12"/>
+  <text x="472" y="277" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Turnitin</text>
+  <text x="600" y="277" fill="#374151" font-size="11">Native LTI embed in all major LMS platforms</text>
+
+  <rect x="24" y="300" width="852" height="38" fill="#F5F3FF" rx="4"/>
+  <text x="44" y="323" fill="#374151" font-size="12">Non-native English writers / technical prose</text>
+  <rect x="380" y="306" width="184" height="26" fill="#7C3AED" rx="12"/>
+  <text x="472" y="323" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">GPTZero</text>
+  <text x="600" y="323" fill="#374151" font-size="11">Calibrated to minimize formal prose false positives</text>
+
+  <rect x="24" y="346" width="852" height="38" fill="#fff" rx="4"/>
+  <text x="44" y="369" fill="#374151" font-size="12">Detecting contract cheating / ghostwriting</text>
+  <rect x="380" y="352" width="184" height="26" fill="#1D4ED8" rx="12"/>
+  <text x="472" y="369" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Turnitin</text>
+  <text x="600" y="369" fill="#374151" font-size="11">Authorship forensics tracks metadata over time</text>
+
+  <rect x="24" y="392" width="852" height="38" fill="#F5F3FF" rx="4"/>
+  <text x="44" y="415" fill="#374151" font-size="12">Digital publisher / SEO agency</text>
+  <rect x="380" y="398" width="184" height="26" fill="#7C3AED" rx="12"/>
+  <text x="472" y="415" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">GPTZero</text>
+  <text x="600" y="415" fill="#374151" font-size="11">Turnitin blocked for commercial; GPTZero open</text>
+
+  <rect x="24" y="438" width="852" height="38" fill="#fff" rx="4"/>
+  <text x="44" y="461" fill="#374151" font-size="12">Software company checking code for AI</text>
+  <rect x="380" y="444" width="184" height="26" fill="#6B7280" rx="12"/>
+  <text x="472" y="461" text-anchor="middle" fill="#fff" font-size="12" font-weight="700">Copyleaks</text>
+  <text x="600" y="461" fill="#374151" font-size="11">Neither — Copyleaks has dedicated code scanning</text>
+
+  <!-- Bottom CTA -->
+  <rect x="24" y="482" width="852" height="28" fill="#7C3AED" rx="6"/>
+  <text x="450" y="501" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Individuals → GPTZero (free plan available) · Institutions → Contact Turnitin for enterprise pricing</text>
+</svg>
