@@ -33,7 +33,7 @@ const {
 
 const displayCategory = categoryName ?? category;
 const relatedTool = (tools as any[]).find((t) =>
-  tags.includes(t.slug) || tags.some((tag: string) => tag === t.slug)
+  tags.some((tag: string) => tag.toLowerCase() === t.slug.toLowerCase())
 ) ?? null;
 const breadcrumbs = [
 	{ name: displayCategory, url: `${SITE_URL}/${category}/` },
