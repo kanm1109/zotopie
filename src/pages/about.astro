@@ -1,0 +1,182 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import tools from '../data/generated/tools-enriched.json';
+import taxonomies from '../data/taxonomies.json';
+---
+
+<MainLayout
+  title="About Zotopie — Independent Software Reviews"
+  description="Zotopie is an independent software review and comparison directory. Learn how we evaluate tools and why we built this."
+>
+  <div class="about-wrap">
+    <div class="about-hero">
+      <div class="about-eyebrow">About Us</div>
+      <h1>We help teams find the right tool — without the noise</h1>
+      <p class="about-lead">Zotopie is an independent software directory covering {tools.length}+ tools across {taxonomies.length} categories. No paid placements. No vendor-sponsored rankings. Just honest editorial reviews.</p>
+    </div>
+
+    <div class="about-body">
+      <section>
+        <h2>Why we built this</h2>
+        <p>Most software review sites are pay-to-play. Vendors pay for "top rated" badges, "featured" placements, and review volume. The sites look credible but the rankings are purchased.</p>
+        <p>We built Zotopie to be different. Every tool is evaluated on its merits. Our affiliate links — when they exist — are disclosed clearly and never influence our ratings. A tool with no affiliate program gets the same honest treatment as one that pays us a commission.</p>
+      </section>
+
+      <section>
+        <h2>How we evaluate tools</h2>
+        <p>Each review is based on direct testing and research. Our evaluation criteria include:</p>
+        <ul>
+          <li><strong>Core functionality</strong> — does the tool do what it claims?</li>
+          <li><strong>Ease of use</strong> — onboarding, UI clarity, learning curve</li>
+          <li><strong>Pricing fairness</strong> — value at each tier, trial availability</li>
+          <li><strong>Support quality</strong> — documentation, response time, community</li>
+          <li><strong>Integrations</strong> — compatibility with common workflows</li>
+          <li><strong>Reliability</strong> — uptime, performance, data security</li>
+        </ul>
+        <p>Ratings are on a 1–5 scale. A score above 4.0 indicates a tool we would actively recommend. Scores below 3.5 indicate significant limitations that should factor into your decision.</p>
+      </section>
+
+      <section>
+        <h2>Affiliate transparency</h2>
+        <p>Some links on Zotopie are affiliate links — when you click through and make a purchase, we earn a commission from the vendor at no extra cost to you. We disclose this in our footer and on every page with affiliate links.</p>
+        <p>Only a small subset of tools we cover have affiliate programs we participate in. The majority of tools we review earn us nothing — and we review them anyway because they're useful to our readers.</p>
+        <p>Our full disclosure and data practices are covered in our <a href="/privacy/">Privacy Policy</a>.</p>
+      </section>
+
+      <section class="stats-section">
+        <h2>By the numbers</h2>
+        <div class="about-stats">
+          <div class="about-stat">
+            <span class="astat-n">{tools.length}+</span>
+            <span class="astat-l">Tools reviewed</span>
+          </div>
+          <div class="about-stat">
+            <span class="astat-n">{taxonomies.length}</span>
+            <span class="astat-l">Categories covered</span>
+          </div>
+          <div class="about-stat">
+            <span class="astat-n">0</span>
+            <span class="astat-l">Paid placements</span>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <h2>Contact</h2>
+        <p>Questions, corrections, or tool submission requests: <strong>marketing@zeuse-am.com</strong></p>
+        <p>If you believe a review contains an error or outdated information, we take these reports seriously and will update the content promptly.</p>
+      </section>
+    </div>
+  </div>
+</MainLayout>
+
+<style>
+  .about-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 0 5rem;
+  }
+  .about-hero {
+    text-align: center;
+    padding-bottom: 3rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .about-eyebrow {
+    display: inline-flex;
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: #7C3AED;
+    background: #F5F3FF;
+    border: 1.5px solid #DDD6FE;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  .about-lead {
+    font-size: 1.05rem;
+    color: #647488;
+    line-height: 1.7;
+    max-width: 580px;
+    margin: 0 auto;
+  }
+  .about-body section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  .about-body section:last-child { border-bottom: none; }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 1rem;
+  }
+  p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #374151;
+    margin-bottom: 0.75rem;
+  }
+  ul {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0 0.75rem;
+  }
+  ul li {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #374151;
+    margin-bottom: 0.35rem;
+  }
+  a { color: #7C3AED; }
+  a:hover { text-decoration: underline; }
+  .about-stats {
+    display: flex;
+    gap: 0;
+    background: #fff;
+    border: 1.5px solid #E8ECF0;
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+  .about-stat {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px 16px;
+    border-right: 1px solid #E8ECF0;
+  }
+  .about-stat:last-child { border-right: none; }
+  .astat-n {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #7C3AED;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .astat-l {
+    font-size: 0.8rem;
+    color: #647488;
+    font-weight: 500;
+    text-align: center;
+  }
+  @media (max-width: 640px) {
+    .about-wrap { padding: 1.5rem 0 3rem; }
+    h1 { font-size: 1.75rem; }
+    .about-stats { flex-direction: column; }
+    .about-stat { border-right: none; border-bottom: 1px solid #E8ECF0; }
+    .about-stat:last-child { border-bottom: none; }
+  }
+</style>

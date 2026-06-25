@@ -1,4 +1,9 @@
 ---
+const { pathname } = Astro.url;
+const isActive = (path: string) => {
+  if (path === '/') return pathname === '/';
+  return pathname.startsWith(path);
+};
 ---
 <header class="site-header">
   <div class="nav-inner">
@@ -15,12 +20,12 @@
     </a>
     <div class="nav-right">
       <nav class="nav-links">
-        <a href="/">Home</a>
-        <a href="/category/">Categories</a>
-        <a href="/reviews/">Reviews</a>
-        <a href="/alternatives/">Alternatives</a>
-        <a href="/comparisons/">Comparisons</a>
-        <a href="/best/">Best Tools</a>
+        <a href="/" class:list={[{ 'nav-active': isActive('/') }]}>Home</a>
+        <a href="/category/" class:list={[{ 'nav-active': isActive('/category/') }]}>Categories</a>
+        <a href="/reviews/" class:list={[{ 'nav-active': isActive('/reviews/') || isActive('/ai-tools/') || isActive('/reddit/') }]}>Reviews</a>
+        <a href="/alternatives/" class:list={[{ 'nav-active': isActive('/alternatives/') }]}>Alternatives</a>
+        <a href="/comparisons/" class:list={[{ 'nav-active': isActive('/comparisons/') || isActive('/compare/') }]}>Comparisons</a>
+        <a href="/best/" class:list={[{ 'nav-active': isActive('/best/') }]}>Best Tools</a>
       </nav>
       <form class="nav-search-form" action="/search" method="get" role="search">
         <svg class="nav-s-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2.5" aria-hidden="true">
@@ -119,6 +124,7 @@
     text-decoration: none;
   }
   .nav-links a:hover { color: var(--c-purple); background: var(--c-purple-light); text-decoration: none; }
+  .nav-links a.nav-active { color: var(--c-purple); background: var(--c-purple-light); font-weight: 600; }
   .nav-right { display: flex; align-items: center; gap: 12px; }
   .nav-search-form { position: relative; display: flex; align-items: center; }
   .nav-s-icon { position: absolute; left: 10px; pointer-events: none; flex-shrink: 0; }

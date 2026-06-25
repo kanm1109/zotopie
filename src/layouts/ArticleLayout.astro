@@ -120,6 +120,19 @@ const breadcrumbs = [
 				)}
 			</article>
 		</main>
+
+		{relatedTool?.affiliateApproved && (
+			<div class="sticky-cta" id="sticky-cta" role="complementary" aria-label="Try this tool">
+				<div class="sticky-inner">
+					<span class="sticky-label">Try <strong>{relatedTool.name}</strong> — free plan available</span>
+					<a href={`/go/${relatedTool.slug}`} rel="sponsored noopener" target="_blank" class="sticky-btn">
+						Get Started →
+					</a>
+				</div>
+				<button class="sticky-close" id="sticky-close" aria-label="Dismiss">✕</button>
+			</div>
+		)}
+
 		<SiteFooter />
 	</body>
 </html>
@@ -307,4 +320,101 @@ const breadcrumbs = [
 	@media (max-width: 400px) {
 		h1 { font-size: 1.5rem; }
 	}
+
+	/* STICKY AFFILIATE CTA */
+	.sticky-cta {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		z-index: 200;
+		background: #fff;
+		border-top: 1.5px solid #DDD6FE;
+		padding: 12px 24px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 16px;
+		box-shadow: 0 -4px 24px rgba(124,58,237,0.12);
+		transform: translateY(100%);
+		transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+	}
+	.sticky-cta.is-visible {
+		transform: translateY(0);
+	}
+	.sticky-inner {
+		display: flex;
+		align-items: center;
+		gap: 16px;
+		flex: 1;
+		justify-content: center;
+		flex-wrap: wrap;
+	}
+	.sticky-label {
+		font-size: 0.92rem;
+		color: var(--c-gray);
+	}
+	.sticky-label strong {
+		color: var(--c-dark);
+		font-weight: 700;
+	}
+	.sticky-btn {
+		display: inline-flex;
+		align-items: center;
+		padding: 9px 22px;
+		background: linear-gradient(135deg, var(--c-purple), var(--c-blue));
+		color: #fff;
+		font-size: 0.875rem;
+		font-weight: 700;
+		border-radius: 9999px;
+		text-decoration: none;
+		white-space: nowrap;
+		box-shadow: 0 2px 10px rgba(124,58,237,0.3);
+		transition: box-shadow 0.2s, transform 0.15s;
+	}
+	.sticky-btn:hover {
+		box-shadow: 0 4px 18px rgba(124,58,237,0.45);
+		transform: translateY(-1px);
+		text-decoration: none;
+	}
+	.sticky-close {
+		background: none;
+		border: none;
+		cursor: pointer;
+		color: #9ca3af;
+		font-size: 1rem;
+		padding: 8px;
+		border-radius: 6px;
+		line-height: 1;
+		transition: color 0.15s, background 0.15s;
+		flex-shrink: 0;
+	}
+	.sticky-close:hover { color: var(--c-dark); background: #f1f5f9; }
+	@media (max-width: 600px) {
+		.sticky-cta { padding: 10px 16px; gap: 10px; }
+		.sticky-label { font-size: 0.82rem; }
+		.sticky-btn { padding: 8px 16px; font-size: 0.82rem; }
+	}
 </style>
+
+<script>
+	(function() {
+		var bar = document.getElementById('sticky-cta');
+		var closeBtn = document.getElementById('sticky-close');
+		if (!bar) return;
+		var dismissed = false;
+		function check() {
+			if (dismissed) return;
+			if (window.scrollY > 300) bar.classList.add('is-visible');
+			else bar.classList.remove('is-visible');
+		}
+		window.addEventListener('scroll', check, { passive: true });
+		if (closeBtn) {
+			closeBtn.addEventListener('click', function() {
+				dismissed = true;
+				bar.classList.remove('is-visible');
+				window.removeEventListener('scroll', check);
+			});
+		}
+	})();
+</script>

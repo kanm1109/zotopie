@@ -1,0 +1,185 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+---
+
+<MainLayout
+  title="Privacy Policy — Zotopie"
+  description="Zotopie's privacy policy — how we collect, use, and protect your data."
+>
+  <div class="legal-wrap">
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last updated: June 2026</p>
+
+    <section>
+      <h2>1. Who We Are</h2>
+      <p>Zotopie (<strong>zotopie.com</strong>) is a software review and comparison directory. We publish independent editorial content about software tools to help individuals and teams make better purchasing decisions.</p>
+    </section>
+
+    <section>
+      <h2>2. Information We Collect</h2>
+      <h3>Analytics data</h3>
+      <p>We use Google Analytics (GA4) to understand how visitors use the site. GA4 collects anonymised data including: pages visited, time on site, browser type, device type, and approximate country. IP addresses are anonymised before storage (<code>anonymize_ip: true</code> is enabled). GA4 uses first-party cookies to track sessions.</p>
+      <h3>Affiliate click data</h3>
+      <p>When you click an affiliate link (any link to <code>/go/[tool]</code>), our server-side redirect logs the click event including: timestamp, tool slug, referrer page, and a bot/human classification. We do not log your IP address or any personally identifiable information in these click logs. This data is used solely for affiliate commission tracking and editorial analytics.</p>
+      <h3>Search queries</h3>
+      <p>If you use the on-site search feature, your search query is processed client-side and not transmitted to our servers. No search history is stored.</p>
+      <h3>Contact or forms</h3>
+      <p>Zotopie does not currently operate any contact forms, email signup forms, or user accounts. We collect no personal data through forms.</p>
+    </section>
+
+    <section>
+      <h2>3. Cookies</h2>
+      <p>We use the following cookies:</p>
+      <table>
+        <thead>
+          <tr><th>Cookie</th><th>Provider</th><th>Purpose</th><th>Duration</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>_ga</code></td><td>Google Analytics</td><td>Distinguishes unique users</td><td>2 years</td></tr>
+          <tr><td><code>_ga_*</code></td><td>Google Analytics</td><td>Session state</td><td>2 years</td></tr>
+        </tbody>
+      </table>
+      <p>We do not use advertising cookies, tracking pixels, or third-party remarketing cookies. You can opt out of Google Analytics via the <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank">Google Analytics Opt-out Browser Add-on</a>.</p>
+    </section>
+
+    <section>
+      <h2>4. Affiliate Disclosure</h2>
+      <p>Some links on Zotopie are affiliate links. When you click an affiliate link and make a purchase, we may earn a commission from the software vendor — at no additional cost to you.</p>
+      <p>Affiliate relationships do not influence our editorial ratings, recommendations, or rankings. Tools are evaluated independently of their affiliate status. The presence or absence of an affiliate program has no bearing on whether a tool is included or how it is scored.</p>
+      <p>Affiliate links are routed through <code>zotopie.com/go/[tool]</code> and marked with <code>rel="sponsored"</code> in the HTML. These pages are marked <code>noindex</code> and excluded from our sitemap.</p>
+    </section>
+
+    <section>
+      <h2>5. Third-Party Services</h2>
+      <table>
+        <thead>
+          <tr><th>Service</th><th>Purpose</th><th>Privacy Policy</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Google Analytics 4</td><td>Site analytics</td><td><a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a></td></tr>
+          <tr><td>Cloudflare Pages</td><td>Site hosting and CDN</td><td><a href="https://www.cloudflare.com/privacypolicy/" rel="noopener noreferrer" target="_blank">cloudflare.com/privacypolicy</a></td></tr>
+          <tr><td>Google Fonts</td><td>Typography (Plus Jakarta Sans)</td><td><a href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">policies.google.com/privacy</a></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section>
+      <h2>6. Data Retention</h2>
+      <p>Google Analytics data is retained for 14 months (GA4 default). Affiliate click logs are retained for up to 12 months and are used only for internal reporting. No personal data is stored by Zotopie directly.</p>
+    </section>
+
+    <section>
+      <h2>7. Your Rights</h2>
+      <p>Under GDPR (EU/EEA visitors) and similar regulations, you have the right to:</p>
+      <ul>
+        <li>Access the personal data we hold about you</li>
+        <li>Request deletion of your data</li>
+        <li>Object to processing of your data</li>
+        <li>Opt out of analytics tracking</li>
+      </ul>
+      <p>Because we collect no directly identifiable personal data, most requests can be addressed by opting out of Google Analytics using the link in Section 3. For other requests, contact us at the email below.</p>
+    </section>
+
+    <section>
+      <h2>8. Children's Privacy</h2>
+      <p>Zotopie is not directed at children under 13. We do not knowingly collect data from children.</p>
+    </section>
+
+    <section>
+      <h2>9. Changes to This Policy</h2>
+      <p>We may update this policy periodically. Material changes will be reflected in the "Last updated" date at the top of this page. Continued use of the site after changes constitutes acceptance of the updated policy.</p>
+    </section>
+
+    <section>
+      <h2>10. Contact</h2>
+      <p>For privacy-related questions, email us at: <strong>marketing@zeuse-am.com</strong></p>
+    </section>
+  </div>
+</MainLayout>
+
+<style>
+  .legal-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 0 5rem;
+  }
+  h1 {
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: #0F172A;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.4rem;
+  }
+  .updated {
+    font-size: 0.875rem;
+    color: #647488;
+    margin-bottom: 3rem;
+  }
+  section {
+    margin-bottom: 2.5rem;
+    padding-bottom: 2.5rem;
+    border-bottom: 1px solid #F1F5F9;
+  }
+  section:last-child { border-bottom: none; }
+  h2 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 1rem;
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0F172A;
+    margin: 1.25rem 0 0.5rem;
+  }
+  p {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #374151;
+    margin-bottom: 0.75rem;
+  }
+  ul {
+    padding-left: 1.5rem;
+    margin: 0.5rem 0;
+  }
+  ul li {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #374151;
+    margin-bottom: 0.25rem;
+  }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+    display: block;
+    overflow-x: auto;
+  }
+  th, td {
+    border: 1px solid #E8ECF0;
+    padding: 0.5rem 0.75rem;
+    text-align: left;
+    vertical-align: top;
+    color: #374151;
+  }
+  th {
+    background: #F5F3FF;
+    font-weight: 600;
+    color: #0F172A;
+  }
+  code {
+    font-size: 0.85em;
+    background: #F1F5F9;
+    padding: 0.1em 0.35em;
+    border-radius: 4px;
+    font-family: ui-monospace, monospace;
+  }
+  a { color: #7C3AED; }
+  a:hover { text-decoration: underline; }
+  @media (max-width: 640px) {
+    .legal-wrap { padding: 1.5rem 0 3rem; }
+    h1 { font-size: 1.75rem; }
+  }
+</style>

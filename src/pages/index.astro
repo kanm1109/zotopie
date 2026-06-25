@@ -33,7 +33,14 @@ const categoriesWithCount = taxonomies.map((cat) => ({
 
 const toolCount = tools.length;
 const catCount = taxonomies.length;
-const compareCount = Math.round((toolCount * (toolCount - 1)) / 2);
+const comparePairs = new Set<string>();
+tools.forEach((t) => {
+  (t.alternatives || []).forEach((alt: string) => {
+    const pair = [t.slug, alt].sort().join('_');
+    comparePairs.add(pair);
+  });
+});
+const compareCount = comparePairs.size;
 const top8cats = [...categoriesWithCount].sort((a, b) => b.toolCount - a.toolCount).slice(0, 8);
 const slimTools = tools.map((t) => [t.name, t.slug, t.rating]);
 const slimCats = taxonomies.map((t) => [t.name, t.slug]);
@@ -249,7 +256,7 @@ const homeJsonLd = JSON.stringify({
           <h2>Latest Articles</h2>
           <p class="section-sub">In-depth reviews and guides from our editorial team</p>
         </div>
-        <a href="/reddit/" class="see-all">View all articles →</a>
+        <a href="/ai-tools/" class="see-all">View all articles →</a>
       </div>
       <div class="articles-grid">
         {latestArticles.map((post) => (
