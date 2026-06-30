@@ -5,7 +5,7 @@ author: "Zotopie Editorial Team"
 publishDate: 2026-06-30
 tags: ["Meeting AI", "Otter.ai", "AI Transcription", "Productivity", "Review"]
 category: "ai-tools"
-featuredImage: "/images/ai-tools/otter-review/otter-dashboard-overview.png"
+featuredImage: "/images/ai-tools/otter-review/otter-dashboard-overview.svg"
 draft: false
 ---
 
@@ -78,7 +78,7 @@ This focus on live, visual interaction turns the platform from a basic note-take
 
 Evaluating Otter.ai requires a deep look at what it actually does. Over the years, the platform has grown from a basic dictation app into a robust meeting suite.
 
-![Otter.ai dashboard overview showing live transcription feed and collaborative workspace interface](/images/ai-tools/otter-review/otter-dashboard-overview.png)
+![Otter.ai dashboard overview showing live transcription feed and collaborative workspace interface](/images/ai-tools/otter-review/otter-dashboard-overview.svg)
 
 ### Live Transcription (Otter Live Notes)
 The absolute core of the Otter.ai experience is its real-time transcription engine.
@@ -124,7 +124,7 @@ This is one of Otter's most unique and praised features. When the Otter bot join
 
 Feature lists are great, but a meeting tool is only valuable if it is reliable and accurate under the stress of a real workday.
 
-![Otter.ai meeting workflow showing OtterPilot automation, calendar sync, and real-time transcription pipeline](/images/ai-tools/otter-review/otter-meeting-workflow.png)
+![Otter.ai meeting workflow showing OtterPilot automation, calendar sync, and real-time transcription pipeline](/images/ai-tools/otter-review/otter-meeting-workflow.svg)
 
 ### Accuracy
 Based on widespread industry use, Otter.ai’s core transcription engine is highly dependable for standard conversational English. In quiet environments with decent microphones, the accuracy is exceptional. It captures proper nouns, standard business phrasing, and punctuation consistently well.
@@ -211,7 +211,7 @@ For creative agencies, marketing teams, or design rooms that engage in free-flow
 
 To accurately position Otter within the broader market, we must look at how its features compare to its primary rivals.
 
-![Otter.ai vs Fireflies.ai feature comparison matrix showing key capability differences across transcription, CRM, and collaboration](/images/ai-tools/otter-review/otter-vs-fireflies-comparison.png)
+![Otter.ai vs Fireflies.ai feature comparison matrix showing key capability differences across transcription, CRM, and collaboration](/images/ai-tools/otter-review/otter-vs-fireflies-comparison.svg)
 
 ### Otter.ai vs Fireflies.ai
 This is the most common comparison in the software space. The difference is clear: **Otter.ai is built for real-time visualization**, while **Fireflies.ai is built for backend automation**. 
@@ -279,7 +279,7 @@ Yes. By connecting your Google Calendar or Microsoft Outlook account, you can en
 ### 8. Is Otter.ai safe for confidential business meetings?
 Otter implements standard SaaS security protocols, including encryption in transit and at rest. However, advanced enterprise security features—such as Single Sign-On (SSO), domain capture, advanced administrative controls, and optional HIPAA compliance add-ons—are strictly gated behind the custom-priced Enterprise tier. Organizations dealing with highly sensitive data should review Otter's data retention policies carefully before deploying it company-wide.
 
-![Otter.ai AI meeting notes example showing automated summary, action items, and speaker identification output](/images/ai-tools/otter-review/otter-ai-notes-example.png)
+![Otter.ai AI meeting notes example showing automated summary, action items, and speaker identification output](/images/ai-tools/otter-review/otter-ai-notes-example.svg)
 
 ## Should You Use Otter.ai?
 
