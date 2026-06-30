@@ -236,6 +236,7 @@ If Otter.ai's strict file import caps or lack of robust CRM integration on lower
 
 *   **[Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/):** Read our comprehensive pillar guide to evaluate the entire landscape of AI meeting platforms, contrasting Otter against video-first tools and automation engines.
 *   **[Fireflies.ai Review](/ai-tools/fireflies-review/):** Dive into our analysis of Fireflies.ai to understand how customized AI prompts and deep integrations can automate your post-meeting tasks.
+*   **[Fathom Review](/ai-tools/fathom-review/):** Explore our review of Fathom — the best free-tier alternative for freelancers who need unlimited recording without hitting monthly minute caps.
 *   **[Fireflies.ai vs Otter.ai](/comparisons/fireflies-vs-otter/):** Explore our detailed comparison to see exactly how real-time text feeds stack up against backend CRM automation.
 
 ## Decision Table
