@@ -224,7 +224,7 @@ The corporate meeting notes market features another significant design variance 
 If Fireflies AI's visible bot participant or credit allocations do not fit your company's communication style, look at these leading conversational intelligence alternatives:
 
 ### 1. Otter
-The premier choice for real-time dictation and English-focused conversation processing. It features an exceptional mobile app layout, making it a favorite for journalists and individual professionals who require fast live-transcription feeds.
+The premier choice for real-time dictation and English-focused conversation processing. It features an exceptional mobile app layout, making it a favorite for journalists and individual professionals who require fast live-transcription feeds. See our full **[Otter.ai Review](/ai-tools/otter-review/)** for a detailed breakdown of its features, pricing limits, and who it is best for.
 
 ### 2. Fathom
 The strongest alternative for individual professionals and bootstrapped remote teams. Fathom's free tier offers unlimited meeting recordings and automated note-taking tools without a visible bot participant, making it highly competitive for standard user setups.
@@ -311,4 +311,5 @@ Fireflies AI works best as the knowledge-capture layer in a broader meeting inte
 
 *   **Choosing the right platform:** If you are still evaluating your options, see our [Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/) guide, which compares Fireflies against Otter.ai, tl;dv, Avoma, Fathom, MeetGeek, Krisp AI, and Sembly AI across transcription accuracy, CRM integrations, and pricing.
 *   **Fireflies vs Otter:** The most common comparison question in the Meeting AI space. Our [Fireflies vs Otter](/comparisons/fireflies-vs-otter/) breakdown explains exactly when to choose each platform — Fireflies for CRM automation and asynchronous knowledge retention, Otter for live real-time transcription and synchronous team editing.
+*   **Otter.ai Deep Dive:** For a comprehensive review of Fireflies' primary competitor, see our [Otter.ai Review](/ai-tools/otter-review/) — covering live transcription accuracy, mobile recording, pricing limits, and ideal use cases.
 *   **Exploring alternatives:** If Fireflies' bot presence or credit model does not fit your workflow, see our [Fireflies Alternatives](/alternatives/fireflies-ai/) page for a full evaluation of competing platforms.
