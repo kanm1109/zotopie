@@ -58,14 +58,16 @@ const [addedYear, addedMonth] = tool.addedDate.split('-');
 const reviewDateStr = `${MONTH_NAMES[parseInt(addedMonth) - 1]} ${addedYear}`;
 
 // Find content articles that review this tool (matched by tag = tool.slug)
-const [reddits, blogs, threads, exts, mkts] = await Promise.all([
+// ai-tools is searched first so editorial reviews take priority over reddit/blog posts
+const [aiTools, reddits, blogs, threads, exts, mkts] = await Promise.all([
+  getCollection('ai-tools',   ({ data }) => !data.draft),
   getCollection('reddit',     ({ data }) => !data.draft),
   getCollection('blog',       ({ data }) => !data.draft),
   getCollection('threads',    ({ data }) => !data.draft),
   getCollection('extensions', ({ data }) => !data.draft),
   getCollection('marketing',  ({ data }) => !data.draft),
 ]);
-const linkedArticle = [...reddits, ...blogs, ...threads, ...exts, ...mkts].find(
+const linkedArticle = [...aiTools, ...reddits, ...blogs, ...threads, ...exts, ...mkts].find(
   (post) => post.data.tags?.includes(tool.slug) || post.id.startsWith(tool.slug + '-')
 ) ?? null;
 
