@@ -3,7 +3,7 @@ title: "Originality.ai Review (2026): Is It Still the Best AI Detector for SEO?"
 description: "An exhaustive, 5,000+ word deep-dive review of Originality.ai. We rigorously test its AI detection accuracy, plagiarism checking, fact-checking capabilities, and overall workflow value."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-23
-tags: ["AI Content Detection", "Originality.ai", "AI Tools", "review"]
+tags: ["AI Content Detection", "originality-ai", "AI Tools", "review"]
 category: "ai-tools"
 featuredImage: "/images/ai-tools/originality-ai/dashboard.svg"
 draft: false

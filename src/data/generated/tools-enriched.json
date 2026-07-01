@@ -7718,5 +7718,111 @@
     "affiliateNetwork": null,
     "affiliateSource": null,
     "trackingEnabled": false
+  },
+  {
+    "name": "tl;dv",
+    "slug": "tldv",
+    "description": "Video-first AI meeting recorder with timestamped clips, AI summaries, and CRM integrations.",
+    "website": "https://tldv.io",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $18/user/mo",
+    "rating": 4.4,
+    "featured": false,
+    "addedDate": "2026-07-01",
+    "affiliate": false,
+    "primaryCategory": "productivity-knowledge-management",
+    "categories": [
+      "productivity-knowledge-management"
+    ],
+    "simple_icon": "",
+    "overview": "tl;dv is a video-first AI meeting recorder for Zoom, Google Meet, and Microsoft Teams. Unlike text-first tools, tl;dv centers the meeting experience around the video recording — allowing users to create timestamped clips, highlight key moments, and share specific sections with teammates and stakeholders. AI-generated summaries are structured by topic and linked directly to timestamps. Free plan provides unlimited recordings with up to 5 AI summaries per month; Pro ($18/user/mo) unlocks unlimited AI summaries, highlights, and CRM integrations with Salesforce and HubSpot.",
+    "pros": [
+      "Video-first format with timestamped clips makes it easy to share specific meeting moments",
+      "Consumer-grade UX — clean interface requires minimal onboarding time",
+      "Unlimited recordings on the free plan with no time cap per recording",
+      "Multi-language transcription supports 30+ languages for international teams",
+      "Direct CRM integration pushes meeting notes and timestamps to Salesforce and HubSpot on paid plans"
+    ],
+    "cons": [
+      "AI summaries limited to 5 per month on the free plan — insufficient for daily meeting schedules",
+      "No native action item tracking or task assignment compared to Fireflies AI",
+      "Transcript editing interface is less polished than Otter.ai for collaborative annotation",
+      "Less CRM depth and sales intelligence than Fireflies AI for revenue-focused teams"
+    ],
+    "bestFor": [
+      "Remote teams that need to share specific meeting highlights across timezones",
+      "Sales teams wanting timestamped clips for coaching and objection analysis",
+      "Product teams sharing customer discovery moments with stakeholders",
+      "Managers reviewing recordings asynchronously without replaying the full meeting"
+    ],
+    "alternatives": [
+      "fireflies-ai",
+      "otter-ai",
+      "fathom"
+    ],
+    "keyFeatures": [
+      {
+        "title": "Timestamped Video Clips",
+        "description": "Create shareable clips from any moment in a recorded meeting — link teammates to the exact 30 seconds that matter without replaying the full recording."
+      },
+      {
+        "title": "AI Meeting Summaries",
+        "description": "Automatically generated summaries organized by topic and linked to timestamps, making it easy to navigate long recordings without reading full transcripts."
+      },
+      {
+        "title": "Multi-Language Transcription",
+        "description": "Real-time transcription in 30+ languages with speaker identification — essential for international teams running meetings across different languages."
+      },
+      {
+        "title": "CRM Integration",
+        "description": "Sync meeting notes, highlights, and timestamps directly to Salesforce and HubSpot on paid plans — giving sales teams a searchable record of every customer conversation."
+      },
+      {
+        "title": "Meeting Library",
+        "description": "Searchable archive of all recorded meetings with full transcripts, making it easy to find past discussions and decisions across the team."
+      }
+    ],
+    "pricingBreakdown": {
+      "plans": [
+        {
+          "name": "Free",
+          "price": "Free",
+          "description": "Unlimited recordings, up to 5 AI summaries per month, basic transcription, limited CRM integrations."
+        },
+        {
+          "name": "Pro",
+          "price": "$18/user/mo",
+          "description": "Unlimited AI summaries, highlights and clips, full CRM integration (Salesforce, HubSpot), priority transcription."
+        },
+        {
+          "name": "Business",
+          "price": "$59/user/mo",
+          "description": "Advanced analytics, custom integrations, SSO, admin controls, and dedicated support."
+        }
+      ],
+      "hasFree": true,
+      "note": "Annual billing available with approximately 20% discount. Free plan requires no credit card."
+    },
+    "useCases": [
+      "Sharing a timestamped clip of a customer objection with the product team for context",
+      "Reviewing AI-generated meeting summaries to catch up on a meeting that was missed",
+      "Pushing meeting notes and action items to Salesforce after a sales discovery call",
+      "Building a library of customer discovery insights across multiple recorded user interviews"
+    ],
+    "whoShouldAvoid": [
+      "Teams needing more than 5 AI summaries per month without paying — Fireflies AI or Otter.ai offer more generous free tiers for AI features",
+      "Sales teams requiring deep conversation intelligence and pipeline analytics — Gong or Chorus is more appropriate",
+      "Users who need collaborative transcript editing and annotation — Otter.ai has a stronger interface for this"
+    ],
+    "verdict": {
+      "summary": "tl;dv is the strongest choice for teams who want to share meeting moments as video clips rather than text summaries. Its video-first approach and clean UX make it the easiest meeting tool to adopt without training. The 5 AI summaries per month free plan limit is the biggest friction point — teams with frequent meetings will need to evaluate whether the $18/user/mo Pro plan is justified. For async-first teams and anyone who values shareability over CRM depth, tl;dv is the right tool.",
+      "score": 4.4
+    },
+    "affiliateProgramExists": true,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": "https://tldv.io/affiliate",
+    "trackingEnabled": false
   }
 ]

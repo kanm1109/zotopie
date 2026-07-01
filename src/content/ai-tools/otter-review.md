@@ -3,7 +3,7 @@ title: "Otter.ai Review (2026): Is the Popular AI Meeting Assistant Still Worth 
 description: "A comprehensive, unvarnished review of Otter.ai. We evaluate its live transcription accuracy, collaborative features, AI meeting notes, and hidden pricing limits to see if it fits your workflow."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-30
-tags: ["Meeting AI", "Otter.ai", "AI Transcription", "Productivity", "Review"]
+tags: ["Meeting AI", "otter-ai", "AI Transcription", "Productivity", "Review"]
 category: "ai-tools"
 featuredImage: "/images/ai-tools/otter-review/otter-dashboard-overview.svg"
 draft: false

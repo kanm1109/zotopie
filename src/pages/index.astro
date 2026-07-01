@@ -54,9 +54,12 @@ function toStars(rating: number): string {
   return '★'.repeat(Math.min(r, 5)) + '☆'.repeat(Math.max(5 - r, 0));
 }
 
-// Build set of reviewed tool slugs from the ai-tools collection
-// Filename convention: {slug}-review.md → slug
-const reviewedSlugs = new Set(aiToolsCol.map((p: any) => p.id.replace(/-review$/, '')));
+// Build a set of all lowercase tag values from the ai-tools collection.
+// A tool "has a review" when its slug appears as a tag in an editorial article —
+// the same mechanism ArticleLayout uses to find the related tool, so both stay in sync.
+const reviewedToolTags = new Set(
+  aiToolsCol.flatMap((p: any) => (p.data.tags ?? []).map((tag: string) => tag.toLowerCase()))
+);
 
 const toolLabels       = homepageConfig.toolLabels       as Record<string, string>;
 const toolDescriptions = homepageConfig.toolDescriptions as Record<string, string>;
@@ -65,7 +68,7 @@ const toolDescriptions = homepageConfig.toolDescriptions as Record<string, strin
 const categoryBrowser = (taxonomies as any[]).map(cat => {
   const catTools = (tools as any[])
     .filter(t => (t.categories ?? []).includes(cat.slug))
-    .map(t => ({ ...t, hasReview: reviewedSlugs.has(t.slug) }))
+    .map(t => ({ ...t, hasReview: reviewedToolTags.has(t.slug.toLowerCase()) }))
     .sort((a: any, b: any) => {
       if (a.hasReview   !== b.hasReview)          return a.hasReview         ? -1 : 1;
       if (a.affiliateApproved !== b.affiliateApproved) return a.affiliateApproved ? -1 : 1;
