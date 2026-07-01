@@ -39,6 +39,91 @@ const breadcrumbs = [
 	{ name: displayCategory, url: `${SITE_URL}/${category}/` },
 	{ name: title, url: Astro.url.href },
 ];
+
+const reviewJsonLd = relatedTool
+	? {
+			'@context': 'https://schema.org',
+			'@type': 'Review',
+			name: title,
+			url: Astro.url.href,
+			author: { '@type': 'Organization', name: 'Zotopie', url: SITE_URL },
+			publisher: {
+				'@type': 'Organization',
+				name: 'Zotopie',
+				url: SITE_URL,
+				logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.svg` },
+			},
+			datePublished: publishDate.toISOString(),
+			dateModified: (updatedDate ?? publishDate).toISOString(),
+			reviewBody: description,
+			reviewRating: {
+				'@type': 'Rating',
+				ratingValue: String((relatedTool as any).rating ?? 0),
+				bestRating: '5',
+				worstRating: '1',
+			},
+			itemReviewed: {
+				'@type': 'SoftwareApplication',
+				name: (relatedTool as any).name,
+				url: (relatedTool as any).website,
+				applicationCategory: 'BusinessApplication',
+			},
+		}
+	: null;
+
+const articleFaqs: { question: string; answer: string }[] = [];
+if (relatedTool) {
+	const rt = relatedTool as any;
+	if (rt.overview) {
+		const firstPara = String(rt.overview).split('\n\n')[0].trim();
+		articleFaqs.push({
+			question: `What is ${rt.name}?`,
+			answer: firstPara.length > 350 ? firstPara.slice(0, 347) + '…' : firstPara,
+		});
+	}
+	if (rt.pricing) {
+		const sp = rt.startingPrice;
+		const pricingAnswer =
+			rt.pricing === 'Free'
+				? `${rt.name} is completely free to use.`
+				: rt.pricing === 'Freemium'
+					? `${rt.name} offers a free plan${sp ? `, with paid plans starting at ${sp}` : ''}.`
+					: `${rt.name} is a paid tool${sp ? `, starting at ${sp}` : ''}.`;
+		articleFaqs.push({ question: `How much does ${rt.name} cost?`, answer: pricingAnswer });
+	}
+	if (Array.isArray(rt.bestFor) && rt.bestFor.length > 0) {
+		articleFaqs.push({
+			question: `Who is ${rt.name} best for?`,
+			answer: `${rt.name} is best for: ${(rt.bestFor as string[]).slice(0, 3).join(', ')}.`,
+		});
+	}
+	if (Array.isArray(rt.alternatives) && rt.alternatives.length > 0) {
+		const altNames = (tools as any[])
+			.filter(t => (rt.alternatives as string[]).includes(t.slug))
+			.slice(0, 3)
+			.map(t => t.name);
+		if (altNames.length > 0) {
+			const last = altNames.pop();
+			const altList = altNames.length > 0 ? `${altNames.join(', ')} and ${last}` : last;
+			articleFaqs.push({
+				question: `What are the best alternatives to ${rt.name}?`,
+				answer: `Top alternatives to ${rt.name} include ${altList}.`,
+			});
+		}
+	}
+}
+const faqJsonLd =
+	articleFaqs.length > 0
+		? {
+				'@context': 'https://schema.org',
+				'@type': 'FAQPage',
+				mainEntity: articleFaqs.map(f => ({
+					'@type': 'Question',
+					name: f.question,
+					acceptedAnswer: { '@type': 'Answer', text: f.answer },
+				})),
+			}
+		: null;
 ---
 
 <html lang="en">
@@ -54,6 +139,12 @@ const breadcrumbs = [
 			tags={tags}
 			breadcrumbs={breadcrumbs}
 		/>
+		{reviewJsonLd && (
+			<script type="application/ld+json" set:html={JSON.stringify(reviewJsonLd)} />
+		)}
+		{faqJsonLd && (
+			<script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+		)}
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
