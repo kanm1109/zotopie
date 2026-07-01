@@ -183,7 +183,7 @@ Otter.ai is a highly reliable selection for teams who prioritize live, real-time
 
 ### 3. tl;dv
 
-tl;dv coordinates its user experience completely around video-first asset curation, mapping timestamped summaries directly onto indexed video clips for quick visual reference.
+tl;dv coordinates its user experience completely around video-first asset curation, mapping timestamped summaries directly onto indexed video clips for quick visual reference. Read our full **[tl;dv Review](/ai-tools/tldv-review/)** for a comprehensive breakdown of its video clipping tools, multi-meeting reel collections, pricing, and ideal use cases.
 
 #### Overview
 The platform name "tl;dv" (Too Long; Didn't View) directly reflects its software core. Recognizing that text transcripts often fail to communicate vocal intonation, facial expressions, and live user interface struggles, tl;dv treats video files as the primary source of truth. The application records full high-definition web call video screens across Zoom, Google Meet, and Teams, using its textual summaries as interactive timeline shortcuts to navigate through the raw video content.
@@ -446,6 +446,7 @@ Build topical authority and expand your understanding of modern enterprise softw
 *   **[Fireflies Review](/ai-tools/fireflies-review/):** Read our comprehensive standalone analysis of Fireflies.ai to examine its underlying data structures, security posture, and custom prompt configurations in detail.
 *   **[Otter.ai Review](/ai-tools/otter-review/):** Read our deep-dive analysis of Otter.ai — evaluating its live transcription speed, mobile recording quality, hidden pricing limits, and how it serves students, journalists, and small teams.
 *   **[Fathom Review](/ai-tools/fathom-review/):** Explore our comprehensive review of Fathom — the best free AI meeting assistant for freelancers, consultants, and sales professionals who need unlimited recording without monthly caps.
+*   **[tl;dv Review](/ai-tools/tldv-review/):** Explore our comprehensive review of tl;dv — the best video-first AI meeting assistant for UX researchers and product teams who need timestamped clip navigation and multi-meeting reel collections.
 *   **[Fireflies Alternatives](/alternatives/fireflies-ai/):** Explore our technical comparison guide evaluating alternative conversation tracking engines tailored specifically for varying team scales and privacy needs.
 *   **[Fireflies vs Otter](/comparisons/fireflies-vs-otter/):** Discover exactly how the market's two biggest platforms compare regarding live transcription speeds versus backend CRM automation paths.
 *   **[Fireflies vs Fathom](/comparisons/fireflies-vs-fathom/):** Our head-to-head comparison of Fireflies.ai and Fathom — analyzing when enterprise analytics and deep CRM pipelines justify upgrading from Fathom's unlimited free plan.

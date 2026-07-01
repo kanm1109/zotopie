@@ -230,7 +230,7 @@ The premier choice for real-time dictation and English-focused conversation proc
 The strongest alternative for individual professionals and bootstrapped remote teams. Fathom's free tier offers unlimited meeting recordings and automated note-taking tools without a visible bot participant, making it highly competitive for standard user setups. See our full **[Fathom Review](/ai-tools/fathom-review/)** for a detailed breakdown of its free plan, CRM integrations, and privacy standards.
 
 ### 3. tl;dv
-A fantastic, creator-friendly alternative that focuses heavily on video clipping and visual bookmarking. It allows users to easily tag key moments during a call and compile video highlights, making it perfect for UX researchers and product development teams conducting qualitative user testing.
+A fantastic, creator-friendly alternative that focuses heavily on video clipping and visual bookmarking. It allows users to easily tag key moments during a call and compile video highlights, making it perfect for UX researchers and product development teams conducting qualitative user testing. See our full **[tl;dv Review](/ai-tools/tldv-review/)** for a detailed breakdown of its video-first model, timestamped AI summaries, multi-meeting reel collections, and pricing.
 
 ---
 
@@ -313,4 +313,5 @@ Fireflies AI works best as the knowledge-capture layer in a broader meeting inte
 *   **Fireflies vs Otter:** The most common comparison question in the Meeting AI space. Our [Fireflies vs Otter](/comparisons/fireflies-vs-otter/) breakdown explains exactly when to choose each platform — Fireflies for CRM automation and asynchronous knowledge retention, Otter for live real-time transcription and synchronous team editing.
 *   **Fireflies vs Fathom:** For a direct comparison against Fireflies' strongest simplified competitor, see our [Fireflies vs Fathom](/comparisons/fireflies-vs-fathom/) breakdown — covering when enterprise analytics and deep CRM pipelines justify switching from Fathom's unlimited free plan.
 *   **Otter.ai Deep Dive:** For a comprehensive review of Fireflies' primary competitor, see our [Otter.ai Review](/ai-tools/otter-review/) — covering live transcription accuracy, mobile recording, pricing limits, and ideal use cases.
+*   **tl;dv Deep Dive:** For teams that need to share video evidence with developers and stakeholders rather than text summaries, see our [tl;dv Review](/ai-tools/tldv-review/) — covering its video-first model, timestamped AI summaries, multi-meeting reel collections, and when it outperforms text-first platforms like Fireflies.
 *   **Exploring alternatives:** If Fireflies' bot presence or credit model does not fit your workflow, see our [Fireflies Alternatives](/alternatives/fireflies-ai/) page for a full evaluation of competing platforms.

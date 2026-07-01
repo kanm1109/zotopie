@@ -282,6 +282,7 @@ You should select Otter if you are an independent operator, creator, or operatio
 *   **[Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/)** — Full 8-platform roundup comparing Fireflies, Otter, tl;dv, Avoma, Fathom, MeetGeek, Krisp AI, and Sembly AI.
 *   **[Fireflies AI Review](/ai-tools/fireflies-review/)** — Deep dive into Fireflies' CRM integrations, custom AI templates, and pricing tiers.
 *   **[Otter.ai Review](/ai-tools/otter-review/)** — Comprehensive analysis of Otter's live transcription engine, mobile app, pricing limits, and who it is best suited for.
+*   **[tl;dv Review](/ai-tools/tldv-review/)** — In-depth review of tl;dv, the video-first AI meeting tool ideal for UX researchers and product teams who need timestamped video navigation and multi-meeting reel collections.
 *   **[Fireflies vs Fathom](/comparisons/fireflies-vs-fathom/)** — Compare Fireflies against Fathom to understand when enterprise analytics and deep CRM pipelines beat a free unlimited tool.
 *   **[Fireflies Alternatives](/alternatives/fireflies-ai/)** — Full comparison of competing meeting intelligence platforms for teams considering other options.
 

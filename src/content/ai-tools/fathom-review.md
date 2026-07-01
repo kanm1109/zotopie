@@ -202,6 +202,9 @@ Otter.ai is one of the oldest and most recognized names in the transcription spa
 Fireflies.ai is a heavy hitter in the team and enterprise space. Fireflies offers much deeper analytics than Fathom. For example, Fireflies can analyze talk-to-listen ratios, detect sentiment, and track complex conversational metrics across an entire sales floor. If you are a sales manager looking to coach a team of 50 SDRs, Fireflies might be the better choice. However, for individuals and smaller teams, Fireflies can feel complex and overwhelming. Fathom is much simpler, faster to set up, and features a cleaner user interface.
 *(For a deep dive into the differences, read our [Fireflies.ai vs Otter.ai](/comparisons/fireflies-vs-otter/) comparison).*
 
+### Fathom vs. tl;dv
+tl;dv is a video-first AI meeting assistant designed primarily for UX researchers and product teams conducting qualitative user testing. While Fathom focuses on automated note-taking and CRM sync, tl;dv records full high-definition video and generates AI summaries that link directly to the corresponding video timestamps, allowing teams to share specific video clips as evidence. If your work involves sharing user interview footage with developers or building multi-meeting video reel collections, tl;dv is the more specialized tool. If you simply need reliable, free note-taking with CRM logging, Fathom is the simpler and more cost-effective choice. See our full **[tl;dv Review](/ai-tools/tldv-review/)** for a detailed comparison.
+
 ### Fathom vs. Native Platform AI (Zoom AI Companion / Teams Copilot)
 Zoom and Microsoft have started including AI features directly within their platforms. These native tools are convenient because they do not require a bot to join the meeting. However, they are platform-locked. If your company uses Zoom, the Zoom AI Companion is great—but what happens when a client sends you a Google Meet link? Fathom is platform-agnostic, providing a unified dashboard for all your meetings regardless of where they take place. 
 
@@ -212,7 +215,8 @@ If you decide that Fathom does not quite fit your workflow, there are several st
 1.  **[Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/)**: Start here if you want a comprehensive overview of the entire market landscape, comparing the top 10 tools based on different use cases and budgets.
 2.  **[Fireflies.ai Review](/ai-tools/fireflies-review/)**: The best alternative if you need advanced conversational analytics, deep team collaboration features, and native integrations with a massive variety of third-party apps.
 3.  **[Otter.ai Review](/ai-tools/otter-review/)**: Consider Otter if your primary need is recording in-person conversations via a mobile app, such as lectures, physical boardroom meetings, or live interviews.
-4.  **[Fireflies.ai vs Otter.ai](/comparisons/fireflies-vs-otter/)**: A detailed head-to-head comparison to help you choose between the two biggest names in the AI transcription industry.
+4.  **[tl;dv Review](/ai-tools/tldv-review/)**: Consider tl;dv if your team needs full high-definition video recording, timestamped AI summary navigation, and multi-meeting clip reel collections for UX research and product discovery.
+5.  **[Fireflies.ai vs Otter.ai](/comparisons/fireflies-vs-otter/)**: A detailed head-to-head comparison to help you choose between the two biggest names in the AI transcription industry.
 
 ## Decision Table
 
@@ -274,6 +278,7 @@ However, Fathom may not be the perfect fit for everyone. Teams that require deep
 *   Read our direct head-to-head [Fireflies.ai vs Fathom](/comparisons/fireflies-vs-fathom/) comparison to see when enterprise analytics and deep CRM pipelines outweigh Fathom's unlimited free plan.
 *   Read our detailed [Otter.ai Review](/ai-tools/otter-review/) if your workflow requires a solution with a dedicated mobile application for offline meetings.
 *   Check out our comprehensive [Fireflies.ai Review](/ai-tools/fireflies-review/) to analyze advanced sales analytics and conversational data metrics.
+*   Explore our [tl;dv Review](/ai-tools/tldv-review/) if your team needs to share timestamped video evidence with developers or compile multi-session user research reels.
 
 ## Backfill Recommendations
 

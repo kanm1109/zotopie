@@ -247,6 +247,7 @@ Fathom and Fireflies.ai represent two of the absolute finest implementations of 
 *   Explore our full [Fireflies.ai Review](/ai-tools/fireflies-review/) to understand its enterprise capabilities and metric dashboards.
 *   See how Fireflies compares to other market leaders in our [Fireflies.ai vs Otter.ai](/comparisons/fireflies-vs-otter/) head-to-head analysis.
 *   Check out our detailed [Otter.ai Review](/ai-tools/otter-review/) for a deep look into mobile-first transcription options.
+*   Read our [tl;dv Review](/ai-tools/tldv-review/) to see how video-first timestamped navigation and multi-meeting reels compare to text-first tools like Fireflies and Fathom.
 *   Review our definitive curation of the [Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/) to see how the entire software ecosystem ranks across different industries.
 
 ## Backfill Recommendations
