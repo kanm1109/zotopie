@@ -87,6 +87,54 @@ const curatedBestPages = featuredGuideSlugs
   .map((slug) => (bestPages as any[]).find((p) => p.slug === slug))
   .filter(Boolean);
 
+// Task 1: build-time comparison URL lookup — tool slug → /comparisons/{id}/
+const toolIsInComp = (slug: string, compId: string) =>
+  compId.split('-vs-').some(p => p === slug || slug.startsWith(p + '-'));
+const sortedCompsForLookup = [...comparisonsCol].sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+const comparisonUrls: Record<string, string> = {};
+for (const t of (tools as any[])) {
+  const hit = sortedCompsForLookup.find(c => toolIsInComp(t.slug, c.id));
+  if (hit) comparisonUrls[t.slug] = `/comparisons/${hit.id}/`;
+}
+
+// Task 3: top editorial reviews by rating
+const highestRatedReviews = (tools as any[])
+  .filter(t => reviewedToolTags.has(t.slug.toLowerCase()) && t.rating)
+  .sort((a, b) => b.rating - a.rating)
+  .map(t => {
+    const art = aiToolsCol.find((p: any) =>
+      (p.data.tags ?? []).some((tag: string) => tag.toLowerCase() === t.slug.toLowerCase())
+    );
+    if (!art) return null;
+    return {
+      ...t,
+      reviewUrl: `/ai-tools/${(art as any).id}/`,
+      label: toolLabels[t.slug] ?? null,
+      desc: toolDescriptions[t.slug] ?? null,
+    };
+  })
+  .filter(Boolean)
+  .slice(0, 6);
+
+// Task 4: published comparison pairs for Most Compared section
+const findToolPart = (part: string) =>
+  (tools as any[]).find(t => t.slug === part || t.slug.startsWith(part + '-')) ?? null;
+const mostCompared = [...comparisonsCol]
+  .sort((a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf())
+  .slice(0, 6)
+  .map(comp => {
+    const parts = comp.id.split('-vs-');
+    return {
+      id: comp.id,
+      title: comp.data.title,
+      url: `/comparisons/${comp.id}/`,
+      toolA: findToolPart(parts[0]),
+      toolB: findToolPart(parts[parts.length - 1]),
+    };
+  });
+
 // Selection priority: 1) has editorial review  2) affiliate approved  3) rating desc  4) name asc
 const categoryBrowser = (taxonomies as any[]).map(cat => {
   const catTools = (tools as any[])
@@ -123,17 +171,17 @@ const categoryBrowser = (taxonomies as any[]).map(cat => {
   };
 }).filter((cat: any) => cat.totalCount > 0);
 
-// Default category: AI Detection → Meeting AI → AI Writing → content-ai-creation → highest count
-// "ai-detection" and "meeting-ai" are not in the current taxonomy; "content-ai-creation" is the
-// largest category (25 tools) and covers the site's strongest editorial cluster.
-const prioritySlugs = ['ai-detection', 'meeting-ai', 'ai-writing', 'content-ai-creation'];
-const defaultCatId: string = (() => {
-  for (const slug of prioritySlugs) {
-    if (categoryBrowser.find((c: any) => c.id === slug)) return slug;
-  }
-  return [...categoryBrowser].sort((a: any, b: any) => b.totalCount - a.totalCount)[0]?.id
-    ?? categoryBrowser[0]?.id;
-})();
+// Default category: the one with the most editorial reviews (auto-updates as reviews are published)
+const defaultCatId: string =
+  [...categoryBrowser]
+    .map((cat: any) => ({
+      id: cat.id,
+      reviewedCount: (tools as any[]).filter(
+        t => (t.categories ?? []).includes(cat.id) && reviewedToolTags.has(t.slug.toLowerCase())
+      ).length,
+    }))
+    .sort((a, b) => b.reviewedCount - a.reviewedCount)[0]?.id
+  ?? categoryBrowser[0]?.id;
 
 // ── JSON-LD ──────────────────────────────────────────────
 const SITE = "https://zotopie.com";
@@ -322,6 +370,37 @@ const homeJsonLd = JSON.stringify({
     </section>
   )}
 
+  <!-- ── HIGHEST RATED ───────────────────────────────────── -->
+  {highestRatedReviews.length > 0 && (
+    <section class="section hr-section">
+      <div class="section-header">
+        <div>
+          <h2>Highest Rated Reviews</h2>
+          <p class="section-sub">Top-rated tools from our editorial review database, sorted by score.</p>
+        </div>
+        <a href="/ai-tools/" class="see-all">All reviews →</a>
+      </div>
+      <div class="hr-grid">
+        {highestRatedReviews.map((tool: any) => (
+          <div class="hr-card">
+            <div class="hr-card-top">
+              <div class="hr-logo-wrap">
+                <ToolLogo tool={tool} size={36} />
+              </div>
+              <div class="hr-card-meta">
+                {tool.label && <span class="hr-label">{tool.label}</span>}
+                <span class="hr-name">{tool.name}</span>
+              </div>
+              <span class="hr-rating" aria-label={`${tool.rating} out of 5`}>★ {tool.rating}</span>
+            </div>
+            {tool.desc && <p class="hr-desc">{tool.desc}</p>}
+            <a href={tool.reviewUrl} class="hr-cta">Read Review →</a>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
   <!-- ── BROWSE SOFTWARE BY CATEGORY ───────────────────── -->
   <section class="section cb-section">
     <div class="section-header">
@@ -385,18 +464,23 @@ const homeJsonLd = JSON.stringify({
                       )}
                     </div>
                   </div>
-                  {tool.label
-                    ? <span class="cb-card-label">{tool.label}</span>
-                    : !tool.exists
-                      ? <span class="cb-card-label cb-card-label-profile">Profile Available</span>
-                      : null
-                  }
+                  {tool.label ? (
+                    <span class="cb-card-label">{tool.label}</span>
+                  ) : tool.exists ? (
+                    <span class="cb-card-label cb-badge-reviewed">Reviewed</span>
+                  ) : (
+                    <span class="cb-card-label cb-card-label-profile">Profile Only</span>
+                  )}
                   {tool.desc && <p class="cb-card-desc">{tool.desc}</p>}
                   <div class="cb-card-footer">
                     {tool.exists ? (
                       <>
                         <a href={`/reviews/${tool.slug}/`} class="cb-btn-primary">Read Review</a>
-                        <a href={`/alternatives/${tool.slug}/`} class="cb-btn-secondary">Compare →</a>
+                        {comparisonUrls[tool.slug] ? (
+                          <a href={comparisonUrls[tool.slug]} class="cb-btn-secondary">Compare →</a>
+                        ) : (
+                          <a href={`/alternatives/${tool.slug}/`} class="cb-btn-secondary">Alternatives →</a>
+                        )}
                       </>
                     ) : (
                       <a href={`/alternatives/${tool.slug}/`} class="cb-btn-profile">View Profile →</a>
@@ -467,6 +551,33 @@ const homeJsonLd = JSON.stringify({
             featuredImage={post.data.featuredImage}
             featured={false}
           />
+        ))}
+      </div>
+    </section>
+  )}
+
+  <!-- ── MOST COMPARED ───────────────────────────────────── -->
+  {mostCompared.length > 0 && (
+    <section class="section">
+      <div class="section-header">
+        <div>
+          <h2>Most Compared Tools</h2>
+          <p class="section-sub">Side-by-side editorial comparisons to help you choose the right tool.</p>
+        </div>
+        <a href="/comparisons/" class="see-all">All comparisons →</a>
+      </div>
+      <div class="mc-grid">
+        {mostCompared.map((comp: any) => (
+          <a href={comp.url} class="mc-card">
+            <div class="mc-pair">
+              {comp.toolA && <ToolLogo tool={comp.toolA} size={28} />}
+              <span class="mc-vs">vs</span>
+              {comp.toolB && <ToolLogo tool={comp.toolB} size={28} />}
+              <span class="mc-badge">Comparison</span>
+            </div>
+            <p class="mc-title">{comp.title}</p>
+            <span class="mc-cta">Read Comparison →</span>
+          </a>
         ))}
       </div>
     </section>
@@ -979,6 +1090,67 @@ const homeJsonLd = JSON.stringify({
   }
   .cb-btn-profile:hover { border-color: #7C3AED; color: #7C3AED; text-decoration: none; }
 
+  /* ── EDITORIAL BADGE ────────────────────────────────────── */
+  .cb-badge-reviewed { color: #059669; background: #ECFDF5; border-color: #A7F3D0; }
+
+  /* ── HIGHEST RATED ───────────────────────────────────────── */
+  .hr-section { padding: 48px 0; }
+  .hr-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+  }
+  .hr-card {
+    border: 1.5px solid #E8ECF0;
+    border-radius: 14px;
+    padding: 16px;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .hr-card:hover { border-color: #C4B5FD; box-shadow: 0 6px 20px rgba(124,58,237,0.09); }
+  .hr-card-top { display: flex; align-items: center; gap: 10px; }
+  .hr-logo-wrap { width: 36px; height: 36px; flex-shrink: 0; display: flex; align-items: center; }
+  .hr-card-meta { display: flex; flex-direction: column; gap: 2px; flex: 1; min-width: 0; }
+  .hr-label { font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #7C3AED; }
+  .hr-name { font-size: 0.9rem; font-weight: 700; color: #0F172A; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .hr-rating { font-size: 0.88rem; font-weight: 800; color: #D97706; flex-shrink: 0; white-space: nowrap; }
+  .hr-desc { font-size: 0.78rem; color: #64748B; line-height: 1.5; margin: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .hr-cta { font-size: 0.78rem; font-weight: 700; color: #7C3AED; text-decoration: none; margin-top: auto; }
+  .hr-cta:hover { text-decoration: underline; }
+
+  /* ── MOST COMPARED ────────────────────────────────────────── */
+  .mc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 14px;
+  }
+  .mc-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 1.5px solid #E8ECF0;
+    border-radius: 14px;
+    padding: 18px 20px;
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .mc-card:hover { border-color: #C4B5FD; box-shadow: 0 6px 20px rgba(124,58,237,0.1); text-decoration: none; }
+  .mc-pair { display: flex; align-items: center; gap: 10px; }
+  .mc-vs { font-size: 0.7rem; font-weight: 800; color: #9ca3af; text-transform: uppercase; letter-spacing: 0.06em; flex-shrink: 0; }
+  .mc-badge {
+    margin-left: auto; flex-shrink: 0;
+    font-size: 0.62rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em;
+    color: #6366F1; background: #EEF2FF; border: 1px solid #C7D2FE;
+    padding: 2px 8px; border-radius: 20px;
+  }
+  .mc-title { font-size: 0.88rem; font-weight: 600; color: #0F172A; line-height: 1.4; margin: 0; }
+  .mc-cta { font-size: 0.78rem; font-weight: 700; color: #7C3AED; margin-top: auto; }
+
   /* ── STAT LINK ─────────────────────────────────────────── */
   .stat-link { text-decoration: none; transition: transform 0.15s; }
   .stat-link:hover { transform: translateY(-1px); }
@@ -1092,6 +1264,7 @@ const homeJsonLd = JSON.stringify({
     .cb-body { grid-template-columns: 200px 1fr; }
     .cb-nav-sub { display: none; }
     .ep-grid { grid-template-columns: repeat(2, 1fr); }
+    .hr-grid { grid-template-columns: repeat(2, 1fr); }
   }
   @media (max-width: 768px) {
     .stats-bar { padding: 16px; }
@@ -1126,6 +1299,7 @@ const homeJsonLd = JSON.stringify({
   }
   @media (max-width: 640px) {
     .ep-grid { grid-template-columns: 1fr; }
+    .hr-grid { grid-template-columns: 1fr 1fr; }
     .hero { padding: 60px 0 44px; }
     .hero h1 { font-size: 2.2rem; }
     .hero-sub { font-size: 1rem; }
@@ -1134,8 +1308,18 @@ const homeJsonLd = JSON.stringify({
     #hero-q { font-size: 1rem; padding: 14px 14px 14px 46px; }
     .hero-search-btn { padding: 8px 16px; font-size: 0.85rem; }
     .hero-s-icon { left: 14px; }
-    .hero-cats { gap: 6px; }
-    .hero-cat-chip { font-size: 0.8rem; padding: 5px 12px; }
+    .hero-cats {
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      justify-content: flex-start;
+      padding-bottom: 2px;
+      margin: 0 -24px;
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+    .hero-cats::-webkit-scrollbar { display: none; }
+    .hero-cat-chip { flex-shrink: 0; font-size: 0.8rem; padding: 5px 12px; }
     .stats-bar { flex-direction: column; gap: 12px; }
     .stat-divider { display: none; }
     .stat-item { padding: 0; justify-content: flex-start; width: 100%; }
