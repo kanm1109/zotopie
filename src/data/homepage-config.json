@@ -1,4 +1,6 @@
 {
+  "editorsPicks": ["fathom", "synthesia", "fireflies-ai", "originality-ai", "gptzero", "rytr"],
+  "featuredGuides": ["free-ai-tools", "ai-writing-tools", "ai-detection-tools", "seo-tools", "productivity-tools", "workflow-automation-tools"],
   "toolLabels": {
     "gptzero": "Editor's Choice",
     "originality-ai": "Best for Publishers",
