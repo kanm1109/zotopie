@@ -785,6 +785,8 @@
     "h1": "Best Link-in-Bio Tools for Etsy Sellers (2026)",
     "metaTitle": "Best Link-in-Bio Tools for Etsy Sellers (2026) | Zotopie",
     "metaDesc": "Beacons Free is cheapest for Etsy sellers under ~$189/month; above that, Linktree Pro keeps the most. Fees checked 24 Nov 2026.",
+  "heroImage": "/images/comparisons/link-in-bio-for-etsy-sellers-hero.jpg",
+  "heroImageAlt": "Illustration comparing link-in-bio tools for Etsy sellers: a smartphone showing a bio link page above a market stall of handmade goods with price tags and coins",
     "intro": "For an Etsy seller, the cheapest link-in-bio tool is decided by monthly sales, not by the monthly price. Below about $189 a month in sales, Beacons Free keeps the most of every sale — it costs $0 and takes 9%. Above about $189, Linktree Pro keeps the most — $17 a month and 0% per sale. Linktree's free plan cannot sell paid products at all, so it is not ranked. Stan Store and Later are in the list for sellers who want bookings or scheduling bundled in. Every fee on this page was checked on 24 November 2026; use the fee calculator to run the same numbers for your own sales.",
     "categorySlug": "link-tracking",
     "categoryName": "Link Tracking",
@@ -807,7 +809,7 @@
       },
       {
         "q": "How much does each tool keep at $500 a month in sales?",
-        "a": "At $500 a month in sales (20 orders of $25, with $20.50 of Stripe processing included):<ul><li>Linktree Pro keeps <strong>$462.50</strong></li><li>Later Starter keeps $454.50</li><li>Stan Creator keeps $450.50</li><li>Beacons Creator Plus keeps $449.50</li><li>Beacons Free keeps $434.50</li><li>Linktree Starter keeps $425.50</li></ul>Kept means sales minus the plan fee, the seller fee and Stripe processing (2.9% + $0.30 per order). Fees checked 24 November 2026."
+        "a": "At $500 a month in sales (20 orders of $25, with $20.50 of Stripe processing included):<ul><li>Linktree Pro keeps <strong>$462.50</strong></li><li>Later Starter keeps $454.50</li><li>Stan Creator keeps $450.50</li><li>Beacons Creator Plus keeps $449.50</li><li>Beacons Free keeps $434.50</li><li>Linktree Starter keeps $425.50</li></ul><img src=\"/images/comparisons/link-in-bio-for-etsy-sellers-keeps-500.svg\" alt=\"Bar chart: amount kept at $500/month in sales — Linktree Pro $462.50, Later Starter $454.50, Stan Creator $450.50, Beacons Creator Plus $449.50, Beacons Free $434.50, Linktree Starter $425.50\" />Kept means sales minus the plan fee, the seller fee and Stripe processing (2.9% + $0.30 per order). Fees checked 24 November 2026."
       },
       {
         "q": "Is there a free link-in-bio tool that can sell for a new Etsy shop?",
@@ -824,6 +826,8 @@
     "h1": "Best Link-in-Bio Tools for Coaches (2026)",
     "metaTitle": "Best Link-in-Bio Tools for Coaches (2026) | Zotopie",
     "metaDesc": "Beacons Free is cheapest for coaches under ~$322/month; above that, Stan Creator. Fees checked 24 Nov 2026.",
+  "heroImage": "/images/comparisons/link-in-bio-for-coaches-hero.jpg",
+  "heroImageAlt": "Illustration comparing link-in-bio tools for coaches selling courses: a smartphone showing a bio link page next to a coach presenting to students at a whiteboard with a checklist, with price tags and coins",
     "intro": "For a coach selling courses and bookings, the cheapest link-in-bio tool is decided by monthly sales, not by the monthly price. Below about $322 a month in sales, Beacons Free keeps the most of every sale — it costs $0 and takes 9%. Above about $322, Stan Store Creator keeps the most — $29 a month and 0% per sale — beating Beacons Creator Plus by $1 a month. On plan cost alone, Linktree Pro is the cheapest 0% plan at $17 a month, but whether it covers course sales and bookings the way a coach needs has not been verified, so it ranks third here. Every fee on this page was checked on 24 November 2026; use the fee calculator to run the same numbers for your own sales.",
     "categorySlug": "link-tracking",
     "categoryName": "Link Tracking",
@@ -844,7 +848,7 @@
       },
       {
         "q": "How much does each tool keep at $500 a month in $100 course sales?",
-        "a": "At $500 a month in sales (5 orders of $100, with $16.00 of Stripe processing included):<ul><li>Linktree Pro keeps <strong>$467.00</strong></li><li>Stan Creator keeps $455.00</li><li>Beacons Creator Plus keeps $454.00</li><li>Beacons Free keeps $439.00</li><li>Linktree Starter keeps $430.00</li></ul>Kept means sales minus the plan fee, the seller fee and Stripe processing (2.9% + $0.30 per order). Fees checked 24 November 2026."
+        "a": "At $500 a month in sales (5 orders of $100, with $16.00 of Stripe processing included):<ul><li>Linktree Pro keeps <strong>$467.00</strong></li><li>Stan Creator keeps $455.00</li><li>Beacons Creator Plus keeps $454.00</li><li>Beacons Free keeps $439.00</li><li>Linktree Starter keeps $430.00</li></ul><img src=\"/images/comparisons/link-in-bio-for-coaches-keeps-500.svg\" alt=\"Bar chart: amount kept at $500/month in sales — Linktree Pro $467.00, Stan Creator $455.00, Beacons Creator Plus $454.00, Beacons Free $439.00, Linktree Starter $430.00\" />Kept means sales minus the plan fee, the seller fee and Stripe processing (2.9% + $0.30 per order). Fees checked 24 November 2026."
       },
       {
         "q": "Do I need Stan Store, or is Beacons enough?",
