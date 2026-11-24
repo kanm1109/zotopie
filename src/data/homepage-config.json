@@ -1,5 +1,5 @@
 {
-  "editorsPicks": ["fathom", "synthesia", "fireflies-ai", "originality-ai", "gptzero", "rytr"],
+  "editorsPicks": ["fathom-meeting", "synthesia", "fireflies-ai", "originality-ai", "gptzero", "rytr"],
   "featuredGuides": ["free-ai-tools", "ai-writing-tools", "ai-detection-tools", "seo-tools", "productivity-tools", "workflow-automation-tools"],
   "toolLabels": {
     "gptzero": "Editor's Choice",
@@ -9,6 +9,7 @@
     "fireflies-ai": "Most Popular",
     "otter-ai": "Creator Favorite",
     "fathom": "Privacy First",
+    "fathom-meeting": "Privacy First",
     "jasper": "Enterprise",
     "hyperwrite": "AI Assistant",
     "rytr": "Best Value",
@@ -30,7 +31,7 @@
     "zerogpt": "Free AI detector for quick, no-signup content checks.",
     "fireflies-ai": "Automatic meeting notes, transcripts, and action items.",
     "otter-ai": "Real-time transcription designed for live conversations.",
-    "fathom": "Privacy-focused meeting recorder built for individuals.",
+    "fathom-meeting": "Privacy-focused meeting recorder built for individuals.",
     "jasper": "Enterprise AI writing platform for marketing teams.",
     "hyperwrite": "AI writing assistant built for research and long-form drafts.",
     "rytr": "Affordable AI writing for freelancers and solo creators.",

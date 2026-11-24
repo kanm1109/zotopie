@@ -48,7 +48,7 @@
   { "tool_name": "Patreon",           "simple_icon": "patreon" },
   { "tool_name": "Yoast SEO",         "simple_icon": "yoast" },
   { "tool_name": "WP Engine",         "simple_icon": "wpengine" },
-  { "tool_name": "Fathom",            "simple_icon": "fathom" },
+  { "tool_name": "Fathom Analytics",  "simple_icon": "fathom" },
   { "tool_name": "GoDaddy",           "simple_icon": "godaddy" },
   { "tool_name": "Hetzner",           "simple_icon": "hetzner" },
   { "tool_name": "Paddle",            "simple_icon": "paddle" },

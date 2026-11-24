@@ -3,7 +3,7 @@ title: "Fathom Meeting Assistant Review (2026): Features, Pricing, and Alternati
 description: "An in-depth, neutral review of Fathom, the AI meeting assistant. We cover features, pricing, pros, cons, and compare it to top alternatives like Otter and Fireflies."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-30
-tags: ["Meeting AI", "Fathom", "AI Transcription", "Productivity", "Review"]
+tags: ["Meeting AI", "fathom-meeting", "AI Transcription", "Productivity", "Review"]
 category: "ai-tools"
 featuredImage: "/images/ai-tools/fathom-meeting-review/fathom-dashboard-overview.svg"
 draft: false
@@ -151,7 +151,7 @@ The free version of Fathom is arguably the most generous in the industry. It inc
 For solo professionals, freelancers, and students, the Free plan is entirely sufficient. Fathom has stated they intend to keep the core recording and transcription features free permanently, using it as a funnel to drive enterprise and team adoption.
 
 ### Fathom Premium
-Designed for individual power users, consultants, and salespeople, the Premium plan typically costs around $15 to $19 per month when billed annually. It adds:
+Designed for individual power users, consultants, and salespeople, the Premium plan costs $16 per user per month when billed annually ($20 per month on monthly billing). It adds:
 *   Advanced AI summaries with access to custom templates
 *   Automatic CRM syncing (HubSpot, Salesforce, Close)
 *   Zapier integrations for building custom webhooks and automated workflows
@@ -159,11 +159,16 @@ Designed for individual power users, consultants, and salespeople, the Premium p
 *   Priority customer support with faster response times
 
 ### Fathom Team Edition
-Aimed at agencies, customer success departments, and sales teams, the Team Edition generally costs between $20 and $25 per user per month. It includes everything in Premium, plus:
+Aimed at agencies, customer success departments, and sales teams, the Team Edition costs $15 per user per month when billed annually ($19 per month on monthly billing, 2-user minimum). It includes everything in Premium, plus:
 *   Centralized team billing, analytics dashboards, and user management
 *   Team-wide searchable transcript repositories and folders
 *   Keyword tracking and automated alerts (e.g., get alerted when a competitor is mentioned)
 *   Advanced security controls, domain restrictions, and compliance features
+
+### Fathom Business and Enterprise
+For larger teams, Business costs $25 per user per month when billed annually ($34 monthly, 2-user minimum) and adds unlimited CRM connected users, CRM field sync, deal view, and coaching metrics with AI scorecards. Enterprise is $35 per user per month (annual billing only) and adds hands-on implementation, custom-built summaries, SSO/SCIM, and a dedicated success manager.
+
+> Pricing checked: 2026-11-24 on the official pricing page (fathom.video/pricing). Prices change often — verify on the vendor's page before buying.
 
 ## Pros and Cons
 
