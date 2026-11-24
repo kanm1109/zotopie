@@ -779,5 +779,44 @@
         "a": "GPTZero and Turnitin serve different audiences. GPTZero offers open retail plans for individual teachers, freelancers, and small content teams — Turnitin is restricted to accredited universities and school districts via enterprise contracts only. For a full side-by-side analysis of accuracy, false-positive rates, LMS integration, and pricing access, see our <a href=\"/comparisons/gptzero-vs-turnitin/\">GPTZero vs Turnitin comparison</a>."
       }
     ]
+  },
+  {
+    "slug": "link-in-bio-for-etsy-sellers",
+    "h1": "Best Link-in-Bio Tools for Etsy Sellers (2026)",
+    "metaTitle": "Best Link-in-Bio Tools for Etsy Sellers (2026) | Zotopie",
+    "metaDesc": "Beacons Free is cheapest for Etsy sellers under ~$189/month; above that, Linktree Pro keeps the most. Fees checked 24 Nov 2026.",
+    "intro": "For an Etsy seller, the cheapest link-in-bio tool is decided by monthly sales, not by the monthly price. Below about $189 a month in sales, Beacons Free keeps the most of every sale — it costs $0 and takes 9%. Above about $189, Linktree Pro keeps the most — $17 a month and 0% per sale. Linktree's free plan cannot sell paid products at all, so it is not ranked. Stan Store and Later are in the list for sellers who want bookings or scheduling bundled in. Every fee on this page was checked on 24 November 2026; use the fee calculator to run the same numbers for your own sales.",
+    "categorySlug": "link-tracking",
+    "categoryName": "Link Tracking",
+    "toolSlugs": [
+      "beacons",
+      "linktree",
+      "stan-store",
+      "later"
+    ],
+    "rankLabels": {
+      "beacons": "Best for Etsy Sellers Under $189/mo",
+      "linktree": "Best for Etsy Sellers Over $189/mo",
+      "stan-store": "Best for High-Volume Sellers",
+      "later": "Best for Scheduling + Bio Links"
+    },
+    "faqs": [
+      {
+        "q": "Which link-in-bio tool is cheapest for Etsy sellers?",
+        "a": "It depends on your monthly sales. Below about $189 a month, Beacons Free is cheapest: $0 a month and a 9% fee per sale. Above about $189, Linktree Pro is cheapest: $17 a month and 0% per sale. At $500 a month in sales (20 orders of $25), Linktree Pro keeps $462.50 and Beacons Free keeps $434.50. Linktree's free plan cannot sell paid products at all. Run your own numbers in the <a href=\"/tools/link-in-bio-fee-calculator/\">link-in-bio fee calculator</a>. See the main <a href=\"/best/link-in-bio-tools/\">link-in-bio hub</a> for the general ranking."
+      },
+      {
+        "q": "How much does each tool keep at $500 a month in sales?",
+        "a": "At $500 a month in sales (20 orders of $25, with $20.50 of Stripe processing included):<ul><li>Linktree Pro keeps <strong>$462.50</strong></li><li>Later Starter keeps $454.50</li><li>Stan Creator keeps $450.50</li><li>Beacons Creator Plus keeps $449.50</li><li>Beacons Free keeps $434.50</li><li>Linktree Starter keeps $425.50</li></ul>Kept means sales minus the plan fee, the seller fee and Stripe processing (2.9% + $0.30 per order). Fees checked 24 November 2026."
+      },
+      {
+        "q": "Is there a free link-in-bio tool that can sell for a new Etsy shop?",
+        "a": "Yes — Beacons Free. It costs $0 a month, takes 9% per sale, and includes 50 email sends a month. Linktree Free is also $0 a month but cannot sell paid products at all. Later has no free plan listed on its pricing page; its Starter plan is $25 a month (monthly billing) or $18.75 a month billed yearly."
+      },
+      {
+        "q": "What about lnk.bio?",
+        "a": "We could not verify lnk.bio's pricing — its pricing page returned a 404 on 24 November 2026 — so it is not ranked here. Two secondary sources report a Mini plan at $0.99 a month or $9.99 one-time and a Unique plan at $24.99 one-time, but we do not publish those as fact until they can be checked on lnk.bio's own site."
+      }
+    ]
   }
 ]
