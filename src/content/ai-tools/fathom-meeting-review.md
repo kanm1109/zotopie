@@ -3,7 +3,7 @@ title: "Fathom Meeting Assistant Review (2026): Features, Pricing, and Alternati
 description: "An in-depth, neutral review of Fathom, the AI meeting assistant. We cover features, pricing, pros, cons, and compare it to top alternatives like Otter and Fireflies."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-30
-tags: ["Meeting AI", "Fathom", "fathom-meeting", "AI Transcription", "Productivity", "Review"]
+tags: ["Meeting AI", "fathom-meeting", "AI Transcription", "Productivity", "Review"]
 category: "ai-tools"
 featuredImage: "/images/ai-tools/fathom-meeting-review/fathom-dashboard-overview.svg"
 draft: false

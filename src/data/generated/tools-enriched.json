@@ -3888,7 +3888,7 @@
     "trackingEnabled": false
   },
   {
-    "name": "Fathom",
+    "name": "Fathom Analytics",
     "slug": "fathom",
     "description": "Simple, privacy-focused website analytics tool.",
     "website": "https://usefathom.com",
@@ -7758,7 +7758,7 @@
     "alternatives": [
       "fireflies-ai",
       "otter-ai",
-      "fathom"
+      "fathom-meeting"
     ],
     "keyFeatures": [
       {
@@ -7823,6 +7823,220 @@
     "affiliateUrl": null,
     "affiliateNetwork": null,
     "affiliateSource": "https://tldv.io/affiliate",
+    "trackingEnabled": false
+  },
+  {
+    "name": "Linktree",
+    "slug": "linktree",
+    "description": "The default link-in-bio page: one link that holds all your links, with selling built in on paid plans.",
+    "website": "https://linktr.ee",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $9/mo",
+    "rating": 4.5,
+    "featured": true,
+    "addedDate": "2026-11-24",
+    "affiliate": false,
+    "primaryCategory": "link-tracking",
+    "categories": [
+      "link-tracking"
+    ],
+    "simple_icon": "",
+    "overview": "Linktree is the most recognised link-in-bio tool: a single page holding unlimited links, email and phone sign-ups, a QR code and basic analytics on the free plan. Selling paid products needs a paid plan. Prices checked 24 November 2026 (USD, monthly billing; annual billing is cheaper): Free $0, Starter $9/mo, Pro $17/mo, Premium $35/mo. Seller fees: 9% on Starter, 0% on Pro and Premium. The free plan cannot sell paid products.",
+    "pros": [
+      "Free plan is genuinely usable for a plain link page — unlimited links, QR code, 28 days of analytics",
+      "Pro ($17/mo) charges 0% seller fees, so it pays for itself once monthly sales pass a few hundred dollars",
+      "The most recognised link-in-bio brand — visitors trust a linktr.ee link",
+      "Email and phone sign-up capture built in, plus Meta Pixel and UTM tools on Pro",
+      "7-day free trial on Pro and Premium"
+    ],
+    "cons": [
+      "You cannot sell paid products on the free plan at all",
+      "Prices rose in October 2026 and vary by region — the price you see may differ",
+      "Linktree branding stays on the page until Pro",
+      "Starter still takes a 9% seller fee on top of the $9/mo subscription"
+    ],
+    "bestFor": [
+      "Creators who mainly need a link page",
+      "Etsy sellers and coaches selling over ~$300/month (Pro at 0% beats the free/9% options)",
+      "Anyone who wants the most recognised link-in-bio URL"
+    ],
+    "alternatives": [
+      "beacons",
+      "stan-store",
+      "later"
+    ],
+    "keyFeatures": [],
+    "pricingBreakdown": null,
+    "useCases": [],
+    "whoShouldAvoid": [],
+    "verdict": {
+      "summary": "Linktree is the safe default link-in-bio page, and the free plan covers a plain list of links well. If you sell anything, Pro at $17/mo with 0% seller fees is the plan that makes sense; Starter's 9% fee makes it the worst value for sellers."
+    },
+    "affiliateProgramExists": false,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": null,
+    "trackingEnabled": false
+  },
+  {
+    "name": "Beacons",
+    "slug": "beacons",
+    "description": "Link-in-bio page plus store, email and media kit in one free account — 9% fee until you pay $30/mo for 0%.",
+    "website": "https://beacons.ai",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $10/mo",
+    "rating": 4.6,
+    "featured": true,
+    "addedDate": "2026-11-24",
+    "affiliate": false,
+    "primaryCategory": "link-tracking",
+    "categories": [
+      "link-tracking"
+    ],
+    "simple_icon": "",
+    "overview": "Beacons combines a link-in-bio page with a store, email marketing, a media kit and an AI setup assistant (Beam) in one account. Prices checked 24 November 2026 (USD, monthly billing): Free $0, Creator $10/mo, Creator Plus $30/mo, Creator Max $100/mo. Platform fee on sales: 9% on Free and Creator, 0% on Creator Plus and Max. Email sends: 50/month on Free, 500 on Creator, no monthly limit on Creator Plus. Creator Plus adds unlimited courses with video hosting and memberships.",
+    "pros": [
+      "Free plan includes a store, email (50 sends/month), media kit and AI setup — no other tool gives this much free",
+      "Creator Plus ($30/mo) drops the platform fee to 0% and adds unlimited courses and memberships",
+      "Email with no monthly send limit on Creator Plus — no separate email tool needed",
+      "Invoicing and brand-deal tools (rate calculator, media kit) are included",
+      "You can sell from day one on the free plan, unlike Stan Store"
+    ],
+    "cons": [
+      "9% platform fee on Free and Creator — at $1,000/mo in sales that is $90",
+      "Email sends are capped at 50/month on Free and 500 on Creator",
+      "Creator ($10/mo) still charges the 9% fee, so it is poor value for sellers",
+      "Creator Max at $100/mo is priced for brands, not solo creators"
+    ],
+    "bestFor": [
+      "Creators selling courses, digital products and memberships",
+      "Coaches who want email and a store in the same tool",
+      "Sellers starting at $0 who will upgrade to Creator Plus past ~$333/month in sales"
+    ],
+    "alternatives": [
+      "linktree",
+      "stan-store",
+      "later"
+    ],
+    "keyFeatures": [],
+    "pricingBreakdown": null,
+    "useCases": [],
+    "whoShouldAvoid": [],
+    "verdict": {
+      "summary": "Beacons is the best all-in-one for creators who sell courses and need email in the same place. Start free at 9%, then move to Creator Plus ($30/mo, 0%) once monthly sales pass about $333 — skip the $10 Creator plan, it still charges 9%."
+    },
+    "affiliateProgramExists": false,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": null,
+    "trackingEnabled": false
+  },
+  {
+    "name": "Stan Store",
+    "slug": "stan-store",
+    "description": "Creator storefront for courses, bookings and memberships — $29/mo, 0% platform fee, no free plan.",
+    "website": "https://stan.store",
+    "pricing": "Paid",
+    "startingPrice": "From $29/mo",
+    "rating": 4.4,
+    "featured": true,
+    "addedDate": "2026-11-24",
+    "affiliate": false,
+    "primaryCategory": "ecommerce-monetization",
+    "categories": [
+      "ecommerce-monetization"
+    ],
+    "simple_icon": "",
+    "overview": "Stan Store is a link-in-bio storefront built for creators selling digital products, courses, bookings and memberships. Prices checked 24 November 2026 (USD, monthly billing): Creator $29/mo ($300/year), Creator Pro $99/mo ($948/year), both with a 14-day free trial and no free plan. Stan charges 0% transaction fees on both plans; you still pay Stripe or PayPal processing (typically 2.9% + $0.30 per card payment).",
+    "pros": [
+      "0% platform fee on both plans — Stan takes nothing per sale",
+      "Courses, bookings, memberships and digital products all in the $29 plan",
+      "14-day free trial, and you can sell during the trial",
+      "Simple flat pricing: no fee tier to work out, the maths is just the subscription plus processing"
+    ],
+    "cons": [
+      "No free plan — $29/mo before your first sale",
+      "A custom domain reportedly needs the Creator Max plan ($299/mo), not listed on the pricing page",
+      "Fewer free tools around the store (no built-in email like Beacons, no free link page like Linktree)",
+      "Creator Pro at $99/mo is a big jump for features most solo creators do not need yet"
+    ],
+    "bestFor": [
+      "Coaches selling courses, bookings and memberships",
+      "Creators with steady sales over ~$320/month (where $29 flat beats a 9% fee)",
+      "Sellers who want one checkout for everything, not a link page plus a separate store"
+    ],
+    "alternatives": [
+      "beacons",
+      "linktree",
+      "gumroad"
+    ],
+    "keyFeatures": [],
+    "pricingBreakdown": null,
+    "useCases": [],
+    "whoShouldAvoid": [],
+    "verdict": {
+      "summary": "Stan Store is the cheapest option once you sell steadily — $29/mo flat with 0% fees beats a 9% platform fee past about $320/month in sales. The catch is the $29 starts before your first sale, so it only makes sense once you are actually selling."
+    },
+    "affiliateProgramExists": false,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": null,
+    "trackingEnabled": false
+  },
+  {
+    "name": "Fathom Meeting Assistant",
+    "slug": "fathom-meeting",
+    "description": "AI meeting assistant that records, transcribes, and summarizes video calls on Zoom, Meet, and Teams.",
+    "website": "https://fathom.video",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $15/user/mo",
+    "rating": 4.7,
+    "featured": false,
+    "addedDate": "2026-11-24",
+    "affiliate": false,
+    "primaryCategory": "productivity-knowledge-management",
+    "categories": [
+      "productivity-knowledge-management"
+    ],
+    "simple_icon": "",
+    "overview": "Fathom is an AI meeting assistant that automatically joins Zoom, Google Meet, and Microsoft Teams calls, records them, and produces transcripts and AI summaries with action items. The free plan includes unlimited recording and transcription. Paid plans add advanced summaries, CRM sync (Salesforce, HubSpot, Close), Zapier integrations, team folders, and keyword tracking. Pricing checked 2026-11-24 on fathom.video/pricing: Free $0; Premium $16/user/mo billed annually ($20 monthly); Team $15/user/mo billed annually ($19 monthly, 2-user minimum); Business $25/user/mo billed annually ($34 monthly); Enterprise $35/user/mo, annual only. Fathom was acquired by Superhuman on 14 September 2026; the company says nothing changes for existing users.",
+    "pros": [
+      "Free plan includes unlimited recording and transcription with no monthly minute caps",
+      "AI summaries with action items and multiple templates (Sales, Action Items, Chronological)",
+      "SOC 2 Type II compliant; company states it does not train AI models on private meeting data",
+      "Automatic CRM sync to Salesforce, HubSpot, and Close on paid plans",
+      "Clean setup: connects Google or Microsoft calendar and joins calls automatically"
+    ],
+    "cons": [
+      "No standalone mobile app for recording in-person meetings",
+      "If you are not the host, the host must admit the Fathom bot from the waiting room",
+      "Team analytics are less deep than Fireflies.ai (no talk-to-listen ratios or sentiment tracking)"
+    ],
+    "bestFor": [
+      "Freelancers and consultants needing free unlimited meeting recording",
+      "Sales teams needing automatic CRM sync after calls",
+      "Small teams needing shared meeting notes, folders, and search"
+    ],
+    "alternatives": [
+      "fireflies-ai",
+      "otter-ai",
+      "tldv"
+    ],
+    "keyFeatures": [],
+    "pricingBreakdown": null,
+    "useCases": [],
+    "whoShouldAvoid": [],
+    "verdict": {
+      "summary": "Fathom is the simplest capable AI meeting assistant for individuals and small teams: unlimited free recording and transcription, fast AI summaries, and automatic CRM sync on paid plans. Teams needing deep conversation analytics or mobile in-person recording should look at Fireflies.ai or Otter.ai instead."
+    },
+    "affiliateProgramExists": false,
+    "affiliateApproved": false,
+    "affiliateUrl": null,
+    "affiliateNetwork": null,
+    "affiliateSource": null,
     "trackingEnabled": false
   }
 ]
