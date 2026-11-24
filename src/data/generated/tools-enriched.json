@@ -729,8 +729,8 @@
     "slug": "later",
     "description": "Visual-first social media marketing platform designed for Instagram.",
     "website": "https://later.com",
-    "pricing": "Freemium",
-    "startingPrice": "Free / $18/mo",
+    "pricing": "Paid",
+    "startingPrice": "$25/mo",
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-02-01",
@@ -7857,7 +7857,7 @@
     ],
     "bestFor": [
       "Creators who mainly need a link page",
-      "Etsy sellers and coaches selling over ~$300/month (Pro at 0% beats the free/9% options)",
+      "Etsy sellers and coaches selling over ~$189/month (Pro at 0% beats the free/9% options)",
       "Anyone who wants the most recognised link-in-bio URL"
     ],
     "alternatives": [
