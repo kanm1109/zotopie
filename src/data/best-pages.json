@@ -818,5 +818,42 @@
         "a": "We could not verify lnk.bio's pricing — its pricing page returned a 404 on 24 November 2026 — so it is not ranked here. Two secondary sources report a Mini plan at $0.99 a month or $9.99 one-time and a Unique plan at $24.99 one-time, but we do not publish those as fact until they can be checked on lnk.bio's own site."
       }
     ]
+  },
+  {
+    "slug": "link-in-bio-for-coaches",
+    "h1": "Best Link-in-Bio Tools for Coaches (2026)",
+    "metaTitle": "Best Link-in-Bio Tools for Coaches (2026) | Zotopie",
+    "metaDesc": "Beacons Free is cheapest for coaches under ~$322/month; above that, Stan Creator. Fees checked 24 Nov 2026.",
+    "intro": "For a coach selling courses and bookings, the cheapest link-in-bio tool is decided by monthly sales, not by the monthly price. Below about $322 a month in sales, Beacons Free keeps the most of every sale — it costs $0 and takes 9%. Above about $322, Stan Store Creator keeps the most — $29 a month and 0% per sale — beating Beacons Creator Plus by $1 a month. On plan cost alone, Linktree Pro is the cheapest 0% plan at $17 a month, but whether it covers course sales and bookings the way a coach needs has not been verified, so it ranks third here. Every fee on this page was checked on 24 November 2026; use the fee calculator to run the same numbers for your own sales.",
+    "categorySlug": "link-tracking",
+    "categoryName": "Link Tracking",
+    "toolSlugs": [
+      "beacons",
+      "stan-store",
+      "linktree"
+    ],
+    "rankLabels": {
+      "beacons": "Best for Coaches Under $322/mo",
+      "stan-store": "Best for Coaches Over $322/mo",
+      "linktree": "Cheapest 0% Plan on Fees Alone"
+    },
+    "faqs": [
+      {
+        "q": "Which link-in-bio tool is cheapest for coaches?",
+        "a": "It depends on your monthly sales. Below about $322 a month, Beacons Free is cheapest: $0 a month and a 9% fee per sale. Above about $322, Stan Store Creator is cheapest: $29 a month and 0% per sale, beating Beacons Creator Plus by $1 a month. Linktree Pro is the cheapest 0% plan on fees alone at $17 a month. Run your own numbers in the <a href=\"/tools/link-in-bio-fee-calculator/\">link-in-bio fee calculator</a>. See the main <a href=\"/best/link-in-bio-tools/\">link-in-bio hub</a> for the general ranking."
+      },
+      {
+        "q": "How much does each tool keep at $500 a month in $100 course sales?",
+        "a": "At $500 a month in sales (5 orders of $100, with $16.00 of Stripe processing included):<ul><li>Linktree Pro keeps <strong>$467.00</strong></li><li>Stan Creator keeps $455.00</li><li>Beacons Creator Plus keeps $454.00</li><li>Beacons Free keeps $439.00</li><li>Linktree Starter keeps $430.00</li></ul>Kept means sales minus the plan fee, the seller fee and Stripe processing (2.9% + $0.30 per order). Fees checked 24 November 2026."
+      },
+      {
+        "q": "Do I need Stan Store, or is Beacons enough?",
+        "a": "On fees: under about $322 a month in sales, Beacons Free is cheaper; above that, Stan Creator and Beacons Creator Plus cost within $1 a month of each other, so the answer depends on course and booking features — which we have not verified for either tool. Linktree Pro is cheaper than both on fees alone ($17 a month, 0%), but the same applies: whether it covers course sales and bookings the way a coach needs is unverified."
+      },
+      {
+        "q": "How much does each tool take from a $100 course sale at $500 a month?",
+        "a": "At $500 a month in $100 course sales: Linktree Pro takes $33.00 ($17 plan + $16.00 processing); Stan Creator takes $45.00 ($29 + $16.00); Beacons Creator Plus takes $46.00 ($30 + $16.00); Beacons Free takes $61.00 ($45.00 seller fee + $16.00 processing)."
+      }
+    ]
   }
 ]
