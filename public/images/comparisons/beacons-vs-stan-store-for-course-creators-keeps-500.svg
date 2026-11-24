@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="470" viewBox="0 0 780 470" role="img" aria-label="Bar chart: amount kept at $500/month in sales — Linktree Pro $467.00, Stan Creator $455.00, Beacons Creator Plus $454.00, Beacons Free $439.00, Beacons Creator $429.00, Stan Creator Pro $385.00">
+  <title>What you keep at $500/month in sales</title>
+  <rect width="780" height="470" fill="#ffffff"/>
+  <text x="390" y="34" text-anchor="middle" font-family="Plus Jakarta Sans, -apple-system, Segoe UI, Roboto, sans-serif" font-size="19" font-weight="700" fill="#0F172A">What you keep at $500/month in sales</text>
+  <text x="390" y="56" text-anchor="middle" font-family="Plus Jakarta Sans, -apple-system, Segoe UI, Roboto, sans-serif" font-size="13" fill="#64748B">Average order $100 · 5 orders · after plan fee, seller fee and $16.00 processing</text>
+  <g font-family="Plus Jakarta Sans, -apple-system, Segoe UI, Roboto, sans-serif" font-size="14" fill="#0F172A">
+    <text x="210" y="114" text-anchor="end">Linktree Pro</text>
+    <rect x="220" y="96" width="467.0" height="26" rx="4" fill="#7C3AED"/>
+    <text x="697" y="114" font-weight="700">$467.00</text>
+    <text x="210" y="164" text-anchor="end">Stan Creator</text>
+    <rect x="220" y="146" width="455.0" height="26" rx="4" fill="#DB2777"/>
+    <text x="685" y="164" font-weight="700">$455.00</text>
+    <text x="210" y="214" text-anchor="end">Beacons Creator Plus</text>
+    <rect x="220" y="196" width="454.0" height="26" rx="4" fill="#059669"/>
+    <text x="684" y="214" font-weight="700">$454.00</text>
+    <text x="210" y="264" text-anchor="end">Beacons Free</text>
+    <rect x="220" y="246" width="439.0" height="26" rx="4" fill="#34D399"/>
+    <text x="669" y="264" font-weight="700">$439.00</text>
+    <text x="210" y="314" text-anchor="end">Beacons Creator</text>
+    <rect x="220" y="296" width="429.0" height="26" rx="4" fill="#10B981"/>
+    <text x="659" y="314" font-weight="700">$429.00</text>
+    <text x="210" y="364" text-anchor="end">Stan Creator Pro</text>
+    <rect x="220" y="346" width="385.0" height="26" rx="4" fill="#F472B6"/>
+    <text x="615" y="364" font-weight="700">$385.00</text>
+  </g>
+  <line x1="220" y1="390" x2="720" y2="390" stroke="#E8ECF0" stroke-width="1"/>
+  <g font-family="Plus Jakarta Sans, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12" fill="#64748B">
+    <text x="220" y="410">$0</text>
+    <text x="320" y="410">$100</text>
+    <text x="420" y="410">$200</text>
+    <text x="520" y="410">$300</text>
+    <text x="620" y="410">$400</text>
+    <text x="712" y="410" text-anchor="end">$500</text>
+  </g>
+  <text x="390" y="446" text-anchor="middle" font-family="Plus Jakarta Sans, -apple-system, Segoe UI, Roboto, sans-serif" font-size="12" fill="#64748B">Bar length = amount kept. Source: Zotopie fee calculator, pricing checked 2026-11-24.</text>
+</svg>

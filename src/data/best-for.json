@@ -612,7 +612,7 @@
     ]
   },
   {
-    "tool": "Fathom",
+    "tool": "Fathom Analytics",
     "bestFor": [
       "Privacy-conscious teams needing GDPR-compliant analytics",
       "Content sites wanting simpler analytics than GA4",
@@ -906,6 +906,14 @@
       "Course creators increasing average order value with one-click upsells",
       "Subscription businesses needing dunning and failed payment recovery logic",
       "Sellers A/B testing checkout page variations to identify top performers"
+    ]
+  },
+  {
+    "tool": "Fathom Meeting Assistant",
+    "bestFor": [
+      "Freelancers and consultants needing free unlimited meeting recording",
+      "Sales teams needing automatic CRM sync after calls",
+      "Small teams needing shared meeting notes, folders, and search"
     ]
   }
 ]

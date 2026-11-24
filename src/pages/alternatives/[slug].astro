@@ -179,7 +179,7 @@ const jsonLdStr = JSON.stringify({
         </div>
         <div class="cc-meta">
           <span class="cc-rating">★ {tool.rating}</span>
-          <span class="cc-price">{tool.startingPrice ? `from ${tool.startingPrice}` : tool.pricing}</span>
+          <span class="cc-price">{tool.startingPrice ? (tool.startingPrice.startsWith("From") ? tool.startingPrice : `from ${tool.startingPrice}`) : tool.pricing}</span>
         </div>
         <a href={`/reviews/${tool.slug}/`} class="cc-link">Full Review &rarr;</a>
       </div>

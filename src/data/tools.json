@@ -555,8 +555,8 @@
     "description": "Visual-first social media marketing platform designed for Instagram.",
     "website": "https://later.com",
     "logo": "",
-    "pricing": "Freemium",
-    "startingPrice": "Free / $18/mo",
+    "pricing": "Paid",
+    "startingPrice": "$25/mo",
     "affiliate": true,
     "rating": 4.6,
     "featured": false,
@@ -2730,7 +2730,7 @@
     }
   },
   {
-    "name": "Fathom",
+    "name": "Fathom Analytics",
     "slug": "fathom",
     "description": "Simple, privacy-focused website analytics tool.",
     "website": "https://usefathom.com",
@@ -2747,7 +2747,11 @@
     ],
     "alternatives": [
       "plausible",
-      "google-analytics"
+      "google-analytics",
+      "matomo",
+      "mixpanel",
+      "hotjar",
+      "amplitude"
     ],
     "overview": "Fathom Analytics is a privacy-focused web analytics platform built as a GDPR-compliant alternative to Google Analytics. It tracks pageviews, unique visitors, referral sources, and event conversions without cookies or personal data collection. A single-page dashboard eliminates GA4's navigation complexity. Pricing is based on monthly pageviews (not seats): $14/mo for up to 100K pageviews; $24/mo for 200K.",
     "pros": [
@@ -5201,7 +5205,7 @@
     "slug": "otter-ai",
     "description": "AI meeting assistant that transcribes, summarizes, and extracts action items from meetings in real time.",
     "website": "https://otter.ai",
-    "logo": "",
+    "logo": "/logos/otter-ai.svg",
     "pricing": "Freemium",
     "startingPrice": "\\.99/mo",
     "affiliate": false,
@@ -5413,7 +5417,7 @@
     "slug": "copyleaks",
     "description": "AI content detector and plagiarism checker with 100+ language support and LMS integration.",
     "website": "https://copyleaks.com",
-    "logo": "",
+    "logo": "/logos/copyleaks.svg",
     "pricing": "Freemium",
     "startingPrice": "Free / $9.99/mo",
     "affiliate": true,
@@ -5521,7 +5525,7 @@
     "slug": "winston-ai",
     "description": "AI content detector with high-accuracy claims and readability scoring for content marketing teams.",
     "website": "https://gowinston.ai",
-    "logo": "",
+    "logo": "/logos/winston-ai.svg",
     "pricing": "Freemium",
     "startingPrice": "Free / $12/mo",
     "affiliate": true,
@@ -5634,7 +5638,7 @@
     "slug": "zerogpt",
     "description": "Free AI text detector with no account required and a 15,000-character scan limit on the free tier.",
     "website": "https://zerogpt.com",
-    "logo": "",
+    "logo": "/logos/zerogpt.svg",
     "pricing": "Freemium",
     "startingPrice": "Free / $6.99/mo",
     "affiliate": false,
@@ -5736,7 +5740,7 @@
     "slug": "tldv",
     "description": "Video-first AI meeting recorder with timestamped clips, AI summaries, and CRM integrations.",
     "website": "https://tldv.io",
-    "logo": "",
+    "logo": "/logos/tldv.svg",
     "pricing": "Freemium",
     "startingPrice": "Free / $18/user/mo",
     "affiliate": false,
@@ -5756,7 +5760,7 @@
     "alternatives": [
       "fireflies-ai",
       "otter-ai",
-      "fathom"
+      "fathom-meeting"
     ],
     "overview": "tl;dv is a video-first AI meeting recorder for Zoom, Google Meet, and Microsoft Teams. Unlike text-first tools, tl;dv centers the meeting experience around the video recording — allowing users to create timestamped clips, highlight key moments, and share specific sections with teammates and stakeholders. AI-generated summaries are structured by topic and linked directly to timestamps. Free plan provides unlimited recordings with up to 5 AI summaries per month; Pro ($18/user/mo) unlocks unlimited AI summaries, highlights, and CRM integrations with Salesforce and HubSpot.",
     "pros": [
@@ -5842,7 +5846,7 @@
     "slug": "linktree",
     "description": "The default link-in-bio page: one link that holds all your links, with selling built in on paid plans.",
     "website": "https://linktr.ee",
-    "logo": "",
+    "logo": "/logos/linktree.svg",
     "pricing": "Freemium",
     "startingPrice": "Free / $9/mo",
     "affiliate": false,
@@ -5874,7 +5878,7 @@
     ],
     "bestFor": [
       "Creators who mainly need a link page",
-      "Etsy sellers and coaches selling over ~$300/month (Pro at 0% beats the free/9% options)",
+      "Etsy sellers and coaches selling over ~$189/month (Pro at 0% beats the free/9% options)",
       "Anyone who wants the most recognised link-in-bio URL"
     ],
     "verdict": {
@@ -5886,7 +5890,7 @@
     "slug": "beacons",
     "description": "Link-in-bio page plus store, email and media kit in one free account — 9% fee until you pay $30/mo for 0%.",
     "website": "https://beacons.ai",
-    "logo": "",
+    "logo": "/logos/beacons.svg",
     "pricing": "Freemium",
     "startingPrice": "Free / $10/mo",
     "affiliate": false,
@@ -5930,7 +5934,7 @@
     "slug": "stan-store",
     "description": "Creator storefront for courses, bookings and memberships — $29/mo, 0% platform fee, no free plan.",
     "website": "https://stan.store",
-    "logo": "",
+    "logo": "/logos/stan-store.svg",
     "pricing": "Paid",
     "startingPrice": "From $29/mo",
     "affiliate": false,
@@ -5967,5 +5971,50 @@
     "verdict": {
       "summary": "Stan Store is the cheapest option once you sell steadily — $29/mo flat with 0% fees beats a 9% platform fee past about $320/month in sales. The catch is the $29 starts before your first sale, so it only makes sense once you are actually selling."
     }
+  },
+  {
+    "name": "Fathom Meeting Assistant",
+    "slug": "fathom-meeting",
+    "description": "AI meeting assistant that records, transcribes, and summarizes video calls on Zoom, Meet, and Teams.",
+    "website": "https://fathom.video",
+    "logo": "",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $15/user/mo",
+    "affiliate": false,
+    "rating": 4.7,
+    "featured": false,
+    "addedDate": "2026-11-24",
+    "primaryCategory": "productivity-knowledge-management",
+    "categories": [
+      "productivity-knowledge-management"
+    ],
+    "alternatives": [
+      "fireflies-ai",
+      "otter-ai",
+      "tldv"
+    ],
+    "overview": "Fathom is an AI meeting assistant that automatically joins Zoom, Google Meet, and Microsoft Teams calls, records them, and produces transcripts and AI summaries with action items. The free plan includes unlimited recording and transcription. Paid plans add advanced summaries, CRM sync (Salesforce, HubSpot, Close), Zapier integrations, team folders, and keyword tracking. Pricing checked 2026-11-24 on fathom.video/pricing: Free $0; Premium $16/user/mo billed annually ($20 monthly); Team $15/user/mo billed annually ($19 monthly, 2-user minimum); Business $25/user/mo billed annually ($34 monthly); Enterprise $35/user/mo, annual only. Fathom was acquired by Superhuman on 14 September 2026; the company says nothing changes for existing users.",
+    "pros": [
+      "Free plan includes unlimited recording and transcription with no monthly minute caps",
+      "AI summaries with action items and multiple templates (Sales, Action Items, Chronological)",
+      "SOC 2 Type II compliant; company states it does not train AI models on private meeting data",
+      "Automatic CRM sync to Salesforce, HubSpot, and Close on paid plans",
+      "Clean setup: connects Google or Microsoft calendar and joins calls automatically"
+    ],
+    "cons": [
+      "No standalone mobile app for recording in-person meetings",
+      "If you are not the host, the host must admit the Fathom bot from the waiting room",
+      "Team analytics are less deep than Fireflies.ai (no talk-to-listen ratios or sentiment tracking)"
+    ],
+    "bestFor": [
+      "Freelancers and consultants needing free unlimited meeting recording",
+      "Sales teams needing automatic CRM sync after calls",
+      "Small teams needing shared meeting notes, folders, and search"
+    ],
+    "verdict": {
+      "summary": "Fathom is the simplest capable AI meeting assistant for individuals and small teams: unlimited free recording and transcription, fast AI summaries, and automatic CRM sync on paid plans. Teams needing deep conversation analytics or mobile in-person recording should look at Fireflies.ai or Otter.ai instead."
+    },
+    "affiliateUrl": null,
+    "affiliateSource": null
   }
 ]

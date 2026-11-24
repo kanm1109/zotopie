@@ -4,7 +4,9 @@ const { tool } = Astro.props;
 
 const isFree = tool.pricing === "Free" || tool.pricing === "Freemium";
 const priceLabel = tool.startingPrice
-  ? (isFree ? `Free / ${tool.startingPrice}` : tool.startingPrice)
+  ? (isFree
+      ? (tool.startingPrice.startsWith("Free") ? tool.startingPrice : `Free / ${tool.startingPrice}`)
+      : tool.startingPrice)
   : tool.pricing;
 ---
 
