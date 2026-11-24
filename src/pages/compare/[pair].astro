@@ -30,9 +30,12 @@ const catA = taxonomies.find((c) => c.slug === toolA.primaryCategory);
 const catB = taxonomies.find((c) => c.slug === toolB.primaryCategory);
 
 function formatPricing(tool: typeof toolA) {
+  // startingPrice already contains "Free / ..." or "From ..." for many tools —
+  // never print "Free + from Free / $9/mo" or "From From $29/mo"
+  const sp = tool.startingPrice ?? "";
   if (tool.pricing === "Free") return "Free";
-  if (tool.pricing === "Freemium") return tool.startingPrice ? `Free + from ${tool.startingPrice}` : "Freemium";
-  return tool.startingPrice ? `From ${tool.startingPrice}` : tool.pricing;
+  if (tool.pricing === "Freemium") return sp ? (sp.startsWith("Free") ? sp : `Free + from ${sp}`) : "Freemium";
+  return sp ? (sp.startsWith("From") ? sp : `From ${sp}`) : tool.pricing;
 }
 
 function starsOf(n: number) {
@@ -106,25 +109,28 @@ const q1Answer = (() => {
   return `Both ${toolA.name} and ${toolB.name} are rated equally at ${toolA.rating}/5. ${toolA.name} suits ${toolA.bestFor?.[0] ?? "its primary audience"}, while ${toolB.name} is designed for ${toolB.bestFor?.[0] ?? "its primary audience"}.`;
 })();
 
+const spFrom = (s?: string) => (s ?? "").replace(/^From /, "");
+
 const q2Answer = (() => {
   if (toolA.pricing === "Free" && toolB.pricing === "Paid")
-    return `${toolA.name} is completely free. ${toolB.name} is a paid tool${toolB.startingPrice ? ` starting from ${toolB.startingPrice}` : ""}. For budget-conscious users, ${toolA.name} is the clear winner on price.`;
+    return `${toolA.name} is completely free. ${toolB.name} is a paid tool${toolB.startingPrice ? ` starting from ${spFrom(toolB.startingPrice)}` : ""}. For budget-conscious users, ${toolA.name} is the clear winner on price.`;
   if (toolB.pricing === "Free" && toolA.pricing === "Paid")
-    return `${toolB.name} is completely free. ${toolA.name} is a paid tool${toolA.startingPrice ? ` starting from ${toolA.startingPrice}` : ""}. For budget-conscious users, ${toolB.name} is the clear winner on price.`;
+    return `${toolB.name} is completely free. ${toolA.name} is a paid tool${toolA.startingPrice ? ` starting from ${spFrom(toolA.startingPrice)}` : ""}. For budget-conscious users, ${toolB.name} is the clear winner on price.`;
   if (aIsFree && bIsFree) {
-    const aD = toolA.startingPrice ? ` Paid plans start from ${toolA.startingPrice}.` : "";
-    const bD = toolB.startingPrice ? ` Paid plans start from ${toolB.startingPrice}.` : "";
+    const aD = toolA.startingPrice ? ` Paid plans start from ${spFrom(toolA.startingPrice)}.` : "";
+    const bD = toolB.startingPrice ? ` Paid plans start from ${spFrom(toolB.startingPrice)}.` : "";
+
     const bothFree = !toolA.startingPrice && !toolB.startingPrice;
     if (bothFree)
       return `Both ${toolA.name} and ${toolB.name} offer free access — no credit card required to get started. Paid plans with higher limits and additional features are available for power users who need more capacity. Check each tool's official pricing page for current plan details and limits.`;
     return `Both tools offer free access. ${toolA.name} is ${toolA.pricing.toLowerCase()}.${aD} ${toolB.name} is ${toolB.pricing.toLowerCase()}.${bD}`;
   }
   if (aIsFree && !bIsFree)
-    return `${toolA.name} offers a free plan. ${toolB.name} is a paid tool${toolB.startingPrice ? ` starting from ${toolB.startingPrice}` : ""}. ${toolA.name} wins on affordability for users on a budget.`;
+    return `${toolA.name} offers a free plan. ${toolB.name} is a paid tool${toolB.startingPrice ? ` starting from ${spFrom(toolB.startingPrice)}` : ""}. ${toolA.name} wins on affordability for users on a budget.`;
   if (bIsFree && !aIsFree)
-    return `${toolB.name} offers a free plan. ${toolA.name} is a paid tool${toolA.startingPrice ? ` starting from ${toolA.startingPrice}` : ""}. ${toolB.name} wins on affordability for users on a budget.`;
-  const aStr = toolA.startingPrice ? `starts from ${toolA.startingPrice}` : "is a paid tool";
-  const bStr = toolB.startingPrice ? `starts from ${toolB.startingPrice}` : "is a paid tool";
+    return `${toolB.name} offers a free plan. ${toolA.name} is a paid tool${toolA.startingPrice ? ` starting from ${spFrom(toolA.startingPrice)}` : ""}. ${toolB.name} wins on affordability for users on a budget.`;
+  const aStr = toolA.startingPrice ? `starts from ${spFrom(toolA.startingPrice)}` : "is a paid tool";
+  const bStr = toolB.startingPrice ? `starts from ${spFrom(toolB.startingPrice)}` : "is a paid tool";
   return `${toolA.name} ${aStr}. ${toolB.name} ${bStr}. Neither tool offers a free plan — visit each pricing page for current rates.`;
 })();
 
