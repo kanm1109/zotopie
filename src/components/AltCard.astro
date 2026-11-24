@@ -30,7 +30,7 @@ const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try
     )}
     <a href={`/go/${tool.slug}`}
        class="alt-try-btn"
-       rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+       rel={tool.affiliateApproved ? "sponsored noopener" : "noopener"}
        target="_blank">
       {tryLabel}
     </a>
