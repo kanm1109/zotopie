@@ -303,7 +303,7 @@ const jsonLdStr = JSON.stringify({
               <div class="te-actions">
                 <a href={`/go/${tool.slug}`}
                    class="te-btn-primary"
-                   rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+                   rel={tool.affiliateApproved ? "sponsored noopener" : "noopener"}
                    target="_blank">
                   {isFree ? `Try ${tool.name} Free →` : `Visit ${tool.name} →`}
                 </a>
