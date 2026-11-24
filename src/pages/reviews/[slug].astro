@@ -4,6 +4,7 @@ import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
 import bestPages from "../../data/best-pages.json";
 import MainLayout from "../../layouts/MainLayout.astro";
+import { NOINDEX_SLUGS } from "../../data/noindex.mjs";
 import ToolCard from "../../components/ToolCard.astro";
 import ToolLogo from "../../components/ToolLogo.astro";
 import AltCard from "../../components/AltCard.astro";
@@ -239,6 +240,7 @@ const jsonLdStr = JSON.stringify({
 <MainLayout
   title={pageTitle}
   description={pageDesc}
+  noindex={NOINDEX_SLUGS.includes(tool.slug)}
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLdStr} />
@@ -297,11 +299,11 @@ const jsonLdStr = JSON.stringify({
     <div class="summary-actions">
       <a href={`/go/${tool.slug}`}
          class="visit-btn"
-         rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+         rel={tool.affiliateApproved ? "sponsored noopener" : "noopener"}
          target="_blank">
         Visit {tool.name} ↗
       </a>
-      {tool.affiliate && <span class="aff-note">Affiliate link</span>}
+      {tool.affiliateApproved && <span class="aff-note">Affiliate link</span>}
       {tool.alternatives && tool.alternatives.length > 0 && (
         <a href={`/alternatives/${tool.slug}/`} class="alt-link">
           {tool.alternatives.length} Alternatives &rarr;
@@ -484,7 +486,7 @@ const jsonLdStr = JSON.stringify({
           </div>
           <a href={`/go/${tool.slug}`}
              class="visit-btn"
-             rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+             rel={tool.affiliateApproved ? "sponsored noopener" : "noopener"}
              target="_blank">
             Visit {tool.name} ↗
           </a>
@@ -608,7 +610,7 @@ const jsonLdStr = JSON.stringify({
     </div>
     <a href={`/go/${tool.slug}`}
        class="sticky-btn"
-       rel={tool.affiliate ? "sponsored noopener" : "noopener"}
+       rel={tool.affiliateApproved ? "sponsored noopener" : "noopener"}
        target="_blank">
       Visit {tool.name} ↗
     </a>
