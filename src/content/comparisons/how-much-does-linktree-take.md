@@ -12,6 +12,10 @@ draft: false
 
 Pricing checked: 2026-11-24
 
+![Illustration explaining Linktree fees: a smartphone showing a bio link page with a magnifying glass over price tags and coins, and a receipt](/images/comparisons/how-much-does-linktree-take-hero.jpg)
+
+*Illustration generated with AI.*
+
 ## Short answer
 
 It depends on your plan. Linktree Free takes 0% — because it cannot sell paid products at all. Starter takes **9% of every sale plus $9/month**. Pro and Premium take **0% of sales** — you pay only the plan fee ($17/month Pro, $35/month Premium) plus payment processing. On every plan, card payments also cost Stripe's 2.9% + $0.30 per order, which is not Linktree's fee but comes out of the same sale.
@@ -24,6 +28,10 @@ It depends on your plan. Linktree Free takes 0% — because it cannot sell paid 
 | Starter | $9/month | $7/month | 9% |
 | Pro | $17/month | $14/month | 0% |
 | Premium | $35/month | $30/month | 0% |
+
+![Linktree official pricing page: Starter $7/month billed annually ($9 monthly), Pro $14/month billed annually ($17 monthly), Premium $30/month billed annually ($35 monthly)](/images/comparisons/linktree-pricing.jpg)
+
+*Linktree's official pricing page (linktree.com/pricing, captured 2026-11-24). Prices are shown as billed annually, with the monthly-billing price underneath each plan.*
 
 Note: older articles still quote Linktree's pre-October 2026 prices. Those prices are outdated — Linktree raised prices in October 2026.
 
@@ -48,6 +56,8 @@ Note: older articles still quote Linktree's pre-October 2026 prices. Those price
 | Starter | $9.00 + $45.00 = $54.00 | $74.50 | $425.50 |
 | Pro | $17.00 + $0 = $17.00 | $37.50 | **$462.50** |
 | Premium | $35.00 + $0 = $35.00 | $55.50 | $444.50 |
+
+![Bar chart: amount kept at $500/month in sales — Linktree Pro $462.50, Linktree Premium $444.50, Linktree Starter $425.50](/images/comparisons/how-much-does-linktree-take-keeps-500.svg)
 
 ### $1,000/month in sales (40 orders of $25) — processing $41.00
 

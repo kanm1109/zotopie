@@ -14,6 +14,10 @@ Pricing checked: 2026-11-24
 
 If you sell on Etsy and send buyers to your shop through a link in bio, the tool you pick takes a cut of every sale — and the cheapest option depends on how much you sell per month. If you sell under ~$189/month, Beacons Free keeps the most of your sale: $0 plan fee and the same 9% seller fee as Linktree's cheapest selling tier. Above ~$189/month, Linktree Pro ($17/month, 0% seller fee) keeps the most. Linktree Free cannot sell paid products at all, so it is not an option for Etsy sellers.
 
+![Illustration comparing link-in-bio tools for Etsy sellers: a smartphone showing a bio link page next to handmade craft items with price tags and coins](/images/comparisons/linktree-vs-beacons-for-etsy-sellers-hero.jpg)
+
+*Illustration generated with AI.*
+
 ## The math (show your work)
 
 Platform cost = plan fee + seller fee. Payment processing (Stripe 2.9% + $0.30/order) is the same on both, so it does not change the ranking — but it is included in the "keeps" figures below, exactly as our [fee calculator](/tools/link-in-bio-fee-calculator/) does it.
@@ -31,6 +35,14 @@ Platform cost = plan fee + seller fee. Payment processing (Stripe 2.9% + $0.30/o
 | Paid plans / month (monthly billing) | Starter $9; Pro $17; Premium $35 (annual: $7 / $14 / $30) | Creator $10; Creator Plus $30; Creator Max $100 |
 | Seller fee (per sale) | Starter 9%; Pro 0%; Premium 0% | Free 9%; Creator 9%; Creator Plus 0%; Creator Max 0% |
 
+![Linktree official pricing page: Starter $7/month billed annually ($9 monthly), Pro $14/month billed annually ($17 monthly), Premium $30/month billed annually ($35 monthly)](/images/comparisons/linktree-pricing.jpg)
+
+*Linktree's official pricing page (linktree.com/pricing, captured 2026-11-24). Prices are shown as billed annually, with the monthly-billing price underneath each plan.*
+
+![Beacons official pricing page on monthly billing: Free $0/month, Creator $10/month, Creator Plus $30/month (Most Popular), Creator Max $100/month](/images/comparisons/beacons-pricing.jpg)
+
+*Beacons' official pricing page (beacons.ai/i/pricing, captured 2026-11-24, monthly billing). Free and Creator charge a 9% seller fee; Creator Plus and Creator Max charge 0%.*
+
 Beacons also includes email sends on its plans: Free includes 50 sends/month, Creator includes 500 sends/month. Linktree raised its prices in October 2026 — older figures of $5/$9/$24 per month are outdated and no longer apply.
 
 ## Worked example: $500/month in sales
@@ -45,6 +57,8 @@ $500/month at a $25 average order = 20 orders, payment processing $20.50. Use th
 | Linktree Starter | $9 + $45.00 | $425.50 |
 | Linktree Pro | $17 + $0 | **$462.50** |
 | Linktree Premium | $35 + $0 | $444.50 |
+
+![Bar chart: amount kept at $500/month in sales — Linktree Pro $462.50, Beacons Creator Plus $449.50, Linktree Premium $444.50, Beacons Free $434.50, Linktree Starter $425.50, Beacons Creator $424.50](/images/comparisons/linktree-vs-beacons-for-etsy-sellers-keeps-500.svg)
 
 At $100/month, $25 average order (4 orders), processing $4.10: Beacons Free keeps **$86.90**; Linktree Starter keeps $77.90; Linktree Pro keeps $78.90. At low volume the free plan wins by a wide margin.
 
