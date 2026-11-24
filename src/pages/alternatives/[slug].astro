@@ -2,6 +2,7 @@
 import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
 import MainLayout from "../../layouts/MainLayout.astro";
+import { NOINDEX_SLUGS } from "../../data/noindex.mjs";
 import AltCard from "../../components/AltCard.astro";
 import ToolLogo from "../../components/ToolLogo.astro";
 
@@ -138,7 +139,7 @@ const jsonLdStr = JSON.stringify({
 });
 ---
 
-<MainLayout title={pageTitle} description={pageDesc}>
+<MainLayout title={pageTitle} description={pageDesc} noindex={NOINDEX_SLUGS.includes(tool.slug)}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLdStr} />
   </Fragment>

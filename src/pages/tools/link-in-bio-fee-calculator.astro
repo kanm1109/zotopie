@@ -1,0 +1,172 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { LINK_IN_BIO_FEES, STRIPE_ESTIMATE, VERIFIED_ON } from "../../data/link-in-bio-fees.mjs";
+
+const pageTitle = "Link-in-Bio Fee Calculator: How Much Linktree, Beacons & Stan Store Keep";
+const pageDesc =
+  "Enter your monthly sales and average order value to see how much Linktree, Beacons and Stan Store keep — plan fee, platform fee and payment processing.";
+const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMATE });
+---
+
+<MainLayout title={pageTitle} description={pageDesc}>
+  <div class="breadcrumb">
+    <a href="/">Home</a> &rsaquo; <a href="/best/link-in-bio-tools/">Link-in-Bio Tools</a> &rsaquo; <span>Fee Calculator</span>
+  </div>
+
+  <h1>Link-in-Bio Fee Calculator</h1>
+  <p class="intro">
+    Selling through your link in bio? Enter your numbers and see exactly how much each tool keeps
+    from your sales — monthly plan, platform fee, and payment processing — so you can pick the
+    cheapest one for your volume.
+  </p>
+
+  <p class="verify-note">
+    <strong>Pricing checked {VERIFIED_ON}:</strong> plan prices and platform fees are from the
+    vendors' official pricing pages (USD, monthly billing). Prices vary by region and change
+    often — check the vendor's page before you buy. Linktree's free plan cannot sell paid
+    products, so it is not in the comparison.
+  </p>
+
+  <section class="calc-box">
+    <div class="inputs">
+      <label>
+        Monthly sales ($)
+        <input id="sales" type="number" min="0" step="10" value="500" />
+      </label>
+      <label>
+        Average order value ($)
+        <input id="avg-order" type="number" min="1" step="1" value="25" />
+      </label>
+    </div>
+
+    <div id="results" class="results"></div>
+    <p id="winner" class="winner"></p>
+  </section>
+
+  <section class="how">
+    <h2>How the calculation works</h2>
+    <p>
+      For each tool we pick the plan with the lowest total monthly cost for your sales, then subtract:
+    </p>
+    <ol>
+      <li><strong>Monthly plan fee</strong> — the subscription price of that plan.</li>
+      <li><strong>Platform fee</strong> — the percentage the tool takes from each sale (0% on the top plans).</li>
+      <li>
+        <strong>Payment processing (estimate)</strong> — {STRIPE_ESTIMATE.pct * 100}% + $
+        {STRIPE_ESTIMATE.perOrder.toFixed(2)} per order, a Stripe-style estimate. Your actual
+        processor (Stripe, PayPal) may charge differently.
+      </li>
+    </ol>
+    <p>
+      Example: $500 in sales with a $25 average order is 20 orders. On Linktree Pro
+      ($17/month, 0% platform fee) you keep $500 − $17 − $0 − (2.9% × $500 + 20 × $0.30) =
+      <strong>$462.50</strong>.
+    </p>
+  </section>
+
+  <section class="faq">
+    <h2>Frequently Asked Questions</h2>
+    <h3>Which link-in-bio tool is cheapest for small sellers?</h3>
+    <p>
+      At low volume, a free plan with a 9% platform fee can cost more than a paid plan with 0%.
+      Use the calculator above — the cheapest option flips once your monthly sales pass a few
+      hundred dollars.
+    </p>
+    <h3>Does the calculator include payment processing?</h3>
+    <p>
+      Yes, as an estimate (2.9% + $0.30 per order). It is not the vendor's own fee — it is what
+      a payment processor typically charges on top.
+    </p>
+    <h3>Where can I compare the tools in detail?</h3>
+    <p>
+      See our <a href="/best/link-in-bio-tools/">best link-in-bio tools</a> guide for the full
+      comparison by use case.
+    </p>
+  </section>
+
+  <script define:vars={{ feesJson }}>
+    const data = JSON.parse(feesJson);
+    const salesEl = document.getElementById("sales");
+    const avgEl = document.getElementById("avg-order");
+    const resultsEl = document.getElementById("results");
+    const winnerEl = document.getElementById("winner");
+
+    function money(n) {
+      return "$" + n.toFixed(2);
+    }
+
+    function calc() {
+      const sales = Math.max(0, parseFloat(salesEl.value) || 0);
+      const avg = Math.max(1, parseFloat(avgEl.value) || 1);
+      const orders = sales / avg;
+      const stripeFee = sales * data.stripe.pct + orders * data.stripe.perOrder;
+
+      const rows = data.tools.map((tool) => {
+        let best = null;
+        for (const plan of tool.plans) {
+          const total = plan.monthly + sales * plan.feePct + stripeFee;
+          if (!best || total < best.total) {
+            best = { plan, total, platformFee: sales * plan.feePct };
+          }
+        }
+        return {
+          tool: tool.name,
+          plan: best.plan.name,
+          planFee: best.plan.monthly,
+          platformFee: best.platformFee,
+          stripeFee,
+          keep: sales - best.total,
+        };
+      });
+
+      rows.sort((a, b) => b.keep - a.keep);
+
+      resultsEl.innerHTML =
+        "<table><thead><tr><th>Tool</th><th>Best plan</th><th>Plan fee</th><th>Platform fee</th><th>Processing (est.)</th><th>You keep</th></tr></thead><tbody>" +
+        rows
+          .map(
+            (r, i) =>
+              `<tr${i === 0 ? ' class="best-row"' : ""}><td><strong>${r.tool}</strong></td><td>${r.plan}</td><td>${money(r.planFee)}</td><td>${money(r.platformFee)}</td><td>${money(r.stripeFee)}</td><td><strong>${money(r.keep)}</strong></td></tr>`
+          )
+          .join("") +
+        "</tbody></table>";
+
+      winnerEl.textContent =
+        sales > 0
+          ? `Cheapest for your volume: ${rows[0].tool} (${rows[0].plan}) — you keep ${money(rows[0].keep)} of ${money(sales)}.`
+          : "Enter your monthly sales to see which tool keeps the most.";
+    }
+
+    salesEl.addEventListener("input", calc);
+    avgEl.addEventListener("input", calc);
+    calc();
+  </script>
+
+  <style>
+    .breadcrumb { font-size: 0.875rem; color: #9ca3af; padding: 24px 0 0; margin-bottom: 24px; }
+    .breadcrumb a { color: #6b7280; }
+    h1 { font-size: 2rem; font-weight: 800; color: #111827; margin: 0 0 12px; line-height: 1.15; }
+    .intro { font-size: 1.05rem; color: #4b5563; line-height: 1.7; max-width: 780px; }
+    .verify-note { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; font-size: 0.9rem; color: #713f12; max-width: 780px; line-height: 1.6; }
+    .calc-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; margin: 24px 0 32px; max-width: 860px; }
+    .inputs { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .inputs label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #374151; }
+    .inputs input { padding: 10px 12px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 1rem; width: 200px; }
+    .inputs input:focus { outline: none; border-color: #7c3aed; }
+    .results table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; border-radius: 10px; overflow: hidden; }
+    .results th, .results td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
+    .results th { background: #f5f3ff; color: #6d28d9; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .results tr.best-row td { background: #f0fdf4; }
+    .winner { font-weight: 700; color: #15803d; margin: 16px 0 0; }
+    .how, .faq { max-width: 780px; }
+    .how h2, .faq h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin: 0 0 14px; }
+    .how p, .how li, .faq p { font-size: 0.95rem; color: #374151; line-height: 1.7; }
+    .faq h3 { font-size: 1.05rem; font-weight: 700; color: #111827; margin: 20px 0 6px; }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.6rem; }
+      .calc-box { padding: 16px; }
+      .inputs input { width: 100%; }
+      .results { overflow-x: auto; }
+    }
+  </style>
+</MainLayout>

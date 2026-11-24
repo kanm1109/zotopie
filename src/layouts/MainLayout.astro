@@ -7,6 +7,7 @@ const {
   description = "Find reviews, comparisons and alternatives for the best software tools.",
   canonical,
   image,
+  noindex = false,
 } = Astro.props;
 const SITE = (Astro.site?.origin) ?? "https://zotopie.com";
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site ?? SITE).href;
@@ -24,6 +25,7 @@ const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
   <title>{title}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonicalURL} />
+  {noindex && <meta name="robots" content="noindex,nofollow" />}
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonicalURL} />
   <meta property="og:title" content={title} />

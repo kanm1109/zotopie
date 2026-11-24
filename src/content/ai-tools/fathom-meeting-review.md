@@ -1,15 +1,17 @@
 ---
-title: "Fathom Review (2026): Features, Pricing, and Alternatives"
-description: "An in-depth, neutral review of Fathom AI meeting assistant. We cover features, pricing, pros, cons, and compare it to top alternatives like Otter and Fireflies."
+title: "Fathom Meeting Assistant Review (2026): Features, Pricing, and Alternatives"
+description: "An in-depth, neutral review of Fathom, the AI meeting assistant. We cover features, pricing, pros, cons, and compare it to top alternatives like Otter and Fireflies."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-30
 tags: ["Meeting AI", "Fathom", "AI Transcription", "Productivity", "Review"]
 category: "ai-tools"
-featuredImage: "/images/ai-tools/fathom-review/fathom-dashboard-overview.svg"
+featuredImage: "/images/ai-tools/fathom-meeting-review/fathom-dashboard-overview.svg"
 draft: false
 ---
 
-# Fathom Review (2026)
+# Fathom Meeting Assistant Review (2026)
+
+> **Note:** This review is about Fathom, the AI meeting assistant (fathom.ai, now part of Superhuman). It is a different product from Fathom Analytics (usefathom.com), the privacy-focused web analytics tool, which has its own review at [/reviews/fathom/](/reviews/fathom/).
 
 The software landscape for meeting assistants has grown rapidly, making it harder to choose the right tool for your daily calls. Finding a reliable AI note-taker that consistently joins meetings, records high-quality audio, and generates accurate summaries is a priority for many professionals. Fathom has built a strong reputation in this space, particularly because it offers a highly capable free version. 
 
@@ -67,7 +69,7 @@ The platform was built to address the specific pain point of professional contex
 
 To understand how Fathom performs in a real-world setting, we need to look closely at its core functionality. Below is a detailed breakdown of the features that make Fathom a popular choice, as well as the mechanics of how they operate.
 
-![Fathom dashboard overview showing AI meeting recording, live transcript feed, and real-time highlight controls](/images/ai-tools/fathom-review/fathom-dashboard-overview.svg)
+![Fathom dashboard overview showing AI meeting recording, live transcript feed, and real-time highlight controls](/images/ai-tools/fathom-meeting-review/fathom-dashboard-overview.svg)
 
 ### 1. Unlimited Recording and Transcription
 One of the most significant advantages Fathom offers is unlimited recording and transcription on its free plan. While many competitors cap your monthly usage at 300 or 600 minutes, Fathom allows you to record as many meetings as you need. The transcription engine is highly accurate and handles different accents well. It identifies different speakers automatically (speaker diarization) and labels them in the text. This feature alone makes it an invaluable tool for users who spend most of their day on calls and cannot afford restrictive usage limits. 
@@ -116,7 +118,7 @@ Features on a pricing page are one thing, but everyday usability is another. Bas
 ### The Setup Process
 Getting started with Fathom is remarkably frictionless. You sign up using your Google or Microsoft account, which automatically links your calendar. Fathom then prompts you to install a browser extension or a desktop application. The interface is clean, relying on standard design patterns that require no learning curve. You can configure your joining preferences immediately: you can set Fathom to join every single calendar event that has a video link, only meetings with external participants, or only meetings you manually select. This level of granular control prevents the bot from accidentally joining sensitive internal 1-on-1s unless you want it there.
 
-![Fathom meeting workflow showing calendar sync, bot join process, and real-time transcription pipeline](/images/ai-tools/fathom-review/fathom-meeting-workflow.svg)
+![Fathom meeting workflow showing calendar sync, bot join process, and real-time transcription pipeline](/images/ai-tools/fathom-meeting-review/fathom-meeting-workflow.svg)
 
 The calendar syncing logic is robust. It scans for changes continuously, meaning if a meeting is rescheduled or canceled at the last minute, Fathom updates its queue within seconds. This prevents ghost bots from entering abandoned meeting rooms or missing meetings that were shifted earlier in the day. The setup dashboard also allows you to whitelist specific domains, ensuring that calls with family members or medical professionals remain completely private and ignored by the software.
 
@@ -192,7 +194,7 @@ For teams managing client relationships, the Fathom Team Edition provides a cent
 
 To fully understand Fathom’s position in the market, we must look at how it stacks up against its main competitors.
 
-![Fathom vs Fireflies.ai feature comparison matrix showing key capability differences across pricing, analytics, and CRM integrations](/images/ai-tools/fathom-review/fathom-vs-fireflies-comparison.svg)
+![Fathom vs Fireflies.ai feature comparison matrix showing key capability differences across pricing, analytics, and CRM integrations](/images/ai-tools/fathom-meeting-review/fathom-vs-fireflies-comparison.svg)
 
 ### Fathom vs. Otter.ai
 Otter.ai is one of the oldest and most recognized names in the transcription space. Otter excels in general transcription and offers a very strong mobile app for recording in-person lectures or meetings. However, Otter’s free plan is restrictive, limiting both the number of minutes per month and the duration of individual recordings. Fathom completely wins in the free tier category. Furthermore, many users find Fathom’s AI summaries to be formatted more naturally for business use compared to Otter’s chat-based AI interface.
@@ -247,7 +249,7 @@ Fathom takes privacy very seriously. They are SOC 2 Type II compliant. Most impo
 ### Can I stop Fathom from recording midway through a call?
 Yes. You maintain full control over the Fathom bot during the meeting. You can pause the recording at any time using the desktop widget or Zoom app interface if the conversation shifts to sensitive, personal, or confidential topics. You can also permanently delete the entire recording and transcript from your Fathom dashboard immediately after the call ends, ensuring that nothing is saved on Fathom's servers if a meeting needs to be entirely off the record.
 
-![Fathom AI meeting notes example showing automated summary, action items, and CRM sync output](/images/ai-tools/fathom-review/fathom-ai-meeting-notes-example.svg)
+![Fathom AI meeting notes example showing automated summary, action items, and CRM sync output](/images/ai-tools/fathom-meeting-review/fathom-ai-meeting-notes-example.svg)
 
 ## Should You Use It?
 
@@ -265,24 +267,11 @@ Fathom has successfully democratized AI meeting assistants. By offering unlimite
 
 > **Try Product:** [Learn More About Fathom](https://fathom.video/)
 
+
+> **Update (September 2026):** Superhuman announced on 14 September 2026 that it acquired Fathom, the AI meeting assistant. Fathom said nothing changes for existing users — same app, same login. [Announcement](https://blog.superhuman.com/superhuman-acquires-fathom/)
+
 ## Final Verdict
 
 Fathom is an exceptionally well-designed meeting assistant that excels in ease of use and affordability. Its unlimited free tier makes it an easy recommendation for individuals, freelancers, and small teams looking to automate their note-taking without adding another subscription to their budget. The seamless CRM integrations also make the paid tiers a logical choice for sales professionals looking to save time on administrative tasks.
 
 However, Fathom may not be the perfect fit for everyone. Teams that require deep conversational analytics, sentiment tracking, or comprehensive sales coaching metrics might find Fathom's feature set slightly too basic and should explore alternatives. Additionally, users who rely heavily on mobile apps to record in-person, offline meetings will need to look elsewhere. Ultimately, Fathom is a highly reliable, privacy-conscious tool that performs its core functions exceptionally well, making it a strong contender in the AI productivity space.
-
-## Internal Link Opportunities
-
-*   Review our comprehensive guide on the [Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/) to see how Fathom fits into the broader market landscape.
-*   Compare similar industry leaders in our deep dive [Fireflies.ai vs Otter.ai](/comparisons/fireflies-vs-otter/) breakdown.
-*   Read our direct head-to-head [Fireflies.ai vs Fathom](/comparisons/fireflies-vs-fathom/) comparison to see when enterprise analytics and deep CRM pipelines outweigh Fathom's unlimited free plan.
-*   Read our detailed [Otter.ai Review](/ai-tools/otter-review/) if your workflow requires a solution with a dedicated mobile application for offline meetings.
-*   Check out our comprehensive [Fireflies.ai Review](/ai-tools/fireflies-review/) to analyze advanced sales analytics and conversational data metrics.
-*   Explore our [tl;dv Review](/ai-tools/tldv-review/) if your team needs to share timestamped video evidence with developers or compile multi-session user research reels.
-
-## Backfill Recommendations
-
-To optimize your team's administrative workflow, we recommend exploring these related topics:
-*   **How to Choose the Best AI Meeting Assistant:** A frameworks-based approach analyzing when to prioritize free transcription versus deep enterprise-grade conversational data tracking.
-*   **CRM Workflow Automation Guide:** Best practices for structuring AI-generated notes to automatically populate custom fields in Salesforce and HubSpot without manual intervention.
-*   **AI Meeting Privacy and Compliance Best Practices:** A technical look at SOC 2 Type II compliance, localized data-recording consent laws, and keeping corporate data secure when using third-party transcription tools.
