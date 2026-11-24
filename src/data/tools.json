@@ -5836,5 +5836,136 @@
       "summary": "tl;dv is the strongest choice for teams who want to share meeting moments as video clips rather than text summaries. Its video-first approach and clean UX make it the easiest meeting tool to adopt without training. The 5 AI summaries per month free plan limit is the biggest friction point — teams with frequent meetings will need to evaluate whether the $18/user/mo Pro plan is justified. For async-first teams and anyone who values shareability over CRM depth, tl;dv is the right tool.",
       "score": 4.4
     }
+  },
+  {
+    "name": "Linktree",
+    "slug": "linktree",
+    "description": "The default link-in-bio page: one link that holds all your links, with selling built in on paid plans.",
+    "website": "https://linktr.ee",
+    "logo": "",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $9/mo",
+    "affiliate": false,
+    "rating": 4.5,
+    "featured": true,
+    "addedDate": "2026-11-24",
+    "primaryCategory": "link-tracking",
+    "categories": [
+      "link-tracking"
+    ],
+    "alternatives": [
+      "beacons",
+      "stan-store",
+      "later"
+    ],
+    "overview": "Linktree is the most recognised link-in-bio tool: a single page holding unlimited links, email and phone sign-ups, a QR code and basic analytics on the free plan. Selling paid products needs a paid plan. Prices checked 24 November 2026 (USD, monthly billing; annual billing is cheaper): Free $0, Starter $9/mo, Pro $17/mo, Premium $35/mo. Seller fees: 9% on Starter, 0% on Pro and Premium. The free plan cannot sell paid products.",
+    "pros": [
+      "Free plan is genuinely usable for a plain link page — unlimited links, QR code, 28 days of analytics",
+      "Pro ($17/mo) charges 0% seller fees, so it pays for itself once monthly sales pass a few hundred dollars",
+      "The most recognised link-in-bio brand — visitors trust a linktr.ee link",
+      "Email and phone sign-up capture built in, plus Meta Pixel and UTM tools on Pro",
+      "7-day free trial on Pro and Premium"
+    ],
+    "cons": [
+      "You cannot sell paid products on the free plan at all",
+      "Prices rose in October 2026 and vary by region — the price you see may differ",
+      "Linktree branding stays on the page until Pro",
+      "Starter still takes a 9% seller fee on top of the $9/mo subscription"
+    ],
+    "bestFor": [
+      "Creators who mainly need a link page",
+      "Etsy sellers and coaches selling over ~$300/month (Pro at 0% beats the free/9% options)",
+      "Anyone who wants the most recognised link-in-bio URL"
+    ],
+    "verdict": {
+      "summary": "Linktree is the safe default link-in-bio page, and the free plan covers a plain list of links well. If you sell anything, Pro at $17/mo with 0% seller fees is the plan that makes sense; Starter's 9% fee makes it the worst value for sellers."
+    }
+  },
+  {
+    "name": "Beacons",
+    "slug": "beacons",
+    "description": "Link-in-bio page plus store, email and media kit in one free account — 9% fee until you pay $30/mo for 0%.",
+    "website": "https://beacons.ai",
+    "logo": "",
+    "pricing": "Freemium",
+    "startingPrice": "Free / $10/mo",
+    "affiliate": false,
+    "rating": 4.6,
+    "featured": true,
+    "addedDate": "2026-11-24",
+    "primaryCategory": "link-tracking",
+    "categories": [
+      "link-tracking"
+    ],
+    "alternatives": [
+      "linktree",
+      "stan-store",
+      "later"
+    ],
+    "overview": "Beacons combines a link-in-bio page with a store, email marketing, a media kit and an AI setup assistant (Beam) in one account. Prices checked 24 November 2026 (USD, monthly billing): Free $0, Creator $10/mo, Creator Plus $30/mo, Creator Max $100/mo. Platform fee on sales: 9% on Free and Creator, 0% on Creator Plus and Max. Email sends: 50/month on Free, 500 on Creator, no monthly limit on Creator Plus. Creator Plus adds unlimited courses with video hosting and memberships.",
+    "pros": [
+      "Free plan includes a store, email (50 sends/month), media kit and AI setup — no other tool gives this much free",
+      "Creator Plus ($30/mo) drops the platform fee to 0% and adds unlimited courses and memberships",
+      "Email with no monthly send limit on Creator Plus — no separate email tool needed",
+      "Invoicing and brand-deal tools (rate calculator, media kit) are included",
+      "You can sell from day one on the free plan, unlike Stan Store"
+    ],
+    "cons": [
+      "9% platform fee on Free and Creator — at $1,000/mo in sales that is $90",
+      "Email sends are capped at 50/month on Free and 500 on Creator",
+      "Creator ($10/mo) still charges the 9% fee, so it is poor value for sellers",
+      "Creator Max at $100/mo is priced for brands, not solo creators"
+    ],
+    "bestFor": [
+      "Creators selling courses, digital products and memberships",
+      "Coaches who want email and a store in the same tool",
+      "Sellers starting at $0 who will upgrade to Creator Plus past ~$333/month in sales"
+    ],
+    "verdict": {
+      "summary": "Beacons is the best all-in-one for creators who sell courses and need email in the same place. Start free at 9%, then move to Creator Plus ($30/mo, 0%) once monthly sales pass about $333 — skip the $10 Creator plan, it still charges 9%."
+    }
+  },
+  {
+    "name": "Stan Store",
+    "slug": "stan-store",
+    "description": "Creator storefront for courses, bookings and memberships — $29/mo, 0% platform fee, no free plan.",
+    "website": "https://stan.store",
+    "logo": "",
+    "pricing": "Paid",
+    "startingPrice": "From $29/mo",
+    "affiliate": false,
+    "rating": 4.4,
+    "featured": true,
+    "addedDate": "2026-11-24",
+    "primaryCategory": "ecommerce-monetization",
+    "categories": [
+      "ecommerce-monetization"
+    ],
+    "alternatives": [
+      "beacons",
+      "linktree",
+      "gumroad"
+    ],
+    "overview": "Stan Store is a link-in-bio storefront built for creators selling digital products, courses, bookings and memberships. Prices checked 24 November 2026 (USD, monthly billing): Creator $29/mo ($300/year), Creator Pro $99/mo ($948/year), both with a 14-day free trial and no free plan. Stan charges 0% transaction fees on both plans; you still pay Stripe or PayPal processing (typically 2.9% + $0.30 per card payment).",
+    "pros": [
+      "0% platform fee on both plans — Stan takes nothing per sale",
+      "Courses, bookings, memberships and digital products all in the $29 plan",
+      "14-day free trial, and you can sell during the trial",
+      "Simple flat pricing: no fee tier to work out, the maths is just the subscription plus processing"
+    ],
+    "cons": [
+      "No free plan — $29/mo before your first sale",
+      "A custom domain reportedly needs the Creator Max plan ($299/mo), not listed on the pricing page",
+      "Fewer free tools around the store (no built-in email like Beacons, no free link page like Linktree)",
+      "Creator Pro at $99/mo is a big jump for features most solo creators do not need yet"
+    ],
+    "bestFor": [
+      "Coaches selling courses, bookings and memberships",
+      "Creators with steady sales over ~$320/month (where $29 flat beats a 9% fee)",
+      "Sellers who want one checkout for everything, not a link page plus a separate store"
+    ],
+    "verdict": {
+      "summary": "Stan Store is the cheapest option once you sell steadily — $29/mo flat with 0% fees beats a 9% platform fee past about $320/month in sales. The catch is the $29 starts before your first sale, so it only makes sense once you are actually selling."
+    }
   }
 ]
