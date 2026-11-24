@@ -77,7 +77,7 @@ const iconDataStr    = JSON.stringify(iconData);
         <p class="tc-desc">{tool.description}</p>
         <div class="tc-footer">
           <span class="tc-pricing">
-            {tool.pricing}{tool.startingPrice ? ` · from ${tool.startingPrice}` : ''}
+            {tool.pricing}{tool.startingPrice ? (tool.startingPrice.startsWith("From") ? ` · ${tool.startingPrice}` : ` · from ${tool.startingPrice}`) : ''}
           </span>
           <a href={`/reviews/${tool.slug}/`} class="tc-link">View Review →</a>
         </div>
@@ -152,7 +152,7 @@ function logoHtml(tool, size) {
 
 function renderCard(tool) {
   const price = tool.startingPrice
-    ? `${esc(tool.pricing)} · from ${esc(tool.startingPrice)}`
+    ? (tool.startingPrice.startsWith("From") ? `${esc(tool.pricing)} · ${esc(tool.startingPrice)}` : `${esc(tool.pricing)} · from ${esc(tool.startingPrice)}`)
     : esc(tool.pricing);
   return `
 <div class="tc-card">
