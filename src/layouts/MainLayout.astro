@@ -14,7 +14,7 @@ const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site ?? SITE
 const ogImage = image
   ? (image.startsWith("http") ? image : `${SITE}${image}`)
   : `${SITE}/og-default.svg`;
-const GA_ID = import.meta.env.PUBLIC_GA_ID ?? '';
+const GA_ID = import.meta.env.PUBLIC_GA_ID || 'G-X190Z25SV2';
 ---
 
 <html lang="en">
