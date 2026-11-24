@@ -3,6 +3,7 @@
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 import { defineConfig, fontProviders } from 'astro/config';
+import { NOINDEX_SLUGS } from './src/data/noindex.mjs';
 
 export default defineConfig({
 	site: 'https://zotopie.com',
@@ -10,7 +11,15 @@ export default defineConfig({
 		mdx(),
 		sitemap({
 			lastmod: new Date(),
-			filter: (page) =>
+			filter: (page) => {
+				const noindexed =
+					NOINDEX_SLUGS.some(
+						(slug) =>
+							page === `https://zotopie.com/reviews/${slug}/` ||
+							page === `https://zotopie.com/alternatives/${slug}/`
+					);
+				return (
+				!noindexed &&
 				!page.includes('?') &&
 				!page.includes('/go/') &&
 				!page.endsWith('/search/') &&
@@ -19,7 +28,9 @@ export default defineConfig({
 				!page.startsWith('https://zotopie.com/blog/') &&
 				!page.startsWith('https://zotopie.com/threads/') &&
 				!page.startsWith('https://zotopie.com/extensions/') &&
-				!page.startsWith('https://zotopie.com/marketing/'),
+				!page.startsWith('https://zotopie.com/marketing/')
+				);
+			},
 			serialize(item) {
 				const url = item.url;
 				if (url === 'https://zotopie.com/') {
