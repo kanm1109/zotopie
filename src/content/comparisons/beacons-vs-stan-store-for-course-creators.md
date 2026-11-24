@@ -14,6 +14,10 @@ Pricing checked: 2026-11-24
 
 If you sell courses or coaching through a link in bio, the tool you pick takes a cut of every sale — and the cheapest option depends on how much you sell per month. If you sell under ~$322/month, Beacons Free keeps the most of your sale: $0 plan fee and a 9% seller fee. Above ~$322/month, Stan Store Creator ($29/month, 0% seller fee) keeps the most, beating Beacons Creator Plus ($30/month, 0%) by $1/month — on fees alone the two are effectively tied. Fee-only cross-check: Linktree Pro ($17/month, 0%) is cheaper than either on plan cost alone — see the [hub](/best/link-in-bio-tools/).
 
+![Illustration comparing link-in-bio tools for course creators and coaches: a smartphone showing a bio link page next to a laptop playing a video course and a graduation cap, with price tags and coins](/images/comparisons/beacons-vs-stan-store-for-course-creators-hero.jpg)
+
+*Illustration generated with AI.*
+
 ## The math (show your work)
 
 Platform cost = plan fee + seller fee. Payment processing (Stripe 2.9% + $0.30/order) is the same on both, so it does not change the ranking — but it is included in the "keeps" figures below, exactly as our [fee calculator](/tools/link-in-bio-fee-calculator/) does it.
@@ -31,6 +35,14 @@ Platform cost = plan fee + seller fee. Payment processing (Stripe 2.9% + $0.30/o
 | Paid plans / month | Creator $10; Creator Plus $30; Creator Max $100 | Creator $29; Creator Pro $99 |
 | Seller fee (per sale) | Free 9%; Creator 9%; Creator Plus 0%; Creator Max 0% | Creator 0%; Creator Pro 0% |
 
+![Beacons official pricing page on monthly billing: Free $0/month, Creator $10/month, Creator Plus $30/month (Most Popular), Creator Max $100/month](/images/comparisons/beacons-pricing.jpg)
+
+*Beacons' official pricing page (beacons.ai/i/pricing, captured 2026-11-24, monthly billing). Free and Creator charge a 9% seller fee; Creator Plus and Creator Max charge 0%.*
+
+![Stan Store official pricing page: Creator $29/month, Creator Pro $99/month](/images/comparisons/stan-store-pricing.jpg)
+
+*Stan Store's official pricing page (stan.store/blog/stan-store-pricing/, captured 2026-11-24). Creator $29/month or $300/year; Creator Pro $99/month or $948/year; 0% seller fees on both plans.*
+
 Beacons also includes email sends on its plans: Free includes 50 sends/month, Creator includes 500 sends/month.
 
 ## Worked example: $500/month in sales
@@ -45,6 +57,8 @@ A coach selling a $100 course, $500/month = 5 orders, payment processing $16.00.
 | Stan Creator | $29 + $0 | **$455.00** |
 | Stan Creator Pro | $99 + $0 | $385.00 |
 | Linktree Pro (for reference) | $17 + $0 | **$467.00** |
+
+![Bar chart: amount kept at $500/month in sales — Linktree Pro $467.00, Stan Creator $455.00, Beacons Creator Plus $454.00, Beacons Free $439.00, Beacons Creator $429.00, Stan Creator Pro $385.00](/images/comparisons/beacons-vs-stan-store-for-course-creators-keeps-500.svg)
 
 At $1,000/month (10 orders of $100), processing $32.00: Beacons Free keeps $878.00; Beacons Creator Plus keeps $938.00; Stan Creator keeps **$939.00**; Linktree Pro keeps $951.00.
 
