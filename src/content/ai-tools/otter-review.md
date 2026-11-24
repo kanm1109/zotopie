@@ -236,7 +236,7 @@ If Otter.ai's strict file import caps or lack of robust CRM integration on lower
 
 *   **[Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/):** Read our comprehensive pillar guide to evaluate the entire landscape of AI meeting platforms, contrasting Otter against video-first tools and automation engines.
 *   **[Fireflies.ai Review](/ai-tools/fireflies-review/):** Dive into our analysis of Fireflies.ai to understand how customized AI prompts and deep integrations can automate your post-meeting tasks.
-*   **[Fathom Review](/ai-tools/fathom-review/):** Explore our review of Fathom — the best free-tier alternative for freelancers who need unlimited recording without hitting monthly minute caps.
+*   **[Fathom Review](/ai-tools/fathom-meeting-review/):** Explore our review of Fathom — the best free-tier alternative for freelancers who need unlimited recording without hitting monthly minute caps.
 *   **[tl;dv Review](/ai-tools/tldv-review/):** Explore our review of tl;dv — the best choice for UX researchers and product teams who need timestamped video navigation and multi-meeting reel collections.
 *   **[Fireflies.ai vs Otter.ai](/comparisons/fireflies-vs-otter/):** Explore our detailed comparison to see exactly how real-time text feeds stack up against backend CRM automation.
 
@@ -302,19 +302,3 @@ Navigating the AI meeting assistant landscape requires matching software capabil
 Otter.ai remains a highly capable and visually impressive meeting tool, easily holding onto its reputation as a market pioneer. While the hidden file import caps on the Pro plan and the severe 30-minute meeting restriction on the Free plan demand careful budget evaluation, the platform's core transcription engine is excellent. Its live-scrolling interface, automated slide capture, and seamless mobile-to-desktop synchronization make it a highly recommended application for individuals, students, and teams who prioritize immediate text visibility and in-meeting collaboration over complex enterprise automation.
 
 ---
-
-## Internal Link Opportunities
-
-Build topical authority and expand your understanding of modern software tools by exploring our specialized analysis across the Zotopie network:
-
-*   **[Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/):** Review our comprehensive pillar guide to evaluate the entire landscape of AI meeting platforms, contrasting Otter against video-first tools and executive risk management platforms.
-*   **[Fireflies.ai Review](/ai-tools/fireflies-review/):** Read our deep dive into Otter's primary competitor to understand how custom AI prompts and deep integration directories can automate your post-meeting administration.
-*   **[Fireflies.ai vs Otter.ai](/comparisons/fireflies-vs-otter/):** Explore our rigorous head-to-head comparison evaluating real-time scrollable text pipelines against backend CRM automation routing.
-
-## Backfill Recommendations
-
-To construct a complete topical cluster and reinforce organizational authority within the Meeting AI software vertical, Zotopie should prioritize the development of the following content assets that will link back to this review:
-
-1.  **Otter.ai vs tl;dv (Text Feeds vs. Video Curation):** A specialized comparison asset evaluating live text transcription environments against high-definition visual timeline video clip hyperlinking models for UX research groups. See our [tl;dv Review](/ai-tools/tldv-review/) for tl;dv's current capabilities.
-2.  **The Best Transcription Apps for Journalists in 2026:** A targeted "Best" list focusing heavily on mobile application stability, offline recording capabilities, and file import limits, prominently featuring Otter.ai.
-3.  **Otter.ai vs Fathom (The Free Plan Showdown):** A detailed breakdown of the features and limits separating the two most popular free tiers in the meeting assistant software market.
