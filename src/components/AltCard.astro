@@ -4,7 +4,7 @@ import ToolLogo from "./ToolLogo.astro";
 const { tool, compareSlug } = Astro.props;
 const price = tool.startingPrice
   ? (tool.pricing === "Free" || tool.pricing === "Freemium"
-      ? `Free / ${tool.startingPrice}`
+      ? (tool.startingPrice.startsWith("Free") ? tool.startingPrice : `Free / ${tool.startingPrice}`)
       : tool.startingPrice)
   : tool.pricing;
 const tryLabel = (tool.pricing === "Free" || tool.pricing === "Freemium") ? "Try Free →" : "Visit →";
