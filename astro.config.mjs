@@ -33,6 +33,29 @@ export default defineConfig({
 			},
 			serialize(item) {
 				const url = item.url;
+				// hreflang alternates for the EN ↔ ES link-in-bio cluster
+				const ES_ALTERNATES = {
+					'https://zotopie.com/best/link-in-bio-tools/': [
+						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
+						{ url: 'https://zotopie.com/es/mejores-herramientas-link-en-bio/', lang: 'es' },
+					],
+					'https://zotopie.com/es/mejores-herramientas-link-en-bio/': [
+						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
+						{ url: 'https://zotopie.com/es/mejores-herramientas-link-en-bio/', lang: 'es' },
+					],
+					'https://zotopie.com/tools/link-in-bio-fee-calculator/': [
+						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
+						{ url: 'https://zotopie.com/es/calculadora-comisiones-link-en-bio/', lang: 'es' },
+					],
+					'https://zotopie.com/es/calculadora-comisiones-link-en-bio/': [
+						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
+						{ url: 'https://zotopie.com/es/calculadora-comisiones-link-en-bio/', lang: 'es' },
+					],
+				};
+				const links = ES_ALTERNATES[url];
+				if (links) {
+					return { ...item, changefreq: 'weekly', priority: 0.8, links };
+				}
 				if (url === 'https://zotopie.com/') {
 					return { ...item, changefreq: 'daily',   priority: 1.0 };
 				}
