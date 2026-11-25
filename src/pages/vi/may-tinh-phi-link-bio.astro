@@ -1,0 +1,185 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { LINK_IN_BIO_FEES, STRIPE_ESTIMATE, VERIFIED_ON } from "../../data/link-in-bio-fees-vi.mjs";
+
+const pageTitle = "Máy tính phí Link Bio: Linktree, Beacons và Stan Store giữ lại bao nhiêu?";
+const pageDesc =
+  "Nhập doanh số hàng tháng và giá trị đơn hàng trung bình để xem Linktree, Beacons và Stan Store giữ lại bao nhiêu: phí gói, phí nền tảng và phí xử lý thanh toán.";
+const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMATE });
+---
+
+<MainLayout title={pageTitle} description={pageDesc} lang="vi">
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="en" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
+    <link rel="alternate" hreflang="es" href="https://zotopie.com/es/calculadora-comisiones-link-en-bio/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/" />
+    <link rel="alternate" hreflang="id" href="https://zotopie.com/id/kalkulator-biaya-link-di-bio/" />
+    <link rel="alternate" hreflang="fr" href="https://zotopie.com/fr/calculateur-frais-link-in-bio/" />
+    <link rel="alternate" hreflang="de" href="https://zotopie.com/de/link-in-bio-gebuehrenrechner/" />
+    <link rel="alternate" hreflang="vi" href="https://zotopie.com/vi/may-tinh-phi-link-bio/" />
+    <link rel="alternate" hreflang="x-default" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
+    <meta property="og:locale" content="vi_VN" />
+  </Fragment>
+  <div class="breadcrumb">
+    <a href="/">Trang chủ</a> &rsaquo; <a href="/vi/cong-cu-link-bio-tot-nhat/">Công cụ Link Bio</a> &rsaquo; <span>Máy tính phí</span>
+  </div>
+
+  <h1>Máy tính phí Link Bio</h1>
+  <p class="intro">
+    Bạn bán hàng qua link bio? Nhập số liệu của bạn và xem chính xác mỗi công cụ
+    giữ lại bao nhiêu từ doanh số của bạn — phí gói hàng tháng, phí nền tảng và phí xử lý
+    thanh toán — để chọn công cụ rẻ nhất theo doanh số của bạn.
+  </p>
+
+  <p class="verify-note">
+    <strong>Giá đã kiểm tra {VERIFIED_ON}:</strong> Giá gói và phí lấy từ trang chính thức của các nhà cung cấp
+    (USD, tính theo tháng). Giá khác nhau tùy khu vực và thường xuyên thay đổi: hãy kiểm tra trang của nhà
+    cung cấp trước khi mua. Gói miễn phí của Linktree không bán được sản phẩm trả phí nên không xuất hiện
+    trong bảng so sánh.
+  </p>
+
+  <section class="calc-box">
+    <div class="inputs">
+      <label>
+        Doanh số hàng tháng ($)
+        <input id="sales" type="number" min="0" step="10" value="500" />
+      </label>
+      <label>
+        Giá trị đơn hàng trung bình ($)
+        <input id="avg-order" type="number" min="1" step="1" value="25" />
+      </label>
+    </div>
+
+    <div id="results" class="results"></div>
+    <p id="winner" class="winner"></p>
+  </section>
+
+  <section class="how">
+    <h2>Cách tính hoạt động</h2>
+    <p>
+      Với mỗi công cụ, chúng tôi chọn gói có tổng chi phí hàng tháng thấp nhất cho doanh số của bạn rồi trừ đi:
+    </p>
+    <ol>
+      <li><strong>Phí gói hàng tháng</strong> — giá của gói đăng ký.</li>
+      <li><strong>Phí nền tảng</strong> — tỷ lệ phần trăm công cụ lấy trên mỗi đơn hàng (0% với các gói cao hơn).</li>
+      <li>
+        <strong>Phí xử lý thanh toán (ước tính)</strong> — {(STRIPE_ESTIMATE.pct * 100).toFixed(1).replace(".", ",")}% + $
+        {STRIPE_ESTIMATE.perOrder.toFixed(2).replace(".", ",")} cho mỗi đơn hàng, ước tính theo Stripe. Đơn vị xử lý thanh toán
+        của bạn (Stripe, PayPal) có thể tính phí khác.
+      </li>
+    </ol>
+    <p>
+      Ví dụ: doanh số $500 với giá trị đơn hàng trung bình $25 là 20 đơn hàng. Với Linktree Pro
+      ($17/tháng, phí 0%), bạn giữ lại $500 − $17 − $0 − (2,9% × $500 + 20 × $0,30) =
+      <strong>$462,50</strong>.
+    </p>
+  </section>
+
+  <section class="faq">
+    <h2>Câu hỏi thường gặp</h2>
+    <h3>Công cụ link bio nào rẻ nhất cho người bán nhỏ?</h3>
+    <p>
+      Với doanh số nhỏ, gói miễn phí lấy phí 9% có thể tốn nhiều tiền hơn gói trả phí lấy 0%.
+      Hãy dùng máy tính: lựa chọn rẻ nhất sẽ thay đổi khi doanh số hàng tháng của bạn vượt vài trăm đô la.
+    </p>
+    <h3>Máy tính này có tính phí xử lý thanh toán không?</h3>
+    <p>
+      Có, tính theo ước tính (2,9% + $0,30 cho mỗi đơn hàng). Đây không phải phí của nhà cung cấp: đó là khoản
+      mà đơn vị xử lý thanh toán thường tính thêm.
+    </p>
+    <h3>Tôi có thể so sánh chi tiết các công cụ này ở đâu?</h3>
+    <p>
+      Hãy đọc hướng dẫn của chúng tôi về các <a href="/vi/cong-cu-link-bio-tot-nhat/">công cụ Link Bio tốt nhất</a>
+      để so sánh đầy đủ theo từng trường hợp sử dụng.
+    </p>
+  </section>
+
+  <script define:vars={{ feesJson }}>
+    const data = JSON.parse(feesJson);
+    const salesEl = document.getElementById("sales");
+    const avgEl = document.getElementById("avg-order");
+    const resultsEl = document.getElementById("results");
+    const winnerEl = document.getElementById("winner");
+
+    function money(n) {
+      return "$" + n.toLocaleString("vi-VN", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calc() {
+      const sales = Math.max(0, parseFloat(salesEl.value) || 0);
+      const avg = Math.max(1, parseFloat(avgEl.value) || 1);
+      const orders = sales / avg;
+      const stripeFee = sales * data.stripe.pct + orders * data.stripe.perOrder;
+
+      const rows = data.tools.map((tool) => {
+        let best = null;
+        for (const plan of tool.plans) {
+          const total = plan.monthly + sales * plan.feePct + stripeFee;
+          if (!best || total < best.total) {
+            best = { plan, total, platformFee: sales * plan.feePct };
+          }
+        }
+        return {
+          tool: tool.name,
+          slug: tool.slug,
+          plan: best.plan.name,
+          planFee: best.plan.monthly,
+          platformFee: best.platformFee,
+          stripeFee,
+          keep: sales - best.total,
+        };
+      });
+
+      rows.sort((a, b) => b.keep - a.keep);
+
+      resultsEl.innerHTML =
+        "<table><thead><tr><th>Công cụ</th><th>Gói tốt nhất</th><th>Phí gói</th><th>Phí nền tảng</th><th>Xử lý (ước tính)</th><th>Bạn giữ lại</th></tr></thead><tbody>" +
+        rows
+          .map(
+            (r, i) =>
+              `<tr${i === 0 ? ' class="best-row"' : ""}><td><span class="calc-tool"><img src="/logos/${r.slug}.svg" width="24" height="24" alt="${r.tool} logo" loading="lazy" /><strong>${r.tool}</strong></span></td><td>${r.plan}</td><td>${money(r.planFee)}</td><td>${money(r.platformFee)}</td><td>${money(r.stripeFee)}</td><td><strong>${money(r.keep)}</strong></td></tr>`
+          )
+          .join("") +
+        "</tbody></table>";
+
+      winnerEl.textContent =
+        sales > 0
+          ? `Lựa chọn rẻ nhất cho doanh số của bạn: ${rows[0].tool} (${rows[0].plan}): bạn giữ lại ${money(rows[0].keep)} trên ${money(sales)}.`
+          : "Nhập doanh số hàng tháng của bạn để xem công cụ nào giúp bạn giữ lại nhiều nhất.";
+    }
+
+    salesEl.addEventListener("input", calc);
+    avgEl.addEventListener("input", calc);
+    calc();
+  </script>
+
+  <style>
+    .breadcrumb { font-size: 0.875rem; color: #9ca3af; padding: 24px 0 0; margin-bottom: 24px; }
+    .breadcrumb a { color: #6b7280; }
+    h1 { font-size: 2rem; font-weight: 800; color: #111827; margin: 0 0 12px; line-height: 1.15; }
+    .intro { font-size: 1.05rem; color: #4b5563; line-height: 1.7; max-width: 780px; }
+    .verify-note { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; font-size: 0.9rem; color: #713f12; max-width: 780px; line-height: 1.6; }
+    .calc-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; margin: 24px 0 32px; max-width: 860px; }
+    .inputs { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .inputs label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #374151; }
+    .inputs input { padding: 10px 12px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 1rem; width: 200px; }
+    .inputs input:focus { outline: none; border-color: #7c3aed; }
+    .results table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; border-radius: 10px; overflow: hidden; }
+    .results th, .results td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
+    .results th { background: #f5f3ff; color: #6d28d9; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .results tr.best-row td { background: #f0fdf4; }
+    .calc-tool { display: inline-flex; align-items: center; gap: 8px; }
+    .calc-tool img { border-radius: 6px; background: #fff; border: 1px solid #E8ECF0; padding: 2px; box-sizing: content-box; object-fit: contain; flex-shrink: 0; }
+    .winner { font-weight: 700; color: #15803d; margin: 16px 0 0; }
+    .how, .faq { max-width: 780px; }
+    .how h2, .faq h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin: 0 0 14px; }
+    .how p, .how li, .faq p { font-size: 0.95rem; color: #374151; line-height: 1.7; }
+    .faq h3 { font-size: 1.05rem; font-weight: 700; color: #111827; margin: 20px 0 6px; }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.6rem; }
+      .calc-box { padding: 16px; }
+      .inputs input { width: 100%; }
+      .results { overflow-x: auto; }
+    }
+  </style>
+</MainLayout>
