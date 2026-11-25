@@ -9,6 +9,7 @@ const {
   image,
   noindex = false,
   lang = "en",
+  dir,
 } = Astro.props;
 const SITE = (Astro.site?.origin) ?? "https://zotopie.com";
 const canonicalURL = canonical ?? new URL(Astro.url.pathname, Astro.site ?? SITE).href;
@@ -18,7 +19,7 @@ const ogImage = image
 const GA_ID = import.meta.env.PUBLIC_GA_ID || 'G-X190Z25SV2';
 ---
 
-<html lang={lang}>
+<html lang={lang} dir={dir}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
