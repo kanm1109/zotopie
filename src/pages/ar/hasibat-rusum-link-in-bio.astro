@@ -1,0 +1,193 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { LINK_IN_BIO_FEES, STRIPE_ESTIMATE, VERIFIED_ON } from "../../data/link-in-bio-fees-ar.mjs";
+
+const pageTitle = "حاسبة رسوم Link in Bio: كم يأخذ Linktree وBeacons وStan Store؟";
+const pageDesc =
+  "أدخل مبيعاتك الشهرية ومتوسط قيمة الطلب لترى كم يأخذ Linktree وBeacons وStan Store: رسوم الخطة ورسوم المنصة ورسوم معالجة الدفع.";
+const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMATE });
+---
+
+<MainLayout title={pageTitle} description={pageDesc} lang="ar" dir="rtl">
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="en" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
+    <link rel="alternate" hreflang="es" href="https://zotopie.com/es/calculadora-comisiones-link-en-bio/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/" />
+    <link rel="alternate" hreflang="id" href="https://zotopie.com/id/kalkulator-biaya-link-di-bio/" />
+    <link rel="alternate" hreflang="fr" href="https://zotopie.com/fr/calculateur-frais-link-in-bio/" />
+    <link rel="alternate" hreflang="de" href="https://zotopie.com/de/link-in-bio-gebuehrenrechner/" />
+    <link rel="alternate" hreflang="vi" href="https://zotopie.com/vi/may-tinh-phi-link-bio/" />
+    <link rel="alternate" hreflang="th" href="https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/" />
+    <link rel="alternate" hreflang="tr" href="https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/" />
+    <link rel="alternate" hreflang="ar" href="https://zotopie.com/ar/hasibat-rusum-link-in-bio/" />
+    <link rel="alternate" hreflang="x-default" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
+    <meta property="og:locale" content="ar_AR" />
+  </Fragment>
+  <div class="breadcrumb">
+    <a href="/">الرئيسية</a> &lsaquo; <a href="/ar/afdhal-adawat-link-in-bio/">أدوات Link in Bio</a> &lsaquo; <span>حاسبة الرسوم</span>
+  </div>
+
+  <h1>حاسبة رسوم Link in Bio</h1>
+  <p class="intro">
+    هل تبيع عبر Link in Bio؟ أدخل أرقامك واكتشف كم يأخذ كل أداة من مبيعاتك: رسوم الخطة
+    الشهرية ورسوم المنصة ورسوم معالجة الدفع — لتختار الأرخص حسب حجم مبيعاتك.
+  </p>
+
+  <p class="verify-note">
+    <strong>تم التحقق من الأسعار في {VERIFIED_ON}:</strong> أسعار الخطط ورسوم المنصة مأخوذة من
+    صفحات الأسعار الرسمية للبائعين (بالدولار الأمريكي، مع الفوترة الشهرية). تختلف الأسعار حسب
+    المنطقة وتُحدَّث كثيرًا؛ تحقق من صفحة البائع قبل الشراء. لا يمكن بيع المنتجات المدفوعة في
+    الخطة المجانية من Linktree، لذا فهي غير مدرجة في جدول المقارنة.
+  </p>
+
+  <section class="calc-box">
+    <div class="inputs">
+      <label>
+        المبيعات الشهرية ($)
+        <input id="sales" type="number" min="0" step="10" value="500" />
+      </label>
+      <label>
+        متوسط قيمة الطلب ($)
+        <input id="avg-order" type="number" min="1" step="1" value="25" />
+      </label>
+    </div>
+
+    <div id="results" class="results"></div>
+    <p id="winner" class="winner"></p>
+  </section>
+
+  <section class="how">
+    <h2>كيف يتم الحساب</h2>
+    <p>
+      لكل أداة، نختار أرخص خطة حسب إجمالي التكلفة الشهرية لمبيعاتك، ثم نطرح:
+    </p>
+    <ol>
+      <li><strong>رسوم الخطة الشهرية</strong> — رسوم اشتراك الخطة.</li>
+      <li><strong>رسوم المنصة</strong> — النسبة التي تأخذها الأداة من كل عملية بيع (0% في الخطط العليا).</li>
+      <li>
+        <strong>رسوم معالجة الدفع (تقديرية)</strong> — {(STRIPE_ESTIMATE.pct * 100).toFixed(1).replace(".", ",")}% + {STRIPE_ESTIMATE.perOrder.toFixed(2).replace(".", ",")} دولارًا لكل طلب، وهو تقدير على غرار Stripe. وقد يفرض مزود الدفع الخاص بك (Stripe أو PayPal) رسومًا مختلفة.
+      </li>
+    </ol>
+    <p>
+      مثال: مبيعات بقيمة $500 بمتوسط طلب $25 تعني 20 طلبًا. مع Linktree Pro
+      (17 دولارًا شهريًا، رسوم 0%) يبقى لك $500 − $17 − $0 − (2,9% × $500 + 20 × $0,30) =
+      <strong>$462,50</strong>.
+    </p>
+  </section>
+
+  <section class="faq">
+    <h2>الأسئلة الشائعة</h2>
+    <h3>ما هي أرخص أداة Link in Bio للبائعين الصغار؟</h3>
+    <p>
+      مع حجم مبيعات منخفض، قد تكون الخطة المجانية التي تأخذ رسوم 9% أغلى من خطة مدفوعة
+      برسوم 0%. جرّب الحاسبة أعلاه: فبمجرد أن تتجاوز مبيعاتك الشهرية بضع مئات من الدولارات،
+      يتغير الخيار الأرخص.
+    </p>
+    <h3>هل تشمل هذه الحاسبة رسوم معالجة الدفع؟</h3>
+    <p>
+      نعم، تقديريًا (2,9% + 0,30 دولار لكل طلب). وهذه ليست رسوم الأداة نفسها؛ بل هي
+      المبلغ الذي يأخذه مزود الدفع عادة بشكل منفصل.
+    </p>
+    <h3>أين يمكنني مقارنة هذه الأدوات بالتفصيل؟</h3>
+    <p>
+      للاطلاع على مقارنة كاملة حسب حالة الاستخدام، راجع
+      <a href="/ar/afdhal-adawat-link-in-bio/">دليلنا لأفضل أدوات Link in Bio</a>.
+    </p>
+  </section>
+
+  <script define:vars={{ feesJson }}>
+    const data = JSON.parse(feesJson);
+    const salesEl = document.getElementById("sales");
+    const avgEl = document.getElementById("avg-order");
+    const resultsEl = document.getElementById("results");
+    const winnerEl = document.getElementById("winner");
+
+    // de-DE (not "ar"): Western digits with dot thousands + comma decimal
+    // ("1.000,00"). toLocaleString("ar") is ICU-dependent — this Node build
+    // renders Western digits for "ar" but Arabic-Indic digits for "ar-EG" —
+    // so the locale must not be trusted for digit shape.
+    function money(n) {
+      return "$" + n.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calc() {
+      const sales = Math.max(0, parseFloat(salesEl.value) || 0);
+      const avg = Math.max(1, parseFloat(avgEl.value) || 1);
+      const orders = sales / avg;
+      const stripeFee = sales * data.stripe.pct + orders * data.stripe.perOrder;
+
+      const rows = data.tools.map((tool) => {
+        let best = null;
+        for (const plan of tool.plans) {
+          const total = plan.monthly + sales * plan.feePct + stripeFee;
+          if (!best || total < best.total) {
+            best = { plan, total, platformFee: sales * plan.feePct };
+          }
+        }
+        return {
+          tool: tool.name,
+          slug: tool.slug,
+          plan: best.plan.name,
+          planFee: best.plan.monthly,
+          platformFee: best.platformFee,
+          stripeFee,
+          keep: sales - best.total,
+        };
+      });
+
+      rows.sort((a, b) => b.keep - a.keep);
+
+      resultsEl.innerHTML =
+        "<table><thead><tr><th>الأداة</th><th>أفضل خطة</th><th>رسوم الخطة</th><th>رسوم المنصة</th><th>رسوم المعالجة (تقديرية)</th><th>ما يبقى لك</th></tr></thead><tbody>" +
+        rows
+          .map(
+            (r, i) =>
+              `<tr${i === 0 ? ' class="best-row"' : ""}><td><span class="calc-tool"><img src="/logos/${r.slug}.svg" width="24" height="24" alt="${r.tool} logo" loading="lazy" /><strong>${r.tool}</strong></span></td><td>${r.plan}</td><td>${money(r.planFee)}</td><td>${money(r.platformFee)}</td><td>${money(r.stripeFee)}</td><td><strong>${money(r.keep)}</strong></td></tr>`
+          )
+          .join("") +
+        "</tbody></table>";
+
+      winnerEl.textContent =
+        sales > 0
+          ? `الخيار الأرخص لمبيعاتك: ${rows[0].tool} (${rows[0].plan}) — من مبيعات بقيمة ${money(sales)} يبقى لك ${money(rows[0].keep)}.`
+          : "أدخل مبيعاتك الشهرية لترى أي أداة تُبقي لك أكبر قدر";
+    }
+
+    salesEl.addEventListener("input", calc);
+    avgEl.addEventListener("input", calc);
+    calc();
+  </script>
+
+  <style>
+    .breadcrumb { font-size: 0.875rem; color: #9ca3af; padding: 24px 0 0; margin-bottom: 24px; }
+    .breadcrumb a { color: #6b7280; }
+    h1 { font-size: 2rem; font-weight: 800; color: #111827; margin: 0 0 12px; line-height: 1.15; }
+    .intro { font-size: 1.05rem; color: #4b5563; line-height: 1.7; max-width: 780px; }
+    .verify-note { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; font-size: 0.9rem; color: #713f12; max-width: 780px; line-height: 1.6; }
+    .calc-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; margin: 24px 0 32px; max-width: 860px; }
+    .inputs { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .inputs label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #374151; }
+    .inputs input { padding: 10px 12px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 1rem; width: 200px; }
+    .inputs input:focus { outline: none; border-color: #7c3aed; }
+    .results table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; border-radius: 10px; overflow: hidden; }
+    .results th, .results td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
+    .results th { background: #f5f3ff; color: #6d28d9; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .results tr.best-row td { background: #f0fdf4; }
+    .calc-tool { display: inline-flex; align-items: center; gap: 8px; }
+    .calc-tool img { border-radius: 6px; background: #fff; border: 1px solid #E8ECF0; padding: 2px; box-sizing: content-box; object-fit: contain; flex-shrink: 0; }
+    .winner { font-weight: 700; color: #15803d; margin: 16px 0 0; }
+    .how, .faq { max-width: 780px; }
+    .how h2, .faq h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin: 0 0 14px; }
+    .how p, .how li, .faq p { font-size: 0.95rem; color: #374151; line-height: 1.7; }
+    .faq h3 { font-size: 1.05rem; font-weight: 700; color: #111827; margin: 20px 0 6px; }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.6rem; }
+      .calc-box { padding: 16px; }
+      .inputs input { width: 100%; }
+      .results { overflow-x: auto; }
+    }
+
+    /* RTL adjustments (Arabic only): table cells align right under dir="rtl". */
+    .results th, .results td { text-align: right; }
+  </style>
+</MainLayout>
