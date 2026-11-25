@@ -60,7 +60,7 @@ const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMA
       <li><strong>Mensalidade do plano</strong> — o preço da assinatura desse plano.</li>
       <li><strong>Taxa da plataforma</strong> — a porcentagem que a ferramenta fica de cada venda (0% nos planos superiores).</li>
       <li>
-        <strong>Processamento de pagamentos (estimativa)</strong> — {(STRIPE_ESTIMATE.pct * 100).toString().replace(".", ",")}% + $
+        <strong>Processamento de pagamentos (estimativa)</strong> — {(STRIPE_ESTIMATE.pct * 100).toFixed(1).replace(".", ",")}% + $
         {STRIPE_ESTIMATE.perOrder.toFixed(2).replace(".", ",")} por pedido, uma estimativa no estilo Stripe. O seu processador
         real (Stripe, PayPal) pode cobrar diferente.
       </li>
