@@ -33,7 +33,7 @@ export default defineConfig({
 			},
 			serialize(item) {
 				const url = item.url;
-				// hreflang alternates for the EN ↔ ES ↔ PT-BR ↔ ID ↔ FR link-in-bio cluster
+				// hreflang alternates for the EN ↔ ES ↔ PT-BR ↔ ID ↔ FR ↔ DE ↔ VI ↔ TH ↔ TR link-in-bio cluster
 				const LOCALE_ALTERNATES = {
 					'https://zotopie.com/best/link-in-bio-tools/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
@@ -44,6 +44,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
 					],
 					'https://zotopie.com/es/mejores-herramientas-link-en-bio/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
@@ -54,6 +55,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
 					],
 					'https://zotopie.com/pt-br/melhores-ferramentas-link-na-bio/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
@@ -64,6 +66,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
 					],
 					'https://zotopie.com/id/alat-link-di-bio-terbaik/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
@@ -74,6 +77,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
 					],
 					'https://zotopie.com/fr/meilleurs-outils-link-in-bio/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
@@ -84,6 +88,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
 					],
 					'https://zotopie.com/de/beste-link-in-bio-tools/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
@@ -94,6 +99,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
 					],
 					'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
@@ -104,6 +110,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
 					],
 					'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
@@ -114,6 +121,18 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
+					],
+					'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/': [
+						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
+						{ url: 'https://zotopie.com/es/mejores-herramientas-link-en-bio/', lang: 'es' },
+						{ url: 'https://zotopie.com/pt-br/melhores-ferramentas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/alat-link-di-bio-terbaik/', lang: 'id' },
+						{ url: 'https://zotopie.com/fr/meilleurs-outils-link-in-bio/', lang: 'fr' },
+						{ url: 'https://zotopie.com/de/beste-link-in-bio-tools/', lang: 'de' },
+						{ url: 'https://zotopie.com/vi/cong-cu-link-bio-tot-nhat/', lang: 'vi' },
+						{ url: 'https://zotopie.com/th/khrueang-mue-link-bio-thi-di-thisut/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/en-iyi-link-in-bio-araclari/', lang: 'tr' },
 					],
 					'https://zotopie.com/tools/link-in-bio-fee-calculator/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
@@ -124,6 +143,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
 					],
 					'https://zotopie.com/es/calculadora-comisiones-link-en-bio/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
@@ -134,6 +154,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
 					],
 					'https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
@@ -144,6 +165,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
 					],
 					'https://zotopie.com/id/kalkulator-biaya-link-di-bio/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
@@ -154,6 +176,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
 					],
 					'https://zotopie.com/fr/calculateur-frais-link-in-bio/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
@@ -164,6 +187,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
 					],
 					'https://zotopie.com/de/link-in-bio-gebuehrenrechner/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
@@ -174,6 +198,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
 					],
 					'https://zotopie.com/vi/may-tinh-phi-link-bio/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
@@ -184,6 +209,7 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
 					],
 					'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
@@ -194,6 +220,18 @@ export default defineConfig({
 						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
 						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
 						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
+					],
+					'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/': [
+						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
+						{ url: 'https://zotopie.com/es/calculadora-comisiones-link-en-bio/', lang: 'es' },
+						{ url: 'https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/kalkulator-biaya-link-di-bio/', lang: 'id' },
+						{ url: 'https://zotopie.com/fr/calculateur-frais-link-in-bio/', lang: 'fr' },
+						{ url: 'https://zotopie.com/de/link-in-bio-gebuehrenrechner/', lang: 'de' },
+						{ url: 'https://zotopie.com/vi/may-tinh-phi-link-bio/', lang: 'vi' },
+						{ url: 'https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/', lang: 'th' },
+						{ url: 'https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/', lang: 'tr' },
 					],
 				};
 				const links = LOCALE_ALTERNATES[url];
