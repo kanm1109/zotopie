@@ -1,0 +1,79 @@
+[
+  {
+    "slug": "linktree",
+    "description": "La página link en bio por defecto: un enlace que reúne todos tus enlaces, con ventas integradas en los planes de pago.",
+    "overview": "Linktree es la herramienta link en bio más conocida: una sola página con enlaces ilimitados, registro por email y teléfono, código QR y analítica básica en el plan gratuito. Vender productos de pago requiere un plan de pago. Precios verificados el 24 de noviembre de 2026 (USD, facturación mensual; la facturación anual es más barata): Gratis $0, Starter $9 al mes, Pro $17 al mes, Premium $35 al mes. Comisiones por venta: 9% en Starter, 0% en Pro y Premium. El plan gratuito no permite vender productos de pago.",
+    "pros": [
+      "El plan gratuito sirve de verdad para una página de enlaces sencilla: enlaces ilimitados, código QR y 28 días de analítica",
+      "Pro ($17 al mes) cobra 0% de comisión por venta, así que se paga solo cuando las ventas mensuales superan unos cientos de dólares",
+      "La marca link en bio más conocida: los visitantes confían en un enlace de linktr.ee",
+      "Captura de emails y teléfonos integrada, además de Meta Pixel y herramientas UTM en Pro",
+      "Prueba gratuita de 7 días en Pro y Premium"
+    ],
+    "cons": [
+      "No puedes vender productos de pago en el plan gratuito",
+      "Los precios subieron en octubre de 2026 y varían según la región: el precio que veas puede ser distinto",
+      "La marca de Linktree permanece en la página hasta Pro",
+      "Starter cobra además una comisión del 9% por venta sobre la suscripción de $9 al mes"
+    ],
+    "bestFor": [
+      "Creadores que solo necesitan una página de enlaces",
+      "Vendedores de Etsy y coaches que venden más de ~$189 al mes (Pro con 0% supera a las opciones gratuitas con 9%)",
+      "Quien quiera la URL link en bio más conocida"
+    ],
+    "verdict": {
+      "summary": "Linktree es la página link en bio segura por defecto, y el plan gratuito cubre bien una lista sencilla de enlaces. Si vendes algo, Pro a $17 al mes con 0% de comisión es el plan que tiene sentido; la comisión del 9% de Starter lo convierte en la peor opción para vendedores."
+    }
+  },
+  {
+    "slug": "beacons",
+    "description": "Página link en bio con tienda, email y kit de medios en una sola cuenta gratuita: comisión del 9% hasta pagar $30 al mes por 0%.",
+    "overview": "Beacons combina una página link en bio con tienda, email marketing, kit de medios y un asistente de configuración con IA (Beam) en una sola cuenta. Precios verificados el 24 de noviembre de 2026 (USD, facturación mensual): Gratis $0, Creator $10 al mes, Creator Plus $30 al mes, Creator Max $100 al mes. Comisión por venta: 9% en Gratis y Creator, 0% en Creator Plus y Max. Envíos de email: 50 al mes en Gratis, 500 en Creator y sin límite mensual en Creator Plus. Creator Plus añade cursos ilimitados con alojamiento de video y membresías.",
+    "pros": [
+      "El plan gratuito incluye tienda, email (50 envíos al mes), kit de medios y configuración con IA: ninguna otra herramienta da tanto gratis",
+      "Creator Plus ($30 al mes) baja la comisión al 0% y añade cursos y membresías ilimitados",
+      "Email sin límite de envíos mensuales en Creator Plus: no necesitas otra herramienta de email",
+      "Herramientas de facturación y acuerdos con marcas (calculadora de tarifas, kit de medios) incluidas",
+      "Puedes vender desde el primer día en el plan gratuito, a diferencia de Stan Store"
+    ],
+    "cons": [
+      "Comisión del 9% en Gratis y Creator: con $1.000 al mes en ventas, son $90",
+      "Los envíos de email están limitados a 50 al mes en Gratis y 500 en Creator",
+      "Creator ($10 al mes) sigue cobrando el 9%, así que es una mala opción para vendedores",
+      "Creator Max a $100 al mes tiene precio de marca, no de creador independiente"
+    ],
+    "bestFor": [
+      "Creadores que venden cursos, productos digitales y membresías",
+      "Coaches que quieren email y tienda en la misma herramienta",
+      "Vendedores que empiezan con $0 y pasarán a Creator Plus por encima de ~$333 al mes en ventas"
+    ],
+    "verdict": {
+      "summary": "Beacons es la mejor opción todo en uno para creadores que venden cursos y necesitan email en el mismo lugar. Empieza gratis con 9% y pasa a Creator Plus ($30 al mes, 0%) cuando las ventas mensuales superen unos $333; evita el plan Creator de $10, que sigue cobrando 9%."
+    }
+  },
+  {
+    "slug": "stan-store",
+    "description": "Tienda para creadores con cursos, reservas y membresías: $29 al mes, 0% de comisión, sin plan gratuito.",
+    "overview": "Stan Store es una tienda link en bio creada para creadores que venden productos digitales, cursos, reservas y membresías. Precios verificados el 24 de noviembre de 2026 (USD, facturación mensual): Creator $29 al mes ($300 al año), Creator Pro $99 al mes ($948 al año), ambos con prueba gratuita de 14 días y sin plan gratuito. Stan cobra 0% de comisión por transacción en ambos planes; aun así pagas el procesamiento de Stripe o PayPal (normalmente 2,9% + $0,30 por pago con tarjeta).",
+    "pros": [
+      "0% de comisión en ambos planes: Stan no se queda nada por venta",
+      "Cursos, reservas, membresías y productos digitales, todo en el plan de $29",
+      "Prueba gratuita de 14 días, y puedes vender durante la prueba",
+      "Precios fijos y sencillos: no hay niveles de comisión que calcular, las cuentas son solo la suscripción más el procesamiento"
+    ],
+    "cons": [
+      "No hay plan gratuito: $29 al mes antes de tu primera venta",
+      "Según se informa, un dominio propio requiere el plan Creator Max ($299 al mes), que no aparece en la página de precios",
+      "Menos herramientas gratuitas alrededor de la tienda (sin email integrado como Beacons ni página de enlaces gratis como Linktree)",
+      "Creator Pro a $99 al mes es un salto grande por funciones que la mayoría de creadores independientes aún no necesita"
+    ],
+    "bestFor": [
+      "Coaches que venden cursos, reservas y membresías",
+      "Creadores con ventas estables por encima de ~$320 al mes (donde $29 fijos superan una comisión del 9%)",
+      "Vendedores que quieren un solo checkout para todo, no una página de enlaces más una tienda aparte"
+    ],
+    "verdict": {
+      "summary": "Stan Store es la opción más barata cuando vendes de forma constante: $29 al mes fijos con 0% de comisión superan una comisión del 9% a partir de unos $320 al mes en ventas. La pega es que los $29 empiezan antes de tu primera venta, así que solo tiene sentido cuando ya estás vendiendo."
+    }
+  }
+]

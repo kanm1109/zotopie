@@ -1,0 +1,35 @@
+[
+  {
+    "slug": "mejores-herramientas-link-en-bio",
+    "h1": "Las mejores herramientas link en bio para creadores en 2026",
+    "metaTitle": "Las mejores herramientas link en bio para creadores en 2026 — Linktree vs Beacons vs Stan Store | Zotopie",
+    "metaDesc": "Compara Linktree, Beacons y Stan Store para creadores que venden: precios de planes, comisiones por venta y cuál te deja quedarte con más de tus ventas. Precios verificados el 24 nov 2026.",
+    "intro": "Las herramientas link en bio hacen dos trabajos distintos, y la adecuada depende de cuál necesitas. Si solo necesitas una página con tus enlaces, una página gratuita es suficiente. Si vendes desde esa página — una tienda de Etsy, un curso, una llamada de coaching — la comisión por venta importa más que el precio mensual: una herramienta «gratis» que se queda con el 9% de cada venta cuesta más que una de $29 al mes con 0% cuando vendes unos cientos de dólares al mes. Clasificamos Linktree, Beacons y Stan Store por lo que te cuesta vender, no solo por lo que cuesta unirte. Usa la calculadora de comisiones para calcular tus propios números.",
+    "categorySlug": "link-tracking",
+    "categoryName": "Seguimiento de enlaces",
+    "toolSlugs": [
+      "linktree",
+      "beacons",
+      "stan-store"
+    ],
+    "rankLabels": {
+      "linktree": "La mejor en general",
+      "beacons": "La mejor para cursos y email",
+      "stan-store": "La mejor para coaches y reservas"
+    },
+    "faqs": [
+      {
+        "q": "¿Qué herramienta link en bio es la más barata para vender?",
+        "a": "Depende de tus ventas mensuales. Por debajo de unos $320 al mes, el plan gratuito de Beacons (comisión del 9%, suscripción de $0) es el más barato porque solo pagas cuando vendes. Por encima de eso, gana un plan fijo con 0%: Stan Store a $29 al mes o Linktree Pro a $17 al mes con 0% de comisión por venta. Calcula tus números en nuestra calculadora de comisiones."
+      },
+      {
+        "q": "¿Linktree cobra comisión por las ventas?",
+        "a": "El plan gratuito de Linktree no permite vender productos de pago. Starter ($9 al mes) cobra una comisión del 9% por venta. Pro ($17 al mes) y Premium ($35 al mes) cobran 0%. Precios verificados el 24 de noviembre de 2026, USD, facturación mensual; los precios varían según la región."
+      },
+      {
+        "q": "¿Beacons es realmente gratis?",
+        "a": "Sí, Beacons tiene un plan gratuito permanente con página link en bio, tienda, kit de medios y 50 envíos de email al mes, pero cobra una comisión del 9% por venta. Creator Plus ($30 al mes) baja la comisión a 0% y elimina el límite de envíos de email."
+      }
+    ]
+  }
+]
