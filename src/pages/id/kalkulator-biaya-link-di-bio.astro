@@ -60,7 +60,7 @@ const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMA
       <li><strong>Biaya bulanan paket</strong> — harga langganan paket tersebut.</li>
       <li><strong>Biaya platform</strong> — persentase yang diambil alat dari setiap penjualan (0% di paket atas).</li>
       <li>
-        <strong>Pemrosesan pembayaran (estimasi)</strong> — {(STRIPE_ESTIMATE.pct * 100).toString().replace(".", ",")}% + $
+        <strong>Pemrosesan pembayaran (estimasi)</strong> — {(STRIPE_ESTIMATE.pct * 100).toFixed(1).replace(".", ",")}% + $
         {STRIPE_ESTIMATE.perOrder.toFixed(2).replace(".", ",")} per pesanan, estimasi ala Stripe. Pemroses asli Anda
         (Stripe, PayPal) bisa mengenakan biaya berbeda.
       </li>
