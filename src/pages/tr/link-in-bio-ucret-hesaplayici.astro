@@ -1,0 +1,188 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { LINK_IN_BIO_FEES, STRIPE_ESTIMATE, VERIFIED_ON } from "../../data/link-in-bio-fees-tr.mjs";
+
+const pageTitle = "Link in Bio Ücret Hesaplayıcı: Linktree, Beacons ve Stan Store Ne Kadar Alıyor?";
+const pageDesc =
+  "Aylık satışlarınızı ve ortalama sipariş tutarınızı girerek Linktree, Beacons ve Stan Store'un ne kadar aldığını görün: plan ücreti, platform ücreti ve ödeme işlem ücreti.";
+const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMATE });
+---
+
+<MainLayout title={pageTitle} description={pageDesc} lang="tr">
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="en" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
+    <link rel="alternate" hreflang="es" href="https://zotopie.com/es/calculadora-comisiones-link-en-bio/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/" />
+    <link rel="alternate" hreflang="id" href="https://zotopie.com/id/kalkulator-biaya-link-di-bio/" />
+    <link rel="alternate" hreflang="fr" href="https://zotopie.com/fr/calculateur-frais-link-in-bio/" />
+    <link rel="alternate" hreflang="de" href="https://zotopie.com/de/link-in-bio-gebuehrenrechner/" />
+    <link rel="alternate" hreflang="vi" href="https://zotopie.com/vi/may-tinh-phi-link-bio/" />
+    <link rel="alternate" hreflang="th" href="https://zotopie.com/th/khreuxng-khid-kha-thrrm-niym-link-bio/" />
+    <link rel="alternate" hreflang="tr" href="https://zotopie.com/tr/link-in-bio-ucret-hesaplayici/" />
+    <link rel="alternate" hreflang="x-default" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
+    <meta property="og:locale" content="tr_TR" />
+  </Fragment>
+  <div class="breadcrumb">
+    <a href="/">Ana Sayfa</a> &rsaquo; <a href="/tr/en-iyi-link-in-bio-araclari/">Link in Bio Araçları</a> &rsaquo; <span>Ücret Hesaplayıcı</span>
+  </div>
+
+  <h1>Link in Bio Ücret Hesaplayıcı</h1>
+  <p class="intro">
+    Link in bio üzerinden satış mı yapıyorsunuz? Rakamlarınızı girin ve her aracın
+    satışlarınızdan ne kadar aldığını görün: aylık plan ücreti, platform ücreti ve ödeme
+    işlem ücreti — böylece satış hacminize göre en ucuzunu seçebilirsiniz.
+  </p>
+
+  <p class="verify-note">
+    <strong>Fiyatlar {VERIFIED_ON} tarihinde kontrol edildi:</strong> Plan fiyatları ve platform
+    ücretleri, satıcıların resmî fiyat sayfalarından alınmıştır (ABD doları, aylık faturalandırma).
+    Fiyatlar bölgeye göre değişir ve sık sık güncellenir; satın almadan önce satıcının sayfasını
+    kontrol edin. Linktree'nin ücretsiz planıyla ücretli ürün satılamaz, bu yüzden karşılaştırma
+    tablosunda yer almaz.
+  </p>
+
+  <section class="calc-box">
+    <div class="inputs">
+      <label>
+        Aylık satışlar ($)
+        <input id="sales" type="number" min="0" step="10" value="500" />
+      </label>
+      <label>
+        Ortalama sipariş tutarı ($)
+        <input id="avg-order" type="number" min="1" step="1" value="25" />
+      </label>
+    </div>
+
+    <div id="results" class="results"></div>
+    <p id="winner" class="winner"></p>
+  </section>
+
+  <section class="how">
+    <h2>Nasıl hesaplanır</h2>
+    <p>
+      Her araç için satışlarınıza göre toplam aylık maliyeti en düşük planı seçer, ardından şunları çıkarırız:
+    </p>
+    <ol>
+      <li><strong>Aylık plan ücreti</strong> — planın abonelik ücreti.</li>
+      <li><strong>Platform ücreti</strong> — aracın her satıştan aldığı yüzde (üst planlarda %0).</li>
+      <li>
+        <strong>Ödeme işlem ücreti (tahmini)</strong> — sipariş başına {(STRIPE_ESTIMATE.pct * 100).toFixed(1).replace(".", ",")}% + $
+        {STRIPE_ESTIMATE.perOrder.toFixed(2).replace(".", ",")}, Stripe tarzı bir tahmindir. Ödeme sağlayıcınız (Stripe, PayPal) farklı ücret alabilir.
+      </li>
+    </ol>
+    <p>
+      Örnek: $25 ortalama sipariş tutarıyla $500 satış, 20 sipariş demektir. Linktree Pro ile
+      ($17/ay, %0 ücret) elinize $500 − $17 − $0 − (%2,9 × $500 + 20 × $0,30) =
+      <strong>$462,50</strong> geçer.
+    </p>
+  </section>
+
+  <section class="faq">
+    <h2>Sıkça Sorulan Sorular</h2>
+    <h3>Küçük satıcılar için en ucuz link in bio aracı hangisi?</h3>
+    <p>
+      Düşük satış hacminde %9 ücret alan ücretsiz bir plan, %0 ücret alan ücretli bir plandan
+      daha pahalıya gelebilir. Yukarıdaki hesaplayıcıyı deneyin: aylık satışlarınız birkaç yüz
+      doları aştığında en ucuz seçenek değişir.
+    </p>
+    <h3>Bu hesaplayıcı ödeme işlem ücretini içeriyor mu?</h3>
+    <p>
+      Evet, tahmini olarak (%2,9 + sipariş başına $0,30). Bu, aracın kendi ücreti değildir;
+      ödeme sağlayıcısının genellikle ayrıca aldığı tutardır.
+    </p>
+    <h3>Bu araçları ayrıntılı olarak nerede karşılaştırabilirim?</h3>
+    <p>
+      Kullanım durumuna göre tam karşılaştırma için
+      <a href="/tr/en-iyi-link-in-bio-araclari/">en iyi link in bio araçları</a> rehberimize bakın.
+    </p>
+  </section>
+
+  <script define:vars={{ feesJson }}>
+    const data = JSON.parse(feesJson);
+    const salesEl = document.getElementById("sales");
+    const avgEl = document.getElementById("avg-order");
+    const resultsEl = document.getElementById("results");
+    const winnerEl = document.getElementById("winner");
+
+    function money(n) {
+      return "$" + n.toLocaleString("tr-TR", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calc() {
+      const sales = Math.max(0, parseFloat(salesEl.value) || 0);
+      const avg = Math.max(1, parseFloat(avgEl.value) || 1);
+      const orders = sales / avg;
+      const stripeFee = sales * data.stripe.pct + orders * data.stripe.perOrder;
+
+      const rows = data.tools.map((tool) => {
+        let best = null;
+        for (const plan of tool.plans) {
+          const total = plan.monthly + sales * plan.feePct + stripeFee;
+          if (!best || total < best.total) {
+            best = { plan, total, platformFee: sales * plan.feePct };
+          }
+        }
+        return {
+          tool: tool.name,
+          slug: tool.slug,
+          plan: best.plan.name,
+          planFee: best.plan.monthly,
+          platformFee: best.platformFee,
+          stripeFee,
+          keep: sales - best.total,
+        };
+      });
+
+      rows.sort((a, b) => b.keep - a.keep);
+
+      resultsEl.innerHTML =
+        "<table><thead><tr><th>Araç</th><th>En iyi plan</th><th>Plan ücreti</th><th>Platform ücreti</th><th>İşlem ücreti (tahmini)</th><th>Elinize geçen</th></tr></thead><tbody>" +
+        rows
+          .map(
+            (r, i) =>
+              `<tr${i === 0 ? ' class="best-row"' : ""}><td><span class="calc-tool"><img src="/logos/${r.slug}.svg" width="24" height="24" alt="${r.tool} logo" loading="lazy" /><strong>${r.tool}</strong></span></td><td>${r.plan}</td><td>${money(r.planFee)}</td><td>${money(r.platformFee)}</td><td>${money(r.stripeFee)}</td><td><strong>${money(r.keep)}</strong></td></tr>`
+          )
+          .join("") +
+        "</tbody></table>";
+
+      winnerEl.textContent =
+        sales > 0
+          ? `Satışlarınız için en ucuz seçenek: ${rows[0].tool} (${rows[0].plan}) — ${money(sales)} satıştan elinize ${money(rows[0].keep)} geçer.`
+          : "Hangi aracın size en çok kazandırdığını görmek için aylık satışlarınızı girin";
+    }
+
+    salesEl.addEventListener("input", calc);
+    avgEl.addEventListener("input", calc);
+    calc();
+  </script>
+
+  <style>
+    .breadcrumb { font-size: 0.875rem; color: #9ca3af; padding: 24px 0 0; margin-bottom: 24px; }
+    .breadcrumb a { color: #6b7280; }
+    h1 { font-size: 2rem; font-weight: 800; color: #111827; margin: 0 0 12px; line-height: 1.15; }
+    .intro { font-size: 1.05rem; color: #4b5563; line-height: 1.7; max-width: 780px; }
+    .verify-note { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; font-size: 0.9rem; color: #713f12; max-width: 780px; line-height: 1.6; }
+    .calc-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; margin: 24px 0 32px; max-width: 860px; }
+    .inputs { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .inputs label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #374151; }
+    .inputs input { padding: 10px 12px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 1rem; width: 200px; }
+    .inputs input:focus { outline: none; border-color: #7c3aed; }
+    .results table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; border-radius: 10px; overflow: hidden; }
+    .results th, .results td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
+    .results th { background: #f5f3ff; color: #6d28d9; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .results tr.best-row td { background: #f0fdf4; }
+    .calc-tool { display: inline-flex; align-items: center; gap: 8px; }
+    .calc-tool img { border-radius: 6px; background: #fff; border: 1px solid #E8ECF0; padding: 2px; box-sizing: content-box; object-fit: contain; flex-shrink: 0; }
+    .winner { font-weight: 700; color: #15803d; margin: 16px 0 0; }
+    .how, .faq { max-width: 780px; }
+    .how h2, .faq h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin: 0 0 14px; }
+    .how p, .how li, .faq p { font-size: 0.95rem; color: #374151; line-height: 1.7; }
+    .faq h3 { font-size: 1.05rem; font-weight: 700; color: #111827; margin: 20px 0 6px; }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.6rem; }
+      .calc-box { padding: 16px; }
+      .inputs input { width: 100%; }
+      .results { overflow-x: auto; }
+    }
+  </style>
+</MainLayout>
