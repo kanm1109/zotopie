@@ -33,37 +33,55 @@ export default defineConfig({
 			},
 			serialize(item) {
 				const url = item.url;
-				// hreflang alternates for the EN ↔ ES ↔ PT-BR link-in-bio cluster
+				// hreflang alternates for the EN ↔ ES ↔ PT-BR ↔ ID link-in-bio cluster
 				const LOCALE_ALTERNATES = {
 					'https://zotopie.com/best/link-in-bio-tools/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
 						{ url: 'https://zotopie.com/es/mejores-herramientas-link-en-bio/', lang: 'es' },
 						{ url: 'https://zotopie.com/pt-br/melhores-ferramentas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/alat-link-di-bio-terbaik/', lang: 'id' },
 					],
 					'https://zotopie.com/es/mejores-herramientas-link-en-bio/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
 						{ url: 'https://zotopie.com/es/mejores-herramientas-link-en-bio/', lang: 'es' },
 						{ url: 'https://zotopie.com/pt-br/melhores-ferramentas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/alat-link-di-bio-terbaik/', lang: 'id' },
 					],
 					'https://zotopie.com/pt-br/melhores-ferramentas-link-na-bio/': [
 						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
 						{ url: 'https://zotopie.com/es/mejores-herramientas-link-en-bio/', lang: 'es' },
 						{ url: 'https://zotopie.com/pt-br/melhores-ferramentas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/alat-link-di-bio-terbaik/', lang: 'id' },
+					],
+					'https://zotopie.com/id/alat-link-di-bio-terbaik/': [
+						{ url: 'https://zotopie.com/best/link-in-bio-tools/', lang: 'en' },
+						{ url: 'https://zotopie.com/es/mejores-herramientas-link-en-bio/', lang: 'es' },
+						{ url: 'https://zotopie.com/pt-br/melhores-ferramentas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/alat-link-di-bio-terbaik/', lang: 'id' },
 					],
 					'https://zotopie.com/tools/link-in-bio-fee-calculator/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
 						{ url: 'https://zotopie.com/es/calculadora-comisiones-link-en-bio/', lang: 'es' },
 						{ url: 'https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/kalkulator-biaya-link-di-bio/', lang: 'id' },
 					],
 					'https://zotopie.com/es/calculadora-comisiones-link-en-bio/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
 						{ url: 'https://zotopie.com/es/calculadora-comisiones-link-en-bio/', lang: 'es' },
 						{ url: 'https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/kalkulator-biaya-link-di-bio/', lang: 'id' },
 					],
 					'https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/': [
 						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
 						{ url: 'https://zotopie.com/es/calculadora-comisiones-link-en-bio/', lang: 'es' },
 						{ url: 'https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/kalkulator-biaya-link-di-bio/', lang: 'id' },
+					],
+					'https://zotopie.com/id/kalkulator-biaya-link-di-bio/': [
+						{ url: 'https://zotopie.com/tools/link-in-bio-fee-calculator/', lang: 'en' },
+						{ url: 'https://zotopie.com/es/calculadora-comisiones-link-en-bio/', lang: 'es' },
+						{ url: 'https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/', lang: 'pt-BR' },
+						{ url: 'https://zotopie.com/id/kalkulator-biaya-link-di-bio/', lang: 'id' },
 					],
 				};
 				const links = LOCALE_ALTERNATES[url];
