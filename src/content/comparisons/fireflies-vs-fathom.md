@@ -3,7 +3,7 @@ title: "Fireflies.ai vs Fathom (2026): Which AI Meeting Assistant is Best?"
 description: "A comprehensive, head-to-head comparison of Fireflies.ai and Fathom. Discover which AI meeting assistant offers better transcription accuracy, notes, pricing, and features for your workflow."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-30
-tags: ["Meeting AI", "Fireflies.ai", "Fathom", "AI Transcription", "Comparison"]
+tags: ["Meeting AI", "Fireflies.ai", "fathom-meeting", "AI Transcription", "Comparison"]
 category: "comparisons"
 featuredImage: "/images/comparisons/fireflies-vs-fathom/fireflies-vs-fathom-feature-comparison.svg"
 draft: false

@@ -204,7 +204,7 @@ const catJsonLdStr = JSON.stringify({
               </div>
               <p class="rc-desc">{tool.description}</p>
               <span class="rc-price">
-                {tool.startingPrice ? `from ${tool.startingPrice}` : tool.pricing}
+                {tool.startingPrice ? (tool.startingPrice.startsWith("From") ? tool.startingPrice : `from ${tool.startingPrice}`) : tool.pricing}
               </span>
             </div>
             <div class="rc-right">

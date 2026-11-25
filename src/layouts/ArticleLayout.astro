@@ -193,7 +193,7 @@ const faqJsonLd =
 						<div class="tpb-meta">
 							<span class="tpb-rating">★ {relatedTool.rating}</span>
 							<span class="tpb-sep">·</span>
-							<span class="tpb-pricing">{relatedTool.pricing}{relatedTool.startingPrice ? ` · from ${relatedTool.startingPrice}` : ''}</span>
+							<span class="tpb-pricing">{relatedTool.pricing}{relatedTool.startingPrice ? (relatedTool.startingPrice.startsWith("From") ? ` · ${relatedTool.startingPrice}` : ` · from ${relatedTool.startingPrice}`) : ''}</span>
 						</div>
 						<a href={`/reviews/${relatedTool.slug}/`} class="tpb-cta">View Tool Profile →</a>
 					</div>

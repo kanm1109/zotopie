@@ -748,7 +748,7 @@
     ]
   },
   {
-    "tool": "Fathom",
+    "tool": "Fathom Analytics",
     "alternatives": [
       "plausible",
       "google-analytics",
@@ -1097,6 +1097,14 @@
       "lemon-squeezy",
       "paddle",
       "payhip"
+    ]
+  },
+  {
+    "tool": "Fathom Meeting Assistant",
+    "alternatives": [
+      "fireflies-ai",
+      "otter-ai",
+      "tldv"
     ]
   }
 ]
