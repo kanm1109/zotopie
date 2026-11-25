@@ -1,0 +1,184 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { LINK_IN_BIO_FEES, STRIPE_ESTIMATE, VERIFIED_ON } from "../../data/link-in-bio-fees-de.mjs";
+
+const pageTitle = "Link-in-Bio-Gebührenrechner: Wie viel behalten Linktree, Beacons und Stan Store?";
+const pageDesc =
+  "Geben Sie Ihre monatlichen Verkäufe und den durchschnittlichen Bestellwert ein, um zu sehen, wie viel Linktree, Beacons und Stan Store behalten: Abo-Gebühr, Plattformgebühr und Zahlungsabwicklung.";
+const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMATE });
+---
+
+<MainLayout title={pageTitle} description={pageDesc} lang="de">
+  <Fragment slot="head">
+    <link rel="alternate" hreflang="en" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
+    <link rel="alternate" hreflang="es" href="https://zotopie.com/es/calculadora-comisiones-link-en-bio/" />
+    <link rel="alternate" hreflang="pt-BR" href="https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/" />
+    <link rel="alternate" hreflang="id" href="https://zotopie.com/id/kalkulator-biaya-link-di-bio/" />
+    <link rel="alternate" hreflang="fr" href="https://zotopie.com/fr/calculateur-frais-link-in-bio/" />
+    <link rel="alternate" hreflang="de" href="https://zotopie.com/de/link-in-bio-gebuehrenrechner/" />
+    <link rel="alternate" hreflang="x-default" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
+    <meta property="og:locale" content="de_DE" />
+  </Fragment>
+  <div class="breadcrumb">
+    <a href="/">Startseite</a> &rsaquo; <a href="/de/beste-link-in-bio-tools/">Link-in-Bio-Tools</a> &rsaquo; <span>Gebührenrechner</span>
+  </div>
+
+  <h1>Link-in-Bio-Gebührenrechner</h1>
+  <p class="intro">
+    Verkaufen Sie über Ihren Link in Bio? Geben Sie Ihre Zahlen ein und sehen Sie genau, wie viel jedes Tool
+    von Ihren Verkäufen behält — Monatsabo, Plattformgebühr und Zahlungsabwicklung — um je nach Volumen
+    das günstigste zu wählen.
+  </p>
+
+  <p class="verify-note">
+    <strong>Preise geprüft {VERIFIED_ON}:</strong> Die Abo-Preise und Gebühren stammen von den offiziellen
+    Seiten der Anbieter (USD, Monatsabrechnung). Die Preise variieren je nach Region und ändern sich oft:
+    Prüfen Sie vor dem Kauf die Seite des Anbieters. Der kostenlose Tarif von Linktree kann keine bezahlten
+    Produkte verkaufen und erscheint daher nicht im Vergleich.
+  </p>
+
+  <section class="calc-box">
+    <div class="inputs">
+      <label>
+        Monatliche Verkäufe ($)
+        <input id="sales" type="number" min="0" step="10" value="500" />
+      </label>
+      <label>
+        Durchschnittlicher Bestellwert ($)
+        <input id="avg-order" type="number" min="1" step="1" value="25" />
+      </label>
+    </div>
+
+    <div id="results" class="results"></div>
+    <p id="winner" class="winner"></p>
+  </section>
+
+  <section class="how">
+    <h2>So funktioniert die Berechnung</h2>
+    <p>
+      Für jedes Tool wählen wir den Tarif mit den niedrigsten monatlichen Gesamtkosten für Ihre Verkäufe und ziehen dann ab:
+    </p>
+    <ol>
+      <li><strong>Monatsabo des Tarifs</strong> — der Preis des Abonnements.</li>
+      <li><strong>Plattformgebühr</strong> — der Prozentsatz, den das Tool pro Verkauf nimmt (0 % bei den höheren Tarifen).</li>
+      <li>
+        <strong>Zahlungsabwicklung (Schätzung)</strong> — {(STRIPE_ESTIMATE.pct * 100).toFixed(1).replace(".", ",")}% + $
+        {STRIPE_ESTIMATE.perOrder.toFixed(2).replace(".", ",")} pro Bestellung, Schätzung nach Stripe. Ihr Zahlungsabwickler
+        (Stripe, PayPal) kann andere Gebühren berechnen.
+      </li>
+    </ol>
+    <p>
+      Beispiel: 500 $ Verkäufe bei einem durchschnittlichen Bestellwert von 25 $ sind 20 Bestellungen. Mit Linktree Pro
+      (17 $ im Monat, 0 % Gebühr) behalten Sie $500 − $17 − $0 − (2,9% × $500 + 20 × $0,30) =
+      <strong>$462,50</strong>.
+    </p>
+  </section>
+
+  <section class="faq">
+    <h2>Häufige Fragen</h2>
+    <h3>Welches Link-in-Bio-Tool ist für kleine Verkäufer am günstigsten?</h3>
+    <p>
+      Bei kleinem Volumen kann ein kostenloser Tarif mit 9 % Gebühr teurer sein als ein kostenpflichtiger Tarif mit 0 %.
+      Nutzen Sie den Rechner: Die günstigste Wahl ändert sich, wenn Ihre monatlichen Verkäufe ein paar Hundert Dollar übersteigen.
+    </p>
+    <h3>Berücksichtigt dieser Rechner die Zahlungsabwicklung?</h3>
+    <p>
+      Ja, als Schätzung (2,9% + $0,30 pro Bestellung). Das sind keine Gebühren des Anbieters: Das ist, was
+      der Zahlungsabwickler in der Regel zusätzlich berechnet.
+    </p>
+    <h3>Wo kann ich diese Tools im Detail vergleichen?</h3>
+    <p>
+      Lesen Sie unseren Guide zu den <a href="/de/beste-link-in-bio-tools/">besten Link-in-Bio-Tools</a>
+      für einen vollständigen Vergleich nach Anwendungsfall.
+    </p>
+  </section>
+
+  <script define:vars={{ feesJson }}>
+    const data = JSON.parse(feesJson);
+    const salesEl = document.getElementById("sales");
+    const avgEl = document.getElementById("avg-order");
+    const resultsEl = document.getElementById("results");
+    const winnerEl = document.getElementById("winner");
+
+    function money(n) {
+      return "$" + n.toLocaleString("de-DE", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    }
+
+    function calc() {
+      const sales = Math.max(0, parseFloat(salesEl.value) || 0);
+      const avg = Math.max(1, parseFloat(avgEl.value) || 1);
+      const orders = sales / avg;
+      const stripeFee = sales * data.stripe.pct + orders * data.stripe.perOrder;
+
+      const rows = data.tools.map((tool) => {
+        let best = null;
+        for (const plan of tool.plans) {
+          const total = plan.monthly + sales * plan.feePct + stripeFee;
+          if (!best || total < best.total) {
+            best = { plan, total, platformFee: sales * plan.feePct };
+          }
+        }
+        return {
+          tool: tool.name,
+          slug: tool.slug,
+          plan: best.plan.name,
+          planFee: best.plan.monthly,
+          platformFee: best.platformFee,
+          stripeFee,
+          keep: sales - best.total,
+        };
+      });
+
+      rows.sort((a, b) => b.keep - a.keep);
+
+      resultsEl.innerHTML =
+        "<table><thead><tr><th>Tool</th><th>Bester Tarif</th><th>Abo</th><th>Gebühr</th><th>Abwicklung (geschätzt)</th><th>Sie behalten</th></tr></thead><tbody>" +
+        rows
+          .map(
+            (r, i) =>
+              `<tr${i === 0 ? ' class="best-row"' : ""}><td><span class="calc-tool"><img src="/logos/${r.slug}.svg" width="24" height="24" alt="${r.tool} logo" loading="lazy" /><strong>${r.tool}</strong></span></td><td>${r.plan}</td><td>${money(r.planFee)}</td><td>${money(r.platformFee)}</td><td>${money(r.stripeFee)}</td><td><strong>${money(r.keep)}</strong></td></tr>`
+          )
+          .join("") +
+        "</tbody></table>";
+
+      winnerEl.textContent =
+        sales > 0
+          ? `Die günstigste Wahl für Ihr Volumen: ${rows[0].tool} (${rows[0].plan}): Sie behalten ${money(rows[0].keep)} von ${money(sales)}.`
+          : "Geben Sie Ihre monatlichen Verkäufe ein, um zu sehen, mit welchem Tool Sie am meisten behalten.";
+    }
+
+    salesEl.addEventListener("input", calc);
+    avgEl.addEventListener("input", calc);
+    calc();
+  </script>
+
+  <style>
+    .breadcrumb { font-size: 0.875rem; color: #9ca3af; padding: 24px 0 0; margin-bottom: 24px; }
+    .breadcrumb a { color: #6b7280; }
+    h1 { font-size: 2rem; font-weight: 800; color: #111827; margin: 0 0 12px; line-height: 1.15; }
+    .intro { font-size: 1.05rem; color: #4b5563; line-height: 1.7; max-width: 780px; }
+    .verify-note { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; font-size: 0.9rem; color: #713f12; max-width: 780px; line-height: 1.6; }
+    .calc-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 14px; padding: 24px; margin: 24px 0 32px; max-width: 860px; }
+    .inputs { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .inputs label { display: flex; flex-direction: column; gap: 6px; font-size: 0.85rem; font-weight: 700; color: #374151; }
+    .inputs input { padding: 10px 12px; border: 1.5px solid #d1d5db; border-radius: 8px; font-size: 1rem; width: 200px; }
+    .inputs input:focus { outline: none; border-color: #7c3aed; }
+    .results table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; border-radius: 10px; overflow: hidden; }
+    .results th, .results td { text-align: left; padding: 10px 12px; border-bottom: 1px solid #e5e7eb; }
+    .results th { background: #f5f3ff; color: #6d28d9; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .results tr.best-row td { background: #f0fdf4; }
+    .calc-tool { display: inline-flex; align-items: center; gap: 8px; }
+    .calc-tool img { border-radius: 6px; background: #fff; border: 1px solid #E8ECF0; padding: 2px; box-sizing: content-box; object-fit: contain; flex-shrink: 0; }
+    .winner { font-weight: 700; color: #15803d; margin: 16px 0 0; }
+    .how, .faq { max-width: 780px; }
+    .how h2, .faq h2 { font-size: 1.35rem; font-weight: 700; color: #111827; margin: 0 0 14px; }
+    .how p, .how li, .faq p { font-size: 0.95rem; color: #374151; line-height: 1.7; }
+    .faq h3 { font-size: 1.05rem; font-weight: 700; color: #111827; margin: 20px 0 6px; }
+    @media (max-width: 640px) {
+      h1 { font-size: 1.6rem; }
+      .calc-box { padding: 16px; }
+      .inputs input { width: 100%; }
+      .results { overflow-x: auto; }
+    }
+  </style>
+</MainLayout>
