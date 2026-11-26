@@ -3,6 +3,7 @@ import tools from "../../data/generated/tools-enriched.json";
 import taxonomies from "../../data/taxonomies.json";
 import MainLayout from "../../layouts/MainLayout.astro";
 import ToolLogo from "../../components/ToolLogo.astro";
+import { NOINDEX_SLUGS } from "../../data/noindex.mjs";
 
 export async function getStaticPaths() {
   const pairs = new Set<string>();
@@ -34,7 +35,7 @@ function formatPricing(tool: typeof toolA) {
   // never print "Free + from Free / $9/mo" or "From From $29/mo"
   const sp = tool.startingPrice ?? "";
   if (tool.pricing === "Free") return "Free";
-  if (tool.pricing === "Freemium") return sp ? (sp.startsWith("Free") ? sp : `Free + from ${sp}`) : "Freemium";
+  if (tool.pricing === "Freemium") return sp ? (sp.startsWith("Free") ? sp : `Free / ${sp}`) : "Freemium";
   return sp ? (sp.startsWith("From") ? sp : `From ${sp}`) : tool.pricing;
 }
 
@@ -109,7 +110,7 @@ const q1Answer = (() => {
   return `Both ${toolA.name} and ${toolB.name} are rated equally at ${toolA.rating}/5. ${toolA.name} suits ${toolA.bestFor?.[0] ?? "its primary audience"}, while ${toolB.name} is designed for ${toolB.bestFor?.[0] ?? "its primary audience"}.`;
 })();
 
-const spFrom = (s?: string) => (s ?? "").replace(/^From /, "");
+const spFrom = (s?: string) => (s ?? "").replace(/^From /, "").replace(/^Free \/ /, "");
 
 const q2Answer = (() => {
   if (toolA.pricing === "Free" && toolB.pricing === "Paid")
@@ -146,7 +147,10 @@ const autoFaqs = [
 const verdictText = (() => {
   const w = winnerTool;
   const l = loserTool;
-  let text = `Based on our editorial ratings, ${w.name} scores higher (${w.rating}/5 vs ${l.rating}/5).`;
+  let text =
+    w.rating === l.rating
+      ? `Both ${toolA.name} and ${toolB.name} are rated equally at ${toolA.rating}/5 in our editorial ratings.`
+      : `Based on our editorial ratings, ${w.name} scores higher (${w.rating}/5 vs ${l.rating}/5).`;
   if ((w.pricing === "Free" || w.pricing === "Freemium") && l.pricing === "Paid") {
     text += ` It also offers a free plan — a significant value advantage over ${l.name}'s paid-only pricing.`;
   }
@@ -192,13 +196,6 @@ const jsonLdStr = JSON.stringify({
           "@type": "SoftwareApplication",
           name: t.name,
           url: `${SITE}/reviews/${t.slug}/`,
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: String(t.rating),
-            bestRating: "5",
-            worstRating: "1",
-            ratingCount: "10",
-          },
         },
       })),
     },
@@ -214,7 +211,7 @@ const jsonLdStr = JSON.stringify({
 });
 ---
 
-<MainLayout title={pageTitle} description={pageDesc}>
+<MainLayout title={pageTitle} description={pageDesc} noindex={NOINDEX_SLUGS.includes(toolA.slug) || NOINDEX_SLUGS.includes(toolB.slug)}>
   <Fragment slot="head">
     <script type="application/ld+json" set:html={jsonLdStr} />
   </Fragment>
