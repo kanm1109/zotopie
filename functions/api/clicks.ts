@@ -37,11 +37,11 @@ export async function onRequestGet(
 
     ctx.env.DB.prepare(`
       SELECT
-        date(created_at)                                      AS day,
+        date(created_at, '+7 hours')                          AS day,
         tool_slug,
         SUM(CASE WHEN is_bot = 0 THEN 1 ELSE 0 END)          AS clicks
       FROM affiliate_clicks
-      WHERE created_at >= datetime('now', '-30 days')
+      WHERE date(created_at, '+7 hours') >= date('now', '+7 hours', '-29 days')
       GROUP BY day, tool_slug
       ORDER BY day DESC, clicks DESC
     `).all(),
