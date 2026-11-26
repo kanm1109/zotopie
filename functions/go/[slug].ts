@@ -4,12 +4,15 @@ interface Env {
   DB: D1Database;
 }
 
-// V1 approved affiliate tools — only these are tracked server-side.
+// Approved affiliate tools — only these are tracked server-side:
+// synthesia, gptzero, fireflies-ai, beacons, systeme-io.
 // All other /go/{slug} requests fall through to the pre-built static page.
 const AFFILIATE: Record<string, string> = {
   "synthesia":    "https://www.synthesia.io/?via=1a4a4b",
   "gptzero":      "https://gptzero.me/?via=nguyen-khanh",
   "fireflies-ai": "https://app.fireflies.ai/?via=nguyen-khanh",
+  "beacons":      "https://beacons.ai/signup?c=tonghopwebvaytaichinh",
+  "systeme-io":   "https://systeme.io/tr/2/161/15525489390/39837047/45556819971f4fb858cb0c5ad12b7e347c185cdcd",
 };
 
 // Bot detection — lightweight UA substring check.
@@ -52,13 +55,6 @@ export async function onRequest(
   const referer = req.headers.get("referer")    ?? "";
   const ip      = req.headers.get("cf-connecting-ip") ?? "0.0.0.0";
   const country = (req.cf as { country?: string } | undefined)?.country ?? "unknown";
-  const bot     = detectBot(ua);
-
-  // Privacy-safe hashes — no raw IP or UA stored.
-  const [visitorHash, uaHash] = await Promise.all([
-    shortHash(`${ip}\0${ua}`),
-    shortHash(ua),
-  ]);
 
   // Extract source page from Referer header.
   let sourcePage = "unknown";
@@ -67,6 +63,21 @@ export async function onRequest(
   } catch {
     // Referer absent or malformed — keep "unknown".
   }
+
+  // Bot = UA signature, OR a prefetch/prerender request (Sec-Purpose header,
+  // which may list several values), OR a click whose Referer is a /go/ page —
+  // a redirect page has no links, so that is not real navigation.
+  const secPurpose = req.headers.get("sec-purpose") ?? "";
+  const isPrefetch = secPurpose
+    .split(",")
+    .some((v) => ["prefetch", "prerender"].includes(v.trim().toLowerCase()));
+  const bot = detectBot(ua) || isPrefetch || sourcePage.startsWith("/go/");
+
+  // Privacy-safe hashes — no raw IP or UA stored.
+  const [visitorHash, uaHash] = await Promise.all([
+    shortHash(`${ip}\0${ua}`),
+    shortHash(ua),
+  ]);
 
   // Return redirect immediately — do not wait for D1 write.
   const redirectResp = new Response(null, {
