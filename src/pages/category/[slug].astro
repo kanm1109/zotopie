@@ -107,13 +107,6 @@ const catJsonLdStr = JSON.stringify({
             name: t.name,
             url: `${SITE}/reviews/${t.slug}/`,
             applicationCategory: "WebApplication",
-            aggregateRating: {
-              "@type": "AggregateRating",
-              ratingValue: t.rating,
-              bestRating: 5,
-              worstRating: 1,
-              ratingCount: 1,
-            },
           },
         })),
     },

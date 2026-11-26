@@ -16,7 +16,9 @@ export default defineConfig({
 					NOINDEX_SLUGS.some(
 						(slug) =>
 							page === `https://zotopie.com/reviews/${slug}/` ||
-							page === `https://zotopie.com/alternatives/${slug}/`
+							page === `https://zotopie.com/alternatives/${slug}/` ||
+							page.startsWith(`https://zotopie.com/compare/${slug}-vs-`) ||
+							page.endsWith(`-vs-${slug}/`)
 					);
 				return (
 				!noindexed &&

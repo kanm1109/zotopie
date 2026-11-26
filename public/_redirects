@@ -21,6 +21,9 @@ http://www.zotopie.com/* https://zotopie.com/:splat 301
 # Fathom split — old compare pair used Fathom Analytics vs tl;dv; the meeting assistant is the correct pair
 /compare/fathom-vs-tldv/  /compare/fathom-meeting-vs-tldv/  301
 
+# Microsoft Teams vs Notion — wrong pair (team chat vs notes/wiki); GSC showed 0 impressions for the URL, redirect is precautionary, not traffic-driven
+/compare/microsoft-teams-vs-notion/  /alternatives/microsoft-teams/  301
+
 # Fathom image folder rename — article renamed fathom-review -> fathom-meeting-review, images moved with it
 /images/ai-tools/fathom-review/fathom-dashboard-overview.svg  /images/ai-tools/fathom-meeting-review/fathom-dashboard-overview.svg  301
 /images/ai-tools/fathom-review/fathom-meeting-workflow.svg  /images/ai-tools/fathom-meeting-review/fathom-meeting-workflow.svg  301

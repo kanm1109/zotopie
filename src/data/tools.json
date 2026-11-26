@@ -435,7 +435,7 @@
     "website": "https://buffer.com",
     "logo": "/logos/buffer.svg",
     "pricing": "Freemium",
-    "startingPrice": "$0/mo",
+    "startingPrice": "Free / $5/channel/mo",
     "affiliate": true,
     "rating": 4.5,
     "featured": true,
@@ -796,7 +796,7 @@
     "website": "https://zapier.com",
     "logo": "/logos/zapier.svg",
     "pricing": "Freemium",
-    "startingPrice": "$0/mo",
+    "startingPrice": "Free / $19.99/mo",
     "affiliate": false,
     "rating": 4.8,
     "featured": true,
@@ -4501,7 +4501,6 @@
       "slack",
       "discord",
       "circle",
-      "notion",
       "discourse",
       "bettermode"
     ],
@@ -5208,7 +5207,7 @@
     "website": "https://otter.ai",
     "logo": "/logos/otter-ai.svg",
     "pricing": "Freemium",
-    "startingPrice": "\\.99/mo",
+    "startingPrice": "Free / $8.33/user/mo",
     "affiliate": false,
     "affiliateProgramExists": false,
     "affiliateApproved": false,
@@ -5278,12 +5277,12 @@
         },
         {
           "name": "Pro",
-          "price": "\\.99/mo",
+          "price": "$16.99/mo",
           "description": "Unlimited transcription, 10 AI summaries/month, advanced search, custom vocabulary."
         },
         {
           "name": "Business",
-          "price": "\\/mo per user",
+          "price": "$30/mo per user",
           "description": "Unlimited AI summaries, admin console, Salesforce integration, team features."
         },
         {
