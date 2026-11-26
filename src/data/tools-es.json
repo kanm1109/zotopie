@@ -27,6 +27,8 @@
   },
   {
     "slug": "beacons",
+    "affiliate": true,
+    "affiliateApproved": true,
     "description": "Página link en bio con tienda, email y kit de medios en una sola cuenta gratuita: comisión del 9% hasta pagar $30 al mes por 0%.",
     "overview": "Beacons combina una página link en bio con tienda, email marketing, kit de medios y un asistente de configuración con IA (Beam) en una sola cuenta. Precios verificados el 24 de noviembre de 2026 (USD, facturación mensual): Gratis $0, Creator $10 al mes, Creator Plus $30 al mes, Creator Max $100 al mes. Comisión por venta: 9% en Gratis y Creator, 0% en Creator Plus y Max. Envíos de email: 50 al mes en Gratis, 500 en Creator y sin límite mensual en Creator Plus. Creator Plus añade cursos ilimitados con alojamiento de video y membresías.",
     "pros": [

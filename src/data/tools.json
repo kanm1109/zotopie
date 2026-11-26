@@ -2038,8 +2038,9 @@
     "verdict": {
       "summary": "Systeme.io offers the most compelling free plan for creators and solo entrepreneurs testing a business model. The all-in-one stack eliminates the Zapier complexity of stitching separate tools together. Established businesses with existing email platforms may find the deliverability and integration limitations restrictive."
     },
-    "affiliateUrl": null,
-    "affiliateSource": "https://systeme.io/?sa=YOURREF"
+    "affiliateUrl": "https://systeme.io/tr/2/161/15525489390/39837047/45556819971f4fb858cb0c5ad12b7e347c185cdcd",
+    "affiliateSource": "https://systeme.io/?sa=YOURREF",
+    "affiliateApproved": true
   },
   {
     "name": "GetResponse",
@@ -5893,7 +5894,9 @@
     "logo": "/logos/beacons.svg",
     "pricing": "Freemium",
     "startingPrice": "Free / $10/mo",
-    "affiliate": false,
+    "affiliate": true,
+    "affiliateApproved": true,
+    "affiliateUrl": "https://beacons.ai/signup?c=tonghopwebvaytaichinh",
     "rating": 4.6,
     "featured": true,
     "addedDate": "2026-11-24",
