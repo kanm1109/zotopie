@@ -31,6 +31,12 @@ function vnDate(offsetDays = 0): string {
   return d.toISOString().slice(0, 10);
 }
 
+// Escape legacy-Markdown specials in dynamic values so a rogue tool slug
+// or source page can never break the whole Telegram message.
+function escapeMarkdown(text: string): string {
+  return text.replace(/([*_`[])/g, "\\$1");
+}
+
 async function fetchDayStats(db: D1Database, date: string): Promise<DayStats> {
   const r = await db
     .prepare(
@@ -103,6 +109,7 @@ async function fetchTopSource(db: D1Database, date: string): Promise<string> {
        WHERE date(created_at, '+7 hours') = ?
          AND is_bot = 0
          AND source_page != 'unknown'
+         AND source_page NOT LIKE '/go/%'
        GROUP BY source_page
        ORDER BY clicks DESC
        LIMIT 1`,
@@ -115,7 +122,7 @@ async function fetchTopSource(db: D1Database, date: string): Promise<string> {
 function toolLines(tools: ToolStat[]): string {
   return tools.length === 0
     ? "  (no data)"
-    : tools.map((t) => `  ${t.tool_slug}: ${t.human_clicks}`).join("\n");
+    : tools.map((t) => `  ${escapeMarkdown(t.tool_slug)}: ${t.human_clicks}`).join("\n");
 }
 
 function buildMessage(
@@ -129,13 +136,13 @@ function buildMessage(
   tools30:   ToolStat[],
 ): string {
   const topTool = toolsDay[0]
-    ? `${toolsDay[0].tool_slug} (${toolsDay[0].human_clicks})`
+    ? `${escapeMarkdown(toolsDay[0].tool_slug)} (${toolsDay[0].human_clicks})`
     : "—";
 
   return [
     "📊 *Zotopie Affiliate Report*",
     "",
-    `📅 Date: ${yesterday}`,
+    `📅 Date: ${escapeMarkdown(yesterday)}`,
     "",
     "*Yesterday*",
     `Total Clicks: ${day.total}`,
@@ -144,7 +151,7 @@ function buildMessage(
     `Bot Clicks: ${day.bot}`,
     "",
     `Top Tool: ${topTool}`,
-    `Top Article: ${topSource}`,
+    `Top Article: ${escapeMarkdown(topSource)}`,
     "",
     "*Tool Breakdown*",
     toolLines(toolsDay),
@@ -183,8 +190,8 @@ async function run(env: Env): Promise<void> {
   }
 
   const yesterday = vnDate(-1);
-  const since7    = vnDate(-7);
-  const since30   = vnDate(-30);
+  const since7    = vnDate(-6);
+  const since30   = vnDate(-29);
 
   const [day, topSource, toolsDay, stats7, tools7, stats30, tools30] = await Promise.all([
     fetchDayStats(env.DB, yesterday),
