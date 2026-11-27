@@ -6915,7 +6915,7 @@
   {
     "name": "Fireflies AI",
     "slug": "fireflies-ai",
-    "description": "AI meeting intelligence platform for automated recording, transcription, and meeting summaries.",
+    "description": "AI meeting intelligence for automated recording, transcription, and summaries.",
     "website": "https://fireflies.ai",
     "pricing": "Freemium",
     "startingPrice": "Free / $10/user/mo",
@@ -6968,7 +6968,7 @@
   {
     "name": "Rytr",
     "slug": "rytr",
-    "description": "Budget-friendly AI writing assistant with 40+ use case templates and multi-language support.",
+    "description": "Budget-friendly AI writing assistant with 40+ use-case templates, multi-language.",
     "website": "https://rytr.me",
     "pricing": "Freemium",
     "startingPrice": "Free / $9/mo",
@@ -7020,7 +7020,7 @@
   {
     "name": "Clipto",
     "slug": "clipto",
-    "description": "AI-powered video clip creator for repurposing long-form content into short social media clips.",
+    "description": "AI video clip creator for repurposing long-form content into short social clips.",
     "website": "https://clipto.io",
     "pricing": "Paid",
     "startingPrice": "$19/mo",
@@ -7070,7 +7070,7 @@
   {
     "name": "Arcads",
     "slug": "arcads",
-    "description": "AI UGC video ad generator using AI avatars to produce authentic-looking performance ad creatives.",
+    "description": "AI UGC video ad generator using AI avatars for authentic-looking performance ads.",
     "website": "https://arcads.ai",
     "pricing": "Paid",
     "startingPrice": "$99/mo",
@@ -7124,7 +7124,7 @@
   {
     "name": "Copymatic",
     "slug": "copymatic",
-    "description": "AI copywriting tool for generating marketing copy, blog posts, and product descriptions.",
+    "description": "AI copywriting tool for marketing copy, blog posts, and product descriptions.",
     "website": "https://copymatic.ai",
     "pricing": "Paid",
     "startingPrice": "$19/mo",
@@ -7176,7 +7176,7 @@
   {
     "name": "HyperWrite",
     "slug": "hyperwrite",
-    "description": "AI writing assistant with browser-integrated suggestions, templates, and AI agent workflows.",
+    "description": "AI writing assistant with browser suggestions, templates, and AI agent workflows.",
     "website": "https://hyperwriteai.com",
     "pricing": "Freemium",
     "startingPrice": "Free / $19.99/mo",
@@ -7230,7 +7230,7 @@
   {
     "name": "Originality.ai",
     "slug": "originality-ai",
-    "description": "AI content detection and plagiarism checker built for content publishers and marketing teams.",
+    "description": "AI content detection and plagiarism checker for publishers and marketers.",
     "website": "https://originality.ai",
     "pricing": "Freemium",
     "startingPrice": "$0.01/100 words",
@@ -7334,7 +7334,7 @@
   {
     "name": "Otter.ai",
     "slug": "otter-ai",
-    "description": "AI meeting assistant that transcribes, summarizes, and extracts action items from meetings in real time.",
+    "description": "AI meeting assistant with live transcription, summaries, and action items.",
     "website": "https://otter.ai",
     "pricing": "Freemium",
     "startingPrice": "Free / $8.33/user/mo",
@@ -7445,7 +7445,7 @@
   {
     "name": "Turnitin",
     "slug": "turnitin",
-    "description": "Academic integrity platform with AI writing detection used by 16,000+ institutions worldwide.",
+    "description": "Academic integrity platform with AI writing detection, used by 16,000+ institutions.",
     "website": "https://turnitin.com",
     "pricing": "Paid",
     "startingPrice": "Institutional pricing",
@@ -7548,7 +7548,7 @@
   {
     "name": "Copyleaks",
     "slug": "copyleaks",
-    "description": "AI content detector and plagiarism checker with 100+ language support and LMS integration.",
+    "description": "AI content detector and plagiarism checker with 100+ languages and LMS integration.",
     "website": "https://copyleaks.com",
     "pricing": "Freemium",
     "startingPrice": "Free / $9.99/mo",
@@ -7657,7 +7657,7 @@
   {
     "name": "Winston AI",
     "slug": "winston-ai",
-    "description": "AI content detector with high-accuracy claims and readability scoring for content marketing teams.",
+    "description": "AI content detector with high-accuracy claims and readability scoring.",
     "website": "https://gowinston.ai",
     "pricing": "Freemium",
     "startingPrice": "Free / $12/mo",
@@ -7771,7 +7771,7 @@
   {
     "name": "ZeroGPT",
     "slug": "zerogpt",
-    "description": "Free AI text detector with no account required and a 15,000-character scan limit on the free tier.",
+    "description": "Free AI text detector with no account needed and a 15,000-character scan limit.",
     "website": "https://zerogpt.com",
     "pricing": "Freemium",
     "startingPrice": "Free / $6.99/mo",
@@ -7874,7 +7874,7 @@
   {
     "name": "tl;dv",
     "slug": "tldv",
-    "description": "Video-first AI meeting recorder with timestamped clips, AI summaries, and CRM integrations.",
+    "description": "Video-first AI meeting recorder: timestamped clips, AI summaries, CRM integrations.",
     "website": "https://tldv.io",
     "pricing": "Freemium",
     "startingPrice": "Free / $18/user/mo",
@@ -7981,7 +7981,7 @@
   {
     "name": "Linktree",
     "slug": "linktree",
-    "description": "The default link-in-bio page: one link that holds all your links, with selling built in on paid plans.",
+    "description": "The default link-in-bio page: one link for all your links, selling on paid plans.",
     "website": "https://linktr.ee",
     "pricing": "Freemium",
     "startingPrice": "Free / $9/mo",
@@ -8091,7 +8091,7 @@
   {
     "name": "Stan Store",
     "slug": "stan-store",
-    "description": "Creator storefront for courses, bookings and memberships — $29/mo, 0% platform fee, no free plan.",
+    "description": "Storefront for courses, bookings, memberships — $29/mo, 0% fee, no free plan.",
     "website": "https://stan.store",
     "pricing": "Paid",
     "startingPrice": "From $29/mo",
@@ -8145,7 +8145,7 @@
   {
     "name": "Fathom Meeting Assistant",
     "slug": "fathom-meeting",
-    "description": "AI meeting assistant that records, transcribes, and summarizes video calls on Zoom, Meet, and Teams.",
+    "description": "Records, transcribes, and summarizes Zoom, Meet, and Teams calls.",
     "website": "https://fathom.video",
     "pricing": "Freemium",
     "startingPrice": "Free / $15/user/mo",
