@@ -2742,6 +2742,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-04-19",
+    "updatedDate": "2026-11-24",
     "primaryCategory": "data-analytics",
     "categories": [
       "data-analytics"
@@ -5888,7 +5889,7 @@
   {
     "name": "Beacons",
     "slug": "beacons",
-    "description": "Link-in-bio page plus store, email and media kit in one free account — 9% fee until you pay $30/mo for 0%.",
+    "description": "Link-in-bio page, store, email and media kit — free account, 9% fee or 0% at $30/mo.",
     "website": "https://beacons.ai",
     "logo": "/logos/beacons.svg",
     "pricing": "Freemium",
