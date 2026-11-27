@@ -9,6 +9,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-06-01",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "seo-search",
     "categories": [
@@ -128,6 +129,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-01-16",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "seo-search",
     "categories": [
@@ -183,6 +185,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-01-18",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "seo-search",
     "categories": [
@@ -238,6 +241,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-01-19",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "seo-search",
     "categories": [
@@ -293,6 +297,7 @@
     "rating": 4.9,
     "featured": true,
     "addedDate": "2026-01-21",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "seo-search",
     "categories": [
@@ -348,6 +353,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-01-22",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "seo-search",
     "categories": [
@@ -403,6 +409,7 @@
     "rating": 4.8,
     "featured": false,
     "addedDate": "2026-01-23",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "seo-search",
     "categories": [
@@ -458,6 +465,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-01-25",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "seo-search",
     "categories": [
@@ -513,6 +521,7 @@
     "rating": 4.9,
     "featured": false,
     "addedDate": "2026-01-26",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "seo-search",
     "categories": [
@@ -568,6 +577,7 @@
     "rating": 4.5,
     "featured": true,
     "addedDate": "2026-06-03",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -624,6 +634,7 @@
     "rating": 4.3,
     "featured": false,
     "addedDate": "2026-01-29",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -679,6 +690,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-01-30",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -734,6 +746,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-02-01",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -789,6 +802,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-02-02",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -844,6 +858,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-02-03",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -899,6 +914,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-02-05",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -954,6 +970,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-02-06",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -1009,6 +1026,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-02-08",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -1064,6 +1082,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-06-05",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1120,6 +1139,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-02-10",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1175,6 +1195,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-02-12",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1230,6 +1251,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-02-13",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1285,6 +1307,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-02-14",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1340,6 +1363,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-02-16",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1395,6 +1419,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-02-17",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1450,6 +1475,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-02-19",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1505,6 +1531,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-02-20",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "workflow-automation",
     "categories": [
@@ -1560,6 +1587,7 @@
     "rating": 4.9,
     "featured": false,
     "addedDate": "2026-02-21",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -1617,6 +1645,7 @@
     "rating": 4.8,
     "featured": false,
     "addedDate": "2026-02-23",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -1674,6 +1703,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-02-24",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -1731,6 +1761,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-02-26",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -1788,6 +1819,7 @@
     "rating": 4.9,
     "featured": true,
     "addedDate": "2026-02-27",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -1845,6 +1877,7 @@
     "rating": 4.8,
     "featured": false,
     "addedDate": "2026-02-28",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -1902,6 +1935,7 @@
     "rating": 4.9,
     "featured": true,
     "addedDate": "2026-03-02",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -1959,6 +1993,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-03-03",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -2016,6 +2051,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-03-04",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -2073,6 +2109,7 @@
     "rating": 4.9,
     "featured": true,
     "addedDate": "2026-03-06",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2130,6 +2167,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-03-07",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2187,6 +2225,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-03-09",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2244,6 +2283,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-03-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2301,6 +2341,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-03-11",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2358,6 +2399,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-03-13",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2415,6 +2457,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-03-14",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2472,6 +2515,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-03-16",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2529,6 +2573,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-03-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "community-growth",
     "categories": [
@@ -2586,6 +2631,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-03-18",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -2643,6 +2689,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-03-20",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -2700,6 +2747,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-03-21",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -2757,6 +2805,7 @@
     "rating": 4.3,
     "featured": false,
     "addedDate": "2026-03-22",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -2814,6 +2863,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-03-24",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -2871,6 +2921,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-03-25",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -2928,6 +2979,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-03-27",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -2985,6 +3037,7 @@
     "rating": 4.9,
     "featured": true,
     "addedDate": "2026-03-28",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -3042,6 +3095,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-03-29",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -3099,6 +3153,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-03-31",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3156,6 +3211,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-04-01",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3213,6 +3269,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-04-02",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3270,6 +3327,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-04-04",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3327,6 +3385,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-04-05",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3384,6 +3443,7 @@
     "rating": 4.2,
     "featured": false,
     "addedDate": "2026-04-07",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3441,6 +3501,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-04-08",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3498,6 +3559,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-04-09",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3555,6 +3617,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-04-11",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -3612,6 +3675,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-04-12",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -3669,6 +3733,7 @@
     "rating": 4.9,
     "featured": true,
     "addedDate": "2026-04-14",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -3726,6 +3791,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-04-15",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -3783,6 +3849,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-04-16",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -3840,6 +3907,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-04-18",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -3897,6 +3965,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-04-19",
+    "updatedDate": "2026-11-24",
     "affiliate": true,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -3954,6 +4023,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-04-20",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -4011,6 +4081,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-04-22",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -4068,6 +4139,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-04-23",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "data-analytics",
     "categories": [
@@ -4125,6 +4197,7 @@
     "rating": 4.9,
     "featured": true,
     "addedDate": "2026-04-25",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4182,6 +4255,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-04-26",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4239,6 +4313,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-04-27",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4296,6 +4371,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-04-29",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4353,6 +4429,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-04-30",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4410,6 +4487,7 @@
     "rating": 4.8,
     "featured": false,
     "addedDate": "2026-05-02",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4467,6 +4545,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-05-03",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4524,6 +4603,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-05-04",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4581,6 +4661,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-05-06",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -4638,6 +4719,7 @@
     "rating": 4.8,
     "featured": false,
     "addedDate": "2026-05-07",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -4695,6 +4777,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-05-08",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -4752,6 +4835,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-05-10",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -4809,6 +4893,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-05-11",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -4866,6 +4951,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-05-13",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -4923,6 +5009,7 @@
     "rating": 4.2,
     "featured": false,
     "addedDate": "2026-05-14",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -4980,6 +5067,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-05-15",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -5037,6 +5125,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-05-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -5094,6 +5183,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-05-18",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -5151,6 +5241,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-05-20",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5208,6 +5299,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-05-21",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5265,6 +5357,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-05-22",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5322,6 +5415,7 @@
     "rating": 4.8,
     "featured": true,
     "addedDate": "2026-05-24",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5379,6 +5473,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-05-25",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5436,6 +5531,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-05-26",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5493,6 +5589,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-05-28",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5550,6 +5647,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-05-29",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5607,6 +5705,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-05-31",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5664,6 +5763,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-06-01",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -5721,6 +5821,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -5775,6 +5876,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "community-growth",
     "categories": [
@@ -5829,6 +5931,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -5883,6 +5986,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -5937,6 +6041,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -5991,6 +6096,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -6045,6 +6151,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "social-media-management",
     "categories": [
@@ -6099,6 +6206,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -6153,6 +6261,7 @@
     "rating": 4.2,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -6207,6 +6316,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -6261,6 +6371,7 @@
     "rating": 4.8,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -6315,6 +6426,7 @@
     "rating": 4,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "infrastructure-hosting",
     "categories": [
@@ -6369,6 +6481,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "community-growth",
     "categories": [
@@ -6422,6 +6535,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -6476,6 +6590,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "marketing-lead-generation",
     "categories": [
@@ -6530,6 +6645,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -6584,6 +6700,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -6638,6 +6755,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -6692,6 +6810,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-06-10",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -6746,6 +6865,7 @@
     "rating": 4.3,
     "featured": false,
     "addedDate": "2026-06-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -6802,6 +6922,7 @@
     "rating": 4.5,
     "featured": false,
     "addedDate": "2026-06-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -6854,6 +6975,7 @@
     "rating": 4.2,
     "featured": false,
     "addedDate": "2026-06-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -6905,6 +7027,7 @@
     "rating": 4.1,
     "featured": false,
     "addedDate": "2026-06-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -6954,6 +7077,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-06-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -7007,6 +7131,7 @@
     "rating": 4.1,
     "featured": false,
     "addedDate": "2026-06-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -7058,6 +7183,7 @@
     "rating": 4.3,
     "featured": false,
     "addedDate": "2026-06-17",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -7111,6 +7237,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-06-22",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -7214,6 +7341,7 @@
     "rating": 4.3,
     "featured": false,
     "addedDate": "2026-06-22",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -7324,6 +7452,7 @@
     "rating": 4.6,
     "featured": false,
     "addedDate": "2026-06-23",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -7426,6 +7555,7 @@
     "rating": 4.2,
     "featured": false,
     "addedDate": "2026-06-23",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -7534,6 +7664,7 @@
     "rating": 4.1,
     "featured": false,
     "addedDate": "2026-06-23",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -7647,6 +7778,7 @@
     "rating": 3.9,
     "featured": false,
     "addedDate": "2026-06-23",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "content-ai-creation",
     "categories": [
@@ -7749,6 +7881,7 @@
     "rating": 4.4,
     "featured": false,
     "addedDate": "2026-07-01",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
@@ -7855,6 +7988,7 @@
     "rating": 4.5,
     "featured": true,
     "addedDate": "2026-11-24",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -7902,13 +8036,14 @@
   {
     "name": "Beacons",
     "slug": "beacons",
-    "description": "Link-in-bio page plus store, email and media kit in one free account — 9% fee until you pay $30/mo for 0%.",
+    "description": "Link-in-bio page, store, email and media kit — free account, 9% fee or 0% at $30/mo.",
     "website": "https://beacons.ai",
     "pricing": "Freemium",
     "startingPrice": "Free / $10/mo",
     "rating": 4.6,
     "featured": true,
     "addedDate": "2026-11-24",
+    "updatedDate": "",
     "affiliate": true,
     "primaryCategory": "link-tracking",
     "categories": [
@@ -7963,6 +8098,7 @@
     "rating": 4.4,
     "featured": true,
     "addedDate": "2026-11-24",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "ecommerce-monetization",
     "categories": [
@@ -8016,6 +8152,7 @@
     "rating": 4.7,
     "featured": false,
     "addedDate": "2026-11-24",
+    "updatedDate": "",
     "affiliate": false,
     "primaryCategory": "productivity-knowledge-management",
     "categories": [
