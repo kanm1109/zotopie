@@ -150,7 +150,8 @@ if (relatedTools.length > 0) toc.push({ id: 'related', label: 'Related' });
 // JSON-LD: WebPage + BreadcrumbList + SoftwareApplication + Review
 const SITE    = "https://zotopie.com";
 const pageUrl = `${SITE}/reviews/${tool.slug}/`;
-const pageTitle = `${tool.name} Review 2026: Pricing, Pros & Cons | Zotopie`;
+const pageTitleFull = `${tool.name} Review 2026: Pricing, Pros & Cons | Zotopie`;
+const pageTitle = pageTitleFull.length > 60 ? `${tool.name} Review 2026 | Zotopie` : pageTitleFull;
 const cleanDesc = tool.description.replace(/\.\s*$/, '');
 const pageDesc  = `${tool.name} review 2026: ${cleanDesc}. Compare pricing, pros, cons, and top alternatives.`;
 
