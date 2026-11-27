@@ -1,5 +1,5 @@
 ---
-title: "Synthesia Review (2026): Is It Still the Best AI Video Generator?"
+title: "Synthesia Review (2026): AI Video Generator"
 description: "Read our comprehensive 2026 Synthesia review. Explore its Gen-4 AI avatars, pricing, text-to-video features, and how it compares to top alternatives."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-17

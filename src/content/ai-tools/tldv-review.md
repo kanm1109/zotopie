@@ -1,6 +1,6 @@
 ---
-title: "tl;dv Review (2026): The Best AI Meeting Tool for Video-First Teams?"
-description: "An in-depth tl;dv review for 2026. We evaluate its video clipping, timestamped AI summaries, free plan limits, pricing, and how it compares to Fireflies, Otter, and Fathom."
+title: "tl;dv Review (2026): AI Meeting Tool"
+description: "An in-depth tl;dv review for 2026. We evaluate its video clipping, timestamped AI summaries, free plan limits, and pricing."
 author: "Zotopie Editorial Team"
 publishDate: 2026-07-01
 tags: ["Meeting AI", "tldv", "AI Transcription", "Productivity", "Review"]
@@ -8,9 +8,6 @@ category: "ai-tools"
 featuredImage: "/images/ai-tools/tldv-review/tldv-dashboard-overview.svg"
 draft: false
 ---
-
-# tl;dv Review (2026)
-
 Every product team eventually hits the same wall. You have recorded forty user interviews over the past month. Each one runs between thirty and sixty minutes. The recordings live in a shared folder somewhere, and the only way to find what a user said about a specific feature is to watch hour after hour of video footage. You know the insight exists. Finding it is the problem.
 
 This is the exact problem tl;dv was designed to solve.

@@ -1,6 +1,6 @@
 ---
-title: "Fireflies AI Review (2026): Is It Worth It for Meeting Notes?"
-description: "Read our comprehensive 2026 Fireflies AI review. Evaluate its transcriptions, automated AI summaries, pricing structures, and how it stacks up against Otter and Fathom."
+title: "Fireflies AI Review (2026): Meeting Notes"
+description: "Read our 2026 Fireflies AI review. Evaluate its transcriptions, automated AI summaries, pricing, and how it stacks up against Otter and Fathom."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-17
 tags: ["AI Tools", "Productivity Software", "fireflies-ai", "Review"]

@@ -1,5 +1,5 @@
 ---
-title: "Fathom Meeting Assistant Review (2026): Features, Pricing, and Alternatives"
+title: "Fathom Meeting Assistant Review (2026)"
 description: "An in-depth, neutral review of Fathom, the AI meeting assistant. We cover features, pricing, pros, cons, and top alternatives like Otter and Fireflies."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-30
@@ -9,9 +9,6 @@ category: "ai-tools"
 featuredImage: "/images/ai-tools/fathom-meeting-review/fathom-dashboard-overview.svg"
 draft: false
 ---
-
-# Fathom Meeting Assistant Review (2026)
-
 > **Note:** This review is about Fathom, the AI meeting assistant (fathom.ai, now part of Superhuman). It is a different product from Fathom Analytics (usefathom.com), the privacy-focused web analytics tool, which has its own review at [/reviews/fathom/](/reviews/fathom/).
 
 The software landscape for meeting assistants has grown rapidly, making it harder to choose the right tool for your daily calls. Finding a reliable AI note-taker that consistently joins meetings, records high-quality audio, and generates accurate summaries is a priority for many professionals. Fathom has built a strong reputation in this space, particularly because it offers a highly capable free version. 
