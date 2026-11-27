@@ -6,10 +6,25 @@ const pageTitle = "Kalkulator Biaya Link di Bio: Berapa yang Diambil Linktree, B
 const pageDesc =
   "Masukkan penjualan bulanan dan nilai rata-rata pesanan Anda untuk melihat berapa yang diambil Linktree, Beacons, dan Stan Store: biaya paket, biaya platform, dan pemrosesan pembayaran.";
 const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMATE });
+const jsonLdStr = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Kalkulator Biaya Link di Bio",
+  url: "https://zotopie.com/id/kalkulator-biaya-link-di-bio/",
+  applicationCategory: "WebApplication",
+  operatingSystem: "Web",
+  description: pageDesc,
+  inLanguage: "id",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: { "@type": "Organization", name: "Zotopie", url: "https://zotopie.com" },
+  publisher: { "@type": "Organization", name: "Zotopie", url: "https://zotopie.com" },
+});
+
 ---
 
 <MainLayout title={pageTitle} description={pageDesc} lang="id">
   <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLdStr} />
     <link rel="alternate" hreflang="en" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
     <link rel="alternate" hreflang="es" href="https://zotopie.com/es/calculadora-comisiones-link-en-bio/" />
     <link rel="alternate" hreflang="pt-BR" href="https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/" />
