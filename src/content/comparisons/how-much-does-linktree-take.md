@@ -8,8 +8,6 @@ category: "comparisons"
 draft: false
 ---
 
-# How Much Does Linktree Take From a Sale? (2026)
-
 Pricing checked: 2026-11-24
 
 ![Illustration explaining Linktree fees: a smartphone showing a bio link page with a magnifying glass over price tags and coins, and a receipt](/images/comparisons/how-much-does-linktree-take-hero.jpg)

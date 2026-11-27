@@ -8,8 +8,6 @@ category: "comparisons"
 draft: false
 ---
 
-# Linktree vs Beacons for Etsy Sellers (2026)
-
 Pricing checked: 2026-11-24
 
 If you sell on Etsy and send buyers to your shop through a link in bio, the tool you pick takes a cut of every sale — and the cheapest option depends on how much you sell per month. If you sell under ~$189/month, Beacons Free keeps the most of your sale: $0 plan fee and the same 9% seller fee as Linktree's cheapest selling tier. Above ~$189/month, Linktree Pro ($17/month, 0% seller fee) keeps the most. Linktree Free cannot sell paid products at all, so it is not an option for Etsy sellers.

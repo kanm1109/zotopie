@@ -1,5 +1,5 @@
 ---
-title: "Beacons vs Stan Store for Course Creators & Coaches (2026)"
+title: "Beacons vs Stan Store for Course Creators (2026)"
 description: "Beacons vs Stan Store for course creators: Beacons Free wins under ~$322/month; Stan Creator wins above. Verified fees and worked examples."
 publishDate: 2026-11-24
 author: "Zotopie Team"
@@ -7,8 +7,6 @@ tags: ["Beacons", "Stan Store", "Course Creators", "Coaches", "Link in Bio", "co
 category: "comparisons"
 draft: false
 ---
-
-# Beacons vs Stan Store for Course Creators & Coaches (2026)
 
 Pricing checked: 2026-11-24
 
