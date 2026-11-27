@@ -286,7 +286,7 @@ This is the most important comparison for teams evaluating video-first tools aga
 | **Mobile App** | Not available | Not available |
 
 *   **When tl;dv wins:** You need multi-meeting reel collections, full-video timestamped navigation, and cross-session qualitative research capabilities.
-*   **When Fathom wins:** You are a freelancer or consultant who needs a reliable, completely free note-taker with unlimited transcription and seamless CRM sync. See our full [Fathom Review](/ai-tools/fathom-meeting-review/) for more detail.
+*   **When Fathom wins:** You are a freelancer or consultant who needs a reliable, completely free note-taker with unlimited transcription and seamless CRM sync. See our full [Fathom Review](/reviews/fathom-meeting/) for more detail.
 
 ## Alternatives
 
@@ -295,7 +295,7 @@ If tl;dv's pricing or feature set does not align with your workflow, these guide
 1.  **[Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/):** Our comprehensive comparison of eight platforms — Fireflies.ai, Otter.ai, tl;dv, Avoma, Fathom, MeetGeek, Krisp AI, and Sembly AI — ranked by use case, team size, and budget.
 2.  **[Fireflies.ai Review](/ai-tools/fireflies-review/):** The right choice if you need deep CRM integration, custom AI summary templates, multi-call sentiment analytics, and global keyword search across your company's entire meeting history.
 3.  **[Otter.ai Review](/ai-tools/otter-review/):** The right choice if you need real-time live transcription, collaborative text annotation during the call, or a mobile app for recording in-person conversations.
-4.  **[Fathom Review](/ai-tools/fathom-meeting-review/):** The right choice if you are an individual freelancer or small-team consultant who needs an unlimited free tier with instant CRM note logging and no monthly caps.
+4.  **[Fathom Review](/reviews/fathom-meeting/):** The right choice if you are an individual freelancer or small-team consultant who needs an unlimited free tier with instant CRM note logging and no monthly caps.
 5.  **[Fireflies vs Otter](/comparisons/fireflies-vs-otter/):** A detailed head-to-head breakdown for teams deciding between CRM automation and live real-time transcription.
 6.  **[Fireflies vs Fathom](/comparisons/fireflies-vs-fathom/):** Covers exactly when enterprise analytics and deep CRM pipeline automation justify switching from Fathom's unlimited free plan.
 
@@ -394,5 +394,5 @@ tl;dv works best as the qualitative evidence layer in a broader meeting intellig
 *   **Choosing the right platform:** If you are still evaluating your options, see our [Best Meeting AI Tools](/best/guides/best-meeting-ai-tools/) guide, which compares tl;dv against Fireflies.ai, Otter.ai, Fathom, Avoma, MeetGeek, Krisp AI, and Sembly AI across video capability, CRM automation, transcription accuracy, and pricing.
 *   **tl;dv vs Fireflies.ai:** The most important comparison for research teams evaluating video-first curation against text-first workflow automation. Fireflies is superior for CRM data pipelines; tl;dv is superior when the video itself is the deliverable. See our [Fireflies.ai Review](/ai-tools/fireflies-review/) for a deep dive.
 *   **tl;dv vs Otter.ai:** For teams who need live transcription during the call rather than video review after it. Otter's real-time text feed, collaborative annotation, and exceptional mobile app serve fundamentally different workflows. See our [Otter.ai Review](/ai-tools/otter-review/).
-*   **tl;dv vs Fathom:** For individuals and small teams on a budget who need reliable free recording without the video-first specialization. Fathom's unlimited free tier and CRM sync are unmatched for solo use cases. See our [Fathom Review](/ai-tools/fathom-meeting-review/).
+*   **tl;dv vs Fathom:** For individuals and small teams on a budget who need reliable free recording without the video-first specialization. Fathom's unlimited free tier and CRM sync are unmatched for solo use cases. See our [Fathom Review](/reviews/fathom-meeting/).
 *   **Head-to-head comparisons:** See [Fireflies vs Otter](/comparisons/fireflies-vs-otter/) and [Fireflies vs Fathom](/comparisons/fireflies-vs-fathom/) for additional side-by-side evaluations within the cluster.
