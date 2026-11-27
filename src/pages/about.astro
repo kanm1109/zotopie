@@ -2,12 +2,25 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import tools from '../data/generated/tools-enriched.json';
 import taxonomies from '../data/taxonomies.json';
+
+const jsonLdStr = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Zotopie",
+  url: "https://zotopie.com",
+  description: "Zotopie is an independent software review and comparison directory. Learn how we evaluate tools and why we built this.",
+  logo: "https://zotopie.com/favicon.svg",
+  contactPoint: { "@type": "ContactPoint", email: "marketing@zotopie.com" },
+});
 ---
 
 <MainLayout
   title="About Zotopie — Independent Software Reviews"
   description="Zotopie is an independent software review and comparison directory. Learn how we evaluate tools and why we built this."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLdStr} />
+  </Fragment>
   <div class="about-wrap">
     <div class="about-hero">
       <div class="about-eyebrow">About Us</div>

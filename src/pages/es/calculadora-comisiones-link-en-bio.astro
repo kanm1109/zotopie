@@ -6,10 +6,25 @@ const pageTitle = "Calculadora de comisiones link en bio: cuánto se quedan Link
 const pageDesc =
   "Introduce tus ventas mensuales y el valor medio de pedido para ver cuánto se quedan Linktree, Beacons y Stan Store: cuota del plan, comisión de la plataforma y procesamiento de pagos.";
 const feesJson = JSON.stringify({ tools: LINK_IN_BIO_FEES, stripe: STRIPE_ESTIMATE });
+const jsonLdStr = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Calculadora de comisiones link en bio",
+  url: "https://zotopie.com/es/calculadora-comisiones-link-en-bio/",
+  applicationCategory: "WebApplication",
+  operatingSystem: "Web",
+  description: pageDesc,
+  inLanguage: "es",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  author: { "@type": "Organization", name: "Zotopie", url: "https://zotopie.com" },
+  publisher: { "@type": "Organization", name: "Zotopie", url: "https://zotopie.com" },
+});
+
 ---
 
 <MainLayout title={pageTitle} description={pageDesc} lang="es">
   <Fragment slot="head">
+    <script type="application/ld+json" set:html={jsonLdStr} />
     <link rel="alternate" hreflang="en" href="https://zotopie.com/tools/link-in-bio-fee-calculator/" />
     <link rel="alternate" hreflang="es" href="https://zotopie.com/es/calculadora-comisiones-link-en-bio/" />
     <link rel="alternate" hreflang="pt-BR" href="https://zotopie.com/pt-br/calculadora-taxas-link-na-bio/" />

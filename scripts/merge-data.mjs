@@ -108,6 +108,7 @@ const enriched = tools.map((tool) => {
     rating:          tool.rating,
     featured:        tool.featured        ?? false,
     addedDate:       tool.addedDate       ?? "",
+    updatedDate:     tool.updatedDate     ?? "",
     affiliate:       tool.affiliate       ?? false,
     primaryCategory: tool.primaryCategory ?? "",
     categories:      tool.categories      ?? [],
