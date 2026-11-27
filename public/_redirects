@@ -16,7 +16,10 @@ http://www.zotopie.com/* https://zotopie.com/:splat 301
 /reviews/fireflies/  /reviews/fireflies-ai/  301
 
 # Fathom article rename — meeting assistant, not Fathom Analytics
-/ai-tools/fathom-review/  /ai-tools/fathom-meeting-review/  301
+/ai-tools/fathom-review/  /reviews/fathom-meeting/  301
+
+# Fathom Meeting Assistant — old article merged into the review page (PR #37)
+/ai-tools/fathom-meeting-review/  /reviews/fathom-meeting/  301
 
 # Fathom split — old compare pair used Fathom Analytics vs tl;dv; the meeting assistant is the correct pair
 /compare/fathom-vs-tldv/  /compare/fathom-meeting-vs-tldv/  301
