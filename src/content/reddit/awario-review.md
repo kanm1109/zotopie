@@ -1,5 +1,5 @@
 ---
-title: "Awario Review (2026): Is It Worth It for Social Listening?"
+title: "Awario Review (2026): Social Listening"
 description: "Read our comprehensive Awario review for 2026. Evaluate its features, boolean queries, pricing, and social listening capabilities for Reddit monitoring."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-16

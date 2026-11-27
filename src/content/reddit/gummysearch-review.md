@@ -1,5 +1,5 @@
 ---
-title: "GummySearch Review (2026): Is It Worth It for Reddit Research?"
+title: "GummySearch Review (2026): Reddit Research"
 description: "Read our in-depth 2026 GummySearch review. Discover its core features, pricing, shutdown status, and the best alternatives for Reddit audience research."
 author: "Zotopie Editorial Team"
 publishDate: 2026-06-16
